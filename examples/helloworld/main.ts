@@ -13,7 +13,7 @@ setInterval(() => {
 ServerCommands.register((player_uuid, message) => {
     if (message == '/hello') {
         console.log('Received the /hello command!');
-        Players.getPlayerByUsername("conner_douglass")?.sendTitle("hey man", null, 20, 20, 20);
+        Players.getPlayerByUUID(player_uuid)?.sendTitle("what's up", null, 20, 20, 20);
         return true;
     }
     return false;

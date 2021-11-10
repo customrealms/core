@@ -1,5 +1,5 @@
 import "../globals";
-import { ToJava } from "../runtime/tojava";
+import { ToJava } from "../runtime/ToJava";
 
 export class Vector implements ToJava {
 

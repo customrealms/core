@@ -1,8 +1,8 @@
 import "../globals";
-import { Block } from "../block/block";
-import { Chunk } from "../chunk/chunk";
-import { ToJava } from '../runtime/tojava';
-import { World } from '../world/world';
+import { Block } from "../block/Block";
+import { Chunk } from "../chunk/Chunk";
+import { ToJava } from '../runtime/ToJava';
+import { World } from '../world/World';
 
 export class Location implements ToJava {
 

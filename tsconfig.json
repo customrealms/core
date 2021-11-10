@@ -13,7 +13,7 @@
 		"esModuleInterop": true,
 		"allowSyntheticDefaultImports": true,
 		"importHelpers": true,
-		"target": "es5",
+		"target": "es3",
 		"typeRoots": [
 			"node_modules/@types"
 		],

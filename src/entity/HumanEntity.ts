@@ -7,8 +7,8 @@ import { ItemStack } from "../material/ItemStack";
 import { Material } from "../material/Material";
 import { GameMode } from "../player/GameMode";
 import { ApplyMixins } from "../runtime/ApplyMixins";
-import { Location } from "../util/location";
-import { Entity } from "./entity";
+import { Location } from "../util/Location";
+import { Entity } from "./Entity";
 import { LivingEntity } from "./LivingEntity";
 
 export class HumanEntity extends Entity {
