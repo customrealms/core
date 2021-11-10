@@ -10,7 +10,7 @@ import { EquipmentSlot } from "../../inventory/EquipmentSlot";
 export class PlayerInteractEvent extends Event {
 
     public getPlayer(): Player {
-        return new Player(this._event.getPlayer());
+        return Player.fromJava(this._event.getPlayer());
     }
 
     public getAction(): BlockAction {
@@ -25,12 +25,12 @@ export class PlayerInteractEvent extends Event {
     public getItem(): ItemStack | null {
         const javaItemStack = this._event.getItem();
         if (!javaItemStack) return null;
-        return new ItemStack(javaItemStack);
+        return ItemStack.fromJava(javaItemStack);
     }
 
     public getMaterial(): Material {
         const javaMaterial = this._event.getMaterial();
-        return new Material(javaMaterial);
+        return Material.fromJava(javaMaterial);
     }
 
     public hasBlock(): boolean {
@@ -48,7 +48,7 @@ export class PlayerInteractEvent extends Event {
     public getClickedBlock(): Block | null {
         const javaBlock = this._event.getClickedBlock();
         if (!javaBlock) return null;
-        return new Block(javaBlock);
+        return Block.fromJava(javaBlock);
     }
 
     public getBlockFace(): BlockFace {

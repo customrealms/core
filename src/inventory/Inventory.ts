@@ -79,9 +79,9 @@ export class Inventory implements ToJava {
      * Gets the array of all inventory items in the inventory
      */
     public getContents(): (ItemStack | null)[] {
-        const javaContents = this.toJava().getContents();
+        const javaContents: Java.Value[] = this.toJava().getContents();
         if (!javaContents) return [];
-        return javaContents.map((i: any) => i ? new ItemStack(i) : null);
+        return javaContents.map(i => i ? ItemStack.fromJava(i) : null);
     }
 
     // /**
@@ -100,7 +100,7 @@ export class Inventory implements ToJava {
     public getItem(index: number): ItemStack | null {
         const javaStack = this.toJava().getItem(index);
         if (!javaStack) return null;
-        return new ItemStack(javaStack);
+        return ItemStack.fromJava(javaStack);
     }
 
     /**
@@ -128,9 +128,9 @@ export class Inventory implements ToJava {
      * Gets the contents from the section of this inventory where items can be expected to be stored
      */
     public getStorageContents(): (ItemStack | null)[] {
-        const javaContents = this.toJava().getStorageContents();
+        const javaContents: Java.Value[] = this.toJava().getStorageContents();
         if (!javaContents) return [];
-        return javaContents.map((i: any) => i ? new ItemStack(i) : null);
+        return javaContents.map(i => i ? ItemStack.fromJava(i) : null);
     }
 
     /**

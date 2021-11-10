@@ -4,7 +4,7 @@ import { Event } from "./Event";
 export class PlayerQuitEvent extends Event {
 
     public getPlayer(): Player {
-        return new Player(this._event.getPlayer());
+        return Player.fromJava(this._event.getPlayer());
     }
 
     public setQuitMessage(message: string): void {

@@ -4,7 +4,7 @@ import { BlockExpEvent } from "./BlockExpEvent";
 export class BlockBreakEvent extends BlockExpEvent {
 
     public getPlayer(): Player {
-        return new Player(this._event.getPlayer());
+        return Player.fromJava(this._event.getPlayer());
     }
 
     public isCancelled(): boolean {

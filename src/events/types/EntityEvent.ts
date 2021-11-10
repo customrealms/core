@@ -5,9 +5,7 @@ import { Event } from "./Event";
 export class EntityEvent extends Event {
 
     public getEntity(): Entity {
-        return new Entity(
-            this.toJava().getEntity()
-        );
+        return Entity.fromJava(this.toJava().getEntity());
     }
 
     public getEntityType(): EntityType {

@@ -8,10 +8,9 @@ import { Material } from "../material/Material";
 import { GameMode } from "../player/GameMode";
 import { ApplyMixins } from "../runtime/ApplyMixins";
 import { Location } from "../util/Location";
-import { Entity } from "./Entity";
 import { LivingEntity } from "./LivingEntity";
 
-export class HumanEntity extends Entity {
+export class HumanEntity {
 
     /**
      * Closes the currently-open inventory for this player
@@ -89,7 +88,7 @@ export class HumanEntity extends Entity {
      */
     public getItemOnCursor(): ItemStack {
         const javaItemStack = this.toJava().getItemOnCursor();
-        return new ItemStack(javaItemStack);
+        return ItemStack.fromJava(javaItemStack);
     }
 
     /**

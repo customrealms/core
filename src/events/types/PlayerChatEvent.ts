@@ -4,7 +4,7 @@ import { Event } from "./Event";
 export class PlayerChatEvent extends Event {
 
     public getPlayer(): Player {
-        return new Player(this._event.getPlayer());
+        return Player.fromJava(this._event.getPlayer());
     }
 
     public getFormat(): string {

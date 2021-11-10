@@ -4,7 +4,7 @@ import { Block } from "../../block/Block";
 export class BlockEvent extends Event {
 
     public getBlock(): Block {
-        return new Block(this.toJava().getBlock());
+        return Block.fromJava(this.toJava().getBlock());
     }
 
 }

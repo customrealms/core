@@ -19,7 +19,7 @@ export class PlayerInventory extends Inventory {
     public getBoots(): ItemStack | null {
         const javaItem = this.toJava().getBoots();
         if (!javaItem) return null;
-        return new ItemStack(javaItem);
+        return ItemStack.fromJava(javaItem);
     }
 
     /**
@@ -28,7 +28,7 @@ export class PlayerInventory extends Inventory {
     public getChestplate(): ItemStack | null {
         const javaItem = this.toJava().getChestplate();
         if (!javaItem) return null;
-        return new ItemStack(javaItem);
+        return ItemStack.fromJava(javaItem);
     }
 
     /**
@@ -52,7 +52,7 @@ export class PlayerInventory extends Inventory {
     public getHelmet(): ItemStack | null {
         const javaItem = this.toJava().getHelmet();
         if (!javaItem) return null;
-        return new ItemStack(javaItem);
+        return ItemStack.fromJava(javaItem);
     }
 
     /**
@@ -78,7 +78,7 @@ export class PlayerInventory extends Inventory {
     public getItemInMainHand(): ItemStack | null {
         const javaItem = this.toJava().getItemInMainHand();
         if (!javaItem) return null;
-        return new ItemStack(javaItem);
+        return ItemStack.fromJava(javaItem);
     }
 
     /**
@@ -87,7 +87,7 @@ export class PlayerInventory extends Inventory {
     public getItemInOffHand(): ItemStack | null {
         const javaItem = this.toJava().getItemInOffHand();
         if (!javaItem) return null;
-        return new ItemStack(javaItem);
+        return ItemStack.fromJava(javaItem);
     }
 
     /**
@@ -96,7 +96,7 @@ export class PlayerInventory extends Inventory {
     public getLeggings(): ItemStack | null {
         const javaItem = this.toJava().getLeggings();
         if (!javaItem) return null;
-        return new ItemStack(javaItem);
+        return ItemStack.fromJava(javaItem);
     }
 
     /**

@@ -11,10 +11,15 @@ declare global {
     namespace Java {
 
         /**
+         * Java.Value represents a wrapped Java object that is returned by the Java.resolve type
+         */
+        type Value = any;
+
+        /**
          * Resolves a Java class or value in order to perform operations on it from within your JavaScript code
          * @param classpath the Java classpath to the class or value you wish to resolve
          */
-        function resolve<T = any>(classpath: string): T | undefined;
+        function resolve<T = Java.Value>(classpath: string): T | undefined;
 
     }
 

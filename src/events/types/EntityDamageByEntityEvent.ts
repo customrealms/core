@@ -6,7 +6,7 @@ export class EntityDamageByEntityEvent extends EntityDamageEvent {
     public getDamager(): Entity | null {
         const javaDamager = this.toJava().getDamager();
         if (!javaDamager) return null;
-        return new Entity(javaDamager);
+        return Entity.fromJava(javaDamager);
     }
 
 }

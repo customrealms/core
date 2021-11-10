@@ -2,90 +2,152 @@ import { ToJava } from '../runtime/ToJava';
 
 export class Material implements ToJava {
 
+    public static fromJava(_material: Java.Value): Material {
+        return new Material(_material);
+    }
+
+    /**
+     * Finds a material with the provided name, if one exists
+     * @param name the name of the material
+     * @param exact whether or not to require an exact match
+     */
     public static withName(name: string, exact: boolean = false): Material | null {
         const javaMat = exact
             ? Java.resolve('org.bukkit.Material').getMaterial(name)
             : Java.resolve('org.bukkit.Material').matchMaterial(name);
         // const javaMat = JavaBindings.org.bukkit.Material[name];
         if (!javaMat) return null;
-        return new Material(javaMat);
+        return Material.fromJava(javaMat);
     }
 
+    /**
+     * Gets all of the materials available
+     */
     public static all(): Material[] {
         return Java.resolve('org.bukkit.Material')
             .values()
-            .map((javaMat: any) => new Material(javaMat));
+            .map((javaMat: Java.Value) => Material.fromJava(javaMat));
     }
 
-    public constructor(
-        private _material: any) {}
+    private constructor(
+        private _material: Java.Value,
+    ) {}
 
     public toJava(): any {
         return this._material;
     }
 
+    /**
+     * Gets the name of the material
+     */
     public getName(): string {
-        return this._material.name();
+        return this.toJava().name();
     }
 
+    /**
+     * Gets the blast resistance (durability) of this material
+     */
     public getBlastResistance(): number {
-        return this._material?.getBlastResistance();
+        return this.toJava()?.getBlastResistance();
     }
 
+    /**
+     * Gets the hardness (strength) of this material. This corresponds to the amount of time
+     * it takes a player to break the material.
+     */
     public getHardness(): number {
-        return this._material?.getHardness();
+        return this.toJava()?.getHardness();
     }
 
+    /**
+     * Gets the maximum durability of this material
+     */
     public getMaxDurability(): number {
-        return this._material?.getMaxDurability();
+        return this.toJava()?.getMaxDurability();
     }
 
+    /**
+     * Gets the maximum amount of this material that can be held in a stack
+     */
     public getMaxStackSize(): number {
-        return this._material?.getMaxStackSize();
+        return this.toJava()?.getMaxStackSize();
     }
 
+    /**
+     * Determines if this material is affected by gravity
+     */
     public hasGravity(): boolean {
-        return this._material?.hasGravity();
+        return this.toJava()?.hasGravity();
     }
 
+    /**
+     * Checks if the material is air
+     */
     public isAir(): boolean {
-        return this._material?.isAir();
+        return this.toJava()?.isAir();
     }
 
+    /**
+     * Checks if the material is a block (can be placed in the world)
+     */
     public isBlock(): boolean {
-        return this._material?.isBlock();
+        return this.toJava()?.isBlock();
     }
 
+    /**
+     * Checks if the material is edible
+     */
     public isEdible(): boolean {
-        return this._material?.isEdible();
+        return this.toJava()?.isEdible();
     }
 
+    /**
+     * Checks if this material is a block and can catch on fire
+     */
     public isFlammable(): boolean {
-        return this._material?.isFlammable();
+        return this.toJava()?.isFlammable();
     }
 
+    /**
+     * Checks if this block can be used as fuel in a furnace
+     */
     public isFuel(): boolean {
-        return this._material?.isFuel();
+        return this.toJava()?.isFuel();
     }
 
+    /**
+     * Checks if the player can interact with this material
+     */
     public isInteractable(): boolean {
-        return this._material?.isInteractable();
+        return this.toJava()?.isInteractable();
     }
 
+    /**
+     * Checks if this material is an obtainable item
+     */
     public isItem(): boolean {
-        return this._material?.isItem();
+        return this.toJava()?.isItem();
     }
 
+    /**
+     * Checks if this material is a block which completely occludes vision (you can't see through it)
+     */
     public isOccluding(): boolean {
-        return this._material?.isOccluding();
+        return this.toJava()?.isOccluding();
     }
 
+    /**
+     * Checks if this material is a record
+     */
     public isRecord(): boolean {
-        return this._material?.isRecord();
+        return this.toJava()?.isRecord();
     }
 
+    /**
+     * Checks if this material is a block and is solid (can be build upon)
+     */
     public isSolid(): boolean {
-        return this._material?.isSolid();
+        return this.toJava()?.isSolid();
     }
 
     /**

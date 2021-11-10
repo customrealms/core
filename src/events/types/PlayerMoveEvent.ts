@@ -5,7 +5,7 @@ import { Event } from "./Event";
 export class PlayerMoveEvent extends Event {
 
     public getPlayer(): Player {
-        return new Player(this._event.getPlayer());
+        return Player.fromJava(this._event.getPlayer());
     }
 
     public setCancelled(cancel: boolean): void {

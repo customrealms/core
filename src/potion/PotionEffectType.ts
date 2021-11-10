@@ -5,6 +5,10 @@ import { PotionEffectName } from "./PotionEffectName";
 
 export class PotionEffectType implements ToJava {
 
+    public static fromJava(_java: Java.Value): PotionEffectType {
+        return new PotionEffectType(_java);
+    }
+
     /**
      *Gets a potion effect type by its name
      * @param name the name of the potion effect type
@@ -12,11 +16,12 @@ export class PotionEffectType implements ToJava {
     public static withName(name: PotionEffectName | string): PotionEffectType | null {
         const javaEffectType = Java.resolve('org.bukkit.potion.PotionEffectType').getByName(name);
         if (!javaEffectType) return null;
-        return new PotionEffectType(javaEffectType);
+        return PotionEffectType.fromJava(javaEffectType);
     }
 
-    public constructor(
-        private _java: any) {}
+    private constructor(
+        private _java: Java.Value,
+    ) {}
 
     public toJava(): any {
         return this._java;
@@ -29,12 +34,13 @@ export class PotionEffectType implements ToJava {
      */
     public createEffect(
         duration: number,
-        amplifier: number): PotionEffect {
+        amplifier: number,
+    ): PotionEffect {
         const javaEffect = this.toJava().createEffect(
             duration,
             amplifier,
         );
-        return new PotionEffect(javaEffect);
+        return PotionEffect.fromJava(javaEffect);
     }
 
     /**

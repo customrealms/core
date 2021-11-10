@@ -4,10 +4,9 @@ import { PotionEffectType } from "./PotionEffectType";
 
 export class PotionEffect implements ToJava {
 
-    /**
-     * The underlying Java instance
-     */
-    private _java: any;
+    public static fromJava(_java: Java.Value): PotionEffect {
+        return new PotionEffect(_java);
+    }
 
     /**
      * Constructs a new potion effect instance
@@ -18,56 +17,70 @@ export class PotionEffect implements ToJava {
      * @param particles whether or not to emit particles
      * @param icon whether ot not the effect has an icon
      */
-    public constructor(
+    public static create(
         type: PotionEffectType,
         duration: number,
         amplifier: number,
-        ambient?: boolean,
-        particles?: boolean,
-        icon?: boolean);
+        ambient: boolean = true,
+        particles: boolean = true,
+        icon: boolean = true,
+    ): PotionEffect {
+        const _java = new (Java.resolve('org.bukkit.potion.PotionEffect'))(
+            type.toJava(),
+            duration,
+            amplifier,
+            ambient,
+            particles,
+            icon,
+        );
+        return PotionEffect.fromJava(_java);
+    };
 
     /**
      * Constructs a potion effect from its java instance
      * @param _java the underlying Java instance
      */
-    public constructor(_java: any);
-
-    public constructor(...args: any[]) {
-        if (args.length === 1) {
-            this._java = args[0];
-        } else {
-            this._java = new (Java.resolve('org.bukkit.potion.PotionEffect'))(
-                (args[0] as PotionEffectType).toJava(),
-                args[1],
-                args[2],
-                args[3] ?? true,
-                args[4] ?? true,
-                args[5] ?? true
-            );
-        }
-    }
+    private constructor(
+        private _java: Java.Value,
+    ) {}
 
     public toJava(): any {
         return this._java;
     }
 
+    /**
+     * Gets the type of the potion effect
+     */
     public getType(): PotionEffectType {
         const javaType = this.toJava().getType();
-        return new PotionEffectType(javaType);
+        return PotionEffectType.fromJava(javaType);
     }
 
+    /**
+     * Gets the duration in ticks that the potion effect will run when
+     * applied to a living entity
+     */
     public getDuration(): number {
         return this.toJava().getDuration();
     }
 
+    /**
+     * Checks if this potion effect displays an icon to the player
+     */
     public hasIcon(): boolean {
         return this.toJava().hasIcon();
     }
 
+    /**
+     * Checks if this potion effect emits particles
+     */
     public hasParticles(): boolean {
         return this.toJava().hasParticles();
     }
 
+    /**
+     * Checks if this potion effect produces more particles
+     */
     public isAmbient(): boolean {
         return this.toJava().isAmbient();
     }
