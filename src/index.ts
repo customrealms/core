@@ -35,7 +35,7 @@ export * from './events/types/PlayerJoinEvent';
 export * from './events/types/PlayerMoveEvent';
 export * from './events/types/PlayerQuitEvent';
 
-// export * from './events/ServerEvent';
+export * from './events/ServerEvents';
 
 export * from './inventory/EntityEquipment';
 export * from './inventory/EquipmentSlot';

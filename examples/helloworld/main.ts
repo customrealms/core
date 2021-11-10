@@ -1,4 +1,4 @@
-import { Players } from "../../dist";
+import { PlayerChatEvent, Players, ServerEvents } from "../../dist";
 
 console.log('Plugin started!');
 
@@ -10,11 +10,19 @@ setInterval(() => {
 }, 5000);
 
 // Listen for server commands types by all players
-ServerCommands.register((player_uuid, message) => {
+BukkitCommands.register((player_uuid, message) => {
     if (message == '/hello') {
         console.log('Received the /hello command!');
-        Players.getPlayerByUUID(player_uuid)?.sendTitle("what's up", null, 20, 20, 20);
+        const player = Players.getPlayerByUUID(player_uuid)
+        player?.sendTitle("Your /hello was received", null, 20, 20, 20);
         return true;
     }
     return false;
+});
+
+ServerEvents.register(PlayerChatEvent, event => {
+
+    console.log('Chat event!');
+    event.getPlayer().sendTitle('NICE CHAT', 'yep', 20, 20, 20);
+
 });

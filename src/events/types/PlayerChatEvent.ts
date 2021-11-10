@@ -3,36 +3,68 @@ import { Event } from "./Event";
 
 export class PlayerChatEvent extends Event {
 
+    public static getBukkitClasspath(): string {
+        return 'org.bukkit.event.player.PlayerChatEvent';
+    }
+
+    /**
+     * Gets the player who chatted
+     */
     public getPlayer(): Player {
-        return Player.fromJava(this._event.getPlayer());
+        return Player.fromJava(this.toJava().getPlayer());
     }
 
+    /**
+     * Gets the format string for the message displayed
+     */
     public getFormat(): string {
-        return this._event.getFormat();
+        return this.toJava().getFormat();
     }
 
+    /**
+     * Gets the message contents to display
+     */
     public getMessage(): string {
-        return this._event.getMessage();
+        return this.toJava().getMessage();
     }
 
+    /**
+     * Gets the cancellation state of this event
+     */
     public isCancelled(): boolean {
-        return this._event.isCancelled();
+        return this.toJava().isCancelled();
     }
 
+    /**
+     * Sets the cancellation state of this event
+     * @param cancelled whether or not to cancel the event
+     */
     public setCancelled(cancelled: boolean): void {
-        this._event.setCancelled(cancelled);
+        this.toJava().setCancelled(cancelled);
     }
 
+    /**
+     * Sets the format string for the message displayed
+     * @param format the format string
+     */
     public setFormat(format: string): void {
-        this._event.setFormat(format);
+        this.toJava().setFormat(format);
     }
 
+    /**
+     * Sets the message contents to display
+     * @param message the message contents
+     */
     public setMessage(message: string): void {
-        this._event.setMessage(message);
+        this.toJava().setMessage(message);
     }
 
+    /**
+     * Sets the player to be credited for the message in chat
+     * @param player the player
+     */
     public setPlayer(player: Player): void {
-        this._event.setPlayer(player.toJava());
+        this.toJava().setPlayer(player.toJava());
     }
 
 }

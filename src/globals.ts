@@ -24,18 +24,22 @@ declare global {
     }
 
     /**
-     * ServerEvents namespace contains functions that enable the caller to listen for Minecraft server events
+     * BukkitEvents namespace contains functions that enable the caller to listen for Minecraft server events
      */
-    namespace ServerEvents {
+    namespace BukkitEvents {
 
         /**
          * Registers an event handler, responding to a specific type of event as defined by the Java classpath
          * to the corresponding Event class in the Bukkit API. This function returns a handle number that can
          * be used to unregister the event listener.
+         * 
+         * The event value passed to the handler is the raw Java.Value object for the underlying Bukkit event
+         * object.
+         * 
          * @param event_classpath the Java classpath to the Bukkit event being listened for
          * @param handler the handler function that will be triggered each time the event occurs
          */
-        function register<T>(event_classpath: string, handler: (event: T) => void): number;
+        function register(event_classpath: string, handler: (event: Java.Value) => void): number;
 
         /**
          * Unregisters an event handler, so it will stop receiving events
@@ -46,9 +50,9 @@ declare global {
     }
 
     /**
-     * ServerCommands namespace contains functions for responding to player-issued commands
+     * BukkitCommands namespace contains functions for responding to player-issued commands
      */
-    namespace ServerCommands {
+    namespace BukkitCommands {
 
         /**
          * Registers a command handler, which is a function that is called each time a command is issued by a player. The function you

@@ -3,9 +3,10 @@ import { ToJava } from "../../runtime/ToJava";
 export class Event implements ToJava {
 
     public constructor(
-        protected _event: any) {}
+        protected _event: Java.Value,
+    ) {}
 
-    public toJava(): any {
+    public toJava(): Java.Value {
         return this._event;
     }
 
