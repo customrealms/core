@@ -1,0 +1,33 @@
+{
+	"compileOnSave": false,
+	"compilerOptions": {
+		"strict": true,
+		"outDir": "./dist",
+		"sourceMap": false,
+		"noEmit": true,
+		"declaration": false,
+		"module": "esnext",
+		"moduleResolution": "node",
+		"emitDecoratorMetadata": true,
+		"resolveJsonModule": true,
+		"experimentalDecorators": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"importHelpers": true,
+		"target": "es5",
+		"typeRoots": [
+			"../../node_modules/@types"
+		],
+		"lib": [
+			"es2018",
+			"dom"
+		]
+	},
+	"angularCompilerOptions": {
+		"enableIvy": true,
+		"disableTypeScriptVersionCheck": true
+	},
+	"files": [
+		"main.ts"
+	]
+}
