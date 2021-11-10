@@ -4,7 +4,6 @@
 		"strict": true,
 		"outDir": "./dist",
 		"sourceMap": false,
-		"noEmit": true,
 		"declaration": false,
 		"module": "esnext",
 		"moduleResolution": "node",
@@ -22,10 +21,6 @@
 			"es2018",
 			"dom"
 		]
-	},
-	"angularCompilerOptions": {
-		"enableIvy": true,
-		"disableTypeScriptVersionCheck": true
 	},
 	"files": [
 		"main.ts"

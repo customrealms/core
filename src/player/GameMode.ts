@@ -1,0 +1,6 @@
+export enum GameMode {
+    SURVIVAL = 'SURVIVAL',
+    CREATIVE = 'CREATIVE',
+    ADVENTURE = 'ADVENTURE',
+    SPECTATOR = 'SPECTATOR'
+}

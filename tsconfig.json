@@ -22,10 +22,6 @@
 			"dom"
 		]
 	},
-	"angularCompilerOptions": {
-		"enableIvy": true,
-		"disableTypeScriptVersionCheck": true
-	},
 	"files": [
 		"src/index.ts"
 	]
