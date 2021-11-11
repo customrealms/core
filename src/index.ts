@@ -13,6 +13,9 @@ export * from './chat/ChatColorUtils';
 
 export * from './chunk/Chunk';
 
+export * from './command/CommandCall';
+export * from './command/ServerCommands';
+
 export * from './entity/Damageable';
 export * from './entity/Entity';
 export * from './entity/EntityDamageCause';

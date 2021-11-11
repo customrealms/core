@@ -60,7 +60,7 @@ declare global {
          * return false so that another plugin on the server will be able to respond to it.
          * @param handler the handler function to be called
          */
-        function register(handler: (player_uuid: string, message: string) => boolean): number;
+        function register(handler: (player: Java.Value, message: string) => boolean): number;
 
         /**
          * Unregisters a command handler, so it will stop receiving command events
