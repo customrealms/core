@@ -520,6 +520,14 @@ export class Player implements ToJava {
     }
 
     /**
+     * Checks if the player has a permission set
+     * @param permission name of the permission
+     */
+    public hasPermission(permission: string): boolean {
+        return this.toJava().hasPermission(permission);
+    }
+
+    /**
      * Gives the player full netherite armor, with the given enchantments applied.
      * @param enchantments names of enchantments to add to the armor
      */
