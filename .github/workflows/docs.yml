@@ -21,7 +21,9 @@ jobs:
 
       - name: Install dependencies (if the cached directory was not found)
         if: steps.node-cache.outputs.cache-hit != 'true'
-        run: npm install
+        run: |
+          npm install
+          npm install -g typescript
 
       - name: Test to see if the project compiles
         run: npm run build:check
