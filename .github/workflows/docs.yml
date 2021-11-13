@@ -12,15 +12,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
 
-      # - name: Retrieve the cached "node_modules" directory (if present)
-      #   uses: actions/cache@v2
-      #   id: node-cache
-      #   with:
-      #     path: node_modules
-      #     key: node-modules-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
-
-      - name: Install dependencies (if the cached directory was not found)
-        # if: steps.node-cache.outputs.cache-hit != 'true'
+      - name: Install dependencies
         run: |
           npm install -g typescript
           npm install
@@ -29,7 +21,7 @@ jobs:
         run: npm run build:check
 
       - name: Create the docs directory locally in CI
-        run: npx typedoc src/index.ts
+        run: npm run docs
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.4
