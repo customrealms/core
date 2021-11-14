@@ -1,5 +1,5 @@
 import { EntityDamageEvent } from "./EntityDamageEvent";
-import { Entity } from "../../entity/Entity";
+import { Entity } from "../../../entity/Entity";
 
 export class EntityDamageByEntityEvent extends EntityDamageEvent {
 
