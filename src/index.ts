@@ -24,19 +24,7 @@ export * from './entity/HumanEntity';
 export * from './entity/LivingEntity';
 export * from './entity/Pose';
 
-export * from './events/types/blocks/BlockBreakEvent';
-export * from './events/types/blocks/BlockEvent';
-export * from './events/types/blocks/BlockExpEvent';
-export * from './events/types/entities/EntityDamageByBlockEvent';
-export * from './events/types/entities/EntityDamageByEntityEvent';
-export * from './events/types/entities/EntityDamageEvent';
-export * from './events/types/entities/EntityEvent';
-export * from './events/types/Event';
-export * from './events/types/player/PlayerChatEvent';
-export * from './events/types/player/PlayerInteractEvent';
-export * from './events/types/player/PlayerJoinEvent';
-export * from './events/types/player/PlayerMoveEvent';
-export * from './events/types/player/PlayerQuitEvent';
+export * from './events/types';
 
 export * from './events/ServerEvents';
 
