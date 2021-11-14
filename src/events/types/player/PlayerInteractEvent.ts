@@ -1,23 +1,15 @@
-import { BlockAction } from "../../block/BlockAction";
-import { BlockFace } from "../../block/BlockFace";
-import { Block } from "../../block/Block";
-import { ItemStack } from "../../material/ItemStack";
-import { Material } from "../../material/Material";
-import { Player } from "../../player/Player";
-import { Event } from "./Event";
-import { EquipmentSlot } from "../../inventory/EquipmentSlot";
+import { BlockAction } from "../../../block/BlockAction";
+import { BlockFace } from "../../../block/BlockFace";
+import { Block } from "../../../block/Block";
+import { ItemStack } from "../../../material/ItemStack";
+import { Material } from "../../../material/Material";
+import { EquipmentSlot } from "../../../inventory/EquipmentSlot";
+import { PlayerEvent } from "./PlayerEvent";
 
-export class PlayerInteractEvent extends Event {
+export class PlayerInteractEvent extends PlayerEvent {
 
     public static getBukkitClasspath(): string {
         return 'org.bukkit.event.player.PlayerInteractEvent';
-    }
-
-    /**
-     * Gets the player for the event
-     */
-    public getPlayer(): Player {
-        return Player.fromJava(this.toJava().getPlayer());
     }
 
     /**

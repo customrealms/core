@@ -1,4 +1,4 @@
-import { Player } from "../../player/Player";
+import { Player } from "../../../player/Player";
 import { BlockExpEvent } from "./BlockExpEvent";
 
 export class BlockBreakEvent extends BlockExpEvent {

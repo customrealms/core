@@ -1,17 +1,9 @@
-import { Player } from "../../player/Player";
-import { Event } from "./Event";
+import { PlayerEvent } from "./PlayerEvent";
 
-export class PlayerQuitEvent extends Event {
+export class PlayerQuitEvent extends PlayerEvent {
 
     public static getBukkitClasspath(): string {
         return 'org.bukkit.event.player.PlayerJoinEvent';
-    }
-
-    /**
-     * Gets the player who quit the server
-     */
-    public getPlayer(): Player {
-        return Player.fromJava(this.toJava().getPlayer());
     }
 
     /**

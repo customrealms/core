@@ -1,6 +1,6 @@
-import { EntityType } from "../../entity/EntityType";
-import { Entity } from "../../entity/Entity";
-import { Event } from "./Event";
+import { EntityType } from "../../../entity/EntityType";
+import { Entity } from "../../../entity/Entity";
+import { Event } from "../Event";
 
 export class EntityEvent extends Event {
 

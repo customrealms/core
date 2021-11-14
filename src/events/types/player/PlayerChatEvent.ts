@@ -1,17 +1,10 @@
-import { Player } from "../../player/Player";
-import { Event } from "./Event";
+import { Player } from "../../../player/Player";
+import { PlayerEvent } from "./PlayerEvent";
 
-export class PlayerChatEvent extends Event {
+export class PlayerChatEvent extends PlayerEvent {
 
     public static getBukkitClasspath(): string {
         return 'org.bukkit.event.player.PlayerChatEvent';
-    }
-
-    /**
-     * Gets the player who chatted
-     */
-    public getPlayer(): Player {
-        return Player.fromJava(this.toJava().getPlayer());
     }
 
     /**

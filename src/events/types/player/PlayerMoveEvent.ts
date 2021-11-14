@@ -1,18 +1,10 @@
-import { Player } from "../../player/Player";
-import { Location } from "../../util/Location";
-import { Event } from "./Event";
+import { Location } from "../../../util/Location";
+import { PlayerEvent } from "./PlayerEvent";
 
-export class PlayerMoveEvent extends Event {
+export class PlayerMoveEvent extends PlayerEvent {
 
     public static getBukkitClasspath(): string {
         return 'org.bukkit.event.player.PlayerMoveEvent';
-    }
-
-    /**
-     * Gets the player for the event
-     */
-    public getPlayer(): Player {
-        return Player.fromJava(this.toJava().getPlayer());
     }
 
     /**

@@ -1,4 +1,4 @@
-import { EntityDamageCause } from "../../entity/EntityDamageCause";
+import { EntityDamageCause } from "../../../entity/EntityDamageCause";
 import { EntityEvent } from "./EntityEvent";
 
 export class EntityDamageEvent extends EntityEvent {
