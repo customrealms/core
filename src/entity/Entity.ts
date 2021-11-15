@@ -2,7 +2,7 @@ import { BlockFace } from "../block/BlockFace";
 import { PistonMoveReaction } from "../block/PistonMoveReaction";
 import { EntityType } from "./EntityType";
 import { Pose } from "./Pose";
-import { EntityDamageEvent } from "../events/types/EntityDamageEvent";
+import { EntityDamageEvent } from "../events/types/entity/EntityDamageEvent";
 import { ToJava } from "../runtime/ToJava";
 import { Location } from "../util/Location";
 import { Vector } from "../util/Vector";
