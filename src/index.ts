@@ -26,6 +26,7 @@ export * from './entity/Pose';
 
 export * from './events/types';
 
+export * from './events/EventResult';
 export * from './events/ServerEvents';
 
 export * from './inventory/EntityEquipment';
