@@ -1,23 +1,17 @@
 import { Location } from "../../../util/Location";
+import { Cancellable } from "../../Cancellable";
 import { PlayerEvent } from "./PlayerEvent";
 
-export class PlayerMoveEvent extends PlayerEvent {
+export class PlayerMoveEvent extends PlayerEvent implements Cancellable {
 
     public static getBukkitClasspath(): string {
         return 'org.bukkit.event.player.PlayerMoveEvent';
     }
 
-    /**
-     * Sets the cancellation state of this event
-     * @param cancel the cancellation state of this event
-     */
     public setCancelled(cancel: boolean): void {
         this.toJava().setCancelled(cancel);
     }
 
-    /**
-     * Checks if the event has been cancelled
-     */
     public isCancelled(): boolean {
         return this.toJava().isCancelled();
     }

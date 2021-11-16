@@ -1,14 +1,13 @@
 import { Block } from '../../../block/Block';
-import { Enchantment } from '../../../material/Enchantment';
 import { ItemStack } from '../../../material/ItemStack';
 import { Player } from '../../../player/Player';
-import { ToJava } from '../../../runtime/ToJava';
+import { Cancellable } from '../../Cancellable';
 import { InventoryEvent } from './InventoryEvent';
 
 /**
  * Called when an ItemStack is successfully enchanted (currently at enchantment table)
  */
-export class EnchantItemEvent extends InventoryEvent {
+export class EnchantItemEvent extends InventoryEvent implements Cancellable {
 
   public static getBukkitClasspath(): string {
     return 'org.bukkit.event.enchantment.EnchantItemEvent';
@@ -50,17 +49,10 @@ export class EnchantItemEvent extends InventoryEvent {
     return ItemStack.fromJava(this.toJava().getItem());
   }
 
-  /**
-   * Sets the cancellation state of this event
-   * @param cancel the cancellation state of this event
-   */
   public setCancelled(cancel: boolean): void {
     this.toJava().setCancelled(cancel);
   }
 
-  /**
-   * Checks if this even has been cancelled
-   */
   public isCancelled(): boolean {
     return this.toJava().isCancelled();
   }
