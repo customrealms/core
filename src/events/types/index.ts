@@ -10,7 +10,10 @@ export * from './entity/EntityDamageEvent';
 export * from './entity/EntityEvent';
 
 export * from './inventory/EnchantmentsToAdd';
+export * from './inventory/InventoryCloseEvent';
 export * from './inventory/InventoryEvent';
+export * from './inventory/InventoryInteractEvent';
+export * from './inventory/InventoryOpenEvent';
 
 export * from './player/PlayerChatEvent';
 export * from './player/PlayerInteractEvent';
