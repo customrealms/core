@@ -1,11 +1,12 @@
 import { Player } from '../../../player/Player';
+import { Cancellable } from '../../Cancellable';
 import { EventResult } from '../../EventResult';
 import { InventoryEvent } from './InventoryEvent';
 
 /**
  * An abstract base class for events that describe an interaction between a HumanEntity and the contents of an Inventory.
  */
-export class InventoryInteractEvent extends InventoryEvent {
+export class InventoryInteractEvent extends InventoryEvent implements Cancellable {
 
   /**
    * Gets the player who performed the click.

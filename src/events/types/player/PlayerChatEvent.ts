@@ -1,7 +1,8 @@
 import { Player } from "../../../player/Player";
 import { PlayerEvent } from "./PlayerEvent";
+import { Cancellable } from '../../Cancellable';
 
-export class PlayerChatEvent extends PlayerEvent {
+export class PlayerChatEvent extends PlayerEvent implements Cancellable {
 
     public static getBukkitClasspath(): string {
         return 'org.bukkit.event.player.PlayerChatEvent';
@@ -21,17 +22,10 @@ export class PlayerChatEvent extends PlayerEvent {
         return this.toJava().getMessage();
     }
 
-    /**
-     * Gets the cancellation state of this event
-     */
     public isCancelled(): boolean {
         return this.toJava().isCancelled();
     }
 
-    /**
-     * Sets the cancellation state of this event
-     * @param cancelled whether or not to cancel the event
-     */
     public setCancelled(cancelled: boolean): void {
         this.toJava().setCancelled(cancelled);
     }
