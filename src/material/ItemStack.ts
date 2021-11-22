@@ -11,7 +11,7 @@ export class ItemStack implements ToJava {
     }
 
     public static fromJavaNullable(_itemstack: Java.Value): ItemStack | null {
-        return _itemstack == null ? null : this.fromJava(_itemstack);
+        return _itemstack == null ? null : ItemStack.fromJava(_itemstack);
     }
 
     /**
