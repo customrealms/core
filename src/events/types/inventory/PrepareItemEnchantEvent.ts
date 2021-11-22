@@ -44,7 +44,7 @@ export class PrepareItemEnchantEvent extends InventoryEvent implements Cancellab
    * null, if there isn't a enchantment offer at a specific slot. There are 3
    * slots in the enchantment table available to modify.
    */
-  getOffers(): EnchantmentOffer[] {
+  getOffers(): (EnchantmentOffer | null)[] {
     return this.toJava().getOffers().map((offer: Java.Value) => offer && EnchantmentOffer.fromJava(offer));
   }
 

@@ -16,7 +16,7 @@ export class PrepareItemCraftEvent extends InventoryEvent {
   /**
    * Get the recipe that has been formed. If this event was triggered by a tool repair, this will be a temporary shapeless recipe representing the repair.
    */
-  getRecipe(): Recipe {
+  getRecipe(): Recipe | null {
     const recipe = this.toJava().getRecipe();
     return recipe && Recipe.fromJava(recipe);
   }
