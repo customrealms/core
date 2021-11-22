@@ -1,8 +1,9 @@
-import { EquipmentSlot } from "./EquipmentSlot";
 import { Entity } from "../entity/Entity";
+import { ConstructEntity } from "../entity/EntityConstructors";
 import "../globals";
 import { ItemStack } from "../material/ItemStack";
 import { ToJava } from "../runtime/ToJava";
+import { EquipmentSlot } from "./EquipmentSlot";
 
 export class EntityEquipment implements ToJava {
 
@@ -84,7 +85,7 @@ export class EntityEquipment implements ToJava {
     public getHolder(): Entity | null {
         const javaEntity = this.toJava().getHolder();
         if (!javaEntity) return null;
-        return Entity.fromJava(javaEntity);
+        return ConstructEntity(javaEntity);
     }
 
     /**

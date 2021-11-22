@@ -1,5 +1,6 @@
-import { EntityType } from "../../../entity/EntityType";
 import { Entity } from "../../../entity/Entity";
+import { ConstructEntity } from "../../../entity/EntityConstructors";
+import { EntityType } from "../../../entity/EntityType";
 import { Event } from "../Event";
 
 export class EntityEvent extends Event {
@@ -8,7 +9,7 @@ export class EntityEvent extends Event {
      * Gets the entity involved in this event
      */
     public getEntity(): Entity {
-        return Entity.fromJava(this.toJava().getEntity());
+        return ConstructEntity(this.toJava().getEntity());
     }
 
     /**

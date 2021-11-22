@@ -1,5 +1,6 @@
-import { EntityDamageEvent } from "./EntityDamageEvent";
 import { Entity } from "../../../entity/Entity";
+import { ConstructEntity } from "../../../entity/EntityConstructors";
+import { EntityDamageEvent } from "./EntityDamageEvent";
 
 export class EntityDamageByEntityEvent extends EntityDamageEvent {
 
@@ -13,7 +14,7 @@ export class EntityDamageByEntityEvent extends EntityDamageEvent {
     public getDamager(): Entity | null {
         const javaDamager = this.toJava().getDamager();
         if (!javaDamager) return null;
-        return Entity.fromJava(javaDamager);
+        return ConstructEntity(javaDamager);
     }
 
 }

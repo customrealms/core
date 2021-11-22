@@ -1,6 +1,7 @@
 import { Block } from "../block/Block";
-import { World } from "../world/World";
 import { Entity } from "../entity/Entity";
+import { ConstructEntity } from '../entity/EntityConstructors';
+import { World } from "../world/World";
 
 export class Chunk {
 
@@ -57,7 +58,7 @@ export class Chunk {
     public getEntities(): Entity[] {
         const javaEntities: Java.Value[] = this._chunk.getEntities();
         if (!javaEntities) return [];
-        return javaEntities.map(e => Entity.fromJava(e));
+        return javaEntities.map(ConstructEntity);
     }
 
     /**

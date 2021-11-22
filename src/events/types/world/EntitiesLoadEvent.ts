@@ -1,4 +1,5 @@
 import { Entity } from '../../../entity/Entity';
+import { ConstructEntity } from '../../../entity/EntityConstructors';
 import { ChunkEvent } from './ChunkEvent';
 
 /**
@@ -17,6 +18,6 @@ export class EntitiesLoadEvent extends ChunkEvent {
     const loadedEntities: Java.Value[] = this.toJava().getEntities();
     if (!loadedEntities) return Object.freeze([]);
     
-    return Object.freeze(loadedEntities.map(p => Entity.fromJava(p)));
+    return Object.freeze(loadedEntities.map(ConstructEntity));
   }
 }

@@ -1,3 +1,4 @@
+import { Block } from "../block/Block";
 import { EntityEquipment } from "../inventory/EntityEquipment";
 import { Player } from "../player/Player";
 import { PotionEffect } from "../potion/PotionEffect";
@@ -7,7 +8,7 @@ import { Location } from "../util/Location";
 import { World } from "../world/World";
 import { Damageable } from "./Damageable";
 import { Entity } from "./Entity";
-import { Block } from "../block/Block";
+import { ConstructEntity } from "./EntityConstructors";
 
 export class LivingEntity {
 
@@ -117,7 +118,7 @@ export class LivingEntity {
         if (!this.isLeashed()) return null;
         const javaEntity = this.toJava().getLeashHolder();
         if (!javaEntity) return null;
-        return Entity.fromJava(javaEntity);
+        return ConstructEntity(javaEntity);
     }
 
     /**

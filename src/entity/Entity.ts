@@ -5,6 +5,7 @@ import { ToJava } from "../runtime/ToJava";
 import { Location } from "../util/Location";
 import { Vector } from "../util/Vector";
 import { World } from "../world/World";
+import { ConstructEntity } from "./EntityConstructors";
 import { EntityType } from "./EntityType";
 import { Pose } from "./Pose";
 
@@ -139,7 +140,7 @@ export class Entity implements ToJava {
     public getPassengers(): Entity[] {
         const javaPassengers: Java.Value[] = this.toJava().getPassengers();
         if (!javaPassengers) return [];
-        return javaPassengers.map(p => Entity.fromJava(p));
+        return javaPassengers.map(ConstructEntity);
     }
 
     /**
@@ -199,6 +200,7 @@ export class Entity implements ToJava {
     public getVehicle(): Entity | null {
         const javaEntity = this.toJava().getVehicle();
         if (!javaEntity) return null;
+        // TODO(connerdouglass): I don't think we can use `ConstructEntity` here because it will reintroduce the circular dependency issue
         return Entity.fromJava(javaEntity);
     }
 
