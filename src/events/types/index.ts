@@ -9,7 +9,7 @@ export * from './entity/EntityDamageByEntityEvent';
 export * from './entity/EntityDamageEvent';
 export * from './entity/EntityEvent';
 
-export * from './inventory/EnchantmentsToAdd';
+export * from './inventory/EnchantItemEvent';
 export * from './inventory/InventoryClickEvent';
 export * from './inventory/InventoryCloseEvent';
 export * from './inventory/InventoryEvent';
