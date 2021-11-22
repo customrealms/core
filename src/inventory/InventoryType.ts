@@ -6,6 +6,7 @@ export enum InventoryType {
     BREWING = 'BREWING',
     CARTOGRAPHY = 'CARTOGRAPHY',
     CHEST = 'CHEST',
+    COMPOSTER = 'COMPOSTER',
     CRAFTING = 'CRAFTING',
     CREATIVE = 'CREATIVE',
     DISPENSER = 'DISPENSER',
@@ -20,6 +21,7 @@ export enum InventoryType {
     MERCHANT = 'MERCHANT',
     PLAYER = 'PLAYER',
     SHULKER_BOX = 'SHULKER_BOX',
+    SMITHING = 'SMITHING',
     SMOKER = 'SMOKER',
     STONECUTTER = 'STONECUTTER',
     WORKBENCH = 'WORKBENCH'

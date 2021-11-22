@@ -1,7 +1,7 @@
-import { HumanEntity } from "../entity/HumanEntity";
-import { ItemStack } from "../material/ItemStack";
-import { EquipmentSlot } from "./EquipmentSlot";
-import { Inventory } from "./Inventory";
+import { HumanEntity } from "../../entity/HumanEntity";
+import { ItemStack } from "../../material/ItemStack";
+import { EquipmentSlot } from "../EquipmentSlot";
+import { Inventory } from "../Inventory";
 
 export class PlayerInventory extends Inventory {
 

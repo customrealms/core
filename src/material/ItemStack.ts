@@ -10,11 +10,15 @@ export class ItemStack implements ToJava {
         return new ItemStack(_itemstack);
     }
 
+    public static fromJavaNullable(_itemstack: Java.Value): ItemStack | null {
+        return _itemstack == null ? null : this.fromJava(_itemstack);
+    }
+
     /**
      * Deserializes an item stack from a representation
      * @param serialized the serialized string representation
      */
-    public static deserialize(serialized: {[key: string]: any}): ItemStack | null {
+    public static deserialize(serialized: { [key: string]: any }): ItemStack | null {
         const javaItemStack = Java.resolve('org.bukkit.inventory.ItemStack').deserialize(serialized);
         if (!javaItemStack) return null;
         return new ItemStack(javaItemStack);
@@ -35,7 +39,7 @@ export class ItemStack implements ToJava {
 
     private constructor(
         private _itemstack: Java.Value,
-    ) {}
+    ) { }
 
     public toJava(): Java.Value {
         return this._itemstack;
@@ -82,7 +86,7 @@ export class ItemStack implements ToJava {
     /**
      * Serializes the item stack to a representation
      */
-    public serialize(): {[key: string]: any} {
+    public serialize(): { [key: string]: any } {
         return this.toJava()?.serialize();
     }
 

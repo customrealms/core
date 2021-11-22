@@ -1,5 +1,4 @@
-import { Player } from '../../..';
-import { HumanEntity } from '../../../entity/HumanEntity';
+import { Player } from '../../../player/Player';
 import { Inventory } from '../../../inventory/Inventory';
 import { InventoryView } from '../../../inventory/InventoryView';
 import { Event } from '../Event';
@@ -9,7 +8,7 @@ export class InventoryEvent extends Event {
    * Gets the primary Inventory involved in this transaction
    */
   public getInventory(): Inventory {
-    return new Inventory(this.toJava().getInventory());
+    return Inventory.fromJava(this.toJava().getInventory());
   }
 
   /**

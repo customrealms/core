@@ -36,7 +36,7 @@ export * from './inventory/InventorySlotType';
 export * from './inventory/InventoryType';
 export * from './inventory/InventoryView';
 export * from './inventory/InventoryViewProperty';
-export * from './inventory/PlayerInventory';
+export * from './inventory/types';
 
 export * from './material/Enchantment';
 export * from './material/EnchantmentName';

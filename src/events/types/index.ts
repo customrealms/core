@@ -10,10 +10,16 @@ export * from './entity/EntityDamageEvent';
 export * from './entity/EntityEvent';
 
 export * from './inventory/EnchantmentsToAdd';
+export * from './inventory/InventoryClickEvent';
 export * from './inventory/InventoryCloseEvent';
 export * from './inventory/InventoryEvent';
 export * from './inventory/InventoryInteractEvent';
+export * from './inventory/InventoryMoveItemEvent';
 export * from './inventory/InventoryOpenEvent';
+export * from './inventory/PrepareAnvilEvent';
+export * from './inventory/PrepareItemCraftEvent';
+export * from './inventory/PrepareItemEnchantEvent';
+export * from './inventory/PrepareSmithingEvent';
 
 export * from './player/PlayerChatEvent';
 export * from './player/PlayerInteractEvent';
