@@ -39,12 +39,15 @@ export class PrepareItemEnchantEvent extends InventoryEvent implements Cancellab
   }
 
   /**
-   * Get a list of available EnchantmentOffer for the player. You can modify
+   * Get a list of available EnchantmentOffer for the player. You can modify non-null
    * the values to change the available offers for the player. An offer may be
    * null, if there isn't a enchantment offer at a specific slot. There are 3
    * slots in the enchantment table available to modify.
+   * 
+   * At the moment, setting the array elements with a new enchantment offer will NOT
+   * override the existing offer (even if null).
    */
-  getOffers(): (EnchantmentOffer | null)[] {
+  getOffers(): [EnchantmentOffer | null, EnchantmentOffer | null, EnchantmentOffer | null] {
     return this.toJava().getOffers().map((offer: Java.Value) => offer && EnchantmentOffer.fromJava(offer));
   }
 
