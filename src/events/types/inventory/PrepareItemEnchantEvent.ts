@@ -10,7 +10,7 @@ import { EnchantmentOffer } from "../../../material/EnchantmentOffer";
 export class PrepareItemEnchantEvent extends InventoryEvent implements Cancellable {
 
   public static getBukkitClasspath(): string {
-    return 'org.bukkit.event.inventory.PrepareItemEnchantEvent';
+    return 'org.bukkit.event.enchantment.PrepareItemEnchantEvent';
   }
 
   getInventory(): EnchantingInventory {
