@@ -29,9 +29,12 @@ export * from './events/types';
 export * from './events/EventResult';
 export * from './events/ServerEvents';
 
+export * from './inventory/ClickType';
 export * from './inventory/EntityEquipment';
 export * from './inventory/EquipmentSlot';
 export * from './inventory/Inventory';
+export * from './inventory/InventoryAction';
+export * from './inventory/InventoryConstructors';
 export * from './inventory/InventorySlotType';
 export * from './inventory/InventoryType';
 export * from './inventory/InventoryView';
