@@ -12,7 +12,7 @@ export class InventoryCloseEvent extends InventoryEvent implements Cancellable {
   }
 
   /**
-   * Which button was pressed to initiate the enchanting.
+   * Get the player who closed the inventory
    */
   public getPlayer(): Player {
     return Player.fromJava(this.toJava().getPlayer());
