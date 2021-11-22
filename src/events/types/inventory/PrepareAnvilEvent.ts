@@ -7,6 +7,11 @@ import { ItemStack } from "../../../material/ItemStack";
  * Called when an item is put in a slot for upgrade by a Smithing Table.
  */
 export class PrepareAnvilEvent extends InventoryEvent {
+  
+  public static getBukkitClasspath(): string {
+    return 'org.bukkit.event.inventory.PrepareAnvilEvent';
+  }
+
   getInventory(): AnvilInventory {
     return Inventory.fromJava<AnvilInventory>(this.toJava().getInventory());
   }

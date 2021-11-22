@@ -13,6 +13,11 @@ import { Event } from '../Event';
  * If this event is not cancelled, the initiator will try to put the ItemStack into the destination inventory. If this is not possible and the ItemStack has not been modified, the source inventory slot will be restored to its former state. Otherwise any additional items will be discarded.
  */
 export class InventoryMoveItemEvent extends Event implements Cancellable {
+
+  public static getBukkitClasspath(): string {
+    return 'org.bukkit.event.inventory.InventoryMoveItemEvent';
+  }
+
   /**
    * Gets the Inventory that the ItemStack is being taken from
    */

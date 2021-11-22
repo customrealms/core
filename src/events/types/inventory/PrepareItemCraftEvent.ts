@@ -4,6 +4,11 @@ import { Recipe } from "../../../inventory/Recipe";
 import { CraftingInventory } from "../../../inventory/types";
 
 export class PrepareItemCraftEvent extends InventoryEvent {
+
+  public static getBukkitClasspath(): string {
+    return 'org.bukkit.event.inventory.PrepareItemCraftEvent';
+  }
+
   getInventory(): CraftingInventory {
     return Inventory.fromJava<CraftingInventory>(this.toJava().getInventory());
   }

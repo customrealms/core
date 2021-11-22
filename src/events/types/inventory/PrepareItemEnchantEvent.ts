@@ -8,6 +8,11 @@ import { Cancellable } from "../../Cancellable";
 import { EnchantmentOffer } from "../../../material/EnchantmentOffer";
 
 export class PrepareItemEnchantEvent extends InventoryEvent implements Cancellable {
+
+  public static getBukkitClasspath(): string {
+    return 'org.bukkit.event.inventory.PrepareItemEnchantEvent';
+  }
+
   getInventory(): EnchantingInventory {
     return Inventory.fromJava<EnchantingInventory>(this.toJava().getInventory());
   }

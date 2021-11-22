@@ -7,6 +7,7 @@ import { InventoryInteractEvent } from "./InventoryInteractEvent";
 
 /**
  * This event is called when a player clicks in an inventory.
+ * 
  * Because InventoryClickEvent occurs within a modification of the Inventory, not all Inventory related methods are safe to use.
  * 
  * The following should never be invoked by an EventHandler for InventoryClickEvent using the HumanEntity or InventoryView associated with this event:
@@ -22,6 +23,11 @@ import { InventoryInteractEvent } from "./InventoryInteractEvent";
  * Modifications to slots that are modified by the results of this InventoryClickEvent can be overwritten. To change these slots, this event should be cancelled and all desired changes to the inventory applied. Alternatively, scheduling a task using BukkitScheduler.runTask(Plugin, Runnable), which would execute the task on the next tick, would work as well.
  */
 export class InventoryClickEvent extends InventoryInteractEvent {
+  
+  public static getBukkitClasspath(): string {
+    return 'org.bukkit.event.inventory.InventoryClickEvent';
+  }
+
   /**
    * Gets the type of slot that was clicked.
    */
