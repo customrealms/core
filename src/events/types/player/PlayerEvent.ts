@@ -8,7 +8,7 @@ export class PlayerEvent extends Event {
   }
 
   /**
-   * Gets the player who joined the server
+   * Gets the player who triggered this event
    */
   public getPlayer(): Player {
     return Player.fromJava(this.toJava().getPlayer());

@@ -16,25 +16,25 @@ export class BlockBreakEvent extends BlockExpEvent implements Cancellable {
     }
 
     /**
-     * Gets the cancellation state of this event
-     */
-    public isCancelled(): boolean {
-        return this.toJava().isCancelled();
-    }
-
-    /**
      * Gets whether or not the block will drop items
      */
     public isDropItems(): boolean {
         return this.toJava().isDropItems();
     }
 
+    /**
+     * Sets whether or not this block will drop items
+     * @param dropItems the drop items state of this event
+     */
+    public setDropItems(dropItems: boolean): void {
+        this.toJava().setDropItems(dropItems);
+    }
+
+    public isCancelled(): boolean {
+        return this.toJava().isCancelled();
+    }
+
     public setCancelled(cancel: boolean): void {
         this.toJava().setCancelled(cancel);
     }
-
-    public setDropItems(drop_items: boolean): void {
-        this.toJava().setDropItems(drop_items);
-    }
-
 }

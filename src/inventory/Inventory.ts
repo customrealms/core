@@ -210,16 +210,4 @@ export class Inventory implements ToJava {
         const javaContents = items.map(i => i ? i.toJava() : null);
         this.toJava().setStorageContents(javaContents);
     }
-
-    [Symbol.iterator](): Iterator<ItemStack | null> {
-        let counter = 0;
-        return {
-            next: () => {
-                return {
-                    done: counter >= this.getSize(),
-                    value: this.getItem(counter++)
-                }
-            }
-        }
-    }
 }
