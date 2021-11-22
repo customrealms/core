@@ -1,7 +1,8 @@
-import { Inventory } from "../../../inventory/Inventory";
-import { InventorySlotType } from "../../../inventory/InventorySlotType";
-import { InventoryAction } from "../../../inventory/InventoryAction";
 import { ClickType } from "../../../inventory/ClickType";
+import { Inventory } from "../../../inventory/Inventory";
+import { InventoryAction } from "../../../inventory/InventoryAction";
+import { ConstructInventory } from "../../../inventory/InventoryConstructors";
+import { InventorySlotType } from "../../../inventory/InventorySlotType";
 import { ItemStack } from "../../../material/ItemStack";
 import { InventoryInteractEvent } from "./InventoryInteractEvent";
 
@@ -86,7 +87,7 @@ export class InventoryClickEvent extends InventoryInteractEvent {
    */
   getClickedInventory(): Inventory | null {
     const inv = this.toJava().getClickedInventory();
-    return inv && Inventory.fromJava(inv);
+    return inv && ConstructInventory(inv);
   }
 
   /**

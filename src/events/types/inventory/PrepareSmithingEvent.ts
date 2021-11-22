@@ -1,7 +1,7 @@
-import { InventoryEvent } from "./InventoryEvent";
-import { Inventory } from "../../../inventory/Inventory";
+import { ConstructInventory } from "../../../inventory/InventoryConstructors";
 import { SmithingInventory } from "../../../inventory/types";
 import { ItemStack } from "../../../material/ItemStack";
+import { InventoryEvent } from "./InventoryEvent";
 
 /**
  * Called when an item is put in a slot for upgrade by a Smithing Table.
@@ -13,7 +13,7 @@ export class PrepareSmithingEvent extends InventoryEvent {
   }
 
   getInventory(): SmithingInventory {
-    return Inventory.fromJava<SmithingInventory>(this.toJava().getInventory());
+    return ConstructInventory<SmithingInventory>(this.toJava().getInventory());
   }
 
   /**

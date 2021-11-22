@@ -1,7 +1,7 @@
-import { InventoryEvent } from "./InventoryEvent";
-import { Inventory } from "../../../inventory/Inventory";
+import { ConstructInventory } from "../../../inventory/InventoryConstructors";
 import { AnvilInventory } from "../../../inventory/types";
 import { ItemStack } from "../../../material/ItemStack";
+import { InventoryEvent } from "./InventoryEvent";
 
 /**
  * Called when an item is put in a slot for upgrade by a Smithing Table.
@@ -13,7 +13,7 @@ export class PrepareAnvilEvent extends InventoryEvent {
   }
 
   getInventory(): AnvilInventory {
-    return Inventory.fromJava<AnvilInventory>(this.toJava().getInventory());
+    return ConstructInventory<AnvilInventory>(this.toJava().getInventory());
   }
 
   /**

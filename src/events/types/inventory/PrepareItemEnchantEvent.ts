@@ -1,11 +1,11 @@
-import { InventoryEvent } from "./InventoryEvent";
-import { Player } from "../../../player/Player";
 import { Block } from "../../../block/Block";
-import { Inventory } from "../../../inventory/Inventory";
+import { ConstructInventory } from "../../../inventory/InventoryConstructors";
 import { EnchantingInventory } from "../../../inventory/types";
-import { ItemStack } from "../../../material/ItemStack";
-import { Cancellable } from "../../Cancellable";
 import { EnchantmentOffer } from "../../../material/EnchantmentOffer";
+import { ItemStack } from "../../../material/ItemStack";
+import { Player } from "../../../player/Player";
+import { Cancellable } from "../../Cancellable";
+import { InventoryEvent } from "./InventoryEvent";
 
 export class PrepareItemEnchantEvent extends InventoryEvent implements Cancellable {
 
@@ -14,7 +14,7 @@ export class PrepareItemEnchantEvent extends InventoryEvent implements Cancellab
   }
 
   getInventory(): EnchantingInventory {
-    return Inventory.fromJava<EnchantingInventory>(this.toJava().getInventory());
+    return ConstructInventory<EnchantingInventory>(this.toJava().getInventory());
   }
 
   /**

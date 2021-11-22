@@ -1,10 +1,11 @@
-import { InventorySlotType } from "./InventorySlotType";
-import { InventoryType } from "./InventoryType";
-import { InventoryViewProperty } from "./InventoryViewProperty";
 import { HumanEntity } from "../entity/HumanEntity";
 import { ItemStack } from "../material/ItemStack";
 import { ToJava } from "../runtime/ToJava";
 import { Inventory } from "./Inventory";
+import { ConstructInventory } from "./InventoryConstructors";
+import { InventorySlotType } from "./InventorySlotType";
+import { InventoryType } from "./InventoryType";
+import { InventoryViewProperty } from "./InventoryViewProperty";
 
 export class InventoryView implements ToJava {
 
@@ -99,7 +100,7 @@ export class InventoryView implements ToJava {
      */
     public getTopInventory(): Inventory {
         const javaInv = this.toJava().getTopInventory();
-        return Inventory.fromJava(javaInv);
+        return ConstructInventory(javaInv);
     }
 
     /**

@@ -1,7 +1,7 @@
-import { InventoryEvent } from "./InventoryEvent";
-import { Inventory } from "../../../inventory/Inventory";
+import { ConstructInventory } from "../../../inventory/InventoryConstructors";
 import { Recipe } from "../../../inventory/Recipe";
 import { CraftingInventory } from "../../../inventory/types";
+import { InventoryEvent } from "./InventoryEvent";
 
 export class PrepareItemCraftEvent extends InventoryEvent {
 
@@ -10,7 +10,7 @@ export class PrepareItemCraftEvent extends InventoryEvent {
   }
 
   getInventory(): CraftingInventory {
-    return Inventory.fromJava<CraftingInventory>(this.toJava().getInventory());
+    return ConstructInventory<CraftingInventory>(this.toJava().getInventory());
   }
 
   /**

@@ -1,13 +1,12 @@
 import { BlockFace } from "../block/BlockFace";
 import { PistonMoveReaction } from "../block/PistonMoveReaction";
-import { EntityType } from "./EntityType";
-import { Pose } from "./Pose";
 import { EntityDamageEvent } from "../events/types/entity/EntityDamageEvent";
 import { ToJava } from "../runtime/ToJava";
 import { Location } from "../util/Location";
 import { Vector } from "../util/Vector";
 import { World } from "../world/World";
-import { EntityConstructors } from "./EntityConstructors";
+import { EntityType } from "./EntityType";
+import { Pose } from "./Pose";
 
 export class Entity implements ToJava {
 
@@ -16,19 +15,8 @@ export class Entity implements ToJava {
      * @param _entity the Java handle to the underlying Entity
      * @returns the entity, wrapped in the appropriate subclass for its EntityType
      */
-    public static fromJava<T extends Entity = Entity>(_entity: Java.Value): T {
-
-        // Get the string EntityType string value for the entity
-        const entityType: EntityType = _entity.getType().name();
-
-        // If the entity type has a corresponding constructor, construct using that class
-        if ((entityType in EntityConstructors)) {
-            return new (EntityConstructors[entityType]!)(_entity) as T;
-        }
-
-        // Fallback to the base Entity class if we can't match to a subclass
-        return new Entity(_entity) as T;
-
+    public static fromJava(_entity: Java.Value): Entity {
+        return new Entity(_entity);
     }
 
     private constructor(

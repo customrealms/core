@@ -1,5 +1,6 @@
-import { ItemStack } from '../../../material/ItemStack';
 import { Inventory } from '../../../inventory/Inventory';
+import { ConstructInventory } from '../../../inventory/InventoryConstructors';
+import { ItemStack } from '../../../material/ItemStack';
 import { Cancellable } from '../../Cancellable';
 import { Event } from '../Event';
 
@@ -22,7 +23,7 @@ export class InventoryMoveItemEvent extends Event implements Cancellable {
    * Gets the Inventory that the ItemStack is being taken from
    */
   getSource(): Inventory {
-    return Inventory.fromJava(this.toJava().getSource());
+    return ConstructInventory(this.toJava().getSource());
   }
 
   /**
@@ -44,14 +45,14 @@ export class InventoryMoveItemEvent extends Event implements Cancellable {
    * Gets the Inventory that the ItemStack is being put into
    */
   getDestination(): Inventory {
-    return Inventory.fromJava(this.toJava().getDestination());
+    return ConstructInventory(this.toJava().getDestination());
   }
 
   /**
    * Gets the Inventory that initiated the transfer. This will always be either the destination or source Inventory.
    */
   getInitiator(): Inventory {
-    return Inventory.fromJava(this.toJava().getInitiator());
+    return ConstructInventory(this.toJava().getInitiator());
   }
 
   public isCancelled(): boolean {

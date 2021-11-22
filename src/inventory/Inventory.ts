@@ -4,7 +4,6 @@ import { Material } from "../material/Material";
 import { ToJava } from "../runtime/ToJava";
 import { Location } from "../util/Location";
 import { InventoryType } from "./InventoryType";
-import { InventoryConstructors } from "./InventoryConstructors";
 
 export class Inventory implements ToJava {
 
@@ -15,18 +14,8 @@ export class Inventory implements ToJava {
      * @param _inventory the Java handle to the underlying Inventory
      * @returns the inventory, wrapped in the appropriate subclass for its InventoryType
      */
-    public static fromJava<T extends Inventory = Inventory>(_inventory: Java.Value): T {
-
-        // Get the string InventoryTypeType string value for the inventory
-        const inventoryType: InventoryType = _inventory.getType().name();
-
-        // If the inventory type has a corresponding constructor, construct using that class
-        if ((inventoryType in InventoryConstructors)) {
-            return new (InventoryConstructors[inventoryType]!)(_inventory) as T;
-        }
-
-        // Fallback to the base InventoryType class if we can't match to a subclass
-        return new Inventory(_inventory) as T;
+    public static fromJava(_inventory: Java.Value): Inventory {
+        return new Inventory(_inventory);
     }
 
     public toJava(): any {

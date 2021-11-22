@@ -1,5 +1,6 @@
 import '../globals';
 import { Inventory } from "../inventory/Inventory";
+import { ConstructInventory } from '../inventory/InventoryConstructors';
 import { InventoryView } from "../inventory/InventoryView";
 import { InventoryViewProperty } from '../inventory/InventoryViewProperty';
 import { PlayerInventory } from "../inventory/types";
@@ -58,7 +59,7 @@ export class HumanEntity {
      */
     public getEnderChest(): Inventory {
         const javaInv = this.toJava().getEnderChest();
-        return Inventory.fromJava(javaInv);
+        return ConstructInventory(javaInv);
     }
 
     /**
