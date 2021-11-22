@@ -1,5 +1,5 @@
-import { Event } from "./Event";
-import { Block } from "../../block/Block";
+import { Event } from "../Event";
+import { Block } from "../../../block/Block";
 
 export class BlockEvent extends Event {
 

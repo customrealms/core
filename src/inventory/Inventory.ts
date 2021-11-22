@@ -4,10 +4,30 @@ import { Material } from "../material/Material";
 import { ToJava } from "../runtime/ToJava";
 import { Location } from "../util/Location";
 import { InventoryType } from "./InventoryType";
+import { InventoryConstructors } from "./InventoryConstructors";
 
 export class Inventory implements ToJava {
 
-    public constructor(private _java: any) {}
+    public constructor(protected _java: any) { }
+
+    /**
+     * Converts a raw Java handle to an inventory into the wrapped JavaScript subclass of the inventory's type
+     * @param _inventory the Java handle to the underlying Inventory
+     * @returns the inventory, wrapped in the appropriate subclass for its InventoryType
+     */
+    public static fromJava<T extends Inventory = Inventory>(_inventory: Java.Value): T {
+
+        // Get the string InventoryTypeType string value for the inventory
+        const inventoryType: InventoryType = _inventory.getType().name();
+
+        // If the inventory type has a corresponding constructor, construct using that class
+        if ((inventoryType in InventoryConstructors)) {
+            return new (InventoryConstructors[inventoryType]!)(_inventory) as T;
+        }
+
+        // Fallback to the base InventoryType class if we can't match to a subclass
+        return new Inventory(_inventory) as T;
+    }
 
     public toJava(): any {
         return this._java;
@@ -17,7 +37,7 @@ export class Inventory implements ToJava {
      * Stores the given items in the inventory
      * @param items the items to add
      */
-    public addItem(...items: ItemStack[]): {[key: number]: ItemStack} {
+    public addItem(...items: ItemStack[]): { [key: number]: ItemStack } {
         // items.forEach(item => this.toJava().addItem(item));
         this.toJava().addItem(
             items.map(item => item.toJava())
@@ -29,7 +49,7 @@ export class Inventory implements ToJava {
      * Finds all slots in the inventory containing a material
      * @param match the material or item stack type to match
      */
-    public all(match: Material | ItemStack): {[key: number]: ItemStack} {
+    public all(match: Material | ItemStack): { [key: number]: ItemStack } {
         // TODO: Not implemented
         return {};
     }
@@ -130,7 +150,7 @@ export class Inventory implements ToJava {
     public getStorageContents(): (ItemStack | null)[] {
         const javaContents: Java.Value[] = this.toJava().getStorageContents();
         if (!javaContents) return [];
-        return javaContents.map(i => i ? ItemStack.fromJava(i) : null);
+        return javaContents.map(ItemStack.fromJavaNullable);
     }
 
     /**
@@ -190,5 +210,4 @@ export class Inventory implements ToJava {
         const javaContents = items.map(i => i ? i.toJava() : null);
         this.toJava().setStorageContents(javaContents);
     }
-
 }

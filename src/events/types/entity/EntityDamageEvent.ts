@@ -1,7 +1,8 @@
-import { EntityDamageCause } from "../../entity/EntityDamageCause";
+import { EntityDamageCause } from "../../../entity/EntityDamageCause";
+import { Cancellable } from "../../Cancellable";
 import { EntityEvent } from "./EntityEvent";
 
-export class EntityDamageEvent extends EntityEvent {
+export class EntityDamageEvent extends EntityEvent implements Cancellable {
 
     /**
      * Gets the cause of the damage to the entity
@@ -33,17 +34,10 @@ export class EntityDamageEvent extends EntityEvent {
         return this.toJava().getFinalDamage();
     }
 
-    /**
-     * Sets the cancellation state of this event
-     * @param cancel the cancellation state of this event
-     */
     public setCancelled(cancel: boolean): void {
         this.toJava().setCancelled(cancel);
     }
 
-    /**
-     * Checks if this even has been cancelled
-     */
     public isCancelled(): boolean {
         return this.toJava().isCancelled();
     }

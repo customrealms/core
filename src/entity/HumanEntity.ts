@@ -2,7 +2,7 @@ import '../globals';
 import { Inventory } from "../inventory/Inventory";
 import { InventoryView } from "../inventory/InventoryView";
 import { InventoryViewProperty } from '../inventory/InventoryViewProperty';
-import { PlayerInventory } from "../inventory/PlayerInventory";
+import { PlayerInventory } from "../inventory/types";
 import { ItemStack } from "../material/ItemStack";
 import { Material } from "../material/Material";
 import { GameMode } from "../player/GameMode";
@@ -58,7 +58,7 @@ export class HumanEntity {
      */
     public getEnderChest(): Inventory {
         const javaInv = this.toJava().getEnderChest();
-        return new Inventory(javaInv);
+        return Inventory.fromJava(javaInv);
     }
 
     /**
@@ -260,5 +260,5 @@ export class HumanEntity {
 
 }
 
-export interface HumanEntity extends LivingEntity {}
+export interface HumanEntity extends LivingEntity { }
 ApplyMixins(HumanEntity, [LivingEntity]);

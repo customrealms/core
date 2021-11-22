@@ -1,4 +1,4 @@
-import { Block } from "../../block/Block";
+import { Block } from "../../../block/Block";
 import { EntityDamageEvent } from "./EntityDamageEvent";
 
 export class EntityDamageByBlockEvent extends EntityDamageEvent {

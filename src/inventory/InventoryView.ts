@@ -99,7 +99,7 @@ export class InventoryView implements ToJava {
      */
     public getTopInventory(): Inventory {
         const javaInv = this.toJava().getTopInventory();
-        return new Inventory(javaInv);
+        return Inventory.fromJava(javaInv);
     }
 
     /**
