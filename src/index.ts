@@ -24,30 +24,22 @@ export * from './entity/HumanEntity';
 export * from './entity/LivingEntity';
 export * from './entity/Pose';
 
-export * from './events/types/BlockBreakEvent';
-export * from './events/types/BlockEvent';
-export * from './events/types/BlockExpEvent';
-export * from './events/types/EntityDamageByBlockEvent';
-export * from './events/types/EntityDamageByEntityEvent';
-export * from './events/types/EntityDamageEvent';
-export * from './events/types/EntityEvent';
-export * from './events/types/Event';
-export * from './events/types/PlayerChatEvent';
-export * from './events/types/PlayerInteractEvent';
-export * from './events/types/PlayerJoinEvent';
-export * from './events/types/PlayerMoveEvent';
-export * from './events/types/PlayerQuitEvent';
+export * from './events/types';
 
+export * from './events/EventResult';
 export * from './events/ServerEvents';
 
+export * from './inventory/ClickType';
 export * from './inventory/EntityEquipment';
 export * from './inventory/EquipmentSlot';
 export * from './inventory/Inventory';
+export * from './inventory/InventoryAction';
+export * from './inventory/InventoryConstructors';
 export * from './inventory/InventorySlotType';
 export * from './inventory/InventoryType';
 export * from './inventory/InventoryView';
 export * from './inventory/InventoryViewProperty';
-export * from './inventory/PlayerInventory';
+export * from './inventory/types';
 
 export * from './material/Enchantment';
 export * from './material/EnchantmentName';

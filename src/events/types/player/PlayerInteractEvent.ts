@@ -1,23 +1,16 @@
-import { BlockAction } from "../../block/BlockAction";
-import { BlockFace } from "../../block/BlockFace";
-import { Block } from "../../block/Block";
-import { ItemStack } from "../../material/ItemStack";
-import { Material } from "../../material/Material";
-import { Player } from "../../player/Player";
-import { Event } from "./Event";
-import { EquipmentSlot } from "../../inventory/EquipmentSlot";
+import { BlockAction } from "../../../block/BlockAction";
+import { BlockFace } from "../../../block/BlockFace";
+import { Block } from "../../../block/Block";
+import { ItemStack } from "../../../material/ItemStack";
+import { Material } from "../../../material/Material";
+import { EquipmentSlot } from "../../../inventory/EquipmentSlot";
+import { PlayerEvent } from "./PlayerEvent";
+import { Cancellable } from "../../Cancellable";
 
-export class PlayerInteractEvent extends Event {
+export class PlayerInteractEvent extends PlayerEvent implements Cancellable {
 
     public static getBukkitClasspath(): string {
         return 'org.bukkit.event.player.PlayerInteractEvent';
-    }
-
-    /**
-     * Gets the player for the event
-     */
-    public getPlayer(): Player {
-        return Player.fromJava(this.toJava().getPlayer());
     }
 
     /**
@@ -28,12 +21,12 @@ export class PlayerInteractEvent extends Event {
         return javaBlockAction.name();
     }
 
-    /**
-     * Sets the cancellation state of this event
-     * @param cancel the cancellation state of this event
-     */
     public setCancelled(cancel: boolean): void {
         this.toJava().setCancelled(cancel);
+    }
+
+    public isCancelled(): boolean {
+        return this.toJava().isCancelled();
     }
 
     /**
