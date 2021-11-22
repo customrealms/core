@@ -19,14 +19,15 @@ export class InventoryInteractEvent extends InventoryEvent implements Cancellabl
    * Gets the EventResult of this event.
    */
   public getResult(): EventResult {
-    return this.toJava().getResult();
+    return this.toJava().getResult().name();
   }
 
   /**
    * Sets the result of this event.
    */
   public setResult(result: EventResult): void {
-    this.toJava().setResult(result);
+    const javaEventResult = Java.resolve('org.bukkit.event.Event.Result').valueOf(result);
+    this.toJava().setResult(javaEventResult);
   }
 
   /**
