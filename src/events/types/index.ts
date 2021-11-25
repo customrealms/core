@@ -27,6 +27,12 @@ export * from './player/PlayerJoinEvent';
 export * from './player/PlayerMoveEvent';
 export * from './player/PlayerQuitEvent';
 
+export * from './weather/LightningStrikeEvent';
+export * from './weather/LightningStrikeEventCause';
+export * from './weather/ThunderChangeEvent';
+export * from './weather/WeatherChangeEvent';
+export * from './weather/WeatherEvent';
+
 export * from './world/ChunkEvent';
 export * from './world/ChunkLoadEvent';
 export * from './world/ChunkPopulateEvent';
