@@ -1,3 +1,4 @@
+/** Causes that generate lightning strikes  */
 export enum LightningStrikeEventCause {
     COMMAND = 'COMMAND',
     CUSTOM = 'CUSTOM',
