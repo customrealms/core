@@ -1,16 +1,18 @@
-import '../globals';
-import { Inventory } from "../inventory/Inventory";
-import { ConstructInventory } from '../inventory/InventoryConstructors';
-import { InventoryView } from "../inventory/InventoryView";
-import { InventoryViewProperty } from '../inventory/InventoryViewProperty';
-import { PlayerInventory } from "../inventory/types";
-import { ItemStack } from "../material/ItemStack";
-import { Material } from "../material/Material";
-import { GameMode } from "../player/GameMode";
-import { ApplyMixins } from "../runtime/ApplyMixins";
-import { Location } from "../util/Location";
+import { Inventory } from "../../inventory/Inventory";
+import { ConstructInventory } from '../../inventory/InventoryConstructors';
+import { InventoryView } from "../../inventory/InventoryView";
+import { InventoryViewProperty } from '../../inventory/InventoryViewProperty';
+import { PlayerInventory } from "../../inventory/types";
+import { ItemStack } from "../../material/ItemStack";
+import { Material } from "../../material/Material";
+import { GameMode } from "../../player/GameMode";
+import { Extends } from '../../runtime/Extends';
+import { Location } from "../../util/Location";
 import { LivingEntity } from "./LivingEntity";
 
+export interface HumanEntity extends LivingEntity {}
+
+@Extends(LivingEntity)
 export class HumanEntity {
 
     /**
@@ -260,6 +262,3 @@ export class HumanEntity {
     }
 
 }
-
-export interface HumanEntity extends LivingEntity { }
-ApplyMixins(HumanEntity, [LivingEntity]);

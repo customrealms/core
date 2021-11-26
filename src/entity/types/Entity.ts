@@ -1,13 +1,13 @@
-import { BlockFace } from "../block/BlockFace";
-import { PistonMoveReaction } from "../block/PistonMoveReaction";
-import { EntityDamageEvent } from "../events/types/entity/EntityDamageEvent";
-import { ToJava } from "../runtime/ToJava";
-import { Location } from "../util/Location";
-import { Vector } from "../util/Vector";
-import { World } from "../world/World";
-import { ConstructEntity } from "./EntityConstructors";
-import { EntityType } from "./EntityType";
-import { Pose } from "./Pose";
+import { BlockFace } from "../../block/BlockFace";
+import { PistonMoveReaction } from "../../block/PistonMoveReaction";
+import { EntityDamageEvent } from "../../events/types/entity/EntityDamageEvent";
+import { ToJava } from "../../runtime/ToJava";
+import { Location } from "../../util/Location";
+import { Vector } from "../../util/Vector";
+import { World } from "../../world/World";
+import { ConstructEntity } from "../EntityConstructors";
+import { EntityType } from "../EntityType";
+import { Pose } from "../Pose";
 
 export class Entity implements ToJava {
 
