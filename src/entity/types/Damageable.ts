@@ -1,6 +1,9 @@
-import { ApplyMixins } from "../runtime/ApplyMixins";
+import { Extends } from "../../runtime/Extends";
 import { Entity } from "./Entity";
 
+export interface Damageable extends Entity {}
+
+@Extends(Entity)
 export class Damageable {
 
     /**
@@ -51,6 +54,3 @@ export class Damageable {
     }
 
 }
-
-export interface Damageable extends Entity {}
-ApplyMixins(Damageable, [Entity]);

@@ -16,12 +16,9 @@ export * from './chunk/Chunk';
 export * from './command/CommandCall';
 export * from './command/ServerCommands';
 
-export * from './entity/Damageable';
-export * from './entity/Entity';
+export * from './entity/types';
 export * from './entity/EntityDamageCause';
 export * from './entity/EntityType';
-export * from './entity/HumanEntity';
-export * from './entity/LivingEntity';
 export * from './entity/Pose';
 
 export * from './events/types';

@@ -1,13 +1,14 @@
 import { Player } from '../player/Player';
-import { Entity } from './Entity';
+import { Entity } from './mixins/Entity';
 import { EntityType } from './EntityType';
-
+import { LightningStrike } from './types/LightningStrike';
 
 /**
  * Mapping of EntityType values to the corresponding class constructor. We use any instead of
  * Constructor<Entity> because Entity subclasses have private constructors.
  */
 export const EntityConstructors: {[key in EntityType]?: any } = {
+    [EntityType.LIGHTNING]: LightningStrike,
     [EntityType.PLAYER]: Player,
 };
 
