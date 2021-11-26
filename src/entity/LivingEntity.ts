@@ -16,7 +16,6 @@ export class LivingEntity {
      * Adds a potion effect to this living entity
      * @param effect the potion effect
      */
-     addPotionEffect(effect: PotionEffect): boolean;
     public addPotionEffect(effect: PotionEffect): boolean {
         return this.toJava().addPotionEffect(effect.toJava());
     }
