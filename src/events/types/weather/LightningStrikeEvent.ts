@@ -25,7 +25,7 @@ export class LightningStrikeEvent extends WeatherEvent implements Cancellable {
      * @returns strike cause
      */
     public getCause(): LightningStrikeEventCause {
-        return this.toJava().getCause();
+        return this.toJava().getCause().getName();
     }
 
     /**
