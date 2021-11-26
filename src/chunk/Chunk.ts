@@ -1,6 +1,6 @@
 import { Block } from "../block/Block";
-import { Entity } from "../entity/Entity";
 import { ConstructEntity } from '../entity/EntityConstructors';
+import { Entity } from "../entity/types/Entity";
 import { World } from "../world/World";
 
 export class Chunk {

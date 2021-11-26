@@ -1,6 +1,6 @@
 import { Player } from '../player/Player';
-import { Entity } from './mixins/Entity';
 import { EntityType } from './EntityType';
+import { Entity } from './types/Entity';
 import { LightningStrike } from './types/LightningStrike';
 
 /**

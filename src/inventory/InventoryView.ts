@@ -1,4 +1,4 @@
-import { HumanEntity } from "../entity/HumanEntity";
+import { HumanEntity } from "../entity/types/HumanEntity";
 import { ItemStack } from "../material/ItemStack";
 import { ToJava } from "../runtime/ToJava";
 import { Inventory } from "./Inventory";
