@@ -1,6 +1,5 @@
-import { Entity } from "../entity/Entity";
 import { ConstructEntity } from "../entity/EntityConstructors";
-import "../globals";
+import { Entity } from "../entity/types/Entity";
 import { ItemStack } from "../material/ItemStack";
 import { ToJava } from "../runtime/ToJava";
 import { EquipmentSlot } from "./EquipmentSlot";

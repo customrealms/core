@@ -1,12 +1,9 @@
-import { Biome } from '../biome/Biome';
 import { Block } from '../block/Block';
 import { Chunk } from '../chunk/Chunk';
-import { Entity } from "../entity/Entity";
 import { EntityType } from "../entity/EntityType";
-import "../globals";
+import { Entity } from "../entity/types/Entity";
 import { ItemDrop } from '../material/ItemDrop';
 import { ItemStack } from '../material/ItemStack';
-import { TreeType } from '../material/TreeType';
 import { Player } from '../player/Player';
 import { Location } from '../util/Location';
 
