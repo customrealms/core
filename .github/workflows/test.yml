@@ -1,9 +1,9 @@
-name: Docs
+name: Test
 
 on: [push, pull_request]
 
 jobs:
-  docs:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository
