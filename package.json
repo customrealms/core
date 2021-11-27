@@ -13,7 +13,7 @@
 	"scripts": {
 		"build": "tsc",
 		"build:check": "tsc --noEmit",
-		"lint": "eslint . --ext .js,.ts --fix",
+		"lint": "prettier --write . && eslint . --ext .js,.ts --fix",
 		"docs": "typedoc --excludePrivate --excludeProtected src/index.ts",
 		"clean": "rm -rf dist",
 		"prepare": "npm run clean && npm run build"
