@@ -1,6 +1,6 @@
 import { Player } from '../player/Player';
 import { EntityType } from './EntityType';
-import { Sheep } from './types';
+import { Creeper, Sheep, Wolf } from './types';
 import { Entity } from './types/Entity';
 import { LightningStrike } from './types/LightningStrike';
 
@@ -9,9 +9,11 @@ import { LightningStrike } from './types/LightningStrike';
  * Constructor<Entity> because Entity subclasses have private constructors.
  */
 export const EntityConstructors: {[key in EntityType]?: any } = {
+    [EntityType.CREEPER]: Creeper,
     [EntityType.LIGHTNING]: LightningStrike,
     [EntityType.PLAYER]: Player,
     [EntityType.SHEEP]: Sheep,
+    [EntityType.WOLF]: Wolf,
 };
 
 /**

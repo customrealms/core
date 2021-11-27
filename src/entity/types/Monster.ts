@@ -1,6 +1,6 @@
-import { Creature } from '.';
 import { Extends } from '../../runtime/Extends';
 import { ToJava } from '../../runtime/ToJava';
+import { Creature } from './Creature';
 
 export interface Monster extends Creature {}
 

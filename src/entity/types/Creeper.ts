@@ -1,4 +1,4 @@
-import { Creature, Monster } from '.';
+import { Monster } from './Monster';
 import { Extends } from '../../runtime/Extends';
 import { ToJava } from '../../runtime/ToJava';
 

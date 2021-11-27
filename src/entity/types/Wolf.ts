@@ -1,7 +1,6 @@
-import { Sittable } from "./Sittable";
 import { Extends } from "../../runtime/Extends";
-import { Animals } from './Animals';
-import { Colorable } from "./Colorable";
+import { ToJava } from "../../runtime/ToJava";
+import { Sittable } from "./Sittable";
 import { Tameable } from "./Tameable";
 
 export interface Wolf extends Tameable, Sittable {}
