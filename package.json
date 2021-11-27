@@ -13,8 +13,8 @@
 	"scripts": {
 		"build": "tsc",
 		"build:check": "tsc --noEmit",
-		"lint": "prettier --write . && npm run lint:check",
-		"lint:check": "eslint . --ext .js,.ts",
+		"lint": "prettier --write . && eslint . --ext .js,.ts --fix",
+		"lint:check": "prettier --check . && eslint . --ext .js,.ts",
 		"docs": "typedoc --excludePrivate --excludeProtected src/index.ts",
 		"clean": "rm -rf dist",
 		"prepare": "npm run clean && npm run build"
