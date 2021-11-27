@@ -40,7 +40,10 @@ export function ConstructInventory<T extends Inventory = Inventory>(
 
 	// If the inventory type has a corresponding constructor, construct using that class
 	if (inventoryType in InventoryConstructors) {
-		return new InventoryConstructors[inventoryType]!(_inventory) as T
+		const ctor = InventoryConstructors[inventoryType]
+		if (ctor) {
+			return new ctor(_inventory) as T
+		}
 	}
 
 	// Fallback to the base InventoryType class if we can't match to a subclass
