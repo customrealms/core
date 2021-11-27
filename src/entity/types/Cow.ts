@@ -8,11 +8,11 @@ export interface Cow extends Animals {}
 export class Cow implements ToJava {
 
     private constructor(
-        private _bee: Java.Value,
+        private _cow: Java.Value,
     ) {}
 
     public toJava(): Java.Value {
-        return this._bee;
+        return this._cow;
     }
 
 }
