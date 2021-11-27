@@ -1,6 +1,6 @@
 import { Player } from '../player/Player';
 import { EntityType } from './EntityType';
-import { Creeper, Sheep, Wolf } from './types';
+import { Bee, Creeper, Sheep, Wolf } from './types';
 import { Entity } from './types/Entity';
 import { LightningStrike } from './types/LightningStrike';
 
@@ -11,6 +11,7 @@ import { LightningStrike } from './types/LightningStrike';
  * Classes listed as values here MUST have a constructor and must implement ToJava!
  */
 export const EntityConstructors: {[key in EntityType]?: any } = {
+    [EntityType.BEE]: Bee,
     [EntityType.CREEPER]: Creeper,
     [EntityType.LIGHTNING]: LightningStrike,
     [EntityType.PLAYER]: Player,

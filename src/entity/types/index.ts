@@ -1,5 +1,6 @@
 export * from './Ageable';
 export * from './Animals';
+export * from './Bee';
 export * from './Breedable';
 export * from './Colorable';
 export * from './Creature';
