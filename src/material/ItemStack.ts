@@ -176,12 +176,9 @@ export class ItemStack implements ToJava {
 	 * Gets all of the enchantments on this item stack
 	 */
 	public getEnchantments(): Enchantment[] {
-		return (
-			this.toJava()
-				?.getEnchantments()
-				//@ts-ignore enchantment constructor is private so we can call it but not exposing it publicly
-				.map((javaEnch: any) => new Enchantment(javaEnch))
-		)
+		return this.toJava()
+			?.getEnchantments()
+			.map((javaEnch: Java.Value) => Enchantment.fromJava(javaEnch))
 	}
 
 	/**
