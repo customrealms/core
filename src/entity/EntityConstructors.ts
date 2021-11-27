@@ -1,15 +1,25 @@
 import { Player } from '../player/Player';
 import { EntityType } from './EntityType';
+import { Bee, Cow, Creeper, Pig, Sheep, Skeleton, Wolf } from './types';
 import { Entity } from './types/Entity';
 import { LightningStrike } from './types/LightningStrike';
 
 /**
  * Mapping of EntityType values to the corresponding class constructor. We use any instead of
  * Constructor<Entity> because Entity subclasses have private constructors.
+ * 
+ * Classes listed as values here MUST have a constructor and must implement ToJava!
  */
 export const EntityConstructors: {[key in EntityType]?: any } = {
+    [EntityType.BEE]: Bee,
+    [EntityType.COW]: Cow,
+    [EntityType.CREEPER]: Creeper,
     [EntityType.LIGHTNING]: LightningStrike,
     [EntityType.PLAYER]: Player,
+    [EntityType.PIG]: Pig,
+    [EntityType.SHEEP]: Sheep,
+    [EntityType.SKELETON]: Skeleton,
+    [EntityType.WOLF]: Wolf,
 };
 
 /**
