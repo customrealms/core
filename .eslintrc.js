@@ -15,6 +15,7 @@ module.exports = {
         '@typescript-eslint/no-inferrable-types': 0,
         '@typescript-eslint/ban-ts-comment': 1,
         '@typescript-eslint/no-empty-function': 1,
+        '@typescript-eslint/no-explicit-any': 0,
         'prefer-const': 1,
     },
 };
