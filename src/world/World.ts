@@ -322,8 +322,7 @@ export class World implements ToJava {
     public getEntities(): Entity[] {
         const javaEntities = this._world.getEntities();
         if (!javaEntities) return [];
-        //@ts-ignore entity constructor is private, but we can still call it internally
-        return javaEntities.map((e: any) => new Entity(e));
+        return javaEntities.map((e: any) => ConstructEntity(e));
     }
 
     // /**
