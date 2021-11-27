@@ -10,6 +10,11 @@ module.exports = {
         'prettier',
     ],
     rules: {
-        '@typescript-eslint/no-namespace': false,
+        '@typescript-eslint/no-namespace': 0,
+        '@typescript-eslint/no-empty-interface': 0,
+        '@typescript-eslint/no-inferrable-types': 0,
+        '@typescript-eslint/ban-ts-comment': 1,
+        '@typescript-eslint/no-empty-function': 1,
+        'prefer-const': 1,
     },
 };
