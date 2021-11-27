@@ -10,8 +10,10 @@ export class EntityDamageByBlockEvent extends EntityDamageEvent {
     /**
      * Gets the block that caused the damage
      */
-    public getDamager(): Block {
-        return Block.fromJava(this.toJava().getDamager());
+    public getDamager(): Block | null {
+        const javaDamager: Java.Value | null = this.toJava().getDamager();
+        if (!javaDamager) return null;
+        return Block.fromJava(javaDamager);
     }
 
 }
