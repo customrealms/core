@@ -22,14 +22,14 @@ export class Block implements ToJava {
 	 * Breaks the block ans spawns items as if a player had broken it
 	 */
 	public breakNaturally(): boolean {
-		return this._block?.breakNaturally();
+		return this._block.breakNaturally();
 	}
 
 	/**
 	 * Gets the biome that this block is in
 	 */
 	public getBiome(): Biome {
-		const javaBiome = this._block?.getBiome();
+		const javaBiome = this._block.getBiome();
 		return javaBiome.name();
 	}
 
@@ -39,7 +39,7 @@ export class Block implements ToJava {
 	 */
 	public setBiome(biome: Biome): void {
 		const javaBiome = Java.resolve('org.bukkit.block.Biome').valueOf(biome);
-		this._block?.setBiome(javaBiome);
+		this._block.setBiome(javaBiome);
 	}
 
 	// /**
@@ -51,21 +51,21 @@ export class Block implements ToJava {
 	 * Gets the redstone power being provided to this block
 	 */
 	public getBlockPower(): number {
-		return this._block?.getBlockPower();
+		return this._block.getBlockPower();
 	}
 
 	/**
 	 * Checks if this block is being powered by redstone
 	 */
 	public isBlockPowered(): boolean {
-		return this._block?.isBlockPowered();
+		return this._block.isBlockPowered();
 	}
 
 	/**
 	 * Checks if this block is being indirectly powered by redstone
 	 */
 	public isBlockIndirectlyPowered(): boolean {
-		return this._block?.isBlockIndirectlyPowered();
+		return this._block.isBlockIndirectlyPowered();
 	}
 
 	// /**
@@ -77,9 +77,8 @@ export class Block implements ToJava {
 	 * Gets the chunk that contains this block
 	 */
 	public getChunk(): Chunk {
-		const javaChunk = this._block?.getChunk();
-		//@ts-ignore Chunk constructor is private
-		return new Chunk(javaChunk);
+		const javaChunk = this._block.getChunk();
+		return Chunk.fromJava(javaChunk);
 	}
 
 	/**
@@ -94,14 +93,14 @@ export class Block implements ToJava {
 	 * Gets the temperature of this block
 	 */
 	public getTemperature(): number {
-		return this._block?.getTemperature();
+		return this._block.getTemperature();
 	}
 
 	/**
 	 * Gets the material of this block
 	 */
 	public getMaterial(): Material {
-		const javaMat = this._block?.getType();
+		const javaMat = this._block.getType();
 		return Material.fromJava(javaMat);
 	}
 
@@ -131,51 +130,50 @@ export class Block implements ToJava {
 	 * Gets the world containing this block
 	 */
 	public getWorld(): World {
-		const javaWorld = this._block?.getWorld();
-		//@ts-ignore because we need to construct worlds without exposing a public constructor
-		return new World(javaWorld);
+		const javaWorld = this._block.getWorld();
+		return World.fromJava(javaWorld);
 	}
 
 	/**
 	 * Gets the x-coordinate of this block
 	 */
 	public getX(): number {
-		return this._block?.getX();
+		return this._block.getX();
 	}
 
 	/**
 	 * Gets the y-coordinate of this block
 	 */
 	public getY(): number {
-		return this._block?.getY();
+		return this._block.getY();
 	}
 
 	/**
 	 * Gets the z-coordinate of this block
 	 */
 	public getZ(): number {
-		return this._block?.getZ();
+		return this._block.getZ();
 	}
 
 	/**
 	 * Checks if this block is empty
 	 */
 	public isEmpty(): boolean {
-		return this._block?.isEmpty();
+		return this._block.isEmpty();
 	}
 
 	/**
 	 * Checks if this block is liquid
 	 */
 	public isLiquid(): boolean {
-		return this._block?.isLiquid();
+		return this._block.isLiquid();
 	}
 
 	/**
 	 * Checks if this block is passable
 	 */
 	public isPassable(): boolean {
-		return this._block?.isPassable();
+		return this._block.isPassable();
 	}
 
 	/**

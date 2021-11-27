@@ -9,24 +9,13 @@ export class PlaceholderParser {
 	/**
 	 * The regex pattern for placeholders
 	 */
-	// private static readonly placeholderPattern: RegExp = /^\{(.+?)(?:(\?)?|(?:(#)?=(.+))?)\}(\.{3})?$/;
-	private static readonly PLACEHOLDER_REGEX: RegExp =
+	private static readonly PLACEHOLDER_REGEX =
 		/^\{(?:(#|S|P|W):)?(\w+)(\?|=(.*))?\}(\.{3})?$/i;
 
 	/**
 	 * Whether or not the provided string matches the pattern
 	 */
-	private matches_pattern: boolean = false;
-
-	/**
-	 * The pattern string
-	 */
-	private pattern: string | null = null;
-
-	/**
-	 * Determines if the placeholder matches
-	 */
-	// private matches: boolean = false;
+	private matches_pattern = false;
 
 	/**
 	 * The name of the placeholder
@@ -42,7 +31,7 @@ export class PlaceholderParser {
 	/**
 	 * Is the placeholder optional
 	 */
-	private optional: boolean = false;
+	private optional = false;
 
 	/**
 	 * The default value for the placeholder
@@ -52,7 +41,7 @@ export class PlaceholderParser {
 	/**
 	 * Is the placeholder multiple parts long
 	 */
-	private multiPart: boolean = false;
+	private multiPart = false;
 
 	/**
 	 * Constructs a placeholder object from its component in the pattern
@@ -143,26 +132,5 @@ export class PlaceholderParser {
 	public isMultiPart(): boolean {
 		// Return the status
 		return this.multiPart;
-	}
-
-	/**
-	 * Gets the version of this placeholder string used for usage
-	 * @return the usage string output
-	 */
-	public getUsageString(): string {
-		// If it's not a placeholder
-		if (!this.matches_pattern) {
-			// Simply return the pattern
-			return this.pattern!;
-		}
-
-		// Create the string for the inside
-		let inside: string = this.name!;
-
-		// If there is a default value
-		if (this.defaultValue != null) inside += `=${this.defaultValue}`;
-
-		// Return the formatted string
-		return this.optional ? `[${inside}]` : `<${inside}>`;
 	}
 }

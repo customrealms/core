@@ -31,14 +31,14 @@ export class Inventory implements ToJava {
 		return {};
 	}
 
-	/**
-	 * Finds all slots in the inventory containing a material
-	 * @param match the material or item stack type to match
-	 */
-	public all(match: Material | ItemStack): { [key: number]: ItemStack } {
-		// TODO: Not implemented
-		return {};
-	}
+	// /**
+	//  * Finds all slots in the inventory containing a material
+	//  * @param match the material or item stack type to match
+	//  */
+	// public all(match: Material | ItemStack): { [key: number]: ItemStack } {
+	// 	// TODO: Not implemented
+	// 	return {};
+	// }
 
 	/**
 	 * Clears the whole inventory, or a particular slot index

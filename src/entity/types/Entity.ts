@@ -158,8 +158,7 @@ export class Entity implements ToJava {
 	 * Gets the entity's current pose
 	 */
 	public getPose(): Pose {
-		// TODO: check that this actually works
-		return this.toJava().getPose();
+		return this.toJava().getPose().name();
 	}
 
 	// /**
@@ -420,7 +419,7 @@ export class Entity implements ToJava {
 	 * @param ticks the number of ticks
 	 */
 	public setTicksLived(ticks: number): void {
-		this.toJava().setTicksLived();
+		this.toJava().setTicksLived(ticks);
 	}
 
 	/**

@@ -27,6 +27,6 @@ export class InventoryEvent extends Event {
 	 * Gets the view object itself
 	 */
 	public getView(): InventoryView {
-		return new InventoryView(this.toJava().getView());
+		return InventoryView.fromJava(this.toJava().getView());
 	}
 }

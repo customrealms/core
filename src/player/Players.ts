@@ -35,7 +35,7 @@ export class Players {
 	 */
 	public static getPlayerByUsername(
 		username: string,
-		exact: boolean = false
+		exact = false
 	): Player | null {
 		const p = exact
 			? Java.resolve('org.bukkit.Bukkit').getPlayerExact(username)

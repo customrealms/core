@@ -8,7 +8,11 @@ import { InventoryType } from './InventoryType';
 import { InventoryViewProperty } from './InventoryViewProperty';
 
 export class InventoryView implements ToJava {
-	public constructor(private _java: Java.Value) {}
+	public static fromJava(_java: Java.Value): InventoryView {
+		return new InventoryView(_java);
+	}
+
+	private constructor(private _java: Java.Value) {}
 
 	public toJava(): Java.Value {
 		return this._java;

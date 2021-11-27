@@ -1,4 +1,3 @@
-import '../globals';
 import { ToJava } from '../runtime/ToJava';
 import { PotionEffectType } from './PotionEffectType';
 
@@ -20,9 +19,9 @@ export class PotionEffect implements ToJava {
 		type: PotionEffectType,
 		duration: number,
 		amplifier: number,
-		ambient: boolean = true,
-		particles: boolean = true,
-		icon: boolean = true
+		ambient = true,
+		particles = true,
+		icon = true
 	): PotionEffect {
 		const _java = new (Java.resolve('org.bukkit.potion.PotionEffect'))(
 			type.toJava(),

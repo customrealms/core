@@ -10,10 +10,7 @@ export class Material implements ToJava {
 	 * @param name the name of the material
 	 * @param exact whether or not to require an exact match
 	 */
-	public static withName(
-		name: string,
-		exact: boolean = false
-	): Material | null {
+	public static withName(name: string, exact = false): Material | null {
 		const javaMat = exact
 			? Java.resolve('org.bukkit.Material').getMaterial(name)
 			: Java.resolve('org.bukkit.Material').matchMaterial(name);

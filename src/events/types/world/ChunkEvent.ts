@@ -1,5 +1,4 @@
 import { Chunk } from '../../../chunk/Chunk';
-import { Event } from '../Event';
 import { WorldEvent } from './WorldEvent';
 
 export class ChunkEvent extends WorldEvent {

@@ -6,11 +6,6 @@ import { CommandFn } from './ServerCommands';
 
 export class CommandRunner {
 	/**
-	 * The name of the command
-	 */
-	private name: string | null = null;
-
-	/**
 	 * The regular expressions for the command patterns
 	 */
 	private variations: ICommandPattern[];
@@ -21,13 +16,8 @@ export class CommandRunner {
 	) {
 		// Loop though the patterns
 		this.variations = patterns.map((pattern) => {
-			// Create the command parser
-			const parser = new CommandParser(pattern);
-
-			// Get the command name
-			this.name = parser.getCommandName();
-
 			// Parse the command and return the pattern
+			const parser = new CommandParser(pattern);
 			return parser.parse();
 		});
 	}
@@ -61,9 +51,12 @@ export class CommandRunner {
 			// Get the variation
 			const variation: ICommandPattern = this.variations[i];
 
+			// Check that there is a regex pattern
+			if (!variation.regex) continue;
+
 			// Match against the message
 			const match: RegExpMatchArray | null = message.match(
-				variation.regex!
+				variation.regex
 			);
 			if (!match) continue;
 
@@ -102,28 +95,5 @@ export class CommandRunner {
 
 		// Return unsuccessfully
 		return null;
-	}
-
-	/**
-	 * Gets the name of this command
-	 */
-	public getName(): string | null {
-		return this.name;
-	}
-
-	/**
-	 * Gets the description of this command
-	 */
-	public getDescription(): string | null {
-		return null;
-	}
-
-	/**
-	 * Gets the usage strings for this command
-	 */
-	public getUsages(): string[] {
-		return this.variations
-			.map((variation) => variation.usage)
-			.filter((usage): usage is string => !!usage);
 	}
 }

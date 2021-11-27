@@ -1,3 +1,4 @@
+import { ConstructEntity } from '../../entity/EntityConstructors';
 import { HumanEntity } from '../../entity/types/HumanEntity';
 import { ItemStack } from '../../material/ItemStack';
 import { EquipmentSlot } from '../EquipmentSlot';
@@ -58,8 +59,9 @@ export class PlayerInventory extends Inventory {
 	 * Gets the entity owning this inventory
 	 */
 	public getHolder(): HumanEntity | null {
-		// TODO: Not implemented
-		return null as any;
+		const javaHolder = this.toJava().getHolder();
+		if (!javaHolder) return null;
+		return ConstructEntity<HumanEntity>(javaHolder);
 	}
 
 	/**

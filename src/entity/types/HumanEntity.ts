@@ -114,7 +114,7 @@ export class HumanEntity {
 	public getOpenInventory(): InventoryView | null {
 		const javaInvView = this.toJava().getOpenInventory();
 		if (!javaInvView) return null;
-		return new InventoryView(javaInvView);
+		return InventoryView.fromJava(javaInvView);
 	}
 
 	/**
@@ -156,8 +156,12 @@ export class HumanEntity {
 		location: Location | null,
 		force: boolean
 	): InventoryView | null {
-		// TODO: Not implemented
-		return null as any;
+		const javaInvView = this.toJava().openEnchanting(
+			location?.toJava() ?? null,
+			force
+		);
+		if (!javaInvView) return null;
+		return InventoryView.fromJava(javaInvView);
 	}
 
 	/**
@@ -187,8 +191,12 @@ export class HumanEntity {
 		location: Location | null,
 		force: boolean
 	): InventoryView | null {
-		// TODO: Not implemented
-		return null as any;
+		const javaInvView = this.toJava().openWorkbench(
+			location?.toJava() ?? null,
+			force
+		);
+		if (!javaInvView) return null;
+		return InventoryView.fromJava(javaInvView);
 	}
 
 	/**

@@ -4,12 +4,12 @@ import { World } from '../world/World';
 
 export class BlockRange {
 	private world: World | null = null;
-	private x1: number = 0;
-	private y1: number = 0;
-	private z1: number = 0;
-	private x2: number = 0;
-	private y2: number = 0;
-	private z2: number = 0;
+	private x1 = 0;
+	private y1 = 0;
+	private z1 = 0;
+	private x2 = 0;
+	private y2 = 0;
+	private z2 = 0;
 
 	public constructor(...args: any[]) {
 		// If it's the first constructor
@@ -109,7 +109,7 @@ export class BlockRange {
 	public get(index: number): Block | null {
 		// Calculate the bounds
 		const min_x: number = Math.min(this.x1, this.x2);
-		const max_x: number = Math.max(this.x1, this.x2);
+		// const max_x: number = Math.max(this.x1, this.x2);
 		const min_y: number = Math.min(this.y1, this.y2);
 		const max_y: number = Math.max(this.y1, this.y2);
 		const min_z: number = Math.min(this.z1, this.z2);

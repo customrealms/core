@@ -18,9 +18,4 @@ export interface ICommandPattern {
 	 * The default values for named placeholders
 	 */
 	default_placeholder_values: { [key: string]: string };
-
-	/**
-	 * The usage string for the command
-	 */
-	usage: string | null;
 }

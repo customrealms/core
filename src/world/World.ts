@@ -100,9 +100,14 @@ export class World implements ToJava {
 	public dropItem(
 		location: Location,
 		item_stack: ItemStack,
-		natural?: boolean
+		natural = false
 	): ItemDrop {
-		return ItemDrop.fromJava(this._world?.dropItem());
+		const javaItemDrop = this.toJava().dropItem(
+			location.toJava(),
+			item_stack.toJava(),
+			natural
+		);
+		return ItemDrop.fromJava(javaItemDrop);
 	}
 
 	// /**
@@ -513,10 +518,7 @@ export class World implements ToJava {
 	 * @param location the target location of the strike
 	 * @param do_damage whether or not to do damage to entities struck. Defaults to true
 	 */
-	public strikeLightning(
-		location: Location,
-		do_damage: boolean = true
-	): void {
+	public strikeLightning(location: Location, do_damage = true): void {
 		if (do_damage) this._world.strikeLightning(location.toJava());
 		else this._world.strikeLightningEffect(location.toJava());
 	}

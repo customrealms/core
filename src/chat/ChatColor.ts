@@ -1,4 +1,4 @@
-const COLOR_CHAR: string = '\u00A7';
+const COLOR_CHAR = '\u00A7';
 
 export enum ChatColor {
 	/**

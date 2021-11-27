@@ -19,7 +19,6 @@ export class CommandParser {
 			regex: null,
 			placeholder_names: [],
 			default_placeholder_values: {},
-			usage: null,
 		};
 
 		// Split the pattern by whitespace
@@ -29,7 +28,7 @@ export class CommandParser {
 		const regex_parts: string[] = [];
 
 		// Count the number of optionals
-		let optional_count: number = 0;
+		let optional_count = 0;
 
 		// Loop through the parts
 		for (let i = 0; i < pattern_parts.length; i++) {
@@ -104,47 +103,7 @@ export class CommandParser {
 			`^${regex_parts.join('\\s+')}${optional_ending}$`
 		);
 
-		// Calculate the usage string
-		pattern_data.usage = this.getUsage();
-
 		// Return the full object
 		return pattern_data;
-	}
-
-	/**
-	 * Gets the name of a command from its pattern string
-	 * @return the name of the command described in the pattern
-	 */
-	public getCommandName(): string | null {
-		// Create the regex pattern for getting the name
-		const regex = /^\/(\S+)(?:\s|$)/;
-
-		// Get the matches
-		const match = this.pattern.match(regex);
-
-		// Return the first match, or null
-		return match?.[1] ?? null;
-	}
-
-	/**
-	 * Gets the usage string for the command pattern
-	 */
-	public getUsage(): string | null {
-		// Split the pattern into parts
-		const pattern_parts: string[] = this.pattern.split(/\s+/g);
-
-		// Map the pattern parts to output values
-		const args: string = pattern_parts
-			.map((part) => {
-				// Create the placeholder parser
-				const placeholder = new PlaceholderParser(part);
-
-				// Return the usage string
-				return placeholder.getUsageString();
-			})
-			.join(' ');
-
-		// Combine it with the name
-		return `/${this.getCommandName()} ${args}`;
 	}
 }
