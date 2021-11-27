@@ -1,0 +1,23 @@
+name: Docs
+
+on: [push, pull_request]
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+
+      - name: Install dependencies
+        run: |
+          npm install -g typescript
+          npm install
+
+      - name: Test to see if the project compiles
+        run: npm run build:check
+
+
