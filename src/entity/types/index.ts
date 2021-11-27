@@ -1,3 +1,4 @@
+export * from './AbstractSkeleton';
 export * from './Ageable';
 export * from './Animals';
 export * from './Bee';
@@ -17,5 +18,6 @@ export * from './Monster';
 export * from './Pig';
 export * from './Sheep';
 export * from './Sittable';
+export * from './Skeleton';
 export * from './Tameable';
 export * from './Wolf';
