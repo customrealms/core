@@ -1,5 +1,6 @@
 import { Block } from '../block/Block';
 import { Chunk } from '../chunk/Chunk';
+import { ConstructEntity } from '../entity/EntityConstructors';
 import { EntityType } from "../entity/EntityType";
 import { Entity } from "../entity/types/Entity";
 import { ItemDrop } from '../material/ItemDrop';
@@ -496,13 +497,12 @@ export class World implements ToJava {
      * @param location the location at which to spawn the entity
      * @param entity_type the type of entity to spawn
      */
-    public spawnEntity(location: Location, entity_type: EntityType): Entity | null {
+    public spawnEntity<T extends Entity = Entity>(location: Location, entity_type: EntityType): T | null {
         const javaEntityType = Java.resolve('org.bukkit.entity.EntityType').fromName(entity_type);
         if (!javaEntityType) return null;
         const javaEntity = this.toJava().spawnEntity(location.toJava(), javaEntityType);
         if (!javaEntity) return null;
-        //@ts-ignore entity constructor is private, but we can still call it internally
-        return new Entity(javaEntity);
+        return ConstructEntity<T>(javaEntity);
     }
 
     // /**
