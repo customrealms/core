@@ -13,3 +13,6 @@ export * from './Lootable';
 export * from './Mob';
 export * from './Monster';
 export * from './Sheep';
+export * from './Sittable';
+export * from './Tameable';
+export * from './Wolf';
