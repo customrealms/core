@@ -1,5 +1,5 @@
 export enum EventResult {
-  ALLOW = "ALLOW",
-  DEFAULT = "DEFAULT",
-  DENY = "DENY",
+	ALLOW = 'ALLOW',
+	DEFAULT = 'DEFAULT',
+	DENY = 'DENY',
 }

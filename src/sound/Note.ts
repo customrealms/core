@@ -1,8 +1,8 @@
-import { Pitch } from "./Pitch";
-import { Tone } from "./Tone";
+import { Pitch } from './Pitch'
+import { Tone } from './Tone'
 
 export interface Note {
-    octave: number;
-    tone: Tone;
-    pitch: Pitch;
+	octave: number
+	tone: Tone
+	pitch: Pitch
 }

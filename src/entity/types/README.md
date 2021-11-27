@@ -29,32 +29,27 @@ export interface Sheep extends Animals, Colorable {}
 
 @Extends(Animals, Colorable)
 export class Sheep implements ToJava {
+	//============================================================
+	// Constructor and ToJava methods should be on every class
+	//============================================================
 
-    //============================================================
-    // Constructor and ToJava methods should be on every class
-    //============================================================
+	private constructor(private _sheep: Java.Value) {}
 
-    private constructor(
-        private _sheep: Java.Value,
-    ) {}
+	public toJava(): Java.Value {
+		return this._sheep
+	}
 
-    public toJava(): Java.Value {
-        return this._sheep;
-    }
+	//============================================================
+	// Sheep-specific methods go here
+	//============================================================
 
+	public isSheared(): boolean {
+		return this.toJava().isSheared()
+	}
 
-    //============================================================
-    // Sheep-specific methods go here
-    //============================================================
-
-    public isSheared(): boolean {
-        return this.toJava().isSheared();
-    }
-
-    public setSheared(flag: boolean): void {
-        this.toJava().setSheared(flag);
-    }
-
+	public setSheared(flag: boolean): void {
+		this.toJava().setSheared(flag)
+	}
 }
 ```
 

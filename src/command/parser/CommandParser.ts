@@ -1,164 +1,148 @@
-import { ICommandPattern } from './CommandPattern';
-import { PlaceholderParser, PlaceholderType } from './PlaceholderParser';
+import { ICommandPattern } from './CommandPattern'
+import { PlaceholderParser, PlaceholderType } from './PlaceholderParser'
 
 export class CommandParser {
+	/**
+	 * Constructs a command parser from a pattern string
+	 * @param pattern the pattern string for the command
+	 */
+	public constructor(private pattern: string) {}
 
-    /**
-     * Constructs a command parser from a pattern string
-     * @param pattern the pattern string for the command
-     */
-    public constructor(
-        private pattern: string,
-    ) {}
+	/**
+	 * Parses the command pattern string to a regex string
+	 * @return the corresponding regex value
+	 */
+	public parse(): ICommandPattern {
+		// Create the output pattern data objecg
+		const pattern_data: ICommandPattern = {
+			pattern_string: this.pattern,
+			regex: null,
+			placeholder_names: [],
+			default_placeholder_values: {},
+			usage: null,
+		}
 
-    /**
-     * Parses the command pattern string to a regex string
-     * @return the corresponding regex value
-     */
-    public parse(): ICommandPattern {
+		// Split the pattern by whitespace
+		const pattern_parts: string[] = this.pattern.split(/\s+/g)
 
-        // Create the output pattern data objecg
-        const pattern_data: ICommandPattern = {
-            pattern_string: this.pattern,
-            regex: null,
-            placeholder_names: [],
-            default_placeholder_values: {},
-            usage: null
-        };
+		// Create an array for the regex parts
+		const regex_parts: string[] = []
 
-        // Split the pattern by whitespace
-        const pattern_parts: string[] = this.pattern.split(/\s+/g);
+		// Count the number of optionals
+		let optional_count: number = 0
 
-        // Create an array for the regex parts
-        const regex_parts: string[] = [];
+		// Loop through the parts
+		for (let i = 0; i < pattern_parts.length; i++) {
+			// Get the part at the index
+			const part: string = pattern_parts[i]
 
-        // Count the number of optionals
-        let optional_count: number = 0;
+			// Construct a placeholder from the part
+			const placeholder = new PlaceholderParser(part)
 
-        // Loop through the parts
-        for (let i = 0; i < pattern_parts.length; i++) {
+			// The name of the placeholder
+			let placeholderName: string | null = null
+			let defaultValue: string | null = null
 
-            // Get the part at the index
-            const part: string = pattern_parts[i];
+			// If it's actually a placeholder
+			if (placeholder.isPlaceholder()) {
+				// Get the placeholder name
+				placeholderName = placeholder.getName()
+				defaultValue = placeholder.getDefaultValue()
 
-            // Construct a placeholder from the part
-            const placeholder = new PlaceholderParser(part);
+				// If the placeholder name is an optional
+				if (placeholder.isOptional()) {
+					// Add the optional tag onto the end of the previous
+					regex_parts[i - 1] += '(?:'
 
-            // The name of the placeholder
-            let placeholderName: string | null = null;
-            let defaultValue: string | null = null;
+					// Increment the optional count
+					optional_count++
+				}
 
-            // If it's actually a placeholder
-            if (placeholder.isPlaceholder()) {
+				// Define the pattern for all the types
+				const type_patterns: { [key in PlaceholderType]: string } = {
+					[PlaceholderType.STRING]: '\\S+',
+					[PlaceholderType.NUMBER]: '\\d+(?:\\.\\d+)?',
+					[PlaceholderType.PLAYER]: '\\S+',
+					[PlaceholderType.WORLD]: '\\S+',
+				}
 
-                // Get the placeholder name
-                placeholderName = placeholder.getName();
-                defaultValue = placeholder.getDefaultValue();
+				// Get the type indicator
+				const type: PlaceholderType = placeholder.getType()
 
-                // If the placeholder name is an optional
-                if (placeholder.isOptional()) {
+				// Get the part type patterm
+				const pattern: string = type_patterns[type]
 
-                    // Add the optional tag onto the end of the previous
-                    regex_parts[i - 1] += "(?:";
+				// Set the regex part
+				regex_parts[i] = placeholder.isMultiPart()
+					? '(.+)'
+					: `(${pattern})`
+			} else {
+				// Set the regex part for any other string
+				regex_parts[i] = part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+				// "\\Q" + part + "\\E";
+			}
 
-                    // Increment the optional count
-                    optional_count++;
+			// Add the placeholder to the list
+			if (placeholderName) {
+				// Add the placeholder
+				pattern_data.placeholder_names.push(placeholderName)
 
-                }
+				// Add the default value
+				if (defaultValue)
+					pattern_data.default_placeholder_values[placeholderName] =
+						defaultValue
+			}
+		}
 
-                // Define the pattern for all the types
-                const type_patterns: {[key in PlaceholderType]: string} = {
-                    [PlaceholderType.STRING]: '\\S+',
-                    [PlaceholderType.NUMBER]: '\\d+(?:\\.\\d+)?',
-                    [PlaceholderType.PLAYER]: '\\S+',
-                    [PlaceholderType.WORLD]: '\\S+'
-                };
+		// Repeat the correct number of optional endings
+		const optional_ending: string = Array(optional_count).fill(')?').join('')
 
-                // Get the type indicator
-                const type: PlaceholderType = placeholder.getType();
+		// Join the parts to a regex pattern
+		pattern_data.regex = new RegExp(
+			`^${regex_parts.join('\\s+')}${optional_ending}$`
+		)
 
-                // Get the part type patterm
-                const pattern: string = type_patterns[type];
+		// Calculate the usage string
+		pattern_data.usage = this.getUsage()
 
-                // Set the regex part
-                regex_parts[i] = placeholder.isMultiPart() ? "(.+)" : `(${pattern})`;
+		// Return the full object
+		return pattern_data
+	}
 
-            } else {
+	/**
+	 * Gets the name of a command from its pattern string
+	 * @return the name of the command described in the pattern
+	 */
+	public getCommandName(): string | null {
+		// Create the regex pattern for getting the name
+		const regex = /^\/(\S+)(?:\s|$)/
 
-                // Set the regex part for any other string
-                regex_parts[i] = part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-                // "\\Q" + part + "\\E";
+		// Get the matches
+		const match = this.pattern.match(regex)
 
-            }
+		// Return the first match, or null
+		return match?.[1] ?? null
+	}
 
-            // Add the placeholder to the list
-            if (placeholderName) {
+	/**
+	 * Gets the usage string for the command pattern
+	 */
+	public getUsage(): string | null {
+		// Split the pattern into parts
+		const pattern_parts: string[] = this.pattern.split(/\s+/g)
 
-                // Add the placeholder
-                pattern_data.placeholder_names.push(placeholderName);
+		// Map the pattern parts to output values
+		const args: string = pattern_parts
+			.map((part) => {
+				// Create the placeholder parser
+				const placeholder = new PlaceholderParser(part)
 
-                // Add the default value
-                if (defaultValue) pattern_data.default_placeholder_values[placeholderName] = defaultValue;
+				// Return the usage string
+				return placeholder.getUsageString()
+			})
+			.join(' ')
 
-            }
-
-        }
-
-        // Repeat the correct number of optional endings
-        let optional_ending: string = Array(optional_count).fill(')?').join('');
-
-        // Join the parts to a regex pattern
-        pattern_data.regex = new RegExp(`^${regex_parts.join('\\s+')}${optional_ending}$`);
-
-        // Calculate the usage string
-        pattern_data.usage = this.getUsage();
-
-        // Return the full object
-        return pattern_data;
-
-    }
-
-     /**
-     * Gets the name of a command from its pattern string
-     * @return the name of the command described in the pattern
-     */
-    public getCommandName(): string | null {
-
-        // Create the regex pattern for getting the name
-        const regex = /^\/(\S+)(?:\s|$)/;
-
-        // Get the matches
-        const match = this.pattern.match(regex);
-
-        // Return the first match, or null
-        return match?.[1] ?? null;
-
-    }
-
-    /**
-     * Gets the usage string for the command pattern
-     */
-    public getUsage(): string | null {
-
-        // Split the pattern into parts
-        const pattern_parts: string[] = this.pattern.split(/\s+/g);
-
-        // Map the pattern parts to output values
-        const args: string = pattern_parts
-            .map(part => {
-
-                // Create the placeholder parser
-                const placeholder = new PlaceholderParser(part);
-
-                // Return the usage string
-                return placeholder.getUsageString();
-
-            })
-            .join(' ');
-
-        // Combine it with the name
-        return `/${this.getCommandName()} ${args}`;
-
-    }
-
+		// Combine it with the name
+		return `/${this.getCommandName()} ${args}`
+	}
 }

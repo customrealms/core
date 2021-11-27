@@ -1,8 +1,1 @@
-export type Tone =
-    'A' |
-    'B' |
-    'C' |
-    'D' |
-    'E' |
-    'F' |
-    'G';
+export type Tone = 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G'
