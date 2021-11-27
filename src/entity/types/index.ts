@@ -3,6 +3,7 @@ export * from './Animals';
 export * from './Bee';
 export * from './Breedable';
 export * from './Colorable';
+export * from './Cow';
 export * from './Creature';
 export * from './Creeper';
 export * from './Damageable';
