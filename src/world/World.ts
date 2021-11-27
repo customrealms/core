@@ -5,6 +5,7 @@ import { Entity } from "../entity/types/Entity";
 import { ItemDrop } from '../material/ItemDrop';
 import { ItemStack } from '../material/ItemStack';
 import { Player } from '../player/Player';
+import { ToJava } from '../runtime/ToJava';
 import { Location } from '../util/Location';
 
 export interface IWorldExplosionOptions {
@@ -39,7 +40,7 @@ export interface IWorldParticleOptions {
     extra?: number;
 }
 
-export class World {
+export class World implements ToJava {
 
     public static fromJava(_world: Java.Value): World {
         return new World(_world);
@@ -49,7 +50,7 @@ export class World {
         private _world: Java.Value,
     ) {}
 
-    public toJava(): any {
+    public toJava(): Java.Value {
         return this._world;
     }
 

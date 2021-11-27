@@ -7,7 +7,9 @@ import { InventoryType } from "./InventoryType";
 
 export class Inventory implements ToJava {
 
-    public constructor(protected _java: any) { }
+    public constructor(
+        protected _java: Java.Value,
+    ) { }
 
     /**
      * Converts a raw Java handle to an inventory into the wrapped JavaScript subclass of the inventory's type
@@ -18,7 +20,7 @@ export class Inventory implements ToJava {
         return new Inventory(_inventory);
     }
 
-    public toJava(): any {
+    public toJava(): Java.Value {
         return this._java;
     }
 

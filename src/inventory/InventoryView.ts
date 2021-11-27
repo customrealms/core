@@ -9,9 +9,11 @@ import { InventoryViewProperty } from "./InventoryViewProperty";
 
 export class InventoryView implements ToJava {
 
-    public constructor(private _java: any) {}
+    public constructor(
+        private _java: Java.Value,
+    ) {}
 
-    public toJava(): any {
+    public toJava(): Java.Value {
         return this._java;
     }
 

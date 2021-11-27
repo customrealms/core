@@ -44,7 +44,7 @@ export class PotionEffect implements ToJava {
         private _java: Java.Value,
     ) {}
 
-    public toJava(): any {
+    public toJava(): Java.Value {
         return this._java;
     }
 

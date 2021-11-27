@@ -33,7 +33,7 @@ export class Material implements ToJava {
         private _material: Java.Value,
     ) {}
 
-    public toJava(): any {
+    public toJava(): Java.Value {
         return this._material;
     }
 
