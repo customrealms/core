@@ -1,10 +1,10 @@
-import { ClickType } from '../../../inventory/ClickType'
-import { Inventory } from '../../../inventory/Inventory'
-import { InventoryAction } from '../../../inventory/InventoryAction'
-import { ConstructInventory } from '../../../inventory/InventoryConstructors'
-import { InventorySlotType } from '../../../inventory/InventorySlotType'
-import { ItemStack } from '../../../material/ItemStack'
-import { InventoryInteractEvent } from './InventoryInteractEvent'
+import { ClickType } from '../../../inventory/ClickType';
+import { Inventory } from '../../../inventory/Inventory';
+import { InventoryAction } from '../../../inventory/InventoryAction';
+import { ConstructInventory } from '../../../inventory/InventoryConstructors';
+import { InventorySlotType } from '../../../inventory/InventorySlotType';
+import { ItemStack } from '../../../material/ItemStack';
+import { InventoryInteractEvent } from './InventoryInteractEvent';
 
 /**
  * This event is called when a player clicks in an inventory.
@@ -25,28 +25,28 @@ import { InventoryInteractEvent } from './InventoryInteractEvent'
  */
 export class InventoryClickEvent extends InventoryInteractEvent {
 	public static getBukkitClasspath(): string {
-		return 'org.bukkit.event.inventory.InventoryClickEvent'
+		return 'org.bukkit.event.inventory.InventoryClickEvent';
 	}
 
 	/**
 	 * Gets the type of slot that was clicked.
 	 */
 	getSlotType(): InventorySlotType {
-		return this.toJava().getSlotType().name()
+		return this.toJava().getSlotType().name();
 	}
 
 	/**
 	 * Gets the current ItemStack on the cursor.
 	 */
 	getCursor(): ItemStack | null {
-		return ItemStack.fromJavaNullable(this.toJava().getCursor())
+		return ItemStack.fromJavaNullable(this.toJava().getCursor());
 	}
 
 	/**
 	 * Gets the ItemStack currently in the clicked slot.
 	 */
 	getCurrentItem(): ItemStack | null {
-		return ItemStack.fromJavaNullable(this.toJava().getCurrentItem())
+		return ItemStack.fromJavaNullable(this.toJava().getCurrentItem());
 	}
 
 	/**
@@ -54,7 +54,7 @@ export class InventoryClickEvent extends InventoryInteractEvent {
 	 * @returns true if the ClickType uses the right mouse button.
 	 */
 	isRightClick(): boolean {
-		return this.toJava().isRightClick()
+		return this.toJava().isRightClick();
 	}
 
 	/**
@@ -62,7 +62,7 @@ export class InventoryClickEvent extends InventoryInteractEvent {
 	 * @returns true if the ClickType uses the left mouse button.
 	 */
 	isLeftClick(): boolean {
-		return this.toJava().isLeftClick()
+		return this.toJava().isLeftClick();
 	}
 
 	/**
@@ -70,14 +70,14 @@ export class InventoryClickEvent extends InventoryInteractEvent {
 	 * @returns true if the ClickType uses Shift or Ctrl.
 	 */
 	isShiftClick(): boolean {
-		return this.toJava().isShiftClick()
+		return this.toJava().isShiftClick();
 	}
 
 	/**
 	 * Sets the ItemStack currently in the clicked slot.
 	 */
 	setCurrentItem(item: ItemStack | null): void {
-		this.toJava().setCurrentItem(item && item.toJava())
+		this.toJava().setCurrentItem(item && item.toJava());
 	}
 
 	/**
@@ -85,22 +85,22 @@ export class InventoryClickEvent extends InventoryInteractEvent {
 	 * @returns inventory, or null if clicked outside
 	 */
 	getClickedInventory(): Inventory | null {
-		const inv = this.toJava().getClickedInventory()
-		return inv && ConstructInventory(inv)
+		const inv = this.toJava().getClickedInventory();
+		return inv && ConstructInventory(inv);
 	}
 
 	/**
 	 * The slot number that was clicked, ready for passing to Inventory.getItem(int). Note that there may be two slots with the same slot number, since a view links two different inventories.
 	 */
 	getSlot(): number {
-		return this.toJava().getSlot()
+		return this.toJava().getSlot();
 	}
 
 	/**
 	 * The raw slot number clicked. This slot number is unique for the view.
 	 */
 	getRawSlot(): number {
-		return this.toJava().getRawSlot()
+		return this.toJava().getRawSlot();
 	}
 
 	/**
@@ -108,7 +108,7 @@ export class InventoryClickEvent extends InventoryInteractEvent {
 	 * @returns the number on the key minus 1 (range 0-8); or -1 if not a NUMBER_KEY action
 	 */
 	getHotbarButton(): number {
-		return this.toJava().getHotbarButton()
+		return this.toJava().getHotbarButton();
 	}
 
 	/**
@@ -119,7 +119,7 @@ export class InventoryClickEvent extends InventoryInteractEvent {
 	 * changes must be manually applied.
 	 */
 	getAction(): InventoryAction {
-		return this.toJava().getAction().name()
+		return this.toJava().getAction().name();
 	}
 
 	/**
@@ -129,6 +129,6 @@ export class InventoryClickEvent extends InventoryInteractEvent {
 	 * @todo Give a better explination of what this means
 	 */
 	getClick(): ClickType {
-		return this.toJava().getClick().name()
+		return this.toJava().getClick().name();
 	}
 }

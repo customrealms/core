@@ -1,15 +1,15 @@
-import { ToJava } from '../runtime/ToJava'
-import { ItemStack } from './ItemStack'
+import { ToJava } from '../runtime/ToJava';
+import { ItemStack } from './ItemStack';
 
 export class ItemDrop implements ToJava {
 	public static fromJava(_item: Java.Value): ItemDrop {
-		return new ItemDrop(_item)
+		return new ItemDrop(_item);
 	}
 
 	private constructor(private _item: Java.Value) {}
 
 	public toJava(): Java.Value {
-		return this._item
+		return this._item;
 	}
 
 	/**
@@ -17,9 +17,9 @@ export class ItemDrop implements ToJava {
 	 * would be picked up by a player.
 	 */
 	public getItemStack(): ItemStack | null {
-		const javaItemStack = this._item?.getItemStack()
-		if (!javaItemStack) return null
-		return ItemStack.fromJava(javaItemStack)
+		const javaItemStack = this._item?.getItemStack();
+		if (!javaItemStack) return null;
+		return ItemStack.fromJava(javaItemStack);
 	}
 
 	/**
@@ -27,14 +27,14 @@ export class ItemDrop implements ToJava {
 	 * @param item_stack the item stack
 	 */
 	public setItemStack(item_stack: ItemStack | null): void {
-		this._item?.setItemStack((item_stack as any)?._itemstack ?? null)
+		this._item?.setItemStack((item_stack as any)?._itemstack ?? null);
 	}
 
 	/**
 	 * Gets the delay before this item drop is available to be picked up by players
 	 */
 	public getPickupDelay(): number {
-		return this._item?.getPickupDelay()
+		return this._item?.getPickupDelay();
 	}
 
 	/**
@@ -42,6 +42,6 @@ export class ItemDrop implements ToJava {
 	 * @param delay the delay in ticks
 	 */
 	public setPickupDelay(delay: number): void {
-		this._item?.setPickupDelay(delay)
+		this._item?.setPickupDelay(delay);
 	}
 }

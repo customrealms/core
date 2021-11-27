@@ -1,7 +1,7 @@
-import { HumanEntity } from '../../entity/types/HumanEntity'
-import { ItemStack } from '../../material/ItemStack'
-import { EquipmentSlot } from '../EquipmentSlot'
-import { Inventory } from '../Inventory'
+import { HumanEntity } from '../../entity/types/HumanEntity';
+import { ItemStack } from '../../material/ItemStack';
+import { EquipmentSlot } from '../EquipmentSlot';
+import { Inventory } from '../Inventory';
 
 export class PlayerInventory extends Inventory {
 	/**
@@ -9,25 +9,25 @@ export class PlayerInventory extends Inventory {
 	 */
 	public getArmorContents(): ItemStack[] {
 		// TODO: Not implemented
-		return []
+		return [];
 	}
 
 	/**
 	 * Gets the item in the boots slot
 	 */
 	public getBoots(): ItemStack | null {
-		const javaItem = this.toJava().getBoots()
-		if (!javaItem) return null
-		return ItemStack.fromJava(javaItem)
+		const javaItem = this.toJava().getBoots();
+		if (!javaItem) return null;
+		return ItemStack.fromJava(javaItem);
 	}
 
 	/**
 	 * Gets the item in the chestplate slot
 	 */
 	public getChestplate(): ItemStack | null {
-		const javaItem = this.toJava().getChestplate()
-		if (!javaItem) return null
-		return ItemStack.fromJava(javaItem)
+		const javaItem = this.toJava().getChestplate();
+		if (!javaItem) return null;
+		return ItemStack.fromJava(javaItem);
 	}
 
 	/**
@@ -35,23 +35,23 @@ export class PlayerInventory extends Inventory {
 	 */
 	public getExtraContents(): ItemStack[] {
 		// TODO: Not implemented
-		return null as any
+		return null as any;
 	}
 
 	/**
 	 * Gets the slot index of the item currently being held
 	 */
 	public getHeldItemSlot(): number {
-		return this.toJava().getHeldItemSlot()
+		return this.toJava().getHeldItemSlot();
 	}
 
 	/**
 	 * Gets the item in the helmet slot
 	 */
 	public getHelmet(): ItemStack | null {
-		const javaItem = this.toJava().getHelmet()
-		if (!javaItem) return null
-		return ItemStack.fromJava(javaItem)
+		const javaItem = this.toJava().getHelmet();
+		if (!javaItem) return null;
+		return ItemStack.fromJava(javaItem);
 	}
 
 	/**
@@ -59,7 +59,7 @@ export class PlayerInventory extends Inventory {
 	 */
 	public getHolder(): HumanEntity | null {
 		// TODO: Not implemented
-		return null as any
+		return null as any;
 	}
 
 	/**
@@ -68,34 +68,34 @@ export class PlayerInventory extends Inventory {
 	 */
 	public getItemInSlot(slot: EquipmentSlot): ItemStack | null {
 		// TODO: Not implemented
-		return null as any
+		return null as any;
 	}
 
 	/**
 	 * Gets the item in the main hand
 	 */
 	public getItemInMainHand(): ItemStack | null {
-		const javaItem = this.toJava().getItemInMainHand()
-		if (!javaItem) return null
-		return ItemStack.fromJava(javaItem)
+		const javaItem = this.toJava().getItemInMainHand();
+		if (!javaItem) return null;
+		return ItemStack.fromJava(javaItem);
 	}
 
 	/**
 	 * Gets the item in the off hand
 	 */
 	public getItemInOffHand(): ItemStack | null {
-		const javaItem = this.toJava().getItemInOffHand()
-		if (!javaItem) return null
-		return ItemStack.fromJava(javaItem)
+		const javaItem = this.toJava().getItemInOffHand();
+		if (!javaItem) return null;
+		return ItemStack.fromJava(javaItem);
 	}
 
 	/**
 	 * Gets the item in the leggings slot
 	 */
 	public getLeggings(): ItemStack | null {
-		const javaItem = this.toJava().getLeggings()
-		if (!javaItem) return null
-		return ItemStack.fromJava(javaItem)
+		const javaItem = this.toJava().getLeggings();
+		if (!javaItem) return null;
+		return ItemStack.fromJava(javaItem);
 	}
 
 	/**
@@ -104,7 +104,7 @@ export class PlayerInventory extends Inventory {
 	 */
 	public setArmorContents(items: ItemStack[] | null): void {
 		// TODO: Not implemented
-		return null as any
+		return null as any;
 	}
 
 	/**
@@ -112,7 +112,7 @@ export class PlayerInventory extends Inventory {
 	 * @param item the item to set
 	 */
 	public setBoots(item: ItemStack | null): void {
-		this.toJava().setBoots(item?.toJava() ?? null)
+		this.toJava().setBoots(item?.toJava() ?? null);
 	}
 
 	/**
@@ -120,7 +120,7 @@ export class PlayerInventory extends Inventory {
 	 * @param item the item to set
 	 */
 	public setChestplate(item: ItemStack | null): void {
-		this.toJava().setChestplate(item?.toJava() ?? null)
+		this.toJava().setChestplate(item?.toJava() ?? null);
 	}
 
 	/**
@@ -129,7 +129,7 @@ export class PlayerInventory extends Inventory {
 	 */
 	public setExtraContents(items: ItemStack[]): void {
 		// TODO: Not implemented
-		return null as any
+		return null as any;
 	}
 
 	/**
@@ -137,7 +137,7 @@ export class PlayerInventory extends Inventory {
 	 * @param slot the slit index
 	 */
 	public setHeldItemSlot(slot: number): void {
-		this.toJava().setHeldItemSlot(slot)
+		this.toJava().setHeldItemSlot(slot);
 	}
 
 	/**
@@ -145,7 +145,7 @@ export class PlayerInventory extends Inventory {
 	 * @param item the item to set
 	 */
 	public setHelmet(item: ItemStack | null): void {
-		this.toJava().setHelmet(item?.toJava() ?? null)
+		this.toJava().setHelmet(item?.toJava() ?? null);
 	}
 
 	/**
@@ -155,7 +155,7 @@ export class PlayerInventory extends Inventory {
 	 */
 	public setItem(slot: number | EquipmentSlot, item: ItemStack | null): void {
 		// TODO: Not implemented
-		return null as any
+		return null as any;
 	}
 
 	/**
@@ -163,7 +163,7 @@ export class PlayerInventory extends Inventory {
 	 * @param item the item to set
 	 */
 	public setItemInMainHand(item: ItemStack | null): void {
-		this.toJava().setItemInMainHand(item?.toJava() ?? null)
+		this.toJava().setItemInMainHand(item?.toJava() ?? null);
 	}
 
 	/**
@@ -171,7 +171,7 @@ export class PlayerInventory extends Inventory {
 	 * @param item the item to set
 	 */
 	public setItemInOffHand(item: ItemStack | null): void {
-		this.toJava().setItemInOffHand(item?.toJava() ?? null)
+		this.toJava().setItemInOffHand(item?.toJava() ?? null);
 	}
 
 	/**
@@ -179,6 +179,6 @@ export class PlayerInventory extends Inventory {
 	 * @param item the item to set
 	 */
 	public setLeggings(item: ItemStack | null): void {
-		this.toJava().setLeggings(item?.toJava() ?? null)
+		this.toJava().setLeggings(item?.toJava() ?? null);
 	}
 }

@@ -36,4 +36,4 @@ export type EnchantmentName =
 	| 'sweeping_edge'
 	| 'thorns'
 	| 'vanishing_curse'
-	| 'water_worker'
+	| 'water_worker';

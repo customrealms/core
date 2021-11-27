@@ -1,6 +1,6 @@
-import { Extends } from '../../runtime/Extends'
-import { ToJava } from '../../runtime/ToJava'
-import { Entity } from './Entity'
+import { Extends } from '../../runtime/Extends';
+import { ToJava } from '../../runtime/ToJava';
+import { Entity } from './Entity';
 
 export interface LightningStrike extends Entity {}
 
@@ -15,7 +15,7 @@ export class LightningStrike implements ToJava {
 	 * @returns the wrapped entity value
 	 */
 	public static fromJava(_lightning: Java.Value): LightningStrike {
-		return new LightningStrike(_lightning)
+		return new LightningStrike(_lightning);
 	}
 
 	private constructor(private _lightning: Java.Value) {}
@@ -25,13 +25,13 @@ export class LightningStrike implements ToJava {
 	 * @returns the underlying Java value
 	 */
 	public toJava(): Java.Value {
-		return this._lightning
+		return this._lightning;
 	}
 
 	/**
 	 * Returns whether the strike is an effect that does no damage.
 	 */
 	public isEffect(): boolean {
-		return this.toJava().isEffect()
+		return this.toJava().isEffect();
 	}
 }

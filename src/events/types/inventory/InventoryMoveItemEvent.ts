@@ -1,8 +1,8 @@
-import { Inventory } from '../../../inventory/Inventory'
-import { ConstructInventory } from '../../../inventory/InventoryConstructors'
-import { ItemStack } from '../../../material/ItemStack'
-import { Cancellable } from '../../Cancellable'
-import { Event } from '../Event'
+import { Inventory } from '../../../inventory/Inventory';
+import { ConstructInventory } from '../../../inventory/InventoryConstructors';
+import { ItemStack } from '../../../material/ItemStack';
+import { Cancellable } from '../../Cancellable';
+import { Event } from '../Event';
 
 /**
  * Called when some entity or block (e.g. hopper) tries to move items directly from one inventory to another.
@@ -15,21 +15,21 @@ import { Event } from '../Event'
  */
 export class InventoryMoveItemEvent extends Event implements Cancellable {
 	public static getBukkitClasspath(): string {
-		return 'org.bukkit.event.inventory.InventoryMoveItemEvent'
+		return 'org.bukkit.event.inventory.InventoryMoveItemEvent';
 	}
 
 	/**
 	 * Gets the Inventory that the ItemStack is being taken from
 	 */
 	getSource(): Inventory {
-		return ConstructInventory(this.toJava().getSource())
+		return ConstructInventory(this.toJava().getSource());
 	}
 
 	/**
 	 * Gets the ItemStack being moved; if modified, the original item will not be removed from the source inventory.
 	 */
 	getItem(): ItemStack {
-		return ItemStack.fromJava(this.toJava().getItem())
+		return ItemStack.fromJava(this.toJava().getItem());
 	}
 
 	/**
@@ -37,28 +37,28 @@ export class InventoryMoveItemEvent extends Event implements Cancellable {
 	 * @param item The ItemStack
 	 */
 	setItem(item: ItemStack): void {
-		this.toJava().setItem(item.toJava())
+		this.toJava().setItem(item.toJava());
 	}
 
 	/**
 	 * Gets the Inventory that the ItemStack is being put into
 	 */
 	getDestination(): Inventory {
-		return ConstructInventory(this.toJava().getDestination())
+		return ConstructInventory(this.toJava().getDestination());
 	}
 
 	/**
 	 * Gets the Inventory that initiated the transfer. This will always be either the destination or source Inventory.
 	 */
 	getInitiator(): Inventory {
-		return ConstructInventory(this.toJava().getInitiator())
+		return ConstructInventory(this.toJava().getInitiator());
 	}
 
 	public isCancelled(): boolean {
-		return this.toJava().isCancelled()
+		return this.toJava().isCancelled();
 	}
 
 	public setCancelled(cancel: boolean): void {
-		this.toJava().setCancelled(cancel)
+		this.toJava().setCancelled(cancel);
 	}
 }

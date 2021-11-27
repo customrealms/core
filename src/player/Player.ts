@@ -1,26 +1,26 @@
-import { ChatColor } from '../chat/ChatColor'
-import { HumanEntity } from '../entity/types/HumanEntity'
-import { Enchantment } from '../material/Enchantment'
-import { EnchantmentName } from '../material/EnchantmentName'
-import { ItemStack } from '../material/ItemStack'
-import { Material } from '../material/Material'
-import { ApplyMixins } from '../runtime/ApplyMixins'
-import { ToJava } from '../runtime/ToJava'
-import { Instrument } from '../sound/Instrument'
-import { Note } from '../sound/Note'
-import { Pitch } from '../sound/Pitch'
-import { Location } from '../util/Location'
-import { World } from '../world/World'
+import { ChatColor } from '../chat/ChatColor';
+import { HumanEntity } from '../entity/types/HumanEntity';
+import { Enchantment } from '../material/Enchantment';
+import { EnchantmentName } from '../material/EnchantmentName';
+import { ItemStack } from '../material/ItemStack';
+import { Material } from '../material/Material';
+import { ApplyMixins } from '../runtime/ApplyMixins';
+import { ToJava } from '../runtime/ToJava';
+import { Instrument } from '../sound/Instrument';
+import { Note } from '../sound/Note';
+import { Pitch } from '../sound/Pitch';
+import { Location } from '../util/Location';
+import { World } from '../world/World';
 
 export class Player implements ToJava {
 	public static fromJava(_player: Java.Value): Player {
-		return new Player(_player)
+		return new Player(_player);
 	}
 
 	private constructor(private _player: Java.Value) {}
 
 	public toJava(): Java.Value {
-		return this._player
+		return this._player;
 	}
 
 	/**
@@ -28,21 +28,21 @@ export class Player implements ToJava {
 	 * @param message the message to send (parts concatenated)
 	 */
 	public sendMessage(...message: (string | ChatColor)[]): void {
-		this.toJava().sendMessage(message.join(''))
+		this.toJava().sendMessage(message.join(''));
 	}
 
 	/**
 	 * Determines if the player is currently online
 	 */
 	public isOnline(): boolean {
-		return this.toJava().isOnline()
+		return this.toJava().isOnline();
 	}
 
 	/**
 	 * Determines if flight is enabled for the player
 	 */
 	public getAllowFlight(): boolean {
-		return this.toJava().getAllowFlight()
+		return this.toJava().getAllowFlight();
 	}
 
 	/**
@@ -50,7 +50,7 @@ export class Player implements ToJava {
 	 * @param allow_flight whether or not to allow flight
 	 */
 	public setAllowFlight(allow_flight: boolean): void {
-		this.toJava().setAllowFlight(allow_flight)
+		this.toJava().setAllowFlight(allow_flight);
 	}
 
 	/**
@@ -58,14 +58,14 @@ export class Player implements ToJava {
 	 * @param reason the reason to show to the player
 	 */
 	public kick(reason?: string): void {
-		this.toJava().kickPlayer(reason ?? 'You have been kicked')
+		this.toJava().kickPlayer(reason ?? 'You have been kicked');
 	}
 
 	/**
 	 * Checks if the player has played on the server before
 	 */
 	public hasPlayedBefore(): boolean {
-		return this.toJava().hasPlayedBefore()
+		return this.toJava().hasPlayedBefore();
 	}
 
 	/**
@@ -73,22 +73,22 @@ export class Player implements ToJava {
 	 * @param other the other player
 	 */
 	public canSee(other: Player): boolean {
-		return this.toJava().canSee(other.toJava())
+		return this.toJava().canSee(other.toJava());
 	}
 
 	/**
 	 * Gets the view distance of the client
 	 */
 	public getClientViewDistance(): number {
-		return this.toJava().getClientViewDistance()
+		return this.toJava().getClientViewDistance();
 	}
 
 	/**
 	 * Gets the most recently set compass target
 	 */
 	public getCompassTarget(): Location {
-		const javaLoc = this.toJava().getCompassTarget()
-		const javaWorld = javaLoc.getWorld()
+		const javaLoc = this.toJava().getCompassTarget();
+		const javaWorld = javaLoc.getWorld();
 		return new Location(
 			javaWorld ? World.fromJava(javaWorld) : null,
 			javaLoc.getX(),
@@ -96,7 +96,7 @@ export class Player implements ToJava {
 			javaLoc.getZ(),
 			javaLoc.getYaw(),
 			javaLoc.getPitch()
-		)
+		);
 	}
 
 	/**
@@ -104,14 +104,14 @@ export class Player implements ToJava {
 	 * @param location the target location
 	 */
 	public setCompassTarget(location: Location): void {
-		this.toJava().setCompassTarget(location.toJava())
+		this.toJava().setCompassTarget(location.toJava());
 	}
 
 	/**
 	 * Gets the current display name of the player
 	 */
 	public getDisplayName(): string {
-		return this.toJava().getDisplayName()
+		return this.toJava().getDisplayName();
 	}
 
 	/**
@@ -119,14 +119,14 @@ export class Player implements ToJava {
 	 * @param name the name to display
 	 */
 	public setDisplayName(name: string): void {
-		this.toJava().setDisplayName(name)
+		this.toJava().setDisplayName(name);
 	}
 
 	/**
 	 * Gets the current exhaustion level of the player
 	 */
 	public getExhaustion(): number {
-		return this.toJava().getExhaustion()
+		return this.toJava().getExhaustion();
 	}
 
 	/**
@@ -134,14 +134,14 @@ export class Player implements ToJava {
 	 * @param exhaustion the exhaustion level
 	 */
 	public setExhaustion(exhaustion: number): void {
-		this.toJava().setExhaustion(exhaustion)
+		this.toJava().setExhaustion(exhaustion);
 	}
 
 	/**
 	 * Gets the player's current experience points toward the next level
 	 */
 	public getExp(): number {
-		return this.toJava().getExp()
+		return this.toJava().getExp();
 	}
 
 	/**
@@ -149,7 +149,7 @@ export class Player implements ToJava {
 	 * @param exp the exp points
 	 */
 	public setExp(exp: number): void {
-		this.toJava().setExp(exp)
+		this.toJava().setExp(exp);
 	}
 
 	/**
@@ -157,14 +157,14 @@ export class Player implements ToJava {
 	 * @param flying the flying status
 	 */
 	public setFlying(flying: boolean): void {
-		this.toJava().setFlying(flying)
+		this.toJava().setFlying(flying);
 	}
 
 	/**
 	 * Gets the current maximum fly speed of the player
 	 */
 	public getFlySpeed(): number {
-		return this.toJava().getFlySpeed()
+		return this.toJava().getFlySpeed();
 	}
 
 	/**
@@ -172,14 +172,14 @@ export class Player implements ToJava {
 	 * @param speed the flying speed
 	 */
 	public setFlySpeed(speed: number): void {
-		this.toJava().setFlySpeed(speed)
+		this.toJava().setFlySpeed(speed);
 	}
 
 	/**
 	 * Gets the player's current food level
 	 */
 	public getFoodLevel(): number {
-		return this.toJava().getFoodLevel()
+		return this.toJava().getFoodLevel();
 	}
 
 	/**
@@ -187,14 +187,14 @@ export class Player implements ToJava {
 	 * @param food_level the food level
 	 */
 	public setFoodLevel(food_level: number): void {
-		this.toJava().setFoodLevel(food_level)
+		this.toJava().setFoodLevel(food_level);
 	}
 
 	/**
 	 * Gets the number that health is scaled to for the client
 	 */
 	public getHealthScale(): number {
-		return this.toJava().getHealthScale()
+		return this.toJava().getHealthScale();
 	}
 
 	/**
@@ -202,7 +202,7 @@ export class Player implements ToJava {
 	 * @param scale the scale value
 	 */
 	public setHealthScale(scale: number): void {
-		this.toJava().setHealthScale(scale)
+		this.toJava().setHealthScale(scale);
 	}
 
 	/**
@@ -210,14 +210,14 @@ export class Player implements ToJava {
 	 * @param scaled the scaled status
 	 */
 	public setHealthScaled(scaled: boolean): void {
-		this.toJava().setHealthScaled(scaled)
+		this.toJava().setHealthScaled(scaled);
 	}
 
 	/**
 	 * Gets the player's current experience level
 	 */
 	public getLevel(): number {
-		return this.toJava().getLevel()
+		return this.toJava().getLevel();
 	}
 
 	/**
@@ -225,14 +225,14 @@ export class Player implements ToJava {
 	 * @param level the experience level
 	 */
 	public setLevel(level: number): void {
-		this.toJava().setLevel(level)
+		this.toJava().setLevel(level);
 	}
 
 	/**
 	 * Gets the currently displayed player list footer for this player
 	 */
 	public getPlayerListFooter(): string | null {
-		return this.toJava().getPlayerListFooter()
+		return this.toJava().getPlayerListFooter();
 	}
 
 	/**
@@ -240,14 +240,14 @@ export class Player implements ToJava {
 	 * @param footer the footer string
 	 */
 	public setPlayerListFooter(footer: string | null): void {
-		this.toJava().setPlayerListFooter(footer)
+		this.toJava().setPlayerListFooter(footer);
 	}
 
 	/**
 	 * Gets the currently displayed player list header for this player
 	 */
 	public getPlayerListHeader(): string | null {
-		return this.toJava().getPlayerListHeader()
+		return this.toJava().getPlayerListHeader();
 	}
 
 	/**
@@ -255,14 +255,14 @@ export class Player implements ToJava {
 	 * @param header the header string
 	 */
 	public setPlayerListHeader(header: string | null): void {
-		this.toJava().setPlayerListHeader(header)
+		this.toJava().setPlayerListHeader(header);
 	}
 
 	/**
 	 * Gets the name that is shown on the player list for this player
 	 */
 	public getPlayerListName(): string {
-		return this.toJava().getPlayerListName()
+		return this.toJava().getPlayerListName();
 	}
 
 	/**
@@ -270,14 +270,14 @@ export class Player implements ToJava {
 	 * @param name the player name
 	 */
 	public setPlayerListName(name: string | null): void {
-		this.toJava().setPlayerListName(name)
+		this.toJava().setPlayerListName(name);
 	}
 
 	/**
 	 * Gets the player's current timestamp
 	 */
 	public getPlayerTime(): number {
-		return this.toJava().getPlayerTime()
+		return this.toJava().getPlayerTime();
 	}
 
 	/**
@@ -286,14 +286,14 @@ export class Player implements ToJava {
 	 * @param relative whether or not the player time is relative
 	 */
 	public setPlayerTime(player_time: number, relative: boolean): void {
-		this.toJava().setPlayerTime(player_time, relative)
+		this.toJava().setPlayerTime(player_time, relative);
 	}
 
 	/**
 	 * Gets the player's current time offset relative to the server
 	 */
 	public getPlayerTimeOffset(): number {
-		return this.toJava().getPlayerTimeOffset()
+		return this.toJava().getPlayerTimeOffset();
 	}
 
 	// getPlayerWeather(): WeatherType;
@@ -305,15 +305,15 @@ export class Player implements ToJava {
 	 * @param hash the checksum for the resource pack
 	 */
 	public setResourcePack(url: string, hash?: string): void {
-		if (hash) this.toJava().setResourcePack(url, hash)
-		else this.toJava().setResourcePack(url)
+		if (hash) this.toJava().setResourcePack(url, hash);
+		else this.toJava().setResourcePack(url);
 	}
 
 	/**
 	 * Gets the player's current saturation level
 	 */
 	public getSaturation(): number {
-		return this.toJava().getSaturation()
+		return this.toJava().getSaturation();
 	}
 
 	/**
@@ -321,7 +321,7 @@ export class Player implements ToJava {
 	 * @param saturation the saturation level
 	 */
 	public setSaturation(saturation: number): void {
-		this.toJava().setSaturation(saturation)
+		this.toJava().setSaturation(saturation);
 	}
 
 	// getScoreboard(): Scoreboard;
@@ -342,7 +342,7 @@ export class Player implements ToJava {
 	 * Gets the total experience points for the player
 	 */
 	public getTotalExperience(): number {
-		return this.toJava().getTotalExperience()
+		return this.toJava().getTotalExperience();
 	}
 
 	/**
@@ -350,14 +350,14 @@ export class Player implements ToJava {
 	 * @param experience the total experience points
 	 */
 	public setTotalExperience(experience: number): void {
-		this.toJava().setTotalExperience(experience)
+		this.toJava().setTotalExperience(experience);
 	}
 
 	/**
 	 * Gets the current maximum walk speed for the player
 	 */
 	public getWalkSpeed(): number {
-		return this.toJava().getWalkSpeed()
+		return this.toJava().getWalkSpeed();
 	}
 
 	/**
@@ -365,7 +365,7 @@ export class Player implements ToJava {
 	 * @param speed the speed value
 	 */
 	public setWalkSpeed(speed: number): void {
-		this.toJava().setWalkSpeed(speed)
+		this.toJava().setWalkSpeed(speed);
 	}
 
 	/**
@@ -373,7 +373,7 @@ export class Player implements ToJava {
 	 * @param amount the amount of experience to award
 	 */
 	public giveExp(amount: number): void {
-		this.toJava().giveExp(amount)
+		this.toJava().giveExp(amount);
 	}
 
 	/**
@@ -381,28 +381,28 @@ export class Player implements ToJava {
 	 * @param amount the number of levels to award
 	 */
 	public giveExpLevels(amount: number): void {
-		this.toJava().giveExpLevels(amount)
+		this.toJava().giveExpLevels(amount);
 	}
 
 	/**
 	 * Checks if this player is currently flying
 	 */
 	public isFlying(): boolean {
-		return this.toJava().isFlying()
+		return this.toJava().isFlying();
 	}
 
 	/**
 	 * Checks if the player's health is displayed on a scale from 0 to getHealthScale()
 	 */
 	public isHealthScaled(): boolean {
-		return this.toJava().isHealthScaled()
+		return this.toJava().isHealthScaled();
 	}
 
 	/**
 	 * Returns whether the player is sleeping ignored
 	 */
 	public isSleepingIgnored(): boolean {
-		return this.toJava().isSleepingIgnored()
+		return this.toJava().isSleepingIgnored();
 	}
 
 	/**
@@ -412,14 +412,14 @@ export class Player implements ToJava {
 	 * @param ignored the ignored status
 	 */
 	public setSleepingIgnored(ignored: boolean): void {
-		this.toJava().setSleepingIgnored(ignored)
+		this.toJava().setSleepingIgnored(ignored);
 	}
 
 	/**
 	 * Checks if the player is currently in sneak mode
 	 */
 	public isSneaking(): boolean {
-		return this.toJava().isSneaking()
+		return this.toJava().isSneaking();
 	}
 
 	/**
@@ -427,14 +427,14 @@ export class Player implements ToJava {
 	 * @param sneaking the sneaking status
 	 */
 	public setSneaking(sneaking: boolean): void {
-		this.toJava().setSneaking(sneaking)
+		this.toJava().setSneaking(sneaking);
 	}
 
 	/**
 	 * Checks if the player is currently sprinting
 	 */
 	public isSprinting(): boolean {
-		return this.toJava().isSprinting()
+		return this.toJava().isSprinting();
 	}
 
 	/**
@@ -442,7 +442,7 @@ export class Player implements ToJava {
 	 * @param sprinting the sprinting status
 	 */
 	public setSprinting(sprinting: boolean): void {
-		this.toJava().setSprinting(sprinting)
+		this.toJava().setSprinting(sprinting);
 	}
 
 	// /**
@@ -464,16 +464,16 @@ export class Player implements ToJava {
 				? Java.resolve('org.bukkit.Note').flat
 				: note.pitch === Pitch.SHARP
 				? Java.resolve('org.bukkit.Note').sharp
-				: Java.resolve('org.bukkit.Note').natural
+				: Java.resolve('org.bukkit.Note').natural;
 		const javaNote = noteFactory(
 			note.octave,
 			Java.resolve('org.bukkit.Note.Tone').valueOf(note.tone)
-		)
+		);
 		this.toJava().playNode(
 			this.getLocation().toJava(),
 			Java.resolve('org.bukkit.Instrument').valueOf(instrument),
 			javaNote
-		)
+		);
 	}
 
 	/**
@@ -489,14 +489,14 @@ export class Player implements ToJava {
 		volume: number,
 		pitch: number
 	): void {
-		this.toJava().playSound(location.toJava(), sound, volume, pitch)
+		this.toJava().playSound(location.toJava(), sound, volume, pitch);
 	}
 
 	/**
 	 * Resets the title displayed to the player
 	 */
 	public resetTitle(): void {
-		this.toJava().resetTitle()
+		this.toJava().resetTitle();
 	}
 
 	/**
@@ -514,7 +514,7 @@ export class Player implements ToJava {
 		stay: number,
 		fadeOut: number
 	): void {
-		this.toJava().sendTitle(title, subtitle, fadeIn, stay, fadeOut)
+		this.toJava().sendTitle(title, subtitle, fadeIn, stay, fadeOut);
 	}
 
 	/**
@@ -522,7 +522,7 @@ export class Player implements ToJava {
 	 * @param permission name of the permission
 	 */
 	public hasPermission(permission: string): boolean {
-		return this.toJava().hasPermission(permission)
+		return this.toJava().hasPermission(permission);
 	}
 
 	/**
@@ -535,28 +535,28 @@ export class Player implements ToJava {
 			'netherite_chestplate',
 			'netherite_leggings',
 			'netherite_boots',
-		]
+		];
 		for (const item_name of items) {
-			const mat = Material.withName(item_name)
-			if (!mat) continue
-			const item = ItemStack.create(mat, 1)
+			const mat = Material.withName(item_name);
+			if (!mat) continue;
+			const item = ItemStack.create(mat, 1);
 			enchantments
 				?.map((ench_name) => Enchantment.withName(ench_name))
 				?.filter((ench): ench is Enchantment => !!ench)
 				?.forEach((ench) =>
 					item.addEnchantment(ench, ench.getMaxLevel())
-				)
+				);
 			if (item_name.endsWith('_helmet'))
-				this.getInventory().setHelmet(item)
+				this.getInventory().setHelmet(item);
 			else if (item_name.endsWith('_chestplate'))
-				this.getInventory().setChestplate(item)
+				this.getInventory().setChestplate(item);
 			else if (item_name.endsWith('_leggings'))
-				this.getInventory().setLeggings(item)
+				this.getInventory().setLeggings(item);
 			else if (item_name.endsWith('_boots'))
-				this.getInventory().setBoots(item)
+				this.getInventory().setBoots(item);
 		}
 	}
 }
 
 export interface Player extends HumanEntity {}
-ApplyMixins(Player, [HumanEntity])
+ApplyMixins(Player, [HumanEntity]);

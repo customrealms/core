@@ -1,13 +1,13 @@
-import { BlockFace } from '../../block/BlockFace'
-import { PistonMoveReaction } from '../../block/PistonMoveReaction'
-import { EntityDamageEvent } from '../../events/types/entity/EntityDamageEvent'
-import { ToJava } from '../../runtime/ToJava'
-import { Location } from '../../util/Location'
-import { Vector } from '../../util/Vector'
-import { World } from '../../world/World'
-import { ConstructEntity } from '../EntityConstructors'
-import { EntityType } from '../EntityType'
-import { Pose } from '../Pose'
+import { BlockFace } from '../../block/BlockFace';
+import { PistonMoveReaction } from '../../block/PistonMoveReaction';
+import { EntityDamageEvent } from '../../events/types/entity/EntityDamageEvent';
+import { ToJava } from '../../runtime/ToJava';
+import { Location } from '../../util/Location';
+import { Vector } from '../../util/Vector';
+import { World } from '../../world/World';
+import { ConstructEntity } from '../EntityConstructors';
+import { EntityType } from '../EntityType';
+import { Pose } from '../Pose';
 
 export class Entity implements ToJava {
 	/**
@@ -16,13 +16,13 @@ export class Entity implements ToJava {
 	 * @returns the entity, wrapped in the appropriate subclass for its EntityType
 	 */
 	public static fromJava(_entity: Java.Value): Entity {
-		return new Entity(_entity)
+		return new Entity(_entity);
 	}
 
 	private constructor(private _java: Java.Value) {}
 
 	public toJava(): Java.Value {
-		return this._java
+		return this._java;
 	}
 
 	/**
@@ -30,7 +30,7 @@ export class Entity implements ToJava {
 	 * @param passenger the passenger to add
 	 */
 	public addPassenger(passenger: Entity): boolean {
-		return this.toJava().addPassenger(passenger.toJava())
+		return this.toJava().addPassenger(passenger.toJava());
 	}
 
 	/**
@@ -38,14 +38,14 @@ export class Entity implements ToJava {
 	 * @param tag the tag
 	 */
 	public addScoreboardTag(tag: string): boolean {
-		return this.toJava().addScoreboardTag(tag)
+		return this.toJava().addScoreboardTag(tag);
 	}
 
 	/**
 	 * Ejects any passenger, at random
 	 */
 	public eject(): boolean {
-		return this.toJava().eject()
+		return this.toJava().eject();
 	}
 
 	// /**
@@ -57,52 +57,52 @@ export class Entity implements ToJava {
 	 * Returns a unique identifier for this entity
 	 */
 	public getEntityId(): number {
-		return this.toJava().getEntityId()
+		return this.toJava().getEntityId();
 	}
 
 	/**
 	 * Gets the closest cardinal direction this entity is facing
 	 */
 	public getFacing(): BlockFace {
-		return BlockFace.named(this.toJava().getFacing().name())!
+		return BlockFace.named(this.toJava().getFacing().name()) as BlockFace;
 	}
 
 	/**
 	 * Gets the distance this entity has fallen
 	 */
 	public getFallDistance(): number {
-		return this.toJava().getFallDistance()
+		return this.toJava().getFallDistance();
 	}
 
 	/**
 	 * Gets the number of ticks before this entity stops being on fire
 	 */
 	public getFireTicks(): number {
-		return this.toJava().getFireTicks()
+		return this.toJava().getFireTicks();
 	}
 
 	/**
 	 * Gets the height of the entity
 	 */
 	public getHeight(): number {
-		return this.toJava().getHeight()
+		return this.toJava().getHeight();
 	}
 
 	/**
 	 * Gets the last damage event inflicted on this entity
 	 */
 	public getLastDamageCause(): EntityDamageEvent | null {
-		const javaEvent = this.toJava().getLastDamageCause()
-		if (!javaEvent) return null
-		return new EntityDamageEvent(javaEvent)
+		const javaEvent = this.toJava().getLastDamageCause();
+		if (!javaEvent) return null;
+		return new EntityDamageEvent(javaEvent);
 	}
 
 	/**
 	 * Gets the current location of the entity
 	 */
 	public getLocation(): Location {
-		const javaLoc = this.toJava().getLocation()
-		const javaWorld = javaLoc.getWorld()
+		const javaLoc = this.toJava().getLocation();
+		const javaWorld = javaLoc.getWorld();
 		return new Location(
 			javaWorld ? World.fromJava(javaWorld) : null,
 			javaLoc.getX(),
@@ -110,14 +110,14 @@ export class Entity implements ToJava {
 			javaLoc.getZ(),
 			javaLoc.getYaw(),
 			javaLoc.getPitch()
-		)
+		);
 	}
 
 	/**
 	 * Gets the maximum fire ticks for this entity
 	 */
 	public getMaxFireTicks(): number {
-		return this.toJava().getMaxFireTicks()
+		return this.toJava().getMaxFireTicks();
 	}
 
 	// /**
@@ -135,23 +135,23 @@ export class Entity implements ToJava {
 	 * Gets the array of passengers to this entity
 	 */
 	public getPassengers(): Entity[] {
-		const javaPassengers: Java.Value[] = this.toJava().getPassengers()
-		if (!javaPassengers) return []
-		return javaPassengers.map(ConstructEntity)
+		const javaPassengers: Java.Value[] = this.toJava().getPassengers();
+		if (!javaPassengers) return [];
+		return javaPassengers.map(ConstructEntity);
 	}
 
 	/**
 	 * Gets the reaction of this entity when moved by a piston
 	 */
 	public getPistonMoveReaction(): PistonMoveReaction {
-		return this.toJava().getPistonMoveReaction().name()
+		return this.toJava().getPistonMoveReaction().name();
 	}
 
 	/**
 	 * Gets the number of ticks before this entity can use a portal
 	 */
 	public getPortalCooldown(): number {
-		return this.toJava().getPortalCooldown()
+		return this.toJava().getPortalCooldown();
 	}
 
 	/**
@@ -159,7 +159,7 @@ export class Entity implements ToJava {
 	 */
 	public getPose(): Pose {
 		// TODO: check that this actually works
-		return this.toJava().getPose()
+		return this.toJava().getPose();
 	}
 
 	// /**
@@ -174,135 +174,135 @@ export class Entity implements ToJava {
 	 * Gets the number of ticks that this entity has lived
 	 */
 	public getTicksLived(): number {
-		return this.toJava().getTicksLived()
+		return this.toJava().getTicksLived();
 	}
 
 	/**
 	 * Gets the type of this entity
 	 */
 	public getType(): EntityType {
-		return this.toJava().getType().name()
+		return this.toJava().getType().name();
 	}
 
 	/**
 	 * Gets the UUID of this entity
 	 */
 	public getUUID(): string {
-		return this.toJava().getUniqueId().toString()
+		return this.toJava().getUniqueId().toString();
 	}
 
 	/**
 	 * Gets the vehicle of which this entity is a passenger
 	 */
 	public getVehicle(): Entity | null {
-		const javaEntity = this.toJava().getVehicle()
-		if (!javaEntity) return null
+		const javaEntity = this.toJava().getVehicle();
+		if (!javaEntity) return null;
 		// TODO(connerdouglass): I don't think we can use `ConstructEntity` here because it will reintroduce the circular dependency issue
-		return Entity.fromJava(javaEntity)
+		return Entity.fromJava(javaEntity);
 	}
 
 	/**
 	 * Gets the current velocity of this vector
 	 */
 	public getVelocity(): Vector {
-		const javaVelocity = this.toJava().getVelocity()
+		const javaVelocity = this.toJava().getVelocity();
 		return new Vector(
 			javaVelocity.getX(),
 			javaVelocity.getY(),
 			javaVelocity.getZ()
-		)
+		);
 	}
 
 	/**
 	 * Gets the width of this entity
 	 */
 	public getWidth(): number {
-		return this.toJava().getWidth()
+		return this.toJava().getWidth();
 	}
 
 	/**
 	 * Gets the world in which this entity currently resides
 	 */
 	public getWorld(): World {
-		const javaWorld = this.toJava().getWorld()
-		return World.fromJava(javaWorld)
+		const javaWorld = this.toJava().getWorld();
+		return World.fromJava(javaWorld);
 	}
 
 	/**
 	 * Determines whether or not this entity is affected by gravity
 	 */
 	public hasGravity(): boolean {
-		return this.toJava().hasGravity()
+		return this.toJava().hasGravity();
 	}
 
 	/**
 	 * Checks whether or not the entity's custom name is displayed
 	 */
 	public isCustomNameVisible(): boolean {
-		return this.toJava().isCustomNameVisible()
+		return this.toJava().isCustomNameVisible();
 	}
 
 	/**
 	 * Checks if this entity is currently dead
 	 */
 	public isDead(): boolean {
-		return this.toJava().isDead()
+		return this.toJava().isDead();
 	}
 
 	/**
 	 * Checks if the entity has any passengers
 	 */
 	public hasPassengers(): boolean {
-		return this.toJava().hasPassengers()
+		return this.toJava().hasPassengers();
 	}
 
 	/**
 	 * Checks if the entity is glowing
 	 */
 	public isGlowing(): boolean {
-		return this.toJava().isGlowing()
+		return this.toJava().isGlowing();
 	}
 
 	/**
 	 * Checks if this entity is currently a passenger to another entity
 	 */
 	public isPassenger(): boolean {
-		return Boolean(this.getVehicle())
+		return Boolean(this.getVehicle());
 	}
 
 	/**
 	 * Checks if this entity is invulnerable, unable to take damage
 	 */
 	public isInvulnerable(): boolean {
-		return this.toJava().isInvulnerable()
+		return this.toJava().isInvulnerable();
 	}
 
 	/**
 	 * Checks if this entity is currently standing on a solid block
 	 */
 	public isOnGround(): boolean {
-		return this.toJava().isOnGround()
+		return this.toJava().isOnGround();
 	}
 
 	/**
 	 * Checks if this entity is currently silent
 	 */
 	public isSilent(): boolean {
-		return this.toJava().isSilent()
+		return this.toJava().isSilent();
 	}
 
 	/**
 	 * Returns false if this entity has died or despawned
 	 */
 	public isValid(): boolean {
-		return this.toJava().isValid()
+		return this.toJava().isValid();
 	}
 
 	/**
 	 * Leaves the vehicle, if the entity is currently in one
 	 */
 	public leaveVehicle(): boolean {
-		return this.toJava().leaveVehicle()
+		return this.toJava().leaveVehicle();
 	}
 
 	// /**
@@ -315,7 +315,7 @@ export class Entity implements ToJava {
 	 * Marks this entity for removal
 	 */
 	public remove(): void {
-		this.toJava().remove()
+		this.toJava().remove();
 	}
 
 	/**
@@ -323,7 +323,7 @@ export class Entity implements ToJava {
 	 * @param passenger the passenger entity
 	 */
 	public removePassenger(passenger: Entity): boolean {
-		return this.toJava().removePassenger(passenger.toJava())
+		return this.toJava().removePassenger(passenger.toJava());
 	}
 
 	/**
@@ -331,7 +331,7 @@ export class Entity implements ToJava {
 	 * @param tag the tag to remove
 	 */
 	public removeScoreboardTag(tag: string): boolean {
-		return this.toJava().removeScoreboardTag(tag)
+		return this.toJava().removeScoreboardTag(tag);
 	}
 
 	/**
@@ -339,7 +339,7 @@ export class Entity implements ToJava {
 	 * @param visible the visibility state
 	 */
 	public setCustomNameVisible(visible: boolean): void {
-		this.toJava().setCustomNameVisible(visible)
+		this.toJava().setCustomNameVisible(visible);
 	}
 
 	/**
@@ -347,7 +347,7 @@ export class Entity implements ToJava {
 	 * @param distance the fall distance
 	 */
 	public setFallDistance(distance: number): void {
-		this.toJava().setFallDistance(distance)
+		this.toJava().setFallDistance(distance);
 	}
 
 	/**
@@ -355,7 +355,7 @@ export class Entity implements ToJava {
 	 * @param ticks the number ot ticks
 	 */
 	public setFireTicks(ticks: number): void {
-		this.toJava().setFireTicks(ticks)
+		this.toJava().setFireTicks(ticks);
 	}
 
 	/**
@@ -363,7 +363,7 @@ export class Entity implements ToJava {
 	 * @param glowing the glowing status
 	 */
 	public setGlowing(glowing: boolean): void {
-		this.toJava().setGlowing(glowing)
+		this.toJava().setGlowing(glowing);
 	}
 
 	/**
@@ -371,7 +371,7 @@ export class Entity implements ToJava {
 	 * @param gravity the enabled status
 	 */
 	public setGravity(gravity: boolean): void {
-		this.toJava().setGravity(gravity)
+		this.toJava().setGravity(gravity);
 	}
 
 	/**
@@ -379,7 +379,7 @@ export class Entity implements ToJava {
 	 * @param invulnerable the invulnerable statue
 	 */
 	public setInvulnerable(invulnerable: boolean): void {
-		this.toJava().setInvulnerable(invulnerable)
+		this.toJava().setInvulnerable(invulnerable);
 	}
 
 	/**
@@ -387,7 +387,7 @@ export class Entity implements ToJava {
 	 * @param event the event
 	 */
 	public setLastDamageCause(event: EntityDamageEvent | null): void {
-		this.toJava().setLastDamageCause(event?.toJava() ?? null)
+		this.toJava().setLastDamageCause(event?.toJava() ?? null);
 	}
 
 	/**
@@ -395,7 +395,7 @@ export class Entity implements ToJava {
 	 * @param cooldown the cooldown in ticks
 	 */
 	public setPortalCooldown(cooldown: number): void {
-		this.toJava().setPortalCooldown(cooldown)
+		this.toJava().setPortalCooldown(cooldown);
 	}
 
 	/**
@@ -404,7 +404,7 @@ export class Entity implements ToJava {
 	 * @param pitch the pitch (x-axis, looking up and down)
 	 */
 	public setRotation(yaw: number, pitch: number): void {
-		this.toJava().setRotation(yaw, pitch)
+		this.toJava().setRotation(yaw, pitch);
 	}
 
 	/**
@@ -412,7 +412,7 @@ export class Entity implements ToJava {
 	 * @param silent the silent status
 	 */
 	public setSilent(silent: boolean): void {
-		this.toJava().setSilent(silent)
+		this.toJava().setSilent(silent);
 	}
 
 	/**
@@ -420,7 +420,7 @@ export class Entity implements ToJava {
 	 * @param ticks the number of ticks
 	 */
 	public setTicksLived(ticks: number): void {
-		this.toJava().setTicksLived()
+		this.toJava().setTicksLived();
 	}
 
 	/**
@@ -428,7 +428,7 @@ export class Entity implements ToJava {
 	 * @param velocity the velocity value
 	 */
 	public setVelocity(velocity: Vector): void {
-		this.toJava().setVelocity(velocity.toJava())
+		this.toJava().setVelocity(velocity.toJava());
 	}
 
 	/**
@@ -436,6 +436,6 @@ export class Entity implements ToJava {
 	 * @param location the location to teleport to
 	 */
 	public teleport(location: Location): void {
-		this.toJava().teleport(location.toJava())
+		this.toJava().teleport(location.toJava());
 	}
 }

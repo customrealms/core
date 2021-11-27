@@ -1,5 +1,5 @@
-import { Extends } from '../../runtime/Extends'
-import { Entity } from './Entity'
+import { Extends } from '../../runtime/Extends';
+import { Entity } from './Entity';
 
 export interface Damageable extends Entity {}
 
@@ -11,29 +11,29 @@ export class Damageable {
 	 * @param source the entity to give credit for dealing the damage
 	 */
 	public damage(amount: number, source?: Entity): void {
-		if (source) this.toJava().damage(amount, source.toJava())
-		else this.toJava().damage(amount)
+		if (source) this.toJava().damage(amount, source.toJava());
+		else this.toJava().damage(amount);
 	}
 
 	/**
 	 * Gets the entity's absorption amount
 	 */
 	public getAbsorptionAmount(): number {
-		return this.toJava().getAbsorptionAmount()
+		return this.toJava().getAbsorptionAmount();
 	}
 
 	/**
 	 * Gets the entity's health from 0 to getMaxHealth()
 	 */
 	public getHealth(): number {
-		return this.toJava().getHealth()
+		return this.toJava().getHealth();
 	}
 
 	/**
 	 * Gets the entity's maximum health
 	 */
 	public getMaxHealth(): number {
-		return this.toJava().getMxHealth()
+		return this.toJava().getMxHealth();
 	}
 
 	/**
@@ -41,7 +41,7 @@ export class Damageable {
 	 * @param amount the absorption amount
 	 */
 	public setAbsorptionAmount(amount: number): void {
-		this.toJava().setAbsorptionAmount(amount)
+		this.toJava().setAbsorptionAmount(amount);
 	}
 
 	/**
@@ -49,6 +49,6 @@ export class Damageable {
 	 * @param health the health amount
 	 */
 	public setHealth(health: number): void {
-		this.toJava().setHealth(health)
+		this.toJava().setHealth(health);
 	}
 }

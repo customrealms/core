@@ -1,15 +1,15 @@
-import '../globals'
-import { ToJava } from '../runtime/ToJava'
-import { Enchantment } from './Enchantment'
-import { Material } from './Material'
+import '../globals';
+import { ToJava } from '../runtime/ToJava';
+import { Enchantment } from './Enchantment';
+import { Material } from './Material';
 
 export class ItemStack implements ToJava {
 	public static fromJava(_itemstack: Java.Value): ItemStack {
-		return new ItemStack(_itemstack)
+		return new ItemStack(_itemstack);
 	}
 
 	public static fromJavaNullable(_itemstack: Java.Value): ItemStack | null {
-		return _itemstack == null ? null : ItemStack.fromJava(_itemstack)
+		return _itemstack == null ? null : ItemStack.fromJava(_itemstack);
 	}
 
 	/**
@@ -17,13 +17,13 @@ export class ItemStack implements ToJava {
 	 * @param serialized the serialized string representation
 	 */
 	public static deserialize(serialized: {
-		[key: string]: any
+		[key: string]: any;
 	}): ItemStack | null {
 		const javaItemStack = Java.resolve(
 			'org.bukkit.inventory.ItemStack'
-		).deserialize(serialized)
-		if (!javaItemStack) return null
-		return new ItemStack(javaItemStack)
+		).deserialize(serialized);
+		if (!javaItemStack) return null;
+		return new ItemStack(javaItemStack);
 	}
 
 	/**
@@ -35,44 +35,44 @@ export class ItemStack implements ToJava {
 		const _itemstack = new (Java.resolve('org.bukkit.inventory.ItemStack'))(
 			material.toJava(),
 			amount
-		)
-		return ItemStack.fromJava(_itemstack)
+		);
+		return ItemStack.fromJava(_itemstack);
 	}
 
 	private constructor(private _itemstack: Java.Value) {}
 
 	public toJava(): Java.Value {
-		return this._itemstack
+		return this._itemstack;
 	}
 
 	/**
 	 * Creates a clone of this item stack
 	 */
 	public clone(): ItemStack {
-		const javaItemStack = this.toJava().clone()
-		return ItemStack.fromJava(javaItemStack)
+		const javaItemStack = this.toJava().clone();
+		return ItemStack.fromJava(javaItemStack);
 	}
 
 	/**
 	 * Gets the amount of items in this stack
 	 */
 	public getAmount(): number {
-		return this.toJava()?.getAmount()
+		return this.toJava()?.getAmount();
 	}
 
 	/**
 	 * Gets the maximum stack size for the material held in this item stack
 	 */
 	public getMaxStackSize(): number {
-		return this.toJava()?.getMaxStackSize()
+		return this.toJava()?.getMaxStackSize();
 	}
 
 	/**
 	 * Gets the material in this item stack
 	 */
 	public getMaterial(): Material {
-		const javaMat = this.toJava()?.getType()
-		return Material.fromJava(javaMat)
+		const javaMat = this.toJava()?.getType();
+		return Material.fromJava(javaMat);
 	}
 
 	/**
@@ -80,23 +80,23 @@ export class ItemStack implements ToJava {
 	 * @param material the material
 	 */
 	public setMaterial(material: Material): void {
-		this.toJava().setType(material.toJava())
+		this.toJava().setType(material.toJava());
 	}
 
 	/**
 	 * Serializes the item stack to a representation
 	 */
 	public serialize(): { [key: string]: any } {
-		return this.toJava()?.serialize()
+		return this.toJava()?.serialize();
 	}
 
 	/**
 	 * Gets the display name for the item stack
 	 */
 	public getDisplayName(): string {
-		const meta = this.toJava()?.getItemMeta()
-		if (!meta) return ''
-		return meta.getDisplayName()
+		const meta = this.toJava()?.getItemMeta();
+		if (!meta) return '';
+		return meta.getDisplayName();
 	}
 
 	/**
@@ -104,17 +104,17 @@ export class ItemStack implements ToJava {
 	 * @param name the display name
 	 */
 	public setDisplayName(name: string): void {
-		const meta = this.toJava().getItemMeta()
-		if (!meta) return
-		meta.setDisplayName(name)
-		this.toJava().setItemMeta(meta)
+		const meta = this.toJava().getItemMeta();
+		if (!meta) return;
+		meta.setDisplayName(name);
+		this.toJava().setItemMeta(meta);
 	}
 
 	/**
 	 * Checks if this item stack is unbreakable
 	 */
 	public isUnbreakable(): boolean {
-		return this.toJava()?.isUnbreakable()
+		return this.toJava()?.isUnbreakable();
 	}
 
 	/**
@@ -122,14 +122,14 @@ export class ItemStack implements ToJava {
 	 * @param unbreakable the unbreakable status
 	 */
 	public setUnbreakable(unbreakable: boolean): void {
-		this.toJava()?.setUnbreakable(unbreakable)
+		this.toJava()?.setUnbreakable(unbreakable);
 	}
 
 	/**
 	 * Checks for the existence of custom model data
 	 */
 	public hasCustomModelData(): boolean {
-		return this.toJava()?.hasCustomModelData()
+		return this.toJava()?.hasCustomModelData();
 	}
 
 	/**
@@ -137,7 +137,7 @@ export class ItemStack implements ToJava {
 	 * if currently set.
 	 */
 	public getCustomModelData(): number | null {
-		return this.toJava()?.getCustomModelData()
+		return this.toJava()?.getCustomModelData();
 	}
 
 	/**
@@ -146,14 +146,14 @@ export class ItemStack implements ToJava {
 	 * @param data the data value, or null to clear
 	 */
 	public setCustomModelData(data: number | null): void {
-		this.toJava()?.setCustomModelData(data)
+		this.toJava()?.setCustomModelData(data);
 	}
 
 	/**
 	 * Checks if this item stack has any enchantments
 	 */
 	public hasEnchantments(): boolean {
-		return this.toJava()?.hasEnchantments()
+		return this.toJava()?.hasEnchantments();
 	}
 
 	/**
@@ -161,7 +161,7 @@ export class ItemStack implements ToJava {
 	 * @param ench the enchantment
 	 */
 	public hasEnchantment(ench: Enchantment): boolean {
-		return this.toJava()?.hasEnchantment(ench.toJava())
+		return this.toJava()?.hasEnchantment(ench.toJava());
 	}
 
 	/**
@@ -169,7 +169,7 @@ export class ItemStack implements ToJava {
 	 * @param ench the enchantment
 	 */
 	public getEnchantmentLevel(ench: Enchantment): number {
-		return this.toJava()?.getEnchantmentLevel(ench.toJava())
+		return this.toJava()?.getEnchantmentLevel(ench.toJava());
 	}
 
 	/**
@@ -178,7 +178,7 @@ export class ItemStack implements ToJava {
 	public getEnchantments(): Enchantment[] {
 		return this.toJava()
 			?.getEnchantments()
-			.map((javaEnch: Java.Value) => Enchantment.fromJava(javaEnch))
+			.map((javaEnch: Java.Value) => Enchantment.fromJava(javaEnch));
 	}
 
 	/**
@@ -192,14 +192,14 @@ export class ItemStack implements ToJava {
 		level: number,
 		ignore_level_restrictions?: boolean
 	): void {
-		const meta = this.toJava().getItemMeta()
-		if (!meta) return
+		const meta = this.toJava().getItemMeta();
+		if (!meta) return;
 		meta.addEnchant(
 			ench.toJava(),
 			level,
 			ignore_level_restrictions ?? false
-		)
-		this.toJava().setItemMeta(meta)
+		);
+		this.toJava().setItemMeta(meta);
 	}
 
 	/**
@@ -207,6 +207,6 @@ export class ItemStack implements ToJava {
 	 * @param ench the enchantment to check
 	 */
 	public hasConflictingEnchant(ench: Enchantment): boolean {
-		return this.toJava()?.hasConflictingEnchant((ench as any)._ench)
+		return this.toJava()?.hasConflictingEnchant((ench as any)._ench);
 	}
 }

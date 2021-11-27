@@ -1,5 +1,5 @@
-import '../globals'
-import { Player } from '../player/Player'
+import '../globals';
+import { Player } from '../player/Player';
 
 export class Players {
 	/**
@@ -11,7 +11,7 @@ export class Players {
 			Java.resolve('org.bukkit.Bukkit')
 				?.getOnlinePlayers()
 				?.map((p: Java.Value) => Player.fromJava(p)) ?? []
-		)
+		);
 	}
 
 	/**
@@ -22,9 +22,9 @@ export class Players {
 	public static getPlayerByUUID(uuid: string): Player | null {
 		const p = Java.resolve('org.bukkit.Bukkit').getPlayer(
 			Java.resolve('java.util.UUID').fromString(uuid)
-		)
-		if (!p) return null
-		return Player.fromJava(p)
+		);
+		if (!p) return null;
+		return Player.fromJava(p);
 	}
 
 	/**
@@ -39,8 +39,8 @@ export class Players {
 	): Player | null {
 		const p = exact
 			? Java.resolve('org.bukkit.Bukkit').getPlayerExact(username)
-			: Java.resolve('org.bukkit.Bukkit').getPlayer(username)
-		if (!p) return null
-		return Player.fromJava(p)
+			: Java.resolve('org.bukkit.Bukkit').getPlayer(username);
+		if (!p) return null;
+		return Player.fromJava(p);
 	}
 }

@@ -1,45 +1,45 @@
-import { Block } from '../../../block/Block'
-import { ConstructInventory } from '../../../inventory/InventoryConstructors'
-import { EnchantingInventory } from '../../../inventory/types'
-import { EnchantmentOffer } from '../../../material/EnchantmentOffer'
-import { ItemStack } from '../../../material/ItemStack'
-import { Player } from '../../../player/Player'
-import { Cancellable } from '../../Cancellable'
-import { InventoryEvent } from './InventoryEvent'
+import { Block } from '../../../block/Block';
+import { ConstructInventory } from '../../../inventory/InventoryConstructors';
+import { EnchantingInventory } from '../../../inventory/types';
+import { EnchantmentOffer } from '../../../material/EnchantmentOffer';
+import { ItemStack } from '../../../material/ItemStack';
+import { Player } from '../../../player/Player';
+import { Cancellable } from '../../Cancellable';
+import { InventoryEvent } from './InventoryEvent';
 
 export class PrepareItemEnchantEvent
 	extends InventoryEvent
 	implements Cancellable
 {
 	public static getBukkitClasspath(): string {
-		return 'org.bukkit.event.enchantment.PrepareItemEnchantEvent'
+		return 'org.bukkit.event.enchantment.PrepareItemEnchantEvent';
 	}
 
 	getInventory(): EnchantingInventory {
 		return ConstructInventory<EnchantingInventory>(
 			this.toJava().getInventory()
-		)
+		);
 	}
 
 	/**
 	 * Gets the player enchanting the item
 	 */
 	getEnchanter(): Player {
-		return Player.fromJava(this.toJava().getEnchanter())
+		return Player.fromJava(this.toJava().getEnchanter());
 	}
 
 	/**
 	 * Gets the block being used to enchant the item
 	 */
 	getEnchantBlock(): Block {
-		return Block.fromJava(this.toJava().getEnchantBlock())
+		return Block.fromJava(this.toJava().getEnchantBlock());
 	}
 
 	/**
 	 * Gets the item to be enchanted.
 	 */
 	getItem(): ItemStack {
-		return ItemStack.fromJava(this.toJava().getItem())
+		return ItemStack.fromJava(this.toJava().getItem());
 	}
 
 	/**
@@ -60,21 +60,21 @@ export class PrepareItemEnchantEvent
 			.getOffers()
 			.map(
 				(offer: Java.Value) => offer && EnchantmentOffer.fromJava(offer)
-			)
+			);
 	}
 
 	/**
 	 * Get enchantment bonus in effect - corresponds to number of bookshelves
 	 */
 	getEnchantmentBonus(): number {
-		return this.toJava().getEnchantmentBonus()
+		return this.toJava().getEnchantmentBonus();
 	}
 
 	isCancelled(): boolean {
-		return this.toJava().isCancelled()
+		return this.toJava().isCancelled();
 	}
 
 	setCancelled(cancelled: boolean): void {
-		this.toJava().setCancelled(cancelled)
+		this.toJava().setCancelled(cancelled);
 	}
 }

@@ -1,10 +1,10 @@
-import '../globals'
-import { ToJava } from '../runtime/ToJava'
-import { PotionEffectType } from './PotionEffectType'
+import '../globals';
+import { ToJava } from '../runtime/ToJava';
+import { PotionEffectType } from './PotionEffectType';
 
 export class PotionEffect implements ToJava {
 	public static fromJava(_java: Java.Value): PotionEffect {
-		return new PotionEffect(_java)
+		return new PotionEffect(_java);
 	}
 
 	/**
@@ -31,8 +31,8 @@ export class PotionEffect implements ToJava {
 			ambient,
 			particles,
 			icon
-		)
-		return PotionEffect.fromJava(_java)
+		);
+		return PotionEffect.fromJava(_java);
 	}
 
 	/**
@@ -42,15 +42,15 @@ export class PotionEffect implements ToJava {
 	private constructor(private _java: Java.Value) {}
 
 	public toJava(): Java.Value {
-		return this._java
+		return this._java;
 	}
 
 	/**
 	 * Gets the type of the potion effect
 	 */
 	public getType(): PotionEffectType {
-		const javaType = this.toJava().getType()
-		return PotionEffectType.fromJava(javaType)
+		const javaType = this.toJava().getType();
+		return PotionEffectType.fromJava(javaType);
 	}
 
 	/**
@@ -58,27 +58,27 @@ export class PotionEffect implements ToJava {
 	 * applied to a living entity
 	 */
 	public getDuration(): number {
-		return this.toJava().getDuration()
+		return this.toJava().getDuration();
 	}
 
 	/**
 	 * Checks if this potion effect displays an icon to the player
 	 */
 	public hasIcon(): boolean {
-		return this.toJava().hasIcon()
+		return this.toJava().hasIcon();
 	}
 
 	/**
 	 * Checks if this potion effect emits particles
 	 */
 	public hasParticles(): boolean {
-		return this.toJava().hasParticles()
+		return this.toJava().hasParticles();
 	}
 
 	/**
 	 * Checks if this potion effect produces more particles
 	 */
 	public isAmbient(): boolean {
-		return this.toJava().isAmbient()
+		return this.toJava().isAmbient();
 	}
 }

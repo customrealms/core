@@ -1,17 +1,17 @@
-import { Cancellable } from '../../Cancellable'
-import { WeatherEvent } from './WeatherEvent'
+import { Cancellable } from '../../Cancellable';
+import { WeatherEvent } from './WeatherEvent';
 
 /** Stores data for thunder state changing in a world */
 export class ThunderChangeEvent extends WeatherEvent implements Cancellable {
 	public static getBukkitClasspath(): string {
-		return 'org.bukkit.event.weather.ThunderChangeEvent'
+		return 'org.bukkit.event.weather.ThunderChangeEvent';
 	}
 	/**
 	 * Gets the state of thunder that the world is being set to
 	 * @returns true if the weather is being set to thundering, false otherwise
 	 */
 	public toThunderState(): boolean {
-		return this.toJava().toThunderState()
+		return this.toJava().toThunderState();
 	}
 
 	/**
@@ -20,7 +20,7 @@ export class ThunderChangeEvent extends WeatherEvent implements Cancellable {
 	 * @param cancel
 	 */
 	public setCancelled(cancel: boolean): void {
-		this.toJava().setCancelled(cancel)
+		this.toJava().setCancelled(cancel);
 	}
 
 	/**
@@ -29,6 +29,6 @@ export class ThunderChangeEvent extends WeatherEvent implements Cancellable {
 	 * @returns true if this event is cancelled
 	 */
 	public isCancelled(): boolean {
-		return this.toJava().isCancelled()
+		return this.toJava().isCancelled();
 	}
 }

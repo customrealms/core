@@ -1,14 +1,14 @@
-import { Inventory } from '../../inventory/Inventory'
-import { ConstructInventory } from '../../inventory/InventoryConstructors'
-import { InventoryView } from '../../inventory/InventoryView'
-import { InventoryViewProperty } from '../../inventory/InventoryViewProperty'
-import { PlayerInventory } from '../../inventory/types'
-import { ItemStack } from '../../material/ItemStack'
-import { Material } from '../../material/Material'
-import { GameMode } from '../../player/GameMode'
-import { Extends } from '../../runtime/Extends'
-import { Location } from '../../util/Location'
-import { LivingEntity } from './LivingEntity'
+import { Inventory } from '../../inventory/Inventory';
+import { ConstructInventory } from '../../inventory/InventoryConstructors';
+import { InventoryView } from '../../inventory/InventoryView';
+import { InventoryViewProperty } from '../../inventory/InventoryViewProperty';
+import { PlayerInventory } from '../../inventory/types';
+import { ItemStack } from '../../material/ItemStack';
+import { Material } from '../../material/Material';
+import { GameMode } from '../../player/GameMode';
+import { Extends } from '../../runtime/Extends';
+import { Location } from '../../util/Location';
+import { LivingEntity } from './LivingEntity';
 
 export interface HumanEntity extends LivingEntity {}
 
@@ -18,29 +18,33 @@ export class HumanEntity {
 	 * Closes the currently-open inventory for this player
 	 */
 	public closeInventory(): void {
-		this.toJava().closeInventory()
+		this.toJava().closeInventory();
 	}
 
 	/**
 	 * Gets the current cooldown for a player's attack
 	 */
 	public getAttackCooldown(): number {
-		return this.toJava().getAttackCooldown()
+		return this.toJava().getAttackCooldown();
 	}
 
 	/**
 	 * Gets the location of the bed the player is currently sleeping in
 	 */
 	public getBedLocation(): Location | null {
-		return Location.fromJava(this.toJava().getBedLocation())
+		const javaLoc = this.toJava().getBedLocation();
+		if (!javaLoc) return null;
+		return Location.fromJava(javaLoc);
 	}
 
 	/**
 	 * Gets the location where the player will spawn at their bed. Returns null if they
 	 * have not slept in a bed, or if their current bed spawn is invalid
 	 */
-	public getBedSpawnLocation(): Location {
-		return Location.fromJava(this.toJava().getBedLocation())!
+	public getBedSpawnLocation(): Location | null {
+		const javaLoc = this.toJava().getBedSpawnLocation();
+		if (!javaLoc) return null;
+		return Location.fromJava(javaLoc);
 	}
 
 	/**
@@ -48,76 +52,76 @@ export class HumanEntity {
 	 * @param material the material to check
 	 */
 	public getCooldown(material: Material): number {
-		return this.toJava().getCooldown(material.toJava())
+		return this.toJava().getCooldown(material.toJava());
 	}
 
 	/**
 	 * Gets the player's ender chest inventory
 	 */
 	public getEnderChest(): Inventory {
-		const javaInv = this.toJava().getEnderChest()
-		return ConstructInventory(javaInv)
+		const javaInv = this.toJava().getEnderChest();
+		return ConstructInventory(javaInv);
 	}
 
 	/**
 	 * Gets the total amount of experience required for the player to level up
 	 */
 	public getExpToLevel(): number {
-		return this.toJava().getExpToLevel()
+		return this.toJava().getExpToLevel();
 	}
 
 	/**
 	 * Gets the game mode of the player
 	 */
 	public getGameMode(): GameMode {
-		return this.toJava().getGameMode().name()
+		return this.toJava().getGameMode().name();
 	}
 
 	/**
 	 * Gets the inventory of the player
 	 */
 	public getInventory(): PlayerInventory {
-		const javaInv = this.toJava().getInventory()
-		return new PlayerInventory(javaInv)
+		const javaInv = this.toJava().getInventory();
+		return new PlayerInventory(javaInv);
 	}
 
 	/**
 	 * Gets the item currently on the player's cursor. Can be empty
 	 */
 	public getItemOnCursor(): ItemStack {
-		const javaItemStack = this.toJava().getItemOnCursor()
-		return ItemStack.fromJava(javaItemStack)
+		const javaItemStack = this.toJava().getItemOnCursor();
+		return ItemStack.fromJava(javaItemStack);
 	}
 
 	/**
 	 * Gets the main hand of the player
 	 */
 	public getMainHand(): 'left' | 'right' {
-		const javaMainHand = this.toJava().getMainHand()
-		return javaMainHand.name().toLowerCase()
+		const javaMainHand = this.toJava().getMainHand();
+		return javaMainHand.name().toLowerCase();
 	}
 
 	/**
 	 * Gets the name of the player
 	 */
 	public getName(): string {
-		return this.toJava().getName()
+		return this.toJava().getName();
 	}
 
 	/**
 	 * Gets the inventory that the player is currently viewing
 	 */
 	public getOpenInventory(): InventoryView | null {
-		const javaInvView = this.toJava().getOpenInventory()
-		if (!javaInvView) return null
-		return new InventoryView(javaInvView)
+		const javaInvView = this.toJava().getOpenInventory();
+		if (!javaInvView) return null;
+		return new InventoryView(javaInvView);
 	}
 
 	/**
 	 * Gets the sleep ticks of the player
 	 */
 	public getSleepTicks(): number {
-		return this.toJava().getSleepTicks()
+		return this.toJava().getSleepTicks();
 	}
 
 	/**
@@ -125,14 +129,14 @@ export class HumanEntity {
 	 * @param material the material to check
 	 */
 	public hasCooldown(material: Material): boolean {
-		return this.toJava().hasCooldown(material.toJava())
+		return this.toJava().hasCooldown(material.toJava());
 	}
 
 	/**
 	 * Checks if the player is currently blocking with a shield
 	 */
 	public isBlocking(): boolean {
-		return this.toJava().isBlocking()
+		return this.toJava().isBlocking();
 	}
 
 	/**
@@ -140,7 +144,7 @@ export class HumanEntity {
 	 * begin blocking.
 	 */
 	public isHandRaised(): boolean {
-		return this.toJava().isHandRaised()
+		return this.toJava().isHandRaised();
 	}
 
 	/**
@@ -153,7 +157,7 @@ export class HumanEntity {
 		force: boolean
 	): InventoryView | null {
 		// TODO: Not implemented
-		return null as any
+		return null as any;
 	}
 
 	/**
@@ -163,7 +167,7 @@ export class HumanEntity {
 	public openInventory(
 		inventory: InventoryView | Inventory
 	): void | InventoryView {
-		return this.toJava().openInventory(inventory.toJava())
+		return this.toJava().openInventory(inventory.toJava());
 	}
 
 	// /**
@@ -184,7 +188,7 @@ export class HumanEntity {
 		force: boolean
 	): InventoryView | null {
 		// TODO: Not implemented
-		return null as any
+		return null as any;
 	}
 
 	/**
@@ -199,7 +203,7 @@ export class HumanEntity {
 		this.toJava().setBedSpawnLocation(
 			location?.toJava() ?? null,
 			force ?? false
-		)
+		);
 	}
 
 	/**
@@ -208,7 +212,7 @@ export class HumanEntity {
 	 * @param ticks the number of ticks remaining in the cooldown
 	 */
 	public setCooldown(material: Material, ticks: number): void {
-		this.toJava().setCooldown(material.toJava(), ticks)
+		this.toJava().setCooldown(material.toJava(), ticks);
 	}
 
 	/**
@@ -218,8 +222,8 @@ export class HumanEntity {
 	public setGameMode(gamemode: GameMode): void {
 		const javaGameMode = Java.resolve('org.bukkit.GameMode').valueOf(
 			gamemode
-		)
-		this.toJava().setGameMode(javaGameMode)
+		);
+		this.toJava().setGameMode(javaGameMode);
 	}
 
 	/**
@@ -227,7 +231,7 @@ export class HumanEntity {
 	 * @param item the item to set
 	 */
 	public setItemOnCursor(item: ItemStack | null): void {
-		this.toJava().setItemOnCursor(item?.toJava() ?? null)
+		this.toJava().setItemOnCursor(item?.toJava() ?? null);
 	}
 
 	/**
@@ -242,9 +246,9 @@ export class HumanEntity {
 	): boolean {
 		const javaProp = Java.resolve(
 			'org.bukkit.inventory.InventoryView.Property'
-		).valueOf(property)
-		if (!javaProp) return false
-		return this.toJava().setWindowProperty(javaProp, value)
+		).valueOf(property);
+		if (!javaProp) return false;
+		return this.toJava().setWindowProperty(javaProp, value);
 	}
 
 	/**
@@ -253,7 +257,7 @@ export class HumanEntity {
 	 * @param force set to true to sleep even if there is no valid bed
 	 */
 	public sleep(location: Location, force: boolean): boolean {
-		return this.toJava().sleep(location.toJava(), force)
+		return this.toJava().sleep(location.toJava(), force);
 	}
 
 	/**
@@ -261,6 +265,6 @@ export class HumanEntity {
 	 * @param set_spawn whether or not to set the spawn location
 	 */
 	public wakeup(set_spawn?: boolean): void {
-		this.toJava().wakeup(set_spawn ?? false)
+		this.toJava().wakeup(set_spawn ?? false);
 	}
 }

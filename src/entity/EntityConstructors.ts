@@ -1,7 +1,7 @@
-import { Player } from '../player/Player'
-import { EntityType } from './EntityType'
-import { Entity } from './types/Entity'
-import { LightningStrike } from './types/LightningStrike'
+import { Player } from '../player/Player';
+import { EntityType } from './EntityType';
+import { Entity } from './types/Entity';
+import { LightningStrike } from './types/LightningStrike';
 
 /**
  * Mapping of EntityType values to the corresponding class constructor. We use any instead of
@@ -10,7 +10,7 @@ import { LightningStrike } from './types/LightningStrike'
 export const EntityConstructors: { [key in EntityType]?: any } = {
 	[EntityType.LIGHTNING]: LightningStrike,
 	[EntityType.PLAYER]: Player,
-}
+};
 
 /**
  * Converts a raw Java handle to an entity into the wrapped JavaScript subclass of the entity's type
@@ -21,13 +21,16 @@ export function ConstructEntity<T extends Entity = Entity>(
 	_entity: Java.Value
 ): T {
 	// Get the string EntityType string value for the entity
-	const entityType: EntityType = _entity.getType().name()
+	const entityType: EntityType = _entity.getType().name();
 
 	// If the entity type has a corresponding constructor, construct using that class
 	if (entityType in EntityConstructors) {
-		return new EntityConstructors[entityType]!(_entity) as T
+		const ctor = EntityConstructors[entityType];
+		if (ctor) {
+			return new ctor(_entity) as T;
+		}
 	}
 
 	// Fallback to the base Entity class if we can't match to a subclass
-	return Entity.fromJava(_entity) as T
+	return Entity.fromJava(_entity) as T;
 }

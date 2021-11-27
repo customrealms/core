@@ -11,17 +11,17 @@ export class PlaceholderParser {
 	 */
 	// private static readonly placeholderPattern: RegExp = /^\{(.+?)(?:(\?)?|(?:(#)?=(.+))?)\}(\.{3})?$/;
 	private static readonly PLACEHOLDER_REGEX: RegExp =
-		/^\{(?:(#|S|P|W):)?(\w+)(\?|=(.*))?\}(\.{3})?$/i
+		/^\{(?:(#|S|P|W):)?(\w+)(\?|=(.*))?\}(\.{3})?$/i;
 
 	/**
 	 * Whether or not the provided string matches the pattern
 	 */
-	private matches_pattern: boolean = false
+	private matches_pattern: boolean = false;
 
 	/**
 	 * The pattern string
 	 */
-	private pattern: string | null = null
+	private pattern: string | null = null;
 
 	/**
 	 * Determines if the placeholder matches
@@ -31,28 +31,28 @@ export class PlaceholderParser {
 	/**
 	 * The name of the placeholder
 	 */
-	private name: string | null = null
+	private name: string | null = null;
 
 	/**
 	 * The type indicator mask for values
 	 */
 	// private typeIndicator: string | null = null;
-	private type: PlaceholderType = PlaceholderType.STRING
+	private type: PlaceholderType = PlaceholderType.STRING;
 
 	/**
 	 * Is the placeholder optional
 	 */
-	private optional: boolean = false
+	private optional: boolean = false;
 
 	/**
 	 * The default value for the placeholder
 	 */
-	private defaultValue: string | null = null
+	private defaultValue: string | null = null;
 
 	/**
 	 * Is the placeholder multiple parts long
 	 */
-	private multiPart: boolean = false
+	private multiPart: boolean = false;
 
 	/**
 	 * Constructs a placeholder object from its component in the pattern
@@ -62,33 +62,33 @@ export class PlaceholderParser {
 		// Match on the pattern
 		const match: RegExpMatchArray | null = pattern.match(
 			PlaceholderParser.PLACEHOLDER_REGEX
-		)
+		);
 
 		// If there is no match, return here
-		if (!match) return
+		if (!match) return;
 
 		// It matches the pattern
-		this.matches_pattern = true
+		this.matches_pattern = true;
 
 		// Get the type string
-		const type: string | undefined = match[1]?.toUpperCase?.()
-		if (type === 'S') this.type = PlaceholderType.STRING
-		else if (type === '#') this.type = PlaceholderType.NUMBER
-		else if (type === 'P') this.type = PlaceholderType.PLAYER
-		else if (type === 'W') this.type = PlaceholderType.WORLD
-		else this.type = PlaceholderType.STRING
+		const type: string | undefined = match[1]?.toUpperCase?.();
+		if (type === 'S') this.type = PlaceholderType.STRING;
+		else if (type === '#') this.type = PlaceholderType.NUMBER;
+		else if (type === 'P') this.type = PlaceholderType.PLAYER;
+		else if (type === 'W') this.type = PlaceholderType.WORLD;
+		else this.type = PlaceholderType.STRING;
 
 		// Get the name of the placeholder
-		this.name = match[2]
+		this.name = match[2];
 
 		// Get the default value
-		this.defaultValue = match[4]
+		this.defaultValue = match[4];
 
 		// Is the placeholder optional
-		this.optional = !!this.defaultValue || '?' === match[3]
+		this.optional = !!this.defaultValue || '?' === match[3];
 
 		// Determine if it allows multiple parts
-		this.multiPart = match[5] === '...'
+		this.multiPart = match[5] === '...';
 	}
 
 	/**
@@ -97,7 +97,7 @@ export class PlaceholderParser {
 	 */
 	public isPlaceholder(): boolean {
 		// Return the match status
-		return this.matches_pattern
+		return this.matches_pattern;
 	}
 
 	/**
@@ -106,7 +106,7 @@ export class PlaceholderParser {
 	 */
 	public getName(): string | null {
 		// Return the name
-		return this.name
+		return this.name;
 	}
 
 	/**
@@ -115,7 +115,7 @@ export class PlaceholderParser {
 	 */
 	public isOptional(): boolean {
 		// Return the optional status
-		return this.optional
+		return this.optional;
 	}
 
 	/**
@@ -124,7 +124,7 @@ export class PlaceholderParser {
 	 */
 	public getDefaultValue(): string | null {
 		// Return the default value
-		return this.defaultValue
+		return this.defaultValue;
 	}
 
 	/**
@@ -133,7 +133,7 @@ export class PlaceholderParser {
 	 */
 	public getType(): PlaceholderType {
 		// Return the type indicator
-		return this.type
+		return this.type;
 	}
 
 	/**
@@ -142,7 +142,7 @@ export class PlaceholderParser {
 	 */
 	public isMultiPart(): boolean {
 		// Return the status
-		return this.multiPart
+		return this.multiPart;
 	}
 
 	/**
@@ -153,16 +153,16 @@ export class PlaceholderParser {
 		// If it's not a placeholder
 		if (!this.matches_pattern) {
 			// Simply return the pattern
-			return this.pattern!
+			return this.pattern!;
 		}
 
 		// Create the string for the inside
-		let inside: string = this.name!
+		let inside: string = this.name!;
 
 		// If there is a default value
-		if (this.defaultValue != null) inside += `=${this.defaultValue}`
+		if (this.defaultValue != null) inside += `=${this.defaultValue}`;
 
 		// Return the formatted string
-		return this.optional ? `[${inside}]` : `<${inside}>`
+		return this.optional ? `[${inside}]` : `<${inside}>`;
 	}
 }

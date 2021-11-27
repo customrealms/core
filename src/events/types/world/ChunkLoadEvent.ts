@@ -1,11 +1,11 @@
-import { ChunkEvent } from './ChunkEvent'
+import { ChunkEvent } from './ChunkEvent';
 
 /**
  * Called when a chunk is loaded
  */
 export class ChunkLoadEvent extends ChunkEvent {
 	public static getBukkitClasspath(): string {
-		return 'org.bukkit.event.world.ChunkLoadEvent'
+		return 'org.bukkit.event.world.ChunkLoadEvent';
 	}
 
 	/**
@@ -14,6 +14,6 @@ export class ChunkLoadEvent extends ChunkEvent {
 	 * Note that if this chunk is new, it will not be populated at this time.
 	 */
 	public isNewChunk(): boolean {
-		return this.toJava().isNewChunk()
+		return this.toJava().isNewChunk();
 	}
 }

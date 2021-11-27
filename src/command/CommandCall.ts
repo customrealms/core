@@ -1,5 +1,5 @@
-import { Player } from '../player/Player'
-import { Players } from '../player/Players'
+import { Player } from '../player/Player';
+import { Players } from '../player/Players';
 
 export class CommandCall {
 	public constructor(
@@ -14,7 +14,7 @@ export class CommandCall {
 	 */
 	public getPlayer(): Player | undefined {
 		// Return the player instance
-		return this.player
+		return this.player;
 	}
 
 	/**
@@ -23,7 +23,7 @@ export class CommandCall {
 	 */
 	public getPattern(): string | undefined {
 		// Return the pattern
-		return this.pattern
+		return this.pattern;
 	}
 
 	/**
@@ -32,7 +32,7 @@ export class CommandCall {
 	 */
 	public getPlaceholders(): { [key: string]: string } | undefined {
 		// Return the placeholders
-		return this.placeholders
+		return this.placeholders;
 	}
 
 	/**
@@ -42,36 +42,36 @@ export class CommandCall {
 	 */
 	public getPlaceholder(key: string): string | undefined {
 		// Return the value
-		return this.placeholders?.[key] ?? undefined
+		return this.placeholders?.[key] ?? undefined;
 	}
 
 	public getPlayerPlaceholder(key: string): Player | null | undefined {
 		// Get the placeholder value
-		const username: string | undefined = this.getPlaceholder(key)
-		if (!username) return undefined
+		const username: string | undefined = this.getPlaceholder(key);
+		if (!username) return undefined;
 
 		// Get the player with the username
-		return Players.getPlayerByUsername(username)
+		return Players.getPlayerByUsername(username);
 	}
 
 	public getNumericPlaceholder(key: string): number | null | undefined {
 		// Get the placeholder value
-		const value: string | undefined = this.getPlaceholder(key)
-		if (!value) return undefined
+		const value: string | undefined = this.getPlaceholder(key);
+		if (!value) return undefined;
 
 		try {
 			// Parse the value
-			const num: number = parseFloat(value)
+			const num: number = parseFloat(value);
 
 			// If the value is not finite
-			if (!isFinite(num)) return null
-			if (isNaN(num)) return null
+			if (!isFinite(num)) return null;
+			if (isNaN(num)) return null;
 
 			// Return the number
-			return num
+			return num;
 		} catch (err) {
 			// Return null if there's an error
-			return null
+			return null;
 		}
 	}
 }

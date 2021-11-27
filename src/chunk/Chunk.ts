@@ -1,11 +1,11 @@
-import { Block } from '../block/Block'
-import { ConstructEntity } from '../entity/EntityConstructors'
-import { Entity } from '../entity/types/Entity'
-import { World } from '../world/World'
+import { Block } from '../block/Block';
+import { ConstructEntity } from '../entity/EntityConstructors';
+import { Entity } from '../entity/types/Entity';
+import { World } from '../world/World';
 
 export class Chunk {
 	public static fromJava(_chunk: Java.Value): Chunk {
-		return new Chunk(_chunk)
+		return new Chunk(_chunk);
 	}
 
 	private constructor(private _chunk: Java.Value) {}
@@ -14,21 +14,21 @@ export class Chunk {
 	 * Gets the world containing this chunk
 	 */
 	public getWorld(): World {
-		return World.fromJava(this._chunk.getWorld())
+		return World.fromJava(this._chunk.getWorld());
 	}
 
 	/**
 	 * Gets the x-coordinate of this chunk
 	 */
 	public getX(): number {
-		return this._chunk?.getX()
+		return this._chunk?.getX();
 	}
 
 	/**
 	 * Gets the z-coordinate of this chunk
 	 */
 	public getZ(): number {
-		return this._chunk?.getZ()
+		return this._chunk?.getZ();
 	}
 
 	/**
@@ -36,7 +36,7 @@ export class Chunk {
 	 * @param block the block to check
 	 */
 	public contains(block: Block): boolean {
-		return this._chunk?.contains(block.toJava())
+		return this._chunk?.contains(block.toJava());
 	}
 
 	/**
@@ -46,23 +46,23 @@ export class Chunk {
 	 * @param z the chunk-relative z-coordinate
 	 */
 	public getBlock(x: number, y: number, z: number): Block {
-		return Block.fromJava(this._chunk?.getBlock(x, y, z))
+		return Block.fromJava(this._chunk?.getBlock(x, y, z));
 	}
 
 	/**
 	 * Gets all of the entities in the chunk
 	 */
 	public getEntities(): Entity[] {
-		const javaEntities: Java.Value[] = this._chunk.getEntities()
-		if (!javaEntities) return []
-		return javaEntities.map(ConstructEntity)
+		const javaEntities: Java.Value[] = this._chunk.getEntities();
+		if (!javaEntities) return [];
+		return javaEntities.map(ConstructEntity);
 	}
 
 	/**
 	 * Checks if this chunk has been loaded
 	 */
 	public isLoaded(): boolean {
-		return this._chunk?.isLoaded()
+		return this._chunk?.isLoaded();
 	}
 
 	/**
@@ -70,7 +70,7 @@ export class Chunk {
 	 * automatically due to player inactivity.
 	 */
 	public isForceLoaded(): boolean {
-		return this._chunk?.isForceLoaded()
+		return this._chunk?.isForceLoaded();
 	}
 
 	/**
@@ -79,7 +79,7 @@ export class Chunk {
 	 * @param force_loaded the force loaded status
 	 */
 	public setForceLoaded(force_loaded: boolean): void {
-		this._chunk?.setForceLoaded(force_loaded)
+		this._chunk?.setForceLoaded(force_loaded);
 	}
 
 	// /**
@@ -103,7 +103,7 @@ export class Chunk {
 	 * Gets the amount of time, in ticks, that this chunk has been inhabited by a player.
 	 */
 	public getInhabitedTime(): number {
-		return this._chunk?.getInhabitedTime()
+		return this._chunk?.getInhabitedTime();
 	}
 
 	/**
@@ -111,7 +111,7 @@ export class Chunk {
 	 * @param other the other chunk to compare to
 	 */
 	public equals(other: Chunk): boolean {
-		if (!other) return false
-		return this.getX() === other.getX() && this.getZ() === other.getZ()
+		if (!other) return false;
+		return this.getX() === other.getX() && this.getZ() === other.getZ();
 	}
 }

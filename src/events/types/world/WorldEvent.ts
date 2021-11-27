@@ -1,5 +1,5 @@
-import { World } from '../../../world/World'
-import { Event } from '../Event'
+import { World } from '../../../world/World';
+import { Event } from '../Event';
 
 export class WorldEvent extends Event {
 	/**
@@ -7,6 +7,6 @@ export class WorldEvent extends Event {
 	 * @returns which caused this event
 	 */
 	public getWorld(): World {
-		return World.fromJava(this.toJava().getWorld())
+		return World.fromJava(this.toJava().getWorld());
 	}
 }

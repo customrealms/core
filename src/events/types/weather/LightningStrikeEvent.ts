@@ -1,14 +1,14 @@
-import { Cancellable } from '../../Cancellable'
-import { LightningStrikeEventCause } from './LightningStrikeEventCause'
-import { WeatherEvent } from './WeatherEvent'
-import { LightningStrike } from '../../../entity/types/LightningStrike'
+import { Cancellable } from '../../Cancellable';
+import { LightningStrikeEventCause } from './LightningStrikeEventCause';
+import { WeatherEvent } from './WeatherEvent';
+import { LightningStrike } from '../../../entity/types/LightningStrike';
 
 /**
  * Stores data for lightning striking
  */
 export class LightningStrikeEvent extends WeatherEvent implements Cancellable {
 	public static getBukkitClasspath(): string {
-		return 'org.bukkit.event.weather.LightningStrikeEvent'
+		return 'org.bukkit.event.weather.LightningStrikeEvent';
 	}
 
 	/**
@@ -16,7 +16,7 @@ export class LightningStrikeEvent extends WeatherEvent implements Cancellable {
 	 * @returns LightningStrike
 	 */
 	public getLightning(): LightningStrike {
-		return this.toJava().getLightning()
+		return this.toJava().getLightning();
 	}
 
 	/**
@@ -24,7 +24,7 @@ export class LightningStrikeEvent extends WeatherEvent implements Cancellable {
 	 * @returns strike cause
 	 */
 	public getCause(): LightningStrikeEventCause {
-		return this.toJava().getCause().getName()
+		return this.toJava().getCause().getName();
 	}
 
 	/**
@@ -33,7 +33,7 @@ export class LightningStrikeEvent extends WeatherEvent implements Cancellable {
 	 * @param cancel
 	 */
 	public setCancelled(cancel: boolean): void {
-		this.toJava().setCancelled(cancel)
+		this.toJava().setCancelled(cancel);
 	}
 
 	/**
@@ -42,6 +42,6 @@ export class LightningStrikeEvent extends WeatherEvent implements Cancellable {
 	 * @returns true if this event is cancelled
 	 */
 	public isCancelled(): boolean {
-		return this.toJava().isCancelled()
+		return this.toJava().isCancelled();
 	}
 }

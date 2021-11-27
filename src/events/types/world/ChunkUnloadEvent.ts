@@ -1,18 +1,18 @@
-import { ChunkEvent } from './ChunkEvent'
+import { ChunkEvent } from './ChunkEvent';
 
 /**
  * Called when a chunk is unloaded
  */
 export class ChunkUnloadEvent extends ChunkEvent {
 	public static getBukkitClasspath(): string {
-		return 'org.bukkit.event.world.ChunkUnloadEvent'
+		return 'org.bukkit.event.world.ChunkUnloadEvent';
 	}
 
 	/**
 	 * Return whether this chunk will be saved to disk.
 	 */
 	public isSaveChunk(): boolean {
-		return this.toJava().isSaveChunk()
+		return this.toJava().isSaveChunk();
 	}
 
 	/**
@@ -20,6 +20,6 @@ export class ChunkUnloadEvent extends ChunkEvent {
 	 * @param save true if the chunk should be saved
 	 */
 	public setSaveChunk(save: boolean): void {
-		this.toJava().setSaveChunk(save)
+		this.toJava().setSaveChunk(save);
 	}
 }

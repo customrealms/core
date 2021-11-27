@@ -1,14 +1,14 @@
-import * as InventoryClasses from '..'
-import { Inventory } from '../inventory/Inventory'
-import { Constructor } from '../types/Constructor'
-import { InventoryType } from './InventoryType'
+import * as InventoryClasses from '..';
+import { Inventory } from '../inventory/Inventory';
+import { Constructor } from '../types/Constructor';
+import { InventoryType } from './InventoryType';
 
 /**
  * Mapping of InventoryType values to the corresponding class constructor
  * Use Inventory if the type doesn't have a specific constructor.
  */
 export const InventoryConstructors: {
-	[key in InventoryType]?: Constructor<Inventory>
+	[key in InventoryType]?: Constructor<Inventory>;
 } = {
 	[InventoryType.ANVIL]: InventoryClasses.AnvilInventory,
 	[InventoryType.BEACON]: InventoryClasses.BeaconInventory,
@@ -25,7 +25,7 @@ export const InventoryConstructors: {
 	[InventoryType.STONECUTTER]: InventoryClasses.StonecutterInventory,
 	[InventoryType.SMITHING]: InventoryClasses.SmithingInventory,
 	[InventoryType.WORKBENCH]: InventoryClasses.CraftingInventory,
-}
+};
 
 /**
  * Converts a raw Java handle to an inventory into the wrapped JavaScript subclass of the inventory's type
@@ -36,16 +36,16 @@ export function ConstructInventory<T extends Inventory = Inventory>(
 	_inventory: Java.Value
 ): T {
 	// Get the string InventoryTypeType string value for the inventory
-	const inventoryType: InventoryType = _inventory.getType().name()
+	const inventoryType: InventoryType = _inventory.getType().name();
 
 	// If the inventory type has a corresponding constructor, construct using that class
 	if (inventoryType in InventoryConstructors) {
-		const ctor = InventoryConstructors[inventoryType]
+		const ctor = InventoryConstructors[inventoryType];
 		if (ctor) {
-			return new ctor(_inventory) as T
+			return new ctor(_inventory) as T;
 		}
 	}
 
 	// Fallback to the base InventoryType class if we can't match to a subclass
-	return Inventory.fromJava(_inventory) as T
+	return Inventory.fromJava(_inventory) as T;
 }

@@ -1,14 +1,14 @@
-import { Block } from '../../block/Block'
-import { EntityEquipment } from '../../inventory/EntityEquipment'
-import { Player } from '../../player/Player'
-import { PotionEffect } from '../../potion/PotionEffect'
-import { PotionEffectType } from '../../potion/PotionEffectType'
-import { Extends } from '../../runtime/Extends'
-import { Location } from '../../util/Location'
-import { World } from '../../world/World'
-import { ConstructEntity } from '../EntityConstructors'
-import { Damageable } from './Damageable'
-import { Entity } from './Entity'
+import { Block } from '../../block/Block';
+import { EntityEquipment } from '../../inventory/EntityEquipment';
+import { Player } from '../../player/Player';
+import { PotionEffect } from '../../potion/PotionEffect';
+import { PotionEffectType } from '../../potion/PotionEffectType';
+import { Extends } from '../../runtime/Extends';
+import { Location } from '../../util/Location';
+import { World } from '../../world/World';
+import { ConstructEntity } from '../EntityConstructors';
+import { Damageable } from './Damageable';
+import { Entity } from './Entity';
 
 export interface LivingEntity extends Entity, Damageable {}
 
@@ -19,7 +19,7 @@ export class LivingEntity {
 	 * @param effect the potion effect
 	 */
 	public addPotionEffect(effect: PotionEffect): boolean {
-		return this.toJava().addPotionEffect(effect.toJava())
+		return this.toJava().addPotionEffect(effect.toJava());
 	}
 
 	/**
@@ -29,7 +29,7 @@ export class LivingEntity {
 	public addPotionEffects(effects: PotionEffect[]): boolean {
 		return effects
 			.map((pot) => this.addPotionEffect(pot))
-			.reduce((prev, current) => prev && current, true)
+			.reduce((prev, current) => prev && current, true);
 	}
 
 	/**
@@ -37,31 +37,31 @@ export class LivingEntity {
 	 * @param target the target entity to be attacked
 	 */
 	public attack(target: Entity): void {
-		this.toJava().attack(target.toJava())
+		this.toJava().attack(target.toJava());
 	}
 
 	/**
 	 * Gets the array of all potion effects currently active on this entity
 	 */
 	public getActivePotionEffects(): PotionEffect[] {
-		const javaPots: Java.Value[] = this.toJava().getActivePotionEffects()
-		return javaPots.map((pot) => PotionEffect.fromJava(pot))
+		const javaPots: Java.Value[] = this.toJava().getActivePotionEffects();
+		return javaPots.map((pot) => PotionEffect.fromJava(pot));
 	}
 
 	/**
 	 * Determines if this entity is able to pick up items
 	 */
 	public canPickupItems(): boolean {
-		return this.toJava().canPickupItems()
+		return this.toJava().canPickupItems();
 	}
 
 	/**
 	 * Gets all of the equipment worn by the living entity
 	 */
 	public getEquipment(): EntityEquipment | null {
-		const javaEquip = this.toJava().getEquipment()
-		if (!javaEquip) return null
-		return new EntityEquipment(javaEquip)
+		const javaEquip = this.toJava().getEquipment();
+		if (!javaEquip) return null;
+		return new EntityEquipment(javaEquip);
 	}
 
 	/**
@@ -70,16 +70,16 @@ export class LivingEntity {
 	 */
 	public getEyeHeight(ignore_pose?: boolean): number {
 		if (typeof ignore_pose === 'boolean')
-			return this.toJava().getEyeHeight(ignore_pose)
-		else return this.toJava().getEyeHeight()
+			return this.toJava().getEyeHeight(ignore_pose);
+		else return this.toJava().getEyeHeight();
 	}
 
 	/**
 	 * Gets the current location of the entity's eyes
 	 */
 	public getEyeLocation(): Location {
-		const javaLoc = this.toJava().getEyeLocation()
-		const javaWorld = javaLoc.getWorld()
+		const javaLoc = this.toJava().getEyeLocation();
+		const javaWorld = javaLoc.getWorld();
 		return new Location(
 			javaWorld ? World.fromJava(javaWorld) : null,
 			javaLoc.getX(),
@@ -87,61 +87,61 @@ export class LivingEntity {
 			javaLoc.getZ(),
 			javaLoc.getYaw(),
 			javaLoc.getPitch()
-		)
+		);
 	}
 
 	/**
 	 * Gets the player who most recently killed this entity
 	 */
 	public getKiller(): Player | null {
-		const javaPlayer = this.toJava().getKiller()
-		if (!javaPlayer) return null
-		return Player.fromJava(javaPlayer)
+		const javaPlayer = this.toJava().getKiller();
+		if (!javaPlayer) return null;
+		return Player.fromJava(javaPlayer);
 	}
 
 	/**
 	 * Gets the amount of damage most recently dealt to the player
 	 */
 	public getLastDamage(): number {
-		return this.toJava().getLastDamage()
+		return this.toJava().getLastDamage();
 	}
 
 	/**
 	 * Checks if this entity is currently leashed
 	 */
 	public isLeashed(): boolean {
-		return this.toJava().isLeashed()
+		return this.toJava().isLeashed();
 	}
 
 	/**
 	 * Gets the entity that is currently leading this entity
 	 */
 	public getLeashHolder(): Entity | null {
-		if (!this.isLeashed()) return null
-		const javaEntity = this.toJava().getLeashHolder()
-		if (!javaEntity) return null
-		return ConstructEntity(javaEntity)
+		if (!this.isLeashed()) return null;
+		const javaEntity = this.toJava().getLeashHolder();
+		if (!javaEntity) return null;
+		return ConstructEntity(javaEntity);
 	}
 
 	/**
 	 * Gets the maximum amount of air the living entity can have, in ticks
 	 */
 	public getMaximumAir(): number {
-		return this.toJava().getMaximumAir()
+		return this.toJava().getMaximumAir();
 	}
 
 	/**
 	 * Gets the entity's current maximum no damage ticks
 	 */
 	public getMaximumNoDamageTicks(): number {
-		return this.toJava().getMaximumNoDamageTicks()
+		return this.toJava().getMaximumNoDamageTicks();
 	}
 
 	/**
 	 * Gets the living entity's current no damage ticks
 	 */
 	public getNoDamageTicks(): number {
-		return this.toJava().getNoDamageTicks()
+		return this.toJava().getNoDamageTicks();
 	}
 
 	/**
@@ -149,23 +149,23 @@ export class LivingEntity {
 	 * @param type the type of effect
 	 */
 	public getPotionEffect(type: PotionEffectType): PotionEffect | null {
-		const javaEffectType = this.toJava().getPotionEffect(type.toJava())
-		if (!javaEffectType) return null
-		return PotionEffect.fromJava(javaEffectType)
+		const javaEffectType = this.toJava().getPotionEffect(type.toJava());
+		if (!javaEffectType) return null;
+		return PotionEffect.fromJava(javaEffectType);
 	}
 
 	/**
 	 * Gets the remaining number of ticks of air for this entity
 	 */
 	public getRemainingAir(): number {
-		return this.toJava().getRemainingAir()
+		return this.toJava().getRemainingAir();
 	}
 
 	/**
 	 * Determines if this entitydespawns when far away from players
 	 */
 	public getRemoveWhenFarAway(): boolean {
-		return this.toJava().getRemoveWhenFarAway()
+		return this.toJava().getRemoveWhenFarAway();
 	}
 
 	/**
@@ -175,16 +175,16 @@ export class LivingEntity {
 	public getTargetBlock(max_distance?: number): Block | null {
 		const javaBlock = this.toJava().getTargetBlockExact(
 			max_distance ?? 10000
-		)
-		if (!javaBlock) return null
-		return Block.fromJava(javaBlock)
+		);
+		if (!javaBlock) return null;
+		return Block.fromJava(javaBlock);
 	}
 
 	/**
 	 * Checks if this entity has an AI
 	 */
 	public hasAI(): boolean {
-		return this.toJava().hasAI()
+		return this.toJava().hasAI();
 	}
 
 	/**
@@ -192,10 +192,10 @@ export class LivingEntity {
 	 * @param other the other entity
 	 */
 	public hasLineOfSight(other: Entity): boolean {
-		if (!other) return false
-		const javaOther = other.toJava()
-		if (!javaOther) return false
-		return this.toJava().hasLineOfSight(javaOther)
+		if (!other) return false;
+		const javaOther = other.toJava();
+		if (!javaOther) return false;
+		return this.toJava().hasLineOfSight(javaOther);
 	}
 
 	/**
@@ -203,42 +203,42 @@ export class LivingEntity {
 	 * @param type the type of potion effect
 	 */
 	public hasPotionEffect(type: PotionEffectType): boolean {
-		return this.toJava().hasPotionEffect(type.toJava())
+		return this.toJava().hasPotionEffect(type.toJava());
 	}
 
 	/**
 	 * Checks if this entity is subject to collisions with other entities
 	 */
 	public isCollidable(): boolean {
-		return this.toJava().isCollidable()
+		return this.toJava().isCollidable();
 	}
 
 	/**
 	 * Checks if this entity is gliding, such as using an elytra
 	 */
 	public isGliding(): boolean {
-		return this.toJava().isGliding()
+		return this.toJava().isGliding();
 	}
 
 	/**
 	 * Checks if this entity is currently using the riptide enchantment
 	 */
 	public isRiptiding(): boolean {
-		return this.toJava().isRiptiding()
+		return this.toJava().isRiptiding();
 	}
 
 	/**
 	 * Checks if this entity is currently sleeping
 	 */
 	public isSleeping(): boolean {
-		return this.toJava().isSleeping()
+		return this.toJava().isSleeping();
 	}
 
 	/**
 	 * Checks if this entity is currently swimming
 	 */
 	public isSwimming(): boolean {
-		return this.toJava().isSwimming()
+		return this.toJava().isSwimming();
 	}
 
 	/**
@@ -246,7 +246,7 @@ export class LivingEntity {
 	 * @param type the type of potion effect
 	 */
 	public removePotionEffect(type: PotionEffectType): void {
-		this.toJava().removePotionEffect(type.toJava())
+		this.toJava().removePotionEffect(type.toJava());
 	}
 
 	/**
@@ -254,7 +254,7 @@ export class LivingEntity {
 	 * @param use_ai the AI status
 	 */
 	public setAI(use_ai: boolean): void {
-		this.toJava().setAI(use_ai)
+		this.toJava().setAI(use_ai);
 	}
 
 	/**
@@ -262,7 +262,7 @@ export class LivingEntity {
 	 * @param pickup the pickup status
 	 */
 	public setCanPickupItems(pickup: boolean): void {
-		this.toJava().setCanPickupItems(pickup)
+		this.toJava().setCanPickupItems(pickup);
 	}
 
 	/**
@@ -270,7 +270,7 @@ export class LivingEntity {
 	 * @param collidable the collidable status
 	 */
 	public setCollidable(collidable: boolean): void {
-		this.toJava().setCollidable(collidable)
+		this.toJava().setCollidable(collidable);
 	}
 
 	/**
@@ -278,7 +278,7 @@ export class LivingEntity {
 	 * @param gliding the gliding status
 	 */
 	public setGliding(gliding: boolean): void {
-		this.toJava().setGliding(gliding)
+		this.toJava().setGliding(gliding);
 	}
 
 	/**
@@ -286,7 +286,7 @@ export class LivingEntity {
 	 * @param damage the amount of damage
 	 */
 	public setLastDamage(damage: number): void {
-		this.toJava().setLastDamage(damage)
+		this.toJava().setLastDamage(damage);
 	}
 
 	/**
@@ -294,7 +294,7 @@ export class LivingEntity {
 	 * @param holder the leadh holder
 	 */
 	public setLeashHolder(holder: Entity | null): void {
-		this.toJava().setLeashHolder(holder ? holder.toJava() : null)
+		this.toJava().setLeashHolder(holder ? holder.toJava() : null);
 	}
 
 	/**
@@ -303,7 +303,7 @@ export class LivingEntity {
 	 * @param ticks the maximum amount of air
 	 */
 	public setMaximumAir(ticks: number): void {
-		this.toJava().setMaximumAir(ticks)
+		this.toJava().setMaximumAir(ticks);
 	}
 
 	/**
@@ -311,7 +311,7 @@ export class LivingEntity {
 	 * @param ticks the number of ticks
 	 */
 	public setMaximumNoDamageTicks(ticks: number): void {
-		this.toJava().setMaximumNoDamageTicks(ticks)
+		this.toJava().setMaximumNoDamageTicks(ticks);
 	}
 
 	/**
@@ -319,7 +319,7 @@ export class LivingEntity {
 	 * @param ticks the number of ticks
 	 */
 	public setNoDamageTicks(ticks: number): void {
-		this.toJava().setNoDamageTicks(ticks)
+		this.toJava().setNoDamageTicks(ticks);
 	}
 
 	/**
@@ -327,7 +327,7 @@ export class LivingEntity {
 	 * @param ticks the number of ticks
 	 */
 	public setRemainingAir(ticks: number): void {
-		this.toJava().setRemainingAir(ticks)
+		this.toJava().setRemainingAir(ticks);
 	}
 
 	/**
@@ -335,7 +335,7 @@ export class LivingEntity {
 	 * @param remove the remove status
 	 */
 	public setRemoveWhenFarAway(remove: boolean): void {
-		this.toJava().setRemoveWhenFarAway(remove)
+		this.toJava().setRemoveWhenFarAway(remove);
 	}
 
 	/**
@@ -343,20 +343,20 @@ export class LivingEntity {
 	 * @param swimming thr swimming flag
 	 */
 	public setSwimming(swimming: boolean): void {
-		return this.toJava().setSwimming(swimming)
+		return this.toJava().setSwimming(swimming);
 	}
 
 	/**
 	 * Makes the entity swing its main hand
 	 */
 	public swingMainHand(): void {
-		this.toJava().swingMainHand()
+		this.toJava().swingMainHand();
 	}
 
 	/**
 	 * Makes this entity swing its off hand
 	 */
 	public swingOffHand(): void {
-		this.toJava().swingOffHand()
+		this.toJava().swingOffHand();
 	}
 }

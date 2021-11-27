@@ -1,5 +1,5 @@
-import { Event } from '../Event'
-import { World } from '../../../world/World'
+import { Event } from '../Event';
+import { World } from '../../../world/World';
 
 /** Represents a Weather-related event */
 export class WeatherEvent extends Event {
@@ -8,6 +8,6 @@ export class WeatherEvent extends Event {
 	 * @returns World this event is ocurring in
 	 */
 	public getWorld(): World {
-		return World.fromJava(this.toJava().getWorld())
+		return World.fromJava(this.toJava().getWorld());
 	}
 }

@@ -1,5 +1,5 @@
-import '../globals'
-import { ToJava } from '../runtime/ToJava'
+import '../globals';
+import { ToJava } from '../runtime/ToJava';
 
 export class Vector implements ToJava {
 	/**
@@ -15,13 +15,13 @@ export class Vector implements ToJava {
 	) {}
 
 	public getX(): number {
-		return this.x
+		return this.x;
 	}
 	public getY(): number {
-		return this.y
+		return this.y;
 	}
 	public getZ(): number {
-		return this.z
+		return this.z;
 	}
 
 	public toJava(): Java.Value {
@@ -29,6 +29,6 @@ export class Vector implements ToJava {
 			this.x,
 			this.y,
 			this.z
-		)
+		);
 	}
 }

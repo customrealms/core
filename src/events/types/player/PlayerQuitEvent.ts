@@ -1,8 +1,8 @@
-import { PlayerEvent } from './PlayerEvent'
+import { PlayerEvent } from './PlayerEvent';
 
 export class PlayerQuitEvent extends PlayerEvent {
 	public static getBukkitClasspath(): string {
-		return 'org.bukkit.event.player.PlayerJoinEvent'
+		return 'org.bukkit.event.player.PlayerJoinEvent';
 	}
 
 	/**
@@ -10,6 +10,6 @@ export class PlayerQuitEvent extends PlayerEvent {
 	 * @param message the message to broadcast
 	 */
 	public setQuitMessage(message: string): void {
-		this.toJava().setQuitMessage(message)
+		this.toJava().setQuitMessage(message);
 	}
 }

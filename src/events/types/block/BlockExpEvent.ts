@@ -1,11 +1,11 @@
-import { BlockEvent } from './BlockEvent'
+import { BlockEvent } from './BlockEvent';
 
 export class BlockExpEvent extends BlockEvent {
 	/**
 	 * Gets the experience dropped by the block
 	 */
 	public getExpToDrop(): number {
-		return this.toJava().getExpToDrop()
+		return this.toJava().getExpToDrop();
 	}
 
 	/**
@@ -13,6 +13,6 @@ export class BlockExpEvent extends BlockEvent {
 	 * @param exp the amount of experience
 	 */
 	public setExpToDrop(exp: number): void {
-		return this.toJava().setExpToDrop(exp)
+		return this.toJava().setExpToDrop(exp);
 	}
 }

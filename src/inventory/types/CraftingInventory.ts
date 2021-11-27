@@ -1,13 +1,13 @@
-import { ItemStack } from '../../material/ItemStack'
-import { Inventory } from '../Inventory'
-import { Recipe } from '../Recipe'
+import { ItemStack } from '../../material/ItemStack';
+import { Inventory } from '../Inventory';
+import { Recipe } from '../Recipe';
 
 export class CraftingInventory extends Inventory {
 	/**
 	 * Check what item is in the result slot of this crafting inventory.
 	 */
 	getResult(): ItemStack | null {
-		return ItemStack.fromJavaNullable(this.toJava().getResult())
+		return ItemStack.fromJavaNullable(this.toJava().getResult());
 	}
 
 	/**
@@ -15,9 +15,9 @@ export class CraftingInventory extends Inventory {
 	 * @returns The contents. Individual entries may be null.
 	 */
 	getMatrix(): (ItemStack | null)[] {
-		const javaContents: Java.Value[] = this.toJava().getMatrix()
-		if (!javaContents) return []
-		return javaContents.map(ItemStack.fromJavaNullable)
+		const javaContents: Java.Value[] = this.toJava().getMatrix();
+		if (!javaContents) return [];
+		return javaContents.map(ItemStack.fromJavaNullable);
 	}
 
 	/**
@@ -25,7 +25,7 @@ export class CraftingInventory extends Inventory {
 	 * @param item The new result item.
 	 */
 	setResult(item: ItemStack | null): void {
-		this.toJava().setResult(item && item.toJava())
+		this.toJava().setResult(item && item.toJava());
 	}
 
 	/**
@@ -35,7 +35,7 @@ export class CraftingInventory extends Inventory {
 	 * @param items The new contents. Individual entries may be null.
 	 */
 	setMatrix(items: (ItemStack | null)[]): void {
-		this.toJava().setMatrix(items.map((item) => item && item.toJava()))
+		this.toJava().setMatrix(items.map((item) => item && item.toJava()));
 	}
 
 	/**
@@ -43,7 +43,7 @@ export class CraftingInventory extends Inventory {
 	 * @returns The recipe, or null if the current contents don't match any recipe.
 	 */
 	getRecipe(): Recipe | null {
-		const recipe = this.toJava().getRecipe()
-		return recipe && Recipe.fromJava(recipe)
+		const recipe = this.toJava().getRecipe();
+		return recipe && Recipe.fromJava(recipe);
 	}
 }

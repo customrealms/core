@@ -1,18 +1,18 @@
-import { AbstractHorseInventory } from '.'
-import { ItemStack } from '../../material/ItemStack'
+import { AbstractHorseInventory } from '.';
+import { ItemStack } from '../../material/ItemStack';
 
 export class LlamaInventory extends AbstractHorseInventory {
 	/**
 	 * Gets the item in the llama's decor slot.
 	 */
 	getDecor(): ItemStack | null {
-		return ItemStack.fromJavaNullable(this.toJava().getDecor())
+		return ItemStack.fromJavaNullable(this.toJava().getDecor());
 	}
 
 	/**
 	 * Sets the item in the llama's decor slot.
 	 */
 	setDecor(item: ItemStack | null): void {
-		this.toJava().setDecor(item && item.toJava())
+		this.toJava().setDecor(item && item.toJava());
 	}
 }

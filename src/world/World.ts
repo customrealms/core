@@ -1,72 +1,72 @@
-import { Block } from '../block/Block'
-import { Chunk } from '../chunk/Chunk'
-import { ConstructEntity } from '../entity/EntityConstructors'
-import { EntityType } from '../entity/EntityType'
-import { Entity } from '../entity/types/Entity'
-import { ItemDrop } from '../material/ItemDrop'
-import { ItemStack } from '../material/ItemStack'
-import { Player } from '../player/Player'
-import { ToJava } from '../runtime/ToJava'
-import { Location } from '../util/Location'
+import { Block } from '../block/Block';
+import { Chunk } from '../chunk/Chunk';
+import { ConstructEntity } from '../entity/EntityConstructors';
+import { EntityType } from '../entity/EntityType';
+import { Entity } from '../entity/types/Entity';
+import { ItemDrop } from '../material/ItemDrop';
+import { ItemStack } from '../material/ItemStack';
+import { Player } from '../player/Player';
+import { ToJava } from '../runtime/ToJava';
+import { Location } from '../util/Location';
 
 export interface IWorldExplosionOptions {
 	/**
 	 * Whether or not the explosion should set fire to nearby blocks. Defaults to false
 	 */
-	set_fire?: boolean
+	set_fire?: boolean;
 
 	/**
 	 * Whether or not the explosion should break blocks. Defaults to true
 	 */
-	break_blocks?: boolean
+	break_blocks?: boolean;
 }
 
 export interface IWorldSoundOptions {
 	// category?: SoundCategory;
 
-	volume?: string
+	volume?: string;
 
-	pitch?: string
+	pitch?: string;
 }
 
 export interface IWorldParticleOptions {
-	offset_x?: number
-	offset_y?: number
-	offset_z?: number
-	count?: number
-	extra?: number
+	offset_x?: number;
+	offset_y?: number;
+	offset_z?: number;
+	count?: number;
+	extra?: number;
 }
 
 export class World implements ToJava {
 	public static fromJava(_world: Java.Value): World {
-		return new World(_world)
+		return new World(_world);
 	}
 
 	private constructor(private _world: Java.Value) {}
 
 	public toJava(): Java.Value {
-		return this._world
+		return this._world;
 	}
 
 	/**
 	 * Gets the UUID of the world
 	 */
 	public getUUID(): string {
-		return this._world?.getUID()?.toString()
+		return this._world?.getUID()?.toString();
 	}
 
 	/**
 	 * Gets the name of the world
 	 */
 	public getName(): string {
-		return this._world?.getName()
+		return this._world?.getName();
 	}
 
 	/**
 	 * Checks if structures are currently generated in the world
 	 */
 	public canGenerateStructures(): boolean {
-		return this._world?.canGenerateStructures()
+		return this._world?.canGenerateStructures();
 	}
 
 	/**
@@ -87,7 +87,7 @@ export class World implements ToJava {
 			power,
 			options?.set_fire ?? false,
 			options?.break_blocks ?? true
-		)
+		);
 	}
 
 	/**
@@ -102,7 +102,7 @@ export class World implements ToJava {
 		item_stack: ItemStack,
 		natural?: boolean
 	): ItemDrop {
-		return ItemDrop.fromJava(this._world?.dropItem())
+		return ItemDrop.fromJava(this._world?.dropItem());
 	}
 
 	// /**
@@ -120,21 +120,21 @@ export class World implements ToJava {
 	 * Gets whether animals can spawn in this world
 	 */
 	public getAllowAnimals(): boolean {
-		return this._world?.getAllowAnimals()
+		return this._world?.getAllowAnimals();
 	}
 
 	/**
 	 * Gets whether monsters can spawn in this world
 	 */
 	public getAllowMonsters(): boolean {
-		return this._world?.getAllowAnimals()
+		return this._world?.getAllowAnimals();
 	}
 
 	/**
 	 * Gets the limit for the number of ambient mobs that can spawn in a chunk in this world
 	 */
 	public getAmbientSpawnLimit(): number {
-		return this._world?.getAmbientSpawnLimit()
+		return this._world?.getAmbientSpawnLimit();
 	}
 
 	/**
@@ -142,14 +142,14 @@ export class World implements ToJava {
 	 * @param limit the limit
 	 */
 	public setAmbientSpawnLimit(limit: number): void {
-		this._world?.setAmbientSpawnLimit(limit)
+		this._world?.setAmbientSpawnLimit(limit);
 	}
 
 	/**
 	 * Gets the limit for the number of animals that can spawn in a chunk in this world
 	 */
 	public getAnimalSpawnLimit(): number {
-		return this._world?.getAnimalSpawnLimit()
+		return this._world?.getAnimalSpawnLimit();
 	}
 
 	/**
@@ -157,14 +157,14 @@ export class World implements ToJava {
 	 * @param limit the limit
 	 */
 	public setAnimalSpawnLimit(limit: number): void {
-		this._world?.setAnimalSpawnLimit(limit)
+		this._world?.setAnimalSpawnLimit(limit);
 	}
 
 	/**
 	 * Gets the limit for the number of water animals that can spawn in a chunk in this world
 	 */
 	public getWaterAnimalSpawnLimit(): number {
-		return this._world?.getWaterAnimalSpawnLimit()
+		return this._world?.getWaterAnimalSpawnLimit();
 	}
 
 	/**
@@ -172,14 +172,14 @@ export class World implements ToJava {
 	 * @param limit the limit
 	 */
 	public setWaterAnimalSpawnLimit(limit: number): void {
-		this._world?.setWaterAnimalSpawnLimit(limit)
+		this._world?.setWaterAnimalSpawnLimit(limit);
 	}
 
 	/**
 	 * Gets the limit for the number of monsters that can spawn in a chunk in this world
 	 */
 	public getMonsterSpawnLimit(): number {
-		return this._world?.getMonsterSpawnLimit()
+		return this._world?.getMonsterSpawnLimit();
 	}
 
 	/**
@@ -187,7 +187,7 @@ export class World implements ToJava {
 	 * @param limit the limit
 	 */
 	public setMonsterSpawnLimit(limit: number): void {
-		this._world?.setMonsterSpawnLimit(limit)
+		this._world?.setMonsterSpawnLimit(limit);
 	}
 
 	// /**
@@ -216,13 +216,13 @@ export class World implements ToJava {
 	 * @param y the y-coordinate
 	 * @param z the z-coordinate
 	 */
-	public getBlockAt(x: number, y: number, z: number): Block
+	public getBlockAt(x: number, y: number, z: number): Block;
 
 	/**
 	 * Gets the block at a given location in the world
 	 * @param location the location of the block
 	 */
-	public getBlockAt(location: Location): Block
+	public getBlockAt(location: Location): Block;
 
 	public getBlockAt(...args: any[]): Block {
 		if (
@@ -231,20 +231,20 @@ export class World implements ToJava {
 			typeof args[1] === 'number' &&
 			typeof args[2] === 'number'
 		) {
-			const x: number = args[0]
-			const y: number = args[1]
-			const z: number = args[2]
-			const javaBlock = this._world?.getBlockAt(x, y, z)
-			return Block.fromJava(javaBlock)
+			const x: number = args[0];
+			const y: number = args[1];
+			const z: number = args[2];
+			const javaBlock = this._world?.getBlockAt(x, y, z);
+			return Block.fromJava(javaBlock);
 		} else if (args.length === 1 && typeof args[0] === 'object') {
-			const location: Location = args[0]
+			const location: Location = args[0];
 			return this.getBlockAt(
 				location.getX(),
 				location.getY(),
 				location.getZ()
-			)
+			);
 		}
-		return null as any
+		return null as any;
 	}
 
 	/**
@@ -252,13 +252,13 @@ export class World implements ToJava {
 	 * @param x the x-coordinate in block-space
 	 * @param z the z-coordinate in block-space
 	 */
-	public getChunkAt(x: number, z: number): Chunk
+	public getChunkAt(x: number, z: number): Chunk;
 
 	/**
 	 * Gets the chunk containing a given location in the world
 	 * @param location the location in the world
 	 */
-	public getChunkAt(location: Location): Chunk
+	public getChunkAt(location: Location): Chunk;
 
 	public getChunkAt(...args: any[]): Chunk {
 		if (
@@ -266,21 +266,21 @@ export class World implements ToJava {
 			typeof args[0] === 'number' &&
 			typeof args[1] === 'number'
 		) {
-			const x: number = args[0]
-			const z: number = args[1]
-			return Chunk.fromJava(this._world.getChunkAt(x, z))
+			const x: number = args[0];
+			const z: number = args[1];
+			return Chunk.fromJava(this._world.getChunkAt(x, z));
 		} else if (args.length === 1 && typeof args[0] === 'object') {
-			const location: Location = args[0]
-			return this.getChunkAt(location.getX(), location.getZ())
+			const location: Location = args[0];
+			return this.getChunkAt(location.getX(), location.getZ());
 		}
-		return null as any
+		return null as any;
 	}
 
 	/**
 	 * Checks if this world is in hardcore mode
 	 */
 	public isHardcore(): boolean {
-		return this._world?.isHardcore()
+		return this._world?.isHardcore();
 	}
 
 	/**
@@ -288,7 +288,7 @@ export class World implements ToJava {
 	 * @param hardcore the hardcore status of the world
 	 */
 	public setHardcore(hardcore: boolean): void {
-		this._world?.setHardcore(hardcore)
+		this._world?.setHardcore(hardcore);
 	}
 
 	// /**
@@ -306,9 +306,9 @@ export class World implements ToJava {
 	 * Gets all of the entities in this world
 	 */
 	public getEntities(): Entity[] {
-		const javaEntities = this._world.getEntities()
-		if (!javaEntities) return []
-		return javaEntities.map((e: any) => ConstructEntity(e))
+		const javaEntities = this._world.getEntities();
+		if (!javaEntities) return [];
+		return javaEntities.map((e: any) => ConstructEntity(e));
 	}
 
 	// /**
@@ -320,7 +320,7 @@ export class World implements ToJava {
 	 * Gets the full in-game time on this world
 	 */
 	public getFullTime(): number {
-		return this._world?.getFullTime()
+		return this._world?.getFullTime();
 	}
 
 	/**
@@ -328,14 +328,14 @@ export class World implements ToJava {
 	 * @param full_time the full in-game time value
 	 */
 	public setFullTime(full_time: number): void {
-		this._world?.setFullTime(full_time)
+		this._world?.setFullTime(full_time);
 	}
 
 	/**
 	 * Gets the relative in-game time for this world
 	 */
 	public getTime(): number {
-		return this._world?.getTime()
+		return this._world?.getTime();
 	}
 
 	/**
@@ -343,7 +343,7 @@ export class World implements ToJava {
 	 * @param time the relative in-game time
 	 */
 	public setTime(time: number): void {
-		this._world?.setTime(time)
+		this._world?.setTime(time);
 	}
 
 	// /**
@@ -367,8 +367,8 @@ export class World implements ToJava {
 	 * @param z the z-coordinate
 	 */
 	public getHighestBlockAt(x: number, z: number): Block {
-		const javaBlock = this._world?.getHighestBlockAt(x, z)
-		return Block.fromJava(javaBlock)
+		const javaBlock = this._world?.getHighestBlockAt(x, z);
+		return Block.fromJava(javaBlock);
 	}
 
 	/**
@@ -378,7 +378,7 @@ export class World implements ToJava {
 	 * @param z the y-coordinate of the block
 	 */
 	public getHumidity(x: number, y: number, z: number): number {
-		return this._world.getHumidity(x, y, z)
+		return this._world.getHumidity(x, y, z);
 	}
 
 	/**
@@ -387,14 +387,14 @@ export class World implements ToJava {
 	public getPlayers(): Player[] {
 		return this._world
 			?.getPlayers()
-			?.map((p: Java.Value) => Player.fromJava(p))
+			?.map((p: Java.Value) => Player.fromJava(p));
 	}
 
 	/**
 	 * Checks if PVP is enabled in this world
 	 */
 	public isPvpEnabled(): boolean {
-		return this._world?.getPVP()
+		return this._world?.getPVP();
 	}
 
 	/**
@@ -402,21 +402,21 @@ export class World implements ToJava {
 	 * @param enabled the PVP enabled status
 	 */
 	public setPvpEnabled(enabled: boolean): void {
-		this._world?.setPVP(enabled)
+		this._world?.setPVP(enabled);
 	}
 
 	/**
 	 * Gets the sea level for this world
 	 */
 	public getSeaLevel(): number {
-		return this._world.getSeaLevel()
+		return this._world.getSeaLevel();
 	}
 
 	/**
 	 * Gets the seed for this world
 	 */
 	public getSeed(): number {
-		return this._world.getSeed()
+		return this._world.getSeed();
 	}
 
 	/**
@@ -426,20 +426,20 @@ export class World implements ToJava {
 	 * @param z the z-coorsinate of the block
 	 */
 	public getTemperature(x: number, y: number, z: number): number {
-		return this._world?.getTemperature(x, y, z)
+		return this._world?.getTemperature(x, y, z);
 	}
 
 	/**
 	 * Gets the spawn location of the world
 	 */
 	public getSpawnLocation(): Location {
-		const javaLoc = this._world?.getSpawnLocation()
+		const javaLoc = this._world?.getSpawnLocation();
 		return new Location(
 			this,
 			javaLoc.getX(),
 			javaLoc.getY(),
 			javaLoc.getZ()
-		)
+		);
 	}
 
 	/**
@@ -452,8 +452,8 @@ export class World implements ToJava {
 			location.getX(),
 			location.getY(),
 			location.getZ()
-		)
-		this._world?.setSpawnLocation(javaLoc)
+		);
+		this._world?.setSpawnLocation(javaLoc);
 	}
 
 	// /**
@@ -476,7 +476,7 @@ export class World implements ToJava {
 	 * Saves the world to disk
 	 */
 	public save(): void {
-		this._world.save()
+		this._world.save();
 	}
 
 	/**
@@ -490,14 +490,14 @@ export class World implements ToJava {
 	): T | null {
 		const javaEntityType = Java.resolve(
 			'org.bukkit.entity.EntityType'
-		).fromName(entity_type)
-		if (!javaEntityType) return null
+		).fromName(entity_type);
+		if (!javaEntityType) return null;
 		const javaEntity = this.toJava().spawnEntity(
 			location.toJava(),
 			javaEntityType
-		)
-		if (!javaEntity) return null
-		return ConstructEntity<T>(javaEntity)
+		);
+		if (!javaEntity) return null;
+		return ConstructEntity<T>(javaEntity);
 	}
 
 	// /**
@@ -517,7 +517,7 @@ export class World implements ToJava {
 		location: Location,
 		do_damage: boolean = true
 	): void {
-		if (do_damage) this._world.strikeLightning(location.toJava())
-		else this._world.strikeLightningEffect(location.toJava())
+		if (do_damage) this._world.strikeLightning(location.toJava());
+		else this._world.strikeLightningEffect(location.toJava());
 	}
 }

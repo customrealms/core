@@ -1,11 +1,11 @@
-import '../globals'
-import { ToJava } from '../runtime/ToJava'
-import { PotionEffect } from './PotionEffect'
-import { PotionEffectName } from './PotionEffectName'
+import '../globals';
+import { ToJava } from '../runtime/ToJava';
+import { PotionEffect } from './PotionEffect';
+import { PotionEffectName } from './PotionEffectName';
 
 export class PotionEffectType implements ToJava {
 	public static fromJava(_java: Java.Value): PotionEffectType {
-		return new PotionEffectType(_java)
+		return new PotionEffectType(_java);
 	}
 
 	/**
@@ -17,15 +17,15 @@ export class PotionEffectType implements ToJava {
 	): PotionEffectType | null {
 		const javaEffectType = Java.resolve(
 			'org.bukkit.potion.PotionEffectType'
-		).getByName(name)
-		if (!javaEffectType) return null
-		return PotionEffectType.fromJava(javaEffectType)
+		).getByName(name);
+		if (!javaEffectType) return null;
+		return PotionEffectType.fromJava(javaEffectType);
 	}
 
 	private constructor(private _java: Java.Value) {}
 
 	public toJava(): Java.Value {
-		return this._java
+		return this._java;
 	}
 
 	/**
@@ -34,21 +34,21 @@ export class PotionEffectType implements ToJava {
 	 * @param amplifier the amplifier of the amplifier
 	 */
 	public createEffect(duration: number, amplifier: number): PotionEffect {
-		const javaEffect = this.toJava().createEffect(duration, amplifier)
-		return PotionEffect.fromJava(javaEffect)
+		const javaEffect = this.toJava().createEffect(duration, amplifier);
+		return PotionEffect.fromJava(javaEffect);
 	}
 
 	/**
 	 * Gets the name of this potion effect type
 	 */
 	public getName(): string {
-		return this.toJava().getName().toLowerCase()
+		return this.toJava().getName().toLowerCase();
 	}
 
 	/**
 	 * Checks whether or not this type of effect happens once, immediately
 	 */
 	public isInstant(): boolean {
-		return this.toJava().getName()
+		return this.toJava().getName();
 	}
 }

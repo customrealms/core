@@ -1,4 +1,4 @@
-export {}
+export {};
 
 // The globals found in this file are documented here, but implemented in Java in the `bukkit-runtime` project.
 // They are dynamically inserted as global variables / functions in the CustomRealms runtime
@@ -11,13 +11,13 @@ declare global {
 		/**
 		 * Java.Value represents a wrapped Java object that is returned by the Java.resolve type
 		 */
-		type Value = any
+		type Value = any;
 
 		/**
 		 * Resolves a Java class or value in order to perform operations on it from within your JavaScript code
 		 * @param classpath the Java classpath to the class or value you wish to resolve
 		 */
-		function resolve<T = Java.Value>(classpath: string): T | undefined
+		function resolve<T = Java.Value>(classpath: string): T | undefined;
 	}
 
 	/**
@@ -38,13 +38,13 @@ declare global {
 		function register(
 			event_classpath: string,
 			handler: (event: Java.Value) => void
-		): number
+		): number;
 
 		/**
 		 * Unregisters an event handler, so it will stop receiving events
 		 * @param handle the handle number of the previously-registered event handler
 		 */
-		function unregister(handle: number): void
+		function unregister(handle: number): void;
 	}
 
 	/**
@@ -59,12 +59,12 @@ declare global {
 		 */
 		function register(
 			handler: (player: Java.Value, message: string) => boolean
-		): number
+		): number;
 
 		/**
 		 * Unregisters a command handler, so it will stop receiving command events
 		 * @param handle the handle numbe of the previously-registered command handler
 		 */
-		function unregister(handle: number): void
+		function unregister(handle: number): void;
 	}
 }

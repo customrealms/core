@@ -1,4 +1,4 @@
-import { ChatColor } from './ChatColor'
+import { ChatColor } from './ChatColor';
 
 /**
  * The rules of ChatColors:
@@ -7,9 +7,9 @@ import { ChatColor } from './ChatColor'
  */
 
 interface IPartStyle {
-	value: string
-	color?: string
-	attrs: string[]
+	value: string;
+	color?: string;
+	attrs: string[];
 }
 
 export class ChatColorUtils {
@@ -30,7 +30,7 @@ export class ChatColorUtils {
 		'&7': '#bebebe', // GRAY
 		'&8': '#3f3f3f', // DARK_GRAY
 		'&0': '#000000', // BLACK
-	}
+	};
 
 	private static readonly ATTRIBUTE_CODES: { [key: string]: string } = {
 		'&l': 'bold',
@@ -39,16 +39,16 @@ export class ChatColorUtils {
 		'&k': 'magic',
 		'&m': 'strike',
 		'&r': 'reset',
-	}
+	};
 
 	public static parseColorsToMinecraft(str: string): string {
 		for (const find in ChatColorUtils.COLORCODE_TO_HEX) {
-			str = str.replace(new RegExp(find, 'g'), '\u00A7' + find.substr(1))
+			str = str.replace(new RegExp(find, 'g'), '\u00A7' + find.substr(1));
 		}
 		for (const find in ChatColorUtils.ATTRIBUTE_CODES) {
-			str = str.replace(new RegExp(find, 'g'), '\u00A7' + find.substr(1))
+			str = str.replace(new RegExp(find, 'g'), '\u00A7' + find.substr(1));
 		}
-		return str
+		return str;
 	}
 
 	/**
@@ -58,7 +58,7 @@ export class ChatColorUtils {
 	public static stripColorCodes(str: string): string {
 		return this.parseColorsToParts(str)
 			.map((part) => part.value)
-			.join('')
+			.join('');
 	}
 
 	/**
@@ -75,41 +75,41 @@ export class ChatColorUtils {
 					.replace(/</g, '&lt;')
 					.replace(/>/g, '&gt;')
 					.replace(/"/g, '&quot;')
-					.replace(/'/g, '&#039;')
+					.replace(/'/g, '&#039;');
 
 				// If there is no color and no attributes
-				if (!part.color && part.attrs.length === 0) return clean_value
+				if (!part.color && part.attrs.length === 0) return clean_value;
 
 				// Create the object for the styles
-				const styles: { [key: string]: string } = {}
+				const styles: { [key: string]: string } = {};
 
 				// Add the color
-				if (part.color) styles['color'] = part.color
+				if (part.color) styles['color'] = part.color;
 
 				// Add the attributes
-				if (part.attrs.includes('bold')) styles['font-weight'] = 'bold'
+				if (part.attrs.includes('bold')) styles['font-weight'] = 'bold';
 				if (part.attrs.includes('italic'))
-					styles['font-style'] = 'italic'
+					styles['font-style'] = 'italic';
 				if (part.attrs.includes('underline')) {
 					if (!styles['text-decoration'])
-						styles['text-decoration'] = ''
-					styles['text-decoration'] += ' underline'
+						styles['text-decoration'] = '';
+					styles['text-decoration'] += ' underline';
 				}
 				if (part.attrs.includes('strike')) {
 					if (!styles['text-decoration'])
-						styles['text-decoration'] = ''
-					styles['text-decoration'] += ' line-through'
+						styles['text-decoration'] = '';
+					styles['text-decoration'] += ' line-through';
 				}
 
 				// Convert the styles to a CSS string
 				const styles_str: string = Object.keys(styles)
 					.map((key) => `${key}: ${styles[key]}`)
-					.join(';')
+					.join(';');
 
 				// Return the full HTML string
-				return `<span style="${styles_str}">${clean_value}</span>`
+				return `<span style="${styles_str}">${clean_value}</span>`;
 			})
-			.join('')
+			.join('');
 	}
 
 	/**
@@ -124,32 +124,32 @@ export class ChatColorUtils {
 				value: '',
 				attrs: [],
 			},
-		]
+		];
 
 		// Split by the ampersands
 		str.split('&').forEach((part: string, index: number) => {
 			// If this is the first part
 			if (index === 0 || part.length === 0) {
 				// Add the part to the string
-				parts[parts.length - 1].value += (index > 0 ? '&' : '') + part
-				return
+				parts[parts.length - 1].value += (index > 0 ? '&' : '') + part;
+				return;
 			}
 
 			// Get the first character
-			const code: string = part[0]
-			part = part.substr(1)
+			const code: string = part[0];
+			part = part.substr(1);
 
 			// Get the color and attribute values
 			const color_val: string | undefined =
-				ChatColorUtils.COLORCODE_TO_HEX[`&${code}`]
+				ChatColorUtils.COLORCODE_TO_HEX[`&${code}`];
 			const attr_val: string | undefined =
-				ChatColorUtils.ATTRIBUTE_CODES[`&${code}`]
+				ChatColorUtils.ATTRIBUTE_CODES[`&${code}`];
 
 			// If this is just an innocent ampersand, not a code
 			if (!color_val && !attr_val) {
 				// Add the string to the latest part
-				parts[parts.length - 1].value += `&${code}${part}`
-				return
+				parts[parts.length - 1].value += `&${code}${part}`;
+				return;
 			}
 
 			// If it's a color code
@@ -159,7 +159,7 @@ export class ChatColorUtils {
 					value: part,
 					color: color_val,
 					attrs: [],
-				})
+				});
 			}
 
 			// If it's an attribute value
@@ -170,23 +170,23 @@ export class ChatColorUtils {
 					parts.push({
 						value: part,
 						attrs: [],
-					})
+					});
 				} else {
 					// Get the previous part
-					const prev_part: IPartStyle = parts[parts.length - 1]
+					const prev_part: IPartStyle = parts[parts.length - 1];
 
 					// Add the new part
 					parts.push({
 						value: part,
 						color: prev_part.color,
 						attrs: [...prev_part.attrs, attr_val],
-					})
+					});
 				}
 			}
-		})
+		});
 
 		// Return the parts
-		return parts
+		return parts;
 	}
 
 	/**
@@ -200,7 +200,7 @@ export class ChatColorUtils {
 			ChatColor.STRIKETHROUGH,
 			ChatColor.UNDERLINE,
 			ChatColor.ITALIC,
-		].includes(color)
+		].includes(color);
 	}
 
 	/**
@@ -225,7 +225,7 @@ export class ChatColorUtils {
 			ChatColor.LIGHT_PURPLE,
 			ChatColor.YELLOW,
 			ChatColor.WHITE,
-		].includes(color)
+		].includes(color);
 	}
 
 	/**
@@ -234,7 +234,7 @@ export class ChatColorUtils {
 	 * @param str the string value to parse
 	 */
 	public static parse(str: string): string {
-		return ChatColorUtils.parseColorsToMinecraft(str) + ChatColor.RESET
+		return ChatColorUtils.parseColorsToMinecraft(str) + ChatColor.RESET;
 	}
 
 	/**
@@ -242,6 +242,6 @@ export class ChatColorUtils {
 	 * @param str the string value to clean
 	 */
 	public static strip(str: string): string {
-		return ChatColorUtils.stripColorCodes(str)
+		return ChatColorUtils.stripColorCodes(str);
 	}
 }

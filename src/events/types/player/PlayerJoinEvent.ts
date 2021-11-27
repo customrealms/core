@@ -1,8 +1,8 @@
-import { PlayerEvent } from './PlayerEvent'
+import { PlayerEvent } from './PlayerEvent';
 
 export class PlayerJoinEvent extends PlayerEvent {
 	public static getBukkitClasspath(): string {
-		return 'org.bukkit.event.player.PlayerJoinEvent'
+		return 'org.bukkit.event.player.PlayerJoinEvent';
 	}
 
 	/**
@@ -10,6 +10,6 @@ export class PlayerJoinEvent extends PlayerEvent {
 	 * @param message the message to broadcast
 	 */
 	public setJoinMessage(message: string): void {
-		this.toJava().setJoinMessage(message)
+		this.toJava().setJoinMessage(message);
 	}
 }

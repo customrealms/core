@@ -36,7 +36,7 @@ export class Sheep implements ToJava {
 	private constructor(private _sheep: Java.Value) {}
 
 	public toJava(): Java.Value {
-		return this._sheep
+		return this._sheep;
 	}
 
 	//============================================================
@@ -44,11 +44,11 @@ export class Sheep implements ToJava {
 	//============================================================
 
 	public isSheared(): boolean {
-		return this.toJava().isSheared()
+		return this.toJava().isSheared();
 	}
 
 	public setSheared(flag: boolean): void {
-		this.toJava().setSheared(flag)
+		this.toJava().setSheared(flag);
 	}
 }
 ```
