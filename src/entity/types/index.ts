@@ -14,6 +14,7 @@ export * from './LivingEntity';
 export * from './Lootable';
 export * from './Mob';
 export * from './Monster';
+export * from './Pig';
 export * from './Sheep';
 export * from './Sittable';
 export * from './Tameable';

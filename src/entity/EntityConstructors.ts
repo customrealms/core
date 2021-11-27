@@ -1,6 +1,6 @@
 import { Player } from '../player/Player';
 import { EntityType } from './EntityType';
-import { Bee, Cow, Creeper, Sheep, Wolf } from './types';
+import { Bee, Cow, Creeper, Pig, Sheep, Wolf } from './types';
 import { Entity } from './types/Entity';
 import { LightningStrike } from './types/LightningStrike';
 
@@ -16,6 +16,7 @@ export const EntityConstructors: {[key in EntityType]?: any } = {
     [EntityType.CREEPER]: Creeper,
     [EntityType.LIGHTNING]: LightningStrike,
     [EntityType.PLAYER]: Player,
+    [EntityType.PIG]: Pig,
     [EntityType.SHEEP]: Sheep,
     [EntityType.WOLF]: Wolf,
 };
