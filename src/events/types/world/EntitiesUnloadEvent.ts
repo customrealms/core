@@ -1,5 +1,5 @@
-import { Entity } from '../../../entity/Entity';
 import { ConstructEntity } from '../../../entity/EntityConstructors';
+import { Entity } from '../../../entity/types/Entity';
 import { ChunkEvent } from './ChunkEvent';
 
 /**

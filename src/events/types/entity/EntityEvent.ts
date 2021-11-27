@@ -1,4 +1,4 @@
-import { Entity } from "../../../entity/Entity";
+import { Entity } from "../../../entity/types/Entity";
 import { ConstructEntity } from "../../../entity/EntityConstructors";
 import { EntityType } from "../../../entity/EntityType";
 import { Event } from "../Event";
