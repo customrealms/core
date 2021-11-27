@@ -10,6 +10,14 @@ export interface Creeper extends Monster {}
 @Extends(Monster)
 export class Creeper implements ToJava {
 
+    private constructor(
+        private _creeper: Java.Value,
+    ) {}
+
+    public toJava(): Java.Value {
+        return this._creeper;
+    }
+
     /**
      * Checks if this Creeper is powered (electrocuted).
      */

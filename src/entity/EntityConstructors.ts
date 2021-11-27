@@ -7,6 +7,8 @@ import { LightningStrike } from './types/LightningStrike';
 /**
  * Mapping of EntityType values to the corresponding class constructor. We use any instead of
  * Constructor<Entity> because Entity subclasses have private constructors.
+ * 
+ * Classes listed as values here MUST have a constructor and must implement ToJava!
  */
 export const EntityConstructors: {[key in EntityType]?: any } = {
     [EntityType.CREEPER]: Creeper,
