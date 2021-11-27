@@ -1,22 +1,24 @@
-import { Block } from "../block/Block";
-import { EntityEquipment } from "../inventory/EntityEquipment";
-import { Player } from "../player/Player";
-import { PotionEffect } from "../potion/PotionEffect";
-import { PotionEffectType } from "../potion/PotionEffectType";
-import { ApplyMixins } from "../runtime/ApplyMixins";
-import { Location } from "../util/Location";
-import { World } from "../world/World";
+import { Block } from "../../block/Block";
+import { EntityEquipment } from "../../inventory/EntityEquipment";
+import { Player } from "../../player/Player";
+import { PotionEffect } from "../../potion/PotionEffect";
+import { PotionEffectType } from "../../potion/PotionEffectType";
+import { Extends } from "../../runtime/Extends";
+import { Location } from "../../util/Location";
+import { World } from "../../world/World";
+import { ConstructEntity } from "../EntityConstructors";
 import { Damageable } from "./Damageable";
 import { Entity } from "./Entity";
-import { ConstructEntity } from "./EntityConstructors";
 
+export interface LivingEntity extends Entity, Damageable {}
+
+@Extends(Entity, Damageable)
 export class LivingEntity {
 
     /**
      * Adds a potion effect to this living entity
      * @param effect the potion effect
      */
-     addPotionEffect(effect: PotionEffect): boolean;
     public addPotionEffect(effect: PotionEffect): boolean {
         return this.toJava().addPotionEffect(effect.toJava());
     }
@@ -357,6 +359,3 @@ export class LivingEntity {
     }
 
 }
-
-export interface LivingEntity extends Entity, Damageable {}
-ApplyMixins(LivingEntity, [Entity, Damageable]);

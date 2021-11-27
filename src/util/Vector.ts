@@ -19,7 +19,7 @@ export class Vector implements ToJava {
     public getY(): number { return this.y; }
     public getZ(): number { return this.z; }
 
-    public toJava(): any {
+    public toJava(): Java.Value {
         return new (Java.resolve('org.bukkit.util.Vector'))(
             this.x,
             this.y,

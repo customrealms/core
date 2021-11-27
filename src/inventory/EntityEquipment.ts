@@ -1,6 +1,5 @@
-import { Entity } from "../entity/Entity";
 import { ConstructEntity } from "../entity/EntityConstructors";
-import "../globals";
+import { Entity } from "../entity/types/Entity";
 import { ItemStack } from "../material/ItemStack";
 import { ToJava } from "../runtime/ToJava";
 import { EquipmentSlot } from "./EquipmentSlot";
@@ -15,7 +14,7 @@ export class EntityEquipment implements ToJava {
         private _java: Java.Value,
     ) {}
 
-    public toJava(): any {
+    public toJava(): Java.Value {
         return this._java;
     }
 

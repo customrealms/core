@@ -1,4 +1,4 @@
-import { HumanEntity } from "../entity/HumanEntity";
+import { HumanEntity } from "../entity/types/HumanEntity";
 import { ItemStack } from "../material/ItemStack";
 import { ToJava } from "../runtime/ToJava";
 import { Inventory } from "./Inventory";
@@ -9,9 +9,11 @@ import { InventoryViewProperty } from "./InventoryViewProperty";
 
 export class InventoryView implements ToJava {
 
-    public constructor(private _java: any) {}
+    public constructor(
+        private _java: Java.Value,
+    ) {}
 
-    public toJava(): any {
+    public toJava(): Java.Value {
         return this._java;
     }
 

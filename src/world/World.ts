@@ -1,13 +1,12 @@
-import { Biome } from '../biome/Biome';
 import { Block } from '../block/Block';
 import { Chunk } from '../chunk/Chunk';
-import { Entity } from "../entity/Entity";
+import { ConstructEntity } from '../entity/EntityConstructors';
 import { EntityType } from "../entity/EntityType";
-import "../globals";
+import { Entity } from "../entity/types/Entity";
 import { ItemDrop } from '../material/ItemDrop';
 import { ItemStack } from '../material/ItemStack';
-import { TreeType } from '../material/TreeType';
 import { Player } from '../player/Player';
+import { ToJava } from '../runtime/ToJava';
 import { Location } from '../util/Location';
 
 export interface IWorldExplosionOptions {
@@ -42,7 +41,7 @@ export interface IWorldParticleOptions {
     extra?: number;
 }
 
-export class World {
+export class World implements ToJava {
 
     public static fromJava(_world: Java.Value): World {
         return new World(_world);
@@ -52,7 +51,7 @@ export class World {
         private _world: Java.Value,
     ) {}
 
-    public toJava(): any {
+    public toJava(): Java.Value {
         return this._world;
     }
 
@@ -323,8 +322,7 @@ export class World {
     public getEntities(): Entity[] {
         const javaEntities = this._world.getEntities();
         if (!javaEntities) return [];
-        //@ts-ignore entity constructor is private, but we can still call it internally
-        return javaEntities.map((e: any) => new Entity(e));
+        return javaEntities.map((e: any) => ConstructEntity(e));
     }
 
     // /**
@@ -498,13 +496,12 @@ export class World {
      * @param location the location at which to spawn the entity
      * @param entity_type the type of entity to spawn
      */
-    public spawnEntity(location: Location, entity_type: EntityType): Entity | null {
+    public spawnEntity<T extends Entity = Entity>(location: Location, entity_type: EntityType): T | null {
         const javaEntityType = Java.resolve('org.bukkit.entity.EntityType').fromName(entity_type);
         if (!javaEntityType) return null;
         const javaEntity = this.toJava().spawnEntity(location.toJava(), javaEntityType);
         if (!javaEntity) return null;
-        //@ts-ignore entity constructor is private, but we can still call it internally
-        return new Entity(javaEntity);
+        return ConstructEntity<T>(javaEntity);
     }
 
     // /**

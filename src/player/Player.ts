@@ -1,6 +1,5 @@
-import '../globals';
 import { ChatColor } from '../chat/ChatColor';
-import { HumanEntity } from '../entity/HumanEntity';
+import { HumanEntity } from '../entity/types/HumanEntity';
 import { Enchantment } from "../material/Enchantment";
 import { EnchantmentName } from '../material/EnchantmentName';
 import { ItemStack } from "../material/ItemStack";

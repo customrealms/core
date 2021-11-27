@@ -1,12 +1,9 @@
-name: Docs
+name: Test
 
-on:
-  push:
-    branches:
-      - master
+on: [push, pull_request]
 
 jobs:
-  docs:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository
@@ -23,12 +20,4 @@ jobs:
       - name: Test to see if the project compiles
         run: npm run build:check
 
-      - name: Create the docs directory locally in CI
-        run: npm run docs
-
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.4
-        with:
-          branch: gh-pages
-          folder: docs
 
