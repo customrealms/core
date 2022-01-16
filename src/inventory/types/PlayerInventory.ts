@@ -156,8 +156,7 @@ export class PlayerInventory extends Inventory {
 	 * @param item the item to set
 	 */
 	public setItem(slot: number | EquipmentSlot, item: ItemStack | null): void {
-		// TODO: Not implemented
-		return null as any;
+		this.toJava().setItem(slot, item?.toJava() ?? null);
 	}
 
 	/**
