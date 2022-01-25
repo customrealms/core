@@ -1,4 +1,4 @@
-import { FileConfiguration } from "./config/types";
+import { FileConfiguration } from './config/types';
 
 export {};
 
@@ -74,14 +74,11 @@ declare global {
 	 * Config namespace contains functions that enable the caller to save config (yml) files
 	 */
 	namespace Config {
-
 		/**
 		 * Creates new config file in plugins directory
 		 * @param file how the config file shoulbed be names
 		 */
 
-		function save(file: string): FileConfiguration
-
+		function save(file: string): FileConfiguration;
 	}
-
 }

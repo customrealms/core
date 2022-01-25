@@ -1,3 +1,5 @@
-import { FileManager } from "./types/FileManager"
+import { FileManager } from './types/FileManager';
 
-export const saveConfig = (file?: string) => { return FileManager.fromJava(Config.save(file || 'config')) }
+export const saveConfig = (file?: string) => {
+	return FileManager.fromJava(Config.save(file || 'config'));
+};

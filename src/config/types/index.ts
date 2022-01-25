@@ -1,2 +1,2 @@
-export * from './FileManager'
-export * from './FileConfiguration'
+export * from './FileManager';
+export * from './FileConfiguration';

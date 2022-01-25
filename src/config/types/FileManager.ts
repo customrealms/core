@@ -1,9 +1,8 @@
-import { ToJava } from "../../runtime/ToJava";
-import { FileConfiguration } from './FileConfiguration'
+import { ToJava } from '../../runtime/ToJava';
+import { FileConfiguration } from './FileConfiguration';
 
 export class FileManager implements ToJava {
-
-    public static fromJava(_file_manager: Java.Value) {
+	public static fromJava(_file_manager: Java.Value) {
 		return new FileManager(_file_manager);
 	}
 
@@ -13,19 +12,15 @@ export class FileManager implements ToJava {
 		return this._file_manager;
 	}
 
-    public getConfig() {
-        return FileConfiguration.fromJava(this.toJava().getConfig())
+	public getConfig() {
+		return FileConfiguration.fromJava(this.toJava().getConfig());
+	}
 
-    }
+	public saveConfig() {
+		this.toJava().saveConfig();
+	}
 
-    public saveConfig() {
-        this.toJava().saveConfig()
-    
-    }
-    
-    public reloadConfig() {
-        this.toJava().reloadConfig()
-    
-    }
-
+	public reloadConfig() {
+		this.toJava().reloadConfig();
+	}
 }

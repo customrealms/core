@@ -58,8 +58,8 @@ export * from './sound/Note';
 export * from './sound/Pitch';
 export * from './sound/Tone';
 
-export * from './config/types'
-export * from './config/saveConfig'
+export * from './config/types';
+export * from './config/saveConfig';
 
 // ./types/...
 
