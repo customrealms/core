@@ -34,9 +34,7 @@ export class Worlds {
 	 * @param name the name of the world, e.g. "world_nether"
 	 * @returns the world, if found, or null
 	 */
-	public static getWorldByName(
-		name: string,
-	): World | null {
+	public static getWorldByName(name: string): World | null {
 		const world = Java.resolve('org.bukkit.Bukkit').getWorld(name);
 
 		if (!world) return null;
