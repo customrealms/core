@@ -1,3 +1,5 @@
+import { FileConfiguration } from "./config/types";
+
 export {};
 
 // The globals found in this file are documented here, but implemented in Java in the `bukkit-runtime` project.
@@ -67,4 +69,19 @@ declare global {
 		 */
 		function unregister(handle: number): void;
 	}
+
+	/**
+	 * Config namespace contains functions that enable the caller to save config (yml) files
+	 */
+	namespace Config {
+
+		/**
+		 * Creates new config file in plugins directory
+		 * @param file how the config file shoulbed be names
+		 */
+
+		function save(file: string): FileConfiguration
+
+	}
+
 }
