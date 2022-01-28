@@ -28,6 +28,10 @@ export class FileConfiguration implements ToJava {
 		return ItemStack.fromJava(this.toJava().getItemStack(path));
 	}
 
+	public getStringList(path: string): string[] | null {
+		return this.toJava().getStringList(path);
+	}
+
 	public set(path: string, object: any) {
 		this.toJava().set(
 			path,
