@@ -2,7 +2,7 @@ import { PlayerEvent } from './PlayerEvent';
 
 export class PlayerQuitEvent extends PlayerEvent {
 	public static getBukkitClasspath(): string {
-		return 'org.bukkit.event.player.PlayerJoinEvent';
+		return 'org.bukkit.event.player.PlayerQuitEvent';
 	}
 
 	/**
