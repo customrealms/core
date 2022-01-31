@@ -64,4 +64,5 @@ export * from './util/Location';
 export * from './util/Vector';
 
 export * from './world/World';
+export * from './world/Worlds';
 export * from './world/WorldType';
