@@ -106,6 +106,9 @@ export class Enchantment implements ToJava {
 	public static readonly SWEEPING_EDGE: Enchantment = Enchantment.fromJava(
 		JAVA_ENCHANTMENT.SWEEPING_EDGE
 	);
+	public static readonly SWIFT_SNEAK: Enchantment = Enchantment.fromJava(
+		JAVA_ENCHANTMENT.SWIFT_SNEAK
+	);
 	public static readonly THORNS: Enchantment = Enchantment.fromJava(
 		JAVA_ENCHANTMENT.THORNS
 	);
