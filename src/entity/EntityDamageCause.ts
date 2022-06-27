@@ -14,6 +14,7 @@ export enum EntityDamageCause {
 	FIRE = 'FIRE',
 	FIRE_TICK = 'FIRE_TICK',
 	FLY_INTO_WALL = 'FLY_INTO_WALL',
+	FREEZE = 'FREEZE',
 	HOT_FLOOR = 'HOT_FLOOR',
 	LAVA = 'LAVA',
 	LIGHTNING = 'LIGHTNING',
