@@ -34,6 +34,7 @@ export type EnchantmentName =
 	| 'silk_touch'
 	| 'soul_speed'
 	| 'sweeping_edge'
+	| 'swift_sneak'
 	| 'thorns'
 	| 'vanishing_curse'
 	| 'water_worker';
