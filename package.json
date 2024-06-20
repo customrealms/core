@@ -1,8 +1,8 @@
 {
 	"name": "@customrealms/core",
-	"version": "0.2.0",
+	"version": "2.0.0",
 	"description": "Core library for the CustomRealms runtime",
-	"main": "dist/index.js",
+	"main": "./dist/index.js",
 	"author": "Conner Douglass",
 	"homepage": "https://github.com/customrealms/core",
 	"repository": {

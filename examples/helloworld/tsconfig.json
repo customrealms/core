@@ -13,16 +13,11 @@
 		"esModuleInterop": true,
 		"allowSyntheticDefaultImports": true,
 		"importHelpers": true,
-		"target": "es3",
+		"target": "ES6",
 		"typeRoots": [
 			"../../node_modules/@types"
 		],
-		"lib": [
-			"es2018",
-			"dom"
-		]
+		"lib": ["es2018", "dom"]
 	},
-	"files": [
-		"main.ts"
-	]
+	"files": ["main.ts"]
 }

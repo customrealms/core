@@ -1,7 +1,3 @@
-import { Constructor } from '../types/Constructor';
-import { BukkitEventWrapper } from './BukkitEventWrapper';
-import { Event } from './types/Event';
-
 export interface EventHandle {
 	release(): void;
 }
@@ -13,29 +9,16 @@ export class ServerEvents {
 	 * @param handler the handler function to be triggered when the event occurs
 	 * @returns a handle that can be released
 	 */
-	public static register<T extends Event>(
-		event_class: Constructor<T> & BukkitEventWrapper,
+	public static register<T extends org.bukkit.event.Event>(
+		classpath: string,
 		handler: (event: T) => void
 	): EventHandle | null {
-		// Find the mapping for the type
-		const classpath = event_class?.getBukkitClasspath?.();
-		if (!classpath) return null;
-
 		// Register the handler
-		const handle = BukkitEvents.register(
-			classpath,
-			(_event: Java.Value) => {
-				// Create the wrapped, cleaner event instance
-				const event = new event_class(_event) as T;
-
-				// Call the function
-				handler(event);
-			}
-		);
+		const handle = __events_register<T>(classpath, handler);
 
 		// Return the wrapped handle
 		return {
-			release: () => BukkitEvents.unregister(handle),
+			release: () => __events_unregister(handle),
 		};
 	}
 }

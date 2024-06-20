@@ -1,9 +1,6 @@
-import { Player } from '../player/Player';
-import { Players } from '../player/Players';
-
 export class CommandCall {
 	public constructor(
-		private player: Player,
+		private player: org.bukkit.entity.Player,
 		private placeholders: { [key: string]: string },
 		private pattern: string
 	) {}
@@ -12,7 +9,7 @@ export class CommandCall {
 	 * Gets the player instance for the command call
 	 * @return the player calling the command
 	 */
-	public getPlayer(): Player | undefined {
+	public getPlayer(): org.bukkit.entity.Player | undefined {
 		// Return the player instance
 		return this.player;
 	}
@@ -45,13 +42,13 @@ export class CommandCall {
 		return this.placeholders?.[key] ?? undefined;
 	}
 
-	public getPlayerPlaceholder(key: string): Player | null | undefined {
+	public getPlayerPlaceholder(key: string): org.bukkit.entity.Player | null | undefined {
 		// Get the placeholder value
 		const username: string | undefined = this.getPlaceholder(key);
 		if (!username) return undefined;
 
 		// Get the player with the username
-		return Players.getPlayerByUsername(username);
+		return org.bukkit.Bukkit.getServer().getPlayer(username);
 	}
 
 	public getNumericPlaceholder(key: string): number | null | undefined {

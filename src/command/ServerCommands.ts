@@ -1,4 +1,3 @@
-import { Player } from '../player/Player';
 import { CommandCall } from './CommandCall';
 import { CommandRunner } from './CommandRunner';
 
@@ -10,7 +9,7 @@ export interface CommandHandle {
  * The type for command functions
  */
 export type CommandFn = (
-	player: Player,
+	player: org.bukkit.entity.Player,
 	call: CommandCall
 ) => void | Promise<void>;
 
@@ -56,7 +55,7 @@ export class ServerCommands {
 
 				// If there are no more runners
 				if (this.command_runners.length === 0 && this.root_handle) {
-					BukkitCommands.unregister(this.root_handle);
+					__commands_unregister(this.root_handle);
 					this.root_handle = null;
 				}
 			},
@@ -68,10 +67,7 @@ export class ServerCommands {
 	 */
 	private static root_register(): void {
 		// Register the root handler
-		this.root_handle = BukkitCommands.register((_player, message) => {
-			// Wrap the player instance
-			const player = Player.fromJava(_player);
-
+		this.root_handle = __commands_register((player, message) => {
 			// Attempt to run the command
 			for (const command of this.command_runners) {
 				if (command.attemptExecute(player, message)) return true;

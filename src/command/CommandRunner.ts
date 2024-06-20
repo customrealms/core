@@ -1,4 +1,3 @@
-import { Player } from '../player/Player';
 import { CommandCall } from './CommandCall';
 import { CommandParser } from './parser/CommandParser';
 import { ICommandPattern } from './parser/CommandPattern';
@@ -27,7 +26,7 @@ export class CommandRunner {
 	 * @param player the player running the command
 	 * @param message the message being executed
 	 */
-	public attemptExecute(player: Player, message: string): boolean {
+	public attemptExecute(player: org.bukkit.entity.Player, message: string): boolean {
 		// Get the matching call
 		const call: CommandCall | null = this.getMatchingCommandCall(
 			player,
@@ -43,7 +42,7 @@ export class CommandRunner {
 	}
 
 	private getMatchingCommandCall(
-		player: Player,
+		player: org.bukkit.entity.Player,
 		message: string
 	): CommandCall | null {
 		// Loop through the patterns
