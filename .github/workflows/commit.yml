@@ -1,0 +1,49 @@
+name: Commit Version
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  version_tag:
+    name: Commit Version
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Generate next version number
+        uses: actions/github-script@v6
+        id: version
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          result-encoding: string
+          script: |
+            const fs = require('fs');
+            const version_from_file = JSON.parse(fs.readFileSync('package.json', 'utf8')).version;
+            const base_version = version_from_file
+              .split('.')
+              .slice(0, 2)
+              .join('.');
+            const previous_refs = await github.rest.git.listMatchingRefs({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'tags/v' + base_version + '.'
+            });
+            // build_number could also be github.run_attempt
+            const build_number = previous_refs.data.length;
+            const version = `${base_version}.${build_number}`;
+            console.log('Version: ', version);
+            return version;
+
+      - name: Create tag
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'refs/tags/v${{ steps.version.outputs.result }}',
+              sha: context.sha
+            })
