@@ -1,6 +1,6 @@
 export {};
 
-import '../java';
+import './java';
 
 declare global {
 	namespace org.bukkit.entity {
