@@ -95,7 +95,7 @@ export class CommandParser {
 
 		// Repeat the correct number of optional endings
 		const optional_ending: string = Array(optional_count)
-			.fill(')?')
+			.map(() => ')?')
 			.join('');
 
 		// Join the parts to a regex pattern
