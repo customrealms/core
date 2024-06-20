@@ -42,7 +42,9 @@ export class CommandCall {
 		return this.placeholders?.[key] ?? undefined;
 	}
 
-	public getPlayerPlaceholder(key: string): org.bukkit.entity.Player | null | undefined {
+	public getPlayerPlaceholder(
+		key: string
+	): org.bukkit.entity.Player | null | undefined {
 		// Get the placeholder value
 		const username: string | undefined = this.getPlaceholder(key);
 		if (!username) return undefined;

@@ -26,7 +26,10 @@ export class CommandRunner {
 	 * @param player the player running the command
 	 * @param message the message being executed
 	 */
-	public attemptExecute(player: org.bukkit.entity.Player, message: string): boolean {
+	public attemptExecute(
+		player: org.bukkit.entity.Player,
+		message: string
+	): boolean {
 		// Get the matching call
 		const call: CommandCall | null = this.getMatchingCommandCall(
 			player,

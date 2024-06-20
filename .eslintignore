@@ -3,3 +3,5 @@ docs
 dist
 examples
 .eslintrc.js
+src/bukkit.ts
+src/java.ts
