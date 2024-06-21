@@ -68,7 +68,7 @@ declare global {
 			/**
 			 * Gets the block to which this arrow is attached.
 			 */
-			getAttachedBlock(): org.bukkit.block.Block;
+			getAttachedBlock(): (org.bukkit.block.Block | null);
 
 			/**
 			 * Gets the current pickup status of this arrow.
@@ -365,12 +365,12 @@ declare global {
 			 * necessary.
 			 * Note: this will fire a CreatureSpawnEvent
 			 */
-			duplicateAllay(): org.bukkit.entity.Allay;
+			duplicateAllay(): (org.bukkit.entity.Allay | null);
 
 			/**
 			 * Gets the jukebox the allay is set to dance to.
 			 */
-			getJukebox(): org.bukkit.Location;
+			getJukebox(): (org.bukkit.Location | null);
 
 		}> {}
 		interface Ambient extends Modify<org.bukkit.entity.Mob, {}> {}
@@ -378,7 +378,7 @@ declare global {
 			/**
 			 * This is the name of the specified AnimalTamer.
 			 */
-			getName(): string;
+			getName(): (string | null);
 
 			/**
 			 * This is the UUID of the specified AnimalTamer.
@@ -391,13 +391,13 @@ declare global {
 			 * Get the UUID of the entity that caused this entity to enter the
 			 * Breedable.canBreed() state.
 			 */
-			getBreedCause(): globalThis.java.util.UUID;
+			getBreedCause(): (globalThis.java.util.UUID | null);
 
 			/**
 			 * Set the UUID of the entity that caused this entity to enter the
 			 * Breedable.canBreed() state.
 			 */
-			setBreedCause(uuid: globalThis.java.util.UUID): void;
+			setBreedCause(uuid: (globalThis.java.util.UUID | null)): void;
 
 			/**
 			 * Get whether or not this entity is in love mode and will produce
@@ -522,27 +522,27 @@ declare global {
 			/**
 			 * Sets the particle which this cloud will be composed of
 			 */
-			setParticle<T = any>(particle: org.bukkit.Particle, data: T): void;
+			setParticle<T = any>(particle: org.bukkit.Particle, data: (T | null)): void;
 
 			/**
 			 * Sets the underlying potion data
 			 */
-			setBasePotionData(data: org.bukkit.potion.PotionData): void;
+			setBasePotionData(data: (org.bukkit.potion.PotionData | null)): void;
 
 			/**
 			 * Returns the potion data about the base potion
 			 */
-			getBasePotionData(): org.bukkit.potion.PotionData;
+			getBasePotionData(): (org.bukkit.potion.PotionData | null);
 
 			/**
 			 * Sets the underlying potion type
 			 */
-			setBasePotionType(type: org.bukkit.potion.PotionType): void;
+			setBasePotionType(type: (org.bukkit.potion.PotionType | null)): void;
 
 			/**
 			 * Returns the potion type about the base potion
 			 */
-			getBasePotionType(): org.bukkit.potion.PotionType;
+			getBasePotionType(): (org.bukkit.potion.PotionType | null);
 
 			/**
 			 * Checks for the presence of custom potion effects.
@@ -571,7 +571,7 @@ declare global {
 			/**
 			 * Checks for a specific custom potion effect type on this cloud.
 			 */
-			hasCustomEffect(type: org.bukkit.potion.PotionEffectType): boolean;
+			hasCustomEffect(type: (org.bukkit.potion.PotionEffectType | null)): boolean;
 
 			/**
 			 * Removes all custom potion effects from this cloud.
@@ -591,12 +591,12 @@ declare global {
 			/**
 			 * Retrieve the original source of this cloud.
 			 */
-			getSource(): org.bukkit.projectiles.ProjectileSource;
+			getSource(): (org.bukkit.projectiles.ProjectileSource | null);
 
 			/**
 			 * Set the original source of this cloud.
 			 */
-			setSource(source: org.bukkit.projectiles.ProjectileSource): void;
+			setSource(source: (org.bukkit.projectiles.ProjectileSource | null)): void;
 
 		}> {}
 		interface Armadillo extends Modify<org.bukkit.entity.Animals, {}> {}
@@ -609,7 +609,7 @@ declare global {
 			/**
 			 * Sets the item the armor stand is currently holding.
 			 */
-			setItemInHand(item: org.bukkit.inventory.ItemStack): void;
+			setItemInHand(item: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Returns the item currently being worn by the armor stand on its feet.
@@ -619,7 +619,7 @@ declare global {
 			/**
 			 * Sets the item currently being worn by the armor stand on its feet.
 			 */
-			setBoots(item: org.bukkit.inventory.ItemStack): void;
+			setBoots(item: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Returns the item currently being worn by the armor stand on its legs.
@@ -629,7 +629,7 @@ declare global {
 			/**
 			 * Sets the item currently being worn by the armor stand on its legs.
 			 */
-			setLeggings(item: org.bukkit.inventory.ItemStack): void;
+			setLeggings(item: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Returns the item currently being worn by the armor stand on its chest.
@@ -639,7 +639,7 @@ declare global {
 			/**
 			 * Sets the item currently being worn by the armor stand on its chest.
 			 */
-			setChestplate(item: org.bukkit.inventory.ItemStack): void;
+			setChestplate(item: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Returns the item currently being worn by the armor stand on its head.
@@ -649,7 +649,7 @@ declare global {
 			/**
 			 * Sets the item currently being worn by the armor stand on its head.
 			 */
-			setHelmet(item: org.bukkit.inventory.ItemStack): void;
+			setHelmet(item: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Returns the armor stand's body's current pose as a
@@ -831,32 +831,32 @@ declare global {
 			/**
 			 * Sets the underlying potion data
 			 */
-			setBasePotionData(data: org.bukkit.potion.PotionData): void;
+			setBasePotionData(data: (org.bukkit.potion.PotionData | null)): void;
 
 			/**
 			 * Returns the potion data about the base potion
 			 */
-			getBasePotionData(): org.bukkit.potion.PotionData;
+			getBasePotionData(): (org.bukkit.potion.PotionData | null);
 
 			/**
 			 * Sets the underlying potion type
 			 */
-			setBasePotionType(type: org.bukkit.potion.PotionType): void;
+			setBasePotionType(type: (org.bukkit.potion.PotionType | null)): void;
 
 			/**
 			 * Returns the potion type about the base potion
 			 */
-			getBasePotionType(): org.bukkit.potion.PotionType;
+			getBasePotionType(): (org.bukkit.potion.PotionType | null);
 
 			/**
 			 * Gets the color of this arrow.
 			 */
-			getColor(): org.bukkit.Color;
+			getColor(): (org.bukkit.Color | null);
 
 			/**
 			 * Sets the color of this arrow. Will be applied as a tint to its particles.
 			 */
-			setColor(color: org.bukkit.Color): void;
+			setColor(color: (org.bukkit.Color | null)): void;
 
 			/**
 			 * Checks for the presence of custom potion effects.
@@ -885,7 +885,7 @@ declare global {
 			/**
 			 * Checks for a specific custom potion effect type on this arrow.
 			 */
-			hasCustomEffect(type: org.bukkit.potion.PotionEffectType): boolean;
+			hasCustomEffect(type: (org.bukkit.potion.PotionEffectType | null)): boolean;
 
 			/**
 			 * Removes all custom potion effects from this arrow.
@@ -976,22 +976,22 @@ declare global {
 			/**
 			 * Get the bee's hive location.
 			 */
-			getHive(): org.bukkit.Location;
+			getHive(): (org.bukkit.Location | null);
 
 			/**
 			 * Set the bee's hive location.
 			 */
-			setHive(location: org.bukkit.Location): void;
+			setHive(location: (org.bukkit.Location | null)): void;
 
 			/**
 			 * Get the bee's flower location.
 			 */
-			getFlower(): org.bukkit.Location;
+			getFlower(): (org.bukkit.Location | null);
 
 			/**
 			 * Set the bee's flower location.
 			 */
-			setFlower(location: org.bukkit.Location): void;
+			setFlower(location: (org.bukkit.Location | null)): void;
 
 			/**
 			 * Get if the bee has nectar.
@@ -1188,7 +1188,7 @@ declare global {
 			/**
 			 * Returns the BossBar of the Boss
 			 */
-			getBossBar(): org.bukkit.boss.BossBar;
+			getBossBar(): (org.bukkit.boss.BossBar | null);
 
 		}> {}
 		interface Breedable extends Modify<org.bukkit.entity.Ageable, {
@@ -1408,7 +1408,7 @@ declare global {
 			/**
 			 * Gets the entity which ignited the creeper, if available.
 			 */
-			getIgniter(): org.bukkit.entity.Entity;
+			getIgniter(): (org.bukkit.entity.Entity | null);
 
 		}> {}
 		interface Damageable extends Modify<org.bukkit.entity.Entity, {
@@ -1421,7 +1421,7 @@ declare global {
 			 * Deals the given amount of damage to this entity from a specified
 			 * Entity.
 			 */
-			damage(amount: number, source: org.bukkit.entity.Entity): void;
+			damage(amount: number, source: (org.bukkit.entity.Entity | null)): void;
 
 			/**
 			 * Deals the given amount of damage to this entity from a specified
@@ -1594,22 +1594,22 @@ declare global {
 			/**
 			 * Gets the scoreboard team overridden glow color of this display.
 			 */
-			getGlowColorOverride(): org.bukkit.Color;
+			getGlowColorOverride(): (org.bukkit.Color | null);
 
 			/**
 			 * Sets the scoreboard team overridden glow color of this display.
 			 */
-			setGlowColorOverride(color: org.bukkit.Color): void;
+			setGlowColorOverride(color: (org.bukkit.Color | null)): void;
 
 			/**
 			 * Gets the brightness override of the entity.
 			 */
-			getBrightness(): org.bukkit.entity.Display.Brightness;
+			getBrightness(): (org.bukkit.entity.Display.Brightness | null);
 
 			/**
 			 * Sets the brightness override of the entity.
 			 */
-			setBrightness(brightness: org.bukkit.entity.Display.Brightness): void;
+			setBrightness(brightness: (org.bukkit.entity.Display.Brightness | null)): void;
 
 		}> {}
 		namespace Display {
@@ -1691,13 +1691,13 @@ declare global {
 			/**
 			 * Gets the location that this end crystal is pointing its beam to.
 			 */
-			getBeamTarget(): org.bukkit.Location;
+			getBeamTarget(): (org.bukkit.Location | null);
 
 			/**
 			 * Sets the location that this end crystal is pointing to. Passing a null
 			 * value will remove the current beam.
 			 */
-			setBeamTarget(location: org.bukkit.Location): void;
+			setBeamTarget(location: (org.bukkit.Location | null)): void;
 
 		}> {}
 		interface EnderDragon extends Modify<org.bukkit.entity.ComplexLivingEntity & org.bukkit.entity.Boss & org.bukkit.entity.Mob & org.bukkit.entity.Enemy, {
@@ -1720,7 +1720,7 @@ declare global {
 			 * The EnderDragon was summoned by command/API
 			 * 
 			 */
-			getDragonBattle(): org.bukkit.boss.DragonBattle;
+			getDragonBattle(): (org.bukkit.boss.DragonBattle | null);
 
 			/**
 			 * Get the current time in ticks relative to the start of this dragon's
@@ -1850,7 +1850,7 @@ declare global {
 			 * Set the ItemStack to be displayed while in the air and to be
 			 * dropped on death.
 			 */
-			setItem(item: org.bukkit.inventory.ItemStack): void;
+			setItem(item: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Gets the amount of time this entity has been alive (in ticks).
@@ -1881,12 +1881,12 @@ declare global {
 			/**
 			 * Gets the data of the block that the Enderman is carrying.
 			 */
-			getCarriedBlock(): org.bukkit.block.data.BlockData;
+			getCarriedBlock(): (org.bukkit.block.data.BlockData | null);
 
 			/**
 			 * Sets the data of the block that the Enderman is carrying.
 			 */
-			setCarriedBlock(blockData: org.bukkit.block.data.BlockData): void;
+			setCarriedBlock(blockData: (org.bukkit.block.data.BlockData | null)): void;
 
 			/**
 			 * Randomly teleports the Enderman in a 64x64x64 block cuboid region.
@@ -1943,7 +1943,7 @@ declare global {
 			 * If the provided Location is null this method does nothing and returns
 			 * null.
 			 */
-			getLocation(loc: org.bukkit.Location): org.bukkit.Location;
+			getLocation(loc: (org.bukkit.Location | null)): (org.bukkit.Location | null);
 
 			/**
 			 * Sets this entity's velocity in meters per tick
@@ -2130,7 +2130,7 @@ declare global {
 			 * Gets the primary passenger of a vehicle. For vehicles that could have
 			 * multiple passengers, this will only return the primary passenger.
 			 */
-			getPassenger(): org.bukkit.entity.Entity;
+			getPassenger(): (org.bukkit.entity.Entity | null);
 
 			/**
 			 * Set the passenger of a vehicle.
@@ -2178,13 +2178,13 @@ declare global {
 			/**
 			 * Record the last EntityDamageEvent inflicted on this entity
 			 */
-			setLastDamageCause(event: org.bukkit.event.entity.EntityDamageEvent): void;
+			setLastDamageCause(event: (org.bukkit.event.entity.EntityDamageEvent | null)): void;
 
 			/**
 			 * Retrieve the last EntityDamageEvent inflicted on this entity.
 			 * This event may have been cancelled.
 			 */
-			getLastDamageCause(): org.bukkit.event.entity.EntityDamageEvent;
+			getLastDamageCause(): (org.bukkit.event.entity.EntityDamageEvent | null);
 
 			/**
 			 * Returns a unique and persistent id for this entity
@@ -2253,7 +2253,7 @@ declare global {
 			 * Get the vehicle that this entity is inside. If there is no vehicle,
 			 * null will be returned.
 			 */
-			getVehicle(): org.bukkit.entity.Entity;
+			getVehicle(): (org.bukkit.entity.Entity | null);
 
 			/**
 			 * Sets whether or not to display the mob's custom name client side. The
@@ -2418,12 +2418,12 @@ declare global {
 			 * 
 			 * This string should not be relied upon as a serializable value.
 			 */
-			getAsString(): string;
+			getAsString(): (string | null);
 
 			/**
 			 * Crates an EntitySnapshot representing the current state of this entity.
 			 */
-			createSnapshot(): org.bukkit.entity.EntitySnapshot;
+			createSnapshot(): (org.bukkit.entity.EntitySnapshot | null);
 
 			/**
 			 * Creates a copy of this entity and all its data. Does not spawn the copy in
@@ -2543,14 +2543,14 @@ declare global {
 			/**
 			 * Gets the entity type name.
 			 */
-			getName(): string;
+			getName(): (string | null);
 
 			/**
 			 * Description copied from interface: Keyed
 			 */
 			getKey(): org.bukkit.NamespacedKey;
 
-			getEntityClass(): globalThis.java.lang.Class<org.bukkit.entity.Entity>;
+			getEntityClass(): (globalThis.java.lang.Class<org.bukkit.entity.Entity> | null);
 
 			/**
 			 * Gets the entity type id.
@@ -2932,12 +2932,12 @@ declare global {
 			/**
 			 * Gets an entity type from its name.
 			 */
-			function fromName(name: string): org.bukkit.entity.EntityType;
+			function fromName(name: (string | null)): (org.bukkit.entity.EntityType | null);
 
 			/**
 			 * Gets an entity from its id.
 			 */
-			function fromId(id: number): org.bukkit.entity.EntityType;
+			function fromId(id: number): (org.bukkit.entity.EntityType | null);
 
 		}
 		interface Evoker extends Modify<org.bukkit.entity.Spellcaster, {
@@ -2949,7 +2949,7 @@ declare global {
 			/**
 			 * Sets the Evoker.Spell the Evoker is currently using.
 			 */
-			setCurrentSpell(spell: org.bukkit.entity.Evoker.Spell): void;
+			setCurrentSpell(spell: (org.bukkit.entity.Evoker.Spell | null)): void;
 
 		}> {}
 		namespace Evoker {
@@ -2999,12 +2999,12 @@ declare global {
 			/**
 			 * Gets the LivingEntity which summoned the fangs.
 			 */
-			getOwner(): org.bukkit.entity.LivingEntity;
+			getOwner(): (org.bukkit.entity.LivingEntity | null);
 
 			/**
 			 * Sets the LivingEntity which summoned the fangs.
 			 */
-			setOwner(owner: org.bukkit.entity.LivingEntity): void;
+			setOwner(owner: (org.bukkit.entity.LivingEntity | null)): void;
 
 			/**
 			 * Get the delay in ticks until the fang attacks.
@@ -3202,7 +3202,7 @@ declare global {
 			 * is gliding, then the entity will receive a boost in the direction that
 			 * they are looking.
 			 */
-			setAttachedTo(entity: org.bukkit.entity.LivingEntity): boolean;
+			setAttachedTo(entity: (org.bukkit.entity.LivingEntity | null)): boolean;
 
 			/**
 			 * Get the LivingEntity to which this firework is attached.
@@ -3212,7 +3212,7 @@ declare global {
 			 * is gliding, then the entity will receive a boost in the direction that
 			 * they are looking.
 			 */
-			getAttachedTo(): org.bukkit.entity.LivingEntity;
+			getAttachedTo(): (org.bukkit.entity.LivingEntity | null);
 
 			/**
 			 * Set the ticks that this firework has been alive. If this value exceeds
@@ -3436,12 +3436,12 @@ declare global {
 			/**
 			 * Get the entity hooked by this fish hook.
 			 */
-			getHookedEntity(): org.bukkit.entity.Entity;
+			getHookedEntity(): (org.bukkit.entity.Entity | null);
 
 			/**
 			 * Set the entity hooked by this fish hook.
 			 */
-			setHookedEntity(entity: org.bukkit.entity.Entity): void;
+			setHookedEntity(entity: (org.bukkit.entity.Entity | null)): void;
 
 			/**
 			 * Pull the hooked entity to the caster of this fish hook. If no entity is
@@ -3539,26 +3539,26 @@ declare global {
 			/**
 			 * Gets the first trusted player.
 			 */
-			getFirstTrustedPlayer(): org.bukkit.entity.AnimalTamer;
+			getFirstTrustedPlayer(): (org.bukkit.entity.AnimalTamer | null);
 
 			/**
 			 * Set the first trusted player.
 			 * 
 			 * The first trusted player may only be removed after the second.
 			 */
-			setFirstTrustedPlayer(player: org.bukkit.entity.AnimalTamer): void;
+			setFirstTrustedPlayer(player: (org.bukkit.entity.AnimalTamer | null)): void;
 
 			/**
 			 * Gets the second trusted player.
 			 */
-			getSecondTrustedPlayer(): org.bukkit.entity.AnimalTamer;
+			getSecondTrustedPlayer(): (org.bukkit.entity.AnimalTamer | null);
 
 			/**
 			 * Set the second trusted player.
 			 * 
 			 * The second trusted player may only be added after the first.
 			 */
-			setSecondTrustedPlayer(player: org.bukkit.entity.AnimalTamer): void;
+			setSecondTrustedPlayer(player: (org.bukkit.entity.AnimalTamer | null)): void;
 
 			/**
 			 * Gets whether the fox is faceplanting the ground
@@ -3587,12 +3587,12 @@ declare global {
 			/**
 			 * Gets the tongue target of this frog.
 			 */
-			getTongueTarget(): org.bukkit.entity.Entity;
+			getTongueTarget(): (org.bukkit.entity.Entity | null);
 
 			/**
 			 * Sets the tongue target of this frog.
 			 */
-			setTongueTarget(target: org.bukkit.entity.Entity): void;
+			setTongueTarget(target: (org.bukkit.entity.Entity | null)): void;
 
 			/**
 			 * Get the variant of this frog.
@@ -4044,19 +4044,19 @@ declare global {
 			 * Opens an inventory window with the specified inventory on the top and
 			 * the player's inventory on the bottom.
 			 */
-			openInventory(inventory: org.bukkit.inventory.Inventory): org.bukkit.inventory.InventoryView;
+			openInventory(inventory: org.bukkit.inventory.Inventory): (org.bukkit.inventory.InventoryView | null);
 
 			/**
 			 * Opens an empty workbench inventory window with the player's inventory
 			 * on the bottom.
 			 */
-			openWorkbench(location: org.bukkit.Location, force: boolean): org.bukkit.inventory.InventoryView;
+			openWorkbench(location: (org.bukkit.Location | null), force: boolean): (org.bukkit.inventory.InventoryView | null);
 
 			/**
 			 * Opens an empty enchanting inventory window with the player's inventory
 			 * on the bottom.
 			 */
-			openEnchanting(location: org.bukkit.Location, force: boolean): org.bukkit.inventory.InventoryView;
+			openEnchanting(location: (org.bukkit.Location | null), force: boolean): (org.bukkit.inventory.InventoryView | null);
 
 			/**
 			 * Opens an inventory window to the specified inventory view.
@@ -4068,14 +4068,14 @@ declare global {
 			 * Note that only one player may trade with a villager at once. You must use
 			 * the force parameter for this.
 			 */
-			openMerchant(trader: org.bukkit.entity.Villager, force: boolean): org.bukkit.inventory.InventoryView;
+			openMerchant(trader: org.bukkit.entity.Villager, force: boolean): (org.bukkit.inventory.InventoryView | null);
 
 			/**
 			 * Starts a trade between the player and the merchant.
 			 * Note that only one player may trade with a merchant at once. You must use
 			 * the force parameter for this.
 			 */
-			openMerchant(merchant: org.bukkit.inventory.Merchant, force: boolean): org.bukkit.inventory.InventoryView;
+			openMerchant(merchant: org.bukkit.inventory.Merchant, force: boolean): (org.bukkit.inventory.InventoryView | null);
 
 			/**
 			 * Force-closes the currently open inventory view for this player, if any.
@@ -4091,7 +4091,7 @@ declare global {
 			 * Sets the item to the given ItemStack, this will replace whatever the
 			 * user was holding.
 			 */
-			setItemInHand(item: org.bukkit.inventory.ItemStack): void;
+			setItemInHand(item: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Returns the ItemStack currently on your cursor, can be empty. Will
@@ -4104,7 +4104,7 @@ declare global {
 			 * user was moving. Will always be empty if the player currently has no
 			 * open window.
 			 */
-			setItemOnCursor(item: org.bukkit.inventory.ItemStack): void;
+			setItemOnCursor(item: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Check whether a cooldown is active on the specified material.
@@ -4232,7 +4232,7 @@ declare global {
 			 * The returned entity will not be spawned within the world, so most
 			 * operations are invalid unless the entity is first spawned in.
 			 */
-			getShoulderEntityLeft(): org.bukkit.entity.Entity;
+			getShoulderEntityLeft(): (org.bukkit.entity.Entity | null);
 
 			/**
 			 * Sets the entity currently perched on the left shoulder, or null to
@@ -4244,7 +4244,7 @@ declare global {
 			 * Also note that the client will currently only render Parrot
 			 * entities.
 			 */
-			setShoulderEntityLeft(entity: org.bukkit.entity.Entity): void;
+			setShoulderEntityLeft(entity: (org.bukkit.entity.Entity | null)): void;
 
 			/**
 			 * Gets the entity currently perched on the right shoulder or null if no
@@ -4253,7 +4253,7 @@ declare global {
 			 * The returned entity will not be spawned within the world, so most
 			 * operations are invalid unless the entity is first spawned in.
 			 */
-			getShoulderEntityRight(): org.bukkit.entity.Entity;
+			getShoulderEntityRight(): (org.bukkit.entity.Entity | null);
 
 			/**
 			 * Sets the entity currently perched on the right shoulder, or null to
@@ -4265,7 +4265,7 @@ declare global {
 			 * Also note that the client will currently only render Parrot
 			 * entities.
 			 */
-			setShoulderEntityRight(entity: org.bukkit.entity.Entity): void;
+			setShoulderEntityRight(entity: (org.bukkit.entity.Entity | null)): void;
 
 			/**
 			 * Make the entity drop the item in their hand.
@@ -4357,7 +4357,7 @@ declare global {
 			/**
 			 * Gets the player's last death location.
 			 */
-			getLastDeathLocation(): org.bukkit.Location;
+			getLastDeathLocation(): (org.bukkit.Location | null);
 
 			/**
 			 * Sets the player's last death location.
@@ -4365,7 +4365,7 @@ declare global {
 			 * Note: This data is updated in the player's client only when the
 			 * player respawns.
 			 */
-			setLastDeathLocation(location: org.bukkit.Location): void;
+			setLastDeathLocation(location: (org.bukkit.Location | null)): void;
 
 			/**
 			 * Perform a firework boost.
@@ -4375,7 +4375,7 @@ declare global {
 			 * fireworkItemStack must be a firework rocket. The power of the boost
 			 * will directly correlate to FireworkMeta.getPower().
 			 */
-			fireworkBoost(fireworkItemStack: org.bukkit.inventory.ItemStack): org.bukkit.entity.Firework;
+			fireworkBoost(fireworkItemStack: org.bukkit.inventory.ItemStack): (org.bukkit.entity.Firework | null);
 
 		}> {}
 		interface Husk extends Modify<org.bukkit.entity.Zombie, {
@@ -4440,12 +4440,12 @@ declare global {
 			/**
 			 * Gets the last attack on this interaction entity.
 			 */
-			getLastAttack(): org.bukkit.entity.Interaction.PreviousInteraction;
+			getLastAttack(): (org.bukkit.entity.Interaction.PreviousInteraction | null);
 
 			/**
 			 * Gets the last interaction on this entity.
 			 */
-			getLastInteraction(): org.bukkit.entity.Interaction.PreviousInteraction;
+			getLastInteraction(): (org.bukkit.entity.Interaction.PreviousInteraction | null);
 
 		}> {}
 		namespace Interaction {
@@ -4509,37 +4509,37 @@ declare global {
 			 * Sets the owner of this item.
 			 * Other entities will not be able to pickup this item when an owner is set.
 			 */
-			setOwner(owner: globalThis.java.util.UUID): void;
+			setOwner(owner: (globalThis.java.util.UUID | null)): void;
 
 			/**
 			 * Get the owner of this item.
 			 */
-			getOwner(): globalThis.java.util.UUID;
+			getOwner(): (globalThis.java.util.UUID | null);
 
 			/**
 			 * Set the thrower of this item.
 			 * The thrower is the entity which dropped the item. This affects the
 			 * trigger criteria for item pickups, for things such as advancements.
 			 */
-			setThrower(uuid: globalThis.java.util.UUID): void;
+			setThrower(uuid: (globalThis.java.util.UUID | null)): void;
 
 			/**
 			 * Get the thrower of this item.
 			 * The thrower is the entity which dropped the item.
 			 */
-			getThrower(): globalThis.java.util.UUID;
+			getThrower(): (globalThis.java.util.UUID | null);
 
 		}> {}
 		interface ItemDisplay extends Modify<org.bukkit.entity.Display, {
 			/**
 			 * Gets the displayed item stack.
 			 */
-			getItemStack(): org.bukkit.inventory.ItemStack;
+			getItemStack(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Sets the displayed item stack.
 			 */
-			setItemStack(item: org.bukkit.inventory.ItemStack): void;
+			setItemStack(item: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Gets the item display transform for this entity.
@@ -4594,12 +4594,12 @@ declare global {
 			/**
 			 * Set the item in this frame
 			 */
-			setItem(item: org.bukkit.inventory.ItemStack): void;
+			setItem(item: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Set the item in this frame
 			 */
-			setItem(item: org.bukkit.inventory.ItemStack, playSound: boolean): void;
+			setItem(item: (org.bukkit.inventory.ItemStack | null), playSound: boolean): void;
 
 			/**
 			 * Gets the chance of the item being dropped upon this frame's destruction.
@@ -4711,12 +4711,12 @@ declare global {
 			 * Channeling were thrown at an entity
 			 * during a storm.
 			 */
-			getCausingPlayer(): org.bukkit.entity.Player;
+			getCausingPlayer(): (org.bukkit.entity.Player | null);
 
 			/**
 			 * Set the Player that caused this lightning to strike.
 			 */
-			setCausingPlayer(player: org.bukkit.entity.Player): void;
+			setCausingPlayer(player: (org.bukkit.entity.Player | null)): void;
 
 		}> {}
 		interface LingeringPotion extends Modify<org.bukkit.entity.ThrownPotion, {}> {}
@@ -4742,7 +4742,7 @@ declare global {
 			 * This list contains all blocks from the living entity's eye position to
 			 * target inclusive. This method considers all blocks as 1x1x1 in size.
 			 */
-			getLineOfSight(transparent: globalThis.java.util.Set<org.bukkit.Material>, maxDistance: number): globalThis.java.util.List<org.bukkit.block.Block>;
+			getLineOfSight(transparent: (globalThis.java.util.Set<org.bukkit.Material> | null), maxDistance: number): globalThis.java.util.List<org.bukkit.block.Block>;
 
 			/**
 			 * Gets the block that the living entity has targeted.
@@ -4750,7 +4750,7 @@ declare global {
 			 * This method considers all blocks as 1x1x1 in size. To take exact block
 			 * collision shapes into account, see getTargetBlockExact(int, FluidCollisionMode).
 			 */
-			getTargetBlock(transparent: globalThis.java.util.Set<org.bukkit.Material>, maxDistance: number): org.bukkit.block.Block;
+			getTargetBlock(transparent: (globalThis.java.util.Set<org.bukkit.Material> | null), maxDistance: number): org.bukkit.block.Block;
 
 			/**
 			 * Gets the last two blocks along the living entity's line of sight.
@@ -4758,7 +4758,7 @@ declare global {
 			 * The target block will be the last block in the list. This method
 			 * considers all blocks as 1x1x1 in size.
 			 */
-			getLastTwoTargetBlocks(transparent: globalThis.java.util.Set<org.bukkit.Material>, maxDistance: number): globalThis.java.util.List<org.bukkit.block.Block>;
+			getLastTwoTargetBlocks(transparent: (globalThis.java.util.Set<org.bukkit.Material> | null), maxDistance: number): globalThis.java.util.List<org.bukkit.block.Block>;
 
 			/**
 			 * Gets the block that the living entity has targeted.
@@ -4769,7 +4769,7 @@ declare global {
 			 * This may cause loading of chunks! Some implementations may impose
 			 * artificial restrictions on the maximum distance.
 			 */
-			getTargetBlockExact(maxDistance: number): org.bukkit.block.Block;
+			getTargetBlockExact(maxDistance: number): (org.bukkit.block.Block | null);
 
 			/**
 			 * Gets the block that the living entity has targeted.
@@ -4779,7 +4779,7 @@ declare global {
 			 * This may cause loading of chunks! Some implementations may impose
 			 * artificial restrictions on the maximum distance.
 			 */
-			getTargetBlockExact(maxDistance: number, fluidCollisionMode: org.bukkit.FluidCollisionMode): org.bukkit.block.Block;
+			getTargetBlockExact(maxDistance: number, fluidCollisionMode: org.bukkit.FluidCollisionMode): (org.bukkit.block.Block | null);
 
 			/**
 			 * Performs a ray trace that provides information on the targeted block.
@@ -4790,7 +4790,7 @@ declare global {
 			 * This may cause loading of chunks! Some implementations may impose
 			 * artificial restrictions on the maximum distance.
 			 */
-			rayTraceBlocks(maxDistance: number): org.bukkit.util.RayTraceResult;
+			rayTraceBlocks(maxDistance: number): (org.bukkit.util.RayTraceResult | null);
 
 			/**
 			 * Performs a ray trace that provides information on the targeted block.
@@ -4800,7 +4800,7 @@ declare global {
 			 * This may cause loading of chunks! Some implementations may impose
 			 * artificial restrictions on the maximum distance.
 			 */
-			rayTraceBlocks(maxDistance: number, fluidCollisionMode: org.bukkit.FluidCollisionMode): org.bukkit.util.RayTraceResult;
+			rayTraceBlocks(maxDistance: number, fluidCollisionMode: org.bukkit.FluidCollisionMode): (org.bukkit.util.RayTraceResult | null);
 
 			/**
 			 * Returns the amount of air that the living entity has remaining, in
@@ -4827,7 +4827,7 @@ declare global {
 			 * Gets the item that the player is using (eating food, drawing back a bow,
 			 * blocking, etc.)
 			 */
-			getItemInUse(): org.bukkit.inventory.ItemStack;
+			getItemInUse(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Gets the number of ticks remaining for the current item's usage.
@@ -4923,7 +4923,7 @@ declare global {
 			 * 
 			 * May be null.
 			 */
-			getKiller(): org.bukkit.entity.Player;
+			getKiller(): (org.bukkit.entity.Player | null);
 
 			/**
 			 * Adds the given PotionEffect to the living entity.
@@ -4954,7 +4954,7 @@ declare global {
 			 * 
 			 * If the effect is not present on the entity then null will be returned.
 			 */
-			getPotionEffect(type: org.bukkit.potion.PotionEffectType): org.bukkit.potion.PotionEffect;
+			getPotionEffect(type: org.bukkit.potion.PotionEffectType): (org.bukkit.potion.PotionEffect | null);
 
 			/**
 			 * Removes any effects present of the given PotionEffectType.
@@ -4991,7 +4991,7 @@ declare global {
 			/**
 			 * Gets the inventory with the equipment worn by the living entity.
 			 */
-			getEquipment(): org.bukkit.inventory.EntityEquipment;
+			getEquipment(): (org.bukkit.inventory.EntityEquipment | null);
 
 			/**
 			 * Sets whether or not the living entity can pick up items.
@@ -5020,7 +5020,7 @@ declare global {
 			 * Non-living entities excluding leashes will not persist as leash
 			 * holders.
 			 */
-			setLeashHolder(holder: org.bukkit.entity.Entity): boolean;
+			setLeashHolder(holder: (org.bukkit.entity.Entity | null)): boolean;
 
 			/**
 			 * Checks to see if an entity is gliding, such as using an Elytra.
@@ -5165,7 +5165,7 @@ declare global {
 			 * Note that the value is null when the specific entity does not have that
 			 * value by default.
 			 */
-			getMemory<T = any>(memoryKey: org.bukkit.entity.memory.MemoryKey<T>): T;
+			getMemory<T = any>(memoryKey: org.bukkit.entity.memory.MemoryKey<T>): (T | null);
 
 			/**
 			 * Sets the value of the memory specified.
@@ -5173,17 +5173,17 @@ declare global {
 			 * Note that the value will not be persisted when the specific entity does
 			 * not have that value by default.
 			 */
-			setMemory<T = any>(memoryKey: org.bukkit.entity.memory.MemoryKey<T>, memoryValue: T): void;
+			setMemory<T = any>(memoryKey: org.bukkit.entity.memory.MemoryKey<T>, memoryValue: (T | null)): void;
 
 			/**
 			 * Get the Sound this entity will make when damaged.
 			 */
-			getHurtSound(): org.bukkit.Sound;
+			getHurtSound(): (org.bukkit.Sound | null);
 
 			/**
 			 * Get the Sound this entity will make on death.
 			 */
-			getDeathSound(): org.bukkit.Sound;
+			getDeathSound(): (org.bukkit.Sound | null);
 
 			/**
 			 * Get the Sound this entity will make when falling from the given
@@ -5374,7 +5374,7 @@ declare global {
 			 * Sets the display block for this minecart.
 			 * Passing a null value will set the minecart to have no display block.
 			 */
-			setDisplayBlock(material: org.bukkit.material.MaterialData): void;
+			setDisplayBlock(material: (org.bukkit.material.MaterialData | null)): void;
 
 			/**
 			 * Gets the display block for this minecart.
@@ -5386,7 +5386,7 @@ declare global {
 			 * Sets the display block for this minecart.
 			 * Passing a null value will set the minecart to have no display block.
 			 */
-			setDisplayBlockData(blockData: org.bukkit.block.data.BlockData): void;
+			setDisplayBlockData(blockData: (org.bukkit.block.data.BlockData | null)): void;
 
 			/**
 			 * Gets the display block for this minecart.
@@ -5412,12 +5412,12 @@ declare global {
 			 * Hostile creatures may attack their target, and friendly creatures may
 			 * follow their target.
 			 */
-			setTarget(target: org.bukkit.entity.LivingEntity): void;
+			setTarget(target: (org.bukkit.entity.LivingEntity | null)): void;
 
 			/**
 			 * Gets the current target of this Mob
 			 */
-			getTarget(): org.bukkit.entity.LivingEntity;
+			getTarget(): (org.bukkit.entity.LivingEntity | null);
 
 			/**
 			 * Sets whether this mob is aware of its surroundings.
@@ -5443,7 +5443,7 @@ declare global {
 			 * on whether or not they are actively trading with a player, or make no
 			 * ambient noise while sleeping.
 			 */
-			getAmbientSound(): org.bukkit.Sound;
+			getAmbientSound(): (org.bukkit.Sound | null);
 
 		}> {}
 		interface Monster extends Modify<org.bukkit.entity.Creature & org.bukkit.entity.Enemy, {}> {}
@@ -5573,7 +5573,7 @@ declare global {
 				/**
 				 * Gets a cat type by its ID.
 				 */
-				function getType(id: number): org.bukkit.entity.Ocelot.Type;
+				function getType(id: number): (org.bukkit.entity.Ocelot.Type | null);
 
 			}
 		}
@@ -5581,12 +5581,12 @@ declare global {
 			/**
 			 * Gets the item which will be spawned by this spawner.
 			 */
-			getItem(): org.bukkit.inventory.ItemStack;
+			getItem(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Sets the item which will be spawned by this spawner.
 			 */
-			setItem(item: org.bukkit.inventory.ItemStack): void;
+			setItem(item: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Gets the ticks after which this item will be spawned.
@@ -5943,7 +5943,7 @@ declare global {
 			 * Note that this name will not be displayed in game, only in chat and
 			 * places defined by plugins.
 			 */
-			setDisplayName(name: string): void;
+			setDisplayName(name: (string | null)): void;
 
 			/**
 			 * Gets the name that is shown on the player list.
@@ -5955,33 +5955,33 @@ declare global {
 			 * 
 			 * If the value is null, the name will be identical to getName().
 			 */
-			setPlayerListName(name: string): void;
+			setPlayerListName(name: (string | null)): void;
 
 			/**
 			 * Gets the currently displayed player list header for this player.
 			 */
-			getPlayerListHeader(): string;
+			getPlayerListHeader(): (string | null);
 
 			/**
 			 * Gets the currently displayed player list footer for this player.
 			 */
-			getPlayerListFooter(): string;
+			getPlayerListFooter(): (string | null);
 
 			/**
 			 * Sets the currently displayed player list header for this player.
 			 */
-			setPlayerListHeader(header: string): void;
+			setPlayerListHeader(header: (string | null)): void;
 
 			/**
 			 * Sets the currently displayed player list footer for this player.
 			 */
-			setPlayerListFooter(footer: string): void;
+			setPlayerListFooter(footer: (string | null)): void;
 
 			/**
 			 * Sets the currently displayed player list header and footer for this
 			 * player.
 			 */
-			setPlayerListHeaderFooter(header: string, footer: string): void;
+			setPlayerListHeaderFooter(header: (string | null), footer: (string | null)): void;
 
 			/**
 			 * Set the target of the player's compass.
@@ -5996,7 +5996,7 @@ declare global {
 			/**
 			 * Gets the socket address of this player
 			 */
-			getAddress(): any /* java.net.InetSocketAddress */;
+			getAddress(): (any /* java.net.InetSocketAddress */ | null);
 
 			/**
 			 * Gets if this connection has been transferred from another server.
@@ -6027,43 +6027,43 @@ declare global {
 			/**
 			 * Kicks player with custom kick message.
 			 */
-			kickPlayer(message: string): void;
+			kickPlayer(message: (string | null)): void;
 
 			/**
 			 * Adds this user to the ProfileBanList. If a previous ban exists, this will
 			 * update the entry.
 			 */
-			ban(reason: string, expires: globalThis.java.util.Date, source: string, kickPlayer: boolean): org.bukkit.BanEntry<org.bukkit.profile.PlayerProfile>;
+			ban(reason: (string | null), expires: (globalThis.java.util.Date | null), source: (string | null), kickPlayer: boolean): (org.bukkit.BanEntry<org.bukkit.profile.PlayerProfile> | null);
 
 			/**
 			 * Adds this user to the ProfileBanList. If a previous ban exists, this will
 			 * update the entry.
 			 */
-			ban(reason: string, expires: any /* java.time.Instant */, source: string, kickPlayer: boolean): org.bukkit.BanEntry<org.bukkit.profile.PlayerProfile>;
+			ban(reason: (string | null), expires: (any /* java.time.Instant */ | null), source: (string | null), kickPlayer: boolean): (org.bukkit.BanEntry<org.bukkit.profile.PlayerProfile> | null);
 
 			/**
 			 * Adds this user to the ProfileBanList. If a previous ban exists, this will
 			 * update the entry.
 			 */
-			ban(reason: string, duration: any /* java.time.Duration */, source: string, kickPlayer: boolean): org.bukkit.BanEntry<org.bukkit.profile.PlayerProfile>;
+			ban(reason: (string | null), duration: (any /* java.time.Duration */ | null), source: (string | null), kickPlayer: boolean): (org.bukkit.BanEntry<org.bukkit.profile.PlayerProfile> | null);
 
 			/**
 			 * Adds this user's current IP address to the IpBanList. If a previous ban exists, this will
 			 * update the entry. If getAddress() is null this method will throw an exception.
 			 */
-			banIp(reason: string, expires: globalThis.java.util.Date, source: string, kickPlayer: boolean): org.bukkit.BanEntry<any /* java.net.InetAddress */>;
+			banIp(reason: (string | null), expires: (globalThis.java.util.Date | null), source: (string | null), kickPlayer: boolean): (org.bukkit.BanEntry<any /* java.net.InetAddress */> | null);
 
 			/**
 			 * Adds this user's current IP address to the IpBanList. If a previous ban exists, this will
 			 * update the entry. If getAddress() is null this method will throw an exception.
 			 */
-			banIp(reason: string, expires: any /* java.time.Instant */, source: string, kickPlayer: boolean): org.bukkit.BanEntry<any /* java.net.InetAddress */>;
+			banIp(reason: (string | null), expires: (any /* java.time.Instant */ | null), source: (string | null), kickPlayer: boolean): (org.bukkit.BanEntry<any /* java.net.InetAddress */> | null);
 
 			/**
 			 * Adds this user's current IP address to the IpBanList. If a previous ban exists, this will
 			 * update the entry. If getAddress() is null this method will throw an exception.
 			 */
-			banIp(reason: string, duration: any /* java.time.Duration */, source: string, kickPlayer: boolean): org.bukkit.BanEntry<any /* java.net.InetAddress */>;
+			banIp(reason: (string | null), duration: (any /* java.time.Duration */ | null), source: (string | null), kickPlayer: boolean): (org.bukkit.BanEntry<any /* java.net.InetAddress */> | null);
 
 			/**
 			 * Says a message (or runs a command).
@@ -6135,33 +6135,33 @@ declare global {
 			 * Gets the Location where the player will spawn at their bed, null if
 			 * they have not slept in one or their current bed spawn is invalid.
 			 */
-			getBedSpawnLocation(): org.bukkit.Location;
+			getBedSpawnLocation(): (org.bukkit.Location | null);
 
 			/**
 			 * Gets the Location where the player will spawn at, null if they
 			 * don't have a valid respawn point.
 			 */
-			getRespawnLocation(): org.bukkit.Location;
+			getRespawnLocation(): (org.bukkit.Location | null);
 
 			/**
 			 * Sets the Location where the player will spawn at their bed.
 			 */
-			setBedSpawnLocation(location: org.bukkit.Location): void;
+			setBedSpawnLocation(location: (org.bukkit.Location | null)): void;
 
 			/**
 			 * Sets the Location where the player will respawn.
 			 */
-			setRespawnLocation(location: org.bukkit.Location): void;
+			setRespawnLocation(location: (org.bukkit.Location | null)): void;
 
 			/**
 			 * Sets the Location where the player will spawn at their bed.
 			 */
-			setBedSpawnLocation(location: org.bukkit.Location, force: boolean): void;
+			setBedSpawnLocation(location: (org.bukkit.Location | null), force: boolean): void;
 
 			/**
 			 * Sets the Location where the player will respawn.
 			 */
-			setRespawnLocation(location: org.bukkit.Location, force: boolean): void;
+			setRespawnLocation(location: (org.bukkit.Location | null), force: boolean): void;
 
 			/**
 			 * Play a note for the player at a location.
@@ -6284,12 +6284,12 @@ declare global {
 			/**
 			 * Stop the specified sound from playing.
 			 */
-			stopSound(sound: org.bukkit.Sound, category: org.bukkit.SoundCategory): void;
+			stopSound(sound: org.bukkit.Sound, category: (org.bukkit.SoundCategory | null)): void;
 
 			/**
 			 * Stop the specified sound from playing.
 			 */
-			stopSound(sound: string, category: org.bukkit.SoundCategory): void;
+			stopSound(sound: string, category: (org.bukkit.SoundCategory | null)): void;
 
 			/**
 			 * Stop the specified sound category from playing.
@@ -6309,7 +6309,7 @@ declare global {
 			/**
 			 * Plays an effect to just this player.
 			 */
-			playEffect<T = any>(loc: org.bukkit.Location, effect: org.bukkit.Effect, data: T): void;
+			playEffect<T = any>(loc: org.bukkit.Location, effect: org.bukkit.Effect, data: (T | null)): void;
 
 			/**
 			 * Force this player to break a Block using the item in their main hand.
@@ -6411,7 +6411,7 @@ declare global {
 			 * Send an equipment change for the target entity. This will not
 			 * actually change the entity's equipment in any way.
 			 */
-			sendEquipmentChange(entity: org.bukkit.entity.LivingEntity, slot: org.bukkit.inventory.EquipmentSlot, item: org.bukkit.inventory.ItemStack): void;
+			sendEquipmentChange(entity: org.bukkit.entity.LivingEntity, slot: org.bukkit.inventory.EquipmentSlot, item: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Send multiple equipment changes for the target entity. This will not
@@ -6432,7 +6432,7 @@ declare global {
 			 * To change all attributes of a sign, including the back Side, use
 			 * sendBlockUpdate(org.bukkit.Location, org.bukkit.block.TileState).
 			 */
-			sendSignChange(loc: org.bukkit.Location, lines: string[]): void;
+			sendSignChange(loc: org.bukkit.Location, lines: (string | null)[]): void;
 
 			/**
 			 * Send a sign change. This fakes a sign change packet for a user at
@@ -6447,7 +6447,7 @@ declare global {
 			 * To change all attributes of a sign, including the back Side, use
 			 * sendBlockUpdate(org.bukkit.Location, org.bukkit.block.TileState).
 			 */
-			sendSignChange(loc: org.bukkit.Location, lines: string[], dyeColor: org.bukkit.DyeColor): void;
+			sendSignChange(loc: org.bukkit.Location, lines: (string | null)[], dyeColor: org.bukkit.DyeColor): void;
 
 			/**
 			 * Send a sign change. This fakes a sign change packet for a user at
@@ -6462,7 +6462,7 @@ declare global {
 			 * To change all attributes of a sign, including the back Side, use
 			 * sendBlockUpdate(org.bukkit.Location, org.bukkit.block.TileState).
 			 */
-			sendSignChange(loc: org.bukkit.Location, lines: string[], dyeColor: org.bukkit.DyeColor, hasGlowingText: boolean): void;
+			sendSignChange(loc: org.bukkit.Location, lines: (string | null)[], dyeColor: org.bukkit.DyeColor, hasGlowingText: boolean): void;
 
 			/**
 			 * Send a TileState change. This fakes a TileState change for a user at
@@ -6547,7 +6547,7 @@ declare global {
 			/**
 			 * Gets this player's previous GameMode
 			 */
-			getPreviousGameMode(): org.bukkit.GameMode;
+			getPreviousGameMode(): (org.bukkit.GameMode | null);
 
 			/**
 			 * Sets the current time on the player's client. When relative is true the
@@ -6597,7 +6597,7 @@ declare global {
 			/**
 			 * Returns the type of weather the player is currently experiencing.
 			 */
-			getPlayerWeather(): org.bukkit.WeatherType;
+			getPlayerWeather(): (org.bukkit.WeatherType | null);
 
 			/**
 			 * Restores the normal condition where the player's weather is controlled
@@ -6856,7 +6856,7 @@ declare global {
 			 * pack correctly.
 			 * 
 			 */
-			setResourcePack(url: string, hash: any /* byte */[]): void;
+			setResourcePack(url: string, hash: (any /* byte */ | null)[]): void;
 
 			/**
 			 * Request that the player's client download and switch resource packs.
@@ -6886,7 +6886,7 @@ declare global {
 			 * pack correctly.
 			 * 
 			 */
-			setResourcePack(url: string, hash: any /* byte */[], prompt: string): void;
+			setResourcePack(url: string, hash: (any /* byte */ | null)[], prompt: (string | null)): void;
 
 			/**
 			 * Request that the player's client download and switch resource packs.
@@ -6916,7 +6916,7 @@ declare global {
 			 * pack correctly.
 			 * 
 			 */
-			setResourcePack(url: string, hash: any /* byte */[], force: boolean): void;
+			setResourcePack(url: string, hash: (any /* byte */ | null)[], force: boolean): void;
 
 			/**
 			 * Request that the player's client download and switch resource packs.
@@ -6946,7 +6946,7 @@ declare global {
 			 * pack correctly.
 			 * 
 			 */
-			setResourcePack(url: string, hash: any /* byte */[], prompt: string, force: boolean): void;
+			setResourcePack(url: string, hash: (any /* byte */ | null)[], prompt: (string | null), force: boolean): void;
 
 			/**
 			 * Request that the player's client download and switch resource packs.
@@ -6976,7 +6976,7 @@ declare global {
 			 * pack correctly.
 			 * 
 			 */
-			setResourcePack(id: globalThis.java.util.UUID, url: string, hash: any /* byte */[], prompt: string, force: boolean): void;
+			setResourcePack(id: globalThis.java.util.UUID, url: string, hash: (any /* byte */ | null)[], prompt: (string | null), force: boolean): void;
 
 			/**
 			 * Request that the player's client download and include another resource pack.
@@ -7006,7 +7006,7 @@ declare global {
 			 * pack correctly.
 			 * 
 			 */
-			addResourcePack(id: globalThis.java.util.UUID, url: string, hash: any /* byte */[], prompt: string, force: boolean): void;
+			addResourcePack(id: globalThis.java.util.UUID, url: string, hash: (any /* byte */ | null)[], prompt: (string | null), force: boolean): void;
 
 			/**
 			 * Request that the player's client remove a resource pack sent by the
@@ -7034,12 +7034,12 @@ declare global {
 			 * Gets the WorldBorder visible to this Player, or null if viewing
 			 * the world's world border.
 			 */
-			getWorldBorder(): org.bukkit.WorldBorder;
+			getWorldBorder(): (org.bukkit.WorldBorder | null);
 
 			/**
 			 * Sets the WorldBorder visible to this Player.
 			 */
-			setWorldBorder(border: org.bukkit.WorldBorder): void;
+			setWorldBorder(border: (org.bukkit.WorldBorder | null)): void;
 
 			/**
 			 * Send a health update to the player. This will adjust the health, food, and
@@ -7089,13 +7089,13 @@ declare global {
 			 * Gets the entity which is followed by the camera when in
 			 * GameMode.SPECTATOR.
 			 */
-			getSpectatorTarget(): org.bukkit.entity.Entity;
+			getSpectatorTarget(): (org.bukkit.entity.Entity | null);
 
 			/**
 			 * Sets the entity which is followed by the camera when in
 			 * GameMode.SPECTATOR.
 			 */
-			setSpectatorTarget(entity: org.bukkit.entity.Entity): void;
+			setSpectatorTarget(entity: (org.bukkit.entity.Entity | null)): void;
 
 			/**
 			 * Sends a title and a subtitle message to the player. If either of these
@@ -7104,7 +7104,7 @@ declare global {
 			 * such. If the strings contain a new line, only the first line will be
 			 * sent. The titles will be displayed with the client's default timings.
 			 */
-			sendTitle(title: string, subtitle: string): void;
+			sendTitle(title: (string | null), subtitle: (string | null)): void;
 
 			/**
 			 * Sends a title and a subtitle message to the player. If either of these
@@ -7115,7 +7115,7 @@ declare global {
 			 * will use the last value sent (or the defaults if no title has been
 			 * displayed).
 			 */
-			sendTitle(title: string, subtitle: string, fadeIn: number, stay: number, fadeOut: number): void;
+			sendTitle(title: (string | null), subtitle: (string | null), fadeIn: number, stay: number, fadeOut: number): void;
 
 			/**
 			 * Resets the title displayed to the player. This will clear the displayed
@@ -7139,13 +7139,13 @@ declare global {
 			 * Spawns the particle (the number of times specified by count)
 			 * at the target location.
 			 */
-			spawnParticle<T = any>(particle: org.bukkit.Particle, location: org.bukkit.Location, count: number, data: T): void;
+			spawnParticle<T = any>(particle: org.bukkit.Particle, location: org.bukkit.Location, count: number, data: (T | null)): void;
 
 			/**
 			 * Spawns the particle (the number of times specified by count)
 			 * at the target location.
 			 */
-			spawnParticle<T = any>(particle: org.bukkit.Particle, x: number, y: number, z: number, count: number, data: T): void;
+			spawnParticle<T = any>(particle: org.bukkit.Particle, x: number, y: number, z: number, count: number, data: (T | null)): void;
 
 			/**
 			 * Spawns the particle (the number of times specified by count)
@@ -7169,7 +7169,7 @@ declare global {
 			 * randomized positively and negatively by the offset parameters
 			 * on each axis.
 			 */
-			spawnParticle<T = any>(particle: org.bukkit.Particle, location: org.bukkit.Location, count: number, offsetX: number, offsetY: number, offsetZ: number, data: T): void;
+			spawnParticle<T = any>(particle: org.bukkit.Particle, location: org.bukkit.Location, count: number, offsetX: number, offsetY: number, offsetZ: number, data: (T | null)): void;
 
 			/**
 			 * Spawns the particle (the number of times specified by count)
@@ -7177,7 +7177,7 @@ declare global {
 			 * randomized positively and negatively by the offset parameters
 			 * on each axis.
 			 */
-			spawnParticle<T = any>(particle: org.bukkit.Particle, x: number, y: number, z: number, count: number, offsetX: number, offsetY: number, offsetZ: number, data: T): void;
+			spawnParticle<T = any>(particle: org.bukkit.Particle, x: number, y: number, z: number, count: number, offsetX: number, offsetY: number, offsetZ: number, data: (T | null)): void;
 
 			/**
 			 * Spawns the particle (the number of times specified by count)
@@ -7201,7 +7201,7 @@ declare global {
 			 * randomized positively and negatively by the offset parameters
 			 * on each axis.
 			 */
-			spawnParticle<T = any>(particle: org.bukkit.Particle, location: org.bukkit.Location, count: number, offsetX: number, offsetY: number, offsetZ: number, extra: number, data: T): void;
+			spawnParticle<T = any>(particle: org.bukkit.Particle, location: org.bukkit.Location, count: number, offsetX: number, offsetY: number, offsetZ: number, extra: number, data: (T | null)): void;
 
 			/**
 			 * Spawns the particle (the number of times specified by count)
@@ -7209,7 +7209,7 @@ declare global {
 			 * randomized positively and negatively by the offset parameters
 			 * on each axis.
 			 */
-			spawnParticle<T = any>(particle: org.bukkit.Particle, x: number, y: number, z: number, count: number, offsetX: number, offsetY: number, offsetZ: number, extra: number, data: T): void;
+			spawnParticle<T = any>(particle: org.bukkit.Particle, x: number, y: number, z: number, count: number, offsetX: number, offsetY: number, offsetZ: number, extra: number, data: (T | null)): void;
 
 			/**
 			 * Spawns the particle (the number of times specified by count)
@@ -7217,7 +7217,7 @@ declare global {
 			 * randomized positively and negatively by the offset parameters
 			 * on each axis.
 			 */
-			spawnParticle<T = any>(particle: org.bukkit.Particle, location: org.bukkit.Location, count: number, offsetX: number, offsetY: number, offsetZ: number, extra: number, data: T, force: boolean): void;
+			spawnParticle<T = any>(particle: org.bukkit.Particle, location: org.bukkit.Location, count: number, offsetX: number, offsetY: number, offsetZ: number, extra: number, data: (T | null), force: boolean): void;
 
 			/**
 			 * Spawns the particle (the number of times specified by count)
@@ -7225,7 +7225,7 @@ declare global {
 			 * randomized positively and negatively by the offset parameters
 			 * on each axis.
 			 */
-			spawnParticle<T = any>(particle: org.bukkit.Particle, x: number, y: number, z: number, count: number, offsetX: number, offsetY: number, offsetZ: number, extra: number, data: T, force: boolean): void;
+			spawnParticle<T = any>(particle: org.bukkit.Particle, x: number, y: number, z: number, count: number, offsetX: number, offsetY: number, offsetZ: number, extra: number, data: (T | null), force: boolean): void;
 
 			/**
 			 * Return the player's progression on the specified advancement.
@@ -7407,12 +7407,12 @@ declare global {
 			/**
 			 * Retrieve the shooter of this projectile.
 			 */
-			getShooter(): org.bukkit.projectiles.ProjectileSource;
+			getShooter(): (org.bukkit.projectiles.ProjectileSource | null);
 
 			/**
 			 * Set the shooter of this projectile.
 			 */
-			setShooter(source: org.bukkit.projectiles.ProjectileSource): void;
+			setShooter(source: (org.bukkit.projectiles.ProjectileSource | null)): void;
 
 			/**
 			 * Determine if this projectile should bounce or not when it hits.
@@ -7496,12 +7496,12 @@ declare global {
 			/**
 			 * Set the Raid that this raider is participating in.
 			 */
-			setRaid(raid: org.bukkit.Raid): void;
+			setRaid(raid: (org.bukkit.Raid | null)): void;
 
 			/**
 			 * Get the Raid that this raider is participating in, if any.
 			 */
-			getRaid(): org.bukkit.Raid;
+			getRaid(): (org.bukkit.Raid | null);
 
 			/**
 			 * Get the raid wave that this raider spawned as part of.
@@ -7516,12 +7516,12 @@ declare global {
 			/**
 			 * Gets the block the raider is targeting to patrol.
 			 */
-			getPatrolTarget(): org.bukkit.block.Block;
+			getPatrolTarget(): (org.bukkit.block.Block | null);
 
 			/**
 			 * Sets the block the raider is targeting to patrol.
 			 */
-			setPatrolTarget(block: org.bukkit.block.Block): void;
+			setPatrolTarget(block: (org.bukkit.block.Block | null)): void;
 
 			/**
 			 * Gets whether this entity is a patrol leader.
@@ -7615,12 +7615,12 @@ declare global {
 			/**
 			 * Retrieve the target of this bullet.
 			 */
-			getTarget(): org.bukkit.entity.Entity;
+			getTarget(): (org.bukkit.entity.Entity | null);
 
 			/**
 			 * Sets the target of this bullet
 			 */
-			setTarget(target: org.bukkit.entity.Entity): void;
+			setTarget(target: (org.bukkit.entity.Entity | null)): void;
 
 		}> {}
 		interface Silverfish extends Modify<org.bukkit.entity.Monster, {}> {}
@@ -7785,7 +7785,7 @@ declare global {
 			/**
 			 * Try to get a possible location where the sniffer can dig.
 			 */
-			findPossibleDigLocation(): org.bukkit.Location;
+			findPossibleDigLocation(): (org.bukkit.Location | null);
 
 			/**
 			 * Gets whether the sniffer can dig in the current Location below
@@ -8043,7 +8043,7 @@ declare global {
 			 * it has since died or been unloaded. Callers should check
 			 * Entity.isValid().
 			 */
-			getSource(): org.bukkit.entity.Entity;
+			getSource(): (org.bukkit.entity.Entity | null);
 
 			/**
 			 * Sets the source of this primed TNT.
@@ -8052,7 +8052,7 @@ declare global {
 			 * Must be instance of LivingEntity otherwise will
 			 * be set to null. The parameter is typed Entity to be consistent with getSource() method.
 			 */
-			setSource(source: org.bukkit.entity.Entity): void;
+			setSource(source: (org.bukkit.entity.Entity | null)): void;
 
 		}> {}
 		interface Tadpole extends Modify<org.bukkit.entity.Fish, {
@@ -8088,7 +8088,7 @@ declare global {
 			/**
 			 * Gets the current owning AnimalTamer
 			 */
-			getOwner(): org.bukkit.entity.AnimalTamer;
+			getOwner(): (org.bukkit.entity.AnimalTamer | null);
 
 			/**
 			 * Set this to be owned by given AnimalTamer.
@@ -8097,19 +8097,19 @@ declare global {
 			 * path it is following removed. If the owner is set to null, this will be
 			 * untamed, and the current owner removed.
 			 */
-			setOwner(tamer: org.bukkit.entity.AnimalTamer): void;
+			setOwner(tamer: (org.bukkit.entity.AnimalTamer | null)): void;
 
 		}> {}
 		interface TextDisplay extends Modify<org.bukkit.entity.Display, {
 			/**
 			 * Gets the displayed text.
 			 */
-			getText(): string;
+			getText(): (string | null);
 
 			/**
 			 * Sets the displayed text.
 			 */
-			setText(text: string): void;
+			setText(text: (string | null)): void;
 
 			/**
 			 * Gets the maximum line width before wrapping.
@@ -8124,12 +8124,12 @@ declare global {
 			/**
 			 * Gets the text background color.
 			 */
-			getBackgroundColor(): org.bukkit.Color;
+			getBackgroundColor(): (org.bukkit.Color | null);
 
 			/**
 			 * Sets the text background color.
 			 */
-			setBackgroundColor(color: org.bukkit.Color): void;
+			setBackgroundColor(color: (org.bukkit.Color | null)): void;
 
 			/**
 			 * Gets the text opacity.
@@ -8363,7 +8363,7 @@ declare global {
 			 * When summoned by an Evoker, this location will be set to that of the
 			 * summoner.
 			 */
-			getBound(): org.bukkit.Location;
+			getBound(): (org.bukkit.Location | null);
 
 			/**
 			 * Sets the bound of this entity.
@@ -8372,7 +8372,7 @@ declare global {
 			 * When summoned by an Evoker, this location will be set to that of the
 			 * summoner.
 			 */
-			setBound(location: org.bukkit.Location): void;
+			setBound(location: (org.bukkit.Location | null)): void;
 
 			/**
 			 * Gets the remaining lifespan of this entity.
@@ -8459,7 +8459,7 @@ declare global {
 			 * Zombie.
 			 * Note: this will fire a EntityTransformEvent
 			 */
-			zombify(): org.bukkit.entity.ZombieVillager;
+			zombify(): (org.bukkit.entity.ZombieVillager | null);
 
 		}> {}
 		namespace Villager {
@@ -8668,7 +8668,7 @@ declare global {
 			/**
 			 * Gets the LivingEntity at which this warden is most angry.
 			 */
-			getEntityAngryAt(): org.bukkit.entity.LivingEntity;
+			getEntityAngryAt(): (org.bukkit.entity.LivingEntity | null);
 
 			/**
 			 * Make the warden sense a disturbance in the force at the location given.
@@ -8728,19 +8728,19 @@ declare global {
 			 * This method will set the target of the center head of
 			 * the wither.
 			 */
-			setTarget(target: org.bukkit.entity.LivingEntity): void;
+			setTarget(target: (org.bukkit.entity.LivingEntity | null)): void;
 
 			/**
 			 * This method will set the target of individual heads Wither.Head of the
 			 * wither.
 			 */
-			setTarget(head: org.bukkit.entity.Wither.Head, target: org.bukkit.entity.LivingEntity): void;
+			setTarget(head: org.bukkit.entity.Wither.Head, target: (org.bukkit.entity.LivingEntity | null)): void;
 
 			/**
 			 * This method will get the target of individual heads Wither.Head of the
 			 * wither.
 			 */
-			getTarget(head: org.bukkit.entity.Wither.Head): org.bukkit.entity.LivingEntity;
+			getTarget(head: org.bukkit.entity.Wither.Head): (org.bukkit.entity.LivingEntity | null);
 
 			/**
 			 * Returns the wither's current invulnerability ticks.
@@ -8895,7 +8895,7 @@ declare global {
 
 			setVillagerProfession(profession: org.bukkit.entity.Villager.Profession): void;
 
-			getVillagerProfession(): org.bukkit.entity.Villager.Profession;
+			getVillagerProfession(): (org.bukkit.entity.Villager.Profession | null);
 
 			/**
 			 * Get if this entity is in the process of converting to a Drowned as a
@@ -8937,12 +8937,12 @@ declare global {
 			/**
 			 * Sets the villager profession of this zombie.
 			 */
-			setVillagerProfession(profession: org.bukkit.entity.Villager.Profession): void;
+			setVillagerProfession(profession: (org.bukkit.entity.Villager.Profession | null)): void;
 
 			/**
 			 * Returns the villager profession of this zombie.
 			 */
-			getVillagerProfession(): org.bukkit.entity.Villager.Profession;
+			getVillagerProfession(): (org.bukkit.entity.Villager.Profession | null);
 
 			/**
 			 * Gets the current type of this villager.
@@ -8979,14 +8979,14 @@ declare global {
 			/**
 			 * Gets the player who initiated the conversion.
 			 */
-			getConversionPlayer(): org.bukkit.OfflinePlayer;
+			getConversionPlayer(): (org.bukkit.OfflinePlayer | null);
 
 			/**
 			 * Sets the player who initiated the conversion.
 			 * 
 			 * This has no effect if this entity isn't converting currently.
 			 */
-			setConversionPlayer(conversionPlayer: org.bukkit.OfflinePlayer): void;
+			setConversionPlayer(conversionPlayer: (org.bukkit.OfflinePlayer | null)): void;
 
 		}> {}
 	}
@@ -8995,12 +8995,12 @@ declare global {
 			/**
 			 * Gets the item in the horse's saddle slot.
 			 */
-			getSaddle(): org.bukkit.inventory.ItemStack;
+			getSaddle(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Sets the item in the horse's saddle slot.
 			 */
-			setSaddle(stack: org.bukkit.inventory.ItemStack): void;
+			setSaddle(stack: (org.bukkit.inventory.ItemStack | null)): void;
 
 		}> {}
 		interface AnvilInventory extends Modify<org.bukkit.inventory.Inventory, {
@@ -9008,7 +9008,7 @@ declare global {
 			 * Get the name to be applied to the repaired item. An empty string denotes
 			 * the default item name.
 			 */
-			getRenameText(): string;
+			getRenameText(): (string | null);
 
 			/**
 			 * Get the item cost (in amount) to complete the current repair.
@@ -9051,12 +9051,12 @@ declare global {
 			/**
 			 * Set the item powering the beacon.
 			 */
-			setItem(item: org.bukkit.inventory.ItemStack): void;
+			setItem(item: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Get the item powering the beacon.
 			 */
-			getItem(): org.bukkit.inventory.ItemStack;
+			getItem(): (org.bukkit.inventory.ItemStack | null);
 
 		}> {}
 		interface BlastingRecipe extends Modify<org.bukkit.inventory.CookingRecipe<org.bukkit.inventory.BlastingRecipe>, {
@@ -9078,28 +9078,28 @@ declare global {
 			/**
 			 * Get the current ingredient for brewing.
 			 */
-			getIngredient(): org.bukkit.inventory.ItemStack;
+			getIngredient(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Set the current ingredient for brewing.
 			 */
-			setIngredient(ingredient: org.bukkit.inventory.ItemStack): void;
+			setIngredient(ingredient: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Get the current fuel for brewing.
 			 */
-			getFuel(): org.bukkit.inventory.ItemStack;
+			getFuel(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Set the current fuel for brewing. Generally only
 			 * Material.BLAZE_POWDER will be of use.
 			 */
-			setFuel(fuel: org.bukkit.inventory.ItemStack): void;
+			setFuel(fuel: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Description copied from interface: Inventory
 			 */
-			getHolder(): org.bukkit.block.BrewingStand;
+			getHolder(): (org.bukkit.block.BrewingStand | null);
 
 		}> {}
 		interface CampfireRecipe extends Modify<org.bukkit.inventory.CookingRecipe<org.bukkit.inventory.CampfireRecipe>, {
@@ -9115,7 +9115,7 @@ declare global {
 			/**
 			 * Description copied from interface: Inventory
 			 */
-			getHolder(): org.bukkit.block.ChiseledBookshelf;
+			getHolder(): (org.bukkit.block.ChiseledBookshelf | null);
 
 		}> {}
 		interface ComplexRecipe extends Modify<org.bukkit.inventory.Recipe & org.bukkit.Keyed, {}> {}
@@ -9212,12 +9212,12 @@ declare global {
 			/**
 			 * Check what item is in the result slot of this crafting inventory.
 			 */
-			getResult(): org.bukkit.inventory.ItemStack;
+			getResult(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Set the item in the result slot of the crafting inventory.
 			 */
-			setResult(newResult: org.bukkit.inventory.ItemStack): void;
+			setResult(newResult: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Replace the contents of the crafting matrix
@@ -9227,7 +9227,7 @@ declare global {
 			/**
 			 * Get the current recipe formed on the crafting inventory, if any.
 			 */
-			getRecipe(): org.bukkit.inventory.Recipe;
+			getRecipe(): (org.bukkit.inventory.Recipe | null);
 
 		}> {}
 		interface CraftingRecipe {
@@ -9335,17 +9335,17 @@ declare global {
 			/**
 			 * Set the item stack in the decorated pot.
 			 */
-			setItem(item: org.bukkit.inventory.ItemStack): void;
+			setItem(item: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Get the item stack in the decorated pot.
 			 */
-			getItem(): org.bukkit.inventory.ItemStack;
+			getItem(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Description copied from interface: Inventory
 			 */
-			getHolder(): org.bukkit.block.DecoratedPot;
+			getHolder(): (org.bukkit.block.DecoratedPot | null);
 
 		}> {}
 		interface DoubleChestInventory extends Modify<org.bukkit.inventory.Inventory, {
@@ -9362,41 +9362,41 @@ declare global {
 			/**
 			 * Description copied from interface: Inventory
 			 */
-			getHolder(): org.bukkit.block.DoubleChest;
+			getHolder(): (org.bukkit.block.DoubleChest | null);
 
 		}> {}
 		interface EnchantingInventory extends Modify<org.bukkit.inventory.Inventory, {
 			/**
 			 * Set the item being enchanted.
 			 */
-			setItem(item: org.bukkit.inventory.ItemStack): void;
+			setItem(item: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Get the item being enchanted.
 			 */
-			getItem(): org.bukkit.inventory.ItemStack;
+			getItem(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Set the secondary item being used for the enchant.
 			 */
-			setSecondary(item: org.bukkit.inventory.ItemStack): void;
+			setSecondary(item: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Get the secondary item being used for the enchant.
 			 */
-			getSecondary(): org.bukkit.inventory.ItemStack;
+			getSecondary(): (org.bukkit.inventory.ItemStack | null);
 
 		}> {}
 		interface EntityEquipment {
 			/**
 			 * Stores the ItemStack at the given equipment slot in the inventory.
 			 */
-			setItem(slot: org.bukkit.inventory.EquipmentSlot, item: org.bukkit.inventory.ItemStack): void;
+			setItem(slot: org.bukkit.inventory.EquipmentSlot, item: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Stores the ItemStack at the given equipment slot in the inventory.
 			 */
-			setItem(slot: org.bukkit.inventory.EquipmentSlot, item: org.bukkit.inventory.ItemStack, silent: boolean): void;
+			setItem(slot: org.bukkit.inventory.EquipmentSlot, item: (org.bukkit.inventory.ItemStack | null), silent: boolean): void;
 
 			/**
 			 * Gets the ItemStack at the given equipment slot in the inventory.
@@ -9412,12 +9412,12 @@ declare global {
 			/**
 			 * Sets the item the entity is holding in their main hand.
 			 */
-			setItemInMainHand(item: org.bukkit.inventory.ItemStack): void;
+			setItemInMainHand(item: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Sets the item the entity is holding in their main hand.
 			 */
-			setItemInMainHand(item: org.bukkit.inventory.ItemStack, silent: boolean): void;
+			setItemInMainHand(item: (org.bukkit.inventory.ItemStack | null), silent: boolean): void;
 
 			/**
 			 * Gets a copy of the item the entity is currently holding
@@ -9428,12 +9428,12 @@ declare global {
 			/**
 			 * Sets the item the entity is holding in their off hand.
 			 */
-			setItemInOffHand(item: org.bukkit.inventory.ItemStack): void;
+			setItemInOffHand(item: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Sets the item the entity is holding in their off hand.
 			 */
-			setItemInOffHand(item: org.bukkit.inventory.ItemStack, silent: boolean): void;
+			setItemInOffHand(item: (org.bukkit.inventory.ItemStack | null), silent: boolean): void;
 
 			/**
 			 * Gets a copy of the item the entity is currently holding
@@ -9443,67 +9443,67 @@ declare global {
 			/**
 			 * Sets the item the entity is holding
 			 */
-			setItemInHand(stack: org.bukkit.inventory.ItemStack): void;
+			setItemInHand(stack: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Gets a copy of the helmet currently being worn by the entity
 			 */
-			getHelmet(): org.bukkit.inventory.ItemStack;
+			getHelmet(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Sets the helmet worn by the entity
 			 */
-			setHelmet(helmet: org.bukkit.inventory.ItemStack): void;
+			setHelmet(helmet: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Sets the helmet worn by the entity
 			 */
-			setHelmet(helmet: org.bukkit.inventory.ItemStack, silent: boolean): void;
+			setHelmet(helmet: (org.bukkit.inventory.ItemStack | null), silent: boolean): void;
 
 			/**
 			 * Gets a copy of the chest plate currently being worn by the entity
 			 */
-			getChestplate(): org.bukkit.inventory.ItemStack;
+			getChestplate(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Sets the chest plate worn by the entity
 			 */
-			setChestplate(chestplate: org.bukkit.inventory.ItemStack): void;
+			setChestplate(chestplate: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Sets the chest plate worn by the entity
 			 */
-			setChestplate(chestplate: org.bukkit.inventory.ItemStack, silent: boolean): void;
+			setChestplate(chestplate: (org.bukkit.inventory.ItemStack | null), silent: boolean): void;
 
 			/**
 			 * Gets a copy of the leggings currently being worn by the entity
 			 */
-			getLeggings(): org.bukkit.inventory.ItemStack;
+			getLeggings(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Sets the leggings worn by the entity
 			 */
-			setLeggings(leggings: org.bukkit.inventory.ItemStack): void;
+			setLeggings(leggings: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Sets the leggings worn by the entity
 			 */
-			setLeggings(leggings: org.bukkit.inventory.ItemStack, silent: boolean): void;
+			setLeggings(leggings: (org.bukkit.inventory.ItemStack | null), silent: boolean): void;
 
 			/**
 			 * Gets a copy of the boots currently being worn by the entity
 			 */
-			getBoots(): org.bukkit.inventory.ItemStack;
+			getBoots(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Sets the boots worn by the entity
 			 */
-			setBoots(boots: org.bukkit.inventory.ItemStack): void;
+			setBoots(boots: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Sets the boots worn by the entity
 			 */
-			setBoots(boots: org.bukkit.inventory.ItemStack, silent: boolean): void;
+			setBoots(boots: (org.bukkit.inventory.ItemStack | null), silent: boolean): void;
 
 			/**
 			 * Sets the entities armor to the provided array of ItemStacks
@@ -9638,7 +9638,7 @@ declare global {
 			/**
 			 * Get the entity this EntityEquipment belongs to
 			 */
-			getHolder(): org.bukkit.entity.Entity;
+			getHolder(): (org.bukkit.entity.Entity | null);
 
 		}
 		interface EquipmentSlot {
@@ -9709,44 +9709,44 @@ declare global {
 			/**
 			 * Gets the EquipmentSlotGroup corresponding to the given string.
 			 */
-			function getByName(name: string): org.bukkit.inventory.EquipmentSlotGroup;
+			function getByName(name: string): (org.bukkit.inventory.EquipmentSlotGroup | null);
 
 		}
 		interface FurnaceInventory extends Modify<org.bukkit.inventory.Inventory, {
 			/**
 			 * Get the current item in the result slot.
 			 */
-			getResult(): org.bukkit.inventory.ItemStack;
+			getResult(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Get the current fuel.
 			 */
-			getFuel(): org.bukkit.inventory.ItemStack;
+			getFuel(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Get the item currently smelting.
 			 */
-			getSmelting(): org.bukkit.inventory.ItemStack;
+			getSmelting(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Set the current fuel.
 			 */
-			setFuel(stack: org.bukkit.inventory.ItemStack): void;
+			setFuel(stack: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Set the current item in the result slot.
 			 */
-			setResult(stack: org.bukkit.inventory.ItemStack): void;
+			setResult(stack: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Set the item currently smelting.
 			 */
-			setSmelting(stack: org.bukkit.inventory.ItemStack): void;
+			setSmelting(stack: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Description copied from interface: Inventory
 			 */
-			getHolder(): org.bukkit.block.Furnace;
+			getHolder(): (org.bukkit.block.Furnace | null);
 
 		}> {}
 		interface FurnaceRecipe extends Modify<org.bukkit.inventory.CookingRecipe<org.bukkit.inventory.FurnaceRecipe>, {
@@ -9798,12 +9798,12 @@ declare global {
 			/**
 			 * Gets the item in the horse's armor slot.
 			 */
-			getArmor(): org.bukkit.inventory.ItemStack;
+			getArmor(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Sets the item in the horse's armor slot.
 			 */
-			setArmor(stack: org.bukkit.inventory.ItemStack): void;
+			setArmor(stack: (org.bukkit.inventory.ItemStack | null)): void;
 
 		}> {}
 		interface Inventory {
@@ -9836,12 +9836,12 @@ declare global {
 			/**
 			 * Returns the ItemStack found in the slot at the given index
 			 */
-			getItem(index: number): org.bukkit.inventory.ItemStack;
+			getItem(index: number): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Stores the ItemStack at the given index of the inventory.
 			 */
-			setItem(index: number, item: org.bukkit.inventory.ItemStack): void;
+			setItem(index: number, item: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Stores the given ItemStacks in the inventory. This will try to fill
@@ -9906,7 +9906,7 @@ declare global {
 			 * This will only return true if both the type and the amount of the stack
 			 * match.
 			 */
-			contains(item: org.bukkit.inventory.ItemStack): boolean;
+			contains(item: (org.bukkit.inventory.ItemStack | null)): boolean;
 
 			/**
 			 * Checks if the inventory contains any ItemStacks with the given
@@ -9921,13 +9921,13 @@ declare global {
 			 * An ItemStack only counts if both the type and the amount of the stack
 			 * match.
 			 */
-			contains(item: org.bukkit.inventory.ItemStack, amount: number): boolean;
+			contains(item: (org.bukkit.inventory.ItemStack | null), amount: number): boolean;
 
 			/**
 			 * Checks if the inventory contains ItemStacks matching the given
 			 * ItemStack whose amounts sum to at least the minimum amount specified.
 			 */
-			containsAtLeast(item: org.bukkit.inventory.ItemStack, amount: number): boolean;
+			containsAtLeast(item: (org.bukkit.inventory.ItemStack | null), amount: number): boolean;
 
 			/**
 			 * Returns a HashMap with all slots and ItemStacks in the inventory with
@@ -9948,7 +9948,7 @@ declare global {
 			 * value is the ItemStack in that slot. If no matching ItemStack with the
 			 * given Material is found, an empty map is returned.
 			 */
-			all(item: org.bukkit.inventory.ItemStack): globalThis.java.util.HashMap<number, org.bukkit.inventory.ItemStack>;
+			all(item: (org.bukkit.inventory.ItemStack | null)): globalThis.java.util.HashMap<number, org.bukkit.inventory.ItemStack>;
 
 			/**
 			 * Finds the first slot in the inventory containing an ItemStack with the
@@ -10016,7 +10016,7 @@ declare global {
 			/**
 			 * Gets the block or entity belonging to the open inventory
 			 */
-			getHolder(): org.bukkit.inventory.InventoryHolder;
+			getHolder(): (org.bukkit.inventory.InventoryHolder | null);
 
 			iterator(): globalThis.java.util.ListIterator<org.bukkit.inventory.ItemStack>;
 
@@ -10032,7 +10032,7 @@ declare global {
 			 * Get the location of the block or entity which corresponds to this inventory. May return null if this container
 			 * was custom created or is a virtual / subcontainer.
 			 */
-			getLocation(): org.bukkit.Location;
+			getLocation(): (org.bukkit.Location | null);
 
 		}
 		interface InventoryHolder {
@@ -10071,22 +10071,22 @@ declare global {
 			 * Note: If slot ID -999 is chosen, it may be expected that the item is
 			 * dropped on the ground. This is not required behaviour, however.
 			 */
-			setItem(slot: number, item: org.bukkit.inventory.ItemStack): void;
+			setItem(slot: number, item: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Gets one item in this inventory view by its raw slot ID.
 			 */
-			getItem(slot: number): org.bukkit.inventory.ItemStack;
+			getItem(slot: number): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Sets the item on the cursor of one of the viewing players.
 			 */
-			setCursor(item: org.bukkit.inventory.ItemStack): void;
+			setCursor(item: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Get the item on the cursor of one of the viewing players.
 			 */
-			getCursor(): org.bukkit.inventory.ItemStack;
+			getCursor(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Gets the inventory corresponding to the given raw slot ID.
@@ -10095,7 +10095,7 @@ declare global {
 			 * May be used with convertSlot(int) to directly index an
 			 * underlying inventory.
 			 */
-			getInventory(rawSlot: number): org.bukkit.inventory.Inventory;
+			getInventory(rawSlot: number): (org.bukkit.inventory.Inventory | null);
 
 			/**
 			 * Converts a raw slot ID into its local slot ID into whichever of the two
@@ -10310,7 +10310,7 @@ declare global {
 			/**
 			 * This creates a new item meta for the material.
 			 */
-			getItemMeta(material: org.bukkit.Material): org.bukkit.inventory.meta.ItemMeta;
+			getItemMeta(material: org.bukkit.Material): (org.bukkit.inventory.meta.ItemMeta | null);
 
 			/**
 			 * This method checks the item meta to confirm that it is applicable (no
@@ -10318,7 +10318,7 @@ declare global {
 			 * 
 			 * A SkullMeta would not be valid for a sword, but a normal ItemMeta from an enchanted dirt block would.
 			 */
-			isApplicable(meta: org.bukkit.inventory.meta.ItemMeta, stack: org.bukkit.inventory.ItemStack): boolean;
+			isApplicable(meta: (org.bukkit.inventory.meta.ItemMeta | null), stack: (org.bukkit.inventory.ItemStack | null)): boolean;
 
 			/**
 			 * This method checks the item meta to confirm that it is applicable (no
@@ -10326,12 +10326,12 @@ declare global {
 			 * 
 			 * A SkullMeta would not be valid for a sword, but a normal ItemMeta from an enchanted dirt block would.
 			 */
-			isApplicable(meta: org.bukkit.inventory.meta.ItemMeta, material: org.bukkit.Material): boolean;
+			isApplicable(meta: (org.bukkit.inventory.meta.ItemMeta | null), material: (org.bukkit.Material | null)): boolean;
 
 			/**
 			 * This method is used to compare two item meta data objects.
 			 */
-			equals(meta1: org.bukkit.inventory.meta.ItemMeta, meta2: org.bukkit.inventory.meta.ItemMeta): boolean;
+			equals(meta1: (org.bukkit.inventory.meta.ItemMeta | null), meta2: (org.bukkit.inventory.meta.ItemMeta | null)): boolean;
 
 			/**
 			 * Returns an appropriate item meta for the specified stack.
@@ -10346,7 +10346,7 @@ declare global {
 			 * specified meta that is applicable to an ItemMeta, the highest
 			 * common interface.
 			 */
-			asMetaFor(meta: org.bukkit.inventory.meta.ItemMeta, stack: org.bukkit.inventory.ItemStack): org.bukkit.inventory.meta.ItemMeta;
+			asMetaFor(meta: org.bukkit.inventory.meta.ItemMeta, stack: org.bukkit.inventory.ItemStack): (org.bukkit.inventory.meta.ItemMeta | null);
 
 			/**
 			 * Returns an appropriate item meta for the specified material.
@@ -10361,7 +10361,7 @@ declare global {
 			 * specified meta that is applicable to an ItemMeta, the highest
 			 * common interface.
 			 */
-			asMetaFor(meta: org.bukkit.inventory.meta.ItemMeta, material: org.bukkit.Material): org.bukkit.inventory.meta.ItemMeta;
+			asMetaFor(meta: org.bukkit.inventory.meta.ItemMeta, material: org.bukkit.Material): (org.bukkit.inventory.meta.ItemMeta | null);
 
 			/**
 			 * Returns the default color for all leather armor.
@@ -10384,7 +10384,7 @@ declare global {
 			 * EntityType.
 			 * Will return null for EntityTypes that do not have a corresponding spawn egg.
 			 */
-			getSpawnEgg(type: org.bukkit.entity.EntityType): org.bukkit.Material;
+			getSpawnEgg(type: org.bukkit.entity.EntityType): (org.bukkit.Material | null);
 
 			/**
 			 * Enchants the given item at the provided level.
@@ -10521,12 +10521,12 @@ declare global {
 			/**
 			 * Gets the MaterialData for this stack of items
 			 */
-			getData(): org.bukkit.material.MaterialData;
+			getData(): (org.bukkit.material.MaterialData | null);
 
 			/**
 			 * Sets the MaterialData for this stack of items
 			 */
-			setData(data: org.bukkit.material.MaterialData): void;
+			setData(data: (org.bukkit.material.MaterialData | null)): void;
 
 			/**
 			 * Sets the durability of this item
@@ -10554,7 +10554,7 @@ declare global {
 			 * This method is the same as equals, but does not consider stack size
 			 * (amount).
 			 */
-			isSimilar(stack: org.bukkit.inventory.ItemStack): boolean;
+			isSimilar(stack: (org.bukkit.inventory.ItemStack | null)): boolean;
 
 			clone(): org.bukkit.inventory.ItemStack;
 
@@ -10629,7 +10629,7 @@ declare global {
 			/**
 			 * Get a copy of this ItemStack's ItemMeta.
 			 */
-			getItemMeta(): org.bukkit.inventory.meta.ItemMeta;
+			getItemMeta(): (org.bukkit.inventory.meta.ItemMeta | null);
 
 			/**
 			 * Checks to see if any meta data has been defined.
@@ -10639,7 +10639,7 @@ declare global {
 			/**
 			 * Set the ItemMeta of this ItemStack.
 			 */
-			setItemMeta(itemMeta: org.bukkit.inventory.meta.ItemMeta): boolean;
+			setItemMeta(itemMeta: (org.bukkit.inventory.meta.ItemMeta | null)): boolean;
 
 			/**
 			 * Description copied from interface: Translatable
@@ -10671,7 +10671,7 @@ declare global {
 			 */
 			constructor(type: org.bukkit.Material, amount: number, damage: number);
 
-			constructor(type: org.bukkit.Material, amount: number, damage: number, data: number);
+			constructor(type: org.bukkit.Material, amount: number, damage: number, data: (number | null));
 
 			/**
 			 * Creates a new item stack derived from the specified stack
@@ -10766,7 +10766,7 @@ declare global {
 			 * Determines the remaining item in a crafting grid after crafting with this
 			 * ingredient.
 			 */
-			getCraftingRemainingItem(): org.bukkit.inventory.ItemType;
+			getCraftingRemainingItem(): (org.bukkit.inventory.ItemType | null);
 
 			/**
 			 * Return an immutable copy of all default Attributes and their
@@ -10779,7 +10779,7 @@ declare global {
 			/**
 			 * Get the CreativeCategory to which this item type belongs.
 			 */
-			getCreativeCategory(): org.bukkit.inventory.CreativeCategory;
+			getCreativeCategory(): (org.bukkit.inventory.CreativeCategory | null);
 
 			/**
 			 * Gets if the ItemType is enabled by the features in a world.
@@ -10789,7 +10789,7 @@ declare global {
 			/**
 			 * Tries to convert this ItemType into a Material
 			 */
-			asMaterial(): org.bukkit.Material;
+			asMaterial(): (org.bukkit.Material | null);
 
 		}> {}
 		namespace ItemType {
@@ -14157,12 +14157,12 @@ declare global {
 				/**
 				 * Constructs a new item stack with this item type with the amount 1.
 				 */
-				createItemStack(metaConfigurator: (value: M) => void): org.bukkit.inventory.ItemStack;
+				createItemStack(metaConfigurator: ((value: M) => void | null)): org.bukkit.inventory.ItemStack;
 
 				/**
 				 * Constructs a new item stack with this item type.
 				 */
-				createItemStack(amount: number, metaConfigurator: (value: M) => void): org.bukkit.inventory.ItemStack;
+				createItemStack(amount: number, metaConfigurator: ((value: M) => void | null)): org.bukkit.inventory.ItemStack;
 
 			}> {}
 		}
@@ -14173,36 +14173,36 @@ declare global {
 			 * This will immediately start playing the inserted item or stop playing if the
 			 * item provided is null.
 			 */
-			setRecord(item: org.bukkit.inventory.ItemStack): void;
+			setRecord(item: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Get the record in the jukebox.
 			 */
-			getRecord(): org.bukkit.inventory.ItemStack;
+			getRecord(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Description copied from interface: Inventory
 			 */
-			getHolder(): org.bukkit.block.Jukebox;
+			getHolder(): (org.bukkit.block.Jukebox | null);
 
 		}> {}
 		interface LecternInventory extends Modify<org.bukkit.inventory.Inventory, {
 			/**
 			 * Description copied from interface: Inventory
 			 */
-			getHolder(): org.bukkit.block.Lectern;
+			getHolder(): (org.bukkit.block.Lectern | null);
 
 		}> {}
 		interface LlamaInventory extends Modify<org.bukkit.inventory.AbstractHorseInventory, {
 			/**
 			 * Gets the item in the llama's decor slot.
 			 */
-			getDecor(): org.bukkit.inventory.ItemStack;
+			getDecor(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Sets the item in the llama's decor slot.
 			 */
-			setDecor(stack: org.bukkit.inventory.ItemStack): void;
+			setDecor(stack: (org.bukkit.inventory.ItemStack | null)): void;
 
 		}> {}
 		interface LoomInventory extends Modify<org.bukkit.inventory.Inventory, {}> {}
@@ -14259,7 +14259,7 @@ declare global {
 			 * Gets the player this merchant is trading with, or null if it is not
 			 * currently trading.
 			 */
-			getTrader(): org.bukkit.entity.HumanEntity;
+			getTrader(): (org.bukkit.entity.HumanEntity | null);
 
 		}
 		interface MerchantInventory extends Modify<org.bukkit.inventory.Inventory, {
@@ -14277,7 +14277,7 @@ declare global {
 			 * selected the first recipe, the merchant will search all of its offers
 			 * for a matching recipe to activate.
 			 */
-			getSelectedRecipe(): org.bukkit.inventory.MerchantRecipe;
+			getSelectedRecipe(): (org.bukkit.inventory.MerchantRecipe | null);
 
 			/**
 			 * Gets the Merchant associated with this inventory.
@@ -14302,7 +14302,7 @@ declare global {
 			/**
 			 * Gets the adjusted first ingredient.
 			 */
-			getAdjustedIngredient1(): org.bukkit.inventory.ItemStack;
+			getAdjustedIngredient1(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Modifies the amount of the given ItemStack in the same way as
@@ -14316,7 +14316,7 @@ declare global {
 			 * and then constraining the resulting value between 1 and the
 			 * ItemStack's maximum stack size.
 			 */
-			adjust(itemStack: org.bukkit.inventory.ItemStack): void;
+			adjust(itemStack: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Get the demand for this trade.
@@ -14403,22 +14403,22 @@ declare global {
 			/**
 			 * Return the ItemStack from the helmet slot
 			 */
-			getHelmet(): org.bukkit.inventory.ItemStack;
+			getHelmet(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Return the ItemStack from the chestplate slot
 			 */
-			getChestplate(): org.bukkit.inventory.ItemStack;
+			getChestplate(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Return the ItemStack from the leg slot
 			 */
-			getLeggings(): org.bukkit.inventory.ItemStack;
+			getLeggings(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Return the ItemStack from the boots slot
 			 */
-			getBoots(): org.bukkit.inventory.ItemStack;
+			getBoots(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Stores the ItemStack at the given index of the inventory.
@@ -14436,53 +14436,53 @@ declare global {
 			 * If you attempt to use this method with an index less than 0 or greater than 40, an ArrayIndexOutOfBounds
 			 * exception will be thrown.
 			 */
-			setItem(index: number, item: org.bukkit.inventory.ItemStack): void;
+			setItem(index: number, item: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Stores the ItemStack at the given equipment slot in the inventory.
 			 */
-			setItem(slot: org.bukkit.inventory.EquipmentSlot, item: org.bukkit.inventory.ItemStack): void;
+			setItem(slot: org.bukkit.inventory.EquipmentSlot, item: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Gets the ItemStack at the given equipment slot in the inventory.
 			 */
-			getItem(slot: org.bukkit.inventory.EquipmentSlot): org.bukkit.inventory.ItemStack;
+			getItem(slot: org.bukkit.inventory.EquipmentSlot): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Put the given ItemStacks into the armor slots
 			 */
-			setArmorContents(items: org.bukkit.inventory.ItemStack[]): void;
+			setArmorContents(items: (org.bukkit.inventory.ItemStack | null)[]): void;
 
 			/**
 			 * Put the given ItemStacks into the extra slots
 			 * 
 			 * See getExtraContents() for an explanation of extra slots.
 			 */
-			setExtraContents(items: org.bukkit.inventory.ItemStack[]): void;
+			setExtraContents(items: (org.bukkit.inventory.ItemStack | null)[]): void;
 
 			/**
 			 * Put the given ItemStack into the helmet slot. This does not check if
 			 * the ItemStack is a helmet
 			 */
-			setHelmet(helmet: org.bukkit.inventory.ItemStack): void;
+			setHelmet(helmet: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Put the given ItemStack into the chestplate slot. This does not check
 			 * if the ItemStack is a chestplate
 			 */
-			setChestplate(chestplate: org.bukkit.inventory.ItemStack): void;
+			setChestplate(chestplate: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Put the given ItemStack into the leg slot. This does not check if the
 			 * ItemStack is a pair of leggings
 			 */
-			setLeggings(leggings: org.bukkit.inventory.ItemStack): void;
+			setLeggings(leggings: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Put the given ItemStack into the boots slot. This does not check if the
 			 * ItemStack is a boots
 			 */
-			setBoots(boots: org.bukkit.inventory.ItemStack): void;
+			setBoots(boots: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Gets a copy of the item the player is currently holding
@@ -14493,7 +14493,7 @@ declare global {
 			/**
 			 * Sets the item the player is holding in their main hand.
 			 */
-			setItemInMainHand(item: org.bukkit.inventory.ItemStack): void;
+			setItemInMainHand(item: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Gets a copy of the item the player is currently holding
@@ -14504,7 +14504,7 @@ declare global {
 			/**
 			 * Sets the item the player is holding in their off hand.
 			 */
-			setItemInOffHand(item: org.bukkit.inventory.ItemStack): void;
+			setItemInOffHand(item: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Gets a copy of the item the player is currently holding
@@ -14514,7 +14514,7 @@ declare global {
 			/**
 			 * Sets the item the player is holding
 			 */
-			setItemInHand(stack: org.bukkit.inventory.ItemStack): void;
+			setItemInHand(stack: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Get the slot number of the currently held item
@@ -14531,7 +14531,7 @@ declare global {
 			/**
 			 * Description copied from interface: Inventory
 			 */
-			getHolder(): org.bukkit.entity.HumanEntity;
+			getHolder(): (org.bukkit.entity.HumanEntity | null);
 
 		}> {}
 		interface Recipe {
@@ -14789,17 +14789,17 @@ declare global {
 			/**
 			 * Check what item is in the result slot of this smithing table.
 			 */
-			getResult(): org.bukkit.inventory.ItemStack;
+			getResult(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Set the item in the result slot of the smithing table
 			 */
-			setResult(newResult: org.bukkit.inventory.ItemStack): void;
+			setResult(newResult: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Get the current recipe formed on the smithing table, if any.
 			 */
-			getRecipe(): org.bukkit.inventory.Recipe;
+			getRecipe(): (org.bukkit.inventory.Recipe | null);
 
 		}> {}
 		interface SmithingRecipe {
@@ -15002,7 +15002,7 @@ declare global {
 			/**
 			 * Get the Entity that rang the bell (if there was one).
 			 */
-			getEntity(): org.bukkit.entity.Entity;
+			getEntity(): (org.bukkit.entity.Entity | null);
 
 			/**
 			 * Description copied from interface: Cancellable
@@ -15018,7 +15018,7 @@ declare global {
 
 		}> {}
 		class BellRingEvent {
-			constructor(theBlock: org.bukkit.block.Block, direction: org.bukkit.block.BlockFace, entity: org.bukkit.entity.Entity);
+			constructor(theBlock: org.bukkit.block.Block, direction: org.bukkit.block.BlockFace, entity: (org.bukkit.entity.Entity | null));
 
 		}
 		namespace BellRingEvent {
@@ -15065,7 +15065,7 @@ declare global {
 			/**
 			 * Gets the block which ignited this block.
 			 */
-			getIgnitingBlock(): org.bukkit.block.Block;
+			getIgnitingBlock(): (org.bukkit.block.Block | null);
 
 			/**
 			 * Description copied from interface: Cancellable
@@ -15083,7 +15083,7 @@ declare global {
 		class BlockBurnEvent {
 			constructor(block: org.bukkit.block.Block);
 
-			constructor(block: org.bukkit.block.Block, ignitingBlock: org.bukkit.block.Block);
+			constructor(block: org.bukkit.block.Block, ignitingBlock: (org.bukkit.block.Block | null));
 
 		}
 		namespace BlockBurnEvent {
@@ -15119,7 +15119,7 @@ declare global {
 			 * 
 			 * May be null for legacy calls of the event.
 			 */
-			getPlayer(): org.bukkit.entity.Player;
+			getPlayer(): (org.bukkit.entity.Player | null);
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
@@ -15127,7 +15127,7 @@ declare global {
 		class BlockCanBuildEvent {
 			constructor(block: org.bukkit.block.Block, type: org.bukkit.block.data.BlockData, canBuild: boolean);
 
-			constructor(block: org.bukkit.block.Block, player: org.bukkit.entity.Player, type: org.bukkit.block.data.BlockData, canBuild: boolean);
+			constructor(block: org.bukkit.block.Block, player: (org.bukkit.entity.Player | null), type: org.bukkit.block.data.BlockData, canBuild: boolean);
 
 		}
 		namespace BlockCanBuildEvent {
@@ -15443,7 +15443,7 @@ declare global {
 			/**
 			 * Gets the player that triggered the fertilization.
 			 */
-			getPlayer(): org.bukkit.entity.Player;
+			getPlayer(): (org.bukkit.entity.Player | null);
 
 			/**
 			 * Gets a list of all blocks changed by the fertilization.
@@ -15464,7 +15464,7 @@ declare global {
 
 		}> {}
 		class BlockFertilizeEvent {
-			constructor(theBlock: org.bukkit.block.Block, player: org.bukkit.entity.Player, blocks: globalThis.java.util.List<org.bukkit.block.BlockState>);
+			constructor(theBlock: org.bukkit.block.Block, player: (org.bukkit.entity.Player | null), blocks: globalThis.java.util.List<org.bukkit.block.BlockState>);
 
 		}
 		namespace BlockFertilizeEvent {
@@ -15563,27 +15563,27 @@ declare global {
 			/**
 			 * Gets the player who ignited this block
 			 */
-			getPlayer(): org.bukkit.entity.Player;
+			getPlayer(): (org.bukkit.entity.Player | null);
 
 			/**
 			 * Gets the entity who ignited this block
 			 */
-			getIgnitingEntity(): org.bukkit.entity.Entity;
+			getIgnitingEntity(): (org.bukkit.entity.Entity | null);
 
 			/**
 			 * Gets the block which ignited this block
 			 */
-			getIgnitingBlock(): org.bukkit.block.Block;
+			getIgnitingBlock(): (org.bukkit.block.Block | null);
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
 		}> {}
 		class BlockIgniteEvent {
-			constructor(theBlock: org.bukkit.block.Block, cause: org.bukkit.event.block.BlockIgniteEvent.IgniteCause, ignitingEntity: org.bukkit.entity.Entity);
+			constructor(theBlock: org.bukkit.block.Block, cause: org.bukkit.event.block.BlockIgniteEvent.IgniteCause, ignitingEntity: (org.bukkit.entity.Entity | null));
 
 			constructor(theBlock: org.bukkit.block.Block, cause: org.bukkit.event.block.BlockIgniteEvent.IgniteCause, ignitingBlock: org.bukkit.block.Block);
 
-			constructor(theBlock: org.bukkit.block.Block, cause: org.bukkit.event.block.BlockIgniteEvent.IgniteCause, ignitingEntity: org.bukkit.entity.Entity, ignitingBlock: org.bukkit.block.Block);
+			constructor(theBlock: org.bukkit.block.Block, cause: org.bukkit.event.block.BlockIgniteEvent.IgniteCause, ignitingEntity: (org.bukkit.entity.Entity | null), ignitingBlock: (org.bukkit.block.Block | null));
 
 		}
 		namespace BlockIgniteEvent {
@@ -15846,7 +15846,7 @@ declare global {
 			/**
 			 * Get the entity which triggered this event, if present.
 			 */
-			getEntity(): org.bukkit.entity.Entity;
+			getEntity(): (org.bukkit.entity.Entity | null);
 
 			/**
 			 * Description copied from interface: Cancellable
@@ -15862,7 +15862,7 @@ declare global {
 
 		}> {}
 		class BlockReceiveGameEvent {
-			constructor(event: org.bukkit.GameEvent, block: org.bukkit.block.Block, entity: org.bukkit.entity.Entity);
+			constructor(event: org.bukkit.GameEvent, block: org.bukkit.block.Block, entity: (org.bukkit.entity.Entity | null));
 
 		}
 		namespace BlockReceiveGameEvent {
@@ -15998,7 +15998,7 @@ declare global {
 			/**
 			 * Get entity which did this. May be null.
 			 */
-			getEntity(): org.bukkit.entity.Entity;
+			getEntity(): (org.bukkit.entity.Entity | null);
 
 			getReason(): org.bukkit.event.block.CauldronLevelChangeEvent.ChangeReason;
 
@@ -16036,7 +16036,7 @@ declare global {
 
 		}> {}
 		class CauldronLevelChangeEvent {
-			constructor(block: org.bukkit.block.Block, entity: org.bukkit.entity.Entity, reason: org.bukkit.event.block.CauldronLevelChangeEvent.ChangeReason, newBlock: org.bukkit.block.BlockState);
+			constructor(block: org.bukkit.block.Block, entity: (org.bukkit.entity.Entity | null), reason: org.bukkit.event.block.CauldronLevelChangeEvent.ChangeReason, newBlock: org.bukkit.block.BlockState);
 
 		}
 		namespace CauldronLevelChangeEvent {
@@ -16313,12 +16313,12 @@ declare global {
 			/**
 			 * Gets a single line of text from the sign involved in this event.
 			 */
-			getLine(index: number): string;
+			getLine(index: number): (string | null);
 
 			/**
 			 * Sets a single line for the sign involved in this event
 			 */
-			setLine(index: number, line: string): void;
+			setLine(index: number, line: (string | null)): void;
 
 			/**
 			 * Returns which side is changed.
@@ -16397,18 +16397,18 @@ declare global {
 			/**
 			 * Get the entity that caused the TNT to be primed.
 			 */
-			getPrimingEntity(): org.bukkit.entity.Entity;
+			getPrimingEntity(): (org.bukkit.entity.Entity | null);
 
 			/**
 			 * Get the block that caused the TNT to be primed.
 			 */
-			getPrimingBlock(): org.bukkit.block.Block;
+			getPrimingBlock(): (org.bukkit.block.Block | null);
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
 		}> {}
 		class TNTPrimeEvent {
-			constructor(block: org.bukkit.block.Block, igniteCause: org.bukkit.event.block.TNTPrimeEvent.PrimeCause, primingEntity: org.bukkit.entity.Entity, primingBlock: org.bukkit.block.Block);
+			constructor(block: org.bukkit.block.Block, igniteCause: org.bukkit.event.block.TNTPrimeEvent.PrimeCause, primingEntity: (org.bukkit.entity.Entity | null), primingBlock: (org.bukkit.block.Block | null));
 
 		}
 		namespace TNTPrimeEvent {
@@ -16838,7 +16838,7 @@ declare global {
 			/**
 			 * Gets the lightning bolt which is striking the Creeper.
 			 */
-			getLightning(): org.bukkit.entity.LightningStrike;
+			getLightning(): (org.bukkit.entity.LightningStrike | null);
 
 			/**
 			 * Gets the cause of the creeper being (un)powered.
@@ -16902,7 +16902,7 @@ declare global {
 			 * Gets the current phase that the dragon is in. This method will return null
 			 * when a dragon is first spawned and hasn't yet been assigned a phase.
 			 */
-			getCurrentPhase(): org.bukkit.entity.EnderDragon.Phase;
+			getCurrentPhase(): (org.bukkit.entity.EnderDragon.Phase | null);
 
 			/**
 			 * Gets the new phase that the dragon will switch to.
@@ -16928,7 +16928,7 @@ declare global {
 
 		}> {}
 		class EnderDragonChangePhaseEvent {
-			constructor(enderDragon: org.bukkit.entity.EnderDragon, currentPhase: org.bukkit.entity.EnderDragon.Phase, newPhase: org.bukkit.entity.EnderDragon.Phase);
+			constructor(enderDragon: org.bukkit.entity.EnderDragon, currentPhase: (org.bukkit.entity.EnderDragon.Phase | null), newPhase: org.bukkit.entity.EnderDragon.Phase);
 
 		}
 		namespace EnderDragonChangePhaseEvent {
@@ -16998,12 +16998,12 @@ declare global {
 			 * Gets the Entity responsible for breeding. Breeder is null for spontaneous
 			 * conception.
 			 */
-			getBreeder(): org.bukkit.entity.LivingEntity;
+			getBreeder(): (org.bukkit.entity.LivingEntity | null);
 
 			/**
 			 * The ItemStack that was used to initiate breeding, if present.
 			 */
-			getBredWith(): org.bukkit.inventory.ItemStack;
+			getBredWith(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Get the amount of experience granted by breeding.
@@ -17029,7 +17029,7 @@ declare global {
 
 		}> {}
 		class EntityBreedEvent {
-			constructor(child: org.bukkit.entity.LivingEntity, mother: org.bukkit.entity.LivingEntity, father: org.bukkit.entity.LivingEntity, breeder: org.bukkit.entity.LivingEntity, bredWith: org.bukkit.inventory.ItemStack, experience: number);
+			constructor(child: org.bukkit.entity.LivingEntity, mother: org.bukkit.entity.LivingEntity, father: org.bukkit.entity.LivingEntity, breeder: (org.bukkit.entity.LivingEntity | null), bredWith: (org.bukkit.inventory.ItemStack | null), experience: number);
 
 		}
 		namespace EntityBreedEvent {
@@ -17079,13 +17079,13 @@ declare global {
 			 * 
 			 * WARNING: block may be null.
 			 */
-			getCombuster(): org.bukkit.block.Block;
+			getCombuster(): (org.bukkit.block.Block | null);
 
 		}> {}
 		class EntityCombustByBlockEvent {
-			constructor(combuster: org.bukkit.block.Block, combustee: org.bukkit.entity.Entity, duration: number);
+			constructor(combuster: (org.bukkit.block.Block | null), combustee: org.bukkit.entity.Entity, duration: number);
 
-			constructor(combuster: org.bukkit.block.Block, combustee: org.bukkit.entity.Entity, duration: number);
+			constructor(combuster: (org.bukkit.block.Block | null), combustee: org.bukkit.entity.Entity, duration: number);
 
 		}
 		interface EntityCombustByEntityEvent extends Modify<org.bukkit.event.entity.EntityCombustEvent, {
@@ -17184,22 +17184,22 @@ declare global {
 			/**
 			 * Returns the block that damaged the player.
 			 */
-			getDamager(): org.bukkit.block.Block;
+			getDamager(): (org.bukkit.block.Block | null);
 
 			/**
 			 * Returns the captured BlockState of the block that damaged the player.
 			 */
-			getDamagerBlockState(): org.bukkit.block.BlockState;
+			getDamagerBlockState(): (org.bukkit.block.BlockState | null);
 
 		}> {}
 		class EntityDamageByBlockEvent {
-			constructor(damager: org.bukkit.block.Block, damagee: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityDamageEvent.DamageCause, damage: number);
+			constructor(damager: (org.bukkit.block.Block | null), damagee: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityDamageEvent.DamageCause, damage: number);
 
-			constructor(damager: org.bukkit.block.Block, damagerState: org.bukkit.block.BlockState, damagee: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityDamageEvent.DamageCause, damageSource: org.bukkit.damage.DamageSource, damage: number);
+			constructor(damager: (org.bukkit.block.Block | null), damagerState: (org.bukkit.block.BlockState | null), damagee: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityDamageEvent.DamageCause, damageSource: org.bukkit.damage.DamageSource, damage: number);
 
-			constructor(damager: org.bukkit.block.Block, damagee: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityDamageEvent.DamageCause, modifiers: globalThis.java.util.Map<org.bukkit.event.entity.EntityDamageEvent.DamageModifier, number>, modifierFunctions: globalThis.java.util.Map<org.bukkit.event.entity.EntityDamageEvent.DamageModifier>);
+			constructor(damager: (org.bukkit.block.Block | null), damagee: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityDamageEvent.DamageCause, modifiers: globalThis.java.util.Map<org.bukkit.event.entity.EntityDamageEvent.DamageModifier, number>, modifierFunctions: globalThis.java.util.Map<org.bukkit.event.entity.EntityDamageEvent.DamageModifier>);
 
-			constructor(damager: org.bukkit.block.Block, damagerState: org.bukkit.block.BlockState, damagee: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityDamageEvent.DamageCause, damageSource: org.bukkit.damage.DamageSource, modifiers: globalThis.java.util.Map<org.bukkit.event.entity.EntityDamageEvent.DamageModifier, number>, modifierFunctions: globalThis.java.util.Map<org.bukkit.event.entity.EntityDamageEvent.DamageModifier>);
+			constructor(damager: (org.bukkit.block.Block | null), damagerState: (org.bukkit.block.BlockState | null), damagee: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityDamageEvent.DamageCause, damageSource: org.bukkit.damage.DamageSource, modifiers: globalThis.java.util.Map<org.bukkit.event.entity.EntityDamageEvent.DamageModifier, number>, modifierFunctions: globalThis.java.util.Map<org.bukkit.event.entity.EntityDamageEvent.DamageModifier>);
 
 		}
 		interface EntityDamageByEntityEvent extends Modify<org.bukkit.event.entity.EntityDamageEvent, {
@@ -17755,7 +17755,7 @@ declare global {
 			/**
 			 * Gets the Human Entity that caused the animal to enter love mode.
 			 */
-			getHumanEntity(): org.bukkit.entity.HumanEntity;
+			getHumanEntity(): (org.bukkit.entity.HumanEntity | null);
 
 			/**
 			 * Gets the amount of ticks that the animal will fall in love for.
@@ -17781,7 +17781,7 @@ declare global {
 
 		}> {}
 		class EntityEnterLoveModeEvent {
-			constructor(animalInLove: org.bukkit.entity.Animals, humanEntity: org.bukkit.entity.HumanEntity, ticksInLove: number);
+			constructor(animalInLove: org.bukkit.entity.Animals, humanEntity: (org.bukkit.entity.HumanEntity | null), ticksInLove: number);
 
 		}
 		namespace EntityEnterLoveModeEvent {
@@ -18192,7 +18192,7 @@ declare global {
 			/**
 			 * Returns the player placing the entity
 			 */
-			getPlayer(): org.bukkit.entity.Player;
+			getPlayer(): (org.bukkit.entity.Player | null);
 
 			/**
 			 * Returns the block that the entity was placed on
@@ -18223,9 +18223,9 @@ declare global {
 
 		}> {}
 		class EntityPlaceEvent {
-			constructor(entity: org.bukkit.entity.Entity, player: org.bukkit.entity.Player, block: org.bukkit.block.Block, blockFace: org.bukkit.block.BlockFace, hand: org.bukkit.inventory.EquipmentSlot);
+			constructor(entity: org.bukkit.entity.Entity, player: (org.bukkit.entity.Player | null), block: org.bukkit.block.Block, blockFace: org.bukkit.block.BlockFace, hand: org.bukkit.inventory.EquipmentSlot);
 
-			constructor(entity: org.bukkit.entity.Entity, player: org.bukkit.entity.Player, block: org.bukkit.block.Block, blockFace: org.bukkit.block.BlockFace);
+			constructor(entity: org.bukkit.entity.Entity, player: (org.bukkit.entity.Player | null), block: org.bukkit.block.Block, blockFace: org.bukkit.block.BlockFace);
 
 		}
 		namespace EntityPlaceEvent {
@@ -18264,9 +18264,9 @@ declare global {
 
 		}> {}
 		class EntityPortalEvent {
-			constructor(entity: org.bukkit.entity.Entity, from: org.bukkit.Location, to: org.bukkit.Location);
+			constructor(entity: org.bukkit.entity.Entity, from: org.bukkit.Location, to: (org.bukkit.Location | null));
 
-			constructor(entity: org.bukkit.entity.Entity, from: org.bukkit.Location, to: org.bukkit.Location, searchRadius: number);
+			constructor(entity: org.bukkit.entity.Entity, from: org.bukkit.Location, to: (org.bukkit.Location | null), searchRadius: number);
 
 		}
 		namespace EntityPortalEvent {
@@ -18323,12 +18323,12 @@ declare global {
 			/**
 			 * Gets the old potion effect of the changed type, which will be removed.
 			 */
-			getOldEffect(): org.bukkit.potion.PotionEffect;
+			getOldEffect(): (org.bukkit.potion.PotionEffect | null);
 
 			/**
 			 * Gets new potion effect of the changed type to be applied.
 			 */
-			getNewEffect(): org.bukkit.potion.PotionEffect;
+			getNewEffect(): (org.bukkit.potion.PotionEffect | null);
 
 			/**
 			 * Gets the cause why the effect has changed.
@@ -18371,7 +18371,7 @@ declare global {
 
 		}> {}
 		class EntityPotionEffectEvent {
-			constructor(livingEntity: org.bukkit.entity.LivingEntity, oldEffect: org.bukkit.potion.PotionEffect, newEffect: org.bukkit.potion.PotionEffect, cause: org.bukkit.event.entity.EntityPotionEffectEvent.Cause, action: org.bukkit.event.entity.EntityPotionEffectEvent.Action, override: boolean);
+			constructor(livingEntity: org.bukkit.entity.LivingEntity, oldEffect: (org.bukkit.potion.PotionEffect | null), newEffect: (org.bukkit.potion.PotionEffect | null), cause: org.bukkit.event.entity.EntityPotionEffectEvent.Cause, action: org.bukkit.event.entity.EntityPotionEffectEvent.Action, override: boolean);
 
 		}
 		namespace EntityPotionEffectEvent {
@@ -18768,7 +18768,7 @@ declare global {
 			 * Get the hand in which the totem of undying was found, or null if the
 			 * entity did not have a totem of undying.
 			 */
-			getHand(): org.bukkit.inventory.EquipmentSlot;
+			getHand(): (org.bukkit.inventory.EquipmentSlot | null);
 
 			/**
 			 * Description copied from interface: Cancellable
@@ -18784,7 +18784,7 @@ declare global {
 
 		}> {}
 		class EntityResurrectEvent {
-			constructor(what: org.bukkit.entity.LivingEntity, hand: org.bukkit.inventory.EquipmentSlot);
+			constructor(what: org.bukkit.entity.LivingEntity, hand: (org.bukkit.inventory.EquipmentSlot | null));
 
 			constructor(what: org.bukkit.entity.LivingEntity);
 
@@ -18802,14 +18802,14 @@ declare global {
 			/**
 			 * Gets the bow ItemStack used to fire the arrow.
 			 */
-			getBow(): org.bukkit.inventory.ItemStack;
+			getBow(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Get the ItemStack to be consumed in this event (if any).
 			 * For instance, bows will consume an arrow ItemStack in a player's
 			 * inventory.
 			 */
-			getConsumable(): org.bukkit.inventory.ItemStack;
+			getConsumable(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Gets the projectile which will be launched by this event
@@ -18862,7 +18862,7 @@ declare global {
 
 		}> {}
 		class EntityShootBowEvent {
-			constructor(shooter: org.bukkit.entity.LivingEntity, bow: org.bukkit.inventory.ItemStack, consumable: org.bukkit.inventory.ItemStack, projectile: org.bukkit.entity.Entity, hand: org.bukkit.inventory.EquipmentSlot, force: number, consumeItem: boolean);
+			constructor(shooter: org.bukkit.entity.LivingEntity, bow: (org.bukkit.inventory.ItemStack | null), consumable: (org.bukkit.inventory.ItemStack | null), projectile: org.bukkit.entity.Entity, hand: org.bukkit.inventory.EquipmentSlot, force: number, consumeItem: boolean);
 
 		}
 		namespace EntityShootBowEvent {
@@ -18984,7 +18984,7 @@ declare global {
 			 * This will be null in the case that the event is called when the mob
 			 * forgets its target.
 			 */
-			getTarget(): org.bukkit.entity.Entity;
+			getTarget(): (org.bukkit.entity.Entity | null);
 
 			/**
 			 * Set the entity that you want the mob to target instead.
@@ -18996,13 +18996,13 @@ declare global {
 			 * cause the entity to keep an original target, while setting to be null
 			 * will cause the entity to be reset.
 			 */
-			setTarget(target: org.bukkit.entity.Entity): void;
+			setTarget(target: (org.bukkit.entity.Entity | null)): void;
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
 		}> {}
 		class EntityTargetEvent {
-			constructor(entity: org.bukkit.entity.Entity, target: org.bukkit.entity.Entity, reason: org.bukkit.event.entity.EntityTargetEvent.TargetReason);
+			constructor(entity: org.bukkit.entity.Entity, target: (org.bukkit.entity.Entity | null), reason: org.bukkit.event.entity.EntityTargetEvent.TargetReason);
 
 		}
 		namespace EntityTargetEvent {
@@ -19117,7 +19117,7 @@ declare global {
 			/**
 			 * Description copied from class: EntityTargetEvent
 			 */
-			getTarget(): org.bukkit.entity.LivingEntity;
+			getTarget(): (org.bukkit.entity.LivingEntity | null);
 
 			/**
 			 * Set the Entity that you want the mob to target.
@@ -19127,11 +19127,11 @@ declare global {
 			 * 
 			 * Must be a LivingEntity, or null.
 			 */
-			setTarget(target: org.bukkit.entity.Entity): void;
+			setTarget(target: (org.bukkit.entity.Entity | null)): void;
 
 		}> {}
 		class EntityTargetLivingEntityEvent {
-			constructor(entity: org.bukkit.entity.Entity, target: org.bukkit.entity.LivingEntity, reason: org.bukkit.event.entity.EntityTargetEvent.TargetReason);
+			constructor(entity: org.bukkit.entity.Entity, target: (org.bukkit.entity.LivingEntity | null), reason: (org.bukkit.event.entity.EntityTargetEvent.TargetReason | null));
 
 		}
 		interface EntityTeleportEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
@@ -19158,18 +19158,18 @@ declare global {
 			/**
 			 * Gets the location that this entity moved to
 			 */
-			getTo(): org.bukkit.Location;
+			getTo(): (org.bukkit.Location | null);
 
 			/**
 			 * Sets the location that this entity moved to
 			 */
-			setTo(to: org.bukkit.Location): void;
+			setTo(to: (org.bukkit.Location | null)): void;
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
 		}> {}
 		class EntityTeleportEvent {
-			constructor(what: org.bukkit.entity.Entity, from: org.bukkit.Location, to: org.bukkit.Location);
+			constructor(what: org.bukkit.entity.Entity, from: org.bukkit.Location, to: (org.bukkit.Location | null));
 
 		}
 		namespace EntityTeleportEvent {
@@ -19419,7 +19419,7 @@ declare global {
 		class ExpBottleEvent {
 			constructor(bottle: org.bukkit.entity.ThrownExpBottle, exp: number);
 
-			constructor(bottle: org.bukkit.entity.ThrownExpBottle, hitEntity: org.bukkit.entity.Entity, hitBlock: org.bukkit.block.Block, hitFace: org.bukkit.block.BlockFace, exp: number);
+			constructor(bottle: org.bukkit.entity.ThrownExpBottle, hitEntity: (org.bukkit.entity.Entity | null), hitBlock: (org.bukkit.block.Block | null), hitFace: (org.bukkit.block.BlockFace | null), exp: number);
 
 		}
 		namespace ExpBottleEvent {
@@ -19508,7 +19508,7 @@ declare global {
 			/**
 			 * Gets the item that triggered this event, if any.
 			 */
-			getItem(): org.bukkit.inventory.ItemStack;
+			getItem(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Gets the resultant food level that the entity involved in this event
@@ -19540,7 +19540,7 @@ declare global {
 		class FoodLevelChangeEvent {
 			constructor(what: org.bukkit.entity.HumanEntity, level: number);
 
-			constructor(what: org.bukkit.entity.HumanEntity, level: number, item: org.bukkit.inventory.ItemStack);
+			constructor(what: org.bukkit.entity.HumanEntity, level: number, item: (org.bukkit.inventory.ItemStack | null));
 
 		}
 		namespace FoodLevelChangeEvent {
@@ -19706,7 +19706,7 @@ declare global {
 		class LingeringPotionSplashEvent {
 			constructor(potion: org.bukkit.entity.ThrownPotion, entity: org.bukkit.entity.AreaEffectCloud);
 
-			constructor(potion: org.bukkit.entity.ThrownPotion, hitEntity: org.bukkit.entity.Entity, hitBlock: org.bukkit.block.Block, hitFace: org.bukkit.block.BlockFace, entity: org.bukkit.entity.AreaEffectCloud);
+			constructor(potion: org.bukkit.entity.ThrownPotion, hitEntity: (org.bukkit.entity.Entity | null), hitBlock: (org.bukkit.block.Block | null), hitFace: (org.bukkit.block.BlockFace | null), entity: org.bukkit.entity.AreaEffectCloud);
 
 		}
 		namespace LingeringPotionSplashEvent {
@@ -19755,7 +19755,7 @@ declare global {
 			/**
 			 * Gets the entity (if any) which triggered this anger update.
 			 */
-			getTarget(): org.bukkit.entity.Entity;
+			getTarget(): (org.bukkit.entity.Entity | null);
 
 			/**
 			 * Gets the new anger resulting from this event.
@@ -19786,7 +19786,7 @@ declare global {
 
 		}> {}
 		class PigZombieAngerEvent {
-			constructor(pigZombie: org.bukkit.entity.PigZombie, target: org.bukkit.entity.Entity, newAnger: number);
+			constructor(pigZombie: org.bukkit.entity.PigZombie, target: (org.bukkit.entity.Entity | null), newAnger: number);
 
 		}
 		namespace PigZombieAngerEvent {
@@ -19839,12 +19839,12 @@ declare global {
 			/**
 			 * Set the death message that will appear to everyone on the server.
 			 */
-			setDeathMessage(deathMessage: string): void;
+			setDeathMessage(deathMessage: (string | null)): void;
 
 			/**
 			 * Get the death message that will appear to everyone on the server.
 			 */
-			getDeathMessage(): string;
+			getDeathMessage(): (string | null);
 
 			/**
 			 * Gets how much EXP the Player should have at respawn.
@@ -19916,11 +19916,11 @@ declare global {
 
 		}> {}
 		class PlayerDeathEvent {
-			constructor(player: org.bukkit.entity.Player, damageSource: org.bukkit.damage.DamageSource, drops: globalThis.java.util.List<org.bukkit.inventory.ItemStack>, droppedExp: number, deathMessage: string);
+			constructor(player: org.bukkit.entity.Player, damageSource: org.bukkit.damage.DamageSource, drops: globalThis.java.util.List<org.bukkit.inventory.ItemStack>, droppedExp: number, deathMessage: (string | null));
 
-			constructor(player: org.bukkit.entity.Player, damageSource: org.bukkit.damage.DamageSource, drops: globalThis.java.util.List<org.bukkit.inventory.ItemStack>, droppedExp: number, newExp: number, deathMessage: string);
+			constructor(player: org.bukkit.entity.Player, damageSource: org.bukkit.damage.DamageSource, drops: globalThis.java.util.List<org.bukkit.inventory.ItemStack>, droppedExp: number, newExp: number, deathMessage: (string | null));
 
-			constructor(player: org.bukkit.entity.Player, damageSource: org.bukkit.damage.DamageSource, drops: globalThis.java.util.List<org.bukkit.inventory.ItemStack>, droppedExp: number, newExp: number, newTotalExp: number, newLevel: number, deathMessage: string);
+			constructor(player: org.bukkit.entity.Player, damageSource: org.bukkit.damage.DamageSource, drops: globalThis.java.util.List<org.bukkit.inventory.ItemStack>, droppedExp: number, newExp: number, newTotalExp: number, newLevel: number, deathMessage: (string | null));
 
 		}
 		interface PlayerLeashEntityEvent extends Modify<org.bukkit.event.Event, {
@@ -20010,7 +20010,7 @@ declare global {
 		class PotionSplashEvent {
 			constructor(potion: org.bukkit.entity.ThrownPotion, affectedEntities: globalThis.java.util.Map<org.bukkit.entity.LivingEntity, number>);
 
-			constructor(potion: org.bukkit.entity.ThrownPotion, hitEntity: org.bukkit.entity.Entity, hitBlock: org.bukkit.block.Block, hitFace: org.bukkit.block.BlockFace, affectedEntities: globalThis.java.util.Map<org.bukkit.entity.LivingEntity, number>);
+			constructor(potion: org.bukkit.entity.ThrownPotion, hitEntity: (org.bukkit.entity.Entity | null), hitBlock: (org.bukkit.block.Block | null), hitFace: (org.bukkit.block.BlockFace | null), affectedEntities: globalThis.java.util.Map<org.bukkit.entity.LivingEntity, number>);
 
 		}
 		namespace PotionSplashEvent {
@@ -20026,18 +20026,18 @@ declare global {
 			/**
 			 * Gets the block that was hit, if it was a block that was hit.
 			 */
-			getHitBlock(): org.bukkit.block.Block;
+			getHitBlock(): (org.bukkit.block.Block | null);
 
 			/**
 			 * Gets the block face that was hit, if it was a block that was hit and the
 			 * face was provided in the event.
 			 */
-			getHitBlockFace(): org.bukkit.block.BlockFace;
+			getHitBlockFace(): (org.bukkit.block.BlockFace | null);
 
 			/**
 			 * Gets the entity that was hit, if it was an entity that was hit.
 			 */
-			getHitEntity(): org.bukkit.entity.Entity;
+			getHitEntity(): (org.bukkit.entity.Entity | null);
 
 			/**
 			 * Description copied from interface: Cancellable
@@ -20063,13 +20063,13 @@ declare global {
 		class ProjectileHitEvent {
 			constructor(projectile: org.bukkit.entity.Projectile);
 
-			constructor(projectile: org.bukkit.entity.Projectile, hitEntity: org.bukkit.entity.Entity);
+			constructor(projectile: org.bukkit.entity.Projectile, hitEntity: (org.bukkit.entity.Entity | null));
 
-			constructor(projectile: org.bukkit.entity.Projectile, hitBlock: org.bukkit.block.Block);
+			constructor(projectile: org.bukkit.entity.Projectile, hitBlock: (org.bukkit.block.Block | null));
 
-			constructor(projectile: org.bukkit.entity.Projectile, hitEntity: org.bukkit.entity.Entity, hitBlock: org.bukkit.block.Block);
+			constructor(projectile: org.bukkit.entity.Projectile, hitEntity: (org.bukkit.entity.Entity | null), hitBlock: (org.bukkit.block.Block | null));
 
-			constructor(projectile: org.bukkit.entity.Projectile, hitEntity: org.bukkit.entity.Entity, hitBlock: org.bukkit.block.Block, hitFace: org.bukkit.block.BlockFace);
+			constructor(projectile: org.bukkit.entity.Projectile, hitEntity: (org.bukkit.entity.Entity | null), hitBlock: (org.bukkit.block.Block | null), hitFace: (org.bukkit.block.BlockFace | null));
 
 		}
 		namespace ProjectileHitEvent {
@@ -20116,7 +20116,7 @@ declare global {
 			/**
 			 * Returns the player dyeing the sheep, if available.
 			 */
-			getPlayer(): org.bukkit.entity.Player;
+			getPlayer(): (org.bukkit.entity.Player | null);
 
 			/**
 			 * Gets the DyeColor the sheep is being dyed
@@ -20134,7 +20134,7 @@ declare global {
 		class SheepDyeWoolEvent {
 			constructor(sheep: org.bukkit.entity.Sheep, color: org.bukkit.DyeColor);
 
-			constructor(sheep: org.bukkit.entity.Sheep, color: org.bukkit.DyeColor, player: org.bukkit.entity.Player);
+			constructor(sheep: org.bukkit.entity.Sheep, color: org.bukkit.DyeColor, player: (org.bukkit.entity.Player | null));
 
 		}
 		namespace SheepDyeWoolEvent {
@@ -20406,7 +20406,7 @@ declare global {
 			 * Returns the display information for this advancement.
 			 * This includes it's name, description and other visible tags.
 			 */
-			getDisplay(): org.bukkit.advancement.AdvancementDisplay;
+			getDisplay(): (org.bukkit.advancement.AdvancementDisplay | null);
 
 		}> {}
 		interface AdvancementDisplay {
@@ -20516,7 +20516,7 @@ declare global {
 			/**
 			 * Get the date the specified criteria was awarded.
 			 */
-			getDateAwarded(criteria: string): globalThis.java.util.Date;
+			getDateAwarded(criteria: string): (globalThis.java.util.Date | null);
 
 			/**
 			 * Get the criteria which have not been awarded.
@@ -20671,7 +20671,7 @@ declare global {
 			 * Note that these semantics mean that a.matches(b) may not be the same
 			 * as b.matches(a)
 			 */
-			matches(data: org.bukkit.block.data.BlockData): boolean;
+			matches(data: (org.bukkit.block.data.BlockData | null)): boolean;
 
 			/**
 			 * Returns a copy of this BlockData.
@@ -22595,12 +22595,12 @@ declare global {
 			/**
 			 * Set the ArmorTrim.
 			 */
-			setTrim(trim: org.bukkit.inventory.meta.trim.ArmorTrim): void;
+			setTrim(trim: (org.bukkit.inventory.meta.trim.ArmorTrim | null)): void;
 
 			/**
 			 * Get the ArmorTrim.
 			 */
-			getTrim(): org.bukkit.inventory.meta.trim.ArmorTrim;
+			getTrim(): (org.bukkit.inventory.meta.trim.ArmorTrim | null);
 
 			clone(): org.bukkit.inventory.meta.ArmorMeta;
 
@@ -22720,14 +22720,14 @@ declare global {
 			 * Plugins should check that hasTitle() returns true before calling this
 			 * method.
 			 */
-			getTitle(): string;
+			getTitle(): (string | null);
 
 			/**
 			 * Sets the title of the book.
 			 * 
 			 * Limited to 32 characters. Removes title when given null.
 			 */
-			setTitle(title: string): boolean;
+			setTitle(title: (string | null)): boolean;
 
 			/**
 			 * Checks for the existence of an author in the book.
@@ -22740,12 +22740,12 @@ declare global {
 			 * Plugins should check that hasAuthor() returns true before calling this
 			 * method.
 			 */
-			getAuthor(): string;
+			getAuthor(): (string | null);
 
 			/**
 			 * Sets the author of the book. Removes author when given null.
 			 */
-			setAuthor(author: string): void;
+			setAuthor(author: (string | null)): void;
 
 			/**
 			 * Checks for the existence of generation level in the book.
@@ -22758,12 +22758,12 @@ declare global {
 			 * Plugins should check that hasGeneration() returns true before calling
 			 * this method.
 			 */
-			getGeneration(): org.bukkit.inventory.meta.BookMeta.Generation;
+			getGeneration(): (org.bukkit.inventory.meta.BookMeta.Generation | null);
 
 			/**
 			 * Sets the generation of the book. Removes generation when given null.
 			 */
-			setGeneration(generation: org.bukkit.inventory.meta.BookMeta.Generation): void;
+			setGeneration(generation: (org.bukkit.inventory.meta.BookMeta.Generation | null)): void;
 
 			clone(): org.bukkit.inventory.meta.BookMeta;
 
@@ -22817,7 +22817,7 @@ declare global {
 			 * 
 			 * Removes all items when given null.
 			 */
-			setItems(items: globalThis.java.util.List<org.bukkit.inventory.ItemStack>): void;
+			setItems(items: (globalThis.java.util.List<org.bukkit.inventory.ItemStack> | null)): void;
 
 			/**
 			 * Adds an item to this item.
@@ -22839,12 +22839,12 @@ declare global {
 			 * Gets the location that this compass will point to.
 			 * Check hasLodestone() first!
 			 */
-			getLodestone(): org.bukkit.Location;
+			getLodestone(): (org.bukkit.Location | null);
 
 			/**
 			 * Sets the location this lodestone compass will point to.
 			 */
-			setLodestone(lodestone: org.bukkit.Location): void;
+			setLodestone(lodestone: (org.bukkit.Location | null)): void;
 
 			/**
 			 * Gets if this compass is tracking a specific lodestone.
@@ -22878,7 +22878,7 @@ declare global {
 			 * Sets the projectiles charged on this item.
 			 * Removes all projectiles when given null.
 			 */
-			setChargedProjectiles(projectiles: globalThis.java.util.List<org.bukkit.inventory.ItemStack>): void;
+			setChargedProjectiles(projectiles: (globalThis.java.util.List<org.bukkit.inventory.ItemStack> | null)): void;
 
 			/**
 			 * Adds a charged projectile to this item.
@@ -22916,7 +22916,7 @@ declare global {
 			/**
 			 * Sets the maximum amount of damage.
 			 */
-			setMaxDamage(maxDamage: number): void;
+			setMaxDamage(maxDamage: (number | null)): void;
 
 			clone(): org.bukkit.inventory.meta.Damageable;
 
@@ -22965,7 +22965,7 @@ declare global {
 			/**
 			 * Sets the firework effect for this meta.
 			 */
-			setEffect(effect: org.bukkit.FireworkEffect): void;
+			setEffect(effect: (org.bukkit.FireworkEffect | null)): void;
 
 			/**
 			 * Checks if this meta has an effect.
@@ -22975,7 +22975,7 @@ declare global {
 			/**
 			 * Gets the firework effect for this meta.
 			 */
-			getEffect(): org.bukkit.FireworkEffect;
+			getEffect(): (org.bukkit.FireworkEffect | null);
 
 			clone(): org.bukkit.inventory.meta.FireworkEffectMeta;
 
@@ -23052,7 +23052,7 @@ declare global {
 			/**
 			 * Sets the display name.
 			 */
-			setDisplayName(name: string): void;
+			setDisplayName(name: (string | null)): void;
 
 			/**
 			 * Checks for existence of an item name.
@@ -23079,7 +23079,7 @@ declare global {
 			 * Item name differs from display name in that it is cannot be edited by an
 			 * anvil, is not styled with italics, and does not show labels.
 			 */
-			setItemName(name: string): void;
+			setItemName(name: (string | null)): void;
 
 			/**
 			 * Checks for existence of a localized name.
@@ -23097,7 +23097,7 @@ declare global {
 			/**
 			 * Sets the localized name.
 			 */
-			setLocalizedName(name: string): void;
+			setLocalizedName(name: (string | null)): void;
 
 			/**
 			 * Checks for existence of lore.
@@ -23110,13 +23110,13 @@ declare global {
 			 * Plugins should check if hasLore() returns true before
 			 * calling this method.
 			 */
-			getLore(): globalThis.java.util.List<string>;
+			getLore(): (globalThis.java.util.List<string> | null);
 
 			/**
 			 * Sets the lore for this item.
 			 * Removes lore when given null.
 			 */
-			setLore(lore: globalThis.java.util.List<string>): void;
+			setLore(lore: (globalThis.java.util.List<string> | null)): void;
 
 			/**
 			 * Checks for existence of custom model data.
@@ -23143,7 +23143,7 @@ declare global {
 			 * CustomModelData is an integer that may be associated client side with a
 			 * custom item model.
 			 */
-			setCustomModelData(data: number): void;
+			setCustomModelData(data: (number | null)): void;
 
 			/**
 			 * Checks for the existence of any enchantments.
@@ -23249,7 +23249,7 @@ declare global {
 			 * without enchantments; if false, the item will not glint, even with
 			 * enchantments. If null, the override will be cleared.
 			 */
-			setEnchantmentGlintOverride(override: boolean): void;
+			setEnchantmentGlintOverride(override: (boolean | null)): void;
 
 			/**
 			 * Checks if this item is fire_resistant. If true, it will not burn in fire
@@ -23278,7 +23278,7 @@ declare global {
 			 * Sets the max_stack_size. This is the maximum amount which an item will
 			 * stack.
 			 */
-			setMaxStackSize(max: number): void;
+			setMaxStackSize(max: (number | null)): void;
 
 			/**
 			 * Gets if the rarity is set.
@@ -23294,7 +23294,7 @@ declare global {
 			/**
 			 * Sets the item rarity.
 			 */
-			setRarity(rarity: org.bukkit.inventory.ItemRarity): void;
+			setRarity(rarity: (org.bukkit.inventory.ItemRarity | null)): void;
 
 			/**
 			 * Checks if the food is set.
@@ -23314,7 +23314,7 @@ declare global {
 			/**
 			 * Sets the item food.
 			 */
-			setFood(food: org.bukkit.inventory.meta.components.FoodComponent): void;
+			setFood(food: (org.bukkit.inventory.meta.components.FoodComponent | null)): void;
 
 			/**
 			 * Checks if the tool is set.
@@ -23334,7 +23334,7 @@ declare global {
 			/**
 			 * Sets the item tool.
 			 */
-			setTool(tool: org.bukkit.inventory.meta.components.ToolComponent): void;
+			setTool(tool: (org.bukkit.inventory.meta.components.ToolComponent | null)): void;
 
 			/**
 			 * Checks if the jukebox playable is set.
@@ -23350,12 +23350,12 @@ declare global {
 			 * setJukeboxPlayable(org.bukkit.inventory.meta.components.JukeboxComponent)
 			 * to apply the changes.
 			 */
-			getJukeboxPlayable(): org.bukkit.inventory.meta.components.JukeboxPlayableComponent;
+			getJukeboxPlayable(): (org.bukkit.inventory.meta.components.JukeboxPlayableComponent | null);
 
 			/**
 			 * Sets the item tool.
 			 */
-			setJukeboxPlayable(jukeboxPlayable: org.bukkit.inventory.meta.components.JukeboxPlayableComponent): void;
+			setJukeboxPlayable(jukeboxPlayable: (org.bukkit.inventory.meta.components.JukeboxPlayableComponent | null)): void;
 
 			/**
 			 * Checks for the existence of any AttributeModifiers.
@@ -23367,7 +23367,7 @@ declare global {
 			 * their modifiers in this ItemMeta.
 			 * Returns null if none exist.
 			 */
-			getAttributeModifiers(): any /* com.google.common.collect.Multimap */;
+			getAttributeModifiers(): (any /* com.google.common.collect.Multimap */ | null);
 
 			/**
 			 * Return an immutable copy of all Attributes and their
@@ -23384,7 +23384,7 @@ declare global {
 			 * Return an immutable copy of all AttributeModifiers
 			 * for a given Attribute
 			 */
-			getAttributeModifiers(attribute: org.bukkit.attribute.Attribute): globalThis.java.util.Collection<org.bukkit.attribute.AttributeModifier>;
+			getAttributeModifiers(attribute: org.bukkit.attribute.Attribute): (globalThis.java.util.Collection<org.bukkit.attribute.AttributeModifier> | null);
 
 			/**
 			 * Add an Attribute and it's Modifier.
@@ -23403,7 +23403,7 @@ declare global {
 			 * If not null nor empty, this will filter all entries that are not-null
 			 * and add them to the ItemStack.
 			 */
-			setAttributeModifiers(attributeModifiers: any /* com.google.common.collect.Multimap */): void;
+			setAttributeModifiers(attributeModifiers: (any /* com.google.common.collect.Multimap */ | null)): void;
 
 			/**
 			 * Remove all AttributeModifiers associated with the given
@@ -23523,7 +23523,7 @@ declare global {
 			/**
 			 * Sets the color of the armor.
 			 */
-			setColor(color: org.bukkit.Color): void;
+			setColor(color: (org.bukkit.Color | null)): void;
 
 			clone(): org.bukkit.inventory.meta.LeatherArmorMeta;
 
@@ -23559,7 +23559,7 @@ declare global {
 			 * Plugins should check that hasMapView() returns true before
 			 * calling this method.
 			 */
-			getMapView(): org.bukkit.map.MapView;
+			getMapView(): (org.bukkit.map.MapView | null);
 
 			/**
 			 * Sets the associated map. This is used to determine what map is displayed.
@@ -23591,12 +23591,12 @@ declare global {
 			 * Plugins should check that hasLocationName() returns true
 			 * before calling this method.
 			 */
-			getLocationName(): string;
+			getLocationName(): (string | null);
 
 			/**
 			 * Sets the location name.
 			 */
-			setLocationName(name: string): void;
+			setLocationName(name: (string | null)): void;
 
 			/**
 			 * Checks for existence of a map color.
@@ -23610,13 +23610,13 @@ declare global {
 			 * Plugins should check that hasColor() returns true before
 			 * calling this method.
 			 */
-			getColor(): org.bukkit.Color;
+			getColor(): (org.bukkit.Color | null);
 
 			/**
 			 * Sets the map color. A custom map color will alter the display of the map
 			 * in an inventory slot.
 			 */
-			setColor(color: org.bukkit.Color): void;
+			setColor(color: (org.bukkit.Color | null)): void;
 
 			clone(): org.bukkit.inventory.meta.MapMeta;
 
@@ -23625,12 +23625,12 @@ declare global {
 			/**
 			 * Sets the goat horn's instrument.
 			 */
-			setInstrument(instrument: org.bukkit.MusicInstrument): void;
+			setInstrument(instrument: (org.bukkit.MusicInstrument | null)): void;
 
 			/**
 			 * Gets the instrument of the goat horn.
 			 */
-			getInstrument(): org.bukkit.MusicInstrument;
+			getInstrument(): (org.bukkit.MusicInstrument | null);
 
 			clone(): org.bukkit.inventory.meta.MusicInstrumentMeta;
 
@@ -23661,22 +23661,22 @@ declare global {
 			/**
 			 * Sets the underlying potion data
 			 */
-			setBasePotionData(data: org.bukkit.potion.PotionData): void;
+			setBasePotionData(data: (org.bukkit.potion.PotionData | null)): void;
 
 			/**
 			 * Returns the potion data about the base potion
 			 */
-			getBasePotionData(): org.bukkit.potion.PotionData;
+			getBasePotionData(): (org.bukkit.potion.PotionData | null);
 
 			/**
 			 * Sets the underlying potion type
 			 */
-			setBasePotionType(type: org.bukkit.potion.PotionType): void;
+			setBasePotionType(type: (org.bukkit.potion.PotionType | null)): void;
 
 			/**
 			 * Returns the potion type about the base potion
 			 */
-			getBasePotionType(): org.bukkit.potion.PotionType;
+			getBasePotionType(): (org.bukkit.potion.PotionType | null);
 
 			/**
 			 * Checks for the presence of a base potion type
@@ -23736,13 +23736,13 @@ declare global {
 			 * Plugins should check that hasColor() returns true before
 			 * calling this method.
 			 */
-			getColor(): org.bukkit.Color;
+			getColor(): (org.bukkit.Color | null);
 
 			/**
 			 * Sets the potion color. A custom potion color will alter the display of
 			 * the potion in an inventory slot.
 			 */
-			setColor(color: org.bukkit.Color): void;
+			setColor(color: (org.bukkit.Color | null)): void;
 
 			clone(): org.bukkit.inventory.meta.PotionMeta;
 
@@ -23770,7 +23770,7 @@ declare global {
 			/**
 			 * Gets the owner of the skull.
 			 */
-			getOwner(): string;
+			getOwner(): (string | null);
 
 			/**
 			 * Checks to see if the skull has an owner.
@@ -23780,12 +23780,12 @@ declare global {
 			/**
 			 * Sets the owner of the skull.
 			 */
-			setOwner(owner: string): boolean;
+			setOwner(owner: (string | null)): boolean;
 
 			/**
 			 * Gets the owner of the skull.
 			 */
-			getOwningPlayer(): org.bukkit.OfflinePlayer;
+			getOwningPlayer(): (org.bukkit.OfflinePlayer | null);
 
 			/**
 			 * Sets the owner of the skull.
@@ -23793,13 +23793,13 @@ declare global {
 			 * Plugins should check that hasOwner() returns true before calling this
 			 * plugin.
 			 */
-			setOwningPlayer(owner: org.bukkit.OfflinePlayer): boolean;
+			setOwningPlayer(owner: (org.bukkit.OfflinePlayer | null)): boolean;
 
 			/**
 			 * Gets the profile of the player who owns the skull. This player profile
 			 * may appear as the texture depending on skull type.
 			 */
-			getOwnerProfile(): org.bukkit.profile.PlayerProfile;
+			getOwnerProfile(): (org.bukkit.profile.PlayerProfile | null);
 
 			/**
 			 * Sets the profile of the player who owns the skull. This player profile
@@ -23809,7 +23809,7 @@ declare global {
 			 * of these is missing, the profile must contain a name by which the server
 			 * will then attempt to look up the unique id and skin texture.
 			 */
-			setOwnerProfile(profile: org.bukkit.profile.PlayerProfile): void;
+			setOwnerProfile(profile: (org.bukkit.profile.PlayerProfile | null)): void;
 
 			/**
 			 * Sets the sound to play if the skull is placed on a note block.
@@ -23817,7 +23817,7 @@ declare global {
 			 * Note: This only works for player heads. For other heads,
 			 * see Instrument.
 			 */
-			setNoteBlockSound(noteBlockSound: org.bukkit.NamespacedKey): void;
+			setNoteBlockSound(noteBlockSound: (org.bukkit.NamespacedKey | null)): void;
 
 			/**
 			 * Gets the sound to play if the skull is placed on a note block.
@@ -23825,7 +23825,7 @@ declare global {
 			 * Note: This only works for player heads. For other heads,
 			 * see Instrument.
 			 */
-			getNoteBlockSound(): org.bukkit.NamespacedKey;
+			getNoteBlockSound(): (org.bukkit.NamespacedKey | null);
 
 			clone(): org.bukkit.inventory.meta.SkullMeta;
 
@@ -23848,7 +23848,7 @@ declare global {
 			 * All applicable data from the egg will be copied, such as custom name, health,
 			 * and velocity.
 			 */
-			getSpawnedEntity(): org.bukkit.entity.EntitySnapshot;
+			getSpawnedEntity(): (org.bukkit.entity.EntitySnapshot | null);
 
 			/**
 			 * Sets the EntitySnapshot that will be spawned by this spawn egg.
@@ -24320,14 +24320,14 @@ declare global {
 			/**
 			 * Get a painting by its numeric ID
 			 */
-			function getById(id: number): org.bukkit.Art;
+			function getById(id: number): (org.bukkit.Art | null);
 
 			/**
 			 * Get a painting by its unique name
 			 * 
 			 * This ignores underscores and capitalization
 			 */
-			function getByName(name: string): org.bukkit.Art;
+			function getByName(name: string): (org.bukkit.Art | null);
 
 		}
 		interface Axis {}
@@ -24397,23 +24397,23 @@ declare global {
 			/**
 			 * Gets the date this ban expires on, or null for no defined end date.
 			 */
-			getExpiration(): globalThis.java.util.Date;
+			getExpiration(): (globalThis.java.util.Date | null);
 
 			/**
 			 * Sets the date this ban expires on. Null values are considered
 			 * "infinite" bans.
 			 */
-			setExpiration(expiration: globalThis.java.util.Date): void;
+			setExpiration(expiration: (globalThis.java.util.Date | null)): void;
 
 			/**
 			 * Gets the reason for this ban.
 			 */
-			getReason(): string;
+			getReason(): (string | null);
 
 			/**
 			 * Sets the reason for this ban. Reasons must not be null.
 			 */
-			setReason(reason: string): void;
+			setReason(reason: (string | null)): void;
 
 			/**
 			 * Saves the ban entry, overwriting any previous data in the ban list.
@@ -24433,36 +24433,36 @@ declare global {
 			/**
 			 * Gets a BanEntry by target.
 			 */
-			getBanEntry(target: string): org.bukkit.BanEntry<T>;
+			getBanEntry(target: string): (org.bukkit.BanEntry<T> | null);
 
 			/**
 			 * Gets a BanEntry by target.
 			 */
-			getBanEntry(target: T): org.bukkit.BanEntry<T>;
+			getBanEntry(target: T): (org.bukkit.BanEntry<T> | null);
 
 			/**
 			 * Adds a ban to this list. If a previous ban exists, this will
 			 * update the previous entry.
 			 */
-			addBan(target: string, reason: string, expires: globalThis.java.util.Date, source: string): org.bukkit.BanEntry<T>;
+			addBan(target: string, reason: (string | null), expires: (globalThis.java.util.Date | null), source: (string | null)): (org.bukkit.BanEntry<T> | null);
 
 			/**
 			 * Adds a ban to this list. If a previous ban exists, this will
 			 * update the previous entry.
 			 */
-			addBan(target: T, reason: string, expires: globalThis.java.util.Date, source: string): org.bukkit.BanEntry<T>;
+			addBan(target: T, reason: (string | null), expires: (globalThis.java.util.Date | null), source: (string | null)): (org.bukkit.BanEntry<T> | null);
 
 			/**
 			 * Adds a ban to this list. If a previous ban exists, this will
 			 * update the previous entry.
 			 */
-			addBan(target: T, reason: string, expires: any /* java.time.Instant */, source: string): org.bukkit.BanEntry<T>;
+			addBan(target: T, reason: (string | null), expires: (any /* java.time.Instant */ | null), source: (string | null)): (org.bukkit.BanEntry<T> | null);
 
 			/**
 			 * Adds a ban to this list. If a previous ban exists, this will
 			 * update the previous entry.
 			 */
-			addBan(target: T, reason: string, duration: any /* java.time.Duration */, source: string): org.bukkit.BanEntry<T>;
+			addBan(target: T, reason: (string | null), duration: (any /* java.time.Duration */ | null), source: (string | null)): (org.bukkit.BanEntry<T> | null);
 
 			/**
 			 * Gets a set containing every BanEntry in this list.
@@ -24675,7 +24675,7 @@ declare global {
 			/**
 			 * Gets the resource pack configured to be sent to clients by the server.
 			 */
-			function getServerResourcePack(): org.bukkit.packs.ResourcePack;
+			function getServerResourcePack(): (org.bukkit.packs.ResourcePack | null);
 
 			/**
 			 * Get the ServerTick Manager.
@@ -24899,12 +24899,12 @@ declare global {
 			 * 
 			 * This method may not return objects for offline players.
 			 */
-			function getPlayer(name: string): org.bukkit.entity.Player;
+			function getPlayer(name: string): (org.bukkit.entity.Player | null);
 
 			/**
 			 * Gets the player with the exact given name, case insensitive.
 			 */
-			function getPlayerExact(name: string): org.bukkit.entity.Player;
+			function getPlayerExact(name: string): (org.bukkit.entity.Player | null);
 
 			/**
 			 * Attempts to match any players with the given name, and returns a list
@@ -24918,7 +24918,7 @@ declare global {
 			/**
 			 * Gets the player with the given UUID.
 			 */
-			function getPlayer(id: globalThis.java.util.UUID): org.bukkit.entity.Player;
+			function getPlayer(id: globalThis.java.util.UUID): (org.bukkit.entity.Player | null);
 
 			/**
 			 * Gets the plugin manager for interfacing with plugins.
@@ -24947,7 +24947,7 @@ declare global {
 			 * If the world is already loaded, it will just return the equivalent of
 			 * getWorld(creator.name()).
 			 */
-			function createWorld(creator: org.bukkit.WorldCreator): org.bukkit.World;
+			function createWorld(creator: org.bukkit.WorldCreator): (org.bukkit.World | null);
 
 			/**
 			 * Unloads a world with the given name.
@@ -24962,12 +24962,12 @@ declare global {
 			/**
 			 * Gets the world with the given name.
 			 */
-			function getWorld(name: string): org.bukkit.World;
+			function getWorld(name: string): (org.bukkit.World | null);
 
 			/**
 			 * Gets the world from the given Unique ID.
 			 */
-			function getWorld(uid: globalThis.java.util.UUID): org.bukkit.World;
+			function getWorld(uid: globalThis.java.util.UUID): (org.bukkit.World | null);
 
 			/**
 			 * Create a new virtual WorldBorder.
@@ -24977,7 +24977,7 @@ declare global {
 			/**
 			 * Gets the map from the given item ID.
 			 */
-			function getMap(id: number): org.bukkit.map.MapView;
+			function getMap(id: number): (org.bukkit.map.MapView | null);
 
 			/**
 			 * Create a new map with an automatically assigned ID.
@@ -25021,7 +25021,7 @@ declare global {
 			/**
 			 * Gets a PluginCommand with the given name or alias.
 			 */
-			function getPluginCommand(name: string): org.bukkit.command.PluginCommand;
+			function getPluginCommand(name: string): (org.bukkit.command.PluginCommand | null);
 
 			/**
 			 * Writes loaded players to disk.
@@ -25036,7 +25036,7 @@ declare global {
 			/**
 			 * Adds a recipe to the crafting manager.
 			 */
-			function addRecipe(recipe: org.bukkit.inventory.Recipe): boolean;
+			function addRecipe(recipe: (org.bukkit.inventory.Recipe | null)): boolean;
 
 			/**
 			 * Get a list of all recipes for a given item. The stack size is ignored
@@ -25047,7 +25047,7 @@ declare global {
 			/**
 			 * Get the Recipe for the given key.
 			 */
-			function getRecipe(recipeKey: org.bukkit.NamespacedKey): org.bukkit.inventory.Recipe;
+			function getRecipe(recipeKey: org.bukkit.NamespacedKey): (org.bukkit.inventory.Recipe | null);
 
 			/**
 			 * Get the Recipe for the list of ItemStacks provided.
@@ -25060,7 +25060,7 @@ declare global {
 			 * NOTE: This method will not modify the provided ItemStack array, for that, use
 			 * craftItem(ItemStack[], World, Player).
 			 */
-			function getCraftingRecipe(craftingMatrix: org.bukkit.inventory.ItemStack[], world: org.bukkit.World): org.bukkit.inventory.Recipe;
+			function getCraftingRecipe(craftingMatrix: org.bukkit.inventory.ItemStack[], world: org.bukkit.World): (org.bukkit.inventory.Recipe | null);
 
 			/**
 			 * Get the crafted item using the list of ItemStack provided.
@@ -25225,7 +25225,7 @@ declare global {
 			/**
 			 * Creates a new PlayerProfile.
 			 */
-			function createPlayerProfile(uniqueId: globalThis.java.util.UUID, name: string): org.bukkit.profile.PlayerProfile;
+			function createPlayerProfile(uniqueId: (globalThis.java.util.UUID | null), name: (string | null)): org.bukkit.profile.PlayerProfile;
 
 			/**
 			 * Creates a new PlayerProfile.
@@ -25321,7 +25321,7 @@ declare global {
 			 * for possible enchanting results. Use
 			 * HumanEntity.openEnchanting(Location, boolean) instead.
 			 */
-			function createInventory(owner: org.bukkit.inventory.InventoryHolder, type: org.bukkit.event.inventory.InventoryType): org.bukkit.inventory.Inventory;
+			function createInventory(owner: (org.bukkit.inventory.InventoryHolder | null), type: org.bukkit.event.inventory.InventoryType): org.bukkit.inventory.Inventory;
 
 			/**
 			 * Creates an empty inventory with the specified type and title. If the type
@@ -25338,24 +25338,24 @@ declare global {
 			 * for possible enchanting results. Use
 			 * HumanEntity.openEnchanting(Location, boolean) instead.
 			 */
-			function createInventory(owner: org.bukkit.inventory.InventoryHolder, type: org.bukkit.event.inventory.InventoryType, title: string): org.bukkit.inventory.Inventory;
+			function createInventory(owner: (org.bukkit.inventory.InventoryHolder | null), type: org.bukkit.event.inventory.InventoryType, title: string): org.bukkit.inventory.Inventory;
 
 			/**
 			 * Creates an empty inventory of type InventoryType.CHEST with the
 			 * specified size.
 			 */
-			function createInventory(owner: org.bukkit.inventory.InventoryHolder, size: number): org.bukkit.inventory.Inventory;
+			function createInventory(owner: (org.bukkit.inventory.InventoryHolder | null), size: number): org.bukkit.inventory.Inventory;
 
 			/**
 			 * Creates an empty inventory of type InventoryType.CHEST with the
 			 * specified size and title.
 			 */
-			function createInventory(owner: org.bukkit.inventory.InventoryHolder, size: number, title: string): org.bukkit.inventory.Inventory;
+			function createInventory(owner: (org.bukkit.inventory.InventoryHolder | null), size: number, title: string): org.bukkit.inventory.Inventory;
 
 			/**
 			 * Creates an empty merchant.
 			 */
-			function createMerchant(title: string): org.bukkit.inventory.Merchant;
+			function createMerchant(title: (string | null)): org.bukkit.inventory.Merchant;
 
 			/**
 			 * Gets the amount of consecutive neighbor updates before skipping
@@ -25435,7 +25435,7 @@ declare global {
 			/**
 			 * Gets the default message that is displayed when the server is stopped.
 			 */
-			function getShutdownMessage(): string;
+			function getShutdownMessage(): (string | null);
 
 			/**
 			 * Gets the current warning state for the server.
@@ -25457,7 +25457,7 @@ declare global {
 			 * 
 			 * This will only exist after the first world has loaded.
 			 */
-			function getScoreboardManager(): org.bukkit.scoreboard.ScoreboardManager;
+			function getScoreboardManager(): (org.bukkit.scoreboard.ScoreboardManager | null);
 
 			/**
 			 * Get (or create) a new Criteria by its name.
@@ -25467,7 +25467,7 @@ declare global {
 			/**
 			 * Gets an instance of the server's default server-icon.
 			 */
-			function getServerIcon(): org.bukkit.util.CachedServerIcon;
+			function getServerIcon(): (org.bukkit.util.CachedServerIcon | null);
 
 			/**
 			 * Loads an image from a file, and returns a cached image for the specific
@@ -25509,7 +25509,7 @@ declare global {
 			 * Creates a boss bar instance to display to players. The progress
 			 * defaults to 1.0
 			 */
-			function createBossBar(title: string, color: org.bukkit.boss.BarColor, style: org.bukkit.boss.BarStyle, ...flags: org.bukkit.boss.BarFlag[]): org.bukkit.boss.BossBar;
+			function createBossBar(title: (string | null), color: org.bukkit.boss.BarColor, style: org.bukkit.boss.BarStyle, ...flags: org.bukkit.boss.BarFlag[]): org.bukkit.boss.BossBar;
 
 			/**
 			 * Creates a boss bar instance to display to players. The progress defaults
@@ -25518,7 +25518,7 @@ declare global {
 			 * This instance is added to the persistent storage of the server and will
 			 * be editable by commands and restored after restart.
 			 */
-			function createBossBar(key: org.bukkit.NamespacedKey, title: string, color: org.bukkit.boss.BarColor, style: org.bukkit.boss.BarStyle, ...flags: org.bukkit.boss.BarFlag[]): org.bukkit.boss.KeyedBossBar;
+			function createBossBar(key: org.bukkit.NamespacedKey, title: (string | null), color: org.bukkit.boss.BarColor, style: org.bukkit.boss.BarStyle, ...flags: org.bukkit.boss.BarFlag[]): org.bukkit.boss.KeyedBossBar;
 
 			/**
 			 * Gets an unmodifiable iterator through all persistent bossbars.
@@ -25544,7 +25544,7 @@ declare global {
 			 * 
 			 * e.g. bossbars created using the bossbar command
 			 */
-			function getBossBar(key: org.bukkit.NamespacedKey): org.bukkit.boss.KeyedBossBar;
+			function getBossBar(key: org.bukkit.NamespacedKey): (org.bukkit.boss.KeyedBossBar | null);
 
 			/**
 			 * Removes a KeyedBossBar specified by this key.
@@ -25562,12 +25562,12 @@ declare global {
 			/**
 			 * Gets an entity on the server by its UUID
 			 */
-			function getEntity(uuid: globalThis.java.util.UUID): org.bukkit.entity.Entity;
+			function getEntity(uuid: globalThis.java.util.UUID): (org.bukkit.entity.Entity | null);
 
 			/**
 			 * Get the advancement specified by this key.
 			 */
-			function getAdvancement(key: org.bukkit.NamespacedKey): org.bukkit.advancement.Advancement;
+			function getAdvancement(key: org.bukkit.NamespacedKey): (org.bukkit.advancement.Advancement | null);
 
 			/**
 			 * Get an iterator through all advancements. Advancements cannot be removed
@@ -25585,7 +25585,7 @@ declare global {
 			 * Creates a new BlockData instance for the specified Material, with
 			 * all properties initialized to unspecified defaults.
 			 */
-			function createBlockData(material: org.bukkit.Material, consumer: (value: org.bukkit.block.data.BlockData) => void): org.bukkit.block.data.BlockData;
+			function createBlockData(material: org.bukkit.Material, consumer: ((value: org.bukkit.block.data.BlockData) => void | null)): org.bukkit.block.data.BlockData;
 
 			/**
 			 * Creates a new BlockData instance with material and properties
@@ -25598,7 +25598,7 @@ declare global {
 			 * all properties initialized to unspecified defaults, except for those
 			 * provided in data.
 			 */
-			function createBlockData(material: org.bukkit.Material, data: string): org.bukkit.block.data.BlockData;
+			function createBlockData(material: (org.bukkit.Material | null), data: (string | null)): org.bukkit.block.data.BlockData;
 
 			/**
 			 * Gets a tag which has already been defined within the server. Plugins are
@@ -25612,7 +25612,7 @@ declare global {
 			 * Server implementations are allowed to handle only the registries
 			 * indicated in Tag.
 			 */
-			function getTag<T = any>(registry: string, tag: org.bukkit.NamespacedKey, clazz: globalThis.java.lang.Class<T>): org.bukkit.Tag<T>;
+			function getTag<T = any>(registry: string, tag: org.bukkit.NamespacedKey, clazz: globalThis.java.lang.Class<T>): (org.bukkit.Tag<T> | null);
 
 			/**
 			 * Gets a all tags which have been defined within the server.
@@ -25627,7 +25627,7 @@ declare global {
 			/**
 			 * Gets the specified LootTable.
 			 */
-			function getLootTable(key: org.bukkit.NamespacedKey): org.bukkit.loot.LootTable;
+			function getLootTable(key: org.bukkit.NamespacedKey): (org.bukkit.loot.LootTable | null);
 
 			/**
 			 * Selects entities using the given Vanilla selector.
@@ -25657,7 +25657,7 @@ declare global {
 			 * Depending on the implementation not every registry present in
 			 * Registry will be returned by this method.
 			 */
-			function getRegistry<T = any>(tClass: globalThis.java.lang.Class<T>): org.bukkit.Registry<T>;
+			function getRegistry<T = any>(tClass: globalThis.java.lang.Class<T>): (org.bukkit.Registry<T> | null);
 
 			function getUnsafe(): org.bukkit.UnsafeValues;
 
@@ -25811,17 +25811,17 @@ declare global {
 			/**
 			 * Gets the color represented by the specified color code
 			 */
-			function getByChar(code: any /* char */): org.bukkit.ChatColor;
+			function getByChar(code: any /* char */): (org.bukkit.ChatColor | null);
 
 			/**
 			 * Gets the color represented by the specified color code
 			 */
-			function getByChar(code: string): org.bukkit.ChatColor;
+			function getByChar(code: string): (org.bukkit.ChatColor | null);
 
 			/**
 			 * Strips the given message of all color codes
 			 */
-			function stripColor(input: string): string;
+			function stripColor(input: (string | null)): (string | null);
 
 			/**
 			 * Translates a string using an alternate color code character into a
@@ -26156,7 +26156,7 @@ declare global {
 			/**
 			 * Gets the type of coal with the given data value
 			 */
-			function getByData(data: any /* byte */): org.bukkit.CoalType;
+			function getByData(data: any /* byte */): (org.bukkit.CoalType | null);
 
 		}
 		interface Color {
@@ -26422,7 +26422,7 @@ declare global {
 			/**
 			 * Gets the CropState with the given data value
 			 */
-			function getByData(data: any /* byte */): org.bukkit.CropState;
+			function getByData(data: any /* byte */): (org.bukkit.CropState | null);
 
 		}
 		interface Difficulty {
@@ -26469,7 +26469,7 @@ declare global {
 			/**
 			 * Gets the Difficulty represented by the specified value
 			 */
-			function getByValue(value: number): org.bukkit.Difficulty;
+			function getByValue(value: number): (org.bukkit.Difficulty | null);
 
 		}
 		interface DyeColor {
@@ -26586,27 +26586,27 @@ declare global {
 			/**
 			 * Gets the DyeColor with the given wool data value.
 			 */
-			function getByWoolData(data: any /* byte */): org.bukkit.DyeColor;
+			function getByWoolData(data: any /* byte */): (org.bukkit.DyeColor | null);
 
 			/**
 			 * Gets the DyeColor with the given dye data value.
 			 */
-			function getByDyeData(data: any /* byte */): org.bukkit.DyeColor;
+			function getByDyeData(data: any /* byte */): (org.bukkit.DyeColor | null);
 
 			/**
 			 * Gets the DyeColor with the given color value.
 			 */
-			function getByColor(color: org.bukkit.Color): org.bukkit.DyeColor;
+			function getByColor(color: org.bukkit.Color): (org.bukkit.DyeColor | null);
 
 			/**
 			 * Gets the DyeColor with the given firework color value.
 			 */
-			function getByFireworkColor(color: org.bukkit.Color): org.bukkit.DyeColor;
+			function getByFireworkColor(color: org.bukkit.Color): (org.bukkit.DyeColor | null);
 
 			/**
 			 * Gets the DyeColor for the given name, possibly doing legacy transformations.
 			 */
-			function legacyValueOf(name: string): org.bukkit.DyeColor;
+			function legacyValueOf(name: (string | null)): org.bukkit.DyeColor;
 
 		}
 		interface Effect {
@@ -26617,7 +26617,7 @@ declare global {
 
 			getType(): org.bukkit.Effect.Type;
 
-			getData(): globalThis.java.lang.Class;
+			getData(): (globalThis.java.lang.Class | null);
 
 		}
 		namespace Effect {
@@ -26991,7 +26991,7 @@ declare global {
 			/**
 			 * Gets the Effect associated with the given ID.
 			 */
-			function getById(id: number): org.bukkit.Effect;
+			function getById(id: number): (org.bukkit.Effect | null);
 
 		}
 		namespace Effect {
@@ -27777,7 +27777,7 @@ declare global {
 			/**
 			 * Returns a GameEvent by a NamespacedKey.
 			 */
-			function getByKey(namespacedKey: org.bukkit.NamespacedKey): org.bukkit.GameEvent;
+			function getByKey(namespacedKey: org.bukkit.NamespacedKey): (org.bukkit.GameEvent | null);
 
 			/**
 			 * Returns the set of all GameEvents.
@@ -27827,7 +27827,7 @@ declare global {
 			/**
 			 * Gets the GameMode represented by the specified value
 			 */
-			function getByValue(value: number): org.bukkit.GameMode;
+			function getByValue(value: number): (org.bukkit.GameMode | null);
 
 		}
 		interface GameRule<T = any> {
@@ -28122,7 +28122,7 @@ declare global {
 			/**
 			 * Get a GameRule by its name.
 			 */
-			function getByName(rule: string): org.bukkit.GameRule;
+			function getByName(rule: string): (org.bukkit.GameRule | null);
 
 		}
 		interface GrassSpecies {
@@ -28159,7 +28159,7 @@ declare global {
 			/**
 			 * Gets the GrassSpecies with the given data value
 			 */
-			function getByData(data: any /* byte */): org.bukkit.GrassSpecies;
+			function getByData(data: any /* byte */): (org.bukkit.GrassSpecies | null);
 
 		}
 		interface HeightMap {}
@@ -28209,7 +28209,7 @@ declare global {
 			 * Gets the sound associated with this instrument.
 			 * Will be null for CUSTOM_HEAD
 			 */
-			getSound(): org.bukkit.Sound;
+			getSound(): (org.bukkit.Sound | null);
 
 			getType(): any /* byte */;
 
@@ -28346,7 +28346,7 @@ declare global {
 			/**
 			 * Get an instrument by its type ID.
 			 */
-			function getByType(type: any /* byte */): org.bukkit.Instrument;
+			function getByType(type: any /* byte */): (org.bukkit.Instrument | null);
 
 		}
 		interface JukeboxSong extends Modify<org.bukkit.Keyed & org.bukkit.Translatable, {}> {}
@@ -28401,7 +28401,7 @@ declare global {
 			/**
 			 * Sets the world that this location resides in
 			 */
-			setWorld(world: org.bukkit.World): void;
+			setWorld(world: (org.bukkit.World | null)): void;
 
 			/**
 			 * Checks if world in this location is present and loaded.
@@ -28411,7 +28411,7 @@ declare global {
 			/**
 			 * Gets the world that this location resides in
 			 */
-			getWorld(): org.bukkit.World;
+			getWorld(): (org.bukkit.World | null);
 
 			/**
 			 * Gets the chunk at the represented location
@@ -28635,12 +28635,12 @@ declare global {
 			/**
 			 * Constructs a new Location with the given coordinates
 			 */
-			constructor(world: org.bukkit.World, x: number, y: number, z: number);
+			constructor(world: (org.bukkit.World | null), x: number, y: number, z: number);
 
 			/**
 			 * Constructs a new Location with the given coordinates and direction
 			 */
-			constructor(world: org.bukkit.World, x: number, y: number, z: number, yaw: number, pitch: number);
+			constructor(world: (org.bukkit.World | null), x: number, y: number, z: number, yaw: number, pitch: number);
 
 		}
 		namespace Location {
@@ -28711,14 +28711,14 @@ declare global {
 			 * Creates a new BlockData instance for this Material, with
 			 * all properties initialized to unspecified defaults.
 			 */
-			createBlockData(consumer: (value: org.bukkit.block.data.BlockData) => void): org.bukkit.block.data.BlockData;
+			createBlockData(consumer: ((value: org.bukkit.block.data.BlockData) => void | null)): org.bukkit.block.data.BlockData;
 
 			/**
 			 * Creates a new BlockData instance for this Material, with all
 			 * properties initialized to unspecified defaults, except for those provided
 			 * in data.
 			 */
-			createBlockData(data: string): org.bukkit.block.data.BlockData;
+			createBlockData(data: (string | null)): org.bukkit.block.data.BlockData;
 
 			/**
 			 * Gets the MaterialData class associated with this Material
@@ -28845,7 +28845,7 @@ declare global {
 			 * 
 			 * Only available when isItem() is true.
 			 */
-			getCraftingRemainingItem(): org.bukkit.Material;
+			getCraftingRemainingItem(): (org.bukkit.Material | null);
 
 			/**
 			 * Get the best suitable slot for this Material.
@@ -28865,7 +28865,7 @@ declare global {
 			/**
 			 * Get the CreativeCategory to which this material belongs.
 			 */
-			getCreativeCategory(): org.bukkit.inventory.CreativeCategory;
+			getCreativeCategory(): (org.bukkit.inventory.CreativeCategory | null);
 
 			/**
 			 * Get the translation key of the item or block associated with this
@@ -28879,13 +28879,13 @@ declare global {
 			 * Get the translation key of the block associated with this material, or
 			 * null if this material does not have an associated block.
 			 */
-			getBlockTranslationKey(): string;
+			getBlockTranslationKey(): (string | null);
 
 			/**
 			 * Get the translation key of the item associated with this material, or
 			 * null if this material does not have an associated item.
 			 */
-			getItemTranslationKey(): string;
+			getItemTranslationKey(): (string | null);
 
 			/**
 			 * Gets if the Material is enabled by the features in a world.
@@ -28911,12 +28911,12 @@ declare global {
 			/**
 			 * Tries to convert this Material to an item type
 			 */
-			asItemType(): org.bukkit.inventory.ItemType;
+			asItemType(): (org.bukkit.inventory.ItemType | null);
 
 			/**
 			 * Tries to convert this Material to a block type
 			 */
-			asBlockType(): org.bukkit.block.BlockType;
+			asBlockType(): (org.bukkit.block.BlockType | null);
 
 		}
 		namespace Material {
@@ -34886,7 +34886,7 @@ declare global {
 			 * This is a normal lookup, names must be the precise name they are given
 			 * in the enum.
 			 */
-			function getMaterial(name: string): org.bukkit.Material;
+			function getMaterial(name: string): (org.bukkit.Material | null);
 
 			/**
 			 * Attempts to get the Material with the given name.
@@ -34899,7 +34899,7 @@ declare global {
 			 * but the returned Material will be a modern material (ie this method is
 			 * useful for updating stored data).
 			 */
-			function getMaterial(name: string, legacyName: boolean): org.bukkit.Material;
+			function getMaterial(name: string, legacyName: boolean): (org.bukkit.Material | null);
 
 			/**
 			 * Attempts to match the Material with the given name.
@@ -34908,7 +34908,7 @@ declare global {
 			 * namespace, converted to uppercase, then stripped of special characters in
 			 * an attempt to format it like the enum.
 			 */
-			function matchMaterial(name: string): org.bukkit.Material;
+			function matchMaterial(name: string): (org.bukkit.Material | null);
 
 			/**
 			 * Attempts to match the Material with the given name.
@@ -34917,7 +34917,7 @@ declare global {
 			 * namespace, converted to uppercase, then stripped of special characters in
 			 * an attempt to format it like the enum.
 			 */
-			function matchMaterial(name: string, legacyName: boolean): org.bukkit.Material;
+			function matchMaterial(name: string, legacyName: boolean): (org.bukkit.Material | null);
 
 		}
 		interface MinecraftExperimental {}
@@ -34960,7 +34960,7 @@ declare global {
 			/**
 			 * Returns a MusicInstrument by a NamespacedKey.
 			 */
-			function getByKey(namespacedKey: org.bukkit.NamespacedKey): org.bukkit.MusicInstrument;
+			function getByKey(namespacedKey: org.bukkit.NamespacedKey): (org.bukkit.MusicInstrument | null);
 
 			/**
 			 * Returns all known MusicInstruments.
@@ -34976,7 +34976,7 @@ declare global {
 			 * This value has no effect on players, they will always use their real
 			 * name.
 			 */
-			getCustomName(): string;
+			getCustomName(): (string | null);
 
 			/**
 			 * Sets a custom name on a mob or block. This name will be used in death
@@ -34987,7 +34987,7 @@ declare global {
 			 * This value has no effect on players, they will always use their real
 			 * name.
 			 */
-			setCustomName(name: string): void;
+			setCustomName(name: (string | null)): void;
 
 		}
 		interface NamespacedKey {
@@ -35058,14 +35058,14 @@ declare global {
 			 * fromString("", plugin) -> null
 			 * 
 			 */
-			function fromString(string: string, defaultNamespace: org.bukkit.plugin.Plugin): org.bukkit.NamespacedKey;
+			function fromString(string: string, defaultNamespace: (org.bukkit.plugin.Plugin | null)): (org.bukkit.NamespacedKey | null);
 
 			/**
 			 * Get a NamespacedKey from the supplied string.
 			 * The default namespace will be Minecraft's (i.e.
 			 * minecraft(String)).
 			 */
-			function fromString(key: string): org.bukkit.NamespacedKey;
+			function fromString(key: string): (org.bukkit.NamespacedKey | null);
 
 		}
 		interface NetherWartsState {}
@@ -35222,7 +35222,7 @@ declare global {
 				/**
 				 * Returns the tone to id. Also returning the semitones.
 				 */
-				function getById(id: any /* byte */): org.bukkit.Note.Tone;
+				function getById(id: any /* byte */): (org.bukkit.Note.Tone | null);
 
 			}
 		}
@@ -35238,7 +35238,7 @@ declare global {
 			 * Names are no longer unique past a single game session. For persistent storage
 			 * it is recommended that you use getUniqueId() instead.
 			 */
-			getName(): string;
+			getName(): (string | null);
 
 			/**
 			 * Returns the UUID of this player
@@ -35263,19 +35263,19 @@ declare global {
 			 * Adds this user to the ProfileBanList. If a previous ban exists, this will
 			 * update the entry.
 			 */
-			ban(reason: string, expires: globalThis.java.util.Date, source: string): org.bukkit.BanEntry<org.bukkit.profile.PlayerProfile>;
+			ban(reason: (string | null), expires: (globalThis.java.util.Date | null), source: (string | null)): (org.bukkit.BanEntry<org.bukkit.profile.PlayerProfile> | null);
 
 			/**
 			 * Adds this user to the ProfileBanList. If a previous ban exists, this will
 			 * update the entry.
 			 */
-			ban(reason: string, expires: any /* java.time.Instant */, source: string): org.bukkit.BanEntry<org.bukkit.profile.PlayerProfile>;
+			ban(reason: (string | null), expires: (any /* java.time.Instant */ | null), source: (string | null)): (org.bukkit.BanEntry<org.bukkit.profile.PlayerProfile> | null);
 
 			/**
 			 * Adds this user to the ProfileBanList. If a previous ban exists, this will
 			 * update the entry.
 			 */
-			ban(reason: string, duration: any /* java.time.Duration */, source: string): org.bukkit.BanEntry<org.bukkit.profile.PlayerProfile>;
+			ban(reason: (string | null), duration: (any /* java.time.Duration */ | null), source: (string | null)): (org.bukkit.BanEntry<org.bukkit.profile.PlayerProfile> | null);
 
 			/**
 			 * Checks if this player is whitelisted or not
@@ -35293,7 +35293,7 @@ declare global {
 			 * If the player is online, this will return that player. Otherwise,
 			 * it will return null.
 			 */
-			getPlayer(): org.bukkit.entity.Player;
+			getPlayer(): (org.bukkit.entity.Player | null);
 
 			/**
 			 * Gets the first date and time that this player was witnessed on this
@@ -35324,13 +35324,13 @@ declare global {
 			 * Gets the Location where the player will spawn at their bed, null if
 			 * they have not slept in one or their current bed spawn is invalid.
 			 */
-			getBedSpawnLocation(): org.bukkit.Location;
+			getBedSpawnLocation(): (org.bukkit.Location | null);
 
 			/**
 			 * Gets the Location where the player will spawn at, null if they
 			 * don't have a valid respawn point.
 			 */
-			getRespawnLocation(): org.bukkit.Location;
+			getRespawnLocation(): (org.bukkit.Location | null);
 
 			/**
 			 * Increments the given statistic for this player.
@@ -35443,12 +35443,12 @@ declare global {
 			/**
 			 * Gets the player's last death location.
 			 */
-			getLastDeathLocation(): org.bukkit.Location;
+			getLastDeathLocation(): (org.bukkit.Location | null);
 
 			/**
 			 * Gets the player's current location.
 			 */
-			getLocation(): org.bukkit.Location;
+			getLocation(): (org.bukkit.Location | null);
 
 		}> {}
 		interface Particle {
@@ -35973,7 +35973,7 @@ declare global {
 			 * Modifications done to the BlockState in the consumer are respected,
 			 * which means that it is not necessary to call BlockState.update()
 			 */
-			generateTree(location: org.bukkit.Location, random: globalThis.java.util.Random, type: org.bukkit.TreeType, stateConsumer: (value: org.bukkit.block.BlockState) => void): boolean;
+			generateTree(location: org.bukkit.Location, random: globalThis.java.util.Random, type: org.bukkit.TreeType, stateConsumer: ((value: org.bukkit.block.BlockState) => void | null)): boolean;
 
 			/**
 			 * Creates a tree at the given Location
@@ -35987,7 +35987,7 @@ declare global {
 			 * If the predicate returns true the block gets set in the world.
 			 * If it returns false the block won't get set in the world.
 			 */
-			generateTree(location: org.bukkit.Location, random: globalThis.java.util.Random, type: org.bukkit.TreeType, statePredicate: (value: org.bukkit.block.BlockState) => boolean): boolean;
+			generateTree(location: org.bukkit.Location, random: globalThis.java.util.Random, type: org.bukkit.TreeType, statePredicate: ((value: org.bukkit.block.BlockState) => boolean | null)): boolean;
 
 			/**
 			 * Creates a entity at the given Location
@@ -36044,7 +36044,7 @@ declare global {
 			 * the world. Any operation involving such as teleporting the entity is undefined
 			 * until after this function returns.
 			 */
-			spawn<T = any>(location: org.bukkit.Location, clazz: globalThis.java.lang.Class<T>, func: (value: T) => void): T;
+			spawn<T = any>(location: org.bukkit.Location, clazz: globalThis.java.lang.Class<T>, func: ((value: T) => void | null)): T;
 
 			/**
 			 * Creates a new entity at the given Location with the supplied
@@ -36058,7 +36058,7 @@ declare global {
 			 * whether or not those were randomized, such as attributes or the entity
 			 * equipment.
 			 */
-			spawn<T = any>(location: org.bukkit.Location, clazz: globalThis.java.lang.Class<T>, randomizeData: boolean, func: (value: T) => void): T;
+			spawn<T = any>(location: org.bukkit.Location, clazz: globalThis.java.lang.Class<T>, randomizeData: boolean, func: ((value: T) => void | null)): T;
 
 			/**
 			 * Gets the highest non-empty (impassable) coordinate at the given
@@ -36095,7 +36095,7 @@ declare global {
 			/**
 			 * Get the object by its key.
 			 */
-			get(key: org.bukkit.NamespacedKey): T;
+			get(key: org.bukkit.NamespacedKey): (T | null);
 
 			/**
 			 * Returns a new stream, which contains all registry items, which are registered to the registry.
@@ -36108,7 +36108,7 @@ declare global {
 			 * This will attempt to find a reasonable match based on the provided input
 			 * and may do so through unspecified means.
 			 */
-			match(input: string): T;
+			match(input: string): (T | null);
 
 		}
 		namespace Registry {
@@ -36283,7 +36283,7 @@ declare global {
 				/**
 				 * Description copied from interface: Registry
 				 */
-				get(key: org.bukkit.NamespacedKey): T;
+				get(key: org.bukkit.NamespacedKey): (T | null);
 
 				/**
 				 * Description copied from interface: Registry
@@ -36383,7 +36383,7 @@ declare global {
 			/**
 			 * Gets the type of sandstone with the given data value
 			 */
-			function getByData(data: any /* byte */): org.bukkit.SandstoneType;
+			function getByData(data: any /* byte */): (org.bukkit.SandstoneType | null);
 
 		}
 		interface Server extends Modify<org.bukkit.plugin.messaging.PluginMessageRecipient, {
@@ -36510,7 +36510,7 @@ declare global {
 			/**
 			 * Gets the resource pack configured to be sent to clients by the server.
 			 */
-			getServerResourcePack(): org.bukkit.packs.ResourcePack;
+			getServerResourcePack(): (org.bukkit.packs.ResourcePack | null);
 
 			/**
 			 * Gets the server resource pack uri, or empty string if not specified.
@@ -36729,12 +36729,12 @@ declare global {
 			 * 
 			 * This method may not return objects for offline players.
 			 */
-			getPlayer(name: string): org.bukkit.entity.Player;
+			getPlayer(name: string): (org.bukkit.entity.Player | null);
 
 			/**
 			 * Gets the player with the exact given name, case insensitive.
 			 */
-			getPlayerExact(name: string): org.bukkit.entity.Player;
+			getPlayerExact(name: string): (org.bukkit.entity.Player | null);
 
 			/**
 			 * Attempts to match any players with the given name, and returns a list
@@ -36748,7 +36748,7 @@ declare global {
 			/**
 			 * Gets the player with the given UUID.
 			 */
-			getPlayer(id: globalThis.java.util.UUID): org.bukkit.entity.Player;
+			getPlayer(id: globalThis.java.util.UUID): (org.bukkit.entity.Player | null);
 
 			/**
 			 * Gets the plugin manager for interfacing with plugins.
@@ -36777,7 +36777,7 @@ declare global {
 			 * If the world is already loaded, it will just return the equivalent of
 			 * getWorld(creator.name()).
 			 */
-			createWorld(creator: org.bukkit.WorldCreator): org.bukkit.World;
+			createWorld(creator: org.bukkit.WorldCreator): (org.bukkit.World | null);
 
 			/**
 			 * Unloads a world with the given name.
@@ -36792,12 +36792,12 @@ declare global {
 			/**
 			 * Gets the world with the given name.
 			 */
-			getWorld(name: string): org.bukkit.World;
+			getWorld(name: string): (org.bukkit.World | null);
 
 			/**
 			 * Gets the world from the given Unique ID.
 			 */
-			getWorld(uid: globalThis.java.util.UUID): org.bukkit.World;
+			getWorld(uid: globalThis.java.util.UUID): (org.bukkit.World | null);
 
 			/**
 			 * Create a new virtual WorldBorder.
@@ -36810,7 +36810,7 @@ declare global {
 			/**
 			 * Gets the map from the given item ID.
 			 */
-			getMap(id: number): org.bukkit.map.MapView;
+			getMap(id: number): (org.bukkit.map.MapView | null);
 
 			/**
 			 * Create a new map with an automatically assigned ID.
@@ -36854,7 +36854,7 @@ declare global {
 			/**
 			 * Gets a PluginCommand with the given name or alias.
 			 */
-			getPluginCommand(name: string): org.bukkit.command.PluginCommand;
+			getPluginCommand(name: string): (org.bukkit.command.PluginCommand | null);
 
 			/**
 			 * Writes loaded players to disk.
@@ -36869,7 +36869,7 @@ declare global {
 			/**
 			 * Adds a recipe to the crafting manager.
 			 */
-			addRecipe(recipe: org.bukkit.inventory.Recipe): boolean;
+			addRecipe(recipe: (org.bukkit.inventory.Recipe | null)): boolean;
 
 			/**
 			 * Get a list of all recipes for a given item. The stack size is ignored
@@ -36880,7 +36880,7 @@ declare global {
 			/**
 			 * Get the Recipe for the given key.
 			 */
-			getRecipe(recipeKey: org.bukkit.NamespacedKey): org.bukkit.inventory.Recipe;
+			getRecipe(recipeKey: org.bukkit.NamespacedKey): (org.bukkit.inventory.Recipe | null);
 
 			/**
 			 * Get the Recipe for the list of ItemStacks provided.
@@ -36893,7 +36893,7 @@ declare global {
 			 * NOTE: This method will not modify the provided ItemStack array, for that, use
 			 * craftItem(ItemStack[], World, Player).
 			 */
-			getCraftingRecipe(craftingMatrix: org.bukkit.inventory.ItemStack[], world: org.bukkit.World): org.bukkit.inventory.Recipe;
+			getCraftingRecipe(craftingMatrix: org.bukkit.inventory.ItemStack[], world: org.bukkit.World): (org.bukkit.inventory.Recipe | null);
 
 			/**
 			 * Get the crafted item using the list of ItemStack provided.
@@ -37058,7 +37058,7 @@ declare global {
 			/**
 			 * Creates a new PlayerProfile.
 			 */
-			createPlayerProfile(uniqueId: globalThis.java.util.UUID, name: string): org.bukkit.profile.PlayerProfile;
+			createPlayerProfile(uniqueId: (globalThis.java.util.UUID | null), name: (string | null)): org.bukkit.profile.PlayerProfile;
 
 			/**
 			 * Creates a new PlayerProfile.
@@ -37154,7 +37154,7 @@ declare global {
 			 * for possible enchanting results. Use
 			 * HumanEntity.openEnchanting(Location, boolean) instead.
 			 */
-			createInventory(owner: org.bukkit.inventory.InventoryHolder, type: org.bukkit.event.inventory.InventoryType): org.bukkit.inventory.Inventory;
+			createInventory(owner: (org.bukkit.inventory.InventoryHolder | null), type: org.bukkit.event.inventory.InventoryType): org.bukkit.inventory.Inventory;
 
 			/**
 			 * Creates an empty inventory with the specified type and title. If the type
@@ -37171,24 +37171,24 @@ declare global {
 			 * for possible enchanting results. Use
 			 * HumanEntity.openEnchanting(Location, boolean) instead.
 			 */
-			createInventory(owner: org.bukkit.inventory.InventoryHolder, type: org.bukkit.event.inventory.InventoryType, title: string): org.bukkit.inventory.Inventory;
+			createInventory(owner: (org.bukkit.inventory.InventoryHolder | null), type: org.bukkit.event.inventory.InventoryType, title: string): org.bukkit.inventory.Inventory;
 
 			/**
 			 * Creates an empty inventory of type InventoryType.CHEST with the
 			 * specified size.
 			 */
-			createInventory(owner: org.bukkit.inventory.InventoryHolder, size: number): org.bukkit.inventory.Inventory;
+			createInventory(owner: (org.bukkit.inventory.InventoryHolder | null), size: number): org.bukkit.inventory.Inventory;
 
 			/**
 			 * Creates an empty inventory of type InventoryType.CHEST with the
 			 * specified size and title.
 			 */
-			createInventory(owner: org.bukkit.inventory.InventoryHolder, size: number, title: string): org.bukkit.inventory.Inventory;
+			createInventory(owner: (org.bukkit.inventory.InventoryHolder | null), size: number, title: string): org.bukkit.inventory.Inventory;
 
 			/**
 			 * Creates an empty merchant.
 			 */
-			createMerchant(title: string): org.bukkit.inventory.Merchant;
+			createMerchant(title: (string | null)): org.bukkit.inventory.Merchant;
 
 			/**
 			 * Gets the amount of consecutive neighbor updates before skipping
@@ -37268,7 +37268,7 @@ declare global {
 			/**
 			 * Gets the default message that is displayed when the server is stopped.
 			 */
-			getShutdownMessage(): string;
+			getShutdownMessage(): (string | null);
 
 			/**
 			 * Gets the current warning state for the server.
@@ -37290,7 +37290,7 @@ declare global {
 			 * 
 			 * This will only exist after the first world has loaded.
 			 */
-			getScoreboardManager(): org.bukkit.scoreboard.ScoreboardManager;
+			getScoreboardManager(): (org.bukkit.scoreboard.ScoreboardManager | null);
 
 			/**
 			 * Get (or create) a new Criteria by its name.
@@ -37300,7 +37300,7 @@ declare global {
 			/**
 			 * Gets an instance of the server's default server-icon.
 			 */
-			getServerIcon(): org.bukkit.util.CachedServerIcon;
+			getServerIcon(): (org.bukkit.util.CachedServerIcon | null);
 
 			/**
 			 * Loads an image from a file, and returns a cached image for the specific
@@ -37342,7 +37342,7 @@ declare global {
 			 * Creates a boss bar instance to display to players. The progress
 			 * defaults to 1.0
 			 */
-			createBossBar(title: string, color: org.bukkit.boss.BarColor, style: org.bukkit.boss.BarStyle, ...flags: org.bukkit.boss.BarFlag[]): org.bukkit.boss.BossBar;
+			createBossBar(title: (string | null), color: org.bukkit.boss.BarColor, style: org.bukkit.boss.BarStyle, ...flags: org.bukkit.boss.BarFlag[]): org.bukkit.boss.BossBar;
 
 			/**
 			 * Creates a boss bar instance to display to players. The progress defaults
@@ -37351,7 +37351,7 @@ declare global {
 			 * This instance is added to the persistent storage of the server and will
 			 * be editable by commands and restored after restart.
 			 */
-			createBossBar(key: org.bukkit.NamespacedKey, title: string, color: org.bukkit.boss.BarColor, style: org.bukkit.boss.BarStyle, ...flags: org.bukkit.boss.BarFlag[]): org.bukkit.boss.KeyedBossBar;
+			createBossBar(key: org.bukkit.NamespacedKey, title: (string | null), color: org.bukkit.boss.BarColor, style: org.bukkit.boss.BarStyle, ...flags: org.bukkit.boss.BarFlag[]): org.bukkit.boss.KeyedBossBar;
 
 			/**
 			 * Gets an unmodifiable iterator through all persistent bossbars.
@@ -37377,7 +37377,7 @@ declare global {
 			 * 
 			 * e.g. bossbars created using the bossbar command
 			 */
-			getBossBar(key: org.bukkit.NamespacedKey): org.bukkit.boss.KeyedBossBar;
+			getBossBar(key: org.bukkit.NamespacedKey): (org.bukkit.boss.KeyedBossBar | null);
 
 			/**
 			 * Removes a KeyedBossBar specified by this key.
@@ -37395,12 +37395,12 @@ declare global {
 			/**
 			 * Gets an entity on the server by its UUID
 			 */
-			getEntity(uuid: globalThis.java.util.UUID): org.bukkit.entity.Entity;
+			getEntity(uuid: globalThis.java.util.UUID): (org.bukkit.entity.Entity | null);
 
 			/**
 			 * Get the advancement specified by this key.
 			 */
-			getAdvancement(key: org.bukkit.NamespacedKey): org.bukkit.advancement.Advancement;
+			getAdvancement(key: org.bukkit.NamespacedKey): (org.bukkit.advancement.Advancement | null);
 
 			/**
 			 * Get an iterator through all advancements. Advancements cannot be removed
@@ -37418,7 +37418,7 @@ declare global {
 			 * Creates a new BlockData instance for the specified Material, with
 			 * all properties initialized to unspecified defaults.
 			 */
-			createBlockData(material: org.bukkit.Material, consumer: (value: org.bukkit.block.data.BlockData) => void): org.bukkit.block.data.BlockData;
+			createBlockData(material: org.bukkit.Material, consumer: ((value: org.bukkit.block.data.BlockData) => void | null)): org.bukkit.block.data.BlockData;
 
 			/**
 			 * Creates a new BlockData instance with material and properties
@@ -37434,7 +37434,7 @@ declare global {
 			 * If material is specified, then the data string must not also
 			 * contain the material.
 			 */
-			createBlockData(material: org.bukkit.Material, data: string): org.bukkit.block.data.BlockData;
+			createBlockData(material: (org.bukkit.Material | null), data: (string | null)): org.bukkit.block.data.BlockData;
 
 			/**
 			 * Gets a tag which has already been defined within the server. Plugins are
@@ -37448,7 +37448,7 @@ declare global {
 			 * Server implementations are allowed to handle only the registries
 			 * indicated in Tag.
 			 */
-			getTag<T = any>(registry: string, tag: org.bukkit.NamespacedKey, clazz: globalThis.java.lang.Class<T>): org.bukkit.Tag<T>;
+			getTag<T = any>(registry: string, tag: org.bukkit.NamespacedKey, clazz: globalThis.java.lang.Class<T>): (org.bukkit.Tag<T> | null);
 
 			/**
 			 * Gets a all tags which have been defined within the server.
@@ -37463,7 +37463,7 @@ declare global {
 			/**
 			 * Gets the specified LootTable.
 			 */
-			getLootTable(key: org.bukkit.NamespacedKey): org.bukkit.loot.LootTable;
+			getLootTable(key: org.bukkit.NamespacedKey): (org.bukkit.loot.LootTable | null);
 
 			/**
 			 * Selects entities using the given Vanilla selector.
@@ -37493,7 +37493,7 @@ declare global {
 			 * Depending on the implementation not every registry present in
 			 * Registry will be returned by this method.
 			 */
-			getRegistry<T = any>(tClass: globalThis.java.lang.Class<T>): org.bukkit.Registry<T>;
+			getRegistry<T = any>(tClass: globalThis.java.lang.Class<T>): (org.bukkit.Registry<T> | null);
 
 			getUnsafe(): org.bukkit.UnsafeValues;
 
@@ -37520,7 +37520,7 @@ declare global {
 			/**
 			 * Gets the link of a given type, if it exists.
 			 */
-			getLink(type: org.bukkit.ServerLinks.Type): org.bukkit.ServerLinks.ServerLink;
+			getLink(type: org.bukkit.ServerLinks.Type): (org.bukkit.ServerLinks.ServerLink | null);
 
 			/**
 			 * Gets an immutable list of all links.
@@ -37559,7 +37559,7 @@ declare global {
 				/**
 				 * Gets the type of this link if it is a known special type.
 				 */
-				getType(): org.bukkit.ServerLinks.Type;
+				getType(): (org.bukkit.ServerLinks.Type | null);
 
 				/**
 				 * Gets the display name/text of this link.
@@ -41278,7 +41278,7 @@ declare global {
 			 * Get the MapCursor.Type that this structure can use on maps. If
 			 * this is null, this structure will not appear on explorer maps.
 			 */
-			getMapIcon(): org.bukkit.map.MapCursor.Type;
+			getMapIcon(): (org.bukkit.map.MapCursor.Type | null);
 
 			equals(other: any): boolean;
 
@@ -43090,7 +43090,7 @@ declare global {
 			/**
 			 * Gets the TreeSpecies with the given data value
 			 */
-			function getByData(data: any /* byte */): org.bukkit.TreeSpecies;
+			function getByData(data: any /* byte */): (org.bukkit.TreeSpecies | null);
 
 		}
 		interface TreeType {}
@@ -43282,14 +43282,14 @@ declare global {
 
 			getTranslationKey(attribute: org.bukkit.attribute.Attribute): string;
 
-			getFeatureFlag(key: org.bukkit.NamespacedKey): org.bukkit.FeatureFlag;
+			getFeatureFlag(key: org.bukkit.NamespacedKey): (org.bukkit.FeatureFlag | null);
 
 			/**
 			 * Do not use, method will get removed, and the plugin won't run
 			 */
 			getInternalPotionData(key: org.bukkit.NamespacedKey): org.bukkit.potion.PotionType.InternalPotionData;
 
-			getDamageEffect(key: string): org.bukkit.damage.DamageEffect;
+			getDamageEffect(key: string): (org.bukkit.damage.DamageEffect | null);
 
 			/**
 			 * Create a new DamageSource.Builder.
@@ -43357,7 +43357,7 @@ declare global {
 				 * This method checks the provided warning should be printed for this
 				 * state
 				 */
-				printFor(warning: org.bukkit.Warning): boolean;
+				printFor(warning: (org.bukkit.Warning | null)): boolean;
 
 			}
 			namespace WarningState {
@@ -43388,7 +43388,7 @@ declare global {
 				 * This method returns the corresponding warning state for the given
 				 * string value.
 				 */
-				function value(value: string): org.bukkit.Warning.WarningState;
+				function value(value: (string | null)): org.bukkit.Warning.WarningState;
 
 			}
 		}
@@ -43667,7 +43667,7 @@ declare global {
 			 * Drops an item at the specified Location
 			 * Note that functions will run before the entity is spawned
 			 */
-			dropItem(location: org.bukkit.Location, item: org.bukkit.inventory.ItemStack, func: (value: org.bukkit.entity.Item) => void): org.bukkit.entity.Item;
+			dropItem(location: org.bukkit.Location, item: org.bukkit.inventory.ItemStack, func: ((value: org.bukkit.entity.Item) => void | null)): org.bukkit.entity.Item;
 
 			/**
 			 * Drops an item at the specified Location with a random offset
@@ -43678,7 +43678,7 @@ declare global {
 			 * Drops an item at the specified Location with a random offset
 			 * Note that functions will run before the entity is spawned
 			 */
-			dropItemNaturally(location: org.bukkit.Location, item: org.bukkit.inventory.ItemStack, func: (value: org.bukkit.entity.Item) => void): org.bukkit.entity.Item;
+			dropItemNaturally(location: org.bukkit.Location, item: org.bukkit.inventory.ItemStack, func: ((value: org.bukkit.entity.Item) => void | null)): org.bukkit.entity.Item;
 
 			/**
 			 * Creates an Arrow entity at the given Location
@@ -43761,7 +43761,7 @@ declare global {
 			 * implementations may impose artificial restrictions on the size of the
 			 * search bounding box.
 			 */
-			getNearbyEntities(location: org.bukkit.Location, x: number, y: number, z: number, filter: (value: org.bukkit.entity.Entity) => boolean): globalThis.java.util.Collection<org.bukkit.entity.Entity>;
+			getNearbyEntities(location: org.bukkit.Location, x: number, y: number, z: number, filter: ((value: org.bukkit.entity.Entity) => boolean | null)): globalThis.java.util.Collection<org.bukkit.entity.Entity>;
 
 			/**
 			 * Returns a list of entities within the given bounding box.
@@ -43779,7 +43779,7 @@ declare global {
 			 * implementations may impose artificial restrictions on the size of the
 			 * search bounding box.
 			 */
-			getNearbyEntities(boundingBox: org.bukkit.util.BoundingBox, filter: (value: org.bukkit.entity.Entity) => boolean): globalThis.java.util.Collection<org.bukkit.entity.Entity>;
+			getNearbyEntities(boundingBox: org.bukkit.util.BoundingBox, filter: ((value: org.bukkit.entity.Entity) => boolean | null)): globalThis.java.util.Collection<org.bukkit.entity.Entity>;
 
 			/**
 			 * Performs a ray trace that checks for entity collisions.
@@ -43791,7 +43791,7 @@ declare global {
 			 * Note: Due to display entities having a zero size hitbox, this method will not detect them.
 			 * To detect display entities use rayTraceEntities(Location, Vector, double, double) with a positive raySize
 			 */
-			rayTraceEntities(start: org.bukkit.Location, direction: org.bukkit.util.Vector, maxDistance: number): org.bukkit.util.RayTraceResult;
+			rayTraceEntities(start: org.bukkit.Location, direction: org.bukkit.util.Vector, maxDistance: number): (org.bukkit.util.RayTraceResult | null);
 
 			/**
 			 * Performs a ray trace that checks for entity collisions.
@@ -43800,7 +43800,7 @@ declare global {
 			 * implementations may impose artificial restrictions on the maximum
 			 * distance.
 			 */
-			rayTraceEntities(start: org.bukkit.Location, direction: org.bukkit.util.Vector, maxDistance: number, raySize: number): org.bukkit.util.RayTraceResult;
+			rayTraceEntities(start: org.bukkit.Location, direction: org.bukkit.util.Vector, maxDistance: number, raySize: number): (org.bukkit.util.RayTraceResult | null);
 
 			/**
 			 * Performs a ray trace that checks for entity collisions.
@@ -43812,7 +43812,7 @@ declare global {
 			 * Note: Due to display entities having a zero size hitbox, this method will not detect them.
 			 * To detect display entities use rayTraceEntities(Location, Vector, double, double, Predicate) with a positive raySize
 			 */
-			rayTraceEntities(start: org.bukkit.Location, direction: org.bukkit.util.Vector, maxDistance: number, filter: (value: org.bukkit.entity.Entity) => boolean): org.bukkit.util.RayTraceResult;
+			rayTraceEntities(start: org.bukkit.Location, direction: org.bukkit.util.Vector, maxDistance: number, filter: ((value: org.bukkit.entity.Entity) => boolean | null)): (org.bukkit.util.RayTraceResult | null);
 
 			/**
 			 * Performs a ray trace that checks for entity collisions.
@@ -43821,7 +43821,7 @@ declare global {
 			 * implementations may impose artificial restrictions on the maximum
 			 * distance.
 			 */
-			rayTraceEntities(start: org.bukkit.Location, direction: org.bukkit.util.Vector, maxDistance: number, raySize: number, filter: (value: org.bukkit.entity.Entity) => boolean): org.bukkit.util.RayTraceResult;
+			rayTraceEntities(start: org.bukkit.Location, direction: org.bukkit.util.Vector, maxDistance: number, raySize: number, filter: ((value: org.bukkit.entity.Entity) => boolean | null)): (org.bukkit.util.RayTraceResult | null);
 
 			/**
 			 * Performs a ray trace that checks for block collisions using the blocks'
@@ -43833,7 +43833,7 @@ declare global {
 			 * This may cause loading of chunks! Some implementations may impose
 			 * artificial restrictions on the maximum distance.
 			 */
-			rayTraceBlocks(start: org.bukkit.Location, direction: org.bukkit.util.Vector, maxDistance: number): org.bukkit.util.RayTraceResult;
+			rayTraceBlocks(start: org.bukkit.Location, direction: org.bukkit.util.Vector, maxDistance: number): (org.bukkit.util.RayTraceResult | null);
 
 			/**
 			 * Performs a ray trace that checks for block collisions using the blocks'
@@ -43844,7 +43844,7 @@ declare global {
 			 * This may cause loading of chunks! Some implementations may impose
 			 * artificial restrictions on the maximum distance.
 			 */
-			rayTraceBlocks(start: org.bukkit.Location, direction: org.bukkit.util.Vector, maxDistance: number, fluidCollisionMode: org.bukkit.FluidCollisionMode): org.bukkit.util.RayTraceResult;
+			rayTraceBlocks(start: org.bukkit.Location, direction: org.bukkit.util.Vector, maxDistance: number, fluidCollisionMode: org.bukkit.FluidCollisionMode): (org.bukkit.util.RayTraceResult | null);
 
 			/**
 			 * Performs a ray trace that checks for block collisions using the blocks'
@@ -43860,7 +43860,7 @@ declare global {
 			 * This may cause loading of chunks! Some implementations may impose
 			 * artificial restrictions on the maximum distance.
 			 */
-			rayTraceBlocks(start: org.bukkit.Location, direction: org.bukkit.util.Vector, maxDistance: number, fluidCollisionMode: org.bukkit.FluidCollisionMode, ignorePassableBlocks: boolean): org.bukkit.util.RayTraceResult;
+			rayTraceBlocks(start: org.bukkit.Location, direction: org.bukkit.util.Vector, maxDistance: number, fluidCollisionMode: org.bukkit.FluidCollisionMode, ignorePassableBlocks: boolean): (org.bukkit.util.RayTraceResult | null);
 
 			/**
 			 * Performs a ray trace that checks for both block and entity collisions.
@@ -43879,7 +43879,7 @@ declare global {
 			 * This may cause loading of chunks! Some implementations may impose
 			 * artificial restrictions on the maximum distance.
 			 */
-			rayTrace(start: org.bukkit.Location, direction: org.bukkit.util.Vector, maxDistance: number, fluidCollisionMode: org.bukkit.FluidCollisionMode, ignorePassableBlocks: boolean, raySize: number, filter: (value: org.bukkit.entity.Entity) => boolean): org.bukkit.util.RayTraceResult;
+			rayTrace(start: org.bukkit.Location, direction: org.bukkit.util.Vector, maxDistance: number, fluidCollisionMode: org.bukkit.FluidCollisionMode, ignorePassableBlocks: boolean, raySize: number, filter: ((value: org.bukkit.entity.Entity) => boolean | null)): (org.bukkit.util.RayTraceResult | null);
 
 			/**
 			 * Gets the default spawn Location of this world
@@ -44033,7 +44033,7 @@ declare global {
 			 * in which the explosion occurs. In other words, the mob griefing gamerule
 			 * will take priority over breakBlocks if explosions are not allowed.
 			 */
-			createExplosion(x: number, y: number, z: number, power: number, setFire: boolean, breakBlocks: boolean, source: org.bukkit.entity.Entity): boolean;
+			createExplosion(x: number, y: number, z: number, power: number, setFire: boolean, breakBlocks: boolean, source: (org.bukkit.entity.Entity | null)): boolean;
 
 			/**
 			 * Creates explosion at given coordinates with given power
@@ -44062,7 +44062,7 @@ declare global {
 			 * in which the explosion occurs. In other words, the mob griefing gamerule
 			 * will take priority over breakBlocks if explosions are not allowed.
 			 */
-			createExplosion(loc: org.bukkit.Location, power: number, setFire: boolean, breakBlocks: boolean, source: org.bukkit.entity.Entity): boolean;
+			createExplosion(loc: org.bukkit.Location, power: number, setFire: boolean, breakBlocks: boolean, source: (org.bukkit.entity.Entity | null)): boolean;
 
 			/**
 			 * Gets the current PVP setting for this world.
@@ -44077,12 +44077,12 @@ declare global {
 			/**
 			 * Gets the chunk generator for this world
 			 */
-			getGenerator(): org.bukkit.generator.ChunkGenerator;
+			getGenerator(): (org.bukkit.generator.ChunkGenerator | null);
 
 			/**
 			 * Gets the biome provider for this world
 			 */
-			getBiomeProvider(): org.bukkit.generator.BiomeProvider;
+			getBiomeProvider(): (org.bukkit.generator.BiomeProvider | null);
 
 			/**
 			 * Saves world to disk
@@ -44106,7 +44106,7 @@ declare global {
 			 * whether or not those were randomized, such as attributes or the entity
 			 * equipment.
 			 */
-			spawn<T = any>(location: org.bukkit.Location, clazz: globalThis.java.lang.Class<T>, spawnReason: org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason, randomizeData: boolean, func: (value: T) => void): T;
+			spawn<T = any>(location: org.bukkit.Location, clazz: globalThis.java.lang.Class<T>, spawnReason: org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason, randomizeData: boolean, func: ((value: T) => void | null)): T;
 
 			/**
 			 * Spawn a FallingBlock entity at the given Location of
@@ -44148,12 +44148,12 @@ declare global {
 			 * Plays an effect to all players within a default radius around a given
 			 * location.
 			 */
-			playEffect<T = any>(location: org.bukkit.Location, effect: org.bukkit.Effect, data: T): void;
+			playEffect<T = any>(location: org.bukkit.Location, effect: org.bukkit.Effect, data: (T | null)): void;
 
 			/**
 			 * Plays an effect to all players within a given radius around a location.
 			 */
-			playEffect<T = any>(location: org.bukkit.Location, effect: org.bukkit.Effect, data: T, radius: number): void;
+			playEffect<T = any>(location: org.bukkit.Location, effect: org.bukkit.Effect, data: (T | null), radius: number): void;
 
 			/**
 			 * Get empty chunk snapshot (equivalent to all air blocks), optionally
@@ -44343,7 +44343,7 @@ declare global {
 			/**
 			 * Gets the type of this world.
 			 */
-			getWorldType(): org.bukkit.WorldType;
+			getWorldType(): (org.bukkit.WorldType | null);
 
 			/**
 			 * Gets whether or not structures are being generated.
@@ -44884,7 +44884,7 @@ declare global {
 			 * 
 			 * Will return null if rule passed is null
 			 */
-			getGameRuleValue(rule: string): string;
+			getGameRuleValue(rule: (string | null)): (string | null);
 
 			/**
 			 * Set the specified gamerule to specified value.
@@ -44904,13 +44904,13 @@ declare global {
 			/**
 			 * Get the current value for a given GameRule.
 			 */
-			getGameRuleValue<T = any>(rule: org.bukkit.GameRule<T>): T;
+			getGameRuleValue<T = any>(rule: org.bukkit.GameRule<T>): (T | null);
 
 			/**
 			 * Get the default value for a given GameRule. This value is not
 			 * guaranteed to match the current value.
 			 */
-			getGameRuleDefault<T = any>(rule: org.bukkit.GameRule<T>): T;
+			getGameRuleDefault<T = any>(rule: org.bukkit.GameRule<T>): (T | null);
 
 			/**
 			 * Set the given GameRule's new value.
@@ -44938,13 +44938,13 @@ declare global {
 			 * Spawns the particle (the number of times specified by count)
 			 * at the target location.
 			 */
-			spawnParticle<T = any>(particle: org.bukkit.Particle, location: org.bukkit.Location, count: number, data: T): void;
+			spawnParticle<T = any>(particle: org.bukkit.Particle, location: org.bukkit.Location, count: number, data: (T | null)): void;
 
 			/**
 			 * Spawns the particle (the number of times specified by count)
 			 * at the target location.
 			 */
-			spawnParticle<T = any>(particle: org.bukkit.Particle, x: number, y: number, z: number, count: number, data: T): void;
+			spawnParticle<T = any>(particle: org.bukkit.Particle, x: number, y: number, z: number, count: number, data: (T | null)): void;
 
 			/**
 			 * Spawns the particle (the number of times specified by count)
@@ -44968,7 +44968,7 @@ declare global {
 			 * randomized positively and negatively by the offset parameters
 			 * on each axis.
 			 */
-			spawnParticle<T = any>(particle: org.bukkit.Particle, location: org.bukkit.Location, count: number, offsetX: number, offsetY: number, offsetZ: number, data: T): void;
+			spawnParticle<T = any>(particle: org.bukkit.Particle, location: org.bukkit.Location, count: number, offsetX: number, offsetY: number, offsetZ: number, data: (T | null)): void;
 
 			/**
 			 * Spawns the particle (the number of times specified by count)
@@ -44976,7 +44976,7 @@ declare global {
 			 * randomized positively and negatively by the offset parameters
 			 * on each axis.
 			 */
-			spawnParticle<T = any>(particle: org.bukkit.Particle, x: number, y: number, z: number, count: number, offsetX: number, offsetY: number, offsetZ: number, data: T): void;
+			spawnParticle<T = any>(particle: org.bukkit.Particle, x: number, y: number, z: number, count: number, offsetX: number, offsetY: number, offsetZ: number, data: (T | null)): void;
 
 			/**
 			 * Spawns the particle (the number of times specified by count)
@@ -45000,7 +45000,7 @@ declare global {
 			 * randomized positively and negatively by the offset parameters
 			 * on each axis.
 			 */
-			spawnParticle<T = any>(particle: org.bukkit.Particle, location: org.bukkit.Location, count: number, offsetX: number, offsetY: number, offsetZ: number, extra: number, data: T): void;
+			spawnParticle<T = any>(particle: org.bukkit.Particle, location: org.bukkit.Location, count: number, offsetX: number, offsetY: number, offsetZ: number, extra: number, data: (T | null)): void;
 
 			/**
 			 * Spawns the particle (the number of times specified by count)
@@ -45008,7 +45008,7 @@ declare global {
 			 * randomized positively and negatively by the offset parameters
 			 * on each axis.
 			 */
-			spawnParticle<T = any>(particle: org.bukkit.Particle, x: number, y: number, z: number, count: number, offsetX: number, offsetY: number, offsetZ: number, extra: number, data: T): void;
+			spawnParticle<T = any>(particle: org.bukkit.Particle, x: number, y: number, z: number, count: number, offsetX: number, offsetY: number, offsetZ: number, extra: number, data: (T | null)): void;
 
 			/**
 			 * Spawns the particle (the number of times specified by count)
@@ -45016,7 +45016,7 @@ declare global {
 			 * randomized positively and negatively by the offset parameters
 			 * on each axis.
 			 */
-			spawnParticle<T = any>(particle: org.bukkit.Particle, location: org.bukkit.Location, count: number, offsetX: number, offsetY: number, offsetZ: number, extra: number, data: T, force: boolean): void;
+			spawnParticle<T = any>(particle: org.bukkit.Particle, location: org.bukkit.Location, count: number, offsetX: number, offsetY: number, offsetZ: number, extra: number, data: (T | null), force: boolean): void;
 
 			/**
 			 * Spawns the particle (the number of times specified by count)
@@ -45024,7 +45024,7 @@ declare global {
 			 * randomized positively and negatively by the offset parameters
 			 * on each axis.
 			 */
-			spawnParticle<T = any>(particle: org.bukkit.Particle, x: number, y: number, z: number, count: number, offsetX: number, offsetY: number, offsetZ: number, extra: number, data: T, force: boolean): void;
+			spawnParticle<T = any>(particle: org.bukkit.Particle, x: number, y: number, z: number, count: number, offsetX: number, offsetY: number, offsetZ: number, extra: number, data: (T | null), force: boolean): void;
 
 			/**
 			 * Find the closest nearby structure of a given StructureType.
@@ -45043,7 +45043,7 @@ declare global {
 			 * unexplored structures. This is because it will keep looking further and
 			 * further out in order to find the structure.
 			 */
-			locateNearestStructure(origin: org.bukkit.Location, structureType: org.bukkit.StructureType, radius: number, findUnexplored: boolean): org.bukkit.Location;
+			locateNearestStructure(origin: org.bukkit.Location, structureType: org.bukkit.StructureType, radius: number, findUnexplored: boolean): (org.bukkit.Location | null);
 
 			/**
 			 * Find the closest nearby structure of a given StructureType.
@@ -45067,7 +45067,7 @@ declare global {
 			 * Structures while searching for a Structure
 			 * while only search for the given Structure.
 			 */
-			locateNearestStructure(origin: org.bukkit.Location, structureType: org.bukkit.generator.structure.StructureType, radius: number, findUnexplored: boolean): org.bukkit.util.StructureSearchResult;
+			locateNearestStructure(origin: org.bukkit.Location, structureType: org.bukkit.generator.structure.StructureType, radius: number, findUnexplored: boolean): (org.bukkit.util.StructureSearchResult | null);
 
 			/**
 			 * Find the closest nearby structure of a given Structure. Finding
@@ -45091,7 +45091,7 @@ declare global {
 			 * Structures while searching for a Structure
 			 * while only search for the given Structure.
 			 */
-			locateNearestStructure(origin: org.bukkit.Location, structure: org.bukkit.generator.structure.Structure, radius: number, findUnexplored: boolean): org.bukkit.util.StructureSearchResult;
+			locateNearestStructure(origin: org.bukkit.Location, structure: org.bukkit.generator.structure.Structure, radius: number, findUnexplored: boolean): (org.bukkit.util.StructureSearchResult | null);
 
 			/**
 			 * Find the closest nearby location with a biome matching the provided
@@ -45109,7 +45109,7 @@ declare global {
 			 * This method will use a horizontal interval of 32 and a vertical interval of
 			 * 64, equal to the /locate command.
 			 */
-			locateNearestBiome(origin: org.bukkit.Location, radius: number, ...biomes: org.bukkit.block.Biome[]): org.bukkit.util.BiomeSearchResult;
+			locateNearestBiome(origin: org.bukkit.Location, radius: number, ...biomes: org.bukkit.block.Biome[]): (org.bukkit.util.BiomeSearchResult | null);
 
 			/**
 			 * Find the closest nearby location with a biome matching the provided
@@ -45126,12 +45126,12 @@ declare global {
 			 * and verticalInterval will result in faster searches, but may lead to
 			 * small biomes being missed.
 			 */
-			locateNearestBiome(origin: org.bukkit.Location, radius: number, horizontalInterval: number, verticalInterval: number, ...biomes: org.bukkit.block.Biome[]): org.bukkit.util.BiomeSearchResult;
+			locateNearestBiome(origin: org.bukkit.Location, radius: number, horizontalInterval: number, verticalInterval: number, ...biomes: org.bukkit.block.Biome[]): (org.bukkit.util.BiomeSearchResult | null);
 
 			/**
 			 * Finds the nearest raid close to the given location.
 			 */
-			locateNearestRaid(location: org.bukkit.Location, radius: number): org.bukkit.Raid;
+			locateNearestRaid(location: org.bukkit.Location, radius: number): (org.bukkit.Raid | null);
 
 			/**
 			 * Gets all raids that are going on over this world.
@@ -45147,7 +45147,7 @@ declare global {
 			 * whether or not a dragon is present in the world or a fight sequence has
 			 * been activated. The dragon battle instance acts as a state holder.
 			 */
-			getEnderDragonBattle(): org.bukkit.boss.DragonBattle;
+			getEnderDragonBattle(): (org.bukkit.boss.DragonBattle | null);
 
 			/**
 			 * Get all FeatureFlag enabled in this world.
@@ -45209,7 +45209,7 @@ declare global {
 				/**
 				 * Get an environment by ID
 				 */
-				function getEnvironment(id: number): org.bukkit.World.Environment;
+				function getEnvironment(id: number): (org.bukkit.World.Environment | null);
 
 			}
 		}
@@ -45217,7 +45217,7 @@ declare global {
 			/**
 			 * Get the World in which the border resides.
 			 */
-			getWorld(): org.bukkit.World;
+			getWorld(): (org.bukkit.World | null);
 
 			/**
 			 * Resets the border to default values.
@@ -45368,7 +45368,7 @@ declare global {
 			 * This may be null, in which case the "natural" generator for this
 			 * environment will be used.
 			 */
-			generator(): org.bukkit.generator.ChunkGenerator;
+			generator(): (org.bukkit.generator.ChunkGenerator | null);
 
 			/**
 			 * Sets the generator that will be used to create or load the world.
@@ -45376,7 +45376,7 @@ declare global {
 			 * This may be null, in which case the "natural" generator for this
 			 * environment will be used.
 			 */
-			generator(generator: org.bukkit.generator.ChunkGenerator): org.bukkit.WorldCreator;
+			generator(generator: (org.bukkit.generator.ChunkGenerator | null)): org.bukkit.WorldCreator;
 
 			/**
 			 * Sets the generator that will be used to create or load the world.
@@ -45388,7 +45388,7 @@ declare global {
 			 * environment generator will be used instead and a warning will be
 			 * printed to the console.
 			 */
-			generator(generator: string): org.bukkit.WorldCreator;
+			generator(generator: (string | null)): org.bukkit.WorldCreator;
 
 			/**
 			 * Sets the generator that will be used to create or load the world.
@@ -45400,7 +45400,7 @@ declare global {
 			 * environment generator will be used instead and a warning will be
 			 * printed to the specified output
 			 */
-			generator(generator: string, output: org.bukkit.command.CommandSender): org.bukkit.WorldCreator;
+			generator(generator: (string | null), output: (org.bukkit.command.CommandSender | null)): org.bukkit.WorldCreator;
 
 			/**
 			 * Gets the biome provider that will be used to create or load the world.
@@ -45409,7 +45409,7 @@ declare global {
 			 * will be used. If no ChunkGenerator is specific the "natural" biome provider
 			 * for this environment will be used.
 			 */
-			biomeProvider(): org.bukkit.generator.BiomeProvider;
+			biomeProvider(): (org.bukkit.generator.BiomeProvider | null);
 
 			/**
 			 * Sets the biome provider that will be used to create or load the world.
@@ -45418,21 +45418,7 @@ declare global {
 			 * ChunkGenerator will be used. If no ChunkGenerator is
 			 * specific the "natural" biome provider for this environment will be used.
 			 */
-			biomeProvider(biomeProvider: org.bukkit.generator.BiomeProvider): org.bukkit.WorldCreator;
-
-			/**
-			 * Sets the biome provider that will be used to create or load the world.
-			 * 
-			 * This may be null, in which case the biome provider from the
-			 * ChunkGenerator will be used. If no ChunkGenerator is
-			 * specific the "natural" biome provider for this environment will be used.
-			 * 
-			 * If the biome provider cannot be found for the given name and no
-			 * ChunkGenerator is specific, the natural environment biome
-			 * provider will be used instead and a warning will be printed to the
-			 * specified output
-			 */
-			biomeProvider(biomeProvider: string): org.bukkit.WorldCreator;
+			biomeProvider(biomeProvider: (org.bukkit.generator.BiomeProvider | null)): org.bukkit.WorldCreator;
 
 			/**
 			 * Sets the biome provider that will be used to create or load the world.
@@ -45446,7 +45432,21 @@ declare global {
 			 * provider will be used instead and a warning will be printed to the
 			 * specified output
 			 */
-			biomeProvider(biomeProvider: string, output: org.bukkit.command.CommandSender): org.bukkit.WorldCreator;
+			biomeProvider(biomeProvider: (string | null)): org.bukkit.WorldCreator;
+
+			/**
+			 * Sets the biome provider that will be used to create or load the world.
+			 * 
+			 * This may be null, in which case the biome provider from the
+			 * ChunkGenerator will be used. If no ChunkGenerator is
+			 * specific the "natural" biome provider for this environment will be used.
+			 * 
+			 * If the biome provider cannot be found for the given name and no
+			 * ChunkGenerator is specific, the natural environment biome
+			 * provider will be used instead and a warning will be printed to the
+			 * specified output
+			 */
+			biomeProvider(biomeProvider: (string | null), output: (org.bukkit.command.CommandSender | null)): org.bukkit.WorldCreator;
 
 			/**
 			 * Sets the generator settings of the world that will be created or loaded.
@@ -45507,7 +45507,7 @@ declare global {
 			 * If the world already exists, it will be loaded from disk and some
 			 * options may be ignored.
 			 */
-			createWorld(): org.bukkit.World;
+			createWorld(): (org.bukkit.World | null);
 
 		}
 		class WorldCreator {
@@ -45534,7 +45534,7 @@ declare global {
 			 * optional unique identifier for the generator you wish to request from
 			 * the plugin.
 			 */
-			function getGeneratorForName(world: string, name: string, output: org.bukkit.command.CommandSender): org.bukkit.generator.ChunkGenerator;
+			function getGeneratorForName(world: string, name: (string | null), output: (org.bukkit.command.CommandSender | null)): (org.bukkit.generator.ChunkGenerator | null);
 
 			/**
 			 * Attempts to get the BiomeProvider with the given name.
@@ -45547,7 +45547,7 @@ declare global {
 			 * optional unique identifier for the biome provider you wish to request
 			 * from the plugin.
 			 */
-			function getBiomeProviderForName(world: string, name: string, output: org.bukkit.command.CommandSender): org.bukkit.generator.BiomeProvider;
+			function getBiomeProviderForName(world: string, name: (string | null), output: (org.bukkit.command.CommandSender | null)): (org.bukkit.generator.BiomeProvider | null);
 
 		}
 		interface WorldType {
@@ -45577,7 +45577,7 @@ declare global {
 			/**
 			 * Gets a WorldType by its name
 			 */
-			function getByName(name: string): org.bukkit.WorldType;
+			function getByName(name: string): (org.bukkit.WorldType | null);
 
 		}
 	}
@@ -46139,12 +46139,12 @@ declare global {
 			/**
 			 * Get the resulting item in hand after the bucket event
 			 */
-			getItemStack(): org.bukkit.inventory.ItemStack;
+			getItemStack(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Set the item in hand after the event
 			 */
-			setItemStack(itemStack: org.bukkit.inventory.ItemStack): void;
+			setItemStack(itemStack: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Gets the block involved in this event.
@@ -46672,7 +46672,7 @@ declare global {
 			 * 
 			 * If player has fished successfully, the result may be cast to Item.
 			 */
-			getCaught(): org.bukkit.entity.Entity;
+			getCaught(): (org.bukkit.entity.Entity | null);
 
 			/**
 			 * Gets the fishing hook.
@@ -46709,7 +46709,7 @@ declare global {
 			 * The hand used is only present when the event state is PlayerFishEvent.State.FISHING.
 			 * In all other states, the hand is null.
 			 */
-			getHand(): org.bukkit.inventory.EquipmentSlot;
+			getHand(): (org.bukkit.inventory.EquipmentSlot | null);
 
 			/**
 			 * Gets the state of the fishing
@@ -46720,9 +46720,9 @@ declare global {
 
 		}> {}
 		class PlayerFishEvent {
-			constructor(player: org.bukkit.entity.Player, entity: org.bukkit.entity.Entity, hookEntity: org.bukkit.entity.FishHook, hand: org.bukkit.inventory.EquipmentSlot, state: org.bukkit.event.player.PlayerFishEvent.State);
+			constructor(player: org.bukkit.entity.Player, entity: (org.bukkit.entity.Entity | null), hookEntity: org.bukkit.entity.FishHook, hand: (org.bukkit.inventory.EquipmentSlot | null), state: org.bukkit.event.player.PlayerFishEvent.State);
 
-			constructor(player: org.bukkit.entity.Player, entity: org.bukkit.entity.Entity, hookEntity: org.bukkit.entity.FishHook, state: org.bukkit.event.player.PlayerFishEvent.State);
+			constructor(player: org.bukkit.entity.Player, entity: (org.bukkit.entity.Entity | null), hookEntity: org.bukkit.entity.FishHook, state: org.bukkit.event.player.PlayerFishEvent.State);
 
 		}
 		namespace PlayerFishEvent {
@@ -46941,7 +46941,7 @@ declare global {
 			/**
 			 * Returns the item in hand represented by this event
 			 */
-			getItem(): org.bukkit.inventory.ItemStack;
+			getItem(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Convenience method. Returns the material of the item represented by
@@ -46968,7 +46968,7 @@ declare global {
 			/**
 			 * Returns the clicked block
 			 */
-			getClickedBlock(): org.bukkit.block.Block;
+			getClickedBlock(): (org.bukkit.block.Block | null);
 
 			/**
 			 * Returns the face of the block that was clicked
@@ -46998,7 +46998,7 @@ declare global {
 			 * The hand used to perform this interaction. May be null in the case of
 			 * Action.PHYSICAL.
 			 */
-			getHand(): org.bukkit.inventory.EquipmentSlot;
+			getHand(): (org.bukkit.inventory.EquipmentSlot | null);
 
 			/**
 			 * Gets the exact position on the block the player interacted with, this will
@@ -47006,17 +47006,17 @@ declare global {
 			 * 
 			 * All vector components are between 0.0 and 1.0 inclusive.
 			 */
-			getClickedPosition(): org.bukkit.util.Vector;
+			getClickedPosition(): (org.bukkit.util.Vector | null);
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
 		}> {}
 		class PlayerInteractEvent {
-			constructor(who: org.bukkit.entity.Player, action: org.bukkit.event.block.Action, item: org.bukkit.inventory.ItemStack, clickedBlock: org.bukkit.block.Block, clickedFace: org.bukkit.block.BlockFace);
+			constructor(who: org.bukkit.entity.Player, action: org.bukkit.event.block.Action, item: (org.bukkit.inventory.ItemStack | null), clickedBlock: (org.bukkit.block.Block | null), clickedFace: org.bukkit.block.BlockFace);
 
-			constructor(who: org.bukkit.entity.Player, action: org.bukkit.event.block.Action, item: org.bukkit.inventory.ItemStack, clickedBlock: org.bukkit.block.Block, clickedFace: org.bukkit.block.BlockFace, hand: org.bukkit.inventory.EquipmentSlot);
+			constructor(who: org.bukkit.entity.Player, action: org.bukkit.event.block.Action, item: (org.bukkit.inventory.ItemStack | null), clickedBlock: (org.bukkit.block.Block | null), clickedFace: org.bukkit.block.BlockFace, hand: (org.bukkit.inventory.EquipmentSlot | null));
 
-			constructor(who: org.bukkit.entity.Player, action: org.bukkit.event.block.Action, item: org.bukkit.inventory.ItemStack, clickedBlock: org.bukkit.block.Block, clickedFace: org.bukkit.block.BlockFace, hand: org.bukkit.inventory.EquipmentSlot, clickedPosition: org.bukkit.util.Vector);
+			constructor(who: org.bukkit.entity.Player, action: org.bukkit.event.block.Action, item: (org.bukkit.inventory.ItemStack | null), clickedBlock: (org.bukkit.block.Block | null), clickedFace: org.bukkit.block.BlockFace, hand: (org.bukkit.inventory.EquipmentSlot | null), clickedPosition: (org.bukkit.util.Vector | null));
 
 		}
 		namespace PlayerInteractEvent {
@@ -47050,7 +47050,7 @@ declare global {
 			/**
 			 * Set the item being consumed
 			 */
-			setItem(item: org.bukkit.inventory.ItemStack): void;
+			setItem(item: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Get the hand used to consume the item.
@@ -47204,18 +47204,18 @@ declare global {
 			/**
 			 * Gets the join message to send to all online players
 			 */
-			getJoinMessage(): string;
+			getJoinMessage(): (string | null);
 
 			/**
 			 * Sets the join message to send to all online players
 			 */
-			setJoinMessage(joinMessage: string): void;
+			setJoinMessage(joinMessage: (string | null)): void;
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
 		}> {}
 		class PlayerJoinEvent {
-			constructor(playerJoined: org.bukkit.entity.Player, joinMessage: string);
+			constructor(playerJoined: org.bukkit.entity.Player, joinMessage: (string | null));
 
 		}
 		namespace PlayerJoinEvent {
@@ -47467,7 +47467,7 @@ declare global {
 			/**
 			 * Gets the location this player moved to
 			 */
-			getTo(): org.bukkit.Location;
+			getTo(): (org.bukkit.Location | null);
 
 			/**
 			 * Sets the location that this player will move to
@@ -47478,7 +47478,7 @@ declare global {
 
 		}> {}
 		class PlayerMoveEvent {
-			constructor(player: org.bukkit.entity.Player, from: org.bukkit.Location, to: org.bukkit.Location);
+			constructor(player: org.bukkit.entity.Player, from: org.bukkit.Location, to: (org.bukkit.Location | null));
 
 		}
 		namespace PlayerMoveEvent {
@@ -47575,11 +47575,11 @@ declare global {
 
 		}> {}
 		class PlayerPortalEvent {
-			constructor(player: org.bukkit.entity.Player, from: org.bukkit.Location, to: org.bukkit.Location);
+			constructor(player: org.bukkit.entity.Player, from: org.bukkit.Location, to: (org.bukkit.Location | null));
 
-			constructor(player: org.bukkit.entity.Player, from: org.bukkit.Location, to: org.bukkit.Location, cause: org.bukkit.event.player.PlayerTeleportEvent.TeleportCause);
+			constructor(player: org.bukkit.entity.Player, from: org.bukkit.Location, to: (org.bukkit.Location | null), cause: org.bukkit.event.player.PlayerTeleportEvent.TeleportCause);
 
-			constructor(player: org.bukkit.entity.Player, from: org.bukkit.Location, to: org.bukkit.Location, cause: org.bukkit.event.player.PlayerTeleportEvent.TeleportCause, getSearchRadius: number, canCreatePortal: boolean, creationRadius: number);
+			constructor(player: org.bukkit.entity.Player, from: org.bukkit.Location, to: (org.bukkit.Location | null), cause: org.bukkit.event.player.PlayerTeleportEvent.TeleportCause, getSearchRadius: number, canCreatePortal: boolean, creationRadius: number);
 
 		}
 		namespace PlayerPortalEvent {
@@ -47689,18 +47689,18 @@ declare global {
 			/**
 			 * Gets the quit message to send to all online players
 			 */
-			getQuitMessage(): string;
+			getQuitMessage(): (string | null);
 
 			/**
 			 * Sets the quit message to send to all online players
 			 */
-			setQuitMessage(quitMessage: string): void;
+			setQuitMessage(quitMessage: (string | null)): void;
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
 		}> {}
 		class PlayerQuitEvent {
-			constructor(who: org.bukkit.entity.Player, quitMessage: string);
+			constructor(who: org.bukkit.entity.Player, quitMessage: (string | null));
 
 		}
 		namespace PlayerQuitEvent {
@@ -48164,12 +48164,12 @@ declare global {
 			/**
 			 * Gets the new spawn to be set.
 			 */
-			getNewSpawn(): org.bukkit.Location;
+			getNewSpawn(): (org.bukkit.Location | null);
 
 			/**
 			 * Sets the new spawn location.
 			 */
-			setNewSpawn(newSpawn: org.bukkit.Location): void;
+			setNewSpawn(newSpawn: (org.bukkit.Location | null)): void;
 
 			/**
 			 * Description copied from interface: Cancellable
@@ -48185,7 +48185,7 @@ declare global {
 
 		}> {}
 		class PlayerSpawnChangeEvent {
-			constructor(player: org.bukkit.entity.Player, newSpawn: org.bukkit.Location, forced: boolean, cause: org.bukkit.event.player.PlayerSpawnChangeEvent.Cause);
+			constructor(player: org.bukkit.entity.Player, newSpawn: (org.bukkit.Location | null), forced: boolean, cause: org.bukkit.event.player.PlayerSpawnChangeEvent.Cause);
 
 		}
 		namespace PlayerSpawnChangeEvent {
@@ -48257,13 +48257,13 @@ declare global {
 			 * Gets the EntityType if getStatistic() is an
 			 * entity statistic otherwise returns null.
 			 */
-			getEntityType(): org.bukkit.entity.EntityType;
+			getEntityType(): (org.bukkit.entity.EntityType | null);
 
 			/**
 			 * Gets the Material if getStatistic() is a block
 			 * or item statistic otherwise returns null.
 			 */
-			getMaterial(): org.bukkit.Material;
+			getMaterial(): (org.bukkit.Material | null);
 
 			/**
 			 * Description copied from interface: Cancellable
@@ -48294,22 +48294,22 @@ declare global {
 			/**
 			 * Gets the item switched to the main hand.
 			 */
-			getMainHandItem(): org.bukkit.inventory.ItemStack;
+			getMainHandItem(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Sets the item in the main hand.
 			 */
-			setMainHandItem(mainHandItem: org.bukkit.inventory.ItemStack): void;
+			setMainHandItem(mainHandItem: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Gets the item switched to the off hand.
 			 */
-			getOffHandItem(): org.bukkit.inventory.ItemStack;
+			getOffHandItem(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Sets the item in the off hand.
 			 */
-			setOffHandItem(offHandItem: org.bukkit.inventory.ItemStack): void;
+			setOffHandItem(offHandItem: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Description copied from interface: Cancellable
@@ -48341,7 +48341,7 @@ declare global {
 			/**
 			 * Gets the current ItemStack on the lectern.
 			 */
-			getBook(): org.bukkit.inventory.ItemStack;
+			getBook(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Description copied from interface: Cancellable
@@ -48374,9 +48374,9 @@ declare global {
 
 		}> {}
 		class PlayerTeleportEvent {
-			constructor(player: org.bukkit.entity.Player, from: org.bukkit.Location, to: org.bukkit.Location);
+			constructor(player: org.bukkit.entity.Player, from: org.bukkit.Location, to: (org.bukkit.Location | null));
 
-			constructor(player: org.bukkit.entity.Player, from: org.bukkit.Location, to: org.bukkit.Location, cause: org.bukkit.event.player.PlayerTeleportEvent.TeleportCause);
+			constructor(player: org.bukkit.entity.Player, from: org.bukkit.Location, to: (org.bukkit.Location | null), cause: org.bukkit.event.player.PlayerTeleportEvent.TeleportCause);
 
 		}
 		namespace PlayerTeleportEvent {
@@ -48617,7 +48617,7 @@ declare global {
 			/**
 			 * Gets a block transformer by key.
 			 */
-			getBlockTransformer(key: org.bukkit.NamespacedKey): org.bukkit.util.BlockTransformer;
+			getBlockTransformer(key: org.bukkit.NamespacedKey): (org.bukkit.util.BlockTransformer | null);
 
 			/**
 			 * Sets a block transformer to a key.
@@ -48642,7 +48642,7 @@ declare global {
 			/**
 			 * Gets a entity transformer by key.
 			 */
-			getEntityTransformer(key: org.bukkit.NamespacedKey): org.bukkit.util.EntityTransformer;
+			getEntityTransformer(key: org.bukkit.NamespacedKey): (org.bukkit.util.EntityTransformer | null);
 
 			/**
 			 * Sets a entity transformer to a key.
@@ -48871,7 +48871,7 @@ declare global {
 			/**
 			 * Get the entity which triggered this event, if present.
 			 */
-			getEntity(): org.bukkit.entity.Entity;
+			getEntity(): (org.bukkit.entity.Entity | null);
 
 			/**
 			 * Get the block radius to which this event will be broadcast.
@@ -48897,7 +48897,7 @@ declare global {
 
 		}> {}
 		class GenericGameEvent {
-			constructor(event: org.bukkit.GameEvent, location: org.bukkit.Location, entity: org.bukkit.entity.Entity, radius: number, isAsync: boolean);
+			constructor(event: org.bukkit.GameEvent, location: org.bukkit.Location, entity: (org.bukkit.entity.Entity | null), radius: number, isAsync: boolean);
 
 		}
 		namespace GenericGameEvent {
@@ -48912,14 +48912,14 @@ declare global {
 			 * This is a convenience method for
 			 * getLootContext().getLootedEntity().
 			 */
-			getEntity(): org.bukkit.entity.Entity;
+			getEntity(): (org.bukkit.entity.Entity | null);
 
 			/**
 			 * Get the inventory holder in which the loot was generated.
 			 * If the loot was generated as a result of the block being broken, the
 			 * inventory holder will be null as this event is called post block break.
 			 */
-			getInventoryHolder(): org.bukkit.inventory.InventoryHolder;
+			getInventoryHolder(): (org.bukkit.inventory.InventoryHolder | null);
 
 			/**
 			 * Get the loot table used to generate loot.
@@ -48937,7 +48937,7 @@ declare global {
 			 * Note: the set collection is not the one which will be returned by
 			 * getLoot().
 			 */
-			setLoot(loot: globalThis.java.util.Collection<org.bukkit.inventory.ItemStack>): void;
+			setLoot(loot: (globalThis.java.util.Collection<org.bukkit.inventory.ItemStack> | null)): void;
 
 			/**
 			 * Get a mutable list of all loot to be generated.
@@ -48967,7 +48967,7 @@ declare global {
 
 		}> {}
 		class LootGenerateEvent {
-			constructor(world: org.bukkit.World, entity: org.bukkit.entity.Entity, inventoryHolder: org.bukkit.inventory.InventoryHolder, lootTable: org.bukkit.loot.LootTable, lootContext: org.bukkit.loot.LootContext, items: globalThis.java.util.List<org.bukkit.inventory.ItemStack>, plugin: boolean);
+			constructor(world: org.bukkit.World, entity: (org.bukkit.entity.Entity | null), inventoryHolder: (org.bukkit.inventory.InventoryHolder | null), lootTable: org.bukkit.loot.LootTable, lootContext: org.bukkit.loot.LootContext, items: globalThis.java.util.List<org.bukkit.inventory.ItemStack>, plugin: boolean);
 
 		}
 		namespace LootGenerateEvent {
@@ -48983,7 +48983,7 @@ declare global {
 			/**
 			 * Returns the Entity that triggered this portal creation (if available)
 			 */
-			getEntity(): org.bukkit.entity.Entity;
+			getEntity(): (org.bukkit.entity.Entity | null);
 
 			/**
 			 * Description copied from interface: Cancellable
@@ -49006,7 +49006,7 @@ declare global {
 		class PortalCreateEvent {
 			constructor(blocks: globalThis.java.util.List<org.bukkit.block.BlockState>, world: org.bukkit.World, reason: org.bukkit.event.world.PortalCreateEvent.CreateReason);
 
-			constructor(blocks: globalThis.java.util.List<org.bukkit.block.BlockState>, world: org.bukkit.World, entity: org.bukkit.entity.Entity, reason: org.bukkit.event.world.PortalCreateEvent.CreateReason);
+			constructor(blocks: globalThis.java.util.List<org.bukkit.block.BlockState>, world: org.bukkit.World, entity: (org.bukkit.entity.Entity | null), reason: org.bukkit.event.world.PortalCreateEvent.CreateReason);
 
 		}
 		namespace PortalCreateEvent {
@@ -49081,7 +49081,7 @@ declare global {
 			/**
 			 * Gets the player that created the structure.
 			 */
-			getPlayer(): org.bukkit.entity.Player;
+			getPlayer(): (org.bukkit.entity.Player | null);
 
 			/**
 			 * Gets a list of all blocks associated with the structure.
@@ -49102,7 +49102,7 @@ declare global {
 
 		}> {}
 		class StructureGrowEvent {
-			constructor(location: org.bukkit.Location, species: org.bukkit.TreeType, bonemeal: boolean, player: org.bukkit.entity.Player, blocks: globalThis.java.util.List<org.bukkit.block.BlockState>);
+			constructor(location: org.bukkit.Location, species: org.bukkit.TreeType, bonemeal: boolean, player: (org.bukkit.entity.Player | null), blocks: globalThis.java.util.List<org.bukkit.block.BlockState>);
 
 		}
 		namespace StructureGrowEvent {
@@ -49532,7 +49532,7 @@ declare global {
 			 * This may be null to represent the default color of an object, if the
 			 * object has a special default color (e.g Shulkers).
 			 */
-			getColor(): org.bukkit.DyeColor;
+			getColor(): (org.bukkit.DyeColor | null);
 
 			/**
 			 * Sets the color of this object to the specified DyeColor.
@@ -51308,7 +51308,7 @@ declare global {
 			 * Gets the specified attribute instance from the object. This instance will
 			 * be backed directly to the object and any changes will be visible at once.
 			 */
-			getAttribute(attribute: org.bukkit.attribute.Attribute): org.bukkit.attribute.AttributeInstance;
+			getAttribute(attribute: org.bukkit.attribute.Attribute): (org.bukkit.attribute.AttributeInstance | null);
 
 		}
 		interface Attribute {
@@ -51561,7 +51561,7 @@ declare global {
 			 * Get the EquipmentSlot this AttributeModifier is active on,
 			 * or null if this modifier is applicable for any slot.
 			 */
-			getSlot(): org.bukkit.inventory.EquipmentSlot;
+			getSlot(): (org.bukkit.inventory.EquipmentSlot | null);
 
 			/**
 			 * Get the EquipmentSlot this AttributeModifier is active on,
@@ -51586,7 +51586,7 @@ declare global {
 
 			constructor(uuid: globalThis.java.util.UUID, name: string, amount: number, operation: org.bukkit.attribute.AttributeModifier.Operation);
 
-			constructor(uuid: globalThis.java.util.UUID, name: string, amount: number, operation: org.bukkit.attribute.AttributeModifier.Operation, slot: org.bukkit.inventory.EquipmentSlot);
+			constructor(uuid: globalThis.java.util.UUID, name: string, amount: number, operation: org.bukkit.attribute.AttributeModifier.Operation, slot: (org.bukkit.inventory.EquipmentSlot | null));
 
 			constructor(uuid: globalThis.java.util.UUID, name: string, amount: number, operation: org.bukkit.attribute.AttributeModifier.Operation, slot: org.bukkit.inventory.EquipmentSlotGroup);
 
@@ -51734,7 +51734,7 @@ declare global {
 			/**
 			 * Gets an embedded resource in this plugin
 			 */
-			getResource(filename: string): any /* java.io.InputStream */;
+			getResource(filename: string): (any /* java.io.InputStream */ | null);
 
 			/**
 			 * Saves the FileConfiguration retrievable by getConfig().
@@ -51811,13 +51811,13 @@ declare global {
 			 * Gets a ChunkGenerator for use in a default world, as specified
 			 * in the server configuration
 			 */
-			getDefaultWorldGenerator(worldName: string, id: string): org.bukkit.generator.ChunkGenerator;
+			getDefaultWorldGenerator(worldName: string, id: (string | null)): (org.bukkit.generator.ChunkGenerator | null);
 
 			/**
 			 * Gets a BiomeProvider for use in a default world, as specified
 			 * in the server configuration
 			 */
-			getDefaultBiomeProvider(worldName: string, id: string): org.bukkit.generator.BiomeProvider;
+			getDefaultBiomeProvider(worldName: string, id: (string | null)): (org.bukkit.generator.BiomeProvider | null);
 
 			/**
 			 * Returns the plugin logger associated with this server's logger. The
@@ -51971,7 +51971,7 @@ declare global {
 			 * Example:
 			 * description: This plugin is so 31337. You can set yourself on fire.
 			 */
-			getDescription(): string;
+			getDescription(): (string | null);
 
 			/**
 			 * Gives the phase of server startup that the plugin should be loaded.
@@ -52053,7 +52053,7 @@ declare global {
 			 * Example:
 			 * website: http://www.curse.com/server-mods/minecraft/myplugin
 			 */
-			getWebsite(): string;
+			getWebsite(): (string | null);
 
 			/**
 			 * Gives a list of other plugins that the plugin requires.
@@ -52137,7 +52137,7 @@ declare global {
 			 * 
 			 * Example:prefix: ex-why-zee
 			 */
-			getPrefix(): string;
+			getPrefix(): (string | null);
 
 			/**
 			 * Gives the map of command-name to command-properties. Each entry in this
@@ -52410,7 +52410,7 @@ declare global {
 			 * 
 			 * Example:api-version: 1.13
 			 */
-			getAPIVersion(): string;
+			getAPIVersion(): (string | null);
 
 			/**
 			 * Gets the libraries this plugin requires. This is a preview feature.
@@ -52423,7 +52423,7 @@ declare global {
 			 */
 			getLibraries(): globalThis.java.util.List<string>;
 
-			getClassLoaderOf(): string;
+			getClassLoaderOf(): (string | null);
 
 			/**
 			 * Saves this PluginDescriptionFile to the given writer
@@ -52524,7 +52524,7 @@ declare global {
 			 * 
 			 * Please note that the name of the plugin is case-sensitive
 			 */
-			getPlugin(name: string): org.bukkit.plugin.Plugin;
+			getPlugin(name: string): (org.bukkit.plugin.Plugin | null);
 
 			/**
 			 * Checks if the given plugin is enabled or not
@@ -52536,14 +52536,14 @@ declare global {
 			/**
 			 * Checks if the given plugin is enabled or not
 			 */
-			isPluginEnabled(plugin: org.bukkit.plugin.Plugin): boolean;
+			isPluginEnabled(plugin: (org.bukkit.plugin.Plugin | null)): boolean;
 
 			/**
 			 * Loads the plugin in the specified file
 			 * 
 			 * File must be valid according to the current enabled Plugin interfaces
 			 */
-			loadPlugin(file: any /* java.io.File */): org.bukkit.plugin.Plugin;
+			loadPlugin(file: any /* java.io.File */): (org.bukkit.plugin.Plugin | null);
 
 			/**
 			 * Disables all the loaded plugins
@@ -52593,7 +52593,7 @@ declare global {
 			/**
 			 * Gets a Permission from its fully qualified name
 			 */
-			getPermission(name: string): org.bukkit.permissions.Permission;
+			getPermission(name: string): (org.bukkit.permissions.Permission | null);
 
 			/**
 			 * Adds a Permission to this plugin manager.
@@ -52784,13 +52784,13 @@ declare global {
 			 * Queries for a provider. This may return null if no provider has been
 			 * registered for a service. The highest priority provider is returned.
 			 */
-			load<T = any>(service: globalThis.java.lang.Class<T>): T;
+			load<T = any>(service: globalThis.java.lang.Class<T>): (T | null);
 
 			/**
 			 * Queries for a provider registration. This may return null if no provider
 			 * has been registered for a service.
 			 */
-			getRegistration<T = any>(service: globalThis.java.lang.Class<T>): org.bukkit.plugin.RegisteredServiceProvider<T>;
+			getRegistration<T = any>(service: globalThis.java.lang.Class<T>): (org.bukkit.plugin.RegisteredServiceProvider<T> | null);
 
 			/**
 			 * Get registrations of providers for a plugin.
@@ -52828,14 +52828,14 @@ declare global {
 			 * 
 			 * File must be valid according to the current enabled Plugin interfaces
 			 */
-			loadPlugin(file: any /* java.io.File */): org.bukkit.plugin.Plugin;
+			loadPlugin(file: any /* java.io.File */): (org.bukkit.plugin.Plugin | null);
 
 			/**
 			 * Checks if the given plugin is loaded and returns it when applicable
 			 * 
 			 * Please note that the name of the plugin is case-sensitive
 			 */
-			getPlugin(name: string): org.bukkit.plugin.Plugin;
+			getPlugin(name: string): (org.bukkit.plugin.Plugin | null);
 
 			/**
 			 * Checks if the given plugin is enabled or not
@@ -52847,7 +52847,7 @@ declare global {
 			/**
 			 * Checks if the given plugin is enabled or not
 			 */
-			isPluginEnabled(plugin: org.bukkit.plugin.Plugin): boolean;
+			isPluginEnabled(plugin: (org.bukkit.plugin.Plugin | null)): boolean;
 
 			/**
 			 * Description copied from interface: PluginManager
@@ -52893,7 +52893,7 @@ declare global {
 			/**
 			 * Description copied from interface: PluginManager
 			 */
-			getPermission(name: string): org.bukkit.permissions.Permission;
+			getPermission(name: string): (org.bukkit.permissions.Permission | null);
 
 			/**
 			 * Description copied from interface: PluginManager
@@ -53001,13 +53001,13 @@ declare global {
 			 * Queries for a provider. This may return if no provider has been
 			 * registered for a service. The highest priority provider is returned.
 			 */
-			load<T = any>(service: globalThis.java.lang.Class<T>): T;
+			load<T = any>(service: globalThis.java.lang.Class<T>): (T | null);
 
 			/**
 			 * Queries for a provider registration. This may return if no provider
 			 * has been registered for a service.
 			 */
-			getRegistration<T = any>(service: globalThis.java.lang.Class<T>): org.bukkit.plugin.RegisteredServiceProvider<T>;
+			getRegistration<T = any>(service: globalThis.java.lang.Class<T>): (org.bukkit.plugin.RegisteredServiceProvider<T> | null);
 
 			/**
 			 * Get registrations of providers for a plugin.
@@ -53066,7 +53066,7 @@ declare global {
 			 * && this.getEventClass() != clazz &&
 			 * event.getClass().isAssignableFrom(clazz) for all handled events.
 			 */
-			getEventClass(): globalThis.java.lang.Class<org.bukkit.event.Event>;
+			getEventClass(): (globalThis.java.lang.Class<org.bukkit.event.Event> | null);
 
 			/**
 			 * Gets whether this listener has handled multiple events, such that for
@@ -53178,23 +53178,23 @@ declare global {
 			/**
 			 * Returns the primary effect set on the beacon
 			 */
-			getPrimaryEffect(): org.bukkit.potion.PotionEffect;
+			getPrimaryEffect(): (org.bukkit.potion.PotionEffect | null);
 
 			/**
 			 * Set the primary effect on this beacon, or null to clear.
 			 */
-			setPrimaryEffect(effect: org.bukkit.potion.PotionEffectType): void;
+			setPrimaryEffect(effect: (org.bukkit.potion.PotionEffectType | null)): void;
 
 			/**
 			 * Returns the secondary effect set on the beacon.
 			 */
-			getSecondaryEffect(): org.bukkit.potion.PotionEffect;
+			getSecondaryEffect(): (org.bukkit.potion.PotionEffect | null);
 
 			/**
 			 * Set the secondary effect on this beacon, or null to clear. Note that tier
 			 * must be >= 4 for this effect to be active.
 			 */
-			setSecondaryEffect(effect: org.bukkit.potion.PotionEffectType): void;
+			setSecondaryEffect(effect: (org.bukkit.potion.PotionEffectType | null)): void;
 
 		}> {}
 		interface Bed extends Modify<org.bukkit.block.TileState & org.bukkit.material.Colorable, {}> {}
@@ -53202,12 +53202,12 @@ declare global {
 			/**
 			 * Get the hive's flower location.
 			 */
-			getFlower(): org.bukkit.Location;
+			getFlower(): (org.bukkit.Location | null);
 
 			/**
 			 * Set the hive's flower location.
 			 */
-			setFlower(location: org.bukkit.Location): void;
+			setFlower(location: (org.bukkit.Location | null)): void;
 
 			/**
 			 * Check if the hive is sedated due to smoke from a nearby campfire.
@@ -53219,18 +53219,18 @@ declare global {
 			/**
 			 * Ring this bell. This will call a BellRingEvent.
 			 */
-			ring(entity: org.bukkit.entity.Entity, direction: org.bukkit.block.BlockFace): boolean;
+			ring(entity: (org.bukkit.entity.Entity | null), direction: (org.bukkit.block.BlockFace | null)): boolean;
 
 			/**
 			 * Ring this bell in the direction that the bell is facing. This will call a
 			 * BellRingEvent.
 			 */
-			ring(entity: org.bukkit.entity.Entity): boolean;
+			ring(entity: (org.bukkit.entity.Entity | null)): boolean;
 
 			/**
 			 * Ring this bell. This will call a BellRingEvent.
 			 */
-			ring(direction: org.bukkit.block.BlockFace): boolean;
+			ring(direction: (org.bukkit.block.BlockFace | null)): boolean;
 
 			/**
 			 * Ring this bell in the direction that the bell is facing. This will call a
@@ -53514,7 +53514,7 @@ declare global {
 			 * If the provided Location is null this method does nothing and returns
 			 * null.
 			 */
-			getLocation(loc: org.bukkit.Location): org.bukkit.Location;
+			getLocation(loc: (org.bukkit.Location | null)): (org.bukkit.Location | null);
 
 			/**
 			 * Gets the chunk which contains this block
@@ -53578,7 +53578,7 @@ declare global {
 			 * 
 			 * If the given block is not connected to this block, null may be returned
 			 */
-			getFace(block: org.bukkit.block.Block): org.bukkit.block.BlockFace;
+			getFace(block: org.bukkit.block.Block): (org.bukkit.block.BlockFace | null);
 
 			/**
 			 * Captures the current state of this block. You may then cast that state
@@ -53671,7 +53671,7 @@ declare global {
 			 * Breaks the block and spawns items as if a player had digged it with a
 			 * specific tool
 			 */
-			breakNaturally(tool: org.bukkit.inventory.ItemStack): boolean;
+			breakNaturally(tool: (org.bukkit.inventory.ItemStack | null)): boolean;
 
 			/**
 			 * Simulate bone meal application to this block (if possible).
@@ -53687,13 +53687,13 @@ declare global {
 			 * Returns a list of items which would drop by destroying this block with
 			 * a specific tool
 			 */
-			getDrops(tool: org.bukkit.inventory.ItemStack): globalThis.java.util.Collection<org.bukkit.inventory.ItemStack>;
+			getDrops(tool: (org.bukkit.inventory.ItemStack | null)): globalThis.java.util.Collection<org.bukkit.inventory.ItemStack>;
 
 			/**
 			 * Returns a list of items which would drop by the entity destroying this
 			 * block with a specific tool
 			 */
-			getDrops(tool: org.bukkit.inventory.ItemStack, entity: org.bukkit.entity.Entity): globalThis.java.util.Collection<org.bukkit.inventory.ItemStack>;
+			getDrops(tool: org.bukkit.inventory.ItemStack, entity: (org.bukkit.entity.Entity | null)): globalThis.java.util.Collection<org.bukkit.inventory.ItemStack>;
 
 			/**
 			 * Returns if the given item is a preferred choice to break this Block.
@@ -53730,7 +53730,7 @@ declare global {
 			 * Performs a ray trace that checks for collision with this specific block
 			 * in its current state using its precise collision shape.
 			 */
-			rayTrace(start: org.bukkit.Location, direction: org.bukkit.util.Vector, maxDistance: number, fluidCollisionMode: org.bukkit.FluidCollisionMode): org.bukkit.util.RayTraceResult;
+			rayTrace(start: org.bukkit.Location, direction: org.bukkit.util.Vector, maxDistance: number, fluidCollisionMode: org.bukkit.FluidCollisionMode): (org.bukkit.util.RayTraceResult | null);
 
 			/**
 			 * Gets the approximate bounding box for this block.
@@ -53905,7 +53905,7 @@ declare global {
 			 * 
 			 * If this block state is not placed the location's world will be null!
 			 */
-			getLocation(loc: org.bukkit.Location): org.bukkit.Location;
+			getLocation(loc: (org.bukkit.Location | null)): (org.bukkit.Location | null);
 
 			/**
 			 * Gets the chunk which contains the block represented by this block state.
@@ -54049,7 +54049,7 @@ declare global {
 			 * properties initialized to unspecified defaults, except for those provided
 			 * in data.
 			 */
-			createBlockData(data: string): org.bukkit.block.data.BlockData;
+			createBlockData(data: (string | null)): org.bukkit.block.data.BlockData;
 
 			/**
 			 * Check if the blockt type is solid (can be built upon)
@@ -54140,7 +54140,7 @@ declare global {
 			/**
 			 * Tries to convert this BlockType into a Material
 			 */
-			asMaterial(): org.bukkit.Material;
+			asMaterial(): (org.bukkit.Material | null);
 
 		}> {}
 		namespace BlockType {
@@ -58330,7 +58330,7 @@ declare global {
 				 * Creates a new BlockData instance for this block type, with
 				 * all properties initialized to unspecified defaults.
 				 */
-				createBlockData(consumer: (value: B) => void): B;
+				createBlockData(consumer: ((value: B) => void | null)): B;
 
 				/**
 				 * Creates a new BlockData instance for this block type, with all
@@ -58343,7 +58343,7 @@ declare global {
 				 * properties initialized to unspecified defaults, except for those provided
 				 * in data.
 				 */
-				createBlockData(data: string): B;
+				createBlockData(data: (string | null)): B;
 
 			}> {}
 		}
@@ -58384,22 +58384,22 @@ declare global {
 			 * Get the item which will be revealed when the sand is fully brushed away
 			 * and uncovered.
 			 */
-			getItem(): org.bukkit.inventory.ItemStack;
+			getItem(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Sets the item which will be revealed when the sand is fully brushed away
 			 * and uncovered.
 			 */
-			setItem(item: org.bukkit.inventory.ItemStack): void;
+			setItem(item: (org.bukkit.inventory.ItemStack | null)): void;
 
 		}> {}
 		interface CalibratedSculkSensor extends Modify<org.bukkit.block.SculkSensor, {}> {}
 		interface Campfire extends Modify<org.bukkit.block.TileState, {
 			getSize(): number;
 
-			getItem(index: number): org.bukkit.inventory.ItemStack;
+			getItem(index: number): (org.bukkit.inventory.ItemStack | null);
 
-			setItem(index: number, item: org.bukkit.inventory.ItemStack): void;
+			setItem(index: number, item: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Get cook time.
@@ -58483,7 +58483,7 @@ declare global {
 			 * Setting the command to null is the same as setting it to an empty
 			 * String.
 			 */
-			setCommand(command: string): void;
+			setCommand(command: (string | null)): void;
 
 			/**
 			 * Gets the name of this CommandBlock. The name is used with commands
@@ -58497,7 +58497,7 @@ declare global {
 			 * that this CommandBlock executes. Setting the name to null is the
 			 * same as setting it to "@".
 			 */
-			setName(name: string): void;
+			setName(name: (string | null)): void;
 
 		}> {}
 		interface Comparator extends Modify<org.bukkit.block.TileState, {}> {}
@@ -58557,12 +58557,12 @@ declare global {
 			 * then the passed entity will be ignored and the conduit will also continue
 			 * to look for a new target.
 			 */
-			setTarget(target: org.bukkit.entity.LivingEntity): boolean;
+			setTarget(target: (org.bukkit.entity.LivingEntity | null)): boolean;
 
 			/**
 			 * Get the conduit's hunting target.
 			 */
-			getTarget(): org.bukkit.entity.LivingEntity;
+			getTarget(): (org.bukkit.entity.LivingEntity | null);
 
 			/**
 			 * Check whether or not this conduit has an active (alive) hunting target.
@@ -58639,23 +58639,23 @@ declare global {
 			/**
 			 * Get the spawner's creature type.
 			 */
-			getSpawnedType(): org.bukkit.entity.EntityType;
+			getSpawnedType(): (org.bukkit.entity.EntityType | null);
 
 			/**
 			 * Set the spawner's creature type.
 			 * This will override any entities that have been added with addPotentialSpawn(org.bukkit.entity.EntitySnapshot, int, org.bukkit.block.spawner.SpawnRule)
 			 */
-			setSpawnedType(creatureType: org.bukkit.entity.EntityType): void;
+			setSpawnedType(creatureType: (org.bukkit.entity.EntityType | null)): void;
 
 			/**
 			 * Set the spawner mob type.
 			 */
-			setCreatureTypeByName(creatureType: string): void;
+			setCreatureTypeByName(creatureType: (string | null)): void;
 
 			/**
 			 * Get the spawner's creature type.
 			 */
-			getCreatureTypeName(): string;
+			getCreatureTypeName(): (string | null);
 
 			/**
 			 * Get the spawner's delay.
@@ -58788,7 +58788,7 @@ declare global {
 			 * All applicable data from the spawner will be copied, such as custom name,
 			 * health, and velocity.
 			 */
-			getSpawnedEntity(): org.bukkit.entity.EntitySnapshot;
+			getSpawnedEntity(): (org.bukkit.entity.EntitySnapshot | null);
 
 			/**
 			 * Sets the entity that will be spawned by this spawner.
@@ -58809,7 +58809,7 @@ declare global {
 			 * The SpawnRule will determine under what conditions this entry can
 			 * spawn, passing null will use the default conditions for the given entity.
 			 */
-			addPotentialSpawn(snapshot: org.bukkit.entity.EntitySnapshot, weight: number, spawnRule: org.bukkit.block.spawner.SpawnRule): void;
+			addPotentialSpawn(snapshot: org.bukkit.entity.EntitySnapshot, weight: number, spawnRule: (org.bukkit.block.spawner.SpawnRule | null)): void;
 
 			/**
 			 * Adds a new SpawnerEntry to the list of entities this spawner can
@@ -58838,7 +58838,7 @@ declare global {
 			/**
 			 * Set the sherd on the provided side.
 			 */
-			setSherd(side: org.bukkit.block.DecoratedPot.Side, sherd: org.bukkit.Material): void;
+			setSherd(side: org.bukkit.block.DecoratedPot.Side, sherd: (org.bukkit.Material | null)): void;
 
 			/**
 			 * Get the sherd on the provided side.
@@ -58894,7 +58894,7 @@ declare global {
 			 * If the block represented by this state is no longer a dispenser, this
 			 * will return null.
 			 */
-			getBlockProjectileSource(): org.bukkit.projectiles.BlockProjectileSource;
+			getBlockProjectileSource(): (org.bukkit.projectiles.BlockProjectileSource | null);
 
 			/**
 			 * Attempts to dispense the contents of the dispenser.
@@ -58911,13 +58911,13 @@ declare global {
 			 */
 			getInventory(): org.bukkit.inventory.Inventory;
 
-			getLeftSide(): org.bukkit.inventory.InventoryHolder;
+			getLeftSide(): (org.bukkit.inventory.InventoryHolder | null);
 
-			getRightSide(): org.bukkit.inventory.InventoryHolder;
+			getRightSide(): (org.bukkit.inventory.InventoryHolder | null);
 
 			getLocation(): org.bukkit.Location;
 
-			getWorld(): org.bukkit.World;
+			getWorld(): (org.bukkit.World | null);
 
 			getX(): number;
 
@@ -58960,7 +58960,7 @@ declare global {
 			 * 
 			 * If this block state is not placed the location's world will be null.
 			 */
-			getExitLocation(): org.bukkit.Location;
+			getExitLocation(): (org.bukkit.Location | null);
 
 			/**
 			 * Sets the exit location that entities are teleported to when
@@ -58968,7 +58968,7 @@ declare global {
 			 * 
 			 * If this block state is not placed the location's world has to be null.
 			 */
-			setExitLocation(location: org.bukkit.Location): void;
+			setExitLocation(location: (org.bukkit.Location | null)): void;
 
 			/**
 			 * Gets whether this gateway will teleport entities directly to
@@ -59099,7 +59099,7 @@ declare global {
 			/**
 			 * Sets the record being played.
 			 */
-			setPlaying(record: org.bukkit.Material): void;
+			setPlaying(record: (org.bukkit.Material | null)): void;
 
 			/**
 			 * Gets whether or not this jukebox has a record.
@@ -59118,7 +59118,7 @@ declare global {
 			/**
 			 * Sets the record being played. The jukebox will start playing automatically.
 			 */
-			setRecord(record: org.bukkit.inventory.ItemStack): void;
+			setRecord(record: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Checks if the jukebox is playing a record.
@@ -59201,7 +59201,7 @@ declare global {
 			 * Sets the key required to access this container. Set to null (or empty
 			 * string) to remove key.
 			 */
-			setLock(key: string): void;
+			setLock(key: (string | null)): void;
 
 		}
 		interface PistonMoveReaction {
@@ -59245,7 +59245,7 @@ declare global {
 			 */
 			function valueOf(name: string): org.bukkit.block.PistonMoveReaction;
 
-			function getById(id: number): org.bukkit.block.PistonMoveReaction;
+			function getById(id: number): (org.bukkit.block.PistonMoveReaction | null);
 
 		}
 		interface SculkCatalyst extends Modify<org.bukkit.block.TileState, {
@@ -59298,14 +59298,14 @@ declare global {
 			/**
 			 * Simulates a player causing a vibration.
 			 */
-			tryShriek(player: org.bukkit.entity.Player): void;
+			tryShriek(player: (org.bukkit.entity.Player | null)): void;
 
 		}> {}
 		interface ShulkerBox extends Modify<org.bukkit.block.Container & org.bukkit.loot.Lootable & org.bukkit.block.Lidded, {
 			/**
 			 * Get the DyeColor corresponding to this ShulkerBox
 			 */
-			getColor(): org.bukkit.DyeColor;
+			getColor(): (org.bukkit.DyeColor | null);
 
 		}> {}
 		interface Sign extends Modify<org.bukkit.block.TileState & org.bukkit.material.Colorable, {
@@ -59386,7 +59386,7 @@ declare global {
 			 * Gets the player that is currently allowed to edit this sign.
 			 * Edits from other players will be rejected if this value is not null.
 			 */
-			getAllowedEditor(): org.bukkit.entity.Player;
+			getAllowedEditor(): (org.bukkit.entity.Player | null);
 
 		}> {}
 		interface Skull extends Modify<org.bukkit.block.TileState, {
@@ -59398,7 +59398,7 @@ declare global {
 			/**
 			 * Gets the owner of the skull, if one exists
 			 */
-			getOwner(): string;
+			getOwner(): (string | null);
 
 			/**
 			 * Sets the owner of the skull
@@ -59406,13 +59406,13 @@ declare global {
 			 * Involves a potentially blocking web request to acquire the profile data for
 			 * the provided name.
 			 */
-			setOwner(name: string): boolean;
+			setOwner(name: (string | null)): boolean;
 
 			/**
 			 * Get the player which owns the skull. This player may appear as the
 			 * texture depending on skull type.
 			 */
-			getOwningPlayer(): org.bukkit.OfflinePlayer;
+			getOwningPlayer(): (org.bukkit.OfflinePlayer | null);
 
 			/**
 			 * Set the player which owns the skull. This player may appear as the
@@ -59424,7 +59424,7 @@ declare global {
 			 * Gets the profile of the player who owns the skull. This player profile
 			 * may appear as the texture depending on skull type.
 			 */
-			getOwnerProfile(): org.bukkit.profile.PlayerProfile;
+			getOwnerProfile(): (org.bukkit.profile.PlayerProfile | null);
 
 			/**
 			 * Sets the profile of the player who owns the skull. This player profile
@@ -59434,7 +59434,7 @@ declare global {
 			 * of these is missing, the profile must contain a name by which the server
 			 * will then attempt to look up the unique id and skin texture.
 			 */
-			setOwnerProfile(profile: org.bukkit.profile.PlayerProfile): void;
+			setOwnerProfile(profile: (org.bukkit.profile.PlayerProfile | null)): void;
 
 			/**
 			 * Gets the sound to play if the skull is placed on a note block.
@@ -59442,7 +59442,7 @@ declare global {
 			 * Note: This only works for player heads. For other heads,
 			 * see Instrument.
 			 */
-			getNoteBlockSound(): org.bukkit.NamespacedKey;
+			getNoteBlockSound(): (org.bukkit.NamespacedKey | null);
 
 			/**
 			 * Sets the sound to play if the skull is placed on a note block.
@@ -59450,7 +59450,7 @@ declare global {
 			 * Note: This only works for player heads. For other heads,
 			 * see Instrument.
 			 */
-			setNoteBlockSound(noteBlockSound: org.bukkit.NamespacedKey): void;
+			setNoteBlockSound(noteBlockSound: (org.bukkit.NamespacedKey | null)): void;
 
 			/**
 			 * Gets the rotation of the skull in the world (or facing direction if this
@@ -59757,7 +59757,7 @@ declare global {
 			/**
 			 * Sets the title of this boss bar
 			 */
-			setTitle(title: string): void;
+			setTitle(title: (string | null)): void;
 
 			/**
 			 * Returns the color of this boss bar
@@ -59853,7 +59853,7 @@ declare global {
 			 * 
 			 * Will return null if the dragon has been slain.
 			 */
-			getEnderDragon(): org.bukkit.entity.EnderDragon;
+			getEnderDragon(): (org.bukkit.entity.EnderDragon | null);
 
 			/**
 			 * Get the boss bar to be displayed for this dragon battle.
@@ -59865,7 +59865,7 @@ declare global {
 			 * 
 			 * This location will be at the center of the base (bottom) of the portal.
 			 */
-			getEndPortalLocation(): org.bukkit.Location;
+			getEndPortalLocation(): (org.bukkit.Location | null);
 
 			/**
 			 * Generate the end portal.
@@ -59894,7 +59894,7 @@ declare global {
 			/**
 			 * Try to initiate a respawn sequence to summon the dragon.
 			 */
-			initiateRespawn(enderCrystals: globalThis.java.util.Collection<org.bukkit.entity.EnderCrystal>): boolean;
+			initiateRespawn(enderCrystals: (globalThis.java.util.Collection<org.bukkit.entity.EnderCrystal> | null)): boolean;
 
 			/**
 			 * Get this battle's current respawn phase.
@@ -60247,7 +60247,7 @@ declare global {
 			 * This method only gets called once when the world is loaded. Returning
 			 * another BiomeProvider later one is not respected.
 			 */
-			getDefaultBiomeProvider(worldInfo: org.bukkit.generator.WorldInfo): org.bukkit.generator.BiomeProvider;
+			getDefaultBiomeProvider(worldInfo: org.bukkit.generator.WorldInfo): (org.bukkit.generator.BiomeProvider | null);
 
 			/**
 			 * This method is similar to
@@ -60300,7 +60300,7 @@ declare global {
 			 * A null value is returned if a world should not use a fixed spawn point,
 			 * and will instead attempt to find one randomly.
 			 */
-			getFixedSpawnLocation(world: org.bukkit.World, random: globalThis.java.util.Random): org.bukkit.Location;
+			getFixedSpawnLocation(world: org.bukkit.World, random: globalThis.java.util.Random): (org.bukkit.Location | null);
 
 			/**
 			 * Gets if this ChunkGenerator is parallel capable.
@@ -61047,7 +61047,7 @@ declare global {
 			 * Intersections at edges and corners yield one of the affected block faces
 			 * as hit result, but it is not defined which of them.
 			 */
-			rayTrace(start: org.bukkit.util.Vector, direction: org.bukkit.util.Vector, maxDistance: number): org.bukkit.util.RayTraceResult;
+			rayTrace(start: org.bukkit.util.Vector, direction: org.bukkit.util.Vector, maxDistance: number): (org.bukkit.util.RayTraceResult | null);
 
 			hashCode(): number;
 
@@ -61141,12 +61141,12 @@ declare global {
 			/**
 			 * Breaks a raw string up into pages using the default width and height.
 			 */
-			function paginate(unpaginatedString: string, pageNumber: number): org.bukkit.util.ChatPaginator.ChatPage;
+			function paginate(unpaginatedString: (string | null), pageNumber: number): org.bukkit.util.ChatPaginator.ChatPage;
 
 			/**
 			 * Breaks a raw string up into pages using a provided width and height.
 			 */
-			function paginate(unpaginatedString: string, pageNumber: number, lineLength: number, pageHeight: number): org.bukkit.util.ChatPaginator.ChatPage;
+			function paginate(unpaginatedString: (string | null), pageNumber: number, lineLength: number, pageHeight: number): org.bukkit.util.ChatPaginator.ChatPage;
 
 		}
 		namespace ChatPaginator {
@@ -61264,17 +61264,17 @@ declare global {
 
 			function square(num: number): number;
 
-			function toInt(object: any): number;
+			function toInt(object: (any | null)): number;
 
-			function toFloat(object: any): number;
+			function toFloat(object: (any | null)): number;
 
-			function toDouble(object: any): number;
+			function toDouble(object: (any | null)): number;
 
-			function toLong(object: any): number;
+			function toLong(object: (any | null)): number;
 
-			function toShort(object: any): number;
+			function toShort(object: (any | null)): number;
 
-			function toByte(object: any): any /* byte */;
+			function toByte(object: (any | null)): any /* byte */;
 
 			function isFinite(d: number): boolean;
 
@@ -61294,17 +61294,17 @@ declare global {
 			/**
 			 * Gets the hit block.
 			 */
-			getHitBlock(): org.bukkit.block.Block;
+			getHitBlock(): (org.bukkit.block.Block | null);
 
 			/**
 			 * Gets the hit block face.
 			 */
-			getHitBlockFace(): org.bukkit.block.BlockFace;
+			getHitBlockFace(): (org.bukkit.block.BlockFace | null);
 
 			/**
 			 * Gets the hit entity.
 			 */
-			getHitEntity(): org.bukkit.entity.Entity;
+			getHitEntity(): (org.bukkit.entity.Entity | null);
 
 			hashCode(): number;
 
@@ -61322,22 +61322,22 @@ declare global {
 			/**
 			 * Creates a RayTraceResult.
 			 */
-			constructor(hitPosition: org.bukkit.util.Vector, hitBlockFace: org.bukkit.block.BlockFace);
+			constructor(hitPosition: org.bukkit.util.Vector, hitBlockFace: (org.bukkit.block.BlockFace | null));
 
 			/**
 			 * Creates a RayTraceResult.
 			 */
-			constructor(hitPosition: org.bukkit.util.Vector, hitBlock: org.bukkit.block.Block, hitBlockFace: org.bukkit.block.BlockFace);
+			constructor(hitPosition: org.bukkit.util.Vector, hitBlock: (org.bukkit.block.Block | null), hitBlockFace: (org.bukkit.block.BlockFace | null));
 
 			/**
 			 * Creates a RayTraceResult.
 			 */
-			constructor(hitPosition: org.bukkit.util.Vector, hitEntity: org.bukkit.entity.Entity);
+			constructor(hitPosition: org.bukkit.util.Vector, hitEntity: (org.bukkit.entity.Entity | null));
 
 			/**
 			 * Creates a RayTraceResult.
 			 */
-			constructor(hitPosition: org.bukkit.util.Vector, hitEntity: org.bukkit.entity.Entity, hitBlockFace: org.bukkit.block.BlockFace);
+			constructor(hitPosition: org.bukkit.util.Vector, hitEntity: (org.bukkit.entity.Entity | null), hitBlockFace: (org.bukkit.block.BlockFace | null));
 
 		}
 		interface StringUtil {
@@ -61879,7 +61879,7 @@ declare global {
 			 * Executed on tab completion for this command, returning a list of
 			 * options the player can tab through.
 			 */
-			tabComplete(sender: org.bukkit.command.CommandSender, alias: string, args: string[], location: org.bukkit.Location): globalThis.java.util.List<string>;
+			tabComplete(sender: org.bukkit.command.CommandSender, alias: string, args: string[], location: (org.bukkit.Location | null)): globalThis.java.util.List<string>;
 
 			/**
 			 * Returns the name of this command
@@ -61899,13 +61899,13 @@ declare global {
 			 * Gets the permission required by users to be able to perform this
 			 * command
 			 */
-			getPermission(): string;
+			getPermission(): (string | null);
 
 			/**
 			 * Sets the permission required by users to be able to perform this
 			 * command
 			 */
-			setPermission(permission: string): void;
+			setPermission(permission: (string | null)): void;
 
 			/**
 			 * Tests the given CommandSender to see if they can perform this
@@ -61964,7 +61964,7 @@ declare global {
 			 * Returns a message to be displayed on a failed permission check for this
 			 * command
 			 */
-			getPermissionMessage(): string;
+			getPermissionMessage(): (string | null);
 
 			/**
 			 * Gets a brief description of this command
@@ -61993,7 +61993,7 @@ declare global {
 			/**
 			 * Sets the message sent when a permission check fails
 			 */
-			setPermissionMessage(permissionMessage: string): org.bukkit.command.Command;
+			setPermissionMessage(permissionMessage: (string | null)): org.bukkit.command.Command;
 
 			/**
 			 * Sets the example usage of this command
@@ -62092,21 +62092,21 @@ declare global {
 			/**
 			 * Gets the command registered to the specified name
 			 */
-			getCommand(name: string): org.bukkit.command.Command;
+			getCommand(name: string): (org.bukkit.command.Command | null);
 
 			/**
 			 * Looks for the requested command and executes an appropriate
 			 * tab-completer if found. This method will also tab-complete partial
 			 * commands.
 			 */
-			tabComplete(sender: org.bukkit.command.CommandSender, cmdLine: string): globalThis.java.util.List<string>;
+			tabComplete(sender: org.bukkit.command.CommandSender, cmdLine: string): (globalThis.java.util.List<string> | null);
 
 			/**
 			 * Looks for the requested command and executes an appropriate
 			 * tab-completer if found. This method will also tab-complete partial
 			 * commands.
 			 */
-			tabComplete(sender: org.bukkit.command.CommandSender, cmdLine: string, location: org.bukkit.Location): globalThis.java.util.List<string>;
+			tabComplete(sender: org.bukkit.command.CommandSender, cmdLine: string, location: (org.bukkit.Location | null)): (globalThis.java.util.List<string> | null);
 
 		}
 		interface CommandSender extends Modify<org.bukkit.permissions.Permissible, {
@@ -62123,12 +62123,12 @@ declare global {
 			/**
 			 * Sends this sender a message
 			 */
-			sendMessage(sender: globalThis.java.util.UUID, message: string): void;
+			sendMessage(sender: (globalThis.java.util.UUID | null), message: string): void;
 
 			/**
 			 * Sends this sender multiple messages
 			 */
-			sendMessage(sender: globalThis.java.util.UUID, ...messages: string[]): void;
+			sendMessage(sender: (globalThis.java.util.UUID | null), ...messages: string[]): void;
 
 			/**
 			 * Returns the server instance that this command is running on
@@ -62173,7 +62173,7 @@ declare global {
 			/**
 			 * Sets the CommandExecutor to run when parsing this command
 			 */
-			setExecutor(executor: org.bukkit.command.CommandExecutor): void;
+			setExecutor(executor: (org.bukkit.command.CommandExecutor | null)): void;
 
 			/**
 			 * Gets the CommandExecutor associated with this command
@@ -62186,12 +62186,12 @@ declare global {
 			 * If no TabCompleter is specified, and the command's executor implements
 			 * TabCompleter, then the executor will be used for tab completion.
 			 */
-			setTabCompleter(completer: org.bukkit.command.TabCompleter): void;
+			setTabCompleter(completer: (org.bukkit.command.TabCompleter | null)): void;
 
 			/**
 			 * Gets the TabCompleter associated with this command.
 			 */
-			getTabCompleter(): org.bukkit.command.TabCompleter;
+			getTabCompleter(): (org.bukkit.command.TabCompleter | null);
 
 			/**
 			 * Gets the owner of this PluginCommand
@@ -62309,17 +62309,17 @@ declare global {
 			/**
 			 * Description copied from interface: CommandMap
 			 */
-			getCommand(name: string): org.bukkit.command.Command;
+			getCommand(name: string): (org.bukkit.command.Command | null);
 
 			/**
 			 * Description copied from interface: CommandMap
 			 */
-			tabComplete(sender: org.bukkit.command.CommandSender, cmdLine: string): globalThis.java.util.List<string>;
+			tabComplete(sender: org.bukkit.command.CommandSender, cmdLine: string): (globalThis.java.util.List<string> | null);
 
 			/**
 			 * Description copied from interface: CommandMap
 			 */
-			tabComplete(sender: org.bukkit.command.CommandSender, cmdLine: string, location: org.bukkit.Location): globalThis.java.util.List<string>;
+			tabComplete(sender: org.bukkit.command.CommandSender, cmdLine: string, location: (org.bukkit.Location | null)): (globalThis.java.util.List<string> | null);
 
 			getCommands(): globalThis.java.util.Collection<org.bukkit.command.Command>;
 
@@ -62334,7 +62334,7 @@ declare global {
 			/**
 			 * Requests a list of possible completions for a command argument.
 			 */
-			onTabComplete(sender: org.bukkit.command.CommandSender, command: org.bukkit.command.Command, label: string, args: string[]): globalThis.java.util.List<string>;
+			onTabComplete(sender: org.bukkit.command.CommandSender, command: org.bukkit.command.Command, label: string, args: string[]): (globalThis.java.util.List<string> | null);
 
 		}
 		interface TabExecutor extends Modify<org.bukkit.command.TabCompleter & org.bukkit.command.CommandExecutor, {}> {}
@@ -62357,7 +62357,7 @@ declare global {
 			 * Launches a Projectile from the ProjectileSource with an
 			 * initial velocity.
 			 */
-			launchProjectile<T = any>(projectile: globalThis.java.lang.Class<T>, velocity: org.bukkit.util.Vector): T;
+			launchProjectile<T = any>(projectile: globalThis.java.lang.Class<T>, velocity: (org.bukkit.util.Vector | null)): T;
 
 		}
 	}
@@ -62504,7 +62504,7 @@ declare global {
 			 * Returns the metadata value that is stored on the
 			 * PersistentDataHolder instance.
 			 */
-			get<P = any, C = any>(key: org.bukkit.NamespacedKey, type: org.bukkit.persistence.PersistentDataType<P, C>): C;
+			get<P = any, C = any>(key: org.bukkit.NamespacedKey, type: org.bukkit.persistence.PersistentDataType<P, C>): (C | null);
 
 			/**
 			 * Returns the metadata value that is stored on the
@@ -62722,7 +62722,7 @@ declare global {
 			/**
 			 * Sends this sender a message raw
 			 */
-			sendRawMessage(sender: globalThis.java.util.UUID, message: string): void;
+			sendRawMessage(sender: (globalThis.java.util.UUID | null), message: string): void;
 
 		}
 		interface Conversation {
@@ -62818,12 +62818,12 @@ declare global {
 			/**
 			 * Initializes a new Conversation.
 			 */
-			constructor(plugin: org.bukkit.plugin.Plugin, forWhom: org.bukkit.conversations.Conversable, firstPrompt: org.bukkit.conversations.Prompt);
+			constructor(plugin: (org.bukkit.plugin.Plugin | null), forWhom: org.bukkit.conversations.Conversable, firstPrompt: (org.bukkit.conversations.Prompt | null));
 
 			/**
 			 * Initializes a new Conversation.
 			 */
-			constructor(plugin: org.bukkit.plugin.Plugin, forWhom: org.bukkit.conversations.Conversable, firstPrompt: org.bukkit.conversations.Prompt, initialSessionData: globalThis.java.util.Map<any, any>);
+			constructor(plugin: (org.bukkit.plugin.Plugin | null), forWhom: org.bukkit.conversations.Conversable, firstPrompt: (org.bukkit.conversations.Prompt | null), initialSessionData: globalThis.java.util.Map<any, any>);
 
 		}
 		namespace Conversation {
@@ -62849,7 +62849,7 @@ declare global {
 			/**
 			 * Gets the object that caused the conversation to be abandoned.
 			 */
-			getCanceller(): org.bukkit.conversations.ConversationCanceller;
+			getCanceller(): (org.bukkit.conversations.ConversationCanceller | null);
 
 			/**
 			 * Gets the abandoned conversation's conversation context.
@@ -62866,7 +62866,7 @@ declare global {
 		class ConversationAbandonedEvent {
 			constructor(conversation: org.bukkit.conversations.Conversation);
 
-			constructor(conversation: org.bukkit.conversations.Conversation, canceller: org.bukkit.conversations.ConversationCanceller);
+			constructor(conversation: org.bukkit.conversations.Conversation, canceller: (org.bukkit.conversations.ConversationCanceller | null));
 
 		}
 		interface ConversationAbandonedListener {
@@ -62900,7 +62900,7 @@ declare global {
 			/**
 			 * Gets the plugin that owns this conversation.
 			 */
-			getPlugin(): org.bukkit.plugin.Plugin;
+			getPlugin(): (org.bukkit.plugin.Plugin | null);
 
 			/**
 			 * Gets the subject of the conversation.
@@ -62918,18 +62918,18 @@ declare global {
 			 * this as a way to pass data through each Prompt as the conversation
 			 * develops.
 			 */
-			getSessionData(key: any): any;
+			getSessionData(key: any): (any | null);
 
 			/**
 			 * Sets session data shared between all Prompt invocations. Use
 			 * this as a way to pass data through each prompt as the conversation
 			 * develops.
 			 */
-			setSessionData(key: any, value: any): void;
+			setSessionData(key: any, value: (any | null)): void;
 
 		}
 		class ConversationContext {
-			constructor(plugin: org.bukkit.plugin.Plugin, forWhom: org.bukkit.conversations.Conversable, initialSessionData: globalThis.java.util.Map<any, any>);
+			constructor(plugin: (org.bukkit.plugin.Plugin | null), forWhom: org.bukkit.conversations.Conversable, initialSessionData: globalThis.java.util.Map<any, any>);
 
 		}
 		interface ConversationFactory {
@@ -62970,7 +62970,7 @@ declare global {
 			 * 
 			 * The default is Prompt.END_OF_CONVERSATION.
 			 */
-			withFirstPrompt(firstPrompt: org.bukkit.conversations.Prompt): org.bukkit.conversations.ConversationFactory;
+			withFirstPrompt(firstPrompt: (org.bukkit.conversations.Prompt | null)): org.bukkit.conversations.ConversationFactory;
 
 			/**
 			 * Sets any initial data with which to populate the conversation context
@@ -62993,7 +62993,7 @@ declare global {
 			 * Prevents this factory from creating a conversation for non-player
 			 * Conversable objects.
 			 */
-			thatExcludesNonPlayersWithMessage(playerOnlyMessage: string): org.bukkit.conversations.ConversationFactory;
+			thatExcludesNonPlayersWithMessage(playerOnlyMessage: (string | null)): org.bukkit.conversations.ConversationFactory;
 
 			/**
 			 * Adds a ConversationAbandonedListener to all conversations
@@ -63112,7 +63112,7 @@ declare global {
 			 * Accepts and ignores any user input, returning the next prompt in the
 			 * prompt graph instead.
 			 */
-			acceptInput(context: org.bukkit.conversations.ConversationContext, input: string): org.bukkit.conversations.Prompt;
+			acceptInput(context: org.bukkit.conversations.ConversationContext, input: (string | null)): (org.bukkit.conversations.Prompt | null);
 
 		}
 		class MessagePrompt {
@@ -63172,7 +63172,7 @@ declare global {
 			 * Accepts and processes input from the user. Using the input, the next
 			 * Prompt in the prompt graph is returned.
 			 */
-			acceptInput(context: org.bukkit.conversations.ConversationContext, input: string): org.bukkit.conversations.Prompt;
+			acceptInput(context: org.bukkit.conversations.ConversationContext, input: (string | null)): (org.bukkit.conversations.Prompt | null);
 
 		}
 		namespace Prompt {
@@ -63207,7 +63207,7 @@ declare global {
 			 * validation fails, this prompt is returned for re-execution, otherwise
 			 * the next Prompt in the prompt graph is returned.
 			 */
-			acceptInput(context: org.bukkit.conversations.ConversationContext, input: string): org.bukkit.conversations.Prompt;
+			acceptInput(context: org.bukkit.conversations.ConversationContext, input: (string | null)): (org.bukkit.conversations.Prompt | null);
 
 			/**
 			 * Ensures that the prompt waits for the user to provide input.
@@ -63576,13 +63576,13 @@ declare global {
 			 * Set the Inventory that the Hopper will use for its
 			 * source/attached Container.
 			 */
-			setInventory(inventory: org.bukkit.inventory.Inventory): void;
+			setInventory(inventory: (org.bukkit.inventory.Inventory | null)): void;
 
 			/**
 			 * Gets the Inventory that the Hopper will use for its
 			 * source/attached Container.
 			 */
-			getInventory(): org.bukkit.inventory.Inventory;
+			getInventory(): (org.bukkit.inventory.Inventory | null);
 
 			/**
 			 * Gets the Container type the Hopper is searching for.
@@ -63753,12 +63753,12 @@ declare global {
 			/**
 			 * Gets the current ItemStack on the cursor.
 			 */
-			getCursor(): org.bukkit.inventory.ItemStack;
+			getCursor(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Gets the ItemStack currently in the clicked slot.
 			 */
-			getCurrentItem(): org.bukkit.inventory.ItemStack;
+			getCurrentItem(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Gets whether or not the ClickType for this event represents a right
@@ -63781,17 +63781,17 @@ declare global {
 			/**
 			 * Sets the item on the cursor.
 			 */
-			setCursor(stack: org.bukkit.inventory.ItemStack): void;
+			setCursor(stack: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Sets the ItemStack currently in the clicked slot.
 			 */
-			setCurrentItem(stack: org.bukkit.inventory.ItemStack): void;
+			setCurrentItem(stack: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Gets the inventory corresponding to the clicked slot.
 			 */
-			getClickedInventory(): org.bukkit.inventory.Inventory;
+			getClickedInventory(): (org.bukkit.inventory.Inventory | null);
 
 			/**
 			 * The slot number that was clicked, ready for passing to
@@ -63893,7 +63893,7 @@ declare global {
 			 * Gets the result cursor after the drag is done. The returned value is
 			 * mutable.
 			 */
-			getCursor(): org.bukkit.inventory.ItemStack;
+			getCursor(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Sets the result cursor after the drag is done.
@@ -63902,7 +63902,7 @@ declare global {
 			 * the affected "dragged" slots does not change this ItemStack, nor does
 			 * changing this ItemStack affect the "dragged" slots.
 			 */
-			setCursor(newCursor: org.bukkit.inventory.ItemStack): void;
+			setCursor(newCursor: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Gets an ItemStack representing the cursor prior to any modifications
@@ -63923,7 +63923,7 @@ declare global {
 
 		}> {}
 		class InventoryDragEvent {
-			constructor(what: org.bukkit.inventory.InventoryView, newCursor: org.bukkit.inventory.ItemStack, oldCursor: org.bukkit.inventory.ItemStack, right: boolean, slots: globalThis.java.util.Map<number, org.bukkit.inventory.ItemStack>);
+			constructor(what: org.bukkit.inventory.InventoryView, newCursor: (org.bukkit.inventory.ItemStack | null), oldCursor: org.bukkit.inventory.ItemStack, right: boolean, slots: globalThis.java.util.Map<number, org.bukkit.inventory.ItemStack>);
 
 		}
 		namespace InventoryDragEvent {
@@ -64362,7 +64362,7 @@ declare global {
 
 		}> {}
 		class PrepareAnvilEvent {
-			constructor(inventory: org.bukkit.inventory.InventoryView, result: org.bukkit.inventory.ItemStack);
+			constructor(inventory: org.bukkit.inventory.InventoryView, result: (org.bukkit.inventory.ItemStack | null));
 
 		}
 		namespace PrepareAnvilEvent {
@@ -64379,7 +64379,7 @@ declare global {
 
 		}> {}
 		class PrepareGrindstoneEvent {
-			constructor(inventory: org.bukkit.inventory.InventoryView, result: org.bukkit.inventory.ItemStack);
+			constructor(inventory: org.bukkit.inventory.InventoryView, result: (org.bukkit.inventory.ItemStack | null));
 
 		}
 		namespace PrepareGrindstoneEvent {
@@ -64390,18 +64390,18 @@ declare global {
 			/**
 			 * Get result item, may be null.
 			 */
-			getResult(): org.bukkit.inventory.ItemStack;
+			getResult(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Set result item, may be null.
 			 */
-			setResult(result: org.bukkit.inventory.ItemStack): void;
+			setResult(result: (org.bukkit.inventory.ItemStack | null)): void;
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
 		}> {}
 		class PrepareInventoryResultEvent {
-			constructor(inventory: org.bukkit.inventory.InventoryView, result: org.bukkit.inventory.ItemStack);
+			constructor(inventory: org.bukkit.inventory.InventoryView, result: (org.bukkit.inventory.ItemStack | null));
 
 		}
 		namespace PrepareInventoryResultEvent {
@@ -64414,7 +64414,7 @@ declare global {
 			 * tool repair, this will be a temporary shapeless recipe representing the
 			 * repair.
 			 */
-			getRecipe(): org.bukkit.inventory.Recipe;
+			getRecipe(): (org.bukkit.inventory.Recipe | null);
 
 			/**
 			 * Description copied from class: InventoryEvent
@@ -64448,7 +64448,7 @@ declare global {
 
 		}> {}
 		class PrepareSmithingEvent {
-			constructor(inventory: org.bukkit.inventory.InventoryView, result: org.bukkit.inventory.ItemStack);
+			constructor(inventory: org.bukkit.inventory.InventoryView, result: (org.bukkit.inventory.ItemStack | null));
 
 		}
 		namespace PrepareSmithingEvent {
@@ -64857,17 +64857,17 @@ declare global {
 
 			function registerPermission(perm: org.bukkit.permissions.Permission, parent: org.bukkit.permissions.Permission): org.bukkit.permissions.Permission;
 
-			function registerPermission(name: string, desc: string): org.bukkit.permissions.Permission;
+			function registerPermission(name: string, desc: (string | null)): org.bukkit.permissions.Permission;
 
-			function registerPermission(name: string, desc: string, parent: org.bukkit.permissions.Permission): org.bukkit.permissions.Permission;
+			function registerPermission(name: string, desc: (string | null), parent: org.bukkit.permissions.Permission): org.bukkit.permissions.Permission;
 
-			function registerPermission(name: string, desc: string, def: org.bukkit.permissions.PermissionDefault): org.bukkit.permissions.Permission;
+			function registerPermission(name: string, desc: (string | null), def: (org.bukkit.permissions.PermissionDefault | null)): org.bukkit.permissions.Permission;
 
-			function registerPermission(name: string, desc: string, def: org.bukkit.permissions.PermissionDefault, parent: org.bukkit.permissions.Permission): org.bukkit.permissions.Permission;
+			function registerPermission(name: string, desc: (string | null), def: (org.bukkit.permissions.PermissionDefault | null), parent: org.bukkit.permissions.Permission): org.bukkit.permissions.Permission;
 
-			function registerPermission(name: string, desc: string, def: org.bukkit.permissions.PermissionDefault, children: globalThis.java.util.Map<string, boolean>): org.bukkit.permissions.Permission;
+			function registerPermission(name: string, desc: (string | null), def: (org.bukkit.permissions.PermissionDefault | null), children: (globalThis.java.util.Map<string, boolean> | null)): org.bukkit.permissions.Permission;
 
-			function registerPermission(name: string, desc: string, def: org.bukkit.permissions.PermissionDefault, children: globalThis.java.util.Map<string, boolean>, parent: org.bukkit.permissions.Permission): org.bukkit.permissions.Permission;
+			function registerPermission(name: string, desc: (string | null), def: (org.bukkit.permissions.PermissionDefault | null), children: (globalThis.java.util.Map<string, boolean> | null), parent: org.bukkit.permissions.Permission): org.bukkit.permissions.Permission;
 
 			function registerCorePermissions(): void;
 
@@ -64955,7 +64955,7 @@ declare global {
 			 * is killed. If, for example, the receiver was damaged by a projectile, the
 			 * shooter/thrower would be returned.
 			 */
-			getCausingEntity(): org.bukkit.entity.Entity;
+			getCausingEntity(): (org.bukkit.entity.Entity | null);
 
 			/**
 			 * Get the Entity that directly caused the damage.
@@ -64964,13 +64964,13 @@ declare global {
 			 * the entity that actually inflicted the damage. If, for example, the
 			 * receiver was damaged by a projectile, the projectile would be returned.
 			 */
-			getDirectEntity(): org.bukkit.entity.Entity;
+			getDirectEntity(): (org.bukkit.entity.Entity | null);
 
 			/**
 			 * Get the Location from where the damage originated. This will only
 			 * be present if an entity did not cause the damage.
 			 */
-			getDamageLocation(): org.bukkit.Location;
+			getDamageLocation(): (org.bukkit.Location | null);
 
 			/**
 			 * Get the Location from where the damage originated.
@@ -64982,7 +64982,7 @@ declare global {
 			 * Finally if there is no damage location nor a causing entity, null will be
 			 * returned.
 			 */
-			getSourceLocation(): org.bukkit.Location;
+			getSourceLocation(): (org.bukkit.Location | null);
 
 			/**
 			 * Get if this damage is indirect.
@@ -65220,13 +65220,13 @@ declare global {
 			/**
 			 * Get the Entity that was killed. Can be null.
 			 */
-			getLootedEntity(): org.bukkit.entity.Entity;
+			getLootedEntity(): (org.bukkit.entity.Entity | null);
 
 			/**
 			 * Get the HumanEntity who killed the getLootedEntity().
 			 * Can be null.
 			 */
-			getKiller(): org.bukkit.entity.HumanEntity;
+			getKiller(): (org.bukkit.entity.HumanEntity | null);
 
 		}
 		namespace LootContext {
@@ -65251,14 +65251,14 @@ declare global {
 				/**
 				 * The entity that was killed.
 				 */
-				lootedEntity(lootedEntity: org.bukkit.entity.Entity): org.bukkit.loot.LootContext.Builder;
+				lootedEntity(lootedEntity: (org.bukkit.entity.Entity | null)): org.bukkit.loot.LootContext.Builder;
 
 				/**
 				 * Set the HumanEntity that killed
 				 * LootContext.getLootedEntity(). This entity will be used to get the
 				 * looting level if lootingModifier(int) is not set.
 				 */
-				killer(killer: org.bukkit.entity.HumanEntity): org.bukkit.loot.LootContext.Builder;
+				killer(killer: (org.bukkit.entity.HumanEntity | null)): org.bukkit.loot.LootContext.Builder;
 
 				/**
 				 * Create a new LootContext instance using the supplied
@@ -65280,12 +65280,12 @@ declare global {
 			/**
 			 * Returns a mutable list of loot generated by this LootTable.
 			 */
-			populateLoot(random: globalThis.java.util.Random, context: org.bukkit.loot.LootContext): globalThis.java.util.Collection<org.bukkit.inventory.ItemStack>;
+			populateLoot(random: (globalThis.java.util.Random | null), context: org.bukkit.loot.LootContext): globalThis.java.util.Collection<org.bukkit.inventory.ItemStack>;
 
 			/**
 			 * Attempt to fill an inventory with this LootTable's loot.
 			 */
-			fillInventory(inventory: org.bukkit.inventory.Inventory, random: globalThis.java.util.Random, context: org.bukkit.loot.LootContext): void;
+			fillInventory(inventory: org.bukkit.inventory.Inventory, random: (globalThis.java.util.Random | null), context: org.bukkit.loot.LootContext): void;
 
 		}> {}
 		interface LootTables {
@@ -65694,7 +65694,7 @@ declare global {
 			 * To remove a loot table use null. Do not use LootTables.EMPTY to
 			 * clear a LootTable.
 			 */
-			setLootTable(table: org.bukkit.loot.LootTable): void;
+			setLootTable(table: (org.bukkit.loot.LootTable | null)): void;
 
 			/**
 			 * Gets the Loot Table attached to this block or entity.
@@ -65702,7 +65702,7 @@ declare global {
 			 * If an block/entity does not have a loot table, this will return null, NOT
 			 * an empty loot table.
 			 */
-			getLootTable(): org.bukkit.loot.LootTable;
+			getLootTable(): (org.bukkit.loot.LootTable | null);
 
 			/**
 			 * Set the seed used when this Loot Table generates loot.
@@ -66156,21 +66156,21 @@ declare global {
 			/**
 			 * Description copied from interface: MetadataValue
 			 */
-			value(): any;
+			value(): (any | null);
 
 		}> {}
 		class FixedMetadataValue {
 			/**
 			 * Initializes a FixedMetadataValue with an Object
 			 */
-			constructor(owningPlugin: org.bukkit.plugin.Plugin, value: any);
+			constructor(owningPlugin: org.bukkit.plugin.Plugin, value: (any | null));
 
 		}
 		interface LazyMetadataValue extends Modify<org.bukkit.metadata.MetadataValueAdapter, {
 			/**
 			 * Description copied from interface: MetadataValue
 			 */
-			value(): any;
+			value(): (any | null);
 
 			/**
 			 * Description copied from interface: MetadataValue
@@ -66302,7 +66302,7 @@ declare global {
 			/**
 			 * Fetches the value of this metadata item.
 			 */
-			value(): any;
+			value(): (any | null);
 
 			/**
 			 * Attempts to convert the value of this metadata item into an int.
@@ -66347,7 +66347,7 @@ declare global {
 			/**
 			 * Returns the Plugin that created this metadata item.
 			 */
-			getOwningPlugin(): org.bukkit.plugin.Plugin;
+			getOwningPlugin(): (org.bukkit.plugin.Plugin | null);
 
 			/**
 			 * Invalidates this metadata item, forcing it to recompute when next
@@ -66360,7 +66360,7 @@ declare global {
 			/**
 			 * Description copied from interface: MetadataValue
 			 */
-			getOwningPlugin(): org.bukkit.plugin.Plugin;
+			getOwningPlugin(): (org.bukkit.plugin.Plugin | null);
 
 			/**
 			 * Description copied from interface: MetadataValue
@@ -67228,7 +67228,7 @@ declare global {
 			 * If null is used as color, then the color returned by
 			 * getBasePixelColor(int, int) is shown on the map.
 			 */
-			setPixelColor(x: number, y: number, color: any /* java.awt.Color */): void;
+			setPixelColor(x: number, y: number, color: (any /* java.awt.Color */ | null)): void;
 
 			/**
 			 * Get a pixel from the canvas.
@@ -67236,7 +67236,7 @@ declare global {
 			 * returned and the color returned by getBasePixelColor(int, int)
 			 * is shown on the map.
 			 */
-			getPixelColor(x: number, y: number): any /* java.awt.Color */;
+			getPixelColor(x: number, y: number): (any /* java.awt.Color */ | null);
 
 			/**
 			 * Get a pixel from the layers below this canvas.
@@ -67336,12 +67336,12 @@ declare global {
 			/**
 			 * Gets the caption on this cursor.
 			 */
-			getCaption(): string;
+			getCaption(): (string | null);
 
 			/**
 			 * Sets the caption on this cursor.
 			 */
-			setCaption(caption: string): void;
+			setCaption(caption: (string | null)): void;
 
 		}
 		class MapCursor {
@@ -67358,12 +67358,12 @@ declare global {
 			/**
 			 * Initialize the map cursor.
 			 */
-			constructor(x: any /* byte */, y: any /* byte */, direction: any /* byte */, type: any /* byte */, visible: boolean, caption: string);
+			constructor(x: any /* byte */, y: any /* byte */, direction: any /* byte */, type: any /* byte */, visible: boolean, caption: (string | null));
 
 			/**
 			 * Initialize the map cursor.
 			 */
-			constructor(x: any /* byte */, y: any /* byte */, direction: any /* byte */, type: org.bukkit.map.MapCursor.Type, visible: boolean, caption: string);
+			constructor(x: any /* byte */, y: any /* byte */, direction: any /* byte */, type: org.bukkit.map.MapCursor.Type, visible: boolean, caption: (string | null));
 
 		}
 		namespace MapCursor {
@@ -67461,7 +67461,7 @@ declare global {
 				/**
 				 * Get a cursor by its internal value.
 				 */
-				function byValue(value: any /* byte */): org.bukkit.map.MapCursor.Type;
+				function byValue(value: any /* byte */): (org.bukkit.map.MapCursor.Type | null);
 
 			}
 		}
@@ -67504,7 +67504,7 @@ declare global {
 			/**
 			 * Add a cursor to the collection.
 			 */
-			addCursor(x: number, y: number, direction: any /* byte */, type: any /* byte */, visible: boolean, caption: string): org.bukkit.map.MapCursor;
+			addCursor(x: number, y: number, direction: any /* byte */, type: any /* byte */, visible: boolean, caption: (string | null)): org.bukkit.map.MapCursor;
 
 		}
 		class MapCursorCollection {
@@ -67520,7 +67520,7 @@ declare global {
 			/**
 			 * Get the sprite for a given character.
 			 */
-			getChar(ch: any /* char */): org.bukkit.map.MapFont.CharacterSprite;
+			getChar(ch: any /* char */): (org.bukkit.map.MapFont.CharacterSprite | null);
 
 			/**
 			 * Get the width of the given text as it would be rendered using this
@@ -67599,7 +67599,7 @@ declare global {
 			/**
 			 * Resize an image to 128x128.
 			 */
-			function resizeImage(image: any /* java.awt.Image */): any /* java.awt.image.BufferedImage */;
+			function resizeImage(image: (any /* java.awt.Image */ | null)): any /* java.awt.image.BufferedImage */;
 
 			/**
 			 * Get the index of the closest matching color in the palette to the given
@@ -67718,7 +67718,7 @@ declare global {
 			 * internal renderer, but may be used by external renderers. May return
 			 * null if the world the map is associated with is not loaded.
 			 */
-			getWorld(): org.bukkit.World;
+			getWorld(): (org.bukkit.World | null);
 
 			/**
 			 * Set the world that this map is associated with. The world is used by
@@ -67739,7 +67739,7 @@ declare global {
 			/**
 			 * Remove a renderer from this map.
 			 */
-			removeRenderer(renderer: org.bukkit.map.MapRenderer): boolean;
+			removeRenderer(renderer: (org.bukkit.map.MapRenderer | null)): boolean;
 
 			/**
 			 * Gets whether a position cursor should be shown when the map is near its
@@ -67808,7 +67808,7 @@ declare global {
 				/**
 				 * Get the scale given the raw value.
 				 */
-				function valueOf(value: any /* byte */): org.bukkit.map.MapView.Scale;
+				function valueOf(value: any /* byte */): (org.bukkit.map.MapView.Scale | null);
 
 			}
 		}
@@ -67843,14 +67843,14 @@ declare global {
 			 * Setting the command to null is the same as setting it to an empty
 			 * String.
 			 */
-			setCommand(command: string): void;
+			setCommand(command: (string | null)): void;
 
 			/**
 			 * Sets the name of this CommandMinecart. The name is used with commands
 			 * that this CommandMinecart executes. Setting the name to null is the
 			 * same as setting it to "@".
 			 */
-			setName(name: string): void;
+			setName(name: (string | null)): void;
 
 		}> {}
 		interface ExplosiveMinecart extends Modify<org.bukkit.entity.Minecart, {
@@ -68045,7 +68045,7 @@ declare global {
 			/**
 			 * Gets a DataPack by its key.
 			 */
-			getDataPack(dataPackKey: org.bukkit.NamespacedKey): org.bukkit.packs.DataPack;
+			getDataPack(dataPackKey: org.bukkit.NamespacedKey): (org.bukkit.packs.DataPack | null);
 
 			/**
 			 * Return all the enabled DataPack in the World.
@@ -68092,12 +68092,12 @@ declare global {
 			/**
 			 * Gets the hash of the resource pack.
 			 */
-			getHash(): string;
+			getHash(): (string | null);
 
 			/**
 			 * Gets the prompt to show of the resource pack.
 			 */
-			getPrompt(): string;
+			getPrompt(): (string | null);
 
 			/**
 			 * Gets if the resource pack is required by the server.
@@ -68118,7 +68118,7 @@ declare global {
 			 * If value is null, the value will be removed from the default
 			 * Configuration source.
 			 */
-			addDefault(path: string, value: any): void;
+			addDefault(path: string, value: (any | null)): void;
 
 			/**
 			 * Sets the default values of the given paths as provided.
@@ -68157,7 +68157,7 @@ declare global {
 			 * a MemoryConfiguration will be returned. If no source was set
 			 * and no defaults were set, then this method will return null.
 			 */
-			getDefaults(): org.bukkit.configuration.Configuration;
+			getDefaults(): (org.bukkit.configuration.Configuration | null);
 
 			/**
 			 * Gets the ConfigurationOptions for this Configuration.
@@ -68282,7 +68282,7 @@ declare global {
 			 * To retrieve the single name of this section, that is, the final part of
 			 * the path returned by this method, you may use getName().
 			 */
-			getCurrentPath(): string;
+			getCurrentPath(): (string | null);
 
 			/**
 			 * Gets the name of this individual ConfigurationSection, in the
@@ -68302,7 +68302,7 @@ declare global {
 			 * If the section is no longer contained within its root for any reason,
 			 * such as being replaced with a different value, this may return null.
 			 */
-			getRoot(): org.bukkit.configuration.Configuration;
+			getRoot(): (org.bukkit.configuration.Configuration | null);
 
 			/**
 			 * Gets the parent ConfigurationSection that directly contains
@@ -68313,7 +68313,7 @@ declare global {
 			 * If the section is no longer contained within its parent for any reason,
 			 * such as being replaced with a different value, this may return null.
 			 */
-			getParent(): org.bukkit.configuration.ConfigurationSection;
+			getParent(): (org.bukkit.configuration.ConfigurationSection | null);
 
 			/**
 			 * Gets the requested Object by path.
@@ -68322,7 +68322,7 @@ declare global {
 			 * this will return the default value. If the Object does not exist and no
 			 * default value was specified, this will return null.
 			 */
-			get(path: string): any;
+			get(path: string): (any | null);
 
 			/**
 			 * Gets the requested Object by path, returning a default value if not
@@ -68332,7 +68332,7 @@ declare global {
 			 * returned regardless of if a default has been identified in the root
 			 * Configuration.
 			 */
-			get(path: string, def: any): any;
+			get(path: string, def: (any | null)): (any | null);
 
 			/**
 			 * Sets the specified path to the given value.
@@ -68345,7 +68345,7 @@ declare global {
 			 * you to store Configurations or ConfigurationSections,
 			 * please use createSection(java.lang.String) for that.
 			 */
-			set(path: string, value: any): void;
+			set(path: string, value: (any | null)): void;
 
 			/**
 			 * Creates an empty ConfigurationSection at the specified path.
@@ -68373,7 +68373,7 @@ declare global {
 			 * this will return the default value. If the String does not exist and no
 			 * default value was specified, this will return null.
 			 */
-			getString(path: string): string;
+			getString(path: string): (string | null);
 
 			/**
 			 * Gets the requested String by path, returning a default value if not
@@ -68383,7 +68383,7 @@ declare global {
 			 * returned regardless of if a default has been identified in the root
 			 * Configuration.
 			 */
-			getString(path: string, def: string): string;
+			getString(path: string, def: (string | null)): (string | null);
 
 			/**
 			 * Checks if the specified path is a String.
@@ -68517,7 +68517,7 @@ declare global {
 			 * will return the default value. If the List does not exist and no
 			 * default value was specified, this will return null.
 			 */
-			getList(path: string): globalThis.java.util.List;
+			getList(path: string): (globalThis.java.util.List | null);
 
 			/**
 			 * Gets the requested List by path, returning a default value if not
@@ -68527,7 +68527,7 @@ declare global {
 			 * returned regardless of if a default has been identified in the root
 			 * Configuration.
 			 */
-			getList(path: string, def: globalThis.java.util.List): globalThis.java.util.List;
+			getList(path: string, def: (globalThis.java.util.List | null)): (globalThis.java.util.List | null);
 
 			/**
 			 * Checks if the specified path is a List.
@@ -68670,7 +68670,7 @@ declare global {
 			 * Objects to Strings. However, #getObject(path, Boolean.class) is
 			 * equivalent to #getBoolean(path) for example.
 			 */
-			getObject<T = any>(path: string, clazz: globalThis.java.lang.Class<T>): T;
+			getObject<T = any>(path: string, clazz: globalThis.java.lang.Class<T>): (T | null);
 
 			/**
 			 * Gets the requested object at the given path, returning a default value if
@@ -68686,7 +68686,7 @@ declare global {
 			 * Boolean.class, def) is equivalent to #getBoolean(path,
 			 * def) for example.
 			 */
-			getObject<T = any>(path: string, clazz: globalThis.java.lang.Class<T>, def: T): T;
+			getObject<T = any>(path: string, clazz: globalThis.java.lang.Class<T>, def: (T | null)): (T | null);
 
 			/**
 			 * Gets the requested ConfigurationSerializable object at the given
@@ -68695,7 +68695,7 @@ declare global {
 			 * will return the default value. If the Object does not exist and no
 			 * default value was specified, this will return null.
 			 */
-			getSerializable<T = any>(path: string, clazz: globalThis.java.lang.Class<T>): T;
+			getSerializable<T = any>(path: string, clazz: globalThis.java.lang.Class<T>): (T | null);
 
 			/**
 			 * Gets the requested ConfigurationSerializable object at the given
@@ -68704,7 +68704,7 @@ declare global {
 			 * returned regardless of if a default has been identified in the root
 			 * Configuration.
 			 */
-			getSerializable<T = any>(path: string, clazz: globalThis.java.lang.Class<T>, def: T): T;
+			getSerializable<T = any>(path: string, clazz: globalThis.java.lang.Class<T>, def: (T | null)): (T | null);
 
 			/**
 			 * Gets the requested Vector by path.
@@ -68713,7 +68713,7 @@ declare global {
 			 * this will return the default value. If the Vector does not exist and no
 			 * default value was specified, this will return null.
 			 */
-			getVector(path: string): org.bukkit.util.Vector;
+			getVector(path: string): (org.bukkit.util.Vector | null);
 
 			/**
 			 * Gets the requested Vector by path, returning a default value if
@@ -68723,7 +68723,7 @@ declare global {
 			 * returned regardless of if a default has been identified in the root
 			 * Configuration.
 			 */
-			getVector(path: string, def: org.bukkit.util.Vector): org.bukkit.util.Vector;
+			getVector(path: string, def: (org.bukkit.util.Vector | null)): (org.bukkit.util.Vector | null);
 
 			/**
 			 * Checks if the specified path is a Vector.
@@ -68743,7 +68743,7 @@ declare global {
 			 * does not exist and no default value was specified, this will return
 			 * null.
 			 */
-			getOfflinePlayer(path: string): org.bukkit.OfflinePlayer;
+			getOfflinePlayer(path: string): (org.bukkit.OfflinePlayer | null);
 
 			/**
 			 * Gets the requested OfflinePlayer by path, returning a default
@@ -68753,7 +68753,7 @@ declare global {
 			 * will returned regardless of if a default has been identified in the
 			 * root Configuration.
 			 */
-			getOfflinePlayer(path: string, def: org.bukkit.OfflinePlayer): org.bukkit.OfflinePlayer;
+			getOfflinePlayer(path: string, def: (org.bukkit.OfflinePlayer | null)): (org.bukkit.OfflinePlayer | null);
 
 			/**
 			 * Checks if the specified path is an OfflinePlayer.
@@ -68772,7 +68772,7 @@ declare global {
 			 * this will return the default value. If the ItemStack does not exist and
 			 * no default value was specified, this will return null.
 			 */
-			getItemStack(path: string): org.bukkit.inventory.ItemStack;
+			getItemStack(path: string): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Gets the requested ItemStack by path, returning a default value
@@ -68782,7 +68782,7 @@ declare global {
 			 * returned regardless of if a default has been identified in the root
 			 * Configuration.
 			 */
-			getItemStack(path: string, def: org.bukkit.inventory.ItemStack): org.bukkit.inventory.ItemStack;
+			getItemStack(path: string, def: (org.bukkit.inventory.ItemStack | null)): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Checks if the specified path is an ItemStack.
@@ -68801,7 +68801,7 @@ declare global {
 			 * this will return the default value. If the Color does not exist and no
 			 * default value was specified, this will return null.
 			 */
-			getColor(path: string): org.bukkit.Color;
+			getColor(path: string): (org.bukkit.Color | null);
 
 			/**
 			 * Gets the requested Color by path, returning a default value if
@@ -68811,7 +68811,7 @@ declare global {
 			 * returned regardless of if a default has been identified in the root
 			 * Configuration.
 			 */
-			getColor(path: string, def: org.bukkit.Color): org.bukkit.Color;
+			getColor(path: string, def: (org.bukkit.Color | null)): (org.bukkit.Color | null);
 
 			/**
 			 * Checks if the specified path is a Color.
@@ -68830,7 +68830,7 @@ declare global {
 			 * this will return the default value. If the Location does not exist and no
 			 * default value was specified, this will return null.
 			 */
-			getLocation(path: string): org.bukkit.Location;
+			getLocation(path: string): (org.bukkit.Location | null);
 
 			/**
 			 * Gets the requested Location by path, returning a default value if
@@ -68840,7 +68840,7 @@ declare global {
 			 * returned regardless of if a default has been identified in the root
 			 * Configuration.
 			 */
-			getLocation(path: string, def: org.bukkit.Location): org.bukkit.Location;
+			getLocation(path: string, def: (org.bukkit.Location | null)): (org.bukkit.Location | null);
 
 			/**
 			 * Checks if the specified path is a Location.
@@ -68860,7 +68860,7 @@ declare global {
 			 * ConfigurationSection does not exist and no default value was specified,
 			 * this will return null.
 			 */
-			getConfigurationSection(path: string): org.bukkit.configuration.ConfigurationSection;
+			getConfigurationSection(path: string): (org.bukkit.configuration.ConfigurationSection | null);
 
 			/**
 			 * Checks if the specified path is a ConfigurationSection.
@@ -68880,7 +68880,7 @@ declare global {
 			 * If the root contains no defaults, or the defaults doesn't contain a
 			 * value for this path, or the value at this path is not a ConfigurationSection then this will return null.
 			 */
-			getDefaultSection(): org.bukkit.configuration.ConfigurationSection;
+			getDefaultSection(): (org.bukkit.configuration.ConfigurationSection | null);
 
 			/**
 			 * Sets the default value in the root at the given path as provided.
@@ -68896,7 +68896,7 @@ declare global {
 			 * this will create a new section at the path, replacing anything that may
 			 * have existed there previously.
 			 */
-			addDefault(path: string, value: any): void;
+			addDefault(path: string, value: (any | null)): void;
 
 			/**
 			 * Gets the requested comment list by path.
@@ -68927,7 +68927,7 @@ declare global {
 			 * Some implementations may have limitations on what persists. See their
 			 * individual javadocs for details.
 			 */
-			setComments(path: string, comments: globalThis.java.util.List<string>): void;
+			setComments(path: string, comments: (globalThis.java.util.List<string> | null)): void;
 
 			/**
 			 * Sets the inline comment list at the specified path.
@@ -68940,7 +68940,7 @@ declare global {
 			 * Some implementations may have limitations on what persists. See their
 			 * individual javadocs for details.
 			 */
-			setInlineComments(path: string, comments: globalThis.java.util.List<string>): void;
+			setInlineComments(path: string, comments: (globalThis.java.util.List<string> | null)): void;
 
 		}
 		interface InvalidConfigurationException {
@@ -68975,7 +68975,7 @@ declare global {
 			/**
 			 * Description copied from interface: ConfigurationSection
 			 */
-			addDefault(path: string, value: any): void;
+			addDefault(path: string, value: (any | null)): void;
 
 			/**
 			 * Description copied from interface: Configuration
@@ -68995,12 +68995,12 @@ declare global {
 			/**
 			 * Description copied from interface: Configuration
 			 */
-			getDefaults(): org.bukkit.configuration.Configuration;
+			getDefaults(): (org.bukkit.configuration.Configuration | null);
 
 			/**
 			 * Description copied from interface: ConfigurationSection
 			 */
-			getParent(): org.bukkit.configuration.ConfigurationSection;
+			getParent(): (org.bukkit.configuration.ConfigurationSection | null);
 
 			/**
 			 * Description copied from interface: Configuration
@@ -69017,7 +69017,7 @@ declare global {
 			/**
 			 * Creates an empty MemoryConfiguration using the specified Configuration as a source for all default values.
 			 */
-			constructor(defaults: org.bukkit.configuration.Configuration);
+			constructor(defaults: (org.bukkit.configuration.Configuration | null));
 
 		}
 		interface MemoryConfigurationOptions extends Modify<org.bukkit.configuration.ConfigurationOptions, {
@@ -69076,37 +69076,37 @@ declare global {
 			/**
 			 * Description copied from interface: ConfigurationSection
 			 */
-			getRoot(): org.bukkit.configuration.Configuration;
+			getRoot(): (org.bukkit.configuration.Configuration | null);
 
 			/**
 			 * Description copied from interface: ConfigurationSection
 			 */
-			getParent(): org.bukkit.configuration.ConfigurationSection;
+			getParent(): (org.bukkit.configuration.ConfigurationSection | null);
 
 			/**
 			 * Description copied from interface: ConfigurationSection
 			 */
-			addDefault(path: string, value: any): void;
+			addDefault(path: string, value: (any | null)): void;
 
 			/**
 			 * Description copied from interface: ConfigurationSection
 			 */
-			getDefaultSection(): org.bukkit.configuration.ConfigurationSection;
+			getDefaultSection(): (org.bukkit.configuration.ConfigurationSection | null);
 
 			/**
 			 * Description copied from interface: ConfigurationSection
 			 */
-			set(path: string, value: any): void;
+			set(path: string, value: (any | null)): void;
 
 			/**
 			 * Description copied from interface: ConfigurationSection
 			 */
-			get(path: string): any;
+			get(path: string): (any | null);
 
 			/**
 			 * Description copied from interface: ConfigurationSection
 			 */
-			get(path: string, def: any): any;
+			get(path: string, def: (any | null)): (any | null);
 
 			/**
 			 * Description copied from interface: ConfigurationSection
@@ -69121,12 +69121,12 @@ declare global {
 			/**
 			 * Description copied from interface: ConfigurationSection
 			 */
-			getString(path: string): string;
+			getString(path: string): (string | null);
 
 			/**
 			 * Description copied from interface: ConfigurationSection
 			 */
-			getString(path: string, def: string): string;
+			getString(path: string, def: (string | null)): (string | null);
 
 			/**
 			 * Description copied from interface: ConfigurationSection
@@ -69196,12 +69196,12 @@ declare global {
 			/**
 			 * Description copied from interface: ConfigurationSection
 			 */
-			getList(path: string): globalThis.java.util.List;
+			getList(path: string): (globalThis.java.util.List | null);
 
 			/**
 			 * Description copied from interface: ConfigurationSection
 			 */
-			getList(path: string, def: globalThis.java.util.List): globalThis.java.util.List;
+			getList(path: string, def: (globalThis.java.util.List | null)): (globalThis.java.util.List | null);
 
 			/**
 			 * Description copied from interface: ConfigurationSection
@@ -69261,32 +69261,32 @@ declare global {
 			/**
 			 * Description copied from interface: ConfigurationSection
 			 */
-			getObject<T = any>(path: string, clazz: globalThis.java.lang.Class<T>): T;
+			getObject<T = any>(path: string, clazz: globalThis.java.lang.Class<T>): (T | null);
 
 			/**
 			 * Description copied from interface: ConfigurationSection
 			 */
-			getObject<T = any>(path: string, clazz: globalThis.java.lang.Class<T>, def: T): T;
+			getObject<T = any>(path: string, clazz: globalThis.java.lang.Class<T>, def: (T | null)): (T | null);
 
 			/**
 			 * Description copied from interface: ConfigurationSection
 			 */
-			getSerializable<T = any>(path: string, clazz: globalThis.java.lang.Class<T>): T;
+			getSerializable<T = any>(path: string, clazz: globalThis.java.lang.Class<T>): (T | null);
 
 			/**
 			 * Description copied from interface: ConfigurationSection
 			 */
-			getSerializable<T = any>(path: string, clazz: globalThis.java.lang.Class<T>, def: T): T;
+			getSerializable<T = any>(path: string, clazz: globalThis.java.lang.Class<T>, def: (T | null)): (T | null);
 
 			/**
 			 * Description copied from interface: ConfigurationSection
 			 */
-			getVector(path: string): org.bukkit.util.Vector;
+			getVector(path: string): (org.bukkit.util.Vector | null);
 
 			/**
 			 * Description copied from interface: ConfigurationSection
 			 */
-			getVector(path: string, def: org.bukkit.util.Vector): org.bukkit.util.Vector;
+			getVector(path: string, def: (org.bukkit.util.Vector | null)): (org.bukkit.util.Vector | null);
 
 			/**
 			 * Description copied from interface: ConfigurationSection
@@ -69296,12 +69296,12 @@ declare global {
 			/**
 			 * Description copied from interface: ConfigurationSection
 			 */
-			getOfflinePlayer(path: string): org.bukkit.OfflinePlayer;
+			getOfflinePlayer(path: string): (org.bukkit.OfflinePlayer | null);
 
 			/**
 			 * Description copied from interface: ConfigurationSection
 			 */
-			getOfflinePlayer(path: string, def: org.bukkit.OfflinePlayer): org.bukkit.OfflinePlayer;
+			getOfflinePlayer(path: string, def: (org.bukkit.OfflinePlayer | null)): (org.bukkit.OfflinePlayer | null);
 
 			/**
 			 * Description copied from interface: ConfigurationSection
@@ -69311,12 +69311,12 @@ declare global {
 			/**
 			 * Description copied from interface: ConfigurationSection
 			 */
-			getItemStack(path: string): org.bukkit.inventory.ItemStack;
+			getItemStack(path: string): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Description copied from interface: ConfigurationSection
 			 */
-			getItemStack(path: string, def: org.bukkit.inventory.ItemStack): org.bukkit.inventory.ItemStack;
+			getItemStack(path: string, def: (org.bukkit.inventory.ItemStack | null)): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Description copied from interface: ConfigurationSection
@@ -69326,12 +69326,12 @@ declare global {
 			/**
 			 * Description copied from interface: ConfigurationSection
 			 */
-			getColor(path: string): org.bukkit.Color;
+			getColor(path: string): (org.bukkit.Color | null);
 
 			/**
 			 * Description copied from interface: ConfigurationSection
 			 */
-			getColor(path: string, def: org.bukkit.Color): org.bukkit.Color;
+			getColor(path: string, def: (org.bukkit.Color | null)): (org.bukkit.Color | null);
 
 			/**
 			 * Description copied from interface: ConfigurationSection
@@ -69341,12 +69341,12 @@ declare global {
 			/**
 			 * Description copied from interface: ConfigurationSection
 			 */
-			getLocation(path: string): org.bukkit.Location;
+			getLocation(path: string): (org.bukkit.Location | null);
 
 			/**
 			 * Description copied from interface: ConfigurationSection
 			 */
-			getLocation(path: string, def: org.bukkit.Location): org.bukkit.Location;
+			getLocation(path: string, def: (org.bukkit.Location | null)): (org.bukkit.Location | null);
 
 			/**
 			 * Description copied from interface: ConfigurationSection
@@ -69356,7 +69356,7 @@ declare global {
 			/**
 			 * Description copied from interface: ConfigurationSection
 			 */
-			getConfigurationSection(path: string): org.bukkit.configuration.ConfigurationSection;
+			getConfigurationSection(path: string): (org.bukkit.configuration.ConfigurationSection | null);
 
 			/**
 			 * Description copied from interface: ConfigurationSection
@@ -69376,12 +69376,12 @@ declare global {
 			/**
 			 * Description copied from interface: ConfigurationSection
 			 */
-			setComments(path: string, comments: globalThis.java.util.List<string>): void;
+			setComments(path: string, comments: (globalThis.java.util.List<string> | null)): void;
 
 			/**
 			 * Description copied from interface: ConfigurationSection
 			 */
-			setInlineComments(path: string, comments: globalThis.java.util.List<string>): void;
+			setInlineComments(path: string, comments: (globalThis.java.util.List<string> | null)): void;
 
 			toString(): string;
 
@@ -69394,7 +69394,7 @@ declare global {
 			 * You may use this method for any given ConfigurationSection, not
 			 * only MemorySection.
 			 */
-			function createPath(section: org.bukkit.configuration.ConfigurationSection, key: string): string;
+			function createPath(section: org.bukkit.configuration.ConfigurationSection, key: (string | null)): string;
 
 			/**
 			 * Creates a relative path to the given ConfigurationSection from
@@ -69403,7 +69403,7 @@ declare global {
 			 * You may use this method for any given ConfigurationSection, not
 			 * only MemorySection.
 			 */
-			function createPath(section: org.bukkit.configuration.ConfigurationSection, key: string, relativeTo: org.bukkit.configuration.ConfigurationSection): string;
+			function createPath(section: org.bukkit.configuration.ConfigurationSection, key: (string | null), relativeTo: (org.bukkit.configuration.ConfigurationSection | null)): string;
 
 		}
 	}
@@ -69419,7 +69419,7 @@ declare global {
 
 		}
 		interface ConfigurationSerialization {
-			deserialize(args: globalThis.java.util.Map<string>): org.bukkit.configuration.serialization.ConfigurationSerializable;
+			deserialize(args: globalThis.java.util.Map<string>): (org.bukkit.configuration.serialization.ConfigurationSerializable | null);
 
 		}
 		namespace ConfigurationSerialization {
@@ -69436,7 +69436,7 @@ declare global {
 			 * If a new instance could not be made, an example being the class not
 			 * fully implementing the interface, null will be returned.
 			 */
-			function deserializeObject(args: globalThis.java.util.Map<string>, clazz: globalThis.java.lang.Class<org.bukkit.configuration.serialization.ConfigurationSerializable>): org.bukkit.configuration.serialization.ConfigurationSerializable;
+			function deserializeObject(args: globalThis.java.util.Map<string>, clazz: globalThis.java.lang.Class<org.bukkit.configuration.serialization.ConfigurationSerializable>): (org.bukkit.configuration.serialization.ConfigurationSerializable | null);
 
 			/**
 			 * Attempts to deserialize the given arguments into a new instance of the
@@ -69449,7 +69449,7 @@ declare global {
 			 * If a new instance could not be made, an example being the class not
 			 * fully implementing the interface, null will be returned.
 			 */
-			function deserializeObject(args: globalThis.java.util.Map<string>): org.bukkit.configuration.serialization.ConfigurationSerializable;
+			function deserializeObject(args: globalThis.java.util.Map<string>): (org.bukkit.configuration.serialization.ConfigurationSerializable | null);
 
 			/**
 			 * Registers the given ConfigurationSerializable class by its
@@ -69476,7 +69476,7 @@ declare global {
 			 * Attempts to get a registered ConfigurationSerializable class by
 			 * its alias
 			 */
-			function getClassByAlias(alias: string): globalThis.java.lang.Class<org.bukkit.configuration.serialization.ConfigurationSerializable>;
+			function getClassByAlias(alias: string): (globalThis.java.lang.Class<org.bukkit.configuration.serialization.ConfigurationSerializable> | null);
 
 			/**
 			 * Gets the correct alias for the given ConfigurationSerializable
@@ -69940,7 +69940,7 @@ declare global {
 			/**
 			 * Gets the scoreboard to which this objective is attached.
 			 */
-			getScoreboard(): org.bukkit.scoreboard.Scoreboard;
+			getScoreboard(): (org.bukkit.scoreboard.Scoreboard | null);
 
 			/**
 			 * Unregisters this objective from the scoreboard.
@@ -69951,12 +69951,12 @@ declare global {
 			 * Sets this objective to display on the specified slot for the
 			 * scoreboard, removing it from any other display slot.
 			 */
-			setDisplaySlot(slot: org.bukkit.scoreboard.DisplaySlot): void;
+			setDisplaySlot(slot: (org.bukkit.scoreboard.DisplaySlot | null)): void;
 
 			/**
 			 * Gets the display slot this objective is displayed at.
 			 */
-			getDisplaySlot(): org.bukkit.scoreboard.DisplaySlot;
+			getDisplaySlot(): (org.bukkit.scoreboard.DisplaySlot | null);
 
 			/**
 			 * Sets manner in which this objective will be rendered.
@@ -70034,7 +70034,7 @@ declare global {
 			/**
 			 * Gets the scoreboard for the associated objective.
 			 */
-			getScoreboard(): org.bukkit.scoreboard.Scoreboard;
+			getScoreboard(): (org.bukkit.scoreboard.Scoreboard | null);
 
 		}
 		interface Scoreboard {
@@ -70066,7 +70066,7 @@ declare global {
 			/**
 			 * Gets an Objective on this Scoreboard by name
 			 */
-			getObjective(name: string): org.bukkit.scoreboard.Objective;
+			getObjective(name: string): (org.bukkit.scoreboard.Objective | null);
 
 			/**
 			 * Gets all Objectives of a Criteria on the Scoreboard
@@ -70087,7 +70087,7 @@ declare global {
 			 * Gets the Objective currently displayed in a DisplaySlot on this
 			 * Scoreboard
 			 */
-			getObjective(slot: org.bukkit.scoreboard.DisplaySlot): org.bukkit.scoreboard.Objective;
+			getObjective(slot: org.bukkit.scoreboard.DisplaySlot): (org.bukkit.scoreboard.Objective | null);
 
 			/**
 			 * Gets all scores for a player on this Scoreboard
@@ -70112,17 +70112,17 @@ declare global {
 			/**
 			 * Gets a player's Team on this Scoreboard
 			 */
-			getPlayerTeam(player: org.bukkit.OfflinePlayer): org.bukkit.scoreboard.Team;
+			getPlayerTeam(player: org.bukkit.OfflinePlayer): (org.bukkit.scoreboard.Team | null);
 
 			/**
 			 * Gets a entries Team on this Scoreboard
 			 */
-			getEntryTeam(entry: string): org.bukkit.scoreboard.Team;
+			getEntryTeam(entry: string): (org.bukkit.scoreboard.Team | null);
 
 			/**
 			 * Gets a Team by name on this Scoreboard
 			 */
-			getTeam(teamName: string): org.bukkit.scoreboard.Team;
+			getTeam(teamName: string): (org.bukkit.scoreboard.Team | null);
 
 			/**
 			 * Gets all teams on this Scoreboard
@@ -70267,7 +70267,7 @@ declare global {
 			/**
 			 * Gets the Scoreboard to which this team is attached
 			 */
-			getScoreboard(): org.bukkit.scoreboard.Scoreboard;
+			getScoreboard(): (org.bukkit.scoreboard.Scoreboard | null);
 
 			/**
 			 * This puts the specified player onto this team for the scoreboard.
@@ -70410,7 +70410,7 @@ declare global {
 			/**
 			 * Returns the custom tag's value that is stored on the item.
 			 */
-			getCustomTag<T = any, Z = any>(key: org.bukkit.NamespacedKey, type: org.bukkit.inventory.meta.tags.ItemTagType<T, Z>): Z;
+			getCustomTag<T = any, Z = any>(key: org.bukkit.NamespacedKey, type: org.bukkit.inventory.meta.tags.ItemTagType<T, Z>): (Z | null);
 
 			/**
 			 * Removes a custom key from the item meta.
@@ -70896,12 +70896,12 @@ declare global {
 			/**
 			 * Gets the Enchantment at the specified key
 			 */
-			function getByKey(key: org.bukkit.NamespacedKey): org.bukkit.enchantments.Enchantment;
+			function getByKey(key: (org.bukkit.NamespacedKey | null)): (org.bukkit.enchantments.Enchantment | null);
 
 			/**
 			 * Gets the Enchantment at the specified name
 			 */
-			function getByName(name: string): org.bukkit.enchantments.Enchantment;
+			function getByName(name: (string | null)): (org.bukkit.enchantments.Enchantment | null);
 
 		}
 		interface EnchantmentOffer {
@@ -71143,29 +71143,29 @@ declare global {
 			 * Gets a copy of the SpawnRule for this SpawnerEntry, or null if
 			 * none has been set.
 			 */
-			getSpawnRule(): org.bukkit.block.spawner.SpawnRule;
+			getSpawnRule(): (org.bukkit.block.spawner.SpawnRule | null);
 
 			/**
 			 * Sets the SpawnRule for this SpawnerEntry, null may be used to
 			 * clear the current spawn rule.
 			 */
-			setSpawnRule(spawnRule: org.bukkit.block.spawner.SpawnRule): void;
+			setSpawnRule(spawnRule: (org.bukkit.block.spawner.SpawnRule | null)): void;
 
 			/**
 			 * Gets the equipment which will be applied to the spawned entity.
 			 */
-			getEquipment(): org.bukkit.block.spawner.SpawnerEntry.Equipment;
+			getEquipment(): (org.bukkit.block.spawner.SpawnerEntry.Equipment | null);
 
 			/**
 			 * Sets the equipment which will be applied to the spawned entity.
 			 */
-			setEquipment(equipment: org.bukkit.block.spawner.SpawnerEntry.Equipment): void;
+			setEquipment(equipment: (org.bukkit.block.spawner.SpawnerEntry.Equipment | null)): void;
 
 		}
 		class SpawnerEntry {
-			constructor(snapshot: org.bukkit.entity.EntitySnapshot, spawnWeight: number, spawnRule: org.bukkit.block.spawner.SpawnRule);
+			constructor(snapshot: org.bukkit.entity.EntitySnapshot, spawnWeight: number, spawnRule: (org.bukkit.block.spawner.SpawnRule | null));
 
-			constructor(snapshot: org.bukkit.entity.EntitySnapshot, spawnWeight: number, spawnRule: org.bukkit.block.spawner.SpawnRule, equipment: org.bukkit.block.spawner.SpawnerEntry.Equipment);
+			constructor(snapshot: org.bukkit.entity.EntitySnapshot, spawnWeight: number, spawnRule: (org.bukkit.block.spawner.SpawnRule | null), equipment: (org.bukkit.block.spawner.SpawnerEntry.Equipment | null));
 
 		}
 		namespace SpawnerEntry {
@@ -71291,7 +71291,7 @@ declare global {
 			/**
 			 * Creates an empty FileConfiguration using the specified Configuration as a source for all default values.
 			 */
-			constructor(defaults: org.bukkit.configuration.Configuration);
+			constructor(defaults: (org.bukkit.configuration.Configuration | null));
 
 		}
 		interface FileConfigurationOptions extends Modify<org.bukkit.configuration.MemoryConfigurationOptions, {
@@ -71340,9 +71340,9 @@ declare global {
 			 * represents an empty line and an empty String represents an empty comment
 			 * line.
 			 */
-			setHeader(value: globalThis.java.util.List<string>): org.bukkit.configuration.file.FileConfigurationOptions;
+			setHeader(value: (globalThis.java.util.List<string> | null)): org.bukkit.configuration.file.FileConfigurationOptions;
 
-			header(value: string): org.bukkit.configuration.file.FileConfigurationOptions;
+			header(value: (string | null)): org.bukkit.configuration.file.FileConfigurationOptions;
 
 			/**
 			 * Gets the footer that will be applied to the bottom of the saved output.
@@ -71372,7 +71372,7 @@ declare global {
 			 * represents an empty line and an empty String represents an empty comment
 			 * line.
 			 */
-			setFooter(value: globalThis.java.util.List<string>): org.bukkit.configuration.file.FileConfigurationOptions;
+			setFooter(value: (globalThis.java.util.List<string> | null)): org.bukkit.configuration.file.FileConfigurationOptions;
 
 			/**
 			 * Gets whether or not comments should be loaded and saved.
@@ -71455,14 +71455,14 @@ declare global {
 			/**
 			 * Description copied from class: FileConfigurationOptions
 			 */
-			setHeader(value: globalThis.java.util.List<string>): org.bukkit.configuration.file.YamlConfigurationOptions;
+			setHeader(value: (globalThis.java.util.List<string> | null)): org.bukkit.configuration.file.YamlConfigurationOptions;
 
-			header(value: string): org.bukkit.configuration.file.YamlConfigurationOptions;
+			header(value: (string | null)): org.bukkit.configuration.file.YamlConfigurationOptions;
 
 			/**
 			 * Description copied from class: FileConfigurationOptions
 			 */
-			setFooter(value: globalThis.java.util.List<string>): org.bukkit.configuration.file.YamlConfigurationOptions;
+			setFooter(value: (globalThis.java.util.List<string> | null)): org.bukkit.configuration.file.YamlConfigurationOptions;
 
 			/**
 			 * Description copied from class: FileConfigurationOptions
@@ -71499,7 +71499,7 @@ declare global {
 		interface YamlConstructor {
 			flattenMapping(node: any /* org.yaml.snakeyaml.nodes.MappingNode */): void;
 
-			construct(node: any /* org.yaml.snakeyaml.nodes.Node */): any;
+			construct(node: any /* org.yaml.snakeyaml.nodes.Node */): (any | null);
 
 		}
 		class YamlConstructor {
@@ -71568,12 +71568,12 @@ declare global {
 			/**
 			 * Gets the item this food will convert to once eaten.
 			 */
-			getUsingConvertsTo(): org.bukkit.inventory.ItemStack;
+			getUsingConvertsTo(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Sets the item this food will convert to once eaten.
 			 */
-			setUsingConvertsTo(item: org.bukkit.inventory.ItemStack): void;
+			setUsingConvertsTo(item: (org.bukkit.inventory.ItemStack | null)): void;
 
 			/**
 			 * Gets the effects which may be applied by this item when eaten.
@@ -71619,7 +71619,7 @@ declare global {
 			/**
 			 * Gets the song assigned to this component.
 			 */
-			getSong(): org.bukkit.JukeboxSong;
+			getSong(): (org.bukkit.JukeboxSong | null);
 
 			/**
 			 * Gets the key of the song assigned to this component.
@@ -71687,19 +71687,19 @@ declare global {
 			 * Add a new rule to this tool component, which provides further information
 			 * about a specific block type.
 			 */
-			addRule(block: org.bukkit.Material, speed: number, correctForDrops: boolean): org.bukkit.inventory.meta.components.ToolComponent.ToolRule;
+			addRule(block: org.bukkit.Material, speed: (number | null), correctForDrops: (boolean | null)): org.bukkit.inventory.meta.components.ToolComponent.ToolRule;
 
 			/**
 			 * Add a new rule to this tool component, which provides further information
 			 * about a collection of block types.
 			 */
-			addRule(blocks: globalThis.java.util.Collection<org.bukkit.Material>, speed: number, correctForDrops: boolean): org.bukkit.inventory.meta.components.ToolComponent.ToolRule;
+			addRule(blocks: globalThis.java.util.Collection<org.bukkit.Material>, speed: (number | null), correctForDrops: (boolean | null)): org.bukkit.inventory.meta.components.ToolComponent.ToolRule;
 
 			/**
 			 * Add a new rule to this tool component, which provides further information
 			 * about a collection of block types represented by a block Tag.
 			 */
-			addRule(tag: org.bukkit.Tag<org.bukkit.Material>, speed: number, correctForDrops: boolean): org.bukkit.inventory.meta.components.ToolComponent.ToolRule;
+			addRule(tag: org.bukkit.Tag<org.bukkit.Material>, speed: (number | null), correctForDrops: (boolean | null)): org.bukkit.inventory.meta.components.ToolComponent.ToolRule;
 
 			/**
 			 * Remove the given ToolComponent.ToolRule from this tool.
@@ -71735,12 +71735,12 @@ declare global {
 				 * used in lieu of the default speed value of the tool. 1.0 is standard
 				 * mining speed.
 				 */
-				getSpeed(): number;
+				getSpeed(): (number | null);
 
 				/**
 				 * Set the mining speed of this rule. 1.0 is standard mining speed.
 				 */
-				setSpeed(speed: number): void;
+				setSpeed(speed: (number | null)): void;
 
 				/**
 				 * Get whether or not this rule is considered the optimal tool for the
@@ -71748,13 +71748,13 @@ declare global {
 				 * value is used in lieu of the default tool checking behavior defined
 				 * by Minecraft.
 				 */
-				isCorrectForDrops(): boolean;
+				isCorrectForDrops(): (boolean | null);
 
 				/**
 				 * Set whether or not this rule is considered the optimal tool for the
 				 * blocks listed by this rule and will drop items.
 				 */
-				setCorrectForDrops(correct: boolean): void;
+				setCorrectForDrops(correct: (boolean | null)): void;
 
 			}> {}
 		}
@@ -71922,7 +71922,7 @@ declare global {
 			/**
 			 * Returns a help topic for a given topic name.
 			 */
-			getHelpTopic(topicName: string): org.bukkit.help.HelpTopic;
+			getHelpTopic(topicName: string): (org.bukkit.help.HelpTopic | null);
 
 			/**
 			 * Returns a collection of all the registered help topics.
@@ -71976,7 +71976,7 @@ declare global {
 			 * HelpTopic implementations should take this into account when
 			 * determining topic visibility on the canSee(org.bukkit.command.CommandSender) function.
 			 */
-			amendCanSee(amendedPermission: string): void;
+			amendCanSee(amendedPermission: (string | null)): void;
 
 			/**
 			 * Returns the name of this help topic.
@@ -72005,7 +72005,7 @@ declare global {
 			 * with the existing contents in the help topic. Use this to append or
 			 * prepend additional content into an automatically generated help topic.
 			 */
-			amendTopic(amendedShortText: string, amendedFullText: string): void;
+			amendTopic(amendedShortText: (string | null), amendedFullText: (string | null)): void;
 
 		}
 		class HelpTopic {
@@ -72033,7 +72033,7 @@ declare global {
 			 * This method accepts a command deriving from a custom command base class
 			 * and constructs a custom HelpTopic for it.
 			 */
-			createTopic(command: TCommand): org.bukkit.help.HelpTopic;
+			createTopic(command: TCommand): (org.bukkit.help.HelpTopic | null);
 
 		}
 		interface IndexHelpTopic extends Modify<org.bukkit.help.HelpTopic, {
@@ -72045,7 +72045,7 @@ declare global {
 			/**
 			 * Description copied from class: HelpTopic
 			 */
-			amendCanSee(amendedPermission: string): void;
+			amendCanSee(amendedPermission: (string | null)): void;
 
 			/**
 			 * Description copied from class: HelpTopic
@@ -72054,9 +72054,9 @@ declare global {
 
 		}> {}
 		class IndexHelpTopic {
-			constructor(name: string, shortText: string, permission: string, topics: globalThis.java.util.Collection<org.bukkit.help.HelpTopic>);
+			constructor(name: string, shortText: (string | null), permission: (string | null), topics: globalThis.java.util.Collection<org.bukkit.help.HelpTopic>);
 
-			constructor(name: string, shortText: string, permission: string, topics: globalThis.java.util.Collection<org.bukkit.help.HelpTopic>, preamble: string);
+			constructor(name: string, shortText: (string | null), permission: (string | null), topics: globalThis.java.util.Collection<org.bukkit.help.HelpTopic>, preamble: (string | null));
 
 		}
 	}
@@ -72066,13 +72066,13 @@ declare global {
 			 * Gets the entity that removed the hanging entity.
 			 * May be null, for example when broken by an explosion.
 			 */
-			getRemover(): org.bukkit.entity.Entity;
+			getRemover(): (org.bukkit.entity.Entity | null);
 
 		}> {}
 		class HangingBreakByEntityEvent {
-			constructor(hanging: org.bukkit.entity.Hanging, remover: org.bukkit.entity.Entity);
+			constructor(hanging: org.bukkit.entity.Hanging, remover: (org.bukkit.entity.Entity | null));
 
-			constructor(hanging: org.bukkit.entity.Hanging, remover: org.bukkit.entity.Entity, cause: org.bukkit.event.hanging.HangingBreakEvent.RemoveCause);
+			constructor(hanging: org.bukkit.entity.Hanging, remover: (org.bukkit.entity.Entity | null), cause: org.bukkit.event.hanging.HangingBreakEvent.RemoveCause);
 
 		}
 		interface HangingBreakEvent extends Modify<org.bukkit.event.hanging.HangingEvent, {
@@ -72151,7 +72151,7 @@ declare global {
 			/**
 			 * Returns the player placing the hanging entity
 			 */
-			getPlayer(): org.bukkit.entity.Player;
+			getPlayer(): (org.bukkit.entity.Player | null);
 
 			/**
 			 * Returns the block that the hanging entity was placed on
@@ -72167,12 +72167,12 @@ declare global {
 			 * Returns the hand that was used to place the hanging entity, or null
 			 * if a player did not place the hanging entity.
 			 */
-			getHand(): org.bukkit.inventory.EquipmentSlot;
+			getHand(): (org.bukkit.inventory.EquipmentSlot | null);
 
 			/**
 			 * Gets the item from which the hanging entity originated
 			 */
-			getItemStack(): org.bukkit.inventory.ItemStack;
+			getItemStack(): (org.bukkit.inventory.ItemStack | null);
 
 			/**
 			 * Description copied from interface: Cancellable
@@ -72188,9 +72188,9 @@ declare global {
 
 		}> {}
 		class HangingPlaceEvent {
-			constructor(hanging: org.bukkit.entity.Hanging, player: org.bukkit.entity.Player, block: org.bukkit.block.Block, blockFace: org.bukkit.block.BlockFace, hand: org.bukkit.inventory.EquipmentSlot);
+			constructor(hanging: org.bukkit.entity.Hanging, player: (org.bukkit.entity.Player | null), block: org.bukkit.block.Block, blockFace: org.bukkit.block.BlockFace, hand: (org.bukkit.inventory.EquipmentSlot | null));
 
-			constructor(hanging: org.bukkit.entity.Hanging, player: org.bukkit.entity.Player, block: org.bukkit.block.Block, blockFace: org.bukkit.block.BlockFace, hand: org.bukkit.inventory.EquipmentSlot, itemStack: org.bukkit.inventory.ItemStack);
+			constructor(hanging: org.bukkit.entity.Hanging, player: (org.bukkit.entity.Player | null), block: org.bukkit.block.Block, blockFace: org.bukkit.block.BlockFace, hand: (org.bukkit.inventory.EquipmentSlot | null), itemStack: (org.bukkit.inventory.ItemStack | null));
 
 		}
 		namespace HangingPlaceEvent {
@@ -72309,7 +72309,7 @@ declare global {
 
 			hasParticles(): boolean;
 
-			getColor(): org.bukkit.Color;
+			getColor(): (org.bukkit.Color | null);
 
 			hasIcon(): boolean;
 
@@ -72598,17 +72598,17 @@ declare global {
 			/**
 			 * Gets the PotionEffectType at the specified key
 			 */
-			function getByKey(key: org.bukkit.NamespacedKey): org.bukkit.potion.PotionEffectType;
+			function getByKey(key: (org.bukkit.NamespacedKey | null)): (org.bukkit.potion.PotionEffectType | null);
 
 			/**
 			 * Gets the effect type specified by the unique id.
 			 */
-			function getById(id: number): org.bukkit.potion.PotionEffectType;
+			function getById(id: number): (org.bukkit.potion.PotionEffectType | null);
 
 			/**
 			 * Gets the effect type specified by the given name.
 			 */
-			function getByName(name: string): org.bukkit.potion.PotionEffectType;
+			function getByName(name: string): (org.bukkit.potion.PotionEffectType | null);
 
 		}
 		interface PotionEffectTypeCategory {}
@@ -72648,7 +72648,7 @@ declare global {
 
 		}> {}
 		interface PotionType {
-			getEffectType(): org.bukkit.potion.PotionEffectType;
+			getEffectType(): (org.bukkit.potion.PotionEffectType | null);
 
 			getPotionEffects(): globalThis.java.util.List<org.bukkit.potion.PotionEffect>;
 
@@ -72776,7 +72776,7 @@ declare global {
 			 */
 			function valueOf(name: string): org.bukkit.potion.PotionType;
 
-			function getByEffect(effectType: org.bukkit.potion.PotionEffectType): org.bukkit.potion.PotionType;
+			function getByEffect(effectType: (org.bukkit.potion.PotionEffectType | null)): (org.bukkit.potion.PotionType | null);
 
 		}
 		namespace PotionType {
@@ -72803,7 +72803,7 @@ declare global {
 			 * Adds a ban to this list. If a previous ban exists, this will
 			 * update the previous entry.
 			 */
-			addBan(target: org.bukkit.profile.PlayerProfile, reason: string, expires: globalThis.java.util.Date, source: string): org.bukkit.BanEntry<org.bukkit.profile.PlayerProfile>;
+			addBan(target: org.bukkit.profile.PlayerProfile, reason: (string | null), expires: (globalThis.java.util.Date | null), source: (string | null)): (org.bukkit.BanEntry<org.bukkit.profile.PlayerProfile> | null);
 
 		}> {}
 	}
@@ -72864,7 +72864,7 @@ declare global {
 			/**
 			 * Description copied from interface: Plugin
 			 */
-			getResource(filename: string): any /* java.io.InputStream */;
+			getResource(filename: string): (any /* java.io.InputStream */ | null);
 
 			/**
 			 * Executes the given command, returning its success.
@@ -72877,13 +72877,13 @@ declare global {
 			/**
 			 * Requests a list of possible completions for a command argument.
 			 */
-			onTabComplete(sender: org.bukkit.command.CommandSender, command: org.bukkit.command.Command, alias: string, args: string[]): globalThis.java.util.List<string>;
+			onTabComplete(sender: org.bukkit.command.CommandSender, command: org.bukkit.command.Command, alias: string, args: string[]): (globalThis.java.util.List<string> | null);
 
 			/**
 			 * Gets the command with the given name, specific to this plugin. Commands
 			 * need to be registered in the PluginDescriptionFile to exist at runtime.
 			 */
-			getCommand(name: string): org.bukkit.command.PluginCommand;
+			getCommand(name: string): (org.bukkit.command.PluginCommand | null);
 
 			/**
 			 * Description copied from interface: Plugin
@@ -72903,12 +72903,12 @@ declare global {
 			/**
 			 * Description copied from interface: Plugin
 			 */
-			getDefaultWorldGenerator(worldName: string, id: string): org.bukkit.generator.ChunkGenerator;
+			getDefaultWorldGenerator(worldName: string, id: (string | null)): (org.bukkit.generator.ChunkGenerator | null);
 
 			/**
 			 * Description copied from interface: Plugin
 			 */
-			getDefaultBiomeProvider(worldName: string, id: string): org.bukkit.generator.BiomeProvider;
+			getDefaultBiomeProvider(worldName: string, id: (string | null)): (org.bukkit.generator.BiomeProvider | null);
 
 			/**
 			 * Description copied from interface: Plugin
@@ -73054,7 +73054,7 @@ declare global {
 			/**
 			 * Returns a MemoryKey by a NamespacedKey.
 			 */
-			function getByKey(namespacedKey: org.bukkit.NamespacedKey): org.bukkit.entity.memory.MemoryKey;
+			function getByKey(namespacedKey: org.bukkit.NamespacedKey): (org.bukkit.entity.memory.MemoryKey | null);
 
 			/**
 			 * Returns the set of all MemoryKeys.
@@ -73176,7 +73176,7 @@ declare global {
 			/**
 			 * Gets the face that has cap texture.
 			 */
-			getCapFace(): org.bukkit.block.BlockFace;
+			getCapFace(): (org.bukkit.block.BlockFace | null);
 
 		}
 		namespace MushroomBlockTexture {
@@ -73257,12 +73257,12 @@ declare global {
 			/**
 			 * Gets the MushroomBlockType with the given data value.
 			 */
-			function getByData(data: any /* byte */): org.bukkit.material.types.MushroomBlockTexture;
+			function getByData(data: any /* byte */): (org.bukkit.material.types.MushroomBlockTexture | null);
 
 			/**
 			 * Gets the MushroomBlockType with cap texture on the given block face.
 			 */
-			function getCapByFace(face: org.bukkit.block.BlockFace): org.bukkit.material.types.MushroomBlockTexture;
+			function getCapByFace(face: (org.bukkit.block.BlockFace | null)): (org.bukkit.material.types.MushroomBlockTexture | null);
 
 		}
 	}
@@ -73715,12 +73715,12 @@ declare global {
 			/**
 			 * Gets a registered Structure.
 			 */
-			getStructure(structureKey: org.bukkit.NamespacedKey): org.bukkit.structure.Structure;
+			getStructure(structureKey: org.bukkit.NamespacedKey): (org.bukkit.structure.Structure | null);
 
 			/**
 			 * Registers the given structure. See getStructures().
 			 */
-			registerStructure(structureKey: org.bukkit.NamespacedKey, structure: org.bukkit.structure.Structure): org.bukkit.structure.Structure;
+			registerStructure(structureKey: org.bukkit.NamespacedKey, structure: org.bukkit.structure.Structure): (org.bukkit.structure.Structure | null);
 
 			/**
 			 * Unregisters a structure. Unregisters the specified structure. If the
@@ -73728,7 +73728,7 @@ declare global {
 			 * part of the server's own resources, it may be loaded and registered again
 			 * when it is requested by a plugin or the server itself.
 			 */
-			unregisterStructure(structureKey: org.bukkit.NamespacedKey): org.bukkit.structure.Structure;
+			unregisterStructure(structureKey: org.bukkit.NamespacedKey): (org.bukkit.structure.Structure | null);
 
 			/**
 			 * Loads a structure for the specified key and optionally registers it.
@@ -73740,13 +73740,13 @@ declare global {
 			 * is translated to a file as specified by
 			 * getStructureFile(NamespacedKey).
 			 */
-			loadStructure(structureKey: org.bukkit.NamespacedKey, register: boolean): org.bukkit.structure.Structure;
+			loadStructure(structureKey: org.bukkit.NamespacedKey, register: boolean): (org.bukkit.structure.Structure | null);
 
 			/**
 			 * Loads the structure for the specified key and automatically registers it.
 			 * See loadStructure(NamespacedKey, boolean).
 			 */
-			loadStructure(structureKey: org.bukkit.NamespacedKey): org.bukkit.structure.Structure;
+			loadStructure(structureKey: org.bukkit.NamespacedKey): (org.bukkit.structure.Structure | null);
 
 			/**
 			 * Saves the currently registered structure for the
@@ -73965,7 +73965,7 @@ declare global {
 			 * Returns the pattern type which matches the passed
 			 * identifier or null if no matches are found
 			 */
-			function getByIdentifier(identifier: string): org.bukkit.block.banner.PatternType;
+			function getByIdentifier(identifier: (string | null)): (org.bukkit.block.banner.PatternType | null);
 
 		}
 	}
@@ -74013,13 +74013,13 @@ declare global {
 			 * Temporarily adds a new PermissionAttachment with a single
 			 * permission by name and value
 			 */
-			addAttachment(plugin: org.bukkit.plugin.Plugin, name: string, value: boolean, ticks: number): org.bukkit.permissions.PermissionAttachment;
+			addAttachment(plugin: org.bukkit.plugin.Plugin, name: string, value: boolean, ticks: number): (org.bukkit.permissions.PermissionAttachment | null);
 
 			/**
 			 * Temporarily adds a new empty PermissionAttachment to this
 			 * object
 			 */
-			addAttachment(plugin: org.bukkit.plugin.Plugin, ticks: number): org.bukkit.permissions.PermissionAttachment;
+			addAttachment(plugin: org.bukkit.plugin.Plugin, ticks: number): (org.bukkit.permissions.PermissionAttachment | null);
 
 			/**
 			 * Removes the given PermissionAttachment from this object
@@ -74097,12 +74097,12 @@ declare global {
 			/**
 			 * Description copied from interface: Permissible
 			 */
-			addAttachment(plugin: org.bukkit.plugin.Plugin, name: string, value: boolean, ticks: number): org.bukkit.permissions.PermissionAttachment;
+			addAttachment(plugin: org.bukkit.plugin.Plugin, name: string, value: boolean, ticks: number): (org.bukkit.permissions.PermissionAttachment | null);
 
 			/**
 			 * Description copied from interface: Permissible
 			 */
-			addAttachment(plugin: org.bukkit.plugin.Plugin, ticks: number): org.bukkit.permissions.PermissionAttachment;
+			addAttachment(plugin: org.bukkit.plugin.Plugin, ticks: number): (org.bukkit.permissions.PermissionAttachment | null);
 
 			/**
 			 * Description copied from interface: Permissible
@@ -74111,7 +74111,7 @@ declare global {
 
 		}
 		class PermissibleBase {
-			constructor(opable: org.bukkit.permissions.ServerOperator);
+			constructor(opable: (org.bukkit.permissions.ServerOperator | null));
 
 		}
 		interface Permission {
@@ -74152,7 +74152,7 @@ declare global {
 			 * This will not be saved to disk, and is a temporary operation until the
 			 * server reloads permissions.
 			 */
-			setDescription(value: string): void;
+			setDescription(value: (string | null)): void;
 
 			/**
 			 * Gets a set containing every Permissible that has this
@@ -74187,19 +74187,19 @@ declare global {
 		class Permission {
 			constructor(name: string);
 
-			constructor(name: string, description: string);
+			constructor(name: string, description: (string | null));
 
-			constructor(name: string, defaultValue: org.bukkit.permissions.PermissionDefault);
+			constructor(name: string, defaultValue: (org.bukkit.permissions.PermissionDefault | null));
 
-			constructor(name: string, description: string, defaultValue: org.bukkit.permissions.PermissionDefault);
+			constructor(name: string, description: (string | null), defaultValue: (org.bukkit.permissions.PermissionDefault | null));
 
-			constructor(name: string, children: globalThis.java.util.Map<string, boolean>);
+			constructor(name: string, children: (globalThis.java.util.Map<string, boolean> | null));
 
-			constructor(name: string, description: string, children: globalThis.java.util.Map<string, boolean>);
+			constructor(name: string, description: (string | null), children: (globalThis.java.util.Map<string, boolean> | null));
 
-			constructor(name: string, defaultValue: org.bukkit.permissions.PermissionDefault, children: globalThis.java.util.Map<string, boolean>);
+			constructor(name: string, defaultValue: (org.bukkit.permissions.PermissionDefault | null), children: (globalThis.java.util.Map<string, boolean> | null));
 
-			constructor(name: string, description: string, defaultValue: org.bukkit.permissions.PermissionDefault, children: globalThis.java.util.Map<string, boolean>);
+			constructor(name: string, description: (string | null), defaultValue: (org.bukkit.permissions.PermissionDefault | null), children: (globalThis.java.util.Map<string, boolean> | null));
 
 		}
 		namespace Permission {
@@ -74219,7 +74219,7 @@ declare global {
 			 * this description. If not specified, empty string.
 			 * 
 			 */
-			function loadPermissions(data: globalThis.java.util.Map, error: string, def: org.bukkit.permissions.PermissionDefault): globalThis.java.util.List<org.bukkit.permissions.Permission>;
+			function loadPermissions(data: globalThis.java.util.Map, error: string, def: (org.bukkit.permissions.PermissionDefault | null)): globalThis.java.util.List<org.bukkit.permissions.Permission>;
 
 			/**
 			 * Loads a Permission from a map of data, usually used from retrieval from
@@ -74249,7 +74249,7 @@ declare global {
 			 * this description. If not specified, empty string.
 			 * 
 			 */
-			function loadPermission(name: string, data: globalThis.java.util.Map, def: org.bukkit.permissions.PermissionDefault, output: globalThis.java.util.List<org.bukkit.permissions.Permission>): org.bukkit.permissions.Permission;
+			function loadPermission(name: string, data: globalThis.java.util.Map, def: (org.bukkit.permissions.PermissionDefault | null), output: (globalThis.java.util.List<org.bukkit.permissions.Permission> | null)): org.bukkit.permissions.Permission;
 
 		}
 		interface PermissionAttachment {
@@ -74262,13 +74262,13 @@ declare global {
 			 * Sets an object to be called for when this attachment is removed from a
 			 * Permissible. May be null.
 			 */
-			setRemovalCallback(ex: org.bukkit.permissions.PermissionRemovedExecutor): void;
+			setRemovalCallback(ex: (org.bukkit.permissions.PermissionRemovedExecutor | null)): void;
 
 			/**
 			 * Gets the class that was previously set to be called when this
 			 * attachment was removed from a Permissible. May be null.
 			 */
-			getRemovalCallback(): org.bukkit.permissions.PermissionRemovedExecutor;
+			getRemovalCallback(): (org.bukkit.permissions.PermissionRemovedExecutor | null);
 
 			/**
 			 * Gets the Permissible that this is attached to
@@ -74335,7 +74335,7 @@ declare global {
 			 * Gets the attachment providing this permission. This may be null for
 			 * default permissions (usually parent permissions).
 			 */
-			getAttachment(): org.bukkit.permissions.PermissionAttachment;
+			getAttachment(): (org.bukkit.permissions.PermissionAttachment | null);
 
 			/**
 			 * Gets the value of this permission
@@ -74344,7 +74344,7 @@ declare global {
 
 		}
 		class PermissionAttachmentInfo {
-			constructor(permissible: org.bukkit.permissions.Permissible, permission: string, attachment: org.bukkit.permissions.PermissionAttachment, value: boolean);
+			constructor(permissible: org.bukkit.permissions.Permissible, permission: string, attachment: (org.bukkit.permissions.PermissionAttachment | null), value: boolean);
 
 		}
 		interface PermissionDefault {
@@ -74377,7 +74377,7 @@ declare global {
 			/**
 			 * Looks up a PermissionDefault by name
 			 */
-			function getByName(name: string): org.bukkit.permissions.PermissionDefault;
+			function getByName(name: string): (org.bukkit.permissions.PermissionDefault | null);
 
 		}
 		interface PermissionRemovedExecutor {
@@ -74405,12 +74405,12 @@ declare global {
 			/**
 			 * Gets the player's unique id.
 			 */
-			getUniqueId(): globalThis.java.util.UUID;
+			getUniqueId(): (globalThis.java.util.UUID | null);
 
 			/**
 			 * Gets the player name.
 			 */
-			getName(): string;
+			getName(): (string | null);
 
 			/**
 			 * Gets the PlayerTextures of this profile.
@@ -74420,7 +74420,7 @@ declare global {
 			/**
 			 * Copies the given textures.
 			 */
-			setTextures(textures: org.bukkit.profile.PlayerTextures): void;
+			setTextures(textures: (org.bukkit.profile.PlayerTextures | null)): void;
 
 			/**
 			 * Checks whether this profile is complete.
@@ -74476,7 +74476,7 @@ declare global {
 			/**
 			 * Gets the URL that points to the player's skin.
 			 */
-			getSkin(): any /* java.net.URL */;
+			getSkin(): (any /* java.net.URL */ | null);
 
 			/**
 			 * Sets the player's skin to the specified URL, and the skin model to
@@ -74486,7 +74486,7 @@ declare global {
 			 * http://textures.minecraft.net/texture/b3fbd454b599df593f57101bfca34e67d292a8861213d2202bb575da7fd091ac
 			 * 
 			 */
-			setSkin(skinUrl: any /* java.net.URL */): void;
+			setSkin(skinUrl: (any /* java.net.URL */ | null)): void;
 
 			/**
 			 * Sets the player's skin and PlayerTextures.SkinModel.
@@ -74498,7 +74498,7 @@ declare global {
 			 * A skin model of null results in PlayerTextures.SkinModel.CLASSIC to
 			 * be used.
 			 */
-			setSkin(skinUrl: any /* java.net.URL */, skinModel: org.bukkit.profile.PlayerTextures.SkinModel): void;
+			setSkin(skinUrl: (any /* java.net.URL */ | null), skinModel: (org.bukkit.profile.PlayerTextures.SkinModel | null)): void;
 
 			/**
 			 * Gets the model of the player's skin.
@@ -74510,7 +74510,7 @@ declare global {
 			/**
 			 * Gets the URL that points to the player's cape.
 			 */
-			getCape(): any /* java.net.URL */;
+			getCape(): (any /* java.net.URL */ | null);
 
 			/**
 			 * Sets the URL that points to the player's cape.
@@ -74519,7 +74519,7 @@ declare global {
 			 * http://textures.minecraft.net/texture/2340c0e03dd24a11b15a8b33c2a7e9e32abb2051b2481d0ba7defd635ca7a933
 			 * 
 			 */
-			setCape(capeUrl: any /* java.net.URL */): void;
+			setCape(capeUrl: (any /* java.net.URL */ | null)): void;
 
 			/**
 			 * Gets the timestamp at which the profile was last updated.
@@ -74588,7 +74588,7 @@ declare global {
 			/**
 			 * Returns the patrol leader.
 			 */
-			getPatrolLeader(): org.bukkit.entity.Raider;
+			getPatrolLeader(): (org.bukkit.entity.Raider | null);
 
 			/**
 			 * Returns all Raider that spawned in this wave.
@@ -74599,7 +74599,7 @@ declare global {
 
 		}> {}
 		class RaidSpawnWaveEvent {
-			constructor(raid: org.bukkit.Raid, world: org.bukkit.World, leader: org.bukkit.entity.Raider, raiders: globalThis.java.util.List<org.bukkit.entity.Raider>);
+			constructor(raid: org.bukkit.Raid, world: org.bukkit.World, leader: (org.bukkit.entity.Raider | null), raiders: globalThis.java.util.List<org.bukkit.entity.Raider>);
 
 		}
 		namespace RaidSpawnWaveEvent {
@@ -74783,7 +74783,7 @@ declare global {
 			/**
 			 * Gets the Entity that is attacking the vehicle
 			 */
-			getAttacker(): org.bukkit.entity.Entity;
+			getAttacker(): (org.bukkit.entity.Entity | null);
 
 			/**
 			 * Gets the damage done to the vehicle
@@ -74809,7 +74809,7 @@ declare global {
 
 		}> {}
 		class VehicleDamageEvent {
-			constructor(vehicle: org.bukkit.entity.Vehicle, attacker: org.bukkit.entity.Entity, damage: number);
+			constructor(vehicle: org.bukkit.entity.Vehicle, attacker: (org.bukkit.entity.Entity | null), damage: number);
 
 		}
 		namespace VehicleDamageEvent {
@@ -74820,7 +74820,7 @@ declare global {
 			/**
 			 * Gets the Entity that has destroyed the vehicle, potentially null
 			 */
-			getAttacker(): org.bukkit.entity.Entity;
+			getAttacker(): (org.bukkit.entity.Entity | null);
 
 			/**
 			 * Description copied from interface: Cancellable
@@ -74836,7 +74836,7 @@ declare global {
 
 		}> {}
 		class VehicleDestroyEvent {
-			constructor(vehicle: org.bukkit.entity.Vehicle, attacker: org.bukkit.entity.Entity);
+			constructor(vehicle: org.bukkit.entity.Vehicle, attacker: (org.bukkit.entity.Entity | null));
 
 		}
 		namespace VehicleDestroyEvent {
