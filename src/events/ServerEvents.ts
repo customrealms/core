@@ -2,6 +2,10 @@ export interface EventHandle {
 	release(): void;
 }
 
+type EventClass<T extends org.bukkit.event.Event> = {
+	new (...args: any[]): T;
+};
+
 export class ServerEvents {
 	/**
 	 * Registers a server event handler function
@@ -10,9 +14,12 @@ export class ServerEvents {
 	 * @returns a handle that can be released
 	 */
 	public static register<T extends org.bukkit.event.Event>(
-		classpath: string,
+		event_class: EventClass<T>,
 		handler: (event: T) => void
 	): EventHandle | null {
+		// Get the Java classpath for the event
+		const classpath = (event_class as any).class.getCanonicalName();
+
 		// Register the handler
 		const handle = __events_register<T>(classpath, handler);
 
