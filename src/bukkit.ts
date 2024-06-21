@@ -2,9 +2,11 @@ export {};
 
 import './java';
 
+type Modify<T, R> = Omit<T, keyof R> & R;
+
 declare global {
 	namespace org.bukkit.entity {
-		type AbstractArrow = org.bukkit.entity.Projectile & {
+		interface AbstractArrow extends Modify<org.bukkit.entity.Projectile, {
 			/**
 			 * Gets the knockback strength for an arrow, which is the
 			 * KnockBack level
@@ -108,8 +110,9 @@ declare global {
 			 */
 			setWeapon(item: org.bukkit.inventory.ItemStack): void;
 
-		}
+		}> {}
 		namespace AbstractArrow {
+			interface PickupStatus {}
 			namespace PickupStatus {
 				/**
 				 * The arrow cannot be picked up.
@@ -135,9 +138,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.entity.AbstractArrow.PickupStatus;
 
 			}
-			interface PickupStatus {}
 		}
-		type AbstractHorse = org.bukkit.entity.Vehicle & org.bukkit.inventory.InventoryHolder & org.bukkit.entity.Tameable & {
+		interface AbstractHorse extends Modify<org.bukkit.entity.Vehicle & org.bukkit.inventory.InventoryHolder & org.bukkit.entity.Tameable, {
 			/**
 			 * Gets the horse's variant.
 			 * 
@@ -222,8 +224,8 @@ declare global {
 			 */
 			getInventory(): org.bukkit.inventory.AbstractHorseInventory;
 
-		}
-		type AbstractSkeleton = org.bukkit.entity.Monster & {
+		}> {}
+		interface AbstractSkeleton extends Modify<org.bukkit.entity.Monster, {
 			/**
 			 * Gets the current type of this skeleton.
 			 */
@@ -231,8 +233,8 @@ declare global {
 
 			setSkeletonType(type: org.bukkit.entity.Skeleton.SkeletonType): void;
 
-		}
-		type AbstractVillager = org.bukkit.entity.Breedable & org.bukkit.entity.NPC & org.bukkit.inventory.InventoryHolder & org.bukkit.inventory.Merchant & {
+		}> {}
+		interface AbstractVillager extends Modify<org.bukkit.entity.Breedable & org.bukkit.entity.NPC & org.bukkit.inventory.InventoryHolder & org.bukkit.inventory.Merchant, {
 			/**
 			 * Gets this villager's inventory.
 			 * 
@@ -242,15 +244,15 @@ declare global {
 			 */
 			getInventory(): org.bukkit.inventory.Inventory;
 
-		}
-		type AbstractWindCharge = org.bukkit.entity.Fireball & {
+		}> {}
+		interface AbstractWindCharge extends Modify<org.bukkit.entity.Fireball, {
 			/**
 			 * Immediately explode this WindCharge.
 			 */
 			explode(): void;
 
-		}
-		type Ageable = org.bukkit.entity.Creature & {
+		}> {}
+		interface Ageable extends Modify<org.bukkit.entity.Creature, {
 			/**
 			 * Gets the age of this mob.
 			 */
@@ -298,8 +300,8 @@ declare global {
 			 */
 			setBreed(breed: boolean): void;
 
-		}
-		type Allay = org.bukkit.entity.Creature & org.bukkit.inventory.InventoryHolder & {
+		}> {}
+		interface Allay extends Modify<org.bukkit.entity.Creature & org.bukkit.inventory.InventoryHolder, {
 			/**
 			 * Gets if the allay can duplicate.
 			 * 
@@ -370,8 +372,8 @@ declare global {
 			 */
 			getJukebox(): org.bukkit.Location;
 
-		}
-		type Ambient = org.bukkit.entity.Mob & {}
+		}> {}
+		interface Ambient extends Modify<org.bukkit.entity.Mob, {}> {}
 		interface AnimalTamer {
 			/**
 			 * This is the name of the specified AnimalTamer.
@@ -384,7 +386,7 @@ declare global {
 			getUniqueId(): globalThis.java.util.UUID;
 
 		}
-		type Animals = org.bukkit.entity.Breedable & {
+		interface Animals extends Modify<org.bukkit.entity.Breedable, {
 			/**
 			 * Get the UUID of the entity that caused this entity to enter the
 			 * Breedable.canBreed() state.
@@ -429,8 +431,8 @@ declare global {
 			 */
 			isBreedItem(material: org.bukkit.Material): boolean;
 
-		}
-		type AreaEffectCloud = org.bukkit.entity.Entity & {
+		}> {}
+		interface AreaEffectCloud extends Modify<org.bukkit.entity.Entity, {
 			/**
 			 * Gets the duration which this cloud will exist for (in ticks).
 			 */
@@ -596,9 +598,9 @@ declare global {
 			 */
 			setSource(source: org.bukkit.projectiles.ProjectileSource): void;
 
-		}
-		type Armadillo = org.bukkit.entity.Animals & {}
-		type ArmorStand = org.bukkit.entity.LivingEntity & {
+		}> {}
+		interface Armadillo extends Modify<org.bukkit.entity.Animals, {}> {}
+		interface ArmorStand extends Modify<org.bukkit.entity.LivingEntity, {
 			/**
 			 * Returns the item the armor stand is currently holding.
 			 */
@@ -790,8 +792,9 @@ declare global {
 			 */
 			hasEquipmentLock(slot: org.bukkit.inventory.EquipmentSlot, lockType: org.bukkit.entity.ArmorStand.LockType): boolean;
 
-		}
+		}> {}
 		namespace ArmorStand {
+			interface LockType {}
 			namespace LockType {
 				/**
 				 * Prevents adding or changing the respective equipment - players cannot
@@ -823,9 +826,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.entity.ArmorStand.LockType;
 
 			}
-			interface LockType {}
 		}
-		type Arrow = org.bukkit.entity.AbstractArrow & {
+		interface Arrow extends Modify<org.bukkit.entity.AbstractArrow, {
 			/**
 			 * Sets the underlying potion data
 			 */
@@ -890,8 +892,8 @@ declare global {
 			 */
 			clearCustomEffects(): void;
 
-		}
-		type Axolotl = org.bukkit.entity.Animals & {
+		}> {}
+		interface Axolotl extends Modify<org.bukkit.entity.Animals, {
 			/**
 			 * Gets if this axolotl is playing dead.
 			 * An axolotl may play dead when it is damaged underwater.
@@ -914,8 +916,9 @@ declare global {
 			 */
 			setVariant(variant: org.bukkit.entity.Axolotl.Variant): void;
 
-		}
+		}> {}
 		namespace Axolotl {
+			interface Variant {}
 			namespace Variant {
 				/**
 				 * Leucistic (pink) axolotl.
@@ -951,9 +954,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.entity.Axolotl.Variant;
 
 			}
-			interface Variant {}
 		}
-		type Bat = org.bukkit.entity.Ambient & {
+		interface Bat extends Modify<org.bukkit.entity.Ambient, {
 			/**
 			 * Checks the current waking state of this bat.
 			 * 
@@ -969,8 +971,8 @@ declare global {
 			 */
 			setAwake(state: boolean): void;
 
-		}
-		type Bee = org.bukkit.entity.Animals & {
+		}> {}
+		interface Bee extends Modify<org.bukkit.entity.Animals, {
 			/**
 			 * Get the bee's hive location.
 			 */
@@ -1031,9 +1033,9 @@ declare global {
 			 */
 			setCannotEnterHiveTicks(ticks: number): void;
 
-		}
-		type Blaze = org.bukkit.entity.Monster & {}
-		type BlockDisplay = org.bukkit.entity.Display & {
+		}> {}
+		interface Blaze extends Modify<org.bukkit.entity.Monster, {}> {}
+		interface BlockDisplay extends Modify<org.bukkit.entity.Display, {
 			/**
 			 * Gets the displayed block.
 			 */
@@ -1044,8 +1046,8 @@ declare global {
 			 */
 			setBlock(block: org.bukkit.block.data.BlockData): void;
 
-		}
-		type Boat = org.bukkit.entity.Vehicle & {
+		}> {}
+		interface Boat extends Modify<org.bukkit.entity.Vehicle, {
 			/**
 			 * Gets the wood type of the boat.
 			 */
@@ -1120,8 +1122,9 @@ declare global {
 			 */
 			getStatus(): org.bukkit.entity.Boat.Status;
 
-		}
+		}> {}
 		namespace Boat {
+			interface Status {}
 			namespace Status {
 				const IN_WATER: org.bukkit.entity.Boat.Status;
 
@@ -1142,9 +1145,15 @@ declare global {
 				function valueOf(name: string): org.bukkit.entity.Boat.Status;
 
 			}
-			interface Status {}
 		}
 		namespace Boat {
+			interface Type {
+				/**
+				 * Gets the material of the boat type.
+				 */
+				getMaterial(): org.bukkit.Material;
+
+			}
 			namespace Type {
 				const OAK: org.bukkit.entity.Boat.Type;
 
@@ -1173,23 +1182,16 @@ declare global {
 				function valueOf(name: string): org.bukkit.entity.Boat.Type;
 
 			}
-			interface Type {
-				/**
-				 * Gets the material of the boat type.
-				 */
-				getMaterial(): org.bukkit.Material;
-
-			}
 		}
-		type Bogged = org.bukkit.entity.AbstractSkeleton & {}
-		type Boss = org.bukkit.entity.Entity & {
+		interface Bogged extends Modify<org.bukkit.entity.AbstractSkeleton, {}> {}
+		interface Boss extends Modify<org.bukkit.entity.Entity, {
 			/**
 			 * Returns the BossBar of the Boss
 			 */
 			getBossBar(): org.bukkit.boss.BossBar;
 
-		}
-		type Breedable = org.bukkit.entity.Ageable & {
+		}> {}
+		interface Breedable extends Modify<org.bukkit.entity.Ageable, {
 			/**
 			 * Lock the age of the animal, setting this will prevent the animal from
 			 * maturing or getting ready for mating.
@@ -1212,10 +1214,10 @@ declare global {
 			 */
 			setBreed(breed: boolean): void;
 
-		}
-		type Breeze = org.bukkit.entity.Monster & {}
-		type BreezeWindCharge = org.bukkit.entity.AbstractWindCharge & {}
-		type Camel = org.bukkit.entity.AbstractHorse & org.bukkit.entity.Sittable & {
+		}> {}
+		interface Breeze extends Modify<org.bukkit.entity.Monster, {}> {}
+		interface BreezeWindCharge extends Modify<org.bukkit.entity.AbstractWindCharge, {}> {}
+		interface Camel extends Modify<org.bukkit.entity.AbstractHorse & org.bukkit.entity.Sittable, {
 			/**
 			 * Gets whether this camel is dashing (sprinting).
 			 */
@@ -1226,8 +1228,8 @@ declare global {
 			 */
 			setDashing(dashing: boolean): void;
 
-		}
-		type Cat = org.bukkit.entity.Tameable & org.bukkit.entity.Sittable & {
+		}> {}
+		interface Cat extends Modify<org.bukkit.entity.Tameable & org.bukkit.entity.Sittable, {
 			/**
 			 * Gets the current type of this cat.
 			 */
@@ -1248,8 +1250,15 @@ declare global {
 			 */
 			setCollarColor(color: org.bukkit.DyeColor): void;
 
-		}
+		}> {}
 		namespace Cat {
+			interface Type {
+				/**
+				 * Description copied from interface: Keyed
+				 */
+				getKey(): org.bukkit.NamespacedKey;
+
+			}
 			namespace Type {
 				const TABBY: org.bukkit.entity.Cat.Type;
 
@@ -1282,17 +1291,10 @@ declare global {
 				function valueOf(name: string): org.bukkit.entity.Cat.Type;
 
 			}
-			interface Type {
-				/**
-				 * Description copied from interface: Keyed
-				 */
-				getKey(): org.bukkit.NamespacedKey;
-
-			}
 		}
-		type CaveSpider = org.bukkit.entity.Spider & {}
-		type ChestBoat = org.bukkit.entity.Boat & org.bukkit.inventory.InventoryHolder & org.bukkit.loot.Lootable & {}
-		type ChestedHorse = org.bukkit.entity.AbstractHorse & {
+		interface CaveSpider extends Modify<org.bukkit.entity.Spider, {}> {}
+		interface ChestBoat extends Modify<org.bukkit.entity.Boat & org.bukkit.inventory.InventoryHolder & org.bukkit.loot.Lootable, {}> {}
+		interface ChestedHorse extends Modify<org.bukkit.entity.AbstractHorse, {
 			/**
 			 * Gets whether the horse has a chest equipped.
 			 */
@@ -1304,26 +1306,26 @@ declare global {
 			 */
 			setCarryingChest(chest: boolean): void;
 
-		}
-		type Chicken = org.bukkit.entity.Animals & {}
-		type Cod = org.bukkit.entity.Fish & {}
-		type ComplexEntityPart = org.bukkit.entity.Entity & {
+		}> {}
+		interface Chicken extends Modify<org.bukkit.entity.Animals, {}> {}
+		interface Cod extends Modify<org.bukkit.entity.Fish, {}> {}
+		interface ComplexEntityPart extends Modify<org.bukkit.entity.Entity, {
 			/**
 			 * Gets the parent ComplexLivingEntity of this part.
 			 */
 			getParent(): org.bukkit.entity.ComplexLivingEntity;
 
-		}
-		type ComplexLivingEntity = org.bukkit.entity.LivingEntity & {
+		}> {}
+		interface ComplexLivingEntity extends Modify<org.bukkit.entity.LivingEntity, {
 			/**
 			 * Gets a list of parts that belong to this complex entity
 			 */
 			getParts(): globalThis.java.util.Set<org.bukkit.entity.ComplexEntityPart>;
 
-		}
-		type Cow = org.bukkit.entity.Animals & {}
-		type Creature = org.bukkit.entity.Mob & {}
-		type Creeper = org.bukkit.entity.Monster & {
+		}> {}
+		interface Cow extends Modify<org.bukkit.entity.Animals, {}> {}
+		interface Creature extends Modify<org.bukkit.entity.Mob, {}> {}
+		interface Creeper extends Modify<org.bukkit.entity.Monster, {
 			/**
 			 * Checks if this Creeper is powered (Electrocuted)
 			 */
@@ -1408,8 +1410,8 @@ declare global {
 			 */
 			getIgniter(): org.bukkit.entity.Entity;
 
-		}
-		type Damageable = org.bukkit.entity.Entity & {
+		}> {}
+		interface Damageable extends Modify<org.bukkit.entity.Entity, {
 			/**
 			 * Deals the given amount of damage to this entity.
 			 */
@@ -1473,8 +1475,8 @@ declare global {
 			 */
 			resetMaxHealth(): void;
 
-		}
-		type Display = org.bukkit.entity.Entity & {
+		}> {}
+		interface Display extends Modify<org.bukkit.entity.Entity, {
 			/**
 			 * Gets the transformation applied to this display.
 			 */
@@ -1609,8 +1611,9 @@ declare global {
 			 */
 			setBrightness(brightness: org.bukkit.entity.Display.Brightness): void;
 
-		}
+		}> {}
 		namespace Display {
+			interface Billboard {}
 			namespace Billboard {
 				/**
 				 * No rotation (default).
@@ -1641,12 +1644,9 @@ declare global {
 				function valueOf(name: string): org.bukkit.entity.Display.Billboard;
 
 			}
-			interface Billboard {}
 		}
 		namespace Display {
 			interface Brightness {
-				new(blockLight: number, skyLight: number): Brightness;
-
 				/**
 				 * Gets the block lighting component of this brightness.
 				 */
@@ -1664,14 +1664,18 @@ declare global {
 				toString(): string;
 
 			}
+			class Brightness {
+				constructor(blockLight: number, skyLight: number);
+
+			}
 		}
-		type Dolphin = org.bukkit.entity.WaterMob & {}
-		type Donkey = org.bukkit.entity.ChestedHorse & {}
-		type DragonFireball = org.bukkit.entity.Fireball & {}
-		type Drowned = org.bukkit.entity.Zombie & {}
-		type Egg = org.bukkit.entity.ThrowableProjectile & {}
-		type ElderGuardian = org.bukkit.entity.Guardian & {}
-		type EnderCrystal = org.bukkit.entity.Entity & {
+		interface Dolphin extends Modify<org.bukkit.entity.WaterMob, {}> {}
+		interface Donkey extends Modify<org.bukkit.entity.ChestedHorse, {}> {}
+		interface DragonFireball extends Modify<org.bukkit.entity.Fireball, {}> {}
+		interface Drowned extends Modify<org.bukkit.entity.Zombie, {}> {}
+		interface Egg extends Modify<org.bukkit.entity.ThrowableProjectile, {}> {}
+		interface ElderGuardian extends Modify<org.bukkit.entity.Guardian, {}> {}
+		interface EnderCrystal extends Modify<org.bukkit.entity.Entity, {
 			/**
 			 * Return whether or not this end crystal is showing the
 			 * bedrock slate underneath it.
@@ -1695,8 +1699,8 @@ declare global {
 			 */
 			setBeamTarget(location: org.bukkit.Location): void;
 
-		}
-		type EnderDragon = org.bukkit.entity.ComplexLivingEntity & org.bukkit.entity.Boss & org.bukkit.entity.Mob & org.bukkit.entity.Enemy & {
+		}> {}
+		interface EnderDragon extends Modify<org.bukkit.entity.ComplexLivingEntity & org.bukkit.entity.Boss & org.bukkit.entity.Mob & org.bukkit.entity.Enemy, {
 			/**
 			 * Gets the current phase that the dragon is performing.
 			 */
@@ -1726,8 +1730,9 @@ declare global {
 			 */
 			getDeathAnimationTicks(): number;
 
-		}
+		}> {}
 		namespace EnderDragon {
+			interface Phase {}
 			namespace Phase {
 				/**
 				 * The dragon will circle outside the ring of pillars if ender
@@ -1800,17 +1805,16 @@ declare global {
 				function valueOf(name: string): org.bukkit.entity.EnderDragon.Phase;
 
 			}
-			interface Phase {}
 		}
-		type EnderDragonPart = org.bukkit.entity.ComplexEntityPart & org.bukkit.entity.Damageable & {
+		interface EnderDragonPart extends Modify<org.bukkit.entity.ComplexEntityPart & org.bukkit.entity.Damageable, {
 			/**
 			 * Description copied from interface: ComplexEntityPart
 			 */
 			getParent(): org.bukkit.entity.EnderDragon;
 
-		}
-		type EnderPearl = org.bukkit.entity.ThrowableProjectile & {}
-		type EnderSignal = org.bukkit.entity.Entity & {
+		}> {}
+		interface EnderPearl extends Modify<org.bukkit.entity.ThrowableProjectile, {}> {}
+		interface EnderSignal extends Modify<org.bukkit.entity.Entity, {
 			/**
 			 * Get the location this EnderSignal is moving towards.
 			 */
@@ -1862,8 +1866,8 @@ declare global {
 			 */
 			setDespawnTimer(timer: number): void;
 
-		}
-		type Enderman = org.bukkit.entity.Monster & {
+		}> {}
+		interface Enderman extends Modify<org.bukkit.entity.Monster, {
 			/**
 			 * Gets the id and data of the block that the Enderman is carrying.
 			 */
@@ -1911,8 +1915,8 @@ declare global {
 			 */
 			teleportTowards(entity: org.bukkit.entity.Entity): boolean;
 
-		}
-		type Endermite = org.bukkit.entity.Monster & {
+		}> {}
+		interface Endermite extends Modify<org.bukkit.entity.Monster, {
 			/**
 			 * Gets whether this Endermite was spawned by a player.
 			 * An Endermite spawned by a player will be attacked by nearby Enderman.
@@ -1925,9 +1929,9 @@ declare global {
 			 */
 			setPlayerSpawned(playerSpawned: boolean): void;
 
-		}
-		type Enemy = org.bukkit.entity.LivingEntity & {}
-		type Entity = org.bukkit.metadata.Metadatable & org.bukkit.command.CommandSender & org.bukkit.Nameable & org.bukkit.persistence.PersistentDataHolder & {
+		}> {}
+		interface Enemy extends Modify<org.bukkit.entity.LivingEntity, {}> {}
+		interface Entity extends Modify<org.bukkit.metadata.Metadatable & org.bukkit.command.CommandSender & org.bukkit.Nameable & org.bukkit.persistence.PersistentDataHolder, {
 			/**
 			 * Gets the entity's current position
 			 */
@@ -2434,7 +2438,8 @@ declare global {
 			 */
 			copy(to: org.bukkit.Location): org.bukkit.entity.Entity;
 
-		}
+		}> {}
+		interface EntityCategory {}
 		namespace EntityCategory {
 			/**
 			 * Any uncategorized entity. No additional effects are applied to these
@@ -2501,7 +2506,6 @@ declare global {
 			function valueOf(name: string): org.bukkit.entity.EntityCategory;
 
 		}
-		interface EntityCategory {}
 		interface EntityFactory {
 			/**
 			 * Create a new EntitySnapshot with the supplied input.
@@ -2533,6 +2537,43 @@ declare global {
 			 * This string should not be relied upon as a serializable value.
 			 */
 			getAsString(): string;
+
+		}
+		interface EntityType {
+			/**
+			 * Gets the entity type name.
+			 */
+			getName(): string;
+
+			/**
+			 * Description copied from interface: Keyed
+			 */
+			getKey(): org.bukkit.NamespacedKey;
+
+			getEntityClass(): globalThis.java.lang.Class<org.bukkit.entity.Entity>;
+
+			/**
+			 * Gets the entity type id.
+			 */
+			getTypeId(): number;
+
+			/**
+			 * Some entities cannot be spawned using RegionAccessor.spawnEntity(Location, EntityType) or RegionAccessor.spawn(Location, Class), usually because they require additional
+			 * information in order to spawn.
+			 */
+			isSpawnable(): boolean;
+
+			isAlive(): boolean;
+
+			/**
+			 * Description copied from interface: Translatable
+			 */
+			getTranslationKey(): string;
+
+			/**
+			 * Gets if this EntityType is enabled by feature in a world.
+			 */
+			isEnabledByFeature(world: org.bukkit.World): boolean;
 
 		}
 		namespace EntityType {
@@ -2899,44 +2940,7 @@ declare global {
 			function fromId(id: number): org.bukkit.entity.EntityType;
 
 		}
-		interface EntityType {
-			/**
-			 * Gets the entity type name.
-			 */
-			getName(): string;
-
-			/**
-			 * Description copied from interface: Keyed
-			 */
-			getKey(): org.bukkit.NamespacedKey;
-
-			getEntityClass(): globalThis.java.lang.Class<org.bukkit.entity.Entity>;
-
-			/**
-			 * Gets the entity type id.
-			 */
-			getTypeId(): number;
-
-			/**
-			 * Some entities cannot be spawned using RegionAccessor.spawnEntity(Location, EntityType) or RegionAccessor.spawn(Location, Class), usually because they require additional
-			 * information in order to spawn.
-			 */
-			isSpawnable(): boolean;
-
-			isAlive(): boolean;
-
-			/**
-			 * Description copied from interface: Translatable
-			 */
-			getTranslationKey(): string;
-
-			/**
-			 * Gets if this EntityType is enabled by feature in a world.
-			 */
-			isEnabledByFeature(world: org.bukkit.World): boolean;
-
-		}
-		type Evoker = org.bukkit.entity.Spellcaster & {
+		interface Evoker extends Modify<org.bukkit.entity.Spellcaster, {
 			/**
 			 * Gets the Evoker.Spell the Evoker is currently using.
 			 */
@@ -2947,8 +2951,9 @@ declare global {
 			 */
 			setCurrentSpell(spell: org.bukkit.entity.Evoker.Spell): void;
 
-		}
+		}> {}
 		namespace Evoker {
+			interface Spell {}
 			namespace Spell {
 				/**
 				 * No spell is being evoked.
@@ -2989,9 +2994,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.entity.Evoker.Spell;
 
 			}
-			interface Spell {}
 		}
-		type EvokerFangs = org.bukkit.entity.Entity & {
+		interface EvokerFangs extends Modify<org.bukkit.entity.Entity, {
 			/**
 			 * Gets the LivingEntity which summoned the fangs.
 			 */
@@ -3012,8 +3016,8 @@ declare global {
 			 */
 			setAttackDelay(delay: number): void;
 
-		}
-		type ExperienceOrb = org.bukkit.entity.Entity & {
+		}> {}
+		interface ExperienceOrb extends Modify<org.bukkit.entity.Entity, {
 			/**
 			 * Gets how much experience is contained within this orb
 			 */
@@ -3024,8 +3028,8 @@ declare global {
 			 */
 			setExperience(value: number): void;
 
-		}
-		type Explosive = org.bukkit.entity.Entity & {
+		}> {}
+		interface Explosive extends Modify<org.bukkit.entity.Entity, {
 			/**
 			 * Set the radius affected by this explosive's explosion
 			 */
@@ -3046,8 +3050,8 @@ declare global {
 			 */
 			isIncendiary(): boolean;
 
-		}
-		type FallingBlock = org.bukkit.entity.Entity & {
+		}> {}
+		interface FallingBlock extends Modify<org.bukkit.entity.Entity, {
 			/**
 			 * Get the Material of the falling block
 			 */
@@ -3138,8 +3142,8 @@ declare global {
 			 */
 			setMaxDamage(damage: number): void;
 
-		}
-		type Fireball = org.bukkit.entity.Projectile & org.bukkit.entity.Explosive & {
+		}> {}
+		interface Fireball extends Modify<org.bukkit.entity.Projectile & org.bukkit.entity.Explosive, {
 			/**
 			 * Sets the direction the fireball should be flying towards.
 			 * 
@@ -3178,8 +3182,8 @@ declare global {
 			 */
 			getAcceleration(): org.bukkit.util.Vector;
 
-		}
-		type Firework = org.bukkit.entity.Projectile & {
+		}> {}
+		interface Firework extends Modify<org.bukkit.entity.Projectile, {
 			/**
 			 * Get a copy of the fireworks meta
 			 */
@@ -3255,9 +3259,9 @@ declare global {
 			 */
 			setShotAtAngle(shotAtAngle: boolean): void;
 
-		}
-		type Fish = org.bukkit.entity.WaterMob & {}
-		type FishHook = org.bukkit.entity.Projectile & {
+		}> {}
+		interface Fish extends Modify<org.bukkit.entity.WaterMob, {}> {}
+		interface FishHook extends Modify<org.bukkit.entity.Projectile, {
 			/**
 			 * Get the minimum number of ticks one has to wait for a fish appearing.
 			 * 
@@ -3475,8 +3479,9 @@ declare global {
 			 */
 			getState(): org.bukkit.entity.FishHook.HookState;
 
-		}
+		}> {}
 		namespace FishHook {
+			interface HookState {}
 			namespace HookState {
 				/**
 				 * The fishing hook has been cast and is either in the air or resting
@@ -3503,10 +3508,9 @@ declare global {
 				function valueOf(name: string): org.bukkit.entity.FishHook.HookState;
 
 			}
-			interface HookState {}
 		}
-		type Flying = org.bukkit.entity.Mob & {}
-		type Fox = org.bukkit.entity.Animals & org.bukkit.entity.Sittable & {
+		interface Flying extends Modify<org.bukkit.entity.Mob, {}> {}
+		interface Fox extends Modify<org.bukkit.entity.Animals & org.bukkit.entity.Sittable, {
 			/**
 			 * Gets the current type of this fox.
 			 */
@@ -3561,8 +3565,9 @@ declare global {
 			 */
 			isFaceplanted(): boolean;
 
-		}
+		}> {}
 		namespace Fox {
+			interface Type {}
 			namespace Type {
 				const RED: org.bukkit.entity.Fox.Type;
 
@@ -3577,9 +3582,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.entity.Fox.Type;
 
 			}
-			interface Type {}
 		}
-		type Frog = org.bukkit.entity.Animals & {
+		interface Frog extends Modify<org.bukkit.entity.Animals, {
 			/**
 			 * Gets the tongue target of this frog.
 			 */
@@ -3600,8 +3604,15 @@ declare global {
 			 */
 			setVariant(variant: org.bukkit.entity.Frog.Variant): void;
 
-		}
+		}> {}
 		namespace Frog {
+			interface Variant {
+				/**
+				 * Description copied from interface: Keyed
+				 */
+				getKey(): org.bukkit.NamespacedKey;
+
+			}
 			namespace Variant {
 				/**
 				 * Temperate (brown-orange) frog.
@@ -3627,15 +3638,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.entity.Frog.Variant;
 
 			}
-			interface Variant {
-				/**
-				 * Description copied from interface: Keyed
-				 */
-				getKey(): org.bukkit.NamespacedKey;
-
-			}
 		}
-		type Ghast = org.bukkit.entity.Flying & org.bukkit.entity.Enemy & {
+		interface Ghast extends Modify<org.bukkit.entity.Flying & org.bukkit.entity.Enemy, {
 			/**
 			 * Gets whether the Ghast is charging
 			 */
@@ -3646,10 +3650,10 @@ declare global {
 			 */
 			setCharging(flag: boolean): void;
 
-		}
-		type Giant = org.bukkit.entity.Monster & {}
-		type GlowItemFrame = org.bukkit.entity.ItemFrame & {}
-		type GlowSquid = org.bukkit.entity.Squid & {
+		}> {}
+		interface Giant extends Modify<org.bukkit.entity.Monster, {}> {}
+		interface GlowItemFrame extends Modify<org.bukkit.entity.ItemFrame, {}> {}
+		interface GlowSquid extends Modify<org.bukkit.entity.Squid, {
 			/**
 			 * Get the number of dark ticks remaining for this squid.
 			 * Bravo Six will go dark for 100 ticks (5 seconds) if damaged.
@@ -3662,8 +3666,8 @@ declare global {
 			 */
 			setDarkTicksRemaining(darkTicksRemaining: number): void;
 
-		}
-		type Goat = org.bukkit.entity.Animals & {
+		}> {}
+		interface Goat extends Modify<org.bukkit.entity.Animals, {
 			/**
 			 * Gets if this goat has its left horn.
 			 */
@@ -3698,9 +3702,9 @@ declare global {
 			 */
 			setScreaming(screaming: boolean): void;
 
-		}
-		type Golem = org.bukkit.entity.Creature & {}
-		type Guardian = org.bukkit.entity.Monster & {
+		}> {}
+		interface Golem extends Modify<org.bukkit.entity.Creature, {}> {}
+		interface Guardian extends Modify<org.bukkit.entity.Monster, {
 			/**
 			 * Sets whether the guardian laser should show or not.
 			 * A target must be present. If no target is present the laser will not show
@@ -3759,8 +3763,8 @@ declare global {
 			 */
 			isMoving(): boolean;
 
-		}
-		type Hanging = org.bukkit.entity.Entity & org.bukkit.material.Attachable & {
+		}> {}
+		interface Hanging extends Modify<org.bukkit.entity.Entity & org.bukkit.material.Attachable, {
 			/**
 			 * Sets the direction of the hanging entity, potentially overriding rules
 			 * of placement. Note that if the result is not valid the object would
@@ -3768,8 +3772,8 @@ declare global {
 			 */
 			setFacingDirection(face: org.bukkit.block.BlockFace, force: boolean): boolean;
 
-		}
-		type Hoglin = org.bukkit.entity.Animals & org.bukkit.entity.Enemy & {
+		}> {}
+		interface Hoglin extends Modify<org.bukkit.entity.Animals & org.bukkit.entity.Enemy, {
 			/**
 			 * Gets whether the hoglin is immune to zombification.
 			 */
@@ -3809,8 +3813,8 @@ declare global {
 			 */
 			isConverting(): boolean;
 
-		}
-		type Horse = org.bukkit.entity.AbstractHorse & {
+		}> {}
+		interface Horse extends Modify<org.bukkit.entity.AbstractHorse, {
 			/**
 			 * Gets the horse's color.
 			 * 
@@ -3854,8 +3858,9 @@ declare global {
 			 */
 			getInventory(): org.bukkit.inventory.HorseInventory;
 
-		}
+		}> {}
 		namespace Horse {
+			interface Color {}
 			namespace Color {
 				/**
 				 * Snow white
@@ -3901,9 +3906,9 @@ declare global {
 				function valueOf(name: string): org.bukkit.entity.Horse.Color;
 
 			}
-			interface Color {}
 		}
 		namespace Horse {
+			interface Style {}
 			namespace Style {
 				/**
 				 * No markings
@@ -3939,9 +3944,9 @@ declare global {
 				function valueOf(name: string): org.bukkit.entity.Horse.Style;
 
 			}
-			interface Style {}
 		}
 		namespace Horse {
+			interface Variant {}
 			namespace Variant {
 				/**
 				 * A normal horse
@@ -3987,9 +3992,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.entity.Horse.Variant;
 
 			}
-			interface Variant {}
 		}
-		type HumanEntity = org.bukkit.entity.LivingEntity & org.bukkit.entity.AnimalTamer & org.bukkit.inventory.InventoryHolder & {
+		interface HumanEntity extends Modify<org.bukkit.entity.LivingEntity & org.bukkit.entity.AnimalTamer & org.bukkit.inventory.InventoryHolder, {
 			/**
 			 * Returns the name of this player
 			 */
@@ -4373,8 +4377,8 @@ declare global {
 			 */
 			fireworkBoost(fireworkItemStack: org.bukkit.inventory.ItemStack): org.bukkit.entity.Firework;
 
-		}
-		type Husk = org.bukkit.entity.Zombie & {
+		}> {}
+		interface Husk extends Modify<org.bukkit.entity.Zombie, {
 			/**
 			 * Get if this entity is in the process of converting to a Zombie as a
 			 * result of being underwater.
@@ -4397,10 +4401,10 @@ declare global {
 			 */
 			setConversionTime(time: number): void;
 
-		}
-		type Illager = org.bukkit.entity.Raider & {}
-		type Illusioner = org.bukkit.entity.Spellcaster & {}
-		type Interaction = org.bukkit.entity.Entity & {
+		}> {}
+		interface Illager extends Modify<org.bukkit.entity.Raider, {}> {}
+		interface Illusioner extends Modify<org.bukkit.entity.Spellcaster, {}> {}
+		interface Interaction extends Modify<org.bukkit.entity.Entity, {
 			/**
 			 * Gets the width of this interaction entity.
 			 */
@@ -4443,7 +4447,7 @@ declare global {
 			 */
 			getLastInteraction(): org.bukkit.entity.Interaction.PreviousInteraction;
 
-		}
+		}> {}
 		namespace Interaction {
 			interface PreviousInteraction {
 				/**
@@ -4458,7 +4462,7 @@ declare global {
 
 			}
 		}
-		type IronGolem = org.bukkit.entity.Golem & {
+		interface IronGolem extends Modify<org.bukkit.entity.Golem, {
 			/**
 			 * Gets whether this iron golem was built by a player.
 			 */
@@ -4469,8 +4473,8 @@ declare global {
 			 */
 			setPlayerCreated(playerCreated: boolean): void;
 
-		}
-		type Item = org.bukkit.entity.Entity & {
+		}> {}
+		interface Item extends Modify<org.bukkit.entity.Entity, {
 			/**
 			 * Gets the item stack associated with this item drop.
 			 */
@@ -4525,8 +4529,8 @@ declare global {
 			 */
 			getThrower(): globalThis.java.util.UUID;
 
-		}
-		type ItemDisplay = org.bukkit.entity.Display & {
+		}> {}
+		interface ItemDisplay extends Modify<org.bukkit.entity.Display, {
 			/**
 			 * Gets the displayed item stack.
 			 */
@@ -4549,8 +4553,9 @@ declare global {
 			 */
 			setItemDisplayTransform(display: org.bukkit.entity.ItemDisplay.ItemDisplayTransform): void;
 
-		}
+		}> {}
 		namespace ItemDisplay {
+			interface ItemDisplayTransform {}
 			namespace ItemDisplayTransform {
 				const NONE: org.bukkit.entity.ItemDisplay.ItemDisplayTransform;
 
@@ -4579,9 +4584,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.entity.ItemDisplay.ItemDisplayTransform;
 
 			}
-			interface ItemDisplayTransform {}
 		}
-		type ItemFrame = org.bukkit.entity.Hanging & {
+		interface ItemFrame extends Modify<org.bukkit.entity.Hanging, {
 			/**
 			 * Get the item in this frame
 			 */
@@ -4652,10 +4656,10 @@ declare global {
 			 */
 			setFixed(fixed: boolean): void;
 
-		}
-		type LargeFireball = org.bukkit.entity.SizedFireball & {}
-		type LeashHitch = org.bukkit.entity.Hanging & {}
-		type LightningStrike = org.bukkit.entity.Entity & {
+		}> {}
+		interface LargeFireball extends Modify<org.bukkit.entity.SizedFireball, {}> {}
+		interface LeashHitch extends Modify<org.bukkit.entity.Hanging, {}> {}
+		interface LightningStrike extends Modify<org.bukkit.entity.Entity, {
 			/**
 			 * Returns whether the strike is an effect that does no damage.
 			 */
@@ -4714,9 +4718,9 @@ declare global {
 			 */
 			setCausingPlayer(player: org.bukkit.entity.Player): void;
 
-		}
-		type LingeringPotion = org.bukkit.entity.ThrownPotion & {}
-		type LivingEntity = org.bukkit.attribute.Attributable & org.bukkit.entity.Damageable & org.bukkit.projectiles.ProjectileSource & {
+		}> {}
+		interface LingeringPotion extends Modify<org.bukkit.entity.ThrownPotion, {}> {}
+		interface LivingEntity extends Modify<org.bukkit.attribute.Attributable & org.bukkit.entity.Damageable & org.bukkit.projectiles.ProjectileSource, {
 			/**
 			 * Gets the height of the living entity's eyes above its Location.
 			 */
@@ -5235,8 +5239,8 @@ declare global {
 			 */
 			isInvisible(): boolean;
 
-		}
-		type Llama = org.bukkit.entity.ChestedHorse & {
+		}> {}
+		interface Llama extends Modify<org.bukkit.entity.ChestedHorse, {
 			/**
 			 * Gets the llama's color.
 			 */
@@ -5265,8 +5269,9 @@ declare global {
 			 */
 			getInventory(): org.bukkit.inventory.LlamaInventory;
 
-		}
+		}> {}
 		namespace Llama {
+			interface Color {}
 			namespace Color {
 				/**
 				 * A cream-colored llama.
@@ -5297,12 +5302,11 @@ declare global {
 				function valueOf(name: string): org.bukkit.entity.Llama.Color;
 
 			}
-			interface Color {}
 		}
-		type LlamaSpit = org.bukkit.entity.Projectile & {}
-		type MagmaCube = org.bukkit.entity.Slime & {}
-		type Marker = org.bukkit.entity.Entity & {}
-		type Minecart = org.bukkit.entity.Vehicle & {
+		interface LlamaSpit extends Modify<org.bukkit.entity.Projectile, {}> {}
+		interface MagmaCube extends Modify<org.bukkit.entity.Slime, {}> {}
+		interface Marker extends Modify<org.bukkit.entity.Entity, {}> {}
+		interface Minecart extends Modify<org.bukkit.entity.Vehicle, {
 			/**
 			 * Sets a minecart's damage.
 			 */
@@ -5400,8 +5404,8 @@ declare global {
 			 */
 			getDisplayBlockOffset(): number;
 
-		}
-		type Mob = org.bukkit.entity.LivingEntity & org.bukkit.loot.Lootable & {
+		}> {}
+		interface Mob extends Modify<org.bukkit.entity.LivingEntity & org.bukkit.loot.Lootable, {
 			/**
 			 * Instructs this Mob to set the specified LivingEntity as its target.
 			 * 
@@ -5441,10 +5445,10 @@ declare global {
 			 */
 			getAmbientSound(): org.bukkit.Sound;
 
-		}
-		type Monster = org.bukkit.entity.Creature & org.bukkit.entity.Enemy & {}
-		type Mule = org.bukkit.entity.ChestedHorse & {}
-		type MushroomCow = org.bukkit.entity.Cow & {
+		}> {}
+		interface Monster extends Modify<org.bukkit.entity.Creature & org.bukkit.entity.Enemy, {}> {}
+		interface Mule extends Modify<org.bukkit.entity.ChestedHorse, {}> {}
+		interface MushroomCow extends Modify<org.bukkit.entity.Cow, {
 			/**
 			 * Checks for the presence of custom potion effects to be applied to the
 			 * next suspicious stew received from milking this MushroomCow.
@@ -5494,8 +5498,9 @@ declare global {
 			 */
 			setVariant(variant: org.bukkit.entity.MushroomCow.Variant): void;
 
-		}
+		}> {}
 		namespace MushroomCow {
+			interface Variant {}
 			namespace Variant {
 				/**
 				 * Red mushroom cow.
@@ -5516,10 +5521,9 @@ declare global {
 				function valueOf(name: string): org.bukkit.entity.MushroomCow.Variant;
 
 			}
-			interface Variant {}
 		}
-		type NPC = org.bukkit.entity.Creature & {}
-		type Ocelot = org.bukkit.entity.Animals & {
+		interface NPC extends Modify<org.bukkit.entity.Creature, {}> {}
+		interface Ocelot extends Modify<org.bukkit.entity.Animals, {
 			/**
 			 * Checks if this ocelot trusts players.
 			 */
@@ -5540,8 +5544,15 @@ declare global {
 			 */
 			setCatType(type: org.bukkit.entity.Ocelot.Type): void;
 
-		}
+		}> {}
 		namespace Ocelot {
+			interface Type {
+				/**
+				 * Gets the ID of this cat type.
+				 */
+				getId(): number;
+
+			}
 			namespace Type {
 				const WILD_OCELOT: org.bukkit.entity.Ocelot.Type;
 
@@ -5565,15 +5576,8 @@ declare global {
 				function getType(id: number): org.bukkit.entity.Ocelot.Type;
 
 			}
-			interface Type {
-				/**
-				 * Gets the ID of this cat type.
-				 */
-				getId(): number;
-
-			}
 		}
-		type OminousItemSpawner = org.bukkit.entity.Entity & {
+		interface OminousItemSpawner extends Modify<org.bukkit.entity.Entity, {
 			/**
 			 * Gets the item which will be spawned by this spawner.
 			 */
@@ -5594,8 +5598,8 @@ declare global {
 			 */
 			setSpawnItemAfterTicks(ticks: number): void;
 
-		}
-		type Painting = org.bukkit.entity.Hanging & {
+		}> {}
+		interface Painting extends Modify<org.bukkit.entity.Hanging, {
 			/**
 			 * Get the art on this painting
 			 */
@@ -5611,8 +5615,8 @@ declare global {
 			 */
 			setArt(art: org.bukkit.Art, force: boolean): boolean;
 
-		}
-		type Panda = org.bukkit.entity.Animals & org.bukkit.entity.Sittable & {
+		}> {}
+		interface Panda extends Modify<org.bukkit.entity.Animals & org.bukkit.entity.Sittable, {
 			/**
 			 * Gets this Panda's main gene.
 			 */
@@ -5683,8 +5687,16 @@ declare global {
 			 */
 			getUnhappyTicks(): number;
 
-		}
+		}> {}
 		namespace Panda {
+			interface Gene {
+				/**
+				 * Gets whether this gene is recessive, i.e. required in both parents to
+				 * propagate to children.
+				 */
+				isRecessive(): boolean;
+
+			}
 			namespace Gene {
 				const NORMAL: org.bukkit.entity.Panda.Gene;
 
@@ -5709,16 +5721,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.entity.Panda.Gene;
 
 			}
-			interface Gene {
-				/**
-				 * Gets whether this gene is recessive, i.e. required in both parents to
-				 * propagate to children.
-				 */
-				isRecessive(): boolean;
-
-			}
 		}
-		type Parrot = org.bukkit.entity.Tameable & org.bukkit.entity.Sittable & {
+		interface Parrot extends Modify<org.bukkit.entity.Tameable & org.bukkit.entity.Sittable, {
 			/**
 			 * Get the variant of this parrot.
 			 */
@@ -5734,8 +5738,9 @@ declare global {
 			 */
 			isDancing(): boolean;
 
-		}
+		}> {}
 		namespace Parrot {
+			interface Variant {}
 			namespace Variant {
 				/**
 				 * Classic parrot - red with colored wingtips.
@@ -5771,16 +5776,15 @@ declare global {
 				function valueOf(name: string): org.bukkit.entity.Parrot.Variant;
 
 			}
-			interface Variant {}
 		}
-		type Phantom = org.bukkit.entity.Flying & org.bukkit.entity.Enemy & {
+		interface Phantom extends Modify<org.bukkit.entity.Flying & org.bukkit.entity.Enemy, {
 			getSize(): number;
 
 			setSize(sz: number): void;
 
-		}
-		type Pig = org.bukkit.entity.Steerable & org.bukkit.entity.Vehicle & {}
-		type PigZombie = org.bukkit.entity.Zombie & {
+		}> {}
+		interface Pig extends Modify<org.bukkit.entity.Steerable & org.bukkit.entity.Vehicle, {}> {}
+		interface PigZombie extends Modify<org.bukkit.entity.Zombie, {
 			/**
 			 * Get the pig zombie's current anger level.
 			 */
@@ -5816,8 +5820,8 @@ declare global {
 			 */
 			setConversionTime(time: number): void;
 
-		}
-		type Piglin = org.bukkit.entity.PiglinAbstract & org.bukkit.inventory.InventoryHolder & {
+		}> {}
+		interface Piglin extends Modify<org.bukkit.entity.PiglinAbstract & org.bukkit.inventory.InventoryHolder, {
 			/**
 			 * Get whether the piglin is able to hunt hoglins.
 			 */
@@ -5871,8 +5875,8 @@ declare global {
 			 */
 			getBarterList(): globalThis.java.util.Set<org.bukkit.Material>;
 
-		}
-		type PiglinAbstract = org.bukkit.entity.Monster & org.bukkit.entity.Ageable & {
+		}> {}
+		interface PiglinAbstract extends Modify<org.bukkit.entity.Monster & org.bukkit.entity.Ageable, {
 			/**
 			 * Gets whether the piglin is immune to zombification.
 			 */
@@ -5914,10 +5918,10 @@ declare global {
 			 */
 			setBaby(flag: boolean): void;
 
-		}
-		type PiglinBrute = org.bukkit.entity.PiglinAbstract & {}
-		type Pillager = org.bukkit.entity.Illager & org.bukkit.inventory.InventoryHolder & {}
-		type Player = org.bukkit.entity.HumanEntity & org.bukkit.conversations.Conversable & org.bukkit.OfflinePlayer & org.bukkit.plugin.messaging.PluginMessageRecipient & {
+		}> {}
+		interface PiglinBrute extends Modify<org.bukkit.entity.PiglinAbstract, {}> {}
+		interface Pillager extends Modify<org.bukkit.entity.Illager & org.bukkit.inventory.InventoryHolder, {}> {}
+		interface Player extends Modify<org.bukkit.entity.HumanEntity & org.bukkit.conversations.Conversable & org.bukkit.OfflinePlayer & org.bukkit.plugin.messaging.PluginMessageRecipient, {
 			/**
 			 * Returns the name of this player
 			 */
@@ -7296,8 +7300,9 @@ declare global {
 			 */
 			isAllowingServerListings(): boolean;
 
-		}
-		type PolarBear = org.bukkit.entity.Animals & {}
+		}> {}
+		interface PolarBear extends Modify<org.bukkit.entity.Animals, {}> {}
+		interface Pose {}
 		namespace Pose {
 			/**
 			 * Entity is standing normally.
@@ -7398,8 +7403,7 @@ declare global {
 			function valueOf(name: string): org.bukkit.entity.Pose;
 
 		}
-		interface Pose {}
-		type Projectile = org.bukkit.entity.Entity & {
+		interface Projectile extends Modify<org.bukkit.entity.Entity, {
 			/**
 			 * Retrieve the shooter of this projectile.
 			 */
@@ -7421,8 +7425,8 @@ declare global {
 			 */
 			setBounce(doesBounce: boolean): void;
 
-		}
-		type PufferFish = org.bukkit.entity.Fish & {
+		}> {}
+		interface PufferFish extends Modify<org.bukkit.entity.Fish, {
 			/**
 			 * Returns the current puff state of this fish (i.e. how inflated it is).
 			 */
@@ -7433,14 +7437,15 @@ declare global {
 			 */
 			setPuffState(state: number): void;
 
-		}
-		type Rabbit = org.bukkit.entity.Animals & {
+		}> {}
+		interface Rabbit extends Modify<org.bukkit.entity.Animals, {
 			getRabbitType(): org.bukkit.entity.Rabbit.Type;
 
 			setRabbitType(type: org.bukkit.entity.Rabbit.Type): void;
 
-		}
+		}> {}
 		namespace Rabbit {
+			interface Type {}
 			namespace Type {
 				/**
 				 * Chocolate colored rabbit.
@@ -7486,9 +7491,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.entity.Rabbit.Type;
 
 			}
-			interface Type {}
 		}
-		type Raider = org.bukkit.entity.Monster & {
+		interface Raider extends Modify<org.bukkit.entity.Monster, {
 			/**
 			 * Set the Raid that this raider is participating in.
 			 */
@@ -7576,16 +7580,16 @@ declare global {
 			 */
 			getCelebrationSound(): org.bukkit.Sound;
 
-		}
-		type Ravager = org.bukkit.entity.Raider & {}
-		type Salmon = org.bukkit.entity.Fish & {}
-		type Sheep = org.bukkit.entity.Animals & org.bukkit.material.Colorable & {
+		}> {}
+		interface Ravager extends Modify<org.bukkit.entity.Raider, {}> {}
+		interface Salmon extends Modify<org.bukkit.entity.Fish, {}> {}
+		interface Sheep extends Modify<org.bukkit.entity.Animals & org.bukkit.material.Colorable, {
 			isSheared(): boolean;
 
 			setSheared(flag: boolean): void;
 
-		}
-		type Shulker = org.bukkit.entity.Golem & org.bukkit.material.Colorable & org.bukkit.entity.Enemy & {
+		}> {}
+		interface Shulker extends Modify<org.bukkit.entity.Golem & org.bukkit.material.Colorable & org.bukkit.entity.Enemy, {
 			/**
 			 * Gets the peek state of the shulker between 0.0 and 1.0.
 			 */
@@ -7606,8 +7610,8 @@ declare global {
 			 */
 			setAttachedFace(face: org.bukkit.block.BlockFace): void;
 
-		}
-		type ShulkerBullet = org.bukkit.entity.Projectile & {
+		}> {}
+		interface ShulkerBullet extends Modify<org.bukkit.entity.Projectile, {
 			/**
 			 * Retrieve the target of this bullet.
 			 */
@@ -7618,8 +7622,8 @@ declare global {
 			 */
 			setTarget(target: org.bukkit.entity.Entity): void;
 
-		}
-		type Silverfish = org.bukkit.entity.Monster & {}
+		}> {}
+		interface Silverfish extends Modify<org.bukkit.entity.Monster, {}> {}
 		interface Sittable {
 			/**
 			 * Checks if this animal is sitting
@@ -7633,7 +7637,7 @@ declare global {
 			setSitting(sitting: boolean): void;
 
 		}
-		type SizedFireball = org.bukkit.entity.Fireball & {
+		interface SizedFireball extends Modify<org.bukkit.entity.Fireball, {
 			/**
 			 * Gets the display ItemStack.
 			 */
@@ -7644,8 +7648,8 @@ declare global {
 			 */
 			setDisplayItem(item: org.bukkit.inventory.ItemStack): void;
 
-		}
-		type Skeleton = org.bukkit.entity.AbstractSkeleton & {
+		}> {}
+		interface Skeleton extends Modify<org.bukkit.entity.AbstractSkeleton, {
 			/**
 			 * Computes whether or not this skeleton is currently in the process of
 			 * converting to a Stray due to it being frozen by powdered snow.
@@ -7670,8 +7674,9 @@ declare global {
 			 */
 			setConversionTime(time: number): void;
 
-		}
+		}> {}
 		namespace Skeleton {
+			interface SkeletonType {}
 			namespace SkeletonType {
 				/**
 				 * Standard skeleton type.
@@ -7702,9 +7707,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.entity.Skeleton.SkeletonType;
 
 			}
-			interface SkeletonType {}
 		}
-		type SkeletonHorse = org.bukkit.entity.AbstractHorse & {
+		interface SkeletonHorse extends Modify<org.bukkit.entity.AbstractHorse, {
 			/**
 			 * Returns whether this skeleton horse is trapped.
 			 * 
@@ -7734,15 +7738,15 @@ declare global {
 			 */
 			setTrapTime(trapTime: number): void;
 
-		}
-		type Slime = org.bukkit.entity.Mob & org.bukkit.entity.Enemy & {
+		}> {}
+		interface Slime extends Modify<org.bukkit.entity.Mob & org.bukkit.entity.Enemy, {
 			getSize(): number;
 
 			setSize(sz: number): void;
 
-		}
-		type SmallFireball = org.bukkit.entity.SizedFireball & {}
-		type Sniffer = org.bukkit.entity.Animals & {
+		}> {}
+		interface SmallFireball extends Modify<org.bukkit.entity.SizedFireball, {}> {}
+		interface Sniffer extends Modify<org.bukkit.entity.Animals, {
 			/**
 			 * Gets the locations explored by the sniffer.
 			 * 
@@ -7789,8 +7793,9 @@ declare global {
 			 */
 			canDig(): boolean;
 
-		}
+		}> {}
 		namespace Sniffer {
+			interface State {}
 			namespace State {
 				const IDLING: org.bukkit.entity.Sniffer.State;
 
@@ -7815,10 +7820,9 @@ declare global {
 				function valueOf(name: string): org.bukkit.entity.Sniffer.State;
 
 			}
-			interface State {}
 		}
-		type Snowball = org.bukkit.entity.ThrowableProjectile & {}
-		type Snowman = org.bukkit.entity.Golem & {
+		interface Snowball extends Modify<org.bukkit.entity.ThrowableProjectile, {}> {}
+		interface Snowman extends Modify<org.bukkit.entity.Golem, {
 			/**
 			 * Gets whether this snowman is in "derp mode", meaning it is not wearing a
 			 * pumpkin.
@@ -7832,7 +7836,8 @@ declare global {
 			 */
 			setDerp(derpMode: boolean): void;
 
-		}
+		}> {}
+		interface SpawnCategory {}
 		namespace SpawnCategory {
 			/**
 			 * Entities related to Monsters, eg: Witch, Zombie, Creeper, etc.
@@ -7884,8 +7889,7 @@ declare global {
 			function valueOf(name: string): org.bukkit.entity.SpawnCategory;
 
 		}
-		interface SpawnCategory {}
-		type SpectralArrow = org.bukkit.entity.AbstractArrow & {
+		interface SpectralArrow extends Modify<org.bukkit.entity.AbstractArrow, {
 			/**
 			 * Returns the amount of time that this arrow will apply
 			 * the glowing effect for.
@@ -7897,8 +7901,8 @@ declare global {
 			 */
 			setGlowingTicks(duration: number): void;
 
-		}
-		type Spellcaster = org.bukkit.entity.Illager & {
+		}> {}
+		interface Spellcaster extends Modify<org.bukkit.entity.Illager, {
 			/**
 			 * Gets the Spellcaster.Spell the entity is currently using.
 			 */
@@ -7909,8 +7913,9 @@ declare global {
 			 */
 			setSpell(spell: org.bukkit.entity.Spellcaster.Spell): void;
 
-		}
+		}> {}
 		namespace Spellcaster {
+			interface Spell {}
 			namespace Spell {
 				/**
 				 * No spell is being used..
@@ -7951,12 +7956,11 @@ declare global {
 				function valueOf(name: string): org.bukkit.entity.Spellcaster.Spell;
 
 			}
-			interface Spell {}
 		}
-		type Spider = org.bukkit.entity.Monster & {}
-		type SplashPotion = org.bukkit.entity.ThrownPotion & {}
-		type Squid = org.bukkit.entity.WaterMob & {}
-		type Steerable = org.bukkit.entity.Animals & {
+		interface Spider extends Modify<org.bukkit.entity.Monster, {}> {}
+		interface SplashPotion extends Modify<org.bukkit.entity.ThrownPotion, {}> {}
+		interface Squid extends Modify<org.bukkit.entity.WaterMob, {}> {}
+		interface Steerable extends Modify<org.bukkit.entity.Animals, {
 			/**
 			 * Check if the pig has a saddle.
 			 */
@@ -7999,9 +8003,9 @@ declare global {
 			 */
 			getSteerMaterial(): org.bukkit.Material;
 
-		}
-		type Stray = org.bukkit.entity.AbstractSkeleton & {}
-		type Strider = org.bukkit.entity.Steerable & org.bukkit.entity.Vehicle & {
+		}> {}
+		interface Stray extends Modify<org.bukkit.entity.AbstractSkeleton, {}> {}
+		interface Strider extends Modify<org.bukkit.entity.Steerable & org.bukkit.entity.Vehicle, {
 			/**
 			 * Check whether or not this strider is out of warm blocks and shivering.
 			 */
@@ -8015,8 +8019,8 @@ declare global {
 			 */
 			setShivering(shivering: boolean): void;
 
-		}
-		type TNTPrimed = org.bukkit.entity.Explosive & {
+		}> {}
+		interface TNTPrimed extends Modify<org.bukkit.entity.Explosive, {
 			/**
 			 * Set the number of ticks until the TNT blows up after being primed.
 			 */
@@ -8050,8 +8054,8 @@ declare global {
 			 */
 			setSource(source: org.bukkit.entity.Entity): void;
 
-		}
-		type Tadpole = org.bukkit.entity.Fish & {
+		}> {}
+		interface Tadpole extends Modify<org.bukkit.entity.Fish, {
 			/**
 			 * Gets the age of this mob.
 			 */
@@ -8062,8 +8066,8 @@ declare global {
 			 */
 			setAge(age: number): void;
 
-		}
-		type Tameable = org.bukkit.entity.Animals & {
+		}> {}
+		interface Tameable extends Modify<org.bukkit.entity.Animals, {
 			/**
 			 * Check if this is tamed
 			 * 
@@ -8095,8 +8099,8 @@ declare global {
 			 */
 			setOwner(tamer: org.bukkit.entity.AnimalTamer): void;
 
-		}
-		type TextDisplay = org.bukkit.entity.Display & {
+		}> {}
+		interface TextDisplay extends Modify<org.bukkit.entity.Display, {
 			/**
 			 * Gets the displayed text.
 			 */
@@ -8177,8 +8181,9 @@ declare global {
 			 */
 			setAlignment(alignment: org.bukkit.entity.TextDisplay.TextAlignment): void;
 
-		}
+		}> {}
 		namespace TextDisplay {
+			interface TextAlignment {}
 			namespace TextAlignment {
 				/**
 				 * Center aligned text (default).
@@ -8204,9 +8209,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.entity.TextDisplay.TextAlignment;
 
 			}
-			interface TextAlignment {}
 		}
-		type ThrowableProjectile = org.bukkit.entity.Projectile & {
+		interface ThrowableProjectile extends Modify<org.bukkit.entity.Projectile, {
 			/**
 			 * Gets the ItemStack the thrown projectile will display.
 			 */
@@ -8217,9 +8221,9 @@ declare global {
 			 */
 			setItem(item: org.bukkit.inventory.ItemStack): void;
 
-		}
-		type ThrownExpBottle = org.bukkit.entity.ThrowableProjectile & {}
-		type ThrownPotion = org.bukkit.entity.ThrowableProjectile & {
+		}> {}
+		interface ThrownExpBottle extends Modify<org.bukkit.entity.ThrowableProjectile, {}> {}
+		interface ThrownPotion extends Modify<org.bukkit.entity.ThrowableProjectile, {
 			/**
 			 * Returns the effects that are applied by this potion.
 			 */
@@ -8242,11 +8246,11 @@ declare global {
 			 */
 			setItem(item: org.bukkit.inventory.ItemStack): void;
 
-		}
-		type TippedArrow = org.bukkit.entity.Arrow & {}
-		type TraderLlama = org.bukkit.entity.Llama & {}
-		type Trident = org.bukkit.entity.AbstractArrow & org.bukkit.entity.ThrowableProjectile & {}
-		type TropicalFish = org.bukkit.entity.Fish & {
+		}> {}
+		interface TippedArrow extends Modify<org.bukkit.entity.Arrow, {}> {}
+		interface TraderLlama extends Modify<org.bukkit.entity.Llama, {}> {}
+		interface Trident extends Modify<org.bukkit.entity.AbstractArrow & org.bukkit.entity.ThrowableProjectile, {}> {}
+		interface TropicalFish extends Modify<org.bukkit.entity.Fish, {
 			/**
 			 * Gets the color of the fish's pattern.
 			 */
@@ -8277,8 +8281,9 @@ declare global {
 			 */
 			setPattern(pattern: org.bukkit.entity.TropicalFish.Pattern): void;
 
-		}
+		}> {}
 		namespace TropicalFish {
+			interface Pattern {}
 			namespace Pattern {
 				const KOB: org.bukkit.entity.TropicalFish.Pattern;
 
@@ -8313,9 +8318,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.entity.TropicalFish.Pattern;
 
 			}
-			interface Pattern {}
 		}
-		type Turtle = org.bukkit.entity.Animals & {
+		interface Turtle extends Modify<org.bukkit.entity.Animals, {
 			/**
 			 * Gets whether the turtle has an egg
 			 */
@@ -8326,8 +8330,8 @@ declare global {
 			 */
 			isLayingEgg(): boolean;
 
-		}
-		type Vehicle = org.bukkit.entity.Entity & {
+		}> {}
+		interface Vehicle extends Modify<org.bukkit.entity.Entity, {
 			/**
 			 * Gets the vehicle's velocity.
 			 */
@@ -8338,8 +8342,8 @@ declare global {
 			 */
 			setVelocity(vel: org.bukkit.util.Vector): void;
 
-		}
-		type Vex = org.bukkit.entity.Monster & {
+		}> {}
+		interface Vex extends Modify<org.bukkit.entity.Monster, {
 			/**
 			 * Gets the charging state of this entity.
 			 * When this entity is charging it will having a glowing red texture.
@@ -8385,8 +8389,8 @@ declare global {
 			 */
 			hasLimitedLife(): boolean;
 
-		}
-		type Villager = org.bukkit.entity.AbstractVillager & {
+		}> {}
+		interface Villager extends Modify<org.bukkit.entity.AbstractVillager, {
 			/**
 			 * Gets the current profession of this villager.
 			 */
@@ -8457,8 +8461,15 @@ declare global {
 			 */
 			zombify(): org.bukkit.entity.ZombieVillager;
 
-		}
+		}> {}
 		namespace Villager {
+			interface Profession {
+				/**
+				 * Description copied from interface: Keyed
+				 */
+				getKey(): org.bukkit.NamespacedKey;
+
+			}
 			namespace Profession {
 				const NONE: org.bukkit.entity.Villager.Profession;
 
@@ -8555,15 +8566,15 @@ declare global {
 				function valueOf(name: string): org.bukkit.entity.Villager.Profession;
 
 			}
-			interface Profession {
+		}
+		namespace Villager {
+			interface Type {
 				/**
 				 * Description copied from interface: Keyed
 				 */
 				getKey(): org.bukkit.NamespacedKey;
 
 			}
-		}
-		namespace Villager {
 			namespace Type {
 				const DESERT: org.bukkit.entity.Villager.Type;
 
@@ -8588,15 +8599,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.entity.Villager.Type;
 
 			}
-			interface Type {
-				/**
-				 * Description copied from interface: Keyed
-				 */
-				getKey(): org.bukkit.NamespacedKey;
-
-			}
 		}
-		type Vindicator = org.bukkit.entity.Illager & {
+		interface Vindicator extends Modify<org.bukkit.entity.Illager, {
 			/**
 			 * Returns whether a vindicator is in "Johnny" mode.
 			 * When this mode is active, vindicators will be hostile to all mobs.
@@ -8608,8 +8612,8 @@ declare global {
 			 */
 			setJohnny(johnny: boolean): void;
 
-		}
-		type WanderingTrader = org.bukkit.entity.AbstractVillager & {
+		}> {}
+		interface WanderingTrader extends Modify<org.bukkit.entity.AbstractVillager, {
 			/**
 			 * Gets the despawn delay before this WanderingTrader is forcibly
 			 * despawned.
@@ -8626,8 +8630,8 @@ declare global {
 			 */
 			setDespawnDelay(despawnDelay: number): void;
 
-		}
-		type Warden = org.bukkit.entity.Monster & {
+		}> {}
+		interface Warden extends Modify<org.bukkit.entity.Monster, {
 			/**
 			 * Gets the anger level of this warden.
 			 * Anger is an integer from 0 to 150. Once a Warden reaches 80 anger at a
@@ -8676,8 +8680,9 @@ declare global {
 			 */
 			getAngerLevel(): org.bukkit.entity.Warden.AngerLevel;
 
-		}
+		}> {}
 		namespace Warden {
+			interface AngerLevel {}
 			namespace AngerLevel {
 				/**
 				 * Anger level 0-39.
@@ -8703,18 +8708,17 @@ declare global {
 				function valueOf(name: string): org.bukkit.entity.Warden.AngerLevel;
 
 			}
-			interface AngerLevel {}
 		}
-		type WaterMob = org.bukkit.entity.Creature & {}
-		type WindCharge = org.bukkit.entity.AbstractWindCharge & {}
-		type Witch = org.bukkit.entity.Raider & {
+		interface WaterMob extends Modify<org.bukkit.entity.Creature, {}> {}
+		interface WindCharge extends Modify<org.bukkit.entity.AbstractWindCharge, {}> {}
+		interface Witch extends Modify<org.bukkit.entity.Raider, {
 			/**
 			 * Gets whether the witch is drinking a potion
 			 */
 			isDrinkingPotion(): boolean;
 
-		}
-		type Wither = org.bukkit.entity.Monster & org.bukkit.entity.Boss & {
+		}> {}
+		interface Wither extends Modify<org.bukkit.entity.Monster & org.bukkit.entity.Boss, {
 			/**
 			 * Instructs this Mob to set the specified LivingEntity as its target.
 			 * 
@@ -8749,8 +8753,9 @@ declare global {
 			 */
 			setInvulnerabilityTicks(ticks: number): void;
 
-		}
+		}> {}
 		namespace Wither {
+			interface Head {}
 			namespace Head {
 				const CENTER: org.bukkit.entity.Wither.Head;
 
@@ -8767,10 +8772,9 @@ declare global {
 				function valueOf(name: string): org.bukkit.entity.Wither.Head;
 
 			}
-			interface Head {}
 		}
-		type WitherSkeleton = org.bukkit.entity.AbstractSkeleton & {}
-		type WitherSkull = org.bukkit.entity.Fireball & {
+		interface WitherSkeleton extends Modify<org.bukkit.entity.AbstractSkeleton, {}> {}
+		interface WitherSkull extends Modify<org.bukkit.entity.Fireball, {
 			/**
 			 * Sets the charged status of the wither skull.
 			 */
@@ -8781,8 +8785,8 @@ declare global {
 			 */
 			isCharged(): boolean;
 
-		}
-		type Wolf = org.bukkit.entity.Tameable & org.bukkit.entity.Sittable & {
+		}> {}
+		interface Wolf extends Modify<org.bukkit.entity.Tameable & org.bukkit.entity.Sittable, {
 			/**
 			 * Checks if this wolf is angry
 			 */
@@ -8835,8 +8839,9 @@ declare global {
 			 */
 			setVariant(variant: org.bukkit.entity.Wolf.Variant): void;
 
-		}
+		}> {}
 		namespace Wolf {
+			interface Variant extends Modify<org.bukkit.Keyed, {}> {}
 			namespace Variant {
 				const PALE: org.bukkit.entity.Wolf.Variant;
 
@@ -8857,9 +8862,8 @@ declare global {
 				const STRIPED: org.bukkit.entity.Wolf.Variant;
 
 			}
-			type Variant = org.bukkit.Keyed & {}
 		}
-		type Zoglin = org.bukkit.entity.Monster & org.bukkit.entity.Ageable & {
+		interface Zoglin extends Modify<org.bukkit.entity.Monster & org.bukkit.entity.Ageable, {
 			/**
 			 * Gets whether the zoglin is a baby
 			 */
@@ -8870,8 +8874,8 @@ declare global {
 			 */
 			setBaby(flag: boolean): void;
 
-		}
-		type Zombie = org.bukkit.entity.Monster & org.bukkit.entity.Ageable & {
+		}> {}
+		interface Zombie extends Modify<org.bukkit.entity.Monster & org.bukkit.entity.Ageable, {
 			/**
 			 * Gets whether the zombie is a baby
 			 */
@@ -8927,9 +8931,9 @@ declare global {
 			 */
 			setCanBreakDoors(flag: boolean): void;
 
-		}
-		type ZombieHorse = org.bukkit.entity.AbstractHorse & {}
-		type ZombieVillager = org.bukkit.entity.Zombie & {
+		}> {}
+		interface ZombieHorse extends Modify<org.bukkit.entity.AbstractHorse, {}> {}
+		interface ZombieVillager extends Modify<org.bukkit.entity.Zombie, {
 			/**
 			 * Sets the villager profession of this zombie.
 			 */
@@ -8984,10 +8988,10 @@ declare global {
 			 */
 			setConversionPlayer(conversionPlayer: org.bukkit.OfflinePlayer): void;
 
-		}
+		}> {}
 	}
 	namespace org.bukkit.inventory {
-		type AbstractHorseInventory = org.bukkit.inventory.Inventory & {
+		interface AbstractHorseInventory extends Modify<org.bukkit.inventory.Inventory, {
 			/**
 			 * Gets the item in the horse's saddle slot.
 			 */
@@ -8998,8 +9002,8 @@ declare global {
 			 */
 			setSaddle(stack: org.bukkit.inventory.ItemStack): void;
 
-		}
-		type AnvilInventory = org.bukkit.inventory.Inventory & {
+		}> {}
+		interface AnvilInventory extends Modify<org.bukkit.inventory.Inventory, {
 			/**
 			 * Get the name to be applied to the repaired item. An empty string denotes
 			 * the default item name.
@@ -9042,8 +9046,8 @@ declare global {
 			 */
 			setMaximumRepairCost(levels: number): void;
 
-		}
-		type BeaconInventory = org.bukkit.inventory.Inventory & {
+		}> {}
+		interface BeaconInventory extends Modify<org.bukkit.inventory.Inventory, {
 			/**
 			 * Set the item powering the beacon.
 			 */
@@ -9054,21 +9058,23 @@ declare global {
 			 */
 			getItem(): org.bukkit.inventory.ItemStack;
 
-		}
-		type BlastingRecipe = org.bukkit.inventory.CookingRecipe<org.bukkit.inventory.BlastingRecipe> & {
-			new(key: org.bukkit.NamespacedKey, result: org.bukkit.inventory.ItemStack, source: org.bukkit.Material, experience: number, cookingTime: number): BlastingRecipe;
+		}> {}
+		interface BlastingRecipe extends Modify<org.bukkit.inventory.CookingRecipe<org.bukkit.inventory.BlastingRecipe>, {
+		}> {}
+		class BlastingRecipe {
+			constructor(key: org.bukkit.NamespacedKey, result: org.bukkit.inventory.ItemStack, source: org.bukkit.Material, experience: number, cookingTime: number);
 
-			new(key: org.bukkit.NamespacedKey, result: org.bukkit.inventory.ItemStack, input: org.bukkit.inventory.RecipeChoice, experience: number, cookingTime: number): BlastingRecipe;
+			constructor(key: org.bukkit.NamespacedKey, result: org.bukkit.inventory.ItemStack, input: org.bukkit.inventory.RecipeChoice, experience: number, cookingTime: number);
 
 		}
-		type BlockInventoryHolder = org.bukkit.inventory.InventoryHolder & {
+		interface BlockInventoryHolder extends Modify<org.bukkit.inventory.InventoryHolder, {
 			/**
 			 * Gets the block associated with this holder.
 			 */
 			getBlock(): org.bukkit.block.Block;
 
-		}
-		type BrewerInventory = org.bukkit.inventory.Inventory & {
+		}> {}
+		interface BrewerInventory extends Modify<org.bukkit.inventory.Inventory, {
 			/**
 			 * Get the current ingredient for brewing.
 			 */
@@ -9095,33 +9101,25 @@ declare global {
 			 */
 			getHolder(): org.bukkit.block.BrewingStand;
 
-		}
-		type CampfireRecipe = org.bukkit.inventory.CookingRecipe<org.bukkit.inventory.CampfireRecipe> & {
-			new(key: org.bukkit.NamespacedKey, result: org.bukkit.inventory.ItemStack, source: org.bukkit.Material, experience: number, cookingTime: number): CampfireRecipe;
+		}> {}
+		interface CampfireRecipe extends Modify<org.bukkit.inventory.CookingRecipe<org.bukkit.inventory.CampfireRecipe>, {
+		}> {}
+		class CampfireRecipe {
+			constructor(key: org.bukkit.NamespacedKey, result: org.bukkit.inventory.ItemStack, source: org.bukkit.Material, experience: number, cookingTime: number);
 
-			new(key: org.bukkit.NamespacedKey, result: org.bukkit.inventory.ItemStack, input: org.bukkit.inventory.RecipeChoice, experience: number, cookingTime: number): CampfireRecipe;
+			constructor(key: org.bukkit.NamespacedKey, result: org.bukkit.inventory.ItemStack, input: org.bukkit.inventory.RecipeChoice, experience: number, cookingTime: number);
 
 		}
-		type CartographyInventory = org.bukkit.inventory.Inventory & {}
-		type ChiseledBookshelfInventory = org.bukkit.inventory.Inventory & {
+		interface CartographyInventory extends Modify<org.bukkit.inventory.Inventory, {}> {}
+		interface ChiseledBookshelfInventory extends Modify<org.bukkit.inventory.Inventory, {
 			/**
 			 * Description copied from interface: Inventory
 			 */
 			getHolder(): org.bukkit.block.ChiseledBookshelf;
 
-		}
-		type ComplexRecipe = org.bukkit.inventory.Recipe & org.bukkit.Keyed & {}
+		}> {}
+		interface ComplexRecipe extends Modify<org.bukkit.inventory.Recipe & org.bukkit.Keyed, {}> {}
 		interface CookingRecipe<T = any> {
-			/**
-			 * Create a cooking recipe to craft the specified ItemStack.
-			 */
-			new(key: org.bukkit.NamespacedKey, result: org.bukkit.inventory.ItemStack, source: org.bukkit.Material, experience: number, cookingTime: number): CookingRecipe;
-
-			/**
-			 * Create a cooking recipe to craft the specified ItemStack.
-			 */
-			new(key: org.bukkit.NamespacedKey, result: org.bukkit.inventory.ItemStack, input: org.bukkit.inventory.RecipeChoice, experience: number, cookingTime: number): CookingRecipe;
-
 			/**
 			 * Sets the input of this cooking recipe.
 			 */
@@ -9197,8 +9195,20 @@ declare global {
 			setCategory(category: org.bukkit.inventory.recipe.CookingBookCategory): void;
 
 		}
-		type CrafterInventory = org.bukkit.inventory.Inventory & {}
-		type CraftingInventory = org.bukkit.inventory.Inventory & {
+		class CookingRecipe<T = any> {
+			/**
+			 * Create a cooking recipe to craft the specified ItemStack.
+			 */
+			constructor(key: org.bukkit.NamespacedKey, result: org.bukkit.inventory.ItemStack, source: org.bukkit.Material, experience: number, cookingTime: number);
+
+			/**
+			 * Create a cooking recipe to craft the specified ItemStack.
+			 */
+			constructor(key: org.bukkit.NamespacedKey, result: org.bukkit.inventory.ItemStack, input: org.bukkit.inventory.RecipeChoice, experience: number, cookingTime: number);
+
+		}
+		interface CrafterInventory extends Modify<org.bukkit.inventory.Inventory, {}> {}
+		interface CraftingInventory extends Modify<org.bukkit.inventory.Inventory, {
 			/**
 			 * Check what item is in the result slot of this crafting inventory.
 			 */
@@ -9219,7 +9229,7 @@ declare global {
 			 */
 			getRecipe(): org.bukkit.inventory.Recipe;
 
-		}
+		}> {}
 		interface CraftingRecipe {
 			/**
 			 * Description copied from interface: Keyed
@@ -9256,6 +9266,7 @@ declare global {
 			setCategory(category: org.bukkit.inventory.recipe.CraftingBookCategory): void;
 
 		}
+		interface CreativeCategory {}
 		namespace CreativeCategory {
 			/**
 			 * An assortment of building blocks including dirt, bricks, planks, ores
@@ -9320,8 +9331,7 @@ declare global {
 			function valueOf(name: string): org.bukkit.inventory.CreativeCategory;
 
 		}
-		interface CreativeCategory {}
-		type DecoratedPotInventory = org.bukkit.inventory.Inventory & {
+		interface DecoratedPotInventory extends Modify<org.bukkit.inventory.Inventory, {
 			/**
 			 * Set the item stack in the decorated pot.
 			 */
@@ -9337,8 +9347,8 @@ declare global {
 			 */
 			getHolder(): org.bukkit.block.DecoratedPot;
 
-		}
-		type DoubleChestInventory = org.bukkit.inventory.Inventory & {
+		}> {}
+		interface DoubleChestInventory extends Modify<org.bukkit.inventory.Inventory, {
 			/**
 			 * Get the left half of this double chest.
 			 */
@@ -9354,8 +9364,8 @@ declare global {
 			 */
 			getHolder(): org.bukkit.block.DoubleChest;
 
-		}
-		type EnchantingInventory = org.bukkit.inventory.Inventory & {
+		}> {}
+		interface EnchantingInventory extends Modify<org.bukkit.inventory.Inventory, {
 			/**
 			 * Set the item being enchanted.
 			 */
@@ -9376,7 +9386,7 @@ declare global {
 			 */
 			getSecondary(): org.bukkit.inventory.ItemStack;
 
-		}
+		}> {}
 		interface EntityEquipment {
 			/**
 			 * Stores the ItemStack at the given equipment slot in the inventory.
@@ -9631,6 +9641,13 @@ declare global {
 			getHolder(): org.bukkit.entity.Entity;
 
 		}
+		interface EquipmentSlot {
+			/**
+			 * Gets the EquipmentSlotGroup corresponding to this slot.
+			 */
+			getGroup(): org.bukkit.inventory.EquipmentSlotGroup;
+
+		}
 		namespace EquipmentSlot {
 			const HAND: org.bukkit.inventory.EquipmentSlot;
 
@@ -9658,11 +9675,16 @@ declare global {
 			function valueOf(name: string): org.bukkit.inventory.EquipmentSlot;
 
 		}
-		interface EquipmentSlot {
+		interface EquipmentSlotGroup {
+			test(test: org.bukkit.inventory.EquipmentSlot): boolean;
+
+			toString(): string;
+
 			/**
-			 * Gets the EquipmentSlotGroup corresponding to this slot.
+			 * Gets an EquipmentSlot which is an example of a slot in this
+			 * group.
 			 */
-			getGroup(): org.bukkit.inventory.EquipmentSlotGroup;
+			getExample(): org.bukkit.inventory.EquipmentSlot;
 
 		}
 		namespace EquipmentSlotGroup {
@@ -9690,19 +9712,7 @@ declare global {
 			function getByName(name: string): org.bukkit.inventory.EquipmentSlotGroup;
 
 		}
-		interface EquipmentSlotGroup {
-			test(test: org.bukkit.inventory.EquipmentSlot): boolean;
-
-			toString(): string;
-
-			/**
-			 * Gets an EquipmentSlot which is an example of a slot in this
-			 * group.
-			 */
-			getExample(): org.bukkit.inventory.EquipmentSlot;
-
-		}
-		type FurnaceInventory = org.bukkit.inventory.Inventory & {
+		interface FurnaceInventory extends Modify<org.bukkit.inventory.Inventory, {
 			/**
 			 * Get the current item in the result slot.
 			 */
@@ -9738,28 +9748,8 @@ declare global {
 			 */
 			getHolder(): org.bukkit.block.Furnace;
 
-		}
-		type FurnaceRecipe = org.bukkit.inventory.CookingRecipe<org.bukkit.inventory.FurnaceRecipe> & {
-			new(result: org.bukkit.inventory.ItemStack, source: org.bukkit.Material): FurnaceRecipe;
-
-			new(result: org.bukkit.inventory.ItemStack, source: org.bukkit.material.MaterialData): FurnaceRecipe;
-
-			new(result: org.bukkit.inventory.ItemStack, source: org.bukkit.material.MaterialData, experience: number): FurnaceRecipe;
-
-			new(result: org.bukkit.inventory.ItemStack, source: org.bukkit.Material, data: number): FurnaceRecipe;
-
-			/**
-			 * Create a furnace recipe to craft the specified ItemStack.
-			 */
-			new(key: org.bukkit.NamespacedKey, result: org.bukkit.inventory.ItemStack, source: org.bukkit.Material, experience: number, cookingTime: number): FurnaceRecipe;
-
-			new(key: org.bukkit.NamespacedKey, result: org.bukkit.inventory.ItemStack, source: org.bukkit.Material, data: number, experience: number, cookingTime: number): FurnaceRecipe;
-
-			/**
-			 * Create a furnace recipe to craft the specified ItemStack.
-			 */
-			new(key: org.bukkit.NamespacedKey, result: org.bukkit.inventory.ItemStack, input: org.bukkit.inventory.RecipeChoice, experience: number, cookingTime: number): FurnaceRecipe;
-
+		}> {}
+		interface FurnaceRecipe extends Modify<org.bukkit.inventory.CookingRecipe<org.bukkit.inventory.FurnaceRecipe>, {
 			/**
 			 * Sets the input of this furnace recipe.
 			 */
@@ -9780,9 +9770,31 @@ declare global {
 			 */
 			setInputChoice(input: org.bukkit.inventory.RecipeChoice): org.bukkit.inventory.FurnaceRecipe;
 
+		}> {}
+		class FurnaceRecipe {
+			constructor(result: org.bukkit.inventory.ItemStack, source: org.bukkit.Material);
+
+			constructor(result: org.bukkit.inventory.ItemStack, source: org.bukkit.material.MaterialData);
+
+			constructor(result: org.bukkit.inventory.ItemStack, source: org.bukkit.material.MaterialData, experience: number);
+
+			constructor(result: org.bukkit.inventory.ItemStack, source: org.bukkit.Material, data: number);
+
+			/**
+			 * Create a furnace recipe to craft the specified ItemStack.
+			 */
+			constructor(key: org.bukkit.NamespacedKey, result: org.bukkit.inventory.ItemStack, source: org.bukkit.Material, experience: number, cookingTime: number);
+
+			constructor(key: org.bukkit.NamespacedKey, result: org.bukkit.inventory.ItemStack, source: org.bukkit.Material, data: number, experience: number, cookingTime: number);
+
+			/**
+			 * Create a furnace recipe to craft the specified ItemStack.
+			 */
+			constructor(key: org.bukkit.NamespacedKey, result: org.bukkit.inventory.ItemStack, input: org.bukkit.inventory.RecipeChoice, experience: number, cookingTime: number);
+
 		}
-		type GrindstoneInventory = org.bukkit.inventory.Inventory & {}
-		type HorseInventory = org.bukkit.inventory.AbstractHorseInventory & {
+		interface GrindstoneInventory extends Modify<org.bukkit.inventory.Inventory, {}> {}
+		interface HorseInventory extends Modify<org.bukkit.inventory.AbstractHorseInventory, {
 			/**
 			 * Gets the item in the horse's armor slot.
 			 */
@@ -9793,7 +9805,7 @@ declare global {
 			 */
 			setArmor(stack: org.bukkit.inventory.ItemStack): void;
 
-		}
+		}> {}
 		interface Inventory {
 			/**
 			 * Returns the size of the inventory
@@ -10030,10 +10042,6 @@ declare global {
 			getInventory(): org.bukkit.inventory.Inventory;
 
 		}
-		namespace InventoryView {
-			const OUTSIDE: number;
-
-		}
 		interface InventoryView {
 			/**
 			 * Get the upper inventory involved in this transaction.
@@ -10151,6 +10159,19 @@ declare global {
 
 		}
 		namespace InventoryView {
+			const OUTSIDE: number;
+
+		}
+		namespace InventoryView {
+			interface Property {
+				getType(): org.bukkit.event.inventory.InventoryType;
+
+				/**
+				 * Gets the id of this view.
+				 */
+				getId(): number;
+
+			}
 			namespace Property {
 				/**
 				 * The progress of the down-pointing arrow in a brewing inventory.
@@ -10271,15 +10292,6 @@ declare global {
 				function valueOf(name: string): org.bukkit.inventory.InventoryView.Property;
 
 			}
-			interface Property {
-				getType(): org.bukkit.event.inventory.InventoryType;
-
-				/**
-				 * Gets the id of this view.
-				 */
-				getId(): number;
-
-			}
 		}
 		interface ItemCraftResult {
 			/**
@@ -10396,6 +10408,7 @@ declare global {
 			enchantItem(item: org.bukkit.inventory.ItemStack, level: number, allowTreasures: boolean): org.bukkit.inventory.ItemStack;
 
 		}
+		interface ItemFlag {}
 		namespace ItemFlag {
 			/**
 			 * Setting to show/hide enchants
@@ -10447,7 +10460,7 @@ declare global {
 			function valueOf(name: string): org.bukkit.inventory.ItemFlag;
 
 		}
-		interface ItemFlag {}
+		interface ItemRarity {}
 		namespace ItemRarity {
 			/**
 			 * White item name.
@@ -10478,45 +10491,7 @@ declare global {
 			function valueOf(name: string): org.bukkit.inventory.ItemRarity;
 
 		}
-		interface ItemRarity {}
-		namespace ItemStack {
-			/**
-			 * Required method for configuration serialization
-			 */
-			function deserialize(args: globalThis.java.util.Map<string, any>): org.bukkit.inventory.ItemStack;
-
-		}
 		interface ItemStack {
-			/**
-			 * Defaults stack size to 1, with no extra data.
-			 * 
-			 * IMPORTANT: An ItemStack is only designed to contain
-			 * items. Do not use this class to encapsulate Materials for which
-			 * Material.isItem() returns false.
-			 */
-			new(type: org.bukkit.Material): ItemStack;
-
-			/**
-			 * An item stack with no extra data.
-			 * 
-			 * IMPORTANT: An ItemStack is only designed to contain
-			 * items. Do not use this class to encapsulate Materials for which
-			 * Material.isItem() returns false.
-			 */
-			new(type: org.bukkit.Material, amount: number): ItemStack;
-
-			/**
-			 * An item stack with the specified damage / durability
-			 */
-			new(type: org.bukkit.Material, amount: number, damage: number): ItemStack;
-
-			new(type: org.bukkit.Material, amount: number, damage: number, data: number): ItemStack;
-
-			/**
-			 * Creates a new item stack derived from the specified stack
-			 */
-			new(stack: org.bukkit.inventory.ItemStack): ItemStack;
-
 			/**
 			 * Gets the type of this item
 			 */
@@ -10672,6 +10647,151 @@ declare global {
 			getTranslationKey(): string;
 
 		}
+		class ItemStack {
+			/**
+			 * Defaults stack size to 1, with no extra data.
+			 * 
+			 * IMPORTANT: An ItemStack is only designed to contain
+			 * items. Do not use this class to encapsulate Materials for which
+			 * Material.isItem() returns false.
+			 */
+			constructor(type: org.bukkit.Material);
+
+			/**
+			 * An item stack with no extra data.
+			 * 
+			 * IMPORTANT: An ItemStack is only designed to contain
+			 * items. Do not use this class to encapsulate Materials for which
+			 * Material.isItem() returns false.
+			 */
+			constructor(type: org.bukkit.Material, amount: number);
+
+			/**
+			 * An item stack with the specified damage / durability
+			 */
+			constructor(type: org.bukkit.Material, amount: number, damage: number);
+
+			constructor(type: org.bukkit.Material, amount: number, damage: number, data: number);
+
+			/**
+			 * Creates a new item stack derived from the specified stack
+			 */
+			constructor(stack: org.bukkit.inventory.ItemStack);
+
+		}
+		namespace ItemStack {
+			/**
+			 * Required method for configuration serialization
+			 */
+			function deserialize(args: globalThis.java.util.Map<string, any>): org.bukkit.inventory.ItemStack;
+
+		}
+		interface ItemType extends Modify<org.bukkit.Keyed & org.bukkit.Translatable, {
+			/**
+			 * Yields this item type as a typed version of itself with a plain ItemMeta representing it.
+			 */
+			typed(): org.bukkit.inventory.ItemType.Typed<org.bukkit.inventory.meta.ItemMeta>;
+
+			/**
+			 * Yields this item type as a typed version of itself with a plain ItemMeta representing it.
+			 */
+			typed<M = any>(itemMetaType: globalThis.java.lang.Class<M>): org.bukkit.inventory.ItemType.Typed<M>;
+
+			/**
+			 * Constructs a new itemstack with this item type that has the amount 1.
+			 */
+			createItemStack(): org.bukkit.inventory.ItemStack;
+
+			/**
+			 * Constructs a new itemstack with this item type.
+			 */
+			createItemStack(amount: number): org.bukkit.inventory.ItemStack;
+
+			/**
+			 * Returns true if this ItemType has a corresponding BlockType.
+			 */
+			hasBlockType(): boolean;
+
+			/**
+			 * Returns the corresponding BlockType for the given ItemType.
+			 * 
+			 * If there is no corresponding BlockType an error will be thrown.
+			 */
+			getBlockType(): org.bukkit.block.BlockType;
+
+			/**
+			 * Gets the ItemMeta class of this ItemType
+			 */
+			getItemMetaClass(): globalThis.java.lang.Class<org.bukkit.inventory.meta.ItemMeta>;
+
+			/**
+			 * Gets the maximum amount of this item type that can be held in a stack
+			 */
+			getMaxStackSize(): number;
+
+			/**
+			 * Gets the maximum durability of this item type
+			 */
+			getMaxDurability(): number;
+
+			/**
+			 * Checks if this item type is edible.
+			 */
+			isEdible(): boolean;
+
+			isRecord(): boolean;
+
+			/**
+			 * Checks if this item type can be used as fuel in a Furnace
+			 */
+			isFuel(): boolean;
+
+			/**
+			 * Checks whether this item type is compostable (can be inserted into a
+			 * composter).
+			 */
+			isCompostable(): boolean;
+
+			/**
+			 * Get the chance that this item type will successfully compost. The
+			 * returned value is between 0 and 1 (inclusive).
+			 * Items with a compost chance of 1 will always raise the composter's level,
+			 * while items with a compost chance of 0 will never raise it.
+			 * Plugins should check that isCompostable() returns true before
+			 * calling this method.
+			 */
+			getCompostChance(): number;
+
+			/**
+			 * Determines the remaining item in a crafting grid after crafting with this
+			 * ingredient.
+			 */
+			getCraftingRemainingItem(): org.bukkit.inventory.ItemType;
+
+			/**
+			 * Return an immutable copy of all default Attributes and their
+			 * AttributeModifiers for a given EquipmentSlot.
+			 * Default attributes are those that are always preset on some items, such
+			 * as the attack damage on weapons or the armor value on armor.
+			 */
+			getDefaultAttributeModifiers(slot: org.bukkit.inventory.EquipmentSlot): any /* com.google.common.collect.Multimap */;
+
+			/**
+			 * Get the CreativeCategory to which this item type belongs.
+			 */
+			getCreativeCategory(): org.bukkit.inventory.CreativeCategory;
+
+			/**
+			 * Gets if the ItemType is enabled by the features in a world.
+			 */
+			isEnabledByFeature(world: org.bukkit.World): boolean;
+
+			/**
+			 * Tries to convert this ItemType into a Material
+			 */
+			asMaterial(): org.bukkit.Material;
+
+		}> {}
 		namespace ItemType {
 			/**
 			 * Air does not have any ItemMeta
@@ -14027,114 +14147,8 @@ declare global {
 			const BREEZE_ROD: org.bukkit.inventory.ItemType.Typed<org.bukkit.inventory.meta.ItemMeta>;
 
 		}
-		type ItemType = org.bukkit.Keyed & org.bukkit.Translatable & {
-			/**
-			 * Yields this item type as a typed version of itself with a plain ItemMeta representing it.
-			 */
-			typed(): org.bukkit.inventory.ItemType.Typed<org.bukkit.inventory.meta.ItemMeta>;
-
-			/**
-			 * Yields this item type as a typed version of itself with a plain ItemMeta representing it.
-			 */
-			typed<M = any>(itemMetaType: globalThis.java.lang.Class<M>): org.bukkit.inventory.ItemType.Typed<M>;
-
-			/**
-			 * Constructs a new itemstack with this item type that has the amount 1.
-			 */
-			createItemStack(): org.bukkit.inventory.ItemStack;
-
-			/**
-			 * Constructs a new itemstack with this item type.
-			 */
-			createItemStack(amount: number): org.bukkit.inventory.ItemStack;
-
-			/**
-			 * Returns true if this ItemType has a corresponding BlockType.
-			 */
-			hasBlockType(): boolean;
-
-			/**
-			 * Returns the corresponding BlockType for the given ItemType.
-			 * 
-			 * If there is no corresponding BlockType an error will be thrown.
-			 */
-			getBlockType(): org.bukkit.block.BlockType;
-
-			/**
-			 * Gets the ItemMeta class of this ItemType
-			 */
-			getItemMetaClass(): globalThis.java.lang.Class<org.bukkit.inventory.meta.ItemMeta>;
-
-			/**
-			 * Gets the maximum amount of this item type that can be held in a stack
-			 */
-			getMaxStackSize(): number;
-
-			/**
-			 * Gets the maximum durability of this item type
-			 */
-			getMaxDurability(): number;
-
-			/**
-			 * Checks if this item type is edible.
-			 */
-			isEdible(): boolean;
-
-			isRecord(): boolean;
-
-			/**
-			 * Checks if this item type can be used as fuel in a Furnace
-			 */
-			isFuel(): boolean;
-
-			/**
-			 * Checks whether this item type is compostable (can be inserted into a
-			 * composter).
-			 */
-			isCompostable(): boolean;
-
-			/**
-			 * Get the chance that this item type will successfully compost. The
-			 * returned value is between 0 and 1 (inclusive).
-			 * Items with a compost chance of 1 will always raise the composter's level,
-			 * while items with a compost chance of 0 will never raise it.
-			 * Plugins should check that isCompostable() returns true before
-			 * calling this method.
-			 */
-			getCompostChance(): number;
-
-			/**
-			 * Determines the remaining item in a crafting grid after crafting with this
-			 * ingredient.
-			 */
-			getCraftingRemainingItem(): org.bukkit.inventory.ItemType;
-
-			/**
-			 * Return an immutable copy of all default Attributes and their
-			 * AttributeModifiers for a given EquipmentSlot.
-			 * Default attributes are those that are always preset on some items, such
-			 * as the attack damage on weapons or the armor value on armor.
-			 */
-			getDefaultAttributeModifiers(slot: org.bukkit.inventory.EquipmentSlot): any /* com.google.common.collect.Multimap */;
-
-			/**
-			 * Get the CreativeCategory to which this item type belongs.
-			 */
-			getCreativeCategory(): org.bukkit.inventory.CreativeCategory;
-
-			/**
-			 * Gets if the ItemType is enabled by the features in a world.
-			 */
-			isEnabledByFeature(world: org.bukkit.World): boolean;
-
-			/**
-			 * Tries to convert this ItemType into a Material
-			 */
-			asMaterial(): org.bukkit.Material;
-
-		}
 		namespace ItemType {
-			type Typed<M = any> = org.bukkit.inventory.ItemType & {
+			interface Typed<M = any> extends Modify<org.bukkit.inventory.ItemType, {
 				/**
 				 * Gets the ItemMeta class of this ItemType
 				 */
@@ -14150,9 +14164,9 @@ declare global {
 				 */
 				createItemStack(amount: number, metaConfigurator: (value: M) => void): org.bukkit.inventory.ItemStack;
 
-			}
+			}> {}
 		}
-		type JukeboxInventory = org.bukkit.inventory.Inventory & {
+		interface JukeboxInventory extends Modify<org.bukkit.inventory.Inventory, {
 			/**
 			 * Set the record in the jukebox.
 			 * 
@@ -14171,15 +14185,15 @@ declare global {
 			 */
 			getHolder(): org.bukkit.block.Jukebox;
 
-		}
-		type LecternInventory = org.bukkit.inventory.Inventory & {
+		}> {}
+		interface LecternInventory extends Modify<org.bukkit.inventory.Inventory, {
 			/**
 			 * Description copied from interface: Inventory
 			 */
 			getHolder(): org.bukkit.block.Lectern;
 
-		}
-		type LlamaInventory = org.bukkit.inventory.AbstractHorseInventory & {
+		}> {}
+		interface LlamaInventory extends Modify<org.bukkit.inventory.AbstractHorseInventory, {
 			/**
 			 * Gets the item in the llama's decor slot.
 			 */
@@ -14190,8 +14204,9 @@ declare global {
 			 */
 			setDecor(stack: org.bukkit.inventory.ItemStack): void;
 
-		}
-		type LoomInventory = org.bukkit.inventory.Inventory & {}
+		}> {}
+		interface LoomInventory extends Modify<org.bukkit.inventory.Inventory, {}> {}
+		interface MainHand {}
 		namespace MainHand {
 			const LEFT: org.bukkit.inventory.MainHand;
 
@@ -14206,7 +14221,6 @@ declare global {
 			function valueOf(name: string): org.bukkit.inventory.MainHand;
 
 		}
-		interface MainHand {}
 		interface Merchant {
 			/**
 			 * Get a list of trades currently available from this merchant.
@@ -14248,7 +14262,7 @@ declare global {
 			getTrader(): org.bukkit.entity.HumanEntity;
 
 		}
-		type MerchantInventory = org.bukkit.inventory.Inventory & {
+		interface MerchantInventory extends Modify<org.bukkit.inventory.Inventory, {
 			/**
 			 * Get the index of the currently selected recipe.
 			 */
@@ -14270,16 +14284,8 @@ declare global {
 			 */
 			getMerchant(): org.bukkit.inventory.Merchant;
 
-		}
+		}> {}
 		interface MerchantRecipe {
-			new(result: org.bukkit.inventory.ItemStack, maxUses: number): MerchantRecipe;
-
-			new(result: org.bukkit.inventory.ItemStack, uses: number, maxUses: number, experienceReward: boolean): MerchantRecipe;
-
-			new(result: org.bukkit.inventory.ItemStack, uses: number, maxUses: number, experienceReward: boolean, villagerExperience: number, priceMultiplier: number): MerchantRecipe;
-
-			new(result: org.bukkit.inventory.ItemStack, uses: number, maxUses: number, experienceReward: boolean, villagerExperience: number, priceMultiplier: number, demand: number, specialPrice: number): MerchantRecipe;
-
 			/**
 			 * Description copied from interface: Recipe
 			 */
@@ -14383,7 +14389,17 @@ declare global {
 			setPriceMultiplier(priceMultiplier: number): void;
 
 		}
-		type PlayerInventory = org.bukkit.inventory.Inventory & {
+		class MerchantRecipe {
+			constructor(result: org.bukkit.inventory.ItemStack, maxUses: number);
+
+			constructor(result: org.bukkit.inventory.ItemStack, uses: number, maxUses: number, experienceReward: boolean);
+
+			constructor(result: org.bukkit.inventory.ItemStack, uses: number, maxUses: number, experienceReward: boolean, villagerExperience: number, priceMultiplier: number);
+
+			constructor(result: org.bukkit.inventory.ItemStack, uses: number, maxUses: number, experienceReward: boolean, villagerExperience: number, priceMultiplier: number, demand: number, specialPrice: number);
+
+		}
+		interface PlayerInventory extends Modify<org.bukkit.inventory.Inventory, {
 			/**
 			 * Return the ItemStack from the helmet slot
 			 */
@@ -14517,7 +14533,7 @@ declare global {
 			 */
 			getHolder(): org.bukkit.entity.HumanEntity;
 
-		}
+		}> {}
 		interface Recipe {
 			/**
 			 * Get the result of this recipe.
@@ -14538,12 +14554,6 @@ declare global {
 		}
 		namespace RecipeChoice {
 			interface ExactChoice {
-				new(stack: org.bukkit.inventory.ItemStack): ExactChoice;
-
-				new(...stacks: org.bukkit.inventory.ItemStack[]): ExactChoice;
-
-				new(choices: globalThis.java.util.List<org.bukkit.inventory.ItemStack>): ExactChoice;
-
 				/**
 				 * Description copied from interface: RecipeChoice
 				 */
@@ -14562,21 +14572,17 @@ declare global {
 				toString(): string;
 
 			}
+			class ExactChoice {
+				constructor(stack: org.bukkit.inventory.ItemStack);
+
+				constructor(...stacks: org.bukkit.inventory.ItemStack[]);
+
+				constructor(choices: globalThis.java.util.List<org.bukkit.inventory.ItemStack>);
+
+			}
 		}
 		namespace RecipeChoice {
 			interface MaterialChoice {
-				new(choice: org.bukkit.Material): MaterialChoice;
-
-				new(...choices: org.bukkit.Material[]): MaterialChoice;
-
-				/**
-				 * Constructs a MaterialChoice with the current values of the specified
-				 * tag.
-				 */
-				new(choices: org.bukkit.Tag<org.bukkit.Material>): MaterialChoice;
-
-				new(choices: globalThis.java.util.List<org.bukkit.Material>): MaterialChoice;
-
 				test(t: org.bukkit.inventory.ItemStack): boolean;
 
 				/**
@@ -14595,22 +14601,22 @@ declare global {
 				toString(): string;
 
 			}
+			class MaterialChoice {
+				constructor(choice: org.bukkit.Material);
+
+				constructor(...choices: org.bukkit.Material[]);
+
+				/**
+				 * Constructs a MaterialChoice with the current values of the specified
+				 * tag.
+				 */
+				constructor(choices: org.bukkit.Tag<org.bukkit.Material>);
+
+				constructor(choices: globalThis.java.util.List<org.bukkit.Material>);
+
+			}
 		}
-		type ShapedRecipe = org.bukkit.inventory.CraftingRecipe & {
-			/**
-			 * Create a shaped recipe to craft the specified ItemStack. The
-			 * constructor merely determines the result and type; to set the actual
-			 * recipe, you'll need to call the appropriate methods.
-			 */
-			new(result: org.bukkit.inventory.ItemStack): ShapedRecipe;
-
-			/**
-			 * Create a shaped recipe to craft the specified ItemStack. The
-			 * constructor merely determines the result and type; to set the actual
-			 * recipe, you'll need to call the appropriate methods.
-			 */
-			new(key: org.bukkit.NamespacedKey, result: org.bukkit.inventory.ItemStack): ShapedRecipe;
-
+		interface ShapedRecipe extends Modify<org.bukkit.inventory.CraftingRecipe, {
 			/**
 			 * Set the shape of this recipe to the specified rows. Each character
 			 * represents a different ingredient; excluding space characters, which
@@ -14663,17 +14669,24 @@ declare global {
 			 */
 			getChoiceMap(): globalThis.java.util.Map<string, org.bukkit.inventory.RecipeChoice>;
 
-		}
-		type ShapelessRecipe = org.bukkit.inventory.CraftingRecipe & {
-			new(result: org.bukkit.inventory.ItemStack): ShapelessRecipe;
-
+		}> {}
+		class ShapedRecipe {
 			/**
-			 * Create a shapeless recipe to craft the specified ItemStack. The
+			 * Create a shaped recipe to craft the specified ItemStack. The
 			 * constructor merely determines the result and type; to set the actual
 			 * recipe, you'll need to call the appropriate methods.
 			 */
-			new(key: org.bukkit.NamespacedKey, result: org.bukkit.inventory.ItemStack): ShapelessRecipe;
+			constructor(result: org.bukkit.inventory.ItemStack);
 
+			/**
+			 * Create a shaped recipe to craft the specified ItemStack. The
+			 * constructor merely determines the result and type; to set the actual
+			 * recipe, you'll need to call the appropriate methods.
+			 */
+			constructor(key: org.bukkit.NamespacedKey, result: org.bukkit.inventory.ItemStack);
+
+		}
+		interface ShapelessRecipe extends Modify<org.bukkit.inventory.CraftingRecipe, {
 			/**
 			 * Adds the specified ingredient.
 			 */
@@ -14760,8 +14773,19 @@ declare global {
 
 			getChoiceList(): globalThis.java.util.List<org.bukkit.inventory.RecipeChoice>;
 
+		}> {}
+		class ShapelessRecipe {
+			constructor(result: org.bukkit.inventory.ItemStack);
+
+			/**
+			 * Create a shapeless recipe to craft the specified ItemStack. The
+			 * constructor merely determines the result and type; to set the actual
+			 * recipe, you'll need to call the appropriate methods.
+			 */
+			constructor(key: org.bukkit.NamespacedKey, result: org.bukkit.inventory.ItemStack);
+
 		}
-		type SmithingInventory = org.bukkit.inventory.Inventory & {
+		interface SmithingInventory extends Modify<org.bukkit.inventory.Inventory, {
 			/**
 			 * Check what item is in the result slot of this smithing table.
 			 */
@@ -14777,13 +14801,8 @@ declare global {
 			 */
 			getRecipe(): org.bukkit.inventory.Recipe;
 
-		}
+		}> {}
 		interface SmithingRecipe {
-			/**
-			 * Create a smithing recipe to produce the specified result ItemStack.
-			 */
-			new(key: org.bukkit.NamespacedKey, result: org.bukkit.inventory.ItemStack, base: org.bukkit.inventory.RecipeChoice, addition: org.bukkit.inventory.RecipeChoice): SmithingRecipe;
-
 			/**
 			 * Get the base recipe item.
 			 */
@@ -14805,48 +14824,51 @@ declare global {
 			getKey(): org.bukkit.NamespacedKey;
 
 		}
-		type SmithingTransformRecipe = org.bukkit.inventory.SmithingRecipe & {
+		class SmithingRecipe {
 			/**
 			 * Create a smithing recipe to produce the specified result ItemStack.
 			 */
-			new(key: org.bukkit.NamespacedKey, result: org.bukkit.inventory.ItemStack, template: org.bukkit.inventory.RecipeChoice, base: org.bukkit.inventory.RecipeChoice, addition: org.bukkit.inventory.RecipeChoice): SmithingTransformRecipe;
+			constructor(key: org.bukkit.NamespacedKey, result: org.bukkit.inventory.ItemStack, base: org.bukkit.inventory.RecipeChoice, addition: org.bukkit.inventory.RecipeChoice);
 
+		}
+		interface SmithingTransformRecipe extends Modify<org.bukkit.inventory.SmithingRecipe, {
 			/**
 			 * Get the template recipe item.
 			 */
 			getTemplate(): org.bukkit.inventory.RecipeChoice;
 
-		}
-		type SmithingTrimRecipe = org.bukkit.inventory.SmithingRecipe & {
+		}> {}
+		class SmithingTransformRecipe {
 			/**
 			 * Create a smithing recipe to produce the specified result ItemStack.
 			 */
-			new(key: org.bukkit.NamespacedKey, template: org.bukkit.inventory.RecipeChoice, base: org.bukkit.inventory.RecipeChoice, addition: org.bukkit.inventory.RecipeChoice): SmithingTrimRecipe;
+			constructor(key: org.bukkit.NamespacedKey, result: org.bukkit.inventory.ItemStack, template: org.bukkit.inventory.RecipeChoice, base: org.bukkit.inventory.RecipeChoice, addition: org.bukkit.inventory.RecipeChoice);
 
+		}
+		interface SmithingTrimRecipe extends Modify<org.bukkit.inventory.SmithingRecipe, {
 			/**
 			 * Get the template recipe item.
 			 */
 			getTemplate(): org.bukkit.inventory.RecipeChoice;
 
-		}
-		type SmokingRecipe = org.bukkit.inventory.CookingRecipe<org.bukkit.inventory.SmokingRecipe> & {
-			new(key: org.bukkit.NamespacedKey, result: org.bukkit.inventory.ItemStack, source: org.bukkit.Material, experience: number, cookingTime: number): SmokingRecipe;
+		}> {}
+		class SmithingTrimRecipe {
+			/**
+			 * Create a smithing recipe to produce the specified result ItemStack.
+			 */
+			constructor(key: org.bukkit.NamespacedKey, template: org.bukkit.inventory.RecipeChoice, base: org.bukkit.inventory.RecipeChoice, addition: org.bukkit.inventory.RecipeChoice);
 
-			new(key: org.bukkit.NamespacedKey, result: org.bukkit.inventory.ItemStack, input: org.bukkit.inventory.RecipeChoice, experience: number, cookingTime: number): SmokingRecipe;
+		}
+		interface SmokingRecipe extends Modify<org.bukkit.inventory.CookingRecipe<org.bukkit.inventory.SmokingRecipe>, {
+		}> {}
+		class SmokingRecipe {
+			constructor(key: org.bukkit.NamespacedKey, result: org.bukkit.inventory.ItemStack, source: org.bukkit.Material, experience: number, cookingTime: number);
+
+			constructor(key: org.bukkit.NamespacedKey, result: org.bukkit.inventory.ItemStack, input: org.bukkit.inventory.RecipeChoice, experience: number, cookingTime: number);
 
 		}
-		type StonecutterInventory = org.bukkit.inventory.Inventory & {}
+		interface StonecutterInventory extends Modify<org.bukkit.inventory.Inventory, {}> {}
 		interface StonecuttingRecipe {
-			/**
-			 * Create a Stonecutting recipe to craft the specified ItemStack.
-			 */
-			new(key: org.bukkit.NamespacedKey, result: org.bukkit.inventory.ItemStack, source: org.bukkit.Material): StonecuttingRecipe;
-
-			/**
-			 * Create a cooking recipe to craft the specified ItemStack.
-			 */
-			new(key: org.bukkit.NamespacedKey, result: org.bukkit.inventory.ItemStack, input: org.bukkit.inventory.RecipeChoice): StonecuttingRecipe;
-
 			/**
 			 * Sets the input of this cooking recipe.
 			 */
@@ -14890,8 +14912,21 @@ declare global {
 			setGroup(group: string): void;
 
 		}
+		class StonecuttingRecipe {
+			/**
+			 * Create a Stonecutting recipe to craft the specified ItemStack.
+			 */
+			constructor(key: org.bukkit.NamespacedKey, result: org.bukkit.inventory.ItemStack, source: org.bukkit.Material);
+
+			/**
+			 * Create a cooking recipe to craft the specified ItemStack.
+			 */
+			constructor(key: org.bukkit.NamespacedKey, result: org.bukkit.inventory.ItemStack, input: org.bukkit.inventory.RecipeChoice);
+
+		}
 	}
 	namespace org.bukkit.event.block {
+		interface Action {}
 		namespace Action {
 			/**
 			 * Left-clicking a block
@@ -14934,14 +14969,7 @@ declare global {
 			function valueOf(name: string): org.bukkit.event.block.Action;
 
 		}
-		interface Action {}
-		namespace BellResonateEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type BellResonateEvent = org.bukkit.event.block.BlockEvent & {
-			new(theBlock: org.bukkit.block.Block, resonatedEntities: globalThis.java.util.List<org.bukkit.entity.LivingEntity>): BellResonateEvent;
-
+		interface BellResonateEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Get a mutable list of all LivingEntities to be
 			 * highlighted by the bell's resonating. This list can be added to or
@@ -14956,14 +14984,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class BellResonateEvent {
+			constructor(theBlock: org.bukkit.block.Block, resonatedEntities: globalThis.java.util.List<org.bukkit.entity.LivingEntity>);
+
 		}
-		namespace BellRingEvent {
+		namespace BellResonateEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type BellRingEvent = org.bukkit.event.block.BlockEvent & {
-			new(theBlock: org.bukkit.block.Block, direction: org.bukkit.block.BlockFace, entity: org.bukkit.entity.Entity): BellRingEvent;
-
+		interface BellRingEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Get the direction in which the bell was rung.
 			 */
@@ -14986,10 +15016,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
-		}
-		type BlockBreakEvent = org.bukkit.event.block.BlockExpEvent & {
-			new(theBlock: org.bukkit.block.Block, player: org.bukkit.entity.Player): BlockBreakEvent;
+		}> {}
+		class BellRingEvent {
+			constructor(theBlock: org.bukkit.block.Block, direction: org.bukkit.block.BlockFace, entity: org.bukkit.entity.Entity);
 
+		}
+		namespace BellRingEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		interface BlockBreakEvent extends Modify<org.bukkit.event.block.BlockExpEvent, {
 			/**
 			 * Gets the Player that is breaking the block involved in this event.
 			 */
@@ -15020,16 +15056,12 @@ declare global {
 			 */
 			setCancelled(cancel: boolean): void;
 
-		}
-		namespace BlockBurnEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
+		}> {}
+		class BlockBreakEvent {
+			constructor(theBlock: org.bukkit.block.Block, player: org.bukkit.entity.Player);
 
 		}
-		type BlockBurnEvent = org.bukkit.event.block.BlockEvent & {
-			new(block: org.bukkit.block.Block): BlockBurnEvent;
-
-			new(block: org.bukkit.block.Block, ignitingBlock: org.bukkit.block.Block): BlockBurnEvent;
-
+		interface BlockBurnEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Gets the block which ignited this block.
 			 */
@@ -15047,16 +15079,18 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class BlockBurnEvent {
+			constructor(block: org.bukkit.block.Block);
+
+			constructor(block: org.bukkit.block.Block, ignitingBlock: org.bukkit.block.Block);
+
 		}
-		namespace BlockCanBuildEvent {
+		namespace BlockBurnEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type BlockCanBuildEvent = org.bukkit.event.block.BlockEvent & {
-			new(block: org.bukkit.block.Block, type: org.bukkit.block.data.BlockData, canBuild: boolean): BlockCanBuildEvent;
-
-			new(block: org.bukkit.block.Block, player: org.bukkit.entity.Player, type: org.bukkit.block.data.BlockData, canBuild: boolean): BlockCanBuildEvent;
-
+		interface BlockCanBuildEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Gets whether or not the block can be built here.
 			 * 
@@ -15089,14 +15123,18 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class BlockCanBuildEvent {
+			constructor(block: org.bukkit.block.Block, type: org.bukkit.block.data.BlockData, canBuild: boolean);
+
+			constructor(block: org.bukkit.block.Block, player: org.bukkit.entity.Player, type: org.bukkit.block.data.BlockData, canBuild: boolean);
+
 		}
-		namespace BlockCookEvent {
+		namespace BlockCanBuildEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type BlockCookEvent = org.bukkit.event.block.BlockEvent & {
-			new(block: org.bukkit.block.Block, source: org.bukkit.inventory.ItemStack, result: org.bukkit.inventory.ItemStack): BlockCookEvent;
-
+		interface BlockCookEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Gets the smelted ItemStack for this event
 			 */
@@ -15124,14 +15162,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class BlockCookEvent {
+			constructor(block: org.bukkit.block.Block, source: org.bukkit.inventory.ItemStack, result: org.bukkit.inventory.ItemStack);
+
 		}
-		namespace BlockDamageAbortEvent {
+		namespace BlockCookEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type BlockDamageAbortEvent = org.bukkit.event.block.BlockEvent & {
-			new(player: org.bukkit.entity.Player, block: org.bukkit.block.Block, itemInHand: org.bukkit.inventory.ItemStack): BlockDamageAbortEvent;
-
+		interface BlockDamageAbortEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Gets the player that stopped damaging the block involved in this event.
 			 */
@@ -15144,14 +15184,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class BlockDamageAbortEvent {
+			constructor(player: org.bukkit.entity.Player, block: org.bukkit.block.Block, itemInHand: org.bukkit.inventory.ItemStack);
+
 		}
-		namespace BlockDamageEvent {
+		namespace BlockDamageAbortEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type BlockDamageEvent = org.bukkit.event.block.BlockEvent & {
-			new(player: org.bukkit.entity.Player, block: org.bukkit.block.Block, itemInHand: org.bukkit.inventory.ItemStack, instaBreak: boolean): BlockDamageEvent;
-
+		interface BlockDamageEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Gets the player damaging the block involved in this event.
 			 */
@@ -15184,23 +15226,27 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
-		}
-		type BlockDispenseArmorEvent = org.bukkit.event.block.BlockDispenseEvent & {
-			new(block: org.bukkit.block.Block, dispensed: org.bukkit.inventory.ItemStack, target: org.bukkit.entity.LivingEntity): BlockDispenseArmorEvent;
+		}> {}
+		class BlockDamageEvent {
+			constructor(player: org.bukkit.entity.Player, block: org.bukkit.block.Block, itemInHand: org.bukkit.inventory.ItemStack, instaBreak: boolean);
 
+		}
+		namespace BlockDamageEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		interface BlockDispenseArmorEvent extends Modify<org.bukkit.event.block.BlockDispenseEvent, {
 			/**
 			 * Get the living entity on which the armor was dispensed.
 			 */
 			getTargetEntity(): org.bukkit.entity.LivingEntity;
 
-		}
-		namespace BlockDispenseEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
+		}> {}
+		class BlockDispenseArmorEvent {
+			constructor(block: org.bukkit.block.Block, dispensed: org.bukkit.inventory.ItemStack, target: org.bukkit.entity.LivingEntity);
 
 		}
-		type BlockDispenseEvent = org.bukkit.event.block.BlockEvent & {
-			new(block: org.bukkit.block.Block, dispensed: org.bukkit.inventory.ItemStack, velocity: org.bukkit.util.Vector): BlockDispenseEvent;
-
+		interface BlockDispenseEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Gets the item that is being dispensed. Modifying the returned item will
 			 * have no effect, you must use setItem(org.bukkit.inventory.ItemStack) instead.
@@ -15237,14 +15283,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class BlockDispenseEvent {
+			constructor(block: org.bukkit.block.Block, dispensed: org.bukkit.inventory.ItemStack, velocity: org.bukkit.util.Vector);
+
 		}
-		namespace BlockDropItemEvent {
+		namespace BlockDispenseEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type BlockDropItemEvent = org.bukkit.event.block.BlockEvent & {
-			new(block: org.bukkit.block.Block, blockState: org.bukkit.block.BlockState, player: org.bukkit.entity.Player, items: globalThis.java.util.List<org.bukkit.entity.Item>): BlockDropItemEvent;
-
+		interface BlockDropItemEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Gets the Player that is breaking the block involved in this event.
 			 */
@@ -15275,23 +15323,27 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
-		}
-		type BlockEvent = org.bukkit.event.Event & {
-			new(theBlock: org.bukkit.block.Block): BlockEvent;
+		}> {}
+		class BlockDropItemEvent {
+			constructor(block: org.bukkit.block.Block, blockState: org.bukkit.block.BlockState, player: org.bukkit.entity.Player, items: globalThis.java.util.List<org.bukkit.entity.Item>);
 
+		}
+		namespace BlockDropItemEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		interface BlockEvent extends Modify<org.bukkit.event.Event, {
 			/**
 			 * Gets the block involved in this event.
 			 */
 			getBlock(): org.bukkit.block.Block;
 
-		}
-		namespace BlockExpEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
+		}> {}
+		class BlockEvent {
+			constructor(theBlock: org.bukkit.block.Block);
 
 		}
-		type BlockExpEvent = org.bukkit.event.block.BlockEvent & {
-			new(block: org.bukkit.block.Block, exp: number): BlockExpEvent;
-
+		interface BlockExpEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Get the experience dropped by the block after the event has processed
 			 */
@@ -15305,16 +15357,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class BlockExpEvent {
+			constructor(block: org.bukkit.block.Block, exp: number);
+
 		}
-		namespace BlockExplodeEvent {
+		namespace BlockExpEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type BlockExplodeEvent = org.bukkit.event.block.BlockEvent & {
-			new(what: org.bukkit.block.Block, blockState: org.bukkit.block.BlockState, blocks: globalThis.java.util.List<org.bukkit.block.Block>, yield: number): BlockExplodeEvent;
-
-			new(what: org.bukkit.block.Block, blocks: globalThis.java.util.List<org.bukkit.block.Block>, yield: number): BlockExplodeEvent;
-
+		interface BlockExplodeEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -15348,14 +15400,18 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class BlockExplodeEvent {
+			constructor(what: org.bukkit.block.Block, blockState: org.bukkit.block.BlockState, blocks: globalThis.java.util.List<org.bukkit.block.Block>, yield: number);
+
+			constructor(what: org.bukkit.block.Block, blocks: globalThis.java.util.List<org.bukkit.block.Block>, yield: number);
+
 		}
-		namespace BlockFadeEvent {
+		namespace BlockExplodeEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type BlockFadeEvent = org.bukkit.event.block.BlockEvent & {
-			new(block: org.bukkit.block.Block, newState: org.bukkit.block.BlockState): BlockFadeEvent;
-
+		interface BlockFadeEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Gets the state of the block that will be fading, melting or
 			 * disappearing.
@@ -15374,14 +15430,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class BlockFadeEvent {
+			constructor(block: org.bukkit.block.Block, newState: org.bukkit.block.BlockState);
+
 		}
-		namespace BlockFertilizeEvent {
+		namespace BlockFadeEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type BlockFertilizeEvent = org.bukkit.event.block.BlockEvent & {
-			new(theBlock: org.bukkit.block.Block, player: org.bukkit.entity.Player, blocks: globalThis.java.util.List<org.bukkit.block.BlockState>): BlockFertilizeEvent;
-
+		interface BlockFertilizeEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Gets the player that triggered the fertilization.
 			 */
@@ -15404,26 +15462,28 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class BlockFertilizeEvent {
+			constructor(theBlock: org.bukkit.block.Block, player: org.bukkit.entity.Player, blocks: globalThis.java.util.List<org.bukkit.block.BlockState>);
+
+		}
+		namespace BlockFertilizeEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		interface BlockFormEvent extends Modify<org.bukkit.event.block.BlockGrowEvent, {
+			getHandlers(): org.bukkit.event.HandlerList;
+
+		}> {}
+		class BlockFormEvent {
+			constructor(block: org.bukkit.block.Block, newState: org.bukkit.block.BlockState);
+
 		}
 		namespace BlockFormEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type BlockFormEvent = org.bukkit.event.block.BlockGrowEvent & {
-			new(block: org.bukkit.block.Block, newState: org.bukkit.block.BlockState): BlockFormEvent;
-
-			getHandlers(): org.bukkit.event.HandlerList;
-
-		}
-		namespace BlockFromToEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type BlockFromToEvent = org.bukkit.event.block.BlockEvent & {
-			new(block: org.bukkit.block.Block, face: org.bukkit.block.BlockFace): BlockFromToEvent;
-
-			new(block: org.bukkit.block.Block, toBlock: org.bukkit.block.Block): BlockFromToEvent;
-
+		interface BlockFromToEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Gets the BlockFace that the block is moving to.
 			 */
@@ -15446,14 +15506,18 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class BlockFromToEvent {
+			constructor(block: org.bukkit.block.Block, face: org.bukkit.block.BlockFace);
+
+			constructor(block: org.bukkit.block.Block, toBlock: org.bukkit.block.Block);
+
 		}
-		namespace BlockGrowEvent {
+		namespace BlockFromToEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type BlockGrowEvent = org.bukkit.event.block.BlockEvent & {
-			new(block: org.bukkit.block.Block, newState: org.bukkit.block.BlockState): BlockGrowEvent;
-
+		interface BlockGrowEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Gets the state of the block where it will form or spread to.
 			 */
@@ -15471,18 +15535,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class BlockGrowEvent {
+			constructor(block: org.bukkit.block.Block, newState: org.bukkit.block.BlockState);
+
 		}
-		namespace BlockIgniteEvent {
+		namespace BlockGrowEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type BlockIgniteEvent = org.bukkit.event.block.BlockEvent & {
-			new(theBlock: org.bukkit.block.Block, cause: org.bukkit.event.block.BlockIgniteEvent.IgniteCause, ignitingEntity: org.bukkit.entity.Entity): BlockIgniteEvent;
-
-			new(theBlock: org.bukkit.block.Block, cause: org.bukkit.event.block.BlockIgniteEvent.IgniteCause, ignitingBlock: org.bukkit.block.Block): BlockIgniteEvent;
-
-			new(theBlock: org.bukkit.block.Block, cause: org.bukkit.event.block.BlockIgniteEvent.IgniteCause, ignitingEntity: org.bukkit.entity.Entity, ignitingBlock: org.bukkit.block.Block): BlockIgniteEvent;
-
+		interface BlockIgniteEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -15515,8 +15577,21 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class BlockIgniteEvent {
+			constructor(theBlock: org.bukkit.block.Block, cause: org.bukkit.event.block.BlockIgniteEvent.IgniteCause, ignitingEntity: org.bukkit.entity.Entity);
+
+			constructor(theBlock: org.bukkit.block.Block, cause: org.bukkit.event.block.BlockIgniteEvent.IgniteCause, ignitingBlock: org.bukkit.block.Block);
+
+			constructor(theBlock: org.bukkit.block.Block, cause: org.bukkit.event.block.BlockIgniteEvent.IgniteCause, ignitingEntity: org.bukkit.entity.Entity, ignitingBlock: org.bukkit.block.Block);
+
 		}
 		namespace BlockIgniteEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		namespace BlockIgniteEvent {
+			interface IgniteCause {}
 			namespace IgniteCause {
 				/**
 				 * Block ignition caused by lava.
@@ -15567,11 +15642,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.block.BlockIgniteEvent.IgniteCause;
 
 			}
-			interface IgniteCause {}
 		}
-		type BlockMultiPlaceEvent = org.bukkit.event.block.BlockPlaceEvent & {
-			new(states: globalThis.java.util.List<org.bukkit.block.BlockState>, clicked: org.bukkit.block.Block, itemInHand: org.bukkit.inventory.ItemStack, thePlayer: org.bukkit.entity.Player, canBuild: boolean): BlockMultiPlaceEvent;
-
+		interface BlockMultiPlaceEvent extends Modify<org.bukkit.event.block.BlockPlaceEvent, {
 			/**
 			 * Gets a list of blockstates for all blocks which were replaced by the
 			 * placement of the new blocks. Most of these blocks will just have a
@@ -15579,16 +15651,12 @@ declare global {
 			 */
 			getReplacedBlockStates(): globalThis.java.util.List<org.bukkit.block.BlockState>;
 
-		}
-		namespace BlockPhysicsEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
+		}> {}
+		class BlockMultiPlaceEvent {
+			constructor(states: globalThis.java.util.List<org.bukkit.block.BlockState>, clicked: org.bukkit.block.Block, itemInHand: org.bukkit.inventory.ItemStack, thePlayer: org.bukkit.entity.Player, canBuild: boolean);
 
 		}
-		type BlockPhysicsEvent = org.bukkit.event.block.BlockEvent & {
-			new(block: org.bukkit.block.Block, changed: org.bukkit.block.data.BlockData): BlockPhysicsEvent;
-
-			new(block: org.bukkit.block.Block, changed: org.bukkit.block.data.BlockData, sourceBlock: org.bukkit.block.Block): BlockPhysicsEvent;
-
+		interface BlockPhysicsEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Gets the source block that triggered this event.
 			 * Note: This will default to block if not set.
@@ -15612,10 +15680,18 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
-		}
-		type BlockPistonEvent = org.bukkit.event.block.BlockEvent & {
-			new(block: org.bukkit.block.Block, direction: org.bukkit.block.BlockFace): BlockPistonEvent;
+		}> {}
+		class BlockPhysicsEvent {
+			constructor(block: org.bukkit.block.Block, changed: org.bukkit.block.data.BlockData);
 
+			constructor(block: org.bukkit.block.Block, changed: org.bukkit.block.data.BlockData, sourceBlock: org.bukkit.block.Block);
+
+		}
+		namespace BlockPhysicsEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		interface BlockPistonEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -15636,16 +15712,12 @@ declare global {
 			 */
 			getDirection(): org.bukkit.block.BlockFace;
 
-		}
-		namespace BlockPistonExtendEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
+		}> {}
+		class BlockPistonEvent {
+			constructor(block: org.bukkit.block.Block, direction: org.bukkit.block.BlockFace);
 
 		}
-		type BlockPistonExtendEvent = org.bukkit.event.block.BlockPistonEvent & {
-			new(block: org.bukkit.block.Block, length: number, direction: org.bukkit.block.BlockFace): BlockPistonExtendEvent;
-
-			new(block: org.bukkit.block.Block, blocks: globalThis.java.util.List<org.bukkit.block.Block>, direction: org.bukkit.block.BlockFace): BlockPistonExtendEvent;
-
+		interface BlockPistonExtendEvent extends Modify<org.bukkit.event.block.BlockPistonEvent, {
 			/**
 			 * Get the amount of blocks which will be moved while extending.
 			 */
@@ -15659,14 +15731,18 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class BlockPistonExtendEvent {
+			constructor(block: org.bukkit.block.Block, length: number, direction: org.bukkit.block.BlockFace);
+
+			constructor(block: org.bukkit.block.Block, blocks: globalThis.java.util.List<org.bukkit.block.Block>, direction: org.bukkit.block.BlockFace);
+
 		}
-		namespace BlockPistonRetractEvent {
+		namespace BlockPistonExtendEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type BlockPistonRetractEvent = org.bukkit.event.block.BlockPistonEvent & {
-			new(block: org.bukkit.block.Block, blocks: globalThis.java.util.List<org.bukkit.block.Block>, direction: org.bukkit.block.BlockFace): BlockPistonRetractEvent;
-
+		interface BlockPistonRetractEvent extends Modify<org.bukkit.event.block.BlockPistonEvent, {
 			/**
 			 * Gets the location where the possible moving block might be if the
 			 * retracting piston is sticky.
@@ -15681,16 +15757,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class BlockPistonRetractEvent {
+			constructor(block: org.bukkit.block.Block, blocks: globalThis.java.util.List<org.bukkit.block.Block>, direction: org.bukkit.block.BlockFace);
+
 		}
-		namespace BlockPlaceEvent {
+		namespace BlockPistonRetractEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type BlockPlaceEvent = org.bukkit.event.block.BlockEvent & {
-			new(placedBlock: org.bukkit.block.Block, replacedBlockState: org.bukkit.block.BlockState, placedAgainst: org.bukkit.block.Block, itemInHand: org.bukkit.inventory.ItemStack, thePlayer: org.bukkit.entity.Player, canBuild: boolean): BlockPlaceEvent;
-
-			new(placedBlock: org.bukkit.block.Block, replacedBlockState: org.bukkit.block.BlockState, placedAgainst: org.bukkit.block.Block, itemInHand: org.bukkit.inventory.ItemStack, thePlayer: org.bukkit.entity.Player, canBuild: boolean, hand: org.bukkit.inventory.EquipmentSlot): BlockPlaceEvent;
-
+		interface BlockPlaceEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -15750,14 +15826,18 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class BlockPlaceEvent {
+			constructor(placedBlock: org.bukkit.block.Block, replacedBlockState: org.bukkit.block.BlockState, placedAgainst: org.bukkit.block.Block, itemInHand: org.bukkit.inventory.ItemStack, thePlayer: org.bukkit.entity.Player, canBuild: boolean);
+
+			constructor(placedBlock: org.bukkit.block.Block, replacedBlockState: org.bukkit.block.BlockState, placedAgainst: org.bukkit.block.Block, itemInHand: org.bukkit.inventory.ItemStack, thePlayer: org.bukkit.entity.Player, canBuild: boolean, hand: org.bukkit.inventory.EquipmentSlot);
+
 		}
-		namespace BlockReceiveGameEvent {
+		namespace BlockPlaceEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type BlockReceiveGameEvent = org.bukkit.event.block.BlockEvent & {
-			new(event: org.bukkit.GameEvent, block: org.bukkit.block.Block, entity: org.bukkit.entity.Entity): BlockReceiveGameEvent;
-
+		interface BlockReceiveGameEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Get the underlying event.
 			 */
@@ -15780,14 +15860,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class BlockReceiveGameEvent {
+			constructor(event: org.bukkit.GameEvent, block: org.bukkit.block.Block, entity: org.bukkit.entity.Entity);
+
 		}
-		namespace BlockRedstoneEvent {
+		namespace BlockReceiveGameEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type BlockRedstoneEvent = org.bukkit.event.block.BlockEvent & {
-			new(block: org.bukkit.block.Block, oldCurrent: number, newCurrent: number): BlockRedstoneEvent;
-
+		interface BlockRedstoneEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Gets the old current of this block
 			 */
@@ -15805,14 +15887,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class BlockRedstoneEvent {
+			constructor(block: org.bukkit.block.Block, oldCurrent: number, newCurrent: number);
+
 		}
-		namespace BlockShearEntityEvent {
+		namespace BlockRedstoneEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type BlockShearEntityEvent = org.bukkit.event.block.BlockEvent & {
-			new(dispenser: org.bukkit.block.Block, sheared: org.bukkit.entity.Entity, tool: org.bukkit.inventory.ItemStack): BlockShearEntityEvent;
-
+		interface BlockShearEntityEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Gets the entity that was sheared.
 			 */
@@ -15835,14 +15919,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class BlockShearEntityEvent {
+			constructor(dispenser: org.bukkit.block.Block, sheared: org.bukkit.entity.Entity, tool: org.bukkit.inventory.ItemStack);
+
 		}
-		namespace BlockSpreadEvent {
+		namespace BlockShearEntityEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type BlockSpreadEvent = org.bukkit.event.block.BlockFormEvent & {
-			new(block: org.bukkit.block.Block, source: org.bukkit.block.Block, newState: org.bukkit.block.BlockState): BlockSpreadEvent;
-
+		interface BlockSpreadEvent extends Modify<org.bukkit.event.block.BlockFormEvent, {
 			/**
 			 * Gets the source block involved in this event.
 			 */
@@ -15850,14 +15936,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class BlockSpreadEvent {
+			constructor(block: org.bukkit.block.Block, source: org.bukkit.block.Block, newState: org.bukkit.block.BlockState);
+
 		}
-		namespace BrewingStartEvent {
+		namespace BlockSpreadEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type BrewingStartEvent = org.bukkit.event.block.InventoryBlockStartEvent & {
-			new(furnace: org.bukkit.block.Block, source: org.bukkit.inventory.ItemStack, brewingTime: number): BrewingStartEvent;
-
+		interface BrewingStartEvent extends Modify<org.bukkit.event.block.InventoryBlockStartEvent, {
 			/**
 			 * Gets the total brew time associated with this event.
 			 */
@@ -15870,14 +15958,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class BrewingStartEvent {
+			constructor(furnace: org.bukkit.block.Block, source: org.bukkit.inventory.ItemStack, brewingTime: number);
+
 		}
-		namespace CampfireStartEvent {
+		namespace BrewingStartEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type CampfireStartEvent = org.bukkit.event.block.InventoryBlockStartEvent & {
-			new(furnace: org.bukkit.block.Block, source: org.bukkit.inventory.ItemStack, recipe: org.bukkit.inventory.CampfireRecipe): CampfireStartEvent;
-
+		interface CampfireStartEvent extends Modify<org.bukkit.event.block.InventoryBlockStartEvent, {
 			/**
 			 * Gets the CampfireRecipe associated with this event.
 			 */
@@ -15895,14 +15985,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class CampfireStartEvent {
+			constructor(furnace: org.bukkit.block.Block, source: org.bukkit.inventory.ItemStack, recipe: org.bukkit.inventory.CampfireRecipe);
+
 		}
-		namespace CauldronLevelChangeEvent {
+		namespace CampfireStartEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type CauldronLevelChangeEvent = org.bukkit.event.block.BlockEvent & {
-			new(block: org.bukkit.block.Block, entity: org.bukkit.entity.Entity, reason: org.bukkit.event.block.CauldronLevelChangeEvent.ChangeReason, newBlock: org.bukkit.block.BlockState): CauldronLevelChangeEvent;
-
+		interface CauldronLevelChangeEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Get entity which did this. May be null.
 			 */
@@ -15942,8 +16034,17 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class CauldronLevelChangeEvent {
+			constructor(block: org.bukkit.block.Block, entity: org.bukkit.entity.Entity, reason: org.bukkit.event.block.CauldronLevelChangeEvent.ChangeReason, newBlock: org.bukkit.block.BlockState);
+
 		}
 		namespace CauldronLevelChangeEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		namespace CauldronLevelChangeEvent {
+			interface ChangeReason {}
 			namespace ChangeReason {
 				/**
 				 * Player emptying the cauldron by filling their bucket.
@@ -16009,24 +16110,19 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.block.CauldronLevelChangeEvent.ChangeReason;
 
 			}
-			interface ChangeReason {}
 		}
-		type EntityBlockFormEvent = org.bukkit.event.block.BlockFormEvent & {
-			new(entity: org.bukkit.entity.Entity, block: org.bukkit.block.Block, blockstate: org.bukkit.block.BlockState): EntityBlockFormEvent;
-
+		interface EntityBlockFormEvent extends Modify<org.bukkit.event.block.BlockFormEvent, {
 			/**
 			 * Get the entity that formed the block.
 			 */
 			getEntity(): org.bukkit.entity.Entity;
 
-		}
-		namespace FluidLevelChangeEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
+		}> {}
+		class EntityBlockFormEvent {
+			constructor(entity: org.bukkit.entity.Entity, block: org.bukkit.block.Block, blockstate: org.bukkit.block.BlockState);
 
 		}
-		type FluidLevelChangeEvent = org.bukkit.event.block.BlockEvent & {
-			new(theBlock: org.bukkit.block.Block, newData: org.bukkit.block.data.BlockData): FluidLevelChangeEvent;
-
+		interface FluidLevelChangeEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Gets the new data of the changed block.
 			 */
@@ -16050,14 +16146,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class FluidLevelChangeEvent {
+			constructor(theBlock: org.bukkit.block.Block, newData: org.bukkit.block.data.BlockData);
+
 		}
-		namespace InventoryBlockStartEvent {
+		namespace FluidLevelChangeEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type InventoryBlockStartEvent = org.bukkit.event.block.BlockEvent & {
-			new(block: org.bukkit.block.Block, source: org.bukkit.inventory.ItemStack): InventoryBlockStartEvent;
-
+		interface InventoryBlockStartEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Gets the source ItemStack for this event.
 			 */
@@ -16065,14 +16163,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class InventoryBlockStartEvent {
+			constructor(block: org.bukkit.block.Block, source: org.bukkit.inventory.ItemStack);
+
 		}
-		namespace LeavesDecayEvent {
+		namespace InventoryBlockStartEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type LeavesDecayEvent = org.bukkit.event.block.BlockEvent & {
-			new(block: org.bukkit.block.Block): LeavesDecayEvent;
-
+		interface LeavesDecayEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -16085,14 +16185,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class LeavesDecayEvent {
+			constructor(block: org.bukkit.block.Block);
+
 		}
-		namespace MoistureChangeEvent {
+		namespace LeavesDecayEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type MoistureChangeEvent = org.bukkit.event.block.BlockEvent & {
-			new(block: org.bukkit.block.Block, newState: org.bukkit.block.BlockState): MoistureChangeEvent;
-
+		interface MoistureChangeEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Gets the new state of the affected block.
 			 */
@@ -16110,14 +16212,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class MoistureChangeEvent {
+			constructor(block: org.bukkit.block.Block, newState: org.bukkit.block.BlockState);
+
 		}
-		namespace NotePlayEvent {
+		namespace MoistureChangeEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type NotePlayEvent = org.bukkit.event.block.BlockEvent & {
-			new(block: org.bukkit.block.Block, instrument: org.bukkit.Instrument, note: org.bukkit.Note): NotePlayEvent;
-
+		interface NotePlayEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -16150,14 +16254,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class NotePlayEvent {
+			constructor(block: org.bukkit.block.Block, instrument: org.bukkit.Instrument, note: org.bukkit.Note);
+
 		}
-		namespace SculkBloomEvent {
+		namespace NotePlayEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type SculkBloomEvent = org.bukkit.event.block.BlockEvent & {
-			new(theBlock: org.bukkit.block.Block, charge: number): SculkBloomEvent;
-
+		interface SculkBloomEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Returns the charge of the cursor, < 1000 by default.
 			 */
@@ -16189,16 +16295,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class SculkBloomEvent {
+			constructor(theBlock: org.bukkit.block.Block, charge: number);
+
 		}
-		namespace SignChangeEvent {
+		namespace SculkBloomEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type SignChangeEvent = org.bukkit.event.block.BlockEvent & {
-			new(theBlock: org.bukkit.block.Block, thePlayer: org.bukkit.entity.Player, theLines: string[]): SignChangeEvent;
-
-			new(theBlock: org.bukkit.block.Block, thePlayer: org.bukkit.entity.Player, theLines: string[], side: org.bukkit.block.sign.Side): SignChangeEvent;
-
+		interface SignChangeEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Gets the player changing the sign involved in this event.
 			 */
@@ -16231,14 +16337,18 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class SignChangeEvent {
+			constructor(theBlock: org.bukkit.block.Block, thePlayer: org.bukkit.entity.Player, theLines: string[]);
+
+			constructor(theBlock: org.bukkit.block.Block, thePlayer: org.bukkit.entity.Player, theLines: string[], side: org.bukkit.block.sign.Side);
+
 		}
-		namespace SpongeAbsorbEvent {
+		namespace SignChangeEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type SpongeAbsorbEvent = org.bukkit.event.block.BlockEvent & {
-			new(block: org.bukkit.block.Block, waterblocks: globalThis.java.util.List<org.bukkit.block.BlockState>): SpongeAbsorbEvent;
-
+		interface SpongeAbsorbEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Get a list of all blocks to be removed by the sponge.
 			 * 
@@ -16259,14 +16369,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class SpongeAbsorbEvent {
+			constructor(block: org.bukkit.block.Block, waterblocks: globalThis.java.util.List<org.bukkit.block.BlockState>);
+
 		}
-		namespace TNTPrimeEvent {
+		namespace SpongeAbsorbEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type TNTPrimeEvent = org.bukkit.event.block.BlockEvent & {
-			new(block: org.bukkit.block.Block, igniteCause: org.bukkit.event.block.TNTPrimeEvent.PrimeCause, primingEntity: org.bukkit.entity.Entity, primingBlock: org.bukkit.block.Block): TNTPrimeEvent;
-
+		interface TNTPrimeEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -16294,8 +16406,17 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class TNTPrimeEvent {
+			constructor(block: org.bukkit.block.Block, igniteCause: org.bukkit.event.block.TNTPrimeEvent.PrimeCause, primingEntity: org.bukkit.entity.Entity, primingBlock: org.bukkit.block.Block);
+
 		}
 		namespace TNTPrimeEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		namespace TNTPrimeEvent {
+			interface PrimeCause {}
 			namespace PrimeCause {
 				/**
 				 * When TNT is primed by fire spreading.
@@ -16347,17 +16468,10 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.block.TNTPrimeEvent.PrimeCause;
 
 			}
-			interface PrimeCause {}
 		}
 	}
 	namespace org.bukkit.event.entity {
-		namespace AreaEffectCloudApplyEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type AreaEffectCloudApplyEvent = org.bukkit.event.entity.EntityEvent & {
-			new(entity: org.bukkit.entity.AreaEffectCloud, affectedEntities: globalThis.java.util.List<org.bukkit.entity.LivingEntity>): AreaEffectCloudApplyEvent;
-
+		interface AreaEffectCloudApplyEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -16385,14 +16499,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class AreaEffectCloudApplyEvent {
+			constructor(entity: org.bukkit.entity.AreaEffectCloud, affectedEntities: globalThis.java.util.List<org.bukkit.entity.LivingEntity>);
+
 		}
-		namespace ArrowBodyCountChangeEvent {
+		namespace AreaEffectCloudApplyEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type ArrowBodyCountChangeEvent = org.bukkit.event.entity.EntityEvent & {
-			new(entity: org.bukkit.entity.LivingEntity, oldAmount: number, newAmount: number, isReset: boolean): ArrowBodyCountChangeEvent;
-
+		interface ArrowBodyCountChangeEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Whether the event was called because the entity was reset.
 			 */
@@ -16430,14 +16546,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class ArrowBodyCountChangeEvent {
+			constructor(entity: org.bukkit.entity.LivingEntity, oldAmount: number, newAmount: number, isReset: boolean);
+
 		}
-		namespace BatToggleSleepEvent {
+		namespace ArrowBodyCountChangeEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type BatToggleSleepEvent = org.bukkit.event.entity.EntityEvent & {
-			new(what: org.bukkit.entity.Bat, awake: boolean): BatToggleSleepEvent;
-
+		interface BatToggleSleepEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Get whether or not the bat is attempting to awaken.
 			 */
@@ -16455,10 +16573,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
-		}
-		type CreatureSpawnEvent = org.bukkit.event.entity.EntitySpawnEvent & {
-			new(spawnee: org.bukkit.entity.LivingEntity, spawnReason: org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason): CreatureSpawnEvent;
+		}> {}
+		class BatToggleSleepEvent {
+			constructor(what: org.bukkit.entity.Bat, awake: boolean);
 
+		}
+		namespace BatToggleSleepEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		interface CreatureSpawnEvent extends Modify<org.bukkit.event.entity.EntitySpawnEvent, {
 			/**
 			 * Description copied from class: EntityEvent
 			 */
@@ -16469,8 +16593,13 @@ declare global {
 			 */
 			getSpawnReason(): org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 
+		}> {}
+		class CreatureSpawnEvent {
+			constructor(spawnee: org.bukkit.entity.LivingEntity, spawnReason: org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason);
+
 		}
 		namespace CreatureSpawnEvent {
+			interface SpawnReason {}
 			namespace SpawnReason {
 				/**
 				 * When something spawns from natural means
@@ -16689,17 +16818,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 
 			}
-			interface SpawnReason {}
 		}
-		namespace CreeperPowerEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type CreeperPowerEvent = org.bukkit.event.entity.EntityEvent & {
-			new(creeper: org.bukkit.entity.Creeper, bolt: org.bukkit.entity.LightningStrike, cause: org.bukkit.event.entity.CreeperPowerEvent.PowerCause): CreeperPowerEvent;
-
-			new(creeper: org.bukkit.entity.Creeper, cause: org.bukkit.event.entity.CreeperPowerEvent.PowerCause): CreeperPowerEvent;
-
+		interface CreeperPowerEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -16727,8 +16847,19 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class CreeperPowerEvent {
+			constructor(creeper: org.bukkit.entity.Creeper, bolt: org.bukkit.entity.LightningStrike, cause: org.bukkit.event.entity.CreeperPowerEvent.PowerCause);
+
+			constructor(creeper: org.bukkit.entity.Creeper, cause: org.bukkit.event.entity.CreeperPowerEvent.PowerCause);
+
 		}
 		namespace CreeperPowerEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		namespace CreeperPowerEvent {
+			interface PowerCause {}
 			namespace PowerCause {
 				/**
 				 * Power change caused by a lightning bolt
@@ -16760,15 +16891,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.entity.CreeperPowerEvent.PowerCause;
 
 			}
-			interface PowerCause {}
 		}
-		namespace EnderDragonChangePhaseEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type EnderDragonChangePhaseEvent = org.bukkit.event.entity.EntityEvent & {
-			new(enderDragon: org.bukkit.entity.EnderDragon, currentPhase: org.bukkit.entity.EnderDragon.Phase, newPhase: org.bukkit.entity.EnderDragon.Phase): EnderDragonChangePhaseEvent;
-
+		interface EnderDragonChangePhaseEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Description copied from class: EntityEvent
 			 */
@@ -16802,14 +16926,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EnderDragonChangePhaseEvent {
+			constructor(enderDragon: org.bukkit.entity.EnderDragon, currentPhase: org.bukkit.entity.EnderDragon.Phase, newPhase: org.bukkit.entity.EnderDragon.Phase);
+
 		}
-		namespace EntityAirChangeEvent {
+		namespace EnderDragonChangePhaseEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type EntityAirChangeEvent = org.bukkit.event.entity.EntityEvent & {
-			new(what: org.bukkit.entity.Entity, amount: number): EntityAirChangeEvent;
-
+		interface EntityAirChangeEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Gets the amount of air the entity has left (measured in ticks).
 			 */
@@ -16832,23 +16958,27 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
-		}
-		type EntityBreakDoorEvent = org.bukkit.event.entity.EntityChangeBlockEvent & {
-			new(entity: org.bukkit.entity.LivingEntity, targetBlock: org.bukkit.block.Block): EntityBreakDoorEvent;
+		}> {}
+		class EntityAirChangeEvent {
+			constructor(what: org.bukkit.entity.Entity, amount: number);
 
+		}
+		namespace EntityAirChangeEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		interface EntityBreakDoorEvent extends Modify<org.bukkit.event.entity.EntityChangeBlockEvent, {
 			/**
 			 * Description copied from class: EntityEvent
 			 */
 			getEntity(): org.bukkit.entity.LivingEntity;
 
-		}
-		namespace EntityBreedEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
+		}> {}
+		class EntityBreakDoorEvent {
+			constructor(entity: org.bukkit.entity.LivingEntity, targetBlock: org.bukkit.block.Block);
 
 		}
-		type EntityBreedEvent = org.bukkit.event.entity.EntityEvent & {
-			new(child: org.bukkit.entity.LivingEntity, mother: org.bukkit.entity.LivingEntity, father: org.bukkit.entity.LivingEntity, breeder: org.bukkit.entity.LivingEntity, bredWith: org.bukkit.inventory.ItemStack, experience: number): EntityBreedEvent;
-
+		interface EntityBreedEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Description copied from class: EntityEvent
 			 */
@@ -16897,14 +17027,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EntityBreedEvent {
+			constructor(child: org.bukkit.entity.LivingEntity, mother: org.bukkit.entity.LivingEntity, father: org.bukkit.entity.LivingEntity, breeder: org.bukkit.entity.LivingEntity, bredWith: org.bukkit.inventory.ItemStack, experience: number);
+
 		}
-		namespace EntityChangeBlockEvent {
+		namespace EntityBreedEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type EntityChangeBlockEvent = org.bukkit.event.entity.EntityEvent & {
-			new(what: org.bukkit.entity.Entity, block: org.bukkit.block.Block, to: org.bukkit.block.data.BlockData): EntityChangeBlockEvent;
-
+		interface EntityChangeBlockEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Gets the block the entity is changing
 			 */
@@ -16932,12 +17064,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EntityChangeBlockEvent {
+			constructor(what: org.bukkit.entity.Entity, block: org.bukkit.block.Block, to: org.bukkit.block.data.BlockData);
+
 		}
-		type EntityCombustByBlockEvent = org.bukkit.event.entity.EntityCombustEvent & {
-			new(combuster: org.bukkit.block.Block, combustee: org.bukkit.entity.Entity, duration: number): EntityCombustByBlockEvent;
+		namespace EntityChangeBlockEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
 
-			new(combuster: org.bukkit.block.Block, combustee: org.bukkit.entity.Entity, duration: number): EntityCombustByBlockEvent;
-
+		}
+		interface EntityCombustByBlockEvent extends Modify<org.bukkit.event.entity.EntityCombustEvent, {
 			/**
 			 * The combuster can be lava or a block that is on fire.
 			 * 
@@ -16945,27 +17081,27 @@ declare global {
 			 */
 			getCombuster(): org.bukkit.block.Block;
 
+		}> {}
+		class EntityCombustByBlockEvent {
+			constructor(combuster: org.bukkit.block.Block, combustee: org.bukkit.entity.Entity, duration: number);
+
+			constructor(combuster: org.bukkit.block.Block, combustee: org.bukkit.entity.Entity, duration: number);
+
 		}
-		type EntityCombustByEntityEvent = org.bukkit.event.entity.EntityCombustEvent & {
-			new(combuster: org.bukkit.entity.Entity, combustee: org.bukkit.entity.Entity, duration: number): EntityCombustByEntityEvent;
-
-			new(combuster: org.bukkit.entity.Entity, combustee: org.bukkit.entity.Entity, duration: number): EntityCombustByEntityEvent;
-
+		interface EntityCombustByEntityEvent extends Modify<org.bukkit.event.entity.EntityCombustEvent, {
 			/**
 			 * Get the entity that caused the combustion event.
 			 */
 			getCombuster(): org.bukkit.entity.Entity;
 
-		}
-		namespace EntityCombustEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
+		}> {}
+		class EntityCombustByEntityEvent {
+			constructor(combuster: org.bukkit.entity.Entity, combustee: org.bukkit.entity.Entity, duration: number);
+
+			constructor(combuster: org.bukkit.entity.Entity, combustee: org.bukkit.entity.Entity, duration: number);
 
 		}
-		type EntityCombustEvent = org.bukkit.event.entity.EntityEvent & {
-			new(combustee: org.bukkit.entity.Entity, duration: number): EntityCombustEvent;
-
-			new(combustee: org.bukkit.entity.Entity, duration: number): EntityCombustEvent;
-
+		interface EntityCombustEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -16996,14 +17132,18 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EntityCombustEvent {
+			constructor(combustee: org.bukkit.entity.Entity, duration: number);
+
+			constructor(combustee: org.bukkit.entity.Entity, duration: number);
+
 		}
-		namespace EntityCreatePortalEvent {
+		namespace EntityCombustEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type EntityCreatePortalEvent = org.bukkit.event.entity.EntityEvent & {
-			new(what: org.bukkit.entity.LivingEntity, blocks: globalThis.java.util.List<org.bukkit.block.BlockState>, type: org.bukkit.PortalType): EntityCreatePortalEvent;
-
+		interface EntityCreatePortalEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Description copied from class: EntityEvent
 			 */
@@ -17031,16 +17171,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EntityCreatePortalEvent {
+			constructor(what: org.bukkit.entity.LivingEntity, blocks: globalThis.java.util.List<org.bukkit.block.BlockState>, type: org.bukkit.PortalType);
+
 		}
-		type EntityDamageByBlockEvent = org.bukkit.event.entity.EntityDamageEvent & {
-			new(damager: org.bukkit.block.Block, damagee: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityDamageEvent.DamageCause, damage: number): EntityDamageByBlockEvent;
+		namespace EntityCreatePortalEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
 
-			new(damager: org.bukkit.block.Block, damagerState: org.bukkit.block.BlockState, damagee: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityDamageEvent.DamageCause, damageSource: org.bukkit.damage.DamageSource, damage: number): EntityDamageByBlockEvent;
-
-			new(damager: org.bukkit.block.Block, damagee: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityDamageEvent.DamageCause, modifiers: globalThis.java.util.Map<org.bukkit.event.entity.EntityDamageEvent.DamageModifier, number>, modifierFunctions: globalThis.java.util.Map<org.bukkit.event.entity.EntityDamageEvent.DamageModifier>): EntityDamageByBlockEvent;
-
-			new(damager: org.bukkit.block.Block, damagerState: org.bukkit.block.BlockState, damagee: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityDamageEvent.DamageCause, damageSource: org.bukkit.damage.DamageSource, modifiers: globalThis.java.util.Map<org.bukkit.event.entity.EntityDamageEvent.DamageModifier, number>, modifierFunctions: globalThis.java.util.Map<org.bukkit.event.entity.EntityDamageEvent.DamageModifier>): EntityDamageByBlockEvent;
-
+		}
+		interface EntityDamageByBlockEvent extends Modify<org.bukkit.event.entity.EntityDamageEvent, {
 			/**
 			 * Returns the block that damaged the player.
 			 */
@@ -17051,35 +17191,35 @@ declare global {
 			 */
 			getDamagerBlockState(): org.bukkit.block.BlockState;
 
+		}> {}
+		class EntityDamageByBlockEvent {
+			constructor(damager: org.bukkit.block.Block, damagee: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityDamageEvent.DamageCause, damage: number);
+
+			constructor(damager: org.bukkit.block.Block, damagerState: org.bukkit.block.BlockState, damagee: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityDamageEvent.DamageCause, damageSource: org.bukkit.damage.DamageSource, damage: number);
+
+			constructor(damager: org.bukkit.block.Block, damagee: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityDamageEvent.DamageCause, modifiers: globalThis.java.util.Map<org.bukkit.event.entity.EntityDamageEvent.DamageModifier, number>, modifierFunctions: globalThis.java.util.Map<org.bukkit.event.entity.EntityDamageEvent.DamageModifier>);
+
+			constructor(damager: org.bukkit.block.Block, damagerState: org.bukkit.block.BlockState, damagee: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityDamageEvent.DamageCause, damageSource: org.bukkit.damage.DamageSource, modifiers: globalThis.java.util.Map<org.bukkit.event.entity.EntityDamageEvent.DamageModifier, number>, modifierFunctions: globalThis.java.util.Map<org.bukkit.event.entity.EntityDamageEvent.DamageModifier>);
+
 		}
-		type EntityDamageByEntityEvent = org.bukkit.event.entity.EntityDamageEvent & {
-			new(damager: org.bukkit.entity.Entity, damagee: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityDamageEvent.DamageCause, damage: number): EntityDamageByEntityEvent;
-
-			new(damager: org.bukkit.entity.Entity, damagee: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityDamageEvent.DamageCause, damageSource: org.bukkit.damage.DamageSource, damage: number): EntityDamageByEntityEvent;
-
-			new(damager: org.bukkit.entity.Entity, damagee: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityDamageEvent.DamageCause, modifiers: globalThis.java.util.Map<org.bukkit.event.entity.EntityDamageEvent.DamageModifier, number>, modifierFunctions: globalThis.java.util.Map<org.bukkit.event.entity.EntityDamageEvent.DamageModifier>): EntityDamageByEntityEvent;
-
-			new(damager: org.bukkit.entity.Entity, damagee: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityDamageEvent.DamageCause, damageSource: org.bukkit.damage.DamageSource, modifiers: globalThis.java.util.Map<org.bukkit.event.entity.EntityDamageEvent.DamageModifier, number>, modifierFunctions: globalThis.java.util.Map<org.bukkit.event.entity.EntityDamageEvent.DamageModifier>): EntityDamageByEntityEvent;
-
+		interface EntityDamageByEntityEvent extends Modify<org.bukkit.event.entity.EntityDamageEvent, {
 			/**
 			 * Returns the entity that damaged the defender.
 			 */
 			getDamager(): org.bukkit.entity.Entity;
 
-		}
-		namespace EntityDamageEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
+		}> {}
+		class EntityDamageByEntityEvent {
+			constructor(damager: org.bukkit.entity.Entity, damagee: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityDamageEvent.DamageCause, damage: number);
+
+			constructor(damager: org.bukkit.entity.Entity, damagee: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityDamageEvent.DamageCause, damageSource: org.bukkit.damage.DamageSource, damage: number);
+
+			constructor(damager: org.bukkit.entity.Entity, damagee: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityDamageEvent.DamageCause, modifiers: globalThis.java.util.Map<org.bukkit.event.entity.EntityDamageEvent.DamageModifier, number>, modifierFunctions: globalThis.java.util.Map<org.bukkit.event.entity.EntityDamageEvent.DamageModifier>);
+
+			constructor(damager: org.bukkit.entity.Entity, damagee: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityDamageEvent.DamageCause, damageSource: org.bukkit.damage.DamageSource, modifiers: globalThis.java.util.Map<org.bukkit.event.entity.EntityDamageEvent.DamageModifier, number>, modifierFunctions: globalThis.java.util.Map<org.bukkit.event.entity.EntityDamageEvent.DamageModifier>);
 
 		}
-		type EntityDamageEvent = org.bukkit.event.entity.EntityEvent & {
-			new(damagee: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityDamageEvent.DamageCause, damage: number): EntityDamageEvent;
-
-			new(damagee: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityDamageEvent.DamageCause, damageSource: org.bukkit.damage.DamageSource, damage: number): EntityDamageEvent;
-
-			new(damagee: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityDamageEvent.DamageCause, modifiers: globalThis.java.util.Map<org.bukkit.event.entity.EntityDamageEvent.DamageModifier, number>, modifierFunctions: globalThis.java.util.Map<org.bukkit.event.entity.EntityDamageEvent.DamageModifier>): EntityDamageEvent;
-
-			new(damagee: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityDamageEvent.DamageCause, damageSource: org.bukkit.damage.DamageSource, modifiers: globalThis.java.util.Map<org.bukkit.event.entity.EntityDamageEvent.DamageModifier, number>, modifierFunctions: globalThis.java.util.Map<org.bukkit.event.entity.EntityDamageEvent.DamageModifier>): EntityDamageEvent;
-
+		interface EntityDamageEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -17155,8 +17295,23 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EntityDamageEvent {
+			constructor(damagee: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityDamageEvent.DamageCause, damage: number);
+
+			constructor(damagee: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityDamageEvent.DamageCause, damageSource: org.bukkit.damage.DamageSource, damage: number);
+
+			constructor(damagee: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityDamageEvent.DamageCause, modifiers: globalThis.java.util.Map<org.bukkit.event.entity.EntityDamageEvent.DamageModifier, number>, modifierFunctions: globalThis.java.util.Map<org.bukkit.event.entity.EntityDamageEvent.DamageModifier>);
+
+			constructor(damagee: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityDamageEvent.DamageCause, damageSource: org.bukkit.damage.DamageSource, modifiers: globalThis.java.util.Map<org.bukkit.event.entity.EntityDamageEvent.DamageModifier, number>, modifierFunctions: globalThis.java.util.Map<org.bukkit.event.entity.EntityDamageEvent.DamageModifier>);
+
 		}
 		namespace EntityDamageEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		namespace EntityDamageEvent {
+			interface DamageCause {}
 			namespace DamageCause {
 				/**
 				 * Damage caused by /kill command
@@ -17405,9 +17560,9 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 
 			}
-			interface DamageCause {}
 		}
 		namespace EntityDamageEvent {
+			interface DamageModifier {}
 			namespace DamageModifier {
 				/**
 				 * This represents the amount of damage being done, also known as the
@@ -17464,17 +17619,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.entity.EntityDamageEvent.DamageModifier;
 
 			}
-			interface DamageModifier {}
 		}
-		namespace EntityDeathEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type EntityDeathEvent = org.bukkit.event.entity.EntityEvent & {
-			new(entity: org.bukkit.entity.LivingEntity, damageSource: org.bukkit.damage.DamageSource, drops: globalThis.java.util.List<org.bukkit.inventory.ItemStack>): EntityDeathEvent;
-
-			new(what: org.bukkit.entity.LivingEntity, damageSource: org.bukkit.damage.DamageSource, drops: globalThis.java.util.List<org.bukkit.inventory.ItemStack>, droppedExp: number): EntityDeathEvent;
-
+		interface EntityDeathEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Description copied from class: EntityEvent
 			 */
@@ -17508,14 +17654,18 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EntityDeathEvent {
+			constructor(entity: org.bukkit.entity.LivingEntity, damageSource: org.bukkit.damage.DamageSource, drops: globalThis.java.util.List<org.bukkit.inventory.ItemStack>);
+
+			constructor(what: org.bukkit.entity.LivingEntity, damageSource: org.bukkit.damage.DamageSource, drops: globalThis.java.util.List<org.bukkit.inventory.ItemStack>, droppedExp: number);
+
 		}
-		namespace EntityDismountEvent {
+		namespace EntityDeathEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type EntityDismountEvent = org.bukkit.event.entity.EntityEvent & {
-			new(what: org.bukkit.entity.Entity, dismounted: org.bukkit.entity.Entity): EntityDismountEvent;
-
+		interface EntityDismountEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Gets the entity which will no longer be ridden.
 			 */
@@ -17533,14 +17683,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EntityDismountEvent {
+			constructor(what: org.bukkit.entity.Entity, dismounted: org.bukkit.entity.Entity);
+
 		}
-		namespace EntityDropItemEvent {
+		namespace EntityDismountEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type EntityDropItemEvent = org.bukkit.event.entity.EntityEvent & {
-			new(entity: org.bukkit.entity.Entity, drop: org.bukkit.entity.Item): EntityDropItemEvent;
-
+		interface EntityDropItemEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Gets the Item created by the entity
 			 */
@@ -17558,14 +17710,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EntityDropItemEvent {
+			constructor(entity: org.bukkit.entity.Entity, drop: org.bukkit.entity.Item);
+
 		}
-		namespace EntityEnterBlockEvent {
+		namespace EntityDropItemEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type EntityEnterBlockEvent = org.bukkit.event.entity.EntityEvent & {
-			new(entity: org.bukkit.entity.Entity, block: org.bukkit.block.Block): EntityEnterBlockEvent;
-
+		interface EntityEnterBlockEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Get the block the entity will enter.
 			 */
@@ -17583,14 +17737,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EntityEnterBlockEvent {
+			constructor(entity: org.bukkit.entity.Entity, block: org.bukkit.block.Block);
+
 		}
-		namespace EntityEnterLoveModeEvent {
+		namespace EntityEnterBlockEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type EntityEnterLoveModeEvent = org.bukkit.event.entity.EntityEvent & {
-			new(animalInLove: org.bukkit.entity.Animals, humanEntity: org.bukkit.entity.HumanEntity, ticksInLove: number): EntityEnterLoveModeEvent;
-
+		interface EntityEnterLoveModeEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Gets the animal that is entering love mode.
 			 */
@@ -17623,10 +17779,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
-		}
-		type EntityEvent = org.bukkit.event.Event & {
-			new(what: org.bukkit.entity.Entity): EntityEvent;
+		}> {}
+		class EntityEnterLoveModeEvent {
+			constructor(animalInLove: org.bukkit.entity.Animals, humanEntity: org.bukkit.entity.HumanEntity, ticksInLove: number);
 
+		}
+		namespace EntityEnterLoveModeEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		interface EntityEvent extends Modify<org.bukkit.event.Event, {
 			/**
 			 * Returns the Entity involved in this event
 			 */
@@ -17637,14 +17799,12 @@ declare global {
 			 */
 			getEntityType(): org.bukkit.entity.EntityType;
 
-		}
-		namespace EntityExhaustionEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
+		}> {}
+		class EntityEvent {
+			constructor(what: org.bukkit.entity.Entity);
 
 		}
-		type EntityExhaustionEvent = org.bukkit.event.entity.EntityEvent & {
-			new(who: org.bukkit.entity.HumanEntity, exhaustionReason: org.bukkit.event.entity.EntityExhaustionEvent.ExhaustionReason, exhaustion: number): EntityExhaustionEvent;
-
+		interface EntityExhaustionEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Gets the EntityExhaustionEvent.ExhaustionReason for this event
 			 */
@@ -17680,8 +17840,17 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EntityExhaustionEvent {
+			constructor(who: org.bukkit.entity.HumanEntity, exhaustionReason: org.bukkit.event.entity.EntityExhaustionEvent.ExhaustionReason, exhaustion: number);
+
 		}
 		namespace EntityExhaustionEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		namespace EntityExhaustionEvent {
+			interface ExhaustionReason {}
 			namespace ExhaustionReason {
 				/**
 				 * Player mines a block
@@ -17764,15 +17933,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.entity.EntityExhaustionEvent.ExhaustionReason;
 
 			}
-			interface ExhaustionReason {}
 		}
-		namespace EntityExplodeEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type EntityExplodeEvent = org.bukkit.event.entity.EntityEvent & {
-			new(what: org.bukkit.entity.Entity, location: org.bukkit.Location, blocks: globalThis.java.util.List<org.bukkit.block.Block>, yield: number): EntityExplodeEvent;
-
+		interface EntityExplodeEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -17809,14 +17971,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EntityExplodeEvent {
+			constructor(what: org.bukkit.entity.Entity, location: org.bukkit.Location, blocks: globalThis.java.util.List<org.bukkit.block.Block>, yield: number);
+
 		}
-		namespace EntityInteractEvent {
+		namespace EntityExplodeEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type EntityInteractEvent = org.bukkit.event.entity.EntityEvent & {
-			new(entity: org.bukkit.entity.Entity, block: org.bukkit.block.Block): EntityInteractEvent;
-
+		interface EntityInteractEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -17834,23 +17998,27 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
-		}
-		type EntityKnockbackByEntityEvent = org.bukkit.event.entity.EntityKnockbackEvent & {
-			new(entity: org.bukkit.entity.LivingEntity, source: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityKnockbackEvent.KnockbackCause, force: number, rawKnockback: org.bukkit.util.Vector, knockback: org.bukkit.util.Vector): EntityKnockbackByEntityEvent;
+		}> {}
+		class EntityInteractEvent {
+			constructor(entity: org.bukkit.entity.Entity, block: org.bukkit.block.Block);
 
+		}
+		namespace EntityInteractEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		interface EntityKnockbackByEntityEvent extends Modify<org.bukkit.event.entity.EntityKnockbackEvent, {
 			/**
 			 * Get the entity that has caused knockback to the defender.
 			 */
 			getSourceEntity(): org.bukkit.entity.Entity;
 
-		}
-		namespace EntityKnockbackEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
+		}> {}
+		class EntityKnockbackByEntityEvent {
+			constructor(entity: org.bukkit.entity.LivingEntity, source: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityKnockbackEvent.KnockbackCause, force: number, rawKnockback: org.bukkit.util.Vector, knockback: org.bukkit.util.Vector);
 
 		}
-		type EntityKnockbackEvent = org.bukkit.event.entity.EntityEvent & {
-			new(entity: org.bukkit.entity.LivingEntity, cause: org.bukkit.event.entity.EntityKnockbackEvent.KnockbackCause, force: number, rawKnockback: org.bukkit.util.Vector, knockback: org.bukkit.util.Vector): EntityKnockbackEvent;
-
+		interface EntityKnockbackEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Description copied from class: EntityEvent
 			 */
@@ -17904,8 +18072,17 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EntityKnockbackEvent {
+			constructor(entity: org.bukkit.entity.LivingEntity, cause: org.bukkit.event.entity.EntityKnockbackEvent.KnockbackCause, force: number, rawKnockback: org.bukkit.util.Vector, knockback: org.bukkit.util.Vector);
+
 		}
 		namespace EntityKnockbackEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		namespace EntityKnockbackEvent {
+			interface KnockbackCause {}
 			namespace KnockbackCause {
 				/**
 				 * Knockback caused by non-entity damage.
@@ -17946,15 +18123,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.entity.EntityKnockbackEvent.KnockbackCause;
 
 			}
-			interface KnockbackCause {}
 		}
-		namespace EntityMountEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type EntityMountEvent = org.bukkit.event.entity.EntityEvent & {
-			new(what: org.bukkit.entity.Entity, mount: org.bukkit.entity.Entity): EntityMountEvent;
-
+		interface EntityMountEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Gets the entity which will be ridden.
 			 */
@@ -17972,14 +18142,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EntityMountEvent {
+			constructor(what: org.bukkit.entity.Entity, mount: org.bukkit.entity.Entity);
+
 		}
-		namespace EntityPickupItemEvent {
+		namespace EntityMountEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type EntityPickupItemEvent = org.bukkit.event.entity.EntityEvent & {
-			new(entity: org.bukkit.entity.LivingEntity, item: org.bukkit.entity.Item, remaining: number): EntityPickupItemEvent;
-
+		interface EntityPickupItemEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Description copied from class: EntityEvent
 			 */
@@ -18007,16 +18179,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EntityPickupItemEvent {
+			constructor(entity: org.bukkit.entity.LivingEntity, item: org.bukkit.entity.Item, remaining: number);
+
 		}
-		namespace EntityPlaceEvent {
+		namespace EntityPickupItemEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type EntityPlaceEvent = org.bukkit.event.entity.EntityEvent & {
-			new(entity: org.bukkit.entity.Entity, player: org.bukkit.entity.Player, block: org.bukkit.block.Block, blockFace: org.bukkit.block.BlockFace, hand: org.bukkit.inventory.EquipmentSlot): EntityPlaceEvent;
-
-			new(entity: org.bukkit.entity.Entity, player: org.bukkit.entity.Player, block: org.bukkit.block.Block, blockFace: org.bukkit.block.BlockFace): EntityPlaceEvent;
-
+		interface EntityPlaceEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Returns the player placing the entity
 			 */
@@ -18049,14 +18221,18 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EntityPlaceEvent {
+			constructor(entity: org.bukkit.entity.Entity, player: org.bukkit.entity.Player, block: org.bukkit.block.Block, blockFace: org.bukkit.block.BlockFace, hand: org.bukkit.inventory.EquipmentSlot);
+
+			constructor(entity: org.bukkit.entity.Entity, player: org.bukkit.entity.Player, block: org.bukkit.block.Block, blockFace: org.bukkit.block.BlockFace);
+
 		}
-		namespace EntityPortalEnterEvent {
+		namespace EntityPlaceEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type EntityPortalEnterEvent = org.bukkit.event.entity.EntityEvent & {
-			new(entity: org.bukkit.entity.Entity, location: org.bukkit.Location): EntityPortalEnterEvent;
-
+		interface EntityPortalEnterEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Gets the portal block the entity is touching
 			 */
@@ -18064,16 +18240,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EntityPortalEnterEvent {
+			constructor(entity: org.bukkit.entity.Entity, location: org.bukkit.Location);
+
 		}
-		namespace EntityPortalEvent {
+		namespace EntityPortalEnterEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type EntityPortalEvent = org.bukkit.event.entity.EntityTeleportEvent & {
-			new(entity: org.bukkit.entity.Entity, from: org.bukkit.Location, to: org.bukkit.Location): EntityPortalEvent;
-
-			new(entity: org.bukkit.entity.Entity, from: org.bukkit.Location, to: org.bukkit.Location, searchRadius: number): EntityPortalEvent;
-
+		interface EntityPortalEvent extends Modify<org.bukkit.event.entity.EntityTeleportEvent, {
 			/**
 			 * Set the Block radius to search in for available portals.
 			 */
@@ -18086,14 +18262,18 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EntityPortalEvent {
+			constructor(entity: org.bukkit.entity.Entity, from: org.bukkit.Location, to: org.bukkit.Location);
+
+			constructor(entity: org.bukkit.entity.Entity, from: org.bukkit.Location, to: org.bukkit.Location, searchRadius: number);
+
 		}
-		namespace EntityPortalExitEvent {
+		namespace EntityPortalEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type EntityPortalExitEvent = org.bukkit.event.entity.EntityTeleportEvent & {
-			new(entity: org.bukkit.entity.Entity, from: org.bukkit.Location, to: org.bukkit.Location, before: org.bukkit.util.Vector, after: org.bukkit.util.Vector): EntityPortalExitEvent;
-
+		interface EntityPortalExitEvent extends Modify<org.bukkit.event.entity.EntityTeleportEvent, {
 			/**
 			 * Gets a copy of the velocity that the entity has before entering the
 			 * portal.
@@ -18113,14 +18293,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EntityPortalExitEvent {
+			constructor(entity: org.bukkit.entity.Entity, from: org.bukkit.Location, to: org.bukkit.Location, before: org.bukkit.util.Vector, after: org.bukkit.util.Vector);
+
 		}
-		namespace EntityPoseChangeEvent {
+		namespace EntityPortalExitEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type EntityPoseChangeEvent = org.bukkit.event.entity.EntityEvent & {
-			new(who: org.bukkit.entity.Entity, pose: org.bukkit.entity.Pose): EntityPoseChangeEvent;
-
+		interface EntityPoseChangeEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Gets the entity's new pose.
 			 */
@@ -18128,14 +18310,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EntityPoseChangeEvent {
+			constructor(who: org.bukkit.entity.Entity, pose: org.bukkit.entity.Pose);
+
 		}
-		namespace EntityPotionEffectEvent {
+		namespace EntityPoseChangeEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type EntityPotionEffectEvent = org.bukkit.event.entity.EntityEvent & {
-			new(livingEntity: org.bukkit.entity.LivingEntity, oldEffect: org.bukkit.potion.PotionEffect, newEffect: org.bukkit.potion.PotionEffect, cause: org.bukkit.event.entity.EntityPotionEffectEvent.Cause, action: org.bukkit.event.entity.EntityPotionEffectEvent.Action, override: boolean): EntityPotionEffectEvent;
-
+		interface EntityPotionEffectEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Gets the old potion effect of the changed type, which will be removed.
 			 */
@@ -18185,8 +18369,17 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EntityPotionEffectEvent {
+			constructor(livingEntity: org.bukkit.entity.LivingEntity, oldEffect: org.bukkit.potion.PotionEffect, newEffect: org.bukkit.potion.PotionEffect, cause: org.bukkit.event.entity.EntityPotionEffectEvent.Cause, action: org.bukkit.event.entity.EntityPotionEffectEvent.Action, override: boolean);
+
 		}
 		namespace EntityPotionEffectEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		namespace EntityPotionEffectEvent {
+			interface Action {}
 			namespace Action {
 				/**
 				 * When the potion effect is added because the entity didn't have it's
@@ -18219,9 +18412,9 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.entity.EntityPotionEffectEvent.Action;
 
 			}
-			interface Action {}
 		}
 		namespace EntityPotionEffectEvent {
+			interface Cause {}
 			namespace Cause {
 				/**
 				 * When the entity stands inside an area effect cloud.
@@ -18360,15 +18553,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.entity.EntityPotionEffectEvent.Cause;
 
 			}
-			interface Cause {}
 		}
-		namespace EntityRegainHealthEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type EntityRegainHealthEvent = org.bukkit.event.entity.EntityEvent & {
-			new(entity: org.bukkit.entity.Entity, amount: number, regainReason: org.bukkit.event.entity.EntityRegainHealthEvent.RegainReason): EntityRegainHealthEvent;
-
+		interface EntityRegainHealthEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Gets the amount of regained health
 			 */
@@ -18396,8 +18582,17 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EntityRegainHealthEvent {
+			constructor(entity: org.bukkit.entity.Entity, amount: number, regainReason: org.bukkit.event.entity.EntityRegainHealthEvent.RegainReason);
+
 		}
 		namespace EntityRegainHealthEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		namespace EntityRegainHealthEvent {
+			interface RegainReason {}
 			namespace RegainReason {
 				/**
 				 * When a player regains health from regenerating due to Peaceful mode
@@ -18455,15 +18650,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.entity.EntityRegainHealthEvent.RegainReason;
 
 			}
-			interface RegainReason {}
 		}
-		namespace EntityRemoveEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type EntityRemoveEvent = org.bukkit.event.entity.EntityEvent & {
-			new(what: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityRemoveEvent.Cause): EntityRemoveEvent;
-
+		interface EntityRemoveEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Gets the cause why the entity got removed.
 			 */
@@ -18471,8 +18659,17 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EntityRemoveEvent {
+			constructor(what: org.bukkit.entity.Entity, cause: org.bukkit.event.entity.EntityRemoveEvent.Cause);
+
 		}
 		namespace EntityRemoveEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		namespace EntityRemoveEvent {
+			interface Cause {}
 			namespace Cause {
 				/**
 				 * When an entity dies.
@@ -18560,17 +18757,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.entity.EntityRemoveEvent.Cause;
 
 			}
-			interface Cause {}
 		}
-		namespace EntityResurrectEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type EntityResurrectEvent = org.bukkit.event.entity.EntityEvent & {
-			new(what: org.bukkit.entity.LivingEntity, hand: org.bukkit.inventory.EquipmentSlot): EntityResurrectEvent;
-
-			new(what: org.bukkit.entity.LivingEntity): EntityResurrectEvent;
-
+		interface EntityResurrectEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Description copied from class: EntityEvent
 			 */
@@ -18594,14 +18782,18 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EntityResurrectEvent {
+			constructor(what: org.bukkit.entity.LivingEntity, hand: org.bukkit.inventory.EquipmentSlot);
+
+			constructor(what: org.bukkit.entity.LivingEntity);
+
 		}
-		namespace EntityShootBowEvent {
+		namespace EntityResurrectEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type EntityShootBowEvent = org.bukkit.event.entity.EntityEvent & {
-			new(shooter: org.bukkit.entity.LivingEntity, bow: org.bukkit.inventory.ItemStack, consumable: org.bukkit.inventory.ItemStack, projectile: org.bukkit.entity.Entity, hand: org.bukkit.inventory.EquipmentSlot, force: number, consumeItem: boolean): EntityShootBowEvent;
-
+		interface EntityShootBowEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Description copied from class: EntityEvent
 			 */
@@ -18668,14 +18860,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EntityShootBowEvent {
+			constructor(shooter: org.bukkit.entity.LivingEntity, bow: org.bukkit.inventory.ItemStack, consumable: org.bukkit.inventory.ItemStack, projectile: org.bukkit.entity.Entity, hand: org.bukkit.inventory.EquipmentSlot, force: number, consumeItem: boolean);
+
 		}
-		namespace EntitySpawnEvent {
+		namespace EntityShootBowEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type EntitySpawnEvent = org.bukkit.event.entity.EntityEvent & {
-			new(spawnee: org.bukkit.entity.Entity): EntitySpawnEvent;
-
+		interface EntitySpawnEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -18693,14 +18887,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EntitySpawnEvent {
+			constructor(spawnee: org.bukkit.entity.Entity);
+
 		}
-		namespace EntitySpellCastEvent {
+		namespace EntitySpawnEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type EntitySpellCastEvent = org.bukkit.event.entity.EntityEvent & {
-			new(what: org.bukkit.entity.Spellcaster, spell: org.bukkit.entity.Spellcaster.Spell): EntitySpellCastEvent;
-
+		interface EntitySpellCastEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Description copied from class: EntityEvent
 			 */
@@ -18725,14 +18921,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EntitySpellCastEvent {
+			constructor(what: org.bukkit.entity.Spellcaster, spell: org.bukkit.entity.Spellcaster.Spell);
+
 		}
-		namespace EntityTameEvent {
+		namespace EntitySpellCastEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type EntityTameEvent = org.bukkit.event.entity.EntityEvent & {
-			new(entity: org.bukkit.entity.LivingEntity, owner: org.bukkit.entity.AnimalTamer): EntityTameEvent;
-
+		interface EntityTameEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Description copied from class: EntityEvent
 			 */
@@ -18755,14 +18953,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EntityTameEvent {
+			constructor(entity: org.bukkit.entity.LivingEntity, owner: org.bukkit.entity.AnimalTamer);
+
 		}
-		namespace EntityTargetEvent {
+		namespace EntityTameEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type EntityTargetEvent = org.bukkit.event.entity.EntityEvent & {
-			new(entity: org.bukkit.entity.Entity, target: org.bukkit.entity.Entity, reason: org.bukkit.event.entity.EntityTargetEvent.TargetReason): EntityTargetEvent;
-
+		interface EntityTargetEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -18800,8 +19000,17 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EntityTargetEvent {
+			constructor(entity: org.bukkit.entity.Entity, target: org.bukkit.entity.Entity, reason: org.bukkit.event.entity.EntityTargetEvent.TargetReason);
+
 		}
 		namespace EntityTargetEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		namespace EntityTargetEvent {
+			interface TargetReason {}
 			namespace TargetReason {
 				/**
 				 * When the entity's target has died, and so it no longer targets it
@@ -18903,11 +19112,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.entity.EntityTargetEvent.TargetReason;
 
 			}
-			interface TargetReason {}
 		}
-		type EntityTargetLivingEntityEvent = org.bukkit.event.entity.EntityTargetEvent & {
-			new(entity: org.bukkit.entity.Entity, target: org.bukkit.entity.LivingEntity, reason: org.bukkit.event.entity.EntityTargetEvent.TargetReason): EntityTargetLivingEntityEvent;
-
+		interface EntityTargetLivingEntityEvent extends Modify<org.bukkit.event.entity.EntityTargetEvent, {
 			/**
 			 * Description copied from class: EntityTargetEvent
 			 */
@@ -18923,14 +19129,12 @@ declare global {
 			 */
 			setTarget(target: org.bukkit.entity.Entity): void;
 
-		}
-		namespace EntityTeleportEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
+		}> {}
+		class EntityTargetLivingEntityEvent {
+			constructor(entity: org.bukkit.entity.Entity, target: org.bukkit.entity.LivingEntity, reason: org.bukkit.event.entity.EntityTargetEvent.TargetReason);
 
 		}
-		type EntityTeleportEvent = org.bukkit.event.entity.EntityEvent & {
-			new(what: org.bukkit.entity.Entity, from: org.bukkit.Location, to: org.bukkit.Location): EntityTeleportEvent;
-
+		interface EntityTeleportEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -18963,14 +19167,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EntityTeleportEvent {
+			constructor(what: org.bukkit.entity.Entity, from: org.bukkit.Location, to: org.bukkit.Location);
+
 		}
-		namespace EntityToggleGlideEvent {
+		namespace EntityTeleportEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type EntityToggleGlideEvent = org.bukkit.event.entity.EntityEvent & {
-			new(who: org.bukkit.entity.LivingEntity, isGliding: boolean): EntityToggleGlideEvent;
-
+		interface EntityToggleGlideEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -18989,14 +19195,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EntityToggleGlideEvent {
+			constructor(who: org.bukkit.entity.LivingEntity, isGliding: boolean);
+
 		}
-		namespace EntityToggleSwimEvent {
+		namespace EntityToggleGlideEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type EntityToggleSwimEvent = org.bukkit.event.entity.EntityEvent & {
-			new(who: org.bukkit.entity.LivingEntity, isSwimming: boolean): EntityToggleSwimEvent;
-
+		interface EntityToggleSwimEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -19015,14 +19223,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EntityToggleSwimEvent {
+			constructor(who: org.bukkit.entity.LivingEntity, isSwimming: boolean);
+
 		}
-		namespace EntityTransformEvent {
+		namespace EntityToggleSwimEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type EntityTransformEvent = org.bukkit.event.entity.EntityEvent & {
-			new(original: org.bukkit.entity.Entity, convertedList: globalThis.java.util.List<org.bukkit.entity.Entity>, transformReason: org.bukkit.event.entity.EntityTransformEvent.TransformReason): EntityTransformEvent;
-
+		interface EntityTransformEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Gets the entity that the original entity was transformed to.
 			 * This returns the first entity in the transformed entity list.
@@ -19051,8 +19261,17 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EntityTransformEvent {
+			constructor(original: org.bukkit.entity.Entity, convertedList: globalThis.java.util.List<org.bukkit.entity.Entity>, transformReason: org.bukkit.event.entity.EntityTransformEvent.TransformReason);
+
 		}
 		namespace EntityTransformEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		namespace EntityTransformEvent {
+			interface TransformReason {}
 			namespace TransformReason {
 				/**
 				 * When a zombie gets cured and a villager is spawned.
@@ -19113,15 +19332,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.entity.EntityTransformEvent.TransformReason;
 
 			}
-			interface TransformReason {}
 		}
-		namespace EntityUnleashEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type EntityUnleashEvent = org.bukkit.event.entity.EntityEvent & {
-			new(entity: org.bukkit.entity.Entity, reason: org.bukkit.event.entity.EntityUnleashEvent.UnleashReason): EntityUnleashEvent;
-
+		interface EntityUnleashEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Returns the reason for the unleashing.
 			 */
@@ -19129,8 +19341,17 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EntityUnleashEvent {
+			constructor(entity: org.bukkit.entity.Entity, reason: org.bukkit.event.entity.EntityUnleashEvent.UnleashReason);
+
 		}
 		namespace EntityUnleashEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		namespace EntityUnleashEvent {
+			interface UnleashReason {}
 			namespace UnleashReason {
 				/**
 				 * When the entity's leashholder has died or logged out, and so is
@@ -19159,17 +19380,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.entity.EntityUnleashEvent.UnleashReason;
 
 			}
-			interface UnleashReason {}
 		}
-		namespace ExpBottleEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type ExpBottleEvent = org.bukkit.event.entity.ProjectileHitEvent & {
-			new(bottle: org.bukkit.entity.ThrownExpBottle, exp: number): ExpBottleEvent;
-
-			new(bottle: org.bukkit.entity.ThrownExpBottle, hitEntity: org.bukkit.entity.Entity, hitBlock: org.bukkit.block.Block, hitFace: org.bukkit.block.BlockFace, exp: number): ExpBottleEvent;
-
+		interface ExpBottleEvent extends Modify<org.bukkit.event.entity.ProjectileHitEvent, {
 			/**
 			 * Description copied from class: EntityEvent
 			 */
@@ -19203,16 +19415,18 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class ExpBottleEvent {
+			constructor(bottle: org.bukkit.entity.ThrownExpBottle, exp: number);
+
+			constructor(bottle: org.bukkit.entity.ThrownExpBottle, hitEntity: org.bukkit.entity.Entity, hitBlock: org.bukkit.block.Block, hitFace: org.bukkit.block.BlockFace, exp: number);
+
 		}
-		namespace ExplosionPrimeEvent {
+		namespace ExpBottleEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type ExplosionPrimeEvent = org.bukkit.event.entity.EntityEvent & {
-			new(what: org.bukkit.entity.Entity, radius: number, fire: boolean): ExplosionPrimeEvent;
-
-			new(explosive: org.bukkit.entity.Explosive): ExplosionPrimeEvent;
-
+		interface ExplosionPrimeEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -19245,14 +19459,18 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class ExplosionPrimeEvent {
+			constructor(what: org.bukkit.entity.Entity, radius: number, fire: boolean);
+
+			constructor(explosive: org.bukkit.entity.Explosive);
+
 		}
-		namespace FireworkExplodeEvent {
+		namespace ExplosionPrimeEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type FireworkExplodeEvent = org.bukkit.event.entity.EntityEvent & {
-			new(what: org.bukkit.entity.Firework): FireworkExplodeEvent;
-
+		interface FireworkExplodeEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -19272,16 +19490,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class FireworkExplodeEvent {
+			constructor(what: org.bukkit.entity.Firework);
+
 		}
-		namespace FoodLevelChangeEvent {
+		namespace FireworkExplodeEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type FoodLevelChangeEvent = org.bukkit.event.entity.EntityEvent & {
-			new(what: org.bukkit.entity.HumanEntity, level: number): FoodLevelChangeEvent;
-
-			new(what: org.bukkit.entity.HumanEntity, level: number, item: org.bukkit.inventory.ItemStack): FoodLevelChangeEvent;
-
+		interface FoodLevelChangeEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Description copied from class: EntityEvent
 			 */
@@ -19318,14 +19536,18 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class FoodLevelChangeEvent {
+			constructor(what: org.bukkit.entity.HumanEntity, level: number);
+
+			constructor(what: org.bukkit.entity.HumanEntity, level: number, item: org.bukkit.inventory.ItemStack);
+
 		}
-		namespace HorseJumpEvent {
+		namespace FoodLevelChangeEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type HorseJumpEvent = org.bukkit.event.entity.EntityEvent & {
-			new(horse: org.bukkit.entity.AbstractHorse, power: number): HorseJumpEvent;
-
+		interface HorseJumpEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -19371,14 +19593,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class HorseJumpEvent {
+			constructor(horse: org.bukkit.entity.AbstractHorse, power: number);
+
 		}
-		namespace ItemDespawnEvent {
+		namespace HorseJumpEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type ItemDespawnEvent = org.bukkit.event.entity.EntityEvent & {
-			new(despawnee: org.bukkit.entity.Item, loc: org.bukkit.Location): ItemDespawnEvent;
-
+		interface ItemDespawnEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -19401,14 +19625,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class ItemDespawnEvent {
+			constructor(despawnee: org.bukkit.entity.Item, loc: org.bukkit.Location);
+
 		}
-		namespace ItemMergeEvent {
+		namespace ItemDespawnEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type ItemMergeEvent = org.bukkit.event.entity.EntityEvent & {
-			new(item: org.bukkit.entity.Item, target: org.bukkit.entity.Item): ItemMergeEvent;
-
+		interface ItemMergeEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -19431,27 +19657,29 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class ItemMergeEvent {
+			constructor(item: org.bukkit.entity.Item, target: org.bukkit.entity.Item);
+
 		}
-		type ItemSpawnEvent = org.bukkit.event.entity.EntitySpawnEvent & {
-			new(spawnee: org.bukkit.entity.Item, loc: org.bukkit.Location): ItemSpawnEvent;
+		namespace ItemMergeEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
 
-			new(spawnee: org.bukkit.entity.Item): ItemSpawnEvent;
-
+		}
+		interface ItemSpawnEvent extends Modify<org.bukkit.event.entity.EntitySpawnEvent, {
 			/**
 			 * Description copied from class: EntityEvent
 			 */
 			getEntity(): org.bukkit.entity.Item;
 
-		}
-		namespace LingeringPotionSplashEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
+		}> {}
+		class ItemSpawnEvent {
+			constructor(spawnee: org.bukkit.entity.Item, loc: org.bukkit.Location);
+
+			constructor(spawnee: org.bukkit.entity.Item);
 
 		}
-		type LingeringPotionSplashEvent = org.bukkit.event.entity.ProjectileHitEvent & {
-			new(potion: org.bukkit.entity.ThrownPotion, entity: org.bukkit.entity.AreaEffectCloud): LingeringPotionSplashEvent;
-
-			new(potion: org.bukkit.entity.ThrownPotion, hitEntity: org.bukkit.entity.Entity, hitBlock: org.bukkit.block.Block, hitFace: org.bukkit.block.BlockFace, entity: org.bukkit.entity.AreaEffectCloud): LingeringPotionSplashEvent;
-
+		interface LingeringPotionSplashEvent extends Modify<org.bukkit.event.entity.ProjectileHitEvent, {
 			/**
 			 * Description copied from class: EntityEvent
 			 */
@@ -19474,14 +19702,18 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class LingeringPotionSplashEvent {
+			constructor(potion: org.bukkit.entity.ThrownPotion, entity: org.bukkit.entity.AreaEffectCloud);
+
+			constructor(potion: org.bukkit.entity.ThrownPotion, hitEntity: org.bukkit.entity.Entity, hitBlock: org.bukkit.block.Block, hitFace: org.bukkit.block.BlockFace, entity: org.bukkit.entity.AreaEffectCloud);
+
 		}
-		namespace PigZapEvent {
+		namespace LingeringPotionSplashEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PigZapEvent = org.bukkit.event.entity.EntityTransformEvent & {
-			new(pig: org.bukkit.entity.Pig, bolt: org.bukkit.entity.LightningStrike, pigzombie: org.bukkit.entity.PigZombie): PigZapEvent;
-
+		interface PigZapEvent extends Modify<org.bukkit.event.entity.EntityTransformEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -19510,14 +19742,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PigZapEvent {
+			constructor(pig: org.bukkit.entity.Pig, bolt: org.bukkit.entity.LightningStrike, pigzombie: org.bukkit.entity.PigZombie);
+
 		}
-		namespace PigZombieAngerEvent {
+		namespace PigZapEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PigZombieAngerEvent = org.bukkit.event.entity.EntityEvent & {
-			new(pigZombie: org.bukkit.entity.PigZombie, target: org.bukkit.entity.Entity, newAnger: number): PigZombieAngerEvent;
-
+		interface PigZombieAngerEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Gets the entity (if any) which triggered this anger update.
 			 */
@@ -19550,14 +19784,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PigZombieAngerEvent {
+			constructor(pigZombie: org.bukkit.entity.PigZombie, target: org.bukkit.entity.Entity, newAnger: number);
+
 		}
-		namespace PiglinBarterEvent {
+		namespace PigZombieAngerEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PiglinBarterEvent = org.bukkit.event.entity.EntityEvent & {
-			new(what: org.bukkit.entity.Piglin, input: org.bukkit.inventory.ItemStack, outcome: globalThis.java.util.List<org.bukkit.inventory.ItemStack>): PiglinBarterEvent;
-
+		interface PiglinBarterEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Description copied from class: EntityEvent
 			 */
@@ -19585,14 +19821,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PiglinBarterEvent {
+			constructor(what: org.bukkit.entity.Piglin, input: org.bukkit.inventory.ItemStack, outcome: globalThis.java.util.List<org.bukkit.inventory.ItemStack>);
+
 		}
-		type PlayerDeathEvent = org.bukkit.event.entity.EntityDeathEvent & {
-			new(player: org.bukkit.entity.Player, damageSource: org.bukkit.damage.DamageSource, drops: globalThis.java.util.List<org.bukkit.inventory.ItemStack>, droppedExp: number, deathMessage: string): PlayerDeathEvent;
+		namespace PiglinBarterEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
 
-			new(player: org.bukkit.entity.Player, damageSource: org.bukkit.damage.DamageSource, drops: globalThis.java.util.List<org.bukkit.inventory.ItemStack>, droppedExp: number, newExp: number, deathMessage: string): PlayerDeathEvent;
-
-			new(player: org.bukkit.entity.Player, damageSource: org.bukkit.damage.DamageSource, drops: globalThis.java.util.List<org.bukkit.inventory.ItemStack>, droppedExp: number, newExp: number, newTotalExp: number, newLevel: number, deathMessage: string): PlayerDeathEvent;
-
+		}
+		interface PlayerDeathEvent extends Modify<org.bukkit.event.entity.EntityDeathEvent, {
 			/**
 			 * Description copied from class: EntityEvent
 			 */
@@ -19676,16 +19914,16 @@ declare global {
 			 */
 			getKeepInventory(): boolean;
 
-		}
-		namespace PlayerLeashEntityEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
+		}> {}
+		class PlayerDeathEvent {
+			constructor(player: org.bukkit.entity.Player, damageSource: org.bukkit.damage.DamageSource, drops: globalThis.java.util.List<org.bukkit.inventory.ItemStack>, droppedExp: number, deathMessage: string);
+
+			constructor(player: org.bukkit.entity.Player, damageSource: org.bukkit.damage.DamageSource, drops: globalThis.java.util.List<org.bukkit.inventory.ItemStack>, droppedExp: number, newExp: number, deathMessage: string);
+
+			constructor(player: org.bukkit.entity.Player, damageSource: org.bukkit.damage.DamageSource, drops: globalThis.java.util.List<org.bukkit.inventory.ItemStack>, droppedExp: number, newExp: number, newTotalExp: number, newLevel: number, deathMessage: string);
 
 		}
-		type PlayerLeashEntityEvent = org.bukkit.event.Event & {
-			new(what: org.bukkit.entity.Entity, leashHolder: org.bukkit.entity.Entity, leasher: org.bukkit.entity.Player, hand: org.bukkit.inventory.EquipmentSlot): PlayerLeashEntityEvent;
-
-			new(what: org.bukkit.entity.Entity, leashHolder: org.bukkit.entity.Entity, leasher: org.bukkit.entity.Player): PlayerLeashEntityEvent;
-
+		interface PlayerLeashEntityEvent extends Modify<org.bukkit.event.Event, {
 			/**
 			 * Returns the entity that is holding the leash.
 			 */
@@ -19718,16 +19956,18 @@ declare global {
 			 */
 			setCancelled(cancel: boolean): void;
 
+		}> {}
+		class PlayerLeashEntityEvent {
+			constructor(what: org.bukkit.entity.Entity, leashHolder: org.bukkit.entity.Entity, leasher: org.bukkit.entity.Player, hand: org.bukkit.inventory.EquipmentSlot);
+
+			constructor(what: org.bukkit.entity.Entity, leashHolder: org.bukkit.entity.Entity, leasher: org.bukkit.entity.Player);
+
 		}
-		namespace PotionSplashEvent {
+		namespace PlayerLeashEntityEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PotionSplashEvent = org.bukkit.event.entity.ProjectileHitEvent & {
-			new(potion: org.bukkit.entity.ThrownPotion, affectedEntities: globalThis.java.util.Map<org.bukkit.entity.LivingEntity, number>): PotionSplashEvent;
-
-			new(potion: org.bukkit.entity.ThrownPotion, hitEntity: org.bukkit.entity.Entity, hitBlock: org.bukkit.block.Block, hitFace: org.bukkit.block.BlockFace, affectedEntities: globalThis.java.util.Map<org.bukkit.entity.LivingEntity, number>): PotionSplashEvent;
-
+		interface PotionSplashEvent extends Modify<org.bukkit.event.entity.ProjectileHitEvent, {
 			/**
 			 * Description copied from class: EntityEvent
 			 */
@@ -19766,22 +20006,18 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PotionSplashEvent {
+			constructor(potion: org.bukkit.entity.ThrownPotion, affectedEntities: globalThis.java.util.Map<org.bukkit.entity.LivingEntity, number>);
+
+			constructor(potion: org.bukkit.entity.ThrownPotion, hitEntity: org.bukkit.entity.Entity, hitBlock: org.bukkit.block.Block, hitFace: org.bukkit.block.BlockFace, affectedEntities: globalThis.java.util.Map<org.bukkit.entity.LivingEntity, number>);
+
 		}
-		namespace ProjectileHitEvent {
+		namespace PotionSplashEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type ProjectileHitEvent = org.bukkit.event.entity.EntityEvent & {
-			new(projectile: org.bukkit.entity.Projectile): ProjectileHitEvent;
-
-			new(projectile: org.bukkit.entity.Projectile, hitEntity: org.bukkit.entity.Entity): ProjectileHitEvent;
-
-			new(projectile: org.bukkit.entity.Projectile, hitBlock: org.bukkit.block.Block): ProjectileHitEvent;
-
-			new(projectile: org.bukkit.entity.Projectile, hitEntity: org.bukkit.entity.Entity, hitBlock: org.bukkit.block.Block): ProjectileHitEvent;
-
-			new(projectile: org.bukkit.entity.Projectile, hitEntity: org.bukkit.entity.Entity, hitBlock: org.bukkit.block.Block, hitFace: org.bukkit.block.BlockFace): ProjectileHitEvent;
-
+		interface ProjectileHitEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Description copied from class: EntityEvent
 			 */
@@ -19823,10 +20059,24 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
-		}
-		type ProjectileLaunchEvent = org.bukkit.event.entity.EntitySpawnEvent & {
-			new(what: org.bukkit.entity.Entity): ProjectileLaunchEvent;
+		}> {}
+		class ProjectileHitEvent {
+			constructor(projectile: org.bukkit.entity.Projectile);
 
+			constructor(projectile: org.bukkit.entity.Projectile, hitEntity: org.bukkit.entity.Entity);
+
+			constructor(projectile: org.bukkit.entity.Projectile, hitBlock: org.bukkit.block.Block);
+
+			constructor(projectile: org.bukkit.entity.Projectile, hitEntity: org.bukkit.entity.Entity, hitBlock: org.bukkit.block.Block);
+
+			constructor(projectile: org.bukkit.entity.Projectile, hitEntity: org.bukkit.entity.Entity, hitBlock: org.bukkit.block.Block, hitFace: org.bukkit.block.BlockFace);
+
+		}
+		namespace ProjectileHitEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		interface ProjectileLaunchEvent extends Modify<org.bukkit.event.entity.EntitySpawnEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -19842,16 +20092,12 @@ declare global {
 			 */
 			getEntity(): org.bukkit.entity.Projectile;
 
-		}
-		namespace SheepDyeWoolEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
+		}> {}
+		class ProjectileLaunchEvent {
+			constructor(what: org.bukkit.entity.Entity);
 
 		}
-		type SheepDyeWoolEvent = org.bukkit.event.entity.EntityEvent & {
-			new(sheep: org.bukkit.entity.Sheep, color: org.bukkit.DyeColor): SheepDyeWoolEvent;
-
-			new(sheep: org.bukkit.entity.Sheep, color: org.bukkit.DyeColor, player: org.bukkit.entity.Player): SheepDyeWoolEvent;
-
+		interface SheepDyeWoolEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -19884,14 +20130,18 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class SheepDyeWoolEvent {
+			constructor(sheep: org.bukkit.entity.Sheep, color: org.bukkit.DyeColor);
+
+			constructor(sheep: org.bukkit.entity.Sheep, color: org.bukkit.DyeColor, player: org.bukkit.entity.Player);
+
 		}
-		namespace SheepRegrowWoolEvent {
+		namespace SheepDyeWoolEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type SheepRegrowWoolEvent = org.bukkit.event.entity.EntityEvent & {
-			new(sheep: org.bukkit.entity.Sheep): SheepRegrowWoolEvent;
-
+		interface SheepRegrowWoolEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -19909,14 +20159,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class SheepRegrowWoolEvent {
+			constructor(sheep: org.bukkit.entity.Sheep);
+
 		}
-		namespace SlimeSplitEvent {
+		namespace SheepRegrowWoolEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type SlimeSplitEvent = org.bukkit.event.entity.EntityEvent & {
-			new(slime: org.bukkit.entity.Slime, count: number): SlimeSplitEvent;
-
+		interface SlimeSplitEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -19944,20 +20196,24 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
-		}
-		type SpawnerSpawnEvent = org.bukkit.event.entity.EntitySpawnEvent & {
-			new(spawnee: org.bukkit.entity.Entity, spawner: org.bukkit.block.CreatureSpawner): SpawnerSpawnEvent;
-
-			getSpawner(): org.bukkit.block.CreatureSpawner;
+		}> {}
+		class SlimeSplitEvent {
+			constructor(slime: org.bukkit.entity.Slime, count: number);
 
 		}
-		namespace StriderTemperatureChangeEvent {
+		namespace SlimeSplitEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type StriderTemperatureChangeEvent = org.bukkit.event.entity.EntityEvent & {
-			new(what: org.bukkit.entity.Strider, shivering: boolean): StriderTemperatureChangeEvent;
+		interface SpawnerSpawnEvent extends Modify<org.bukkit.event.entity.EntitySpawnEvent, {
+			getSpawner(): org.bukkit.block.CreatureSpawner;
 
+		}> {}
+		class SpawnerSpawnEvent {
+			constructor(spawnee: org.bukkit.entity.Entity, spawner: org.bukkit.block.CreatureSpawner);
+
+		}
+		interface StriderTemperatureChangeEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Description copied from class: EntityEvent
 			 */
@@ -19980,14 +20236,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class StriderTemperatureChangeEvent {
+			constructor(what: org.bukkit.entity.Strider, shivering: boolean);
+
 		}
-		namespace VillagerAcquireTradeEvent {
+		namespace StriderTemperatureChangeEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type VillagerAcquireTradeEvent = org.bukkit.event.entity.EntityEvent & {
-			new(what: org.bukkit.entity.AbstractVillager, recipe: org.bukkit.inventory.MerchantRecipe): VillagerAcquireTradeEvent;
-
+		interface VillagerAcquireTradeEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Get the recipe to be acquired.
 			 */
@@ -20015,14 +20273,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class VillagerAcquireTradeEvent {
+			constructor(what: org.bukkit.entity.AbstractVillager, recipe: org.bukkit.inventory.MerchantRecipe);
+
 		}
-		namespace VillagerCareerChangeEvent {
+		namespace VillagerAcquireTradeEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type VillagerCareerChangeEvent = org.bukkit.event.entity.EntityEvent & {
-			new(what: org.bukkit.entity.Villager, profession: org.bukkit.entity.Villager.Profession, reason: org.bukkit.event.entity.VillagerCareerChangeEvent.ChangeReason): VillagerCareerChangeEvent;
-
+		interface VillagerCareerChangeEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Description copied from class: EntityEvent
 			 */
@@ -20055,8 +20315,17 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class VillagerCareerChangeEvent {
+			constructor(what: org.bukkit.entity.Villager, profession: org.bukkit.entity.Villager.Profession, reason: org.bukkit.event.entity.VillagerCareerChangeEvent.ChangeReason);
+
 		}
 		namespace VillagerCareerChangeEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		namespace VillagerCareerChangeEvent {
+			interface ChangeReason {}
 			namespace ChangeReason {
 				/**
 				 * Villager lost their job due to too little experience.
@@ -20077,15 +20346,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.entity.VillagerCareerChangeEvent.ChangeReason;
 
 			}
-			interface ChangeReason {}
 		}
-		namespace VillagerReplenishTradeEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type VillagerReplenishTradeEvent = org.bukkit.event.entity.EntityEvent & {
-			new(what: org.bukkit.entity.AbstractVillager, recipe: org.bukkit.inventory.MerchantRecipe): VillagerReplenishTradeEvent;
-
+		interface VillagerReplenishTradeEvent extends Modify<org.bukkit.event.entity.EntityEvent, {
 			/**
 			 * Get the recipe to replenish.
 			 */
@@ -20123,10 +20385,18 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class VillagerReplenishTradeEvent {
+			constructor(what: org.bukkit.entity.AbstractVillager, recipe: org.bukkit.inventory.MerchantRecipe);
+
+		}
+		namespace VillagerReplenishTradeEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
 		}
 	}
 	namespace org.bukkit.advancement {
-		type Advancement = org.bukkit.Keyed & {
+		interface Advancement extends Modify<org.bukkit.Keyed, {
 			/**
 			 * Get all the criteria present in this advancement.
 			 */
@@ -20138,7 +20408,7 @@ declare global {
 			 */
 			getDisplay(): org.bukkit.advancement.AdvancementDisplay;
 
-		}
+		}> {}
 		interface AdvancementDisplay {
 			/**
 			 * Gets the title of the advancement.
@@ -20190,6 +20460,13 @@ declare global {
 			getType(): org.bukkit.advancement.AdvancementDisplayType;
 
 		}
+		interface AdvancementDisplayType {
+			/**
+			 * The chat color used by Minecraft for this advancement.
+			 */
+			getColor(): org.bukkit.ChatColor;
+
+		}
 		namespace AdvancementDisplayType {
 			/**
 			 * Task or normal icons have a square icon frame.
@@ -20213,13 +20490,6 @@ declare global {
 			 * not permitted.)
 			 */
 			function valueOf(name: string): org.bukkit.advancement.AdvancementDisplayType;
-
-		}
-		interface AdvancementDisplayType {
-			/**
-			 * The chat color used by Minecraft for this advancement.
-			 */
-			getColor(): org.bukkit.ChatColor;
 
 		}
 		interface AdvancementProgress {
@@ -20261,7 +20531,7 @@ declare global {
 		}
 	}
 	namespace org.bukkit.block.data {
-		type Ageable = org.bukkit.block.data.BlockData & {
+		interface Ageable extends Modify<org.bukkit.block.data.BlockData, {
 			/**
 			 * Gets the value of the 'age' property.
 			 */
@@ -20277,8 +20547,8 @@ declare global {
 			 */
 			getMaximumAge(): number;
 
-		}
-		type AnaloguePowerable = org.bukkit.block.data.BlockData & {
+		}> {}
+		interface AnaloguePowerable extends Modify<org.bukkit.block.data.BlockData, {
 			/**
 			 * Gets the value of the 'power' property.
 			 */
@@ -20294,8 +20564,8 @@ declare global {
 			 */
 			getMaximumPower(): number;
 
-		}
-		type Attachable = org.bukkit.block.data.BlockData & {
+		}> {}
+		interface Attachable extends Modify<org.bukkit.block.data.BlockData, {
 			/**
 			 * Gets the value of the 'attached' property.
 			 */
@@ -20306,8 +20576,8 @@ declare global {
 			 */
 			setAttached(attached: boolean): void;
 
-		}
-		type Bisected = org.bukkit.block.data.BlockData & {
+		}> {}
+		interface Bisected extends Modify<org.bukkit.block.data.BlockData, {
 			/**
 			 * Gets the value of the 'half' property.
 			 */
@@ -20318,8 +20588,9 @@ declare global {
 			 */
 			setHalf(half: org.bukkit.block.data.Bisected.Half): void;
 
-		}
+		}> {}
 		namespace Bisected {
+			interface Half {}
 			namespace Half {
 				/**
 				 * The top half of the block, normally with the higher y coordinate.
@@ -20340,7 +20611,6 @@ declare global {
 				function valueOf(name: string): org.bukkit.block.data.Bisected.Half;
 
 			}
-			interface Half {}
 		}
 		interface BlockData {
 			/**
@@ -20522,7 +20792,7 @@ declare global {
 			createBlockState(): org.bukkit.block.BlockState;
 
 		}
-		type Brushable = org.bukkit.block.data.BlockData & {
+		interface Brushable extends Modify<org.bukkit.block.data.BlockData, {
 			/**
 			 * Gets the value of the 'dusted' property.
 			 */
@@ -20538,8 +20808,8 @@ declare global {
 			 */
 			getMaximumDusted(): number;
 
-		}
-		type Directional = org.bukkit.block.data.BlockData & {
+		}> {}
+		interface Directional extends Modify<org.bukkit.block.data.BlockData, {
 			/**
 			 * Gets the value of the 'facing' property.
 			 */
@@ -20555,8 +20825,8 @@ declare global {
 			 */
 			getFaces(): globalThis.java.util.Set<org.bukkit.block.BlockFace>;
 
-		}
-		type FaceAttachable = org.bukkit.block.data.BlockData & {
+		}> {}
+		interface FaceAttachable extends Modify<org.bukkit.block.data.BlockData, {
 			/**
 			 * Gets the value of the 'face' property.
 			 */
@@ -20567,8 +20837,9 @@ declare global {
 			 */
 			setAttachedFace(face: org.bukkit.block.data.FaceAttachable.AttachedFace): void;
 
-		}
+		}> {}
 		namespace FaceAttachable {
+			interface AttachedFace {}
 			namespace AttachedFace {
 				/**
 				 * The switch is mounted to the floor and pointing upwards.
@@ -20594,9 +20865,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.block.data.FaceAttachable.AttachedFace;
 
 			}
-			interface AttachedFace {}
 		}
-		type Hangable = org.bukkit.block.data.BlockData & {
+		interface Hangable extends Modify<org.bukkit.block.data.BlockData, {
 			/**
 			 * Gets the value of the 'hanging' property.
 			 */
@@ -20607,8 +20877,8 @@ declare global {
 			 */
 			setHanging(hanging: boolean): void;
 
-		}
-		type Hatchable = org.bukkit.block.data.BlockData & {
+		}> {}
+		interface Hatchable extends Modify<org.bukkit.block.data.BlockData, {
 			/**
 			 * Gets the value of the 'hatch' property.
 			 */
@@ -20624,8 +20894,8 @@ declare global {
 			 */
 			getMaximumHatch(): number;
 
-		}
-		type Levelled = org.bukkit.block.data.BlockData & {
+		}> {}
+		interface Levelled extends Modify<org.bukkit.block.data.BlockData, {
 			/**
 			 * Gets the value of the 'level' property.
 			 */
@@ -20641,8 +20911,8 @@ declare global {
 			 */
 			getMaximumLevel(): number;
 
-		}
-		type Lightable = org.bukkit.block.data.BlockData & {
+		}> {}
+		interface Lightable extends Modify<org.bukkit.block.data.BlockData, {
 			/**
 			 * Gets the value of the 'lit' property.
 			 */
@@ -20653,8 +20923,8 @@ declare global {
 			 */
 			setLit(lit: boolean): void;
 
-		}
-		type MultipleFacing = org.bukkit.block.data.BlockData & {
+		}> {}
+		interface MultipleFacing extends Modify<org.bukkit.block.data.BlockData, {
 			/**
 			 * Checks if this block has the specified face enabled.
 			 */
@@ -20675,8 +20945,8 @@ declare global {
 			 */
 			getAllowedFaces(): globalThis.java.util.Set<org.bukkit.block.BlockFace>;
 
-		}
-		type Openable = org.bukkit.block.data.BlockData & {
+		}> {}
+		interface Openable extends Modify<org.bukkit.block.data.BlockData, {
 			/**
 			 * Gets the value of the 'open' property.
 			 */
@@ -20687,8 +20957,8 @@ declare global {
 			 */
 			setOpen(open: boolean): void;
 
-		}
-		type Orientable = org.bukkit.block.data.BlockData & {
+		}> {}
+		interface Orientable extends Modify<org.bukkit.block.data.BlockData, {
 			/**
 			 * Gets the value of the 'axis' property.
 			 */
@@ -20704,8 +20974,8 @@ declare global {
 			 */
 			getAxes(): globalThis.java.util.Set<org.bukkit.Axis>;
 
-		}
-		type Powerable = org.bukkit.block.data.BlockData & {
+		}> {}
+		interface Powerable extends Modify<org.bukkit.block.data.BlockData, {
 			/**
 			 * Gets the value of the 'powered' property.
 			 */
@@ -20716,8 +20986,8 @@ declare global {
 			 */
 			setPowered(powered: boolean): void;
 
-		}
-		type Rail = org.bukkit.block.data.Waterlogged & {
+		}> {}
+		interface Rail extends Modify<org.bukkit.block.data.Waterlogged, {
 			/**
 			 * Gets the value of the 'shape' property.
 			 */
@@ -20733,8 +21003,9 @@ declare global {
 			 */
 			getShapes(): globalThis.java.util.Set<org.bukkit.block.data.Rail.Shape>;
 
-		}
+		}> {}
 		namespace Rail {
+			interface Shape {}
 			namespace Shape {
 				/**
 				 * The rail runs flat along the north/south (Z) axis.
@@ -20799,9 +21070,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.block.data.Rail.Shape;
 
 			}
-			interface Shape {}
 		}
-		type Rotatable = org.bukkit.block.data.BlockData & {
+		interface Rotatable extends Modify<org.bukkit.block.data.BlockData, {
 			/**
 			 * Gets the value of the 'rotation' property.
 			 */
@@ -20812,8 +21082,8 @@ declare global {
 			 */
 			setRotation(rotation: org.bukkit.block.BlockFace): void;
 
-		}
-		type Snowable = org.bukkit.block.data.BlockData & {
+		}> {}
+		interface Snowable extends Modify<org.bukkit.block.data.BlockData, {
 			/**
 			 * Gets the value of the 'snowy' property.
 			 */
@@ -20824,8 +21094,8 @@ declare global {
 			 */
 			setSnowy(snowy: boolean): void;
 
-		}
-		type Waterlogged = org.bukkit.block.data.BlockData & {
+		}> {}
+		interface Waterlogged extends Modify<org.bukkit.block.data.BlockData, {
 			/**
 			 * Gets the value of the 'waterlogged' property.
 			 */
@@ -20836,11 +21106,11 @@ declare global {
 			 */
 			setWaterlogged(waterlogged: boolean): void;
 
-		}
+		}> {}
 	}
 	namespace org.bukkit.block.data.type {
-		type AmethystCluster = org.bukkit.block.data.Directional & org.bukkit.block.data.Waterlogged & {}
-		type Bamboo = org.bukkit.block.data.Ageable & org.bukkit.block.data.type.Sapling & {
+		interface AmethystCluster extends Modify<org.bukkit.block.data.Directional & org.bukkit.block.data.Waterlogged, {}> {}
+		interface Bamboo extends Modify<org.bukkit.block.data.Ageable & org.bukkit.block.data.type.Sapling, {
 			/**
 			 * Gets the value of the 'leaves' property.
 			 */
@@ -20851,8 +21121,9 @@ declare global {
 			 */
 			setLeaves(leaves: org.bukkit.block.data.type.Bamboo.Leaves): void;
 
-		}
+		}> {}
 		namespace Bamboo {
+			interface Leaves {}
 			namespace Leaves {
 				/**
 				 * No leaves.
@@ -20878,10 +21149,9 @@ declare global {
 				function valueOf(name: string): org.bukkit.block.data.type.Bamboo.Leaves;
 
 			}
-			interface Leaves {}
 		}
-		type Barrel = org.bukkit.block.data.Directional & org.bukkit.block.data.Openable & {}
-		type Bed = org.bukkit.block.data.Directional & {
+		interface Barrel extends Modify<org.bukkit.block.data.Directional & org.bukkit.block.data.Openable, {}> {}
+		interface Bed extends Modify<org.bukkit.block.data.Directional, {
 			/**
 			 * Gets the value of the 'part' property.
 			 */
@@ -20897,8 +21167,9 @@ declare global {
 			 */
 			isOccupied(): boolean;
 
-		}
+		}> {}
 		namespace Bed {
+			interface Part {}
 			namespace Part {
 				/**
 				 * The head is the upper part of the bed containing the pillow.
@@ -20919,9 +21190,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.block.data.type.Bed.Part;
 
 			}
-			interface Part {}
 		}
-		type Beehive = org.bukkit.block.data.Directional & {
+		interface Beehive extends Modify<org.bukkit.block.data.Directional, {
 			/**
 			 * Gets the value of the 'honey_level' property.
 			 */
@@ -20937,8 +21207,8 @@ declare global {
 			 */
 			getMaximumHoneyLevel(): number;
 
-		}
-		type Bell = org.bukkit.block.data.Directional & org.bukkit.block.data.Powerable & {
+		}> {}
+		interface Bell extends Modify<org.bukkit.block.data.Directional & org.bukkit.block.data.Powerable, {
 			/**
 			 * Gets the value of the 'attachment' property.
 			 */
@@ -20949,8 +21219,9 @@ declare global {
 			 */
 			setAttachment(attachment: org.bukkit.block.data.type.Bell.Attachment): void;
 
-		}
+		}> {}
 		namespace Bell {
+			interface Attachment {}
 			namespace Attachment {
 				/**
 				 * Placed on floor.
@@ -20981,9 +21252,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.block.data.type.Bell.Attachment;
 
 			}
-			interface Attachment {}
 		}
-		type BigDripleaf = org.bukkit.block.data.type.Dripleaf & {
+		interface BigDripleaf extends Modify<org.bukkit.block.data.type.Dripleaf, {
 			/**
 			 * Gets the value of the 'tilt' property.
 			 */
@@ -20994,8 +21264,9 @@ declare global {
 			 */
 			setTilt(tilt: org.bukkit.block.data.type.BigDripleaf.Tilt): void;
 
-		}
+		}> {}
 		namespace BigDripleaf {
+			interface Tilt {}
 			namespace Tilt {
 				/**
 				 * No tilt.
@@ -21026,9 +21297,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.block.data.type.BigDripleaf.Tilt;
 
 			}
-			interface Tilt {}
 		}
-		type BrewingStand = org.bukkit.block.data.BlockData & {
+		interface BrewingStand extends Modify<org.bukkit.block.data.BlockData, {
 			/**
 			 * Checks if the stand has the following bottle
 			 */
@@ -21049,8 +21319,8 @@ declare global {
 			 */
 			getMaximumBottles(): number;
 
-		}
-		type BubbleColumn = org.bukkit.block.data.BlockData & {
+		}> {}
+		interface BubbleColumn extends Modify<org.bukkit.block.data.BlockData, {
 			/**
 			 * Gets the value of the 'drag' property.
 			 */
@@ -21061,8 +21331,8 @@ declare global {
 			 */
 			setDrag(drag: boolean): void;
 
-		}
-		type Cake = org.bukkit.block.data.BlockData & {
+		}> {}
+		interface Cake extends Modify<org.bukkit.block.data.BlockData, {
 			/**
 			 * Gets the value of the 'bites' property.
 			 */
@@ -21078,9 +21348,9 @@ declare global {
 			 */
 			getMaximumBites(): number;
 
-		}
-		type CalibratedSculkSensor = org.bukkit.block.data.Directional & org.bukkit.block.data.type.SculkSensor & {}
-		type Campfire = org.bukkit.block.data.Directional & org.bukkit.block.data.Lightable & org.bukkit.block.data.Waterlogged & {
+		}> {}
+		interface CalibratedSculkSensor extends Modify<org.bukkit.block.data.Directional & org.bukkit.block.data.type.SculkSensor, {}> {}
+		interface Campfire extends Modify<org.bukkit.block.data.Directional & org.bukkit.block.data.Lightable & org.bukkit.block.data.Waterlogged, {
 			/**
 			 * Gets the value of the 'signal_fire' property.
 			 */
@@ -21091,8 +21361,8 @@ declare global {
 			 */
 			setSignalFire(signalFire: boolean): void;
 
-		}
-		type Candle = org.bukkit.block.data.Lightable & org.bukkit.block.data.Waterlogged & {
+		}> {}
+		interface Candle extends Modify<org.bukkit.block.data.Lightable & org.bukkit.block.data.Waterlogged, {
 			/**
 			 * Gets the value of the 'candles' property.
 			 */
@@ -21108,9 +21378,9 @@ declare global {
 			 */
 			getMaximumCandles(): number;
 
-		}
-		type CaveVines = org.bukkit.block.data.Ageable & org.bukkit.block.data.type.CaveVinesPlant & {}
-		type CaveVinesPlant = org.bukkit.block.data.BlockData & {
+		}> {}
+		interface CaveVines extends Modify<org.bukkit.block.data.Ageable & org.bukkit.block.data.type.CaveVinesPlant, {}> {}
+		interface CaveVinesPlant extends Modify<org.bukkit.block.data.BlockData, {
 			/**
 			 * Gets the value of the 'berries' property.
 			 */
@@ -21121,9 +21391,9 @@ declare global {
 			 */
 			setBerries(berries: boolean): void;
 
-		}
-		type Chain = org.bukkit.block.data.Orientable & org.bukkit.block.data.Waterlogged & {}
-		type Chest = org.bukkit.block.data.Directional & org.bukkit.block.data.Waterlogged & {
+		}> {}
+		interface Chain extends Modify<org.bukkit.block.data.Orientable & org.bukkit.block.data.Waterlogged, {}> {}
+		interface Chest extends Modify<org.bukkit.block.data.Directional & org.bukkit.block.data.Waterlogged, {
 			/**
 			 * Gets the value of the 'type' property.
 			 */
@@ -21134,8 +21404,9 @@ declare global {
 			 */
 			setType(type: org.bukkit.block.data.type.Chest.Type): void;
 
-		}
+		}> {}
 		namespace Chest {
+			interface Type {}
 			namespace Type {
 				/**
 				 * The chest is not linked to any others and contains only one 27 slot
@@ -21164,9 +21435,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.block.data.type.Chest.Type;
 
 			}
-			interface Type {}
 		}
-		type ChiseledBookshelf = org.bukkit.block.data.Directional & {
+		interface ChiseledBookshelf extends Modify<org.bukkit.block.data.Directional, {
 			/**
 			 * Checks if the following slot is occupied.
 			 */
@@ -21187,9 +21457,9 @@ declare global {
 			 */
 			getMaximumOccupiedSlots(): number;
 
-		}
-		type Cocoa = org.bukkit.block.data.Ageable & org.bukkit.block.data.Directional & {}
-		type CommandBlock = org.bukkit.block.data.Directional & {
+		}> {}
+		interface Cocoa extends Modify<org.bukkit.block.data.Ageable & org.bukkit.block.data.Directional, {}> {}
+		interface CommandBlock extends Modify<org.bukkit.block.data.Directional, {
 			/**
 			 * Gets the value of the 'conditional' property.
 			 */
@@ -21200,8 +21470,8 @@ declare global {
 			 */
 			setConditional(conditional: boolean): void;
 
-		}
-		type Comparator = org.bukkit.block.data.Directional & org.bukkit.block.data.Powerable & {
+		}> {}
+		interface Comparator extends Modify<org.bukkit.block.data.Directional & org.bukkit.block.data.Powerable, {
 			/**
 			 * Gets the value of the 'mode' property.
 			 */
@@ -21212,8 +21482,9 @@ declare global {
 			 */
 			setMode(mode: org.bukkit.block.data.type.Comparator.Mode): void;
 
-		}
+		}> {}
 		namespace Comparator {
+			interface Mode {}
 			namespace Mode {
 				/**
 				 * The default mode, similar to a transistor. The comparator will turn
@@ -21236,11 +21507,10 @@ declare global {
 				function valueOf(name: string): org.bukkit.block.data.type.Comparator.Mode;
 
 			}
-			interface Mode {}
 		}
-		type CopperBulb = org.bukkit.block.data.Lightable & org.bukkit.block.data.Powerable & {}
-		type CoralWallFan = org.bukkit.block.data.Directional & org.bukkit.block.data.Waterlogged & {}
-		type Crafter = org.bukkit.block.data.BlockData & {
+		interface CopperBulb extends Modify<org.bukkit.block.data.Lightable & org.bukkit.block.data.Powerable, {}> {}
+		interface CoralWallFan extends Modify<org.bukkit.block.data.Directional & org.bukkit.block.data.Waterlogged, {}> {}
+		interface Crafter extends Modify<org.bukkit.block.data.BlockData, {
 			/**
 			 * Gets the value of the 'crafting' property.
 			 */
@@ -21271,8 +21541,9 @@ declare global {
 			 */
 			setOrientation(orientation: org.bukkit.block.data.type.Crafter.Orientation): void;
 
-		}
+		}> {}
 		namespace Crafter {
+			interface Orientation {}
 			namespace Orientation {
 				const DOWN_EAST: org.bukkit.block.data.type.Crafter.Orientation;
 
@@ -21307,9 +21578,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.block.data.type.Crafter.Orientation;
 
 			}
-			interface Orientation {}
 		}
-		type DaylightDetector = org.bukkit.block.data.AnaloguePowerable & {
+		interface DaylightDetector extends Modify<org.bukkit.block.data.AnaloguePowerable, {
 			/**
 			 * Gets the value of the 'inverted' property.
 			 */
@@ -21320,9 +21590,9 @@ declare global {
 			 */
 			setInverted(inverted: boolean): void;
 
-		}
-		type DecoratedPot = org.bukkit.block.data.Directional & org.bukkit.block.data.Waterlogged & {}
-		type Dispenser = org.bukkit.block.data.Directional & {
+		}> {}
+		interface DecoratedPot extends Modify<org.bukkit.block.data.Directional & org.bukkit.block.data.Waterlogged, {}> {}
+		interface Dispenser extends Modify<org.bukkit.block.data.Directional, {
 			/**
 			 * Gets the value of the 'triggered' property.
 			 */
@@ -21333,8 +21603,8 @@ declare global {
 			 */
 			setTriggered(triggered: boolean): void;
 
-		}
-		type Door = org.bukkit.block.data.Bisected & org.bukkit.block.data.Directional & org.bukkit.block.data.Openable & org.bukkit.block.data.Powerable & {
+		}> {}
+		interface Door extends Modify<org.bukkit.block.data.Bisected & org.bukkit.block.data.Directional & org.bukkit.block.data.Openable & org.bukkit.block.data.Powerable, {
 			/**
 			 * Gets the value of the 'hinge' property.
 			 */
@@ -21345,8 +21615,9 @@ declare global {
 			 */
 			setHinge(hinge: org.bukkit.block.data.type.Door.Hinge): void;
 
-		}
+		}> {}
 		namespace Door {
+			interface Hinge {}
 			namespace Hinge {
 				/**
 				 * Door is attached to the left side.
@@ -21367,10 +21638,9 @@ declare global {
 				function valueOf(name: string): org.bukkit.block.data.type.Door.Hinge;
 
 			}
-			interface Hinge {}
 		}
-		type Dripleaf = org.bukkit.block.data.Directional & org.bukkit.block.data.Waterlogged & {}
-		type EndPortalFrame = org.bukkit.block.data.Directional & {
+		interface Dripleaf extends Modify<org.bukkit.block.data.Directional & org.bukkit.block.data.Waterlogged, {}> {}
+		interface EndPortalFrame extends Modify<org.bukkit.block.data.Directional, {
 			/**
 			 * Gets the value of the 'eye' property.
 			 */
@@ -21381,9 +21651,9 @@ declare global {
 			 */
 			setEye(eye: boolean): void;
 
-		}
-		type EnderChest = org.bukkit.block.data.Directional & org.bukkit.block.data.Waterlogged & {}
-		type Farmland = org.bukkit.block.data.BlockData & {
+		}> {}
+		interface EnderChest extends Modify<org.bukkit.block.data.Directional & org.bukkit.block.data.Waterlogged, {}> {}
+		interface Farmland extends Modify<org.bukkit.block.data.BlockData, {
 			/**
 			 * Gets the value of the 'moisture' property.
 			 */
@@ -21399,11 +21669,11 @@ declare global {
 			 */
 			getMaximumMoisture(): number;
 
-		}
-		type Fence = org.bukkit.block.data.MultipleFacing & org.bukkit.block.data.Waterlogged & {}
-		type Fire = org.bukkit.block.data.Ageable & org.bukkit.block.data.MultipleFacing & {}
-		type Furnace = org.bukkit.block.data.Directional & org.bukkit.block.data.Lightable & {}
-		type Gate = org.bukkit.block.data.Directional & org.bukkit.block.data.Openable & org.bukkit.block.data.Powerable & {
+		}> {}
+		interface Fence extends Modify<org.bukkit.block.data.MultipleFacing & org.bukkit.block.data.Waterlogged, {}> {}
+		interface Fire extends Modify<org.bukkit.block.data.Ageable & org.bukkit.block.data.MultipleFacing, {}> {}
+		interface Furnace extends Modify<org.bukkit.block.data.Directional & org.bukkit.block.data.Lightable, {}> {}
+		interface Gate extends Modify<org.bukkit.block.data.Directional & org.bukkit.block.data.Openable & org.bukkit.block.data.Powerable, {
 			/**
 			 * Gets the value of the 'in_wall' property.
 			 */
@@ -21414,12 +21684,12 @@ declare global {
 			 */
 			setInWall(inWall: boolean): void;
 
-		}
-		type GlassPane = org.bukkit.block.data.MultipleFacing & org.bukkit.block.data.Waterlogged & {}
-		type GlowLichen = org.bukkit.block.data.MultipleFacing & org.bukkit.block.data.Waterlogged & {}
-		type Grindstone = org.bukkit.block.data.Directional & org.bukkit.block.data.FaceAttachable & {}
-		type HangingSign = org.bukkit.block.data.Attachable & org.bukkit.block.data.Rotatable & org.bukkit.block.data.Waterlogged & {}
-		type Hopper = org.bukkit.block.data.Directional & {
+		}> {}
+		interface GlassPane extends Modify<org.bukkit.block.data.MultipleFacing & org.bukkit.block.data.Waterlogged, {}> {}
+		interface GlowLichen extends Modify<org.bukkit.block.data.MultipleFacing & org.bukkit.block.data.Waterlogged, {}> {}
+		interface Grindstone extends Modify<org.bukkit.block.data.Directional & org.bukkit.block.data.FaceAttachable, {}> {}
+		interface HangingSign extends Modify<org.bukkit.block.data.Attachable & org.bukkit.block.data.Rotatable & org.bukkit.block.data.Waterlogged, {}> {}
+		interface Hopper extends Modify<org.bukkit.block.data.Directional, {
 			/**
 			 * Gets the value of the 'enabled' property.
 			 */
@@ -21430,8 +21700,8 @@ declare global {
 			 */
 			setEnabled(enabled: boolean): void;
 
-		}
-		type Jigsaw = org.bukkit.block.data.BlockData & {
+		}> {}
+		interface Jigsaw extends Modify<org.bukkit.block.data.BlockData, {
 			/**
 			 * Gets the value of the 'orientation' property.
 			 */
@@ -21442,8 +21712,9 @@ declare global {
 			 */
 			setOrientation(orientation: org.bukkit.block.data.type.Jigsaw.Orientation): void;
 
-		}
+		}> {}
 		namespace Jigsaw {
+			interface Orientation {}
 			namespace Orientation {
 				const DOWN_EAST: org.bukkit.block.data.type.Jigsaw.Orientation;
 
@@ -21478,18 +21749,17 @@ declare global {
 				function valueOf(name: string): org.bukkit.block.data.type.Jigsaw.Orientation;
 
 			}
-			interface Orientation {}
 		}
-		type Jukebox = org.bukkit.block.data.BlockData & {
+		interface Jukebox extends Modify<org.bukkit.block.data.BlockData, {
 			/**
 			 * Gets the value of the 'has_record' property.
 			 */
 			hasRecord(): boolean;
 
-		}
-		type Ladder = org.bukkit.block.data.Directional & org.bukkit.block.data.Waterlogged & {}
-		type Lantern = org.bukkit.block.data.Hangable & org.bukkit.block.data.Waterlogged & {}
-		type Leaves = org.bukkit.block.data.Waterlogged & {
+		}> {}
+		interface Ladder extends Modify<org.bukkit.block.data.Directional & org.bukkit.block.data.Waterlogged, {}> {}
+		interface Lantern extends Modify<org.bukkit.block.data.Hangable & org.bukkit.block.data.Waterlogged, {}> {}
+		interface Leaves extends Modify<org.bukkit.block.data.Waterlogged, {
 			/**
 			 * Gets the value of the 'persistent' property.
 			 */
@@ -21510,18 +21780,18 @@ declare global {
 			 */
 			setDistance(distance: number): void;
 
-		}
-		type Lectern = org.bukkit.block.data.Directional & org.bukkit.block.data.Powerable & {
+		}> {}
+		interface Lectern extends Modify<org.bukkit.block.data.Directional & org.bukkit.block.data.Powerable, {
 			/**
 			 * Gets the value of the 'has_book' property.
 			 */
 			hasBook(): boolean;
 
-		}
-		type Light = org.bukkit.block.data.Levelled & org.bukkit.block.data.Waterlogged & {}
-		type LightningRod = org.bukkit.block.data.Directional & org.bukkit.block.data.Powerable & org.bukkit.block.data.Waterlogged & {}
-		type MangrovePropagule = org.bukkit.block.data.Ageable & org.bukkit.block.data.Hangable & org.bukkit.block.data.type.Sapling & org.bukkit.block.data.Waterlogged & {}
-		type NoteBlock = org.bukkit.block.data.Powerable & {
+		}> {}
+		interface Light extends Modify<org.bukkit.block.data.Levelled & org.bukkit.block.data.Waterlogged, {}> {}
+		interface LightningRod extends Modify<org.bukkit.block.data.Directional & org.bukkit.block.data.Powerable & org.bukkit.block.data.Waterlogged, {}> {}
+		interface MangrovePropagule extends Modify<org.bukkit.block.data.Ageable & org.bukkit.block.data.Hangable & org.bukkit.block.data.type.Sapling & org.bukkit.block.data.Waterlogged, {}> {}
+		interface NoteBlock extends Modify<org.bukkit.block.data.Powerable, {
 			/**
 			 * Gets the value of the 'instrument' property.
 			 */
@@ -21542,9 +21812,9 @@ declare global {
 			 */
 			setNote(note: org.bukkit.Note): void;
 
-		}
-		type Observer = org.bukkit.block.data.Directional & org.bukkit.block.data.Powerable & {}
-		type PinkPetals = org.bukkit.block.data.Directional & {
+		}> {}
+		interface Observer extends Modify<org.bukkit.block.data.Directional & org.bukkit.block.data.Powerable, {}> {}
+		interface PinkPetals extends Modify<org.bukkit.block.data.Directional, {
 			/**
 			 * Gets the value of the 'flower_amount' property.
 			 */
@@ -21560,8 +21830,8 @@ declare global {
 			 */
 			getMaximumFlowerAmount(): number;
 
-		}
-		type Piston = org.bukkit.block.data.Directional & {
+		}> {}
+		interface Piston extends Modify<org.bukkit.block.data.Directional, {
 			/**
 			 * Gets the value of the 'extended' property.
 			 */
@@ -21572,8 +21842,8 @@ declare global {
 			 */
 			setExtended(extended: boolean): void;
 
-		}
-		type PistonHead = org.bukkit.block.data.type.TechnicalPiston & {
+		}> {}
+		interface PistonHead extends Modify<org.bukkit.block.data.type.TechnicalPiston, {
 			/**
 			 * Gets the value of the 'short' property.
 			 */
@@ -21584,9 +21854,9 @@ declare global {
 			 */
 			setShort(_short: boolean): void;
 
-		}
-		type PitcherCrop = org.bukkit.block.data.Ageable & org.bukkit.block.data.Bisected & {}
-		type PointedDripstone = org.bukkit.block.data.Waterlogged & {
+		}> {}
+		interface PitcherCrop extends Modify<org.bukkit.block.data.Ageable & org.bukkit.block.data.Bisected, {}> {}
+		interface PointedDripstone extends Modify<org.bukkit.block.data.Waterlogged, {
 			/**
 			 * Gets the value of the 'vertical_direction' property.
 			 */
@@ -21612,8 +21882,9 @@ declare global {
 			 */
 			setThickness(thickness: org.bukkit.block.data.type.PointedDripstone.Thickness): void;
 
-		}
+		}> {}
 		namespace PointedDripstone {
+			interface Thickness {}
 			namespace Thickness {
 				/**
 				 * Extended tip.
@@ -21649,11 +21920,10 @@ declare global {
 				function valueOf(name: string): org.bukkit.block.data.type.PointedDripstone.Thickness;
 
 			}
-			interface Thickness {}
 		}
-		type RedstoneRail = org.bukkit.block.data.Powerable & org.bukkit.block.data.Rail & {}
-		type RedstoneWallTorch = org.bukkit.block.data.Directional & org.bukkit.block.data.Lightable & {}
-		type RedstoneWire = org.bukkit.block.data.AnaloguePowerable & {
+		interface RedstoneRail extends Modify<org.bukkit.block.data.Powerable & org.bukkit.block.data.Rail, {}> {}
+		interface RedstoneWallTorch extends Modify<org.bukkit.block.data.Directional & org.bukkit.block.data.Lightable, {}> {}
+		interface RedstoneWire extends Modify<org.bukkit.block.data.AnaloguePowerable, {
 			/**
 			 * Checks the type of connection on the specified face.
 			 */
@@ -21669,8 +21939,9 @@ declare global {
 			 */
 			getAllowedFaces(): globalThis.java.util.Set<org.bukkit.block.BlockFace>;
 
-		}
+		}> {}
 		namespace RedstoneWire {
+			interface Connection {}
 			namespace Connection {
 				/**
 				 * The wire travels up the side of the block adjacent to this face.
@@ -21696,9 +21967,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.block.data.type.RedstoneWire.Connection;
 
 			}
-			interface Connection {}
 		}
-		type Repeater = org.bukkit.block.data.Directional & org.bukkit.block.data.Powerable & {
+		interface Repeater extends Modify<org.bukkit.block.data.Directional & org.bukkit.block.data.Powerable, {
 			/**
 			 * Gets the value of the 'delay' property.
 			 */
@@ -21729,8 +21999,8 @@ declare global {
 			 */
 			setLocked(locked: boolean): void;
 
-		}
-		type RespawnAnchor = org.bukkit.block.data.BlockData & {
+		}> {}
+		interface RespawnAnchor extends Modify<org.bukkit.block.data.BlockData, {
 			/**
 			 * Gets the value of the 'charges' property.
 			 */
@@ -21746,8 +22016,8 @@ declare global {
 			 */
 			getMaximumCharges(): number;
 
-		}
-		type Sapling = org.bukkit.block.data.BlockData & {
+		}> {}
+		interface Sapling extends Modify<org.bukkit.block.data.BlockData, {
 			/**
 			 * Gets the value of the 'stage' property.
 			 */
@@ -21763,8 +22033,8 @@ declare global {
 			 */
 			getMaximumStage(): number;
 
-		}
-		type Scaffolding = org.bukkit.block.data.Waterlogged & {
+		}> {}
+		interface Scaffolding extends Modify<org.bukkit.block.data.Waterlogged, {
 			/**
 			 * Gets the value of the 'bottom' property.
 			 */
@@ -21790,8 +22060,8 @@ declare global {
 			 */
 			getMaximumDistance(): number;
 
-		}
-		type SculkCatalyst = org.bukkit.block.data.BlockData & {
+		}> {}
+		interface SculkCatalyst extends Modify<org.bukkit.block.data.BlockData, {
 			/**
 			 * Gets the value of the 'bloom' property.
 			 */
@@ -21802,8 +22072,8 @@ declare global {
 			 */
 			setBloom(bloom: boolean): void;
 
-		}
-		type SculkSensor = org.bukkit.block.data.AnaloguePowerable & org.bukkit.block.data.Waterlogged & {
+		}> {}
+		interface SculkSensor extends Modify<org.bukkit.block.data.AnaloguePowerable & org.bukkit.block.data.Waterlogged, {
 			/**
 			 * Gets the value of the 'sculk_sensor_phase' property.
 			 */
@@ -21814,8 +22084,9 @@ declare global {
 			 */
 			setPhase(phase: org.bukkit.block.data.type.SculkSensor.Phase): void;
 
-		}
+		}> {}
 		namespace SculkSensor {
+			interface Phase {}
 			namespace Phase {
 				/**
 				 * The sensor is inactive.
@@ -21841,9 +22112,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.block.data.type.SculkSensor.Phase;
 
 			}
-			interface Phase {}
 		}
-		type SculkShrieker = org.bukkit.block.data.Waterlogged & {
+		interface SculkShrieker extends Modify<org.bukkit.block.data.Waterlogged, {
 			/**
 			 * Gets the value of the 'can_summon' property.
 			 */
@@ -21864,9 +22134,9 @@ declare global {
 			 */
 			setShrieking(shrieking: boolean): void;
 
-		}
-		type SculkVein = org.bukkit.block.data.MultipleFacing & org.bukkit.block.data.Waterlogged & {}
-		type SeaPickle = org.bukkit.block.data.Waterlogged & {
+		}> {}
+		interface SculkVein extends Modify<org.bukkit.block.data.MultipleFacing & org.bukkit.block.data.Waterlogged, {}> {}
+		interface SeaPickle extends Modify<org.bukkit.block.data.Waterlogged, {
 			/**
 			 * Gets the value of the 'pickles' property.
 			 */
@@ -21887,9 +22157,9 @@ declare global {
 			 */
 			getMaximumPickles(): number;
 
-		}
-		type Sign = org.bukkit.block.data.Rotatable & org.bukkit.block.data.Waterlogged & {}
-		type Slab = org.bukkit.block.data.Waterlogged & {
+		}> {}
+		interface Sign extends Modify<org.bukkit.block.data.Rotatable & org.bukkit.block.data.Waterlogged, {}> {}
+		interface Slab extends Modify<org.bukkit.block.data.Waterlogged, {
 			/**
 			 * Gets the value of the 'type' property.
 			 */
@@ -21900,8 +22170,9 @@ declare global {
 			 */
 			setType(type: org.bukkit.block.data.type.Slab.Type): void;
 
-		}
+		}> {}
 		namespace Slab {
+			interface Type {}
 			namespace Type {
 				/**
 				 * The slab occupies the upper y half of the block.
@@ -21927,10 +22198,9 @@ declare global {
 				function valueOf(name: string): org.bukkit.block.data.type.Slab.Type;
 
 			}
-			interface Type {}
 		}
-		type SmallDripleaf = org.bukkit.block.data.type.Dripleaf & org.bukkit.block.data.Bisected & {}
-		type Snow = org.bukkit.block.data.BlockData & {
+		interface SmallDripleaf extends Modify<org.bukkit.block.data.type.Dripleaf & org.bukkit.block.data.Bisected, {}> {}
+		interface Snow extends Modify<org.bukkit.block.data.BlockData, {
 			/**
 			 * Gets the value of the 'layers' property.
 			 */
@@ -21951,8 +22221,8 @@ declare global {
 			 */
 			getMaximumLayers(): number;
 
-		}
-		type Stairs = org.bukkit.block.data.Bisected & org.bukkit.block.data.Directional & org.bukkit.block.data.Waterlogged & {
+		}> {}
+		interface Stairs extends Modify<org.bukkit.block.data.Bisected & org.bukkit.block.data.Directional & org.bukkit.block.data.Waterlogged, {
 			/**
 			 * Gets the value of the 'shape' property.
 			 */
@@ -21963,8 +22233,9 @@ declare global {
 			 */
 			setShape(shape: org.bukkit.block.data.type.Stairs.Shape): void;
 
-		}
+		}> {}
 		namespace Stairs {
+			interface Shape {}
 			namespace Shape {
 				/**
 				 * Regular stair block.
@@ -22000,9 +22271,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.block.data.type.Stairs.Shape;
 
 			}
-			interface Shape {}
 		}
-		type StructureBlock = org.bukkit.block.data.BlockData & {
+		interface StructureBlock extends Modify<org.bukkit.block.data.BlockData, {
 			/**
 			 * Gets the value of the 'mode' property.
 			 */
@@ -22013,8 +22283,9 @@ declare global {
 			 */
 			setMode(mode: org.bukkit.block.data.type.StructureBlock.Mode): void;
 
-		}
+		}> {}
 		namespace StructureBlock {
+			interface Mode {}
 			namespace Mode {
 				/**
 				 * Allows selection and saving of a structure.
@@ -22046,9 +22317,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.block.data.type.StructureBlock.Mode;
 
 			}
-			interface Mode {}
 		}
-		type Switch = org.bukkit.block.data.Directional & org.bukkit.block.data.FaceAttachable & org.bukkit.block.data.Powerable & {
+		interface Switch extends Modify<org.bukkit.block.data.Directional & org.bukkit.block.data.FaceAttachable & org.bukkit.block.data.Powerable, {
 			/**
 			 * Gets the value of the 'face' property.
 			 */
@@ -22059,8 +22329,9 @@ declare global {
 			 */
 			setFace(face: org.bukkit.block.data.type.Switch.Face): void;
 
-		}
+		}> {}
 		namespace Switch {
+			interface Face {}
 			namespace Face {
 				/**
 				 * The switch is mounted to the floor and pointing upwards.
@@ -22086,9 +22357,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.block.data.type.Switch.Face;
 
 			}
-			interface Face {}
 		}
-		type TNT = org.bukkit.block.data.BlockData & {
+		interface TNT extends Modify<org.bukkit.block.data.BlockData, {
 			/**
 			 * Gets the value of the 'unstable' property.
 			 */
@@ -22099,8 +22369,8 @@ declare global {
 			 */
 			setUnstable(unstable: boolean): void;
 
-		}
-		type TechnicalPiston = org.bukkit.block.data.Directional & {
+		}> {}
+		interface TechnicalPiston extends Modify<org.bukkit.block.data.Directional, {
 			/**
 			 * Gets the value of the 'type' property.
 			 */
@@ -22111,8 +22381,9 @@ declare global {
 			 */
 			setType(type: org.bukkit.block.data.type.TechnicalPiston.Type): void;
 
-		}
+		}> {}
 		namespace TechnicalPiston {
+			interface Type {}
 			namespace Type {
 				/**
 				 * A normal piston which does not pull connected blocks backwards on
@@ -22134,10 +22405,9 @@ declare global {
 				function valueOf(name: string): org.bukkit.block.data.type.TechnicalPiston.Type;
 
 			}
-			interface Type {}
 		}
-		type TrapDoor = org.bukkit.block.data.Bisected & org.bukkit.block.data.Directional & org.bukkit.block.data.Openable & org.bukkit.block.data.Powerable & org.bukkit.block.data.Waterlogged & {}
-		type TrialSpawner = org.bukkit.block.data.BlockData & {
+		interface TrapDoor extends Modify<org.bukkit.block.data.Bisected & org.bukkit.block.data.Directional & org.bukkit.block.data.Openable & org.bukkit.block.data.Powerable & org.bukkit.block.data.Waterlogged, {}> {}
+		interface TrialSpawner extends Modify<org.bukkit.block.data.BlockData, {
 			/**
 			 * Gets the value of the 'trial_spawner_state' property.
 			 */
@@ -22158,8 +22428,9 @@ declare global {
 			 */
 			setOminous(ominous: boolean): void;
 
-		}
+		}> {}
 		namespace TrialSpawner {
+			interface State {}
 			namespace State {
 				const INACTIVE: org.bukkit.block.data.type.TrialSpawner.State;
 
@@ -22182,9 +22453,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.block.data.type.TrialSpawner.State;
 
 			}
-			interface State {}
 		}
-		type Tripwire = org.bukkit.block.data.Attachable & org.bukkit.block.data.MultipleFacing & org.bukkit.block.data.Powerable & {
+		interface Tripwire extends Modify<org.bukkit.block.data.Attachable & org.bukkit.block.data.MultipleFacing & org.bukkit.block.data.Powerable, {
 			/**
 			 * Gets the value of the 'disarmed' property.
 			 */
@@ -22195,9 +22465,9 @@ declare global {
 			 */
 			setDisarmed(disarmed: boolean): void;
 
-		}
-		type TripwireHook = org.bukkit.block.data.Attachable & org.bukkit.block.data.Directional & org.bukkit.block.data.Powerable & {}
-		type TurtleEgg = org.bukkit.block.data.Hatchable & {
+		}> {}
+		interface TripwireHook extends Modify<org.bukkit.block.data.Attachable & org.bukkit.block.data.Directional & org.bukkit.block.data.Powerable, {}> {}
+		interface TurtleEgg extends Modify<org.bukkit.block.data.Hatchable, {
 			/**
 			 * Gets the value of the 'eggs' property.
 			 */
@@ -22218,8 +22488,8 @@ declare global {
 			 */
 			getMaximumEggs(): number;
 
-		}
-		type Vault = org.bukkit.block.data.Directional & {
+		}> {}
+		interface Vault extends Modify<org.bukkit.block.data.Directional, {
 			/**
 			 * Gets the value of the 'vault_state' property.
 			 */
@@ -22240,8 +22510,9 @@ declare global {
 			 */
 			setOminous(ominous: boolean): void;
 
-		}
+		}> {}
 		namespace Vault {
+			interface State {}
 			namespace State {
 				const INACTIVE: org.bukkit.block.data.type.Vault.State;
 
@@ -22260,9 +22531,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.block.data.type.Vault.State;
 
 			}
-			interface State {}
 		}
-		type Wall = org.bukkit.block.data.Waterlogged & {
+		interface Wall extends Modify<org.bukkit.block.data.Waterlogged, {
 			/**
 			 * Gets the value of the 'up' property.
 			 */
@@ -22283,8 +22553,9 @@ declare global {
 			 */
 			setHeight(face: org.bukkit.block.BlockFace, height: org.bukkit.block.data.type.Wall.Height): void;
 
-		}
+		}> {}
 		namespace Wall {
+			interface Height {}
 			namespace Height {
 				/**
 				 * No wall present.
@@ -22310,13 +22581,12 @@ declare global {
 				function valueOf(name: string): org.bukkit.block.data.type.Wall.Height;
 
 			}
-			interface Height {}
 		}
-		type WallHangingSign = org.bukkit.block.data.Directional & org.bukkit.block.data.Waterlogged & {}
-		type WallSign = org.bukkit.block.data.Directional & org.bukkit.block.data.Waterlogged & {}
+		interface WallHangingSign extends Modify<org.bukkit.block.data.Directional & org.bukkit.block.data.Waterlogged, {}> {}
+		interface WallSign extends Modify<org.bukkit.block.data.Directional & org.bukkit.block.data.Waterlogged, {}> {}
 	}
 	namespace org.bukkit.inventory.meta {
-		type ArmorMeta = org.bukkit.inventory.meta.ItemMeta & {
+		interface ArmorMeta extends Modify<org.bukkit.inventory.meta.ItemMeta, {
 			/**
 			 * Check whether or not this item has an armor trim.
 			 */
@@ -22334,8 +22604,8 @@ declare global {
 
 			clone(): org.bukkit.inventory.meta.ArmorMeta;
 
-		}
-		type AxolotlBucketMeta = org.bukkit.inventory.meta.ItemMeta & {
+		}> {}
+		interface AxolotlBucketMeta extends Modify<org.bukkit.inventory.meta.ItemMeta, {
 			/**
 			 * Get the variant of the axolotl in the bucket.
 			 * 
@@ -22357,8 +22627,8 @@ declare global {
 
 			clone(): org.bukkit.inventory.meta.AxolotlBucketMeta;
 
-		}
-		type BannerMeta = org.bukkit.inventory.meta.ItemMeta & {
+		}> {}
+		interface BannerMeta extends Modify<org.bukkit.inventory.meta.ItemMeta, {
 			/**
 			 * Returns a list of patterns on this banner
 			 */
@@ -22396,8 +22666,8 @@ declare global {
 			 */
 			numberOfPatterns(): number;
 
-		}
-		type BlockDataMeta = org.bukkit.inventory.meta.ItemMeta & {
+		}> {}
+		interface BlockDataMeta extends Modify<org.bukkit.inventory.meta.ItemMeta, {
 			/**
 			 * Returns whether the item has block data currently attached to it.
 			 */
@@ -22416,8 +22686,8 @@ declare global {
 			 */
 			setBlockData(blockData: org.bukkit.block.data.BlockData): void;
 
-		}
-		type BlockStateMeta = org.bukkit.inventory.meta.ItemMeta & {
+		}> {}
+		interface BlockStateMeta extends Modify<org.bukkit.inventory.meta.ItemMeta, {
 			/**
 			 * Returns whether the item has a block state currently
 			 * attached to it.
@@ -22437,8 +22707,8 @@ declare global {
 			 */
 			setBlockState(blockState: org.bukkit.block.BlockState): void;
 
-		}
-		type BookMeta = org.bukkit.inventory.meta.WritableBookMeta & {
+		}> {}
+		interface BookMeta extends Modify<org.bukkit.inventory.meta.WritableBookMeta, {
 			/**
 			 * Checks for the existence of a title in the book.
 			 */
@@ -22497,8 +22767,9 @@ declare global {
 
 			clone(): org.bukkit.inventory.meta.BookMeta;
 
-		}
+		}> {}
 		namespace BookMeta {
+			interface Generation {}
 			namespace Generation {
 				/**
 				 * Book written into a book-and-quill. Can be copied. (Default value)
@@ -22529,9 +22800,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.inventory.meta.BookMeta.Generation;
 
 			}
-			interface Generation {}
 		}
-		type BundleMeta = org.bukkit.inventory.meta.ItemMeta & {
+		interface BundleMeta extends Modify<org.bukkit.inventory.meta.ItemMeta, {
 			/**
 			 * Returns whether the item has any items.
 			 */
@@ -22554,12 +22824,12 @@ declare global {
 			 */
 			addItem(item: org.bukkit.inventory.ItemStack): void;
 
-		}
-		type ColorableArmorMeta = org.bukkit.inventory.meta.ArmorMeta & org.bukkit.inventory.meta.LeatherArmorMeta & {
+		}> {}
+		interface ColorableArmorMeta extends Modify<org.bukkit.inventory.meta.ArmorMeta & org.bukkit.inventory.meta.LeatherArmorMeta, {
 			clone(): org.bukkit.inventory.meta.ColorableArmorMeta;
 
-		}
-		type CompassMeta = org.bukkit.inventory.meta.ItemMeta & {
+		}> {}
+		interface CompassMeta extends Modify<org.bukkit.inventory.meta.ItemMeta, {
 			/**
 			 * Checks if this compass has been paired to a lodestone.
 			 */
@@ -22592,8 +22862,8 @@ declare global {
 
 			clone(): org.bukkit.inventory.meta.CompassMeta;
 
-		}
-		type CrossbowMeta = org.bukkit.inventory.meta.ItemMeta & {
+		}> {}
+		interface CrossbowMeta extends Modify<org.bukkit.inventory.meta.ItemMeta, {
 			/**
 			 * Returns whether the item has any charged projectiles.
 			 */
@@ -22615,8 +22885,8 @@ declare global {
 			 */
 			addChargedProjectile(item: org.bukkit.inventory.ItemStack): void;
 
-		}
-		type Damageable = org.bukkit.inventory.meta.ItemMeta & {
+		}> {}
+		interface Damageable extends Modify<org.bukkit.inventory.meta.ItemMeta, {
 			/**
 			 * Checks to see if this item has damage
 			 */
@@ -22650,8 +22920,8 @@ declare global {
 
 			clone(): org.bukkit.inventory.meta.Damageable;
 
-		}
-		type EnchantmentStorageMeta = org.bukkit.inventory.meta.ItemMeta & {
+		}> {}
+		interface EnchantmentStorageMeta extends Modify<org.bukkit.inventory.meta.ItemMeta, {
 			/**
 			 * Checks for the existence of any stored enchantments.
 			 */
@@ -22690,8 +22960,8 @@ declare global {
 
 			clone(): org.bukkit.inventory.meta.EnchantmentStorageMeta;
 
-		}
-		type FireworkEffectMeta = org.bukkit.inventory.meta.ItemMeta & {
+		}> {}
+		interface FireworkEffectMeta extends Modify<org.bukkit.inventory.meta.ItemMeta, {
 			/**
 			 * Sets the firework effect for this meta.
 			 */
@@ -22709,8 +22979,8 @@ declare global {
 
 			clone(): org.bukkit.inventory.meta.FireworkEffectMeta;
 
-		}
-		type FireworkMeta = org.bukkit.inventory.meta.ItemMeta & {
+		}> {}
+		interface FireworkMeta extends Modify<org.bukkit.inventory.meta.ItemMeta, {
 			/**
 			 * Add another effect to this firework.
 			 */
@@ -22764,8 +23034,8 @@ declare global {
 
 			clone(): org.bukkit.inventory.meta.FireworkMeta;
 
-		}
-		type ItemMeta = org.bukkit.configuration.serialization.ConfigurationSerializable & org.bukkit.persistence.PersistentDataHolder & {
+		}> {}
+		interface ItemMeta extends Modify<org.bukkit.configuration.serialization.ConfigurationSerializable & org.bukkit.persistence.PersistentDataHolder, {
 			/**
 			 * Checks for existence of a display name.
 			 */
@@ -23217,8 +23487,8 @@ declare global {
 
 			clone(): org.bukkit.inventory.meta.ItemMeta;
 
-		}
-		type KnowledgeBookMeta = org.bukkit.inventory.meta.ItemMeta & {
+		}> {}
+		interface KnowledgeBookMeta extends Modify<org.bukkit.inventory.meta.ItemMeta, {
 			/**
 			 * Checks for the existence of recipes in the book.
 			 */
@@ -23242,8 +23512,8 @@ declare global {
 
 			clone(): org.bukkit.inventory.meta.KnowledgeBookMeta;
 
-		}
-		type LeatherArmorMeta = org.bukkit.inventory.meta.ItemMeta & {
+		}> {}
+		interface LeatherArmorMeta extends Modify<org.bukkit.inventory.meta.ItemMeta, {
 			/**
 			 * Gets the color of the armor. If it has not been set otherwise, it will
 			 * be ItemFactory.getDefaultLeatherColor().
@@ -23257,8 +23527,8 @@ declare global {
 
 			clone(): org.bukkit.inventory.meta.LeatherArmorMeta;
 
-		}
-		type MapMeta = org.bukkit.inventory.meta.ItemMeta & {
+		}> {}
+		interface MapMeta extends Modify<org.bukkit.inventory.meta.ItemMeta, {
 			/**
 			 * Checks for existence of a map ID number.
 			 */
@@ -23350,8 +23620,8 @@ declare global {
 
 			clone(): org.bukkit.inventory.meta.MapMeta;
 
-		}
-		type MusicInstrumentMeta = org.bukkit.inventory.meta.ItemMeta & {
+		}> {}
+		interface MusicInstrumentMeta extends Modify<org.bukkit.inventory.meta.ItemMeta, {
 			/**
 			 * Sets the goat horn's instrument.
 			 */
@@ -23364,8 +23634,8 @@ declare global {
 
 			clone(): org.bukkit.inventory.meta.MusicInstrumentMeta;
 
-		}
-		type OminousBottleMeta = org.bukkit.inventory.meta.ItemMeta & {
+		}> {}
+		interface OminousBottleMeta extends Modify<org.bukkit.inventory.meta.ItemMeta, {
 			/**
 			 * Checks for the presence of an amplifier.
 			 */
@@ -23386,8 +23656,8 @@ declare global {
 
 			clone(): org.bukkit.inventory.meta.OminousBottleMeta;
 
-		}
-		type PotionMeta = org.bukkit.inventory.meta.ItemMeta & {
+		}> {}
+		interface PotionMeta extends Modify<org.bukkit.inventory.meta.ItemMeta, {
 			/**
 			 * Sets the underlying potion data
 			 */
@@ -23476,8 +23746,8 @@ declare global {
 
 			clone(): org.bukkit.inventory.meta.PotionMeta;
 
-		}
-		type Repairable = org.bukkit.inventory.meta.ItemMeta & {
+		}> {}
+		interface Repairable extends Modify<org.bukkit.inventory.meta.ItemMeta, {
 			/**
 			 * Checks to see if this has a repair penalty
 			 */
@@ -23495,8 +23765,8 @@ declare global {
 
 			clone(): org.bukkit.inventory.meta.Repairable;
 
-		}
-		type SkullMeta = org.bukkit.inventory.meta.ItemMeta & {
+		}> {}
+		interface SkullMeta extends Modify<org.bukkit.inventory.meta.ItemMeta, {
 			/**
 			 * Gets the owner of the skull.
 			 */
@@ -23559,8 +23829,8 @@ declare global {
 
 			clone(): org.bukkit.inventory.meta.SkullMeta;
 
-		}
-		type SpawnEggMeta = org.bukkit.inventory.meta.ItemMeta & {
+		}> {}
+		interface SpawnEggMeta extends Modify<org.bukkit.inventory.meta.ItemMeta, {
 			/**
 			 * Get the type of entity this egg will spawn.
 			 */
@@ -23590,8 +23860,8 @@ declare global {
 
 			clone(): org.bukkit.inventory.meta.SpawnEggMeta;
 
-		}
-		type SuspiciousStewMeta = org.bukkit.inventory.meta.ItemMeta & {
+		}> {}
+		interface SuspiciousStewMeta extends Modify<org.bukkit.inventory.meta.ItemMeta, {
 			/**
 			 * Checks for the presence of custom potion effects.
 			 */
@@ -23628,8 +23898,8 @@ declare global {
 
 			clone(): org.bukkit.inventory.meta.SuspiciousStewMeta;
 
-		}
-		type TropicalFishBucketMeta = org.bukkit.inventory.meta.ItemMeta & {
+		}> {}
+		interface TropicalFishBucketMeta extends Modify<org.bukkit.inventory.meta.ItemMeta, {
 			/**
 			 * Gets the color of the fish's pattern.
 			 * 
@@ -23686,8 +23956,8 @@ declare global {
 
 			clone(): org.bukkit.inventory.meta.TropicalFishBucketMeta;
 
-		}
-		type WritableBookMeta = org.bukkit.inventory.meta.ItemMeta & {
+		}> {}
+		interface WritableBookMeta extends Modify<org.bukkit.inventory.meta.ItemMeta, {
 			/**
 			 * Checks for the existence of pages in the book.
 			 */
@@ -23741,16 +24011,10 @@ declare global {
 
 			clone(): org.bukkit.inventory.meta.WritableBookMeta;
 
-		}
+		}> {}
 	}
 	namespace org.bukkit.inventory.meta.trim {
 		interface ArmorTrim {
-			/**
-			 * Create a new ArmorTrim given a TrimMaterial and
-			 * TrimPattern.
-			 */
-			new(material: org.bukkit.inventory.meta.trim.TrimMaterial, pattern: org.bukkit.inventory.meta.trim.TrimPattern): ArmorTrim;
-
 			/**
 			 * Get the TrimMaterial for this armor trim.
 			 */
@@ -23766,6 +24030,15 @@ declare global {
 			equals(obj: any): boolean;
 
 		}
+		class ArmorTrim {
+			/**
+			 * Create a new ArmorTrim given a TrimMaterial and
+			 * TrimPattern.
+			 */
+			constructor(material: org.bukkit.inventory.meta.trim.TrimMaterial, pattern: org.bukkit.inventory.meta.trim.TrimPattern);
+
+		}
+		interface TrimMaterial extends Modify<org.bukkit.Keyed & org.bukkit.Translatable, {}> {}
 		namespace TrimMaterial {
 			/**
 			 * Material.QUARTZ.
@@ -23818,7 +24091,7 @@ declare global {
 			const AMETHYST: org.bukkit.inventory.meta.trim.TrimMaterial;
 
 		}
-		type TrimMaterial = org.bukkit.Keyed & org.bukkit.Translatable & {}
+		interface TrimPattern extends Modify<org.bukkit.Keyed & org.bukkit.Translatable, {}> {}
 		namespace TrimPattern {
 			/**
 			 * Material.SENTRY_ARMOR_TRIM_SMITHING_TEMPLATE.
@@ -23911,9 +24184,30 @@ declare global {
 			const BOLT: org.bukkit.inventory.meta.trim.TrimPattern;
 
 		}
-		type TrimPattern = org.bukkit.Keyed & org.bukkit.Translatable & {}
 	}
 	namespace org.bukkit {
+		interface Art {
+			/**
+			 * Gets the width of the painting, in blocks
+			 */
+			getBlockWidth(): number;
+
+			/**
+			 * Gets the height of the painting, in blocks
+			 */
+			getBlockHeight(): number;
+
+			/**
+			 * Get the ID of this painting.
+			 */
+			getId(): number;
+
+			/**
+			 * Description copied from interface: Keyed
+			 */
+			getKey(): org.bukkit.NamespacedKey;
+
+		}
 		namespace Art {
 			const KEBAB: org.bukkit.Art;
 
@@ -24036,28 +24330,7 @@ declare global {
 			function getByName(name: string): org.bukkit.Art;
 
 		}
-		interface Art {
-			/**
-			 * Gets the width of the painting, in blocks
-			 */
-			getBlockWidth(): number;
-
-			/**
-			 * Gets the height of the painting, in blocks
-			 */
-			getBlockHeight(): number;
-
-			/**
-			 * Get the ID of this painting.
-			 */
-			getId(): number;
-
-			/**
-			 * Description copied from interface: Keyed
-			 */
-			getKey(): org.bukkit.NamespacedKey;
-
-		}
+		interface Axis {}
 		namespace Axis {
 			/**
 			 * The x axis.
@@ -24083,7 +24356,6 @@ declare global {
 			function valueOf(name: string): org.bukkit.Axis;
 
 		}
-		interface Axis {}
 		interface BanEntry<T = any> {
 			/**
 			 * Gets the target involved. This may be in the form of an IP or a player
@@ -24228,6 +24500,7 @@ declare global {
 
 		}
 		namespace BanList {
+			interface Type {}
 			namespace Type {
 				/**
 				 * Banned player names
@@ -24253,7 +24526,6 @@ declare global {
 				function valueOf(name: string): org.bukkit.BanList.Type;
 
 			}
-			interface Type {}
 		}
 		interface BlockChangeDelegate {
 			/**
@@ -24277,6 +24549,7 @@ declare global {
 			isEmpty(x: number, y: number, z: number): boolean;
 
 		}
+		interface Bukkit {}
 		namespace Bukkit {
 			/**
 			 * Gets the current Server singleton
@@ -25389,7 +25662,27 @@ declare global {
 			function getUnsafe(): org.bukkit.UnsafeValues;
 
 		}
-		interface Bukkit {}
+		interface ChatColor {
+			asBungee(): any /* net.md_5.bungee.api.ChatColor */;
+
+			/**
+			 * Gets the char value associated with this color
+			 */
+			getChar(): any /* char */;
+
+			toString(): string;
+
+			/**
+			 * Checks if this code is a format code as opposed to a color code.
+			 */
+			isFormat(): boolean;
+
+			/**
+			 * Checks if this code is a color code as opposed to a format code.
+			 */
+			isColor(): boolean;
+
+		}
 		namespace ChatColor {
 			/**
 			 * Represents black
@@ -25544,28 +25837,7 @@ declare global {
 			function getLastColors(input: string): string;
 
 		}
-		interface ChatColor {
-			asBungee(): any /* net.md_5.bungee.api.ChatColor */;
-
-			/**
-			 * Gets the char value associated with this color
-			 */
-			getChar(): any /* char */;
-
-			toString(): string;
-
-			/**
-			 * Checks if this code is a format code as opposed to a color code.
-			 */
-			isFormat(): boolean;
-
-			/**
-			 * Checks if this code is a color code as opposed to a format code.
-			 */
-			isColor(): boolean;
-
-		}
-		type Chunk = org.bukkit.persistence.PersistentDataHolder & {
+		interface Chunk extends Modify<org.bukkit.persistence.PersistentDataHolder, {
 			/**
 			 * Gets the X-coordinate of this chunk
 			 */
@@ -25734,8 +26006,9 @@ declare global {
 			 */
 			getPlayersSeeingChunk(): globalThis.java.util.Collection<org.bukkit.entity.Player>;
 
-		}
+		}> {}
 		namespace Chunk {
+			interface LoadLevel {}
 			namespace LoadLevel {
 				/**
 				 * No game logic is processed, world generation may still occur.
@@ -25771,7 +26044,6 @@ declare global {
 				function valueOf(name: string): org.bukkit.Chunk.LoadLevel;
 
 			}
-			interface LoadLevel {}
 		}
 		interface ChunkSnapshot {
 			/**
@@ -25861,6 +26133,13 @@ declare global {
 			contains(biome: org.bukkit.block.Biome): boolean;
 
 		}
+		interface CoalType {
+			/**
+			 * Gets the associated data value representing this type of coal
+			 */
+			getData(): any /* byte */;
+
+		}
 		namespace CoalType {
 			const COAL: org.bukkit.CoalType;
 
@@ -25880,11 +26159,86 @@ declare global {
 			function getByData(data: any /* byte */): org.bukkit.CoalType;
 
 		}
-		interface CoalType {
+		interface Color {
 			/**
-			 * Gets the associated data value representing this type of coal
+			 * Gets the alpha component
 			 */
-			getData(): any /* byte */;
+			getAlpha(): number;
+
+			/**
+			 * Creates a new Color object with specified component
+			 */
+			setAlpha(alpha: number): org.bukkit.Color;
+
+			/**
+			 * Gets the red component
+			 */
+			getRed(): number;
+
+			/**
+			 * Creates a new Color object with specified component
+			 */
+			setRed(red: number): org.bukkit.Color;
+
+			/**
+			 * Gets the green component
+			 */
+			getGreen(): number;
+
+			/**
+			 * Creates a new Color object with specified component
+			 */
+			setGreen(green: number): org.bukkit.Color;
+
+			/**
+			 * Gets the blue component
+			 */
+			getBlue(): number;
+
+			/**
+			 * Creates a new Color object with specified component
+			 */
+			setBlue(blue: number): org.bukkit.Color;
+
+			/**
+			 * Gets the color as an RGB integer.
+			 */
+			asRGB(): number;
+
+			/**
+			 * Gets the color as an ARGB integer.
+			 */
+			asARGB(): number;
+
+			/**
+			 * Gets the color as an BGR integer.
+			 */
+			asBGR(): number;
+
+			/**
+			 * Creates a new color with its RGB components changed as if it was dyed
+			 * with the colors passed in, replicating vanilla workbench dyeing
+			 */
+			mixDyes(...colors: org.bukkit.DyeColor[]): org.bukkit.Color;
+
+			/**
+			 * Creates a new color with its RGB components changed as if it was dyed
+			 * with the colors passed in, replicating vanilla workbench dyeing.
+			 * Note that this method does not currently take into account alpha
+			 * components.
+			 */
+			mixColors(...colors: org.bukkit.Color[]): org.bukkit.Color;
+
+			equals(o: any): boolean;
+
+			hashCode(): number;
+
+			/**
+			 * Description copied from interface: ConfigurationSerializable
+			 */
+			serialize(): globalThis.java.util.Map<string, any>;
+
+			toString(): string;
 
 		}
 		namespace Color {
@@ -26009,86 +26363,11 @@ declare global {
 			function deserialize(map: globalThis.java.util.Map<string, any>): org.bukkit.Color;
 
 		}
-		interface Color {
+		interface CropState {
 			/**
-			 * Gets the alpha component
+			 * Gets the associated data value representing this growth state
 			 */
-			getAlpha(): number;
-
-			/**
-			 * Creates a new Color object with specified component
-			 */
-			setAlpha(alpha: number): org.bukkit.Color;
-
-			/**
-			 * Gets the red component
-			 */
-			getRed(): number;
-
-			/**
-			 * Creates a new Color object with specified component
-			 */
-			setRed(red: number): org.bukkit.Color;
-
-			/**
-			 * Gets the green component
-			 */
-			getGreen(): number;
-
-			/**
-			 * Creates a new Color object with specified component
-			 */
-			setGreen(green: number): org.bukkit.Color;
-
-			/**
-			 * Gets the blue component
-			 */
-			getBlue(): number;
-
-			/**
-			 * Creates a new Color object with specified component
-			 */
-			setBlue(blue: number): org.bukkit.Color;
-
-			/**
-			 * Gets the color as an RGB integer.
-			 */
-			asRGB(): number;
-
-			/**
-			 * Gets the color as an ARGB integer.
-			 */
-			asARGB(): number;
-
-			/**
-			 * Gets the color as an BGR integer.
-			 */
-			asBGR(): number;
-
-			/**
-			 * Creates a new color with its RGB components changed as if it was dyed
-			 * with the colors passed in, replicating vanilla workbench dyeing
-			 */
-			mixDyes(...colors: org.bukkit.DyeColor[]): org.bukkit.Color;
-
-			/**
-			 * Creates a new color with its RGB components changed as if it was dyed
-			 * with the colors passed in, replicating vanilla workbench dyeing.
-			 * Note that this method does not currently take into account alpha
-			 * components.
-			 */
-			mixColors(...colors: org.bukkit.Color[]): org.bukkit.Color;
-
-			equals(o: any): boolean;
-
-			hashCode(): number;
-
-			/**
-			 * Description copied from interface: ConfigurationSerializable
-			 */
-			serialize(): globalThis.java.util.Map<string, any>;
-
-			toString(): string;
+			getData(): any /* byte */;
 
 		}
 		namespace CropState {
@@ -26146,11 +26425,11 @@ declare global {
 			function getByData(data: any /* byte */): org.bukkit.CropState;
 
 		}
-		interface CropState {
+		interface Difficulty {
 			/**
-			 * Gets the associated data value representing this growth state
+			 * Gets the difficulty value associated with this Difficulty.
 			 */
-			getData(): any /* byte */;
+			getValue(): number;
 
 		}
 		namespace Difficulty {
@@ -26193,11 +26472,26 @@ declare global {
 			function getByValue(value: number): org.bukkit.Difficulty;
 
 		}
-		interface Difficulty {
+		interface DyeColor {
 			/**
-			 * Gets the difficulty value associated with this Difficulty.
+			 * Gets the associated wool data value representing this color.
 			 */
-			getValue(): number;
+			getWoolData(): any /* byte */;
+
+			/**
+			 * Gets the associated dye data value representing this color.
+			 */
+			getDyeData(): any /* byte */;
+
+			/**
+			 * Gets the color that this dye represents.
+			 */
+			getColor(): org.bukkit.Color;
+
+			/**
+			 * Gets the firework color that this dye represents.
+			 */
+			getFireworkColor(): org.bukkit.Color;
 
 		}
 		namespace DyeColor {
@@ -26315,26 +26609,15 @@ declare global {
 			function legacyValueOf(name: string): org.bukkit.DyeColor;
 
 		}
-		interface DyeColor {
+		interface Effect {
 			/**
-			 * Gets the associated wool data value representing this color.
+			 * Gets the ID for this effect.
 			 */
-			getWoolData(): any /* byte */;
+			getId(): number;
 
-			/**
-			 * Gets the associated dye data value representing this color.
-			 */
-			getDyeData(): any /* byte */;
+			getType(): org.bukkit.Effect.Type;
 
-			/**
-			 * Gets the color that this dye represents.
-			 */
-			getColor(): org.bukkit.Color;
-
-			/**
-			 * Gets the firework color that this dye represents.
-			 */
-			getFireworkColor(): org.bukkit.Color;
+			getData(): globalThis.java.lang.Class;
 
 		}
 		namespace Effect {
@@ -26711,18 +26994,8 @@ declare global {
 			function getById(id: number): org.bukkit.Effect;
 
 		}
-		interface Effect {
-			/**
-			 * Gets the ID for this effect.
-			 */
-			getId(): number;
-
-			getType(): org.bukkit.Effect.Type;
-
-			getData(): globalThis.java.lang.Class;
-
-		}
 		namespace Effect {
+			interface Type {}
 			namespace Type {
 				const SOUND: org.bukkit.Effect.Type;
 
@@ -26737,7 +27010,28 @@ declare global {
 				function valueOf(name: string): org.bukkit.Effect.Type;
 
 			}
-			interface Type {}
+		}
+		interface EntityEffect {
+			/**
+			 * Gets the data value of this EntityEffect, may not be unique.
+			 */
+			getData(): any /* byte */;
+
+			/**
+			 * Gets entity superclass which this affect is applicable to.
+			 */
+			getApplicable(): globalThis.java.lang.Class<org.bukkit.entity.Entity>;
+
+			/**
+			 * Checks if this effect is applicable to the given entity.
+			 */
+			isApplicableTo(entity: org.bukkit.entity.Entity): boolean;
+
+			/**
+			 * Checks if this effect is applicable to the given entity class.
+			 */
+			isApplicableTo(clazz: globalThis.java.lang.Class<org.bukkit.entity.Entity>): boolean;
+
 		}
 		namespace EntityEffect {
 			/**
@@ -27079,28 +27373,7 @@ declare global {
 			function valueOf(name: string): org.bukkit.EntityEffect;
 
 		}
-		interface EntityEffect {
-			/**
-			 * Gets the data value of this EntityEffect, may not be unique.
-			 */
-			getData(): any /* byte */;
-
-			/**
-			 * Gets entity superclass which this affect is applicable to.
-			 */
-			getApplicable(): globalThis.java.lang.Class<org.bukkit.entity.Entity>;
-
-			/**
-			 * Checks if this effect is applicable to the given entity.
-			 */
-			isApplicableTo(entity: org.bukkit.entity.Entity): boolean;
-
-			/**
-			 * Checks if this effect is applicable to the given entity class.
-			 */
-			isApplicableTo(clazz: globalThis.java.lang.Class<org.bukkit.entity.Entity>): boolean;
-
-		}
+		interface FeatureFlag extends Modify<org.bukkit.Keyed, {}> {}
 		namespace FeatureFlag {
 			const VANILLA: org.bukkit.FeatureFlag;
 
@@ -27117,16 +27390,6 @@ declare global {
 			 * AVAILABLE BETWEEN VERSIONS: 1.20.5 - 1.20.6
 			 */
 			const UPDATE_121: org.bukkit.FeatureFlag;
-
-		}
-		type FeatureFlag = org.bukkit.Keyed & {}
-		namespace FireworkEffect {
-			/**
-			 * Construct a firework effect.
-			 */
-			function builder(): org.bukkit.FireworkEffect.Builder;
-
-			function deserialize(map: globalThis.java.util.Map<string, any>): org.bukkit.configuration.serialization.ConfigurationSerializable;
 
 		}
 		interface FireworkEffect {
@@ -27165,6 +27428,15 @@ declare global {
 			hashCode(): number;
 
 			equals(obj: any): boolean;
+
+		}
+		namespace FireworkEffect {
+			/**
+			 * Construct a firework effect.
+			 */
+			function builder(): org.bukkit.FireworkEffect.Builder;
+
+			function deserialize(map: globalThis.java.util.Map<string, any>): org.bukkit.configuration.serialization.ConfigurationSerializable;
 
 		}
 		namespace FireworkEffect {
@@ -27235,6 +27507,7 @@ declare global {
 			}
 		}
 		namespace FireworkEffect {
+			interface Type {}
 			namespace Type {
 				/**
 				 * A small ball effect.
@@ -27270,7 +27543,13 @@ declare global {
 				function valueOf(name: string): org.bukkit.FireworkEffect.Type;
 
 			}
-			interface Type {}
+		}
+		interface Fluid {
+			/**
+			 * Description copied from interface: Keyed
+			 */
+			getKey(): org.bukkit.NamespacedKey;
+
 		}
 		namespace Fluid {
 			/**
@@ -27302,13 +27581,7 @@ declare global {
 			function valueOf(name: string): org.bukkit.Fluid;
 
 		}
-		interface Fluid {
-			/**
-			 * Description copied from interface: Keyed
-			 */
-			getKey(): org.bukkit.NamespacedKey;
-
-		}
+		interface FluidCollisionMode {}
 		namespace FluidCollisionMode {
 			/**
 			 * Ignore fluids.
@@ -27334,7 +27607,12 @@ declare global {
 			function valueOf(name: string): org.bukkit.FluidCollisionMode;
 
 		}
-		interface FluidCollisionMode {}
+		interface GameEvent {
+		}
+		class GameEvent {
+			constructor();
+
+		}
 		namespace GameEvent {
 			const BLOCK_ACTIVATE: org.bukkit.GameEvent;
 
@@ -27507,8 +27785,11 @@ declare global {
 			function values(): globalThis.java.util.Collection<org.bukkit.GameEvent>;
 
 		}
-		interface GameEvent {
-			new(): GameEvent;
+		interface GameMode {
+			/**
+			 * Gets the mode value associated with this GameMode
+			 */
+			getValue(): number;
 
 		}
 		namespace GameMode {
@@ -27549,11 +27830,20 @@ declare global {
 			function getByValue(value: number): org.bukkit.GameMode;
 
 		}
-		interface GameMode {
+		interface GameRule<T = any> {
 			/**
-			 * Gets the mode value associated with this GameMode
+			 * Get the name of this GameRule.
 			 */
-			getValue(): number;
+			getName(): string;
+
+			/**
+			 * Get the type of this rule.
+			 */
+			getType(): globalThis.java.lang.Class<T>;
+
+			equals(obj: any): boolean;
+
+			toString(): string;
 
 		}
 		namespace GameRule {
@@ -27835,20 +28125,11 @@ declare global {
 			function getByName(rule: string): org.bukkit.GameRule;
 
 		}
-		interface GameRule<T = any> {
+		interface GrassSpecies {
 			/**
-			 * Get the name of this GameRule.
+			 * Gets the associated data value representing this species
 			 */
-			getName(): string;
-
-			/**
-			 * Get the type of this rule.
-			 */
-			getType(): globalThis.java.lang.Class<T>;
-
-			equals(obj: any): boolean;
-
-			toString(): string;
+			getData(): any /* byte */;
 
 		}
 		namespace GrassSpecies {
@@ -27881,13 +28162,7 @@ declare global {
 			function getByData(data: any /* byte */): org.bukkit.GrassSpecies;
 
 		}
-		interface GrassSpecies {
-			/**
-			 * Gets the associated data value representing this species
-			 */
-			getData(): any /* byte */;
-
-		}
+		interface HeightMap {}
 		namespace HeightMap {
 			/**
 			 * The highest block that blocks motion or contains a fluid.
@@ -27929,7 +28204,16 @@ declare global {
 			function valueOf(name: string): org.bukkit.HeightMap;
 
 		}
-		interface HeightMap {}
+		interface Instrument {
+			/**
+			 * Gets the sound associated with this instrument.
+			 * Will be null for CUSTOM_HEAD
+			 */
+			getSound(): org.bukkit.Sound;
+
+			getType(): any /* byte */;
+
+		}
 		namespace Instrument {
 			/**
 			 * Piano is the standard instrument for a note block.
@@ -28065,16 +28349,7 @@ declare global {
 			function getByType(type: any /* byte */): org.bukkit.Instrument;
 
 		}
-		interface Instrument {
-			/**
-			 * Gets the sound associated with this instrument.
-			 * Will be null for CUSTOM_HEAD
-			 */
-			getSound(): org.bukkit.Sound;
-
-			getType(): any /* byte */;
-
-		}
+		interface JukeboxSong extends Modify<org.bukkit.Keyed & org.bukkit.Translatable, {}> {}
 		namespace JukeboxSong {
 			const THIRTEEN: org.bukkit.JukeboxSong;
 
@@ -28115,7 +28390,6 @@ declare global {
 			const CREATOR_MUSIC_BOX: org.bukkit.JukeboxSong;
 
 		}
-		type JukeboxSong = org.bukkit.Keyed & org.bukkit.Translatable & {}
 		interface Keyed {
 			/**
 			 * Return the namespaced identifier for this object.
@@ -28123,42 +28397,7 @@ declare global {
 			getKey(): org.bukkit.NamespacedKey;
 
 		}
-		namespace Location {
-			/**
-			 * Safely converts a double (location coordinate) to an int (block
-			 * coordinate)
-			 */
-			function locToBlock(loc: number): number;
-
-			/**
-			 * Required method for deserialization
-			 */
-			function deserialize(args: globalThis.java.util.Map<string, any>): org.bukkit.Location;
-
-			/**
-			 * Normalizes the given yaw angle to a value between +/-180
-			 * degrees.
-			 */
-			function normalizeYaw(yaw: number): number;
-
-			/**
-			 * Normalizes the given pitch angle to a value between +/-90
-			 * degrees.
-			 */
-			function normalizePitch(pitch: number): number;
-
-		}
 		interface Location {
-			/**
-			 * Constructs a new Location with the given coordinates
-			 */
-			new(world: org.bukkit.World, x: number, y: number, z: number): Location;
-
-			/**
-			 * Constructs a new Location with the given coordinates and direction
-			 */
-			new(world: org.bukkit.World, x: number, y: number, z: number, yaw: number, pitch: number): Location;
-
 			/**
 			 * Sets the world that this location resides in
 			 */
@@ -28390,6 +28629,294 @@ declare global {
 			 * Description copied from interface: ConfigurationSerializable
 			 */
 			serialize(): globalThis.java.util.Map<string, any>;
+
+		}
+		class Location {
+			/**
+			 * Constructs a new Location with the given coordinates
+			 */
+			constructor(world: org.bukkit.World, x: number, y: number, z: number);
+
+			/**
+			 * Constructs a new Location with the given coordinates and direction
+			 */
+			constructor(world: org.bukkit.World, x: number, y: number, z: number, yaw: number, pitch: number);
+
+		}
+		namespace Location {
+			/**
+			 * Safely converts a double (location coordinate) to an int (block
+			 * coordinate)
+			 */
+			function locToBlock(loc: number): number;
+
+			/**
+			 * Required method for deserialization
+			 */
+			function deserialize(args: globalThis.java.util.Map<string, any>): org.bukkit.Location;
+
+			/**
+			 * Normalizes the given yaw angle to a value between +/-180
+			 * degrees.
+			 */
+			function normalizeYaw(yaw: number): number;
+
+			/**
+			 * Normalizes the given pitch angle to a value between +/-90
+			 * degrees.
+			 */
+			function normalizePitch(pitch: number): number;
+
+		}
+		interface Material {
+			readonly data: globalThis.java.lang.Class;
+
+			/**
+			 * Do not use for any reason.
+			 */
+			getId(): number;
+
+			/**
+			 * Do not use for any reason.
+			 */
+			isLegacy(): boolean;
+
+			/**
+			 * Description copied from interface: Keyed
+			 */
+			getKey(): org.bukkit.NamespacedKey;
+
+			/**
+			 * Gets the maximum amount of this material that can be held in a stack.
+			 * 
+			 * Note that this is the default maximum size for this Material.
+			 * ItemStacks are able to change their maximum stack size per
+			 * stack with ItemMeta.setMaxStackSize(Integer). If an ItemStack instance
+			 * is available, ItemStack.getMaxStackSize() may be preferred.
+			 */
+			getMaxStackSize(): number;
+
+			/**
+			 * Gets the maximum durability of this material
+			 */
+			getMaxDurability(): number;
+
+			/**
+			 * Creates a new BlockData instance for this Material, with all
+			 * properties initialized to unspecified defaults.
+			 */
+			createBlockData(): org.bukkit.block.data.BlockData;
+
+			/**
+			 * Creates a new BlockData instance for this Material, with
+			 * all properties initialized to unspecified defaults.
+			 */
+			createBlockData(consumer: (value: org.bukkit.block.data.BlockData) => void): org.bukkit.block.data.BlockData;
+
+			/**
+			 * Creates a new BlockData instance for this Material, with all
+			 * properties initialized to unspecified defaults, except for those provided
+			 * in data.
+			 */
+			createBlockData(data: string): org.bukkit.block.data.BlockData;
+
+			/**
+			 * Gets the MaterialData class associated with this Material
+			 */
+			getData(): globalThis.java.lang.Class<org.bukkit.material.MaterialData>;
+
+			/**
+			 * Constructs a new MaterialData relevant for this Material, with the
+			 * given initial data
+			 */
+			getNewData(raw: any /* byte */): org.bukkit.material.MaterialData;
+
+			/**
+			 * Checks if this Material is a placable block
+			 */
+			isBlock(): boolean;
+
+			/**
+			 * Checks if this Material is edible.
+			 */
+			isEdible(): boolean;
+
+			isRecord(): boolean;
+
+			/**
+			 * Check if the material is a block and solid (can be built upon)
+			 */
+			isSolid(): boolean;
+
+			/**
+			 * Check if the material is an air block.
+			 */
+			isAir(): boolean;
+
+			/**
+			 * Check if the material is a block and does not block any light
+			 */
+			isTransparent(): boolean;
+
+			/**
+			 * Check if the material is a block and can catch fire
+			 */
+			isFlammable(): boolean;
+
+			/**
+			 * Check if the material is a block and can burn away
+			 */
+			isBurnable(): boolean;
+
+			/**
+			 * Checks if this Material can be used as fuel in a Furnace
+			 */
+			isFuel(): boolean;
+
+			/**
+			 * Check if the material is a block and occludes light in the lighting engine.
+			 * 
+			 * Generally speaking, most full blocks will occlude light. Non-full blocks are
+			 * not occluding (e.g. anvils, chests, tall grass, stairs, etc.), nor are specific
+			 * full blocks such as barriers or spawners which block light despite their texture.
+			 * 
+			 * An occluding block will have the following effects:
+			 * 
+			 * Chests cannot be opened if an occluding block is above it.
+			 * Mobs cannot spawn inside of occluding blocks.
+			 * Only occluding blocks can be "powered" (Block.isBlockPowered()).
+			 * 
+			 * This list may be inconclusive. For a full list of the side effects of an occluding
+			 * block, see the Minecraft Wiki.
+			 */
+			isOccluding(): boolean;
+
+			hasGravity(): boolean;
+
+			/**
+			 * Checks if this Material is an obtainable item.
+			 */
+			isItem(): boolean;
+
+			/**
+			 * Checks if this Material can be interacted with.
+			 * Interactable materials include those with functionality when they are
+			 * interacted with by a player such as chests, furnaces, etc.
+			 * Some blocks such as piston heads and stairs are considered interactable
+			 * though may not perform any additional functionality.
+			 * Note that the interactability of some materials may be dependant on their
+			 * state as well. This method will return true if there is at least one
+			 * state in which additional interact handling is performed for the
+			 * material.
+			 */
+			isInteractable(): boolean;
+
+			/**
+			 * Obtains the block's hardness level (also known as "strength").
+			 * 
+			 * This number is used to calculate the time required to break each block.
+			 * 
+			 * Only available when isBlock() is true.
+			 */
+			getHardness(): number;
+
+			/**
+			 * Obtains the blast resistance value (also known as block "durability").
+			 * 
+			 * This value is used in explosions to calculate whether a block should be
+			 * broken or not.
+			 * 
+			 * Only available when isBlock() is true.
+			 */
+			getBlastResistance(): number;
+
+			/**
+			 * Returns a value that represents how 'slippery' the block is.
+			 * Blocks with higher slipperiness, like ICE can be slid on
+			 * further by the player and other entities.
+			 * Most blocks have a default slipperiness of 0.6f.
+			 * Only available when isBlock() is true.
+			 */
+			getSlipperiness(): number;
+
+			/**
+			 * Determines the remaining item in a crafting grid after crafting with this
+			 * ingredient.
+			 * 
+			 * Only available when isItem() is true.
+			 */
+			getCraftingRemainingItem(): org.bukkit.Material;
+
+			/**
+			 * Get the best suitable slot for this Material.
+			 * For most items this will be EquipmentSlot.HAND.
+			 */
+			getEquipmentSlot(): org.bukkit.inventory.EquipmentSlot;
+
+			/**
+			 * Return an immutable copy of all default Attributes and their
+			 * AttributeModifiers for a given EquipmentSlot.
+			 * Default attributes are those that are always preset on some items, such
+			 * as the attack damage on weapons or the armor value on armor.
+			 * Only available when isItem() is true.
+			 */
+			getDefaultAttributeModifiers(slot: org.bukkit.inventory.EquipmentSlot): any /* com.google.common.collect.Multimap */;
+
+			/**
+			 * Get the CreativeCategory to which this material belongs.
+			 */
+			getCreativeCategory(): org.bukkit.inventory.CreativeCategory;
+
+			/**
+			 * Get the translation key of the item or block associated with this
+			 * material.
+			 * If this material has both an item and a block form, the item form is
+			 * used.
+			 */
+			getTranslationKey(): string;
+
+			/**
+			 * Get the translation key of the block associated with this material, or
+			 * null if this material does not have an associated block.
+			 */
+			getBlockTranslationKey(): string;
+
+			/**
+			 * Get the translation key of the item associated with this material, or
+			 * null if this material does not have an associated item.
+			 */
+			getItemTranslationKey(): string;
+
+			/**
+			 * Gets if the Material is enabled by the features in a world.
+			 */
+			isEnabledByFeature(world: org.bukkit.World): boolean;
+
+			/**
+			 * Checks whether this material is compostable (can be inserted into a
+			 * composter).
+			 */
+			isCompostable(): boolean;
+
+			/**
+			 * Get the chance that this material will successfully compost. The returned
+			 * value is between 0 and 1 (inclusive).
+			 * Materials with a compost chance of 1 will always raise the composter's
+			 * level, while materials with a compost chance of 0 will never raise it.
+			 * Plugins should check that isCompostable() returns true before
+			 * calling this method.
+			 */
+			getCompostChance(): number;
+
+			/**
+			 * Tries to convert this Material to an item type
+			 */
+			asItemType(): org.bukkit.inventory.ItemType;
+
+			/**
+			 * Tries to convert this Material to a block type
+			 */
+			asBlockType(): org.bukkit.block.BlockType;
 
 		}
 		namespace Material {
@@ -34393,259 +34920,9 @@ declare global {
 			function matchMaterial(name: string, legacyName: boolean): org.bukkit.Material;
 
 		}
-		interface Material {
-			readonly data: globalThis.java.lang.Class;
-
-			/**
-			 * Do not use for any reason.
-			 */
-			getId(): number;
-
-			/**
-			 * Do not use for any reason.
-			 */
-			isLegacy(): boolean;
-
-			/**
-			 * Description copied from interface: Keyed
-			 */
-			getKey(): org.bukkit.NamespacedKey;
-
-			/**
-			 * Gets the maximum amount of this material that can be held in a stack.
-			 * 
-			 * Note that this is the default maximum size for this Material.
-			 * ItemStacks are able to change their maximum stack size per
-			 * stack with ItemMeta.setMaxStackSize(Integer). If an ItemStack instance
-			 * is available, ItemStack.getMaxStackSize() may be preferred.
-			 */
-			getMaxStackSize(): number;
-
-			/**
-			 * Gets the maximum durability of this material
-			 */
-			getMaxDurability(): number;
-
-			/**
-			 * Creates a new BlockData instance for this Material, with all
-			 * properties initialized to unspecified defaults.
-			 */
-			createBlockData(): org.bukkit.block.data.BlockData;
-
-			/**
-			 * Creates a new BlockData instance for this Material, with
-			 * all properties initialized to unspecified defaults.
-			 */
-			createBlockData(consumer: (value: org.bukkit.block.data.BlockData) => void): org.bukkit.block.data.BlockData;
-
-			/**
-			 * Creates a new BlockData instance for this Material, with all
-			 * properties initialized to unspecified defaults, except for those provided
-			 * in data.
-			 */
-			createBlockData(data: string): org.bukkit.block.data.BlockData;
-
-			/**
-			 * Gets the MaterialData class associated with this Material
-			 */
-			getData(): globalThis.java.lang.Class<org.bukkit.material.MaterialData>;
-
-			/**
-			 * Constructs a new MaterialData relevant for this Material, with the
-			 * given initial data
-			 */
-			getNewData(raw: any /* byte */): org.bukkit.material.MaterialData;
-
-			/**
-			 * Checks if this Material is a placable block
-			 */
-			isBlock(): boolean;
-
-			/**
-			 * Checks if this Material is edible.
-			 */
-			isEdible(): boolean;
-
-			isRecord(): boolean;
-
-			/**
-			 * Check if the material is a block and solid (can be built upon)
-			 */
-			isSolid(): boolean;
-
-			/**
-			 * Check if the material is an air block.
-			 */
-			isAir(): boolean;
-
-			/**
-			 * Check if the material is a block and does not block any light
-			 */
-			isTransparent(): boolean;
-
-			/**
-			 * Check if the material is a block and can catch fire
-			 */
-			isFlammable(): boolean;
-
-			/**
-			 * Check if the material is a block and can burn away
-			 */
-			isBurnable(): boolean;
-
-			/**
-			 * Checks if this Material can be used as fuel in a Furnace
-			 */
-			isFuel(): boolean;
-
-			/**
-			 * Check if the material is a block and occludes light in the lighting engine.
-			 * 
-			 * Generally speaking, most full blocks will occlude light. Non-full blocks are
-			 * not occluding (e.g. anvils, chests, tall grass, stairs, etc.), nor are specific
-			 * full blocks such as barriers or spawners which block light despite their texture.
-			 * 
-			 * An occluding block will have the following effects:
-			 * 
-			 * Chests cannot be opened if an occluding block is above it.
-			 * Mobs cannot spawn inside of occluding blocks.
-			 * Only occluding blocks can be "powered" (Block.isBlockPowered()).
-			 * 
-			 * This list may be inconclusive. For a full list of the side effects of an occluding
-			 * block, see the Minecraft Wiki.
-			 */
-			isOccluding(): boolean;
-
-			hasGravity(): boolean;
-
-			/**
-			 * Checks if this Material is an obtainable item.
-			 */
-			isItem(): boolean;
-
-			/**
-			 * Checks if this Material can be interacted with.
-			 * Interactable materials include those with functionality when they are
-			 * interacted with by a player such as chests, furnaces, etc.
-			 * Some blocks such as piston heads and stairs are considered interactable
-			 * though may not perform any additional functionality.
-			 * Note that the interactability of some materials may be dependant on their
-			 * state as well. This method will return true if there is at least one
-			 * state in which additional interact handling is performed for the
-			 * material.
-			 */
-			isInteractable(): boolean;
-
-			/**
-			 * Obtains the block's hardness level (also known as "strength").
-			 * 
-			 * This number is used to calculate the time required to break each block.
-			 * 
-			 * Only available when isBlock() is true.
-			 */
-			getHardness(): number;
-
-			/**
-			 * Obtains the blast resistance value (also known as block "durability").
-			 * 
-			 * This value is used in explosions to calculate whether a block should be
-			 * broken or not.
-			 * 
-			 * Only available when isBlock() is true.
-			 */
-			getBlastResistance(): number;
-
-			/**
-			 * Returns a value that represents how 'slippery' the block is.
-			 * Blocks with higher slipperiness, like ICE can be slid on
-			 * further by the player and other entities.
-			 * Most blocks have a default slipperiness of 0.6f.
-			 * Only available when isBlock() is true.
-			 */
-			getSlipperiness(): number;
-
-			/**
-			 * Determines the remaining item in a crafting grid after crafting with this
-			 * ingredient.
-			 * 
-			 * Only available when isItem() is true.
-			 */
-			getCraftingRemainingItem(): org.bukkit.Material;
-
-			/**
-			 * Get the best suitable slot for this Material.
-			 * For most items this will be EquipmentSlot.HAND.
-			 */
-			getEquipmentSlot(): org.bukkit.inventory.EquipmentSlot;
-
-			/**
-			 * Return an immutable copy of all default Attributes and their
-			 * AttributeModifiers for a given EquipmentSlot.
-			 * Default attributes are those that are always preset on some items, such
-			 * as the attack damage on weapons or the armor value on armor.
-			 * Only available when isItem() is true.
-			 */
-			getDefaultAttributeModifiers(slot: org.bukkit.inventory.EquipmentSlot): any /* com.google.common.collect.Multimap */;
-
-			/**
-			 * Get the CreativeCategory to which this material belongs.
-			 */
-			getCreativeCategory(): org.bukkit.inventory.CreativeCategory;
-
-			/**
-			 * Get the translation key of the item or block associated with this
-			 * material.
-			 * If this material has both an item and a block form, the item form is
-			 * used.
-			 */
-			getTranslationKey(): string;
-
-			/**
-			 * Get the translation key of the block associated with this material, or
-			 * null if this material does not have an associated block.
-			 */
-			getBlockTranslationKey(): string;
-
-			/**
-			 * Get the translation key of the item associated with this material, or
-			 * null if this material does not have an associated item.
-			 */
-			getItemTranslationKey(): string;
-
-			/**
-			 * Gets if the Material is enabled by the features in a world.
-			 */
-			isEnabledByFeature(world: org.bukkit.World): boolean;
-
-			/**
-			 * Checks whether this material is compostable (can be inserted into a
-			 * composter).
-			 */
-			isCompostable(): boolean;
-
-			/**
-			 * Get the chance that this material will successfully compost. The returned
-			 * value is between 0 and 1 (inclusive).
-			 * Materials with a compost chance of 1 will always raise the composter's
-			 * level, while materials with a compost chance of 0 will never raise it.
-			 * Plugins should check that isCompostable() returns true before
-			 * calling this method.
-			 */
-			getCompostChance(): number;
-
-			/**
-			 * Tries to convert this Material to an item type
-			 */
-			asItemType(): org.bukkit.inventory.ItemType;
-
-			/**
-			 * Tries to convert this Material to a block type
-			 */
-			asBlockType(): org.bukkit.block.BlockType;
-
-		}
 		interface MinecraftExperimental {}
 		namespace MinecraftExperimental {
+			interface Requires {}
 			namespace Requires {
 				/**
 				 * Returns the enum constant of this class with the specified name.
@@ -34656,7 +34933,12 @@ declare global {
 				function valueOf(name: string): org.bukkit.MinecraftExperimental.Requires;
 
 			}
-			interface Requires {}
+		}
+		interface MusicInstrument {
+		}
+		class MusicInstrument {
+			constructor();
+
 		}
 		namespace MusicInstrument {
 			const PONDER_GOAT_HORN: org.bukkit.MusicInstrument;
@@ -34686,10 +34968,6 @@ declare global {
 			function values(): globalThis.java.util.Collection<org.bukkit.MusicInstrument>;
 
 		}
-		interface MusicInstrument {
-			new(): MusicInstrument;
-
-		}
 		interface Nameable {
 			/**
 			 * Gets the custom name on a mob or block. If there is no name this method
@@ -34710,6 +34988,36 @@ declare global {
 			 * name.
 			 */
 			setCustomName(name: string): void;
+
+		}
+		interface NamespacedKey {
+			getNamespace(): string;
+
+			getKey(): string;
+
+			hashCode(): number;
+
+			equals(obj: any): boolean;
+
+			toString(): string;
+
+		}
+		class NamespacedKey {
+			/**
+			 * Create a key in a specific namespace.
+			 */
+			constructor(namespace: string, key: string);
+
+			/**
+			 * Create a key in the plugin's namespace.
+			 * 
+			 * Namespaces may only contain lowercase alphanumeric characters, periods,
+			 * underscores, and hyphens.
+			 * 
+			 * Keys may only contain lowercase alphanumeric characters, periods,
+			 * underscores, hyphens, and forward slashes.
+			 */
+			constructor(plugin: org.bukkit.plugin.Plugin, key: string);
 
 		}
 		namespace NamespacedKey {
@@ -34760,34 +35068,7 @@ declare global {
 			function fromString(key: string): org.bukkit.NamespacedKey;
 
 		}
-		interface NamespacedKey {
-			/**
-			 * Create a key in a specific namespace.
-			 */
-			new(namespace: string, key: string): NamespacedKey;
-
-			/**
-			 * Create a key in the plugin's namespace.
-			 * 
-			 * Namespaces may only contain lowercase alphanumeric characters, periods,
-			 * underscores, and hyphens.
-			 * 
-			 * Keys may only contain lowercase alphanumeric characters, periods,
-			 * underscores, hyphens, and forward slashes.
-			 */
-			new(plugin: org.bukkit.plugin.Plugin, key: string): NamespacedKey;
-
-			getNamespace(): string;
-
-			getKey(): string;
-
-			hashCode(): number;
-
-			equals(obj: any): boolean;
-
-			toString(): string;
-
-		}
+		interface NetherWartsState {}
 		namespace NetherWartsState {
 			/**
 			 * State when first seeded
@@ -34818,35 +35099,7 @@ declare global {
 			function valueOf(name: string): org.bukkit.NetherWartsState;
 
 		}
-		interface NetherWartsState {}
-		namespace Note {
-			/**
-			 * Creates a new note for a flat tone, such as A-flat.
-			 */
-			function flat(octave: number, tone: org.bukkit.Note.Tone): org.bukkit.Note;
-
-			/**
-			 * Creates a new note for a sharp tone, such as A-sharp.
-			 */
-			function sharp(octave: number, tone: org.bukkit.Note.Tone): org.bukkit.Note;
-
-			/**
-			 * Creates a new note for a natural tone, such as A-natural.
-			 */
-			function natural(octave: number, tone: org.bukkit.Note.Tone): org.bukkit.Note;
-
-		}
 		interface Note {
-			/**
-			 * Creates a new note.
-			 */
-			new(note: number): Note;
-
-			/**
-			 * Creates a new note.
-			 */
-			new(octave: number, tone: org.bukkit.Note.Tone, sharped: boolean): Note;
-
 			sharped(): org.bukkit.Note;
 
 			flattened(): org.bukkit.Note;
@@ -34884,7 +35137,60 @@ declare global {
 			toString(): string;
 
 		}
+		class Note {
+			/**
+			 * Creates a new note.
+			 */
+			constructor(note: number);
+
+			/**
+			 * Creates a new note.
+			 */
+			constructor(octave: number, tone: org.bukkit.Note.Tone, sharped: boolean);
+
+		}
 		namespace Note {
+			/**
+			 * Creates a new note for a flat tone, such as A-flat.
+			 */
+			function flat(octave: number, tone: org.bukkit.Note.Tone): org.bukkit.Note;
+
+			/**
+			 * Creates a new note for a sharp tone, such as A-sharp.
+			 */
+			function sharp(octave: number, tone: org.bukkit.Note.Tone): org.bukkit.Note;
+
+			/**
+			 * Creates a new note for a natural tone, such as A-natural.
+			 */
+			function natural(octave: number, tone: org.bukkit.Note.Tone): org.bukkit.Note;
+
+		}
+		namespace Note {
+			interface Tone {
+				/**
+				 * Returns the not sharped id of this tone.
+				 */
+				getId(): any /* byte */;
+
+				/**
+				 * Returns the id of this tone. These method allows to return the
+				 * sharped id of the tone. If the tone couldn't be sharped it always
+				 * return the not sharped id of this tone.
+				 */
+				getId(sharped: boolean): any /* byte */;
+
+				/**
+				 * Returns if this tone could be sharped.
+				 */
+				isSharpable(): boolean;
+
+				/**
+				 * Returns if this tone id is the sharped id of the tone.
+				 */
+				isSharped(id: any /* byte */): boolean;
+
+			}
 			namespace Tone {
 				const G: org.bukkit.Note.Tone;
 
@@ -34919,32 +35225,8 @@ declare global {
 				function getById(id: any /* byte */): org.bukkit.Note.Tone;
 
 			}
-			interface Tone {
-				/**
-				 * Returns the not sharped id of this tone.
-				 */
-				getId(): any /* byte */;
-
-				/**
-				 * Returns the id of this tone. These method allows to return the
-				 * sharped id of the tone. If the tone couldn't be sharped it always
-				 * return the not sharped id of this tone.
-				 */
-				getId(sharped: boolean): any /* byte */;
-
-				/**
-				 * Returns if this tone could be sharped.
-				 */
-				isSharpable(): boolean;
-
-				/**
-				 * Returns if this tone id is the sharped id of the tone.
-				 */
-				isSharped(id: any /* byte */): boolean;
-
-			}
 		}
-		type OfflinePlayer = org.bukkit.permissions.ServerOperator & org.bukkit.entity.AnimalTamer & org.bukkit.configuration.serialization.ConfigurationSerializable & {
+		interface OfflinePlayer extends Modify<org.bukkit.permissions.ServerOperator & org.bukkit.entity.AnimalTamer & org.bukkit.configuration.serialization.ConfigurationSerializable, {
 			/**
 			 * Checks if this player is currently online
 			 */
@@ -35167,6 +35449,18 @@ declare global {
 			 * Gets the player's current location.
 			 */
 			getLocation(): org.bukkit.Location;
+
+		}> {}
+		interface Particle {
+			/**
+			 * Returns the required data type for the particle
+			 */
+			getDataType(): globalThis.java.lang.Class;
+
+			/**
+			 * Description copied from interface: Keyed
+			 */
+			getKey(): org.bukkit.NamespacedKey;
 
 		}
 		namespace Particle {
@@ -35430,22 +35724,8 @@ declare global {
 			function valueOf(name: string): org.bukkit.Particle;
 
 		}
-		interface Particle {
-			/**
-			 * Returns the required data type for the particle
-			 */
-			getDataType(): globalThis.java.lang.Class;
-
-			/**
-			 * Description copied from interface: Keyed
-			 */
-			getKey(): org.bukkit.NamespacedKey;
-
-		}
 		namespace Particle {
 			interface DustOptions {
-				new(color: org.bukkit.Color, size: number): DustOptions;
-
 				/**
 				 * The color of the particles to be displayed.
 				 */
@@ -35457,18 +35737,25 @@ declare global {
 				getSize(): number;
 
 			}
+			class DustOptions {
+				constructor(color: org.bukkit.Color, size: number);
+
+			}
 		}
 		namespace Particle {
-			type DustTransition = org.bukkit.Particle.DustOptions & {
-				new(fromColor: org.bukkit.Color, toColor: org.bukkit.Color, size: number): DustTransition;
-
+			interface DustTransition extends Modify<org.bukkit.Particle.DustOptions, {
 				/**
 				 * The final of the particles to be displayed.
 				 */
 				getToColor(): org.bukkit.Color;
 
+			}> {}
+			class DustTransition {
+				constructor(fromColor: org.bukkit.Color, toColor: org.bukkit.Color, size: number);
+
 			}
 		}
+		interface PortalType {}
 		namespace PortalType {
 			/**
 			 * This is a Nether portal, made of obsidian.
@@ -35494,7 +35781,6 @@ declare global {
 			function valueOf(name: string): org.bukkit.PortalType;
 
 		}
-		interface PortalType {}
 		interface Raid {
 			/**
 			 * Get whether this raid started.
@@ -35567,6 +35853,7 @@ declare global {
 
 		}
 		namespace Raid {
+			interface RaidStatus {}
 			namespace RaidStatus {
 				/**
 				 * The raid is in progress.
@@ -35597,7 +35884,6 @@ declare global {
 				function valueOf(name: string): org.bukkit.Raid.RaidStatus;
 
 			}
-			interface RaidStatus {}
 		}
 		interface RegionAccessor {
 			/**
@@ -35805,6 +36091,26 @@ declare global {
 			addEntity<T = any>(entity: T): T;
 
 		}
+		interface Registry<T = any> {
+			/**
+			 * Get the object by its key.
+			 */
+			get(key: org.bukkit.NamespacedKey): T;
+
+			/**
+			 * Returns a new stream, which contains all registry items, which are registered to the registry.
+			 */
+			stream(): globalThis.java.util.stream.Stream<T>;
+
+			/**
+			 * Attempts to match the registered object with the given key.
+			 * 
+			 * This will attempt to find a reasonable match based on the provided input
+			 * and may do so through unspecified means.
+			 */
+			match(input: string): T;
+
+		}
 		namespace Registry {
 			/**
 			 * Server advancements.
@@ -35972,26 +36278,6 @@ declare global {
 			const GAME_EVENT: org.bukkit.Registry<org.bukkit.GameEvent>;
 
 		}
-		interface Registry<T = any> {
-			/**
-			 * Get the object by its key.
-			 */
-			get(key: org.bukkit.NamespacedKey): T;
-
-			/**
-			 * Returns a new stream, which contains all registry items, which are registered to the registry.
-			 */
-			stream(): globalThis.java.util.stream.Stream<T>;
-
-			/**
-			 * Attempts to match the registered object with the given key.
-			 * 
-			 * This will attempt to find a reasonable match based on the provided input
-			 * and may do so through unspecified means.
-			 */
-			match(input: string): T;
-
-		}
 		namespace Registry {
 			interface SimpleRegistry<T = any> {
 				/**
@@ -36009,6 +36295,18 @@ declare global {
 				getType(): globalThis.java.lang.Class<T>;
 
 			}
+		}
+		interface Rotation {
+			/**
+			 * Rotate clockwise by 90 degrees.
+			 */
+			rotateClockwise(): org.bukkit.Rotation;
+
+			/**
+			 * Rotate counter-clockwise by 90 degrees.
+			 */
+			rotateCounterClockwise(): org.bukkit.Rotation;
+
 		}
 		namespace Rotation {
 			/**
@@ -36060,16 +36358,11 @@ declare global {
 			function valueOf(name: string): org.bukkit.Rotation;
 
 		}
-		interface Rotation {
+		interface SandstoneType {
 			/**
-			 * Rotate clockwise by 90 degrees.
+			 * Gets the associated data value representing this type of sandstone
 			 */
-			rotateClockwise(): org.bukkit.Rotation;
-
-			/**
-			 * Rotate counter-clockwise by 90 degrees.
-			 */
-			rotateCounterClockwise(): org.bukkit.Rotation;
+			getData(): any /* byte */;
 
 		}
 		namespace SandstoneType {
@@ -36093,32 +36386,7 @@ declare global {
 			function getByData(data: any /* byte */): org.bukkit.SandstoneType;
 
 		}
-		interface SandstoneType {
-			/**
-			 * Gets the associated data value representing this type of sandstone
-			 */
-			getData(): any /* byte */;
-
-		}
-		namespace Server {
-			/**
-			 * Used for all administrative messages, such as an operator using a
-			 * command.
-			 * 
-			 * For use in broadcast(java.lang.String, java.lang.String).
-			 */
-			const BROADCAST_CHANNEL_ADMINISTRATIVE: string;
-
-			/**
-			 * Used for all announcement messages, such as informing users that a
-			 * player has joined.
-			 * 
-			 * For use in broadcast(java.lang.String, java.lang.String).
-			 */
-			const BROADCAST_CHANNEL_USERS: string;
-
-		}
-		type Server = org.bukkit.plugin.messaging.PluginMessageRecipient & {
+		interface Server extends Modify<org.bukkit.plugin.messaging.PluginMessageRecipient, {
 			/**
 			 * Gets the name of this server implementation.
 			 */
@@ -37229,6 +37497,24 @@ declare global {
 
 			getUnsafe(): org.bukkit.UnsafeValues;
 
+		}> {}
+		namespace Server {
+			/**
+			 * Used for all administrative messages, such as an operator using a
+			 * command.
+			 * 
+			 * For use in broadcast(java.lang.String, java.lang.String).
+			 */
+			const BROADCAST_CHANNEL_ADMINISTRATIVE: string;
+
+			/**
+			 * Used for all announcement messages, such as informing users that a
+			 * player has joined.
+			 * 
+			 * For use in broadcast(java.lang.String, java.lang.String).
+			 */
+			const BROADCAST_CHANNEL_USERS: string;
+
 		}
 		interface ServerLinks {
 			/**
@@ -37288,6 +37574,7 @@ declare global {
 			}
 		}
 		namespace ServerLinks {
+			interface Type {}
 			namespace Type {
 				/**
 				 * Bug report links which may appear on disconnect/crash screens.
@@ -37321,7 +37608,6 @@ declare global {
 				function valueOf(name: string): org.bukkit.ServerLinks.Type;
 
 			}
-			interface Type {}
 		}
 		interface ServerTickManager {
 			/**
@@ -37402,6 +37688,7 @@ declare global {
 			getFrozenTicksToRun(): number;
 
 		}
+		interface SkullType {}
 		namespace SkullType {
 			const SKELETON: org.bukkit.SkullType;
 
@@ -37426,7 +37713,13 @@ declare global {
 			function valueOf(name: string): org.bukkit.SkullType;
 
 		}
-		interface SkullType {}
+		interface Sound {
+			/**
+			 * Description copied from interface: Keyed
+			 */
+			getKey(): org.bukkit.NamespacedKey;
+
+		}
 		namespace Sound {
 			const AMBIENT_BASALT_DELTAS_ADDITIONS: org.bukkit.Sound;
 
@@ -40659,13 +40952,7 @@ declare global {
 			function valueOf(name: string): org.bukkit.Sound;
 
 		}
-		interface Sound {
-			/**
-			 * Description copied from interface: Keyed
-			 */
-			getKey(): org.bukkit.NamespacedKey;
-
-		}
+		interface SoundCategory {}
 		namespace SoundCategory {
 			const MASTER: org.bukkit.SoundCategory;
 
@@ -40696,7 +40983,6 @@ declare global {
 			function valueOf(name: string): org.bukkit.SoundCategory;
 
 		}
-		interface SoundCategory {}
 		interface SoundGroup {
 			/**
 			 * Get the volume these sounds are played at.
@@ -40736,6 +41022,37 @@ declare global {
 			 * Gets the corresponding fall sound for this group.
 			 */
 			getFallSound(): org.bukkit.Sound;
+
+		}
+		interface Statistic {
+			/**
+			 * Gets the type of this statistic.
+			 */
+			getType(): org.bukkit.Statistic.Type;
+
+			/**
+			 * Checks if this is a substatistic.
+			 * 
+			 * A substatistic exists en masse for each block, item, or entitytype, depending on
+			 * getType().
+			 * 
+			 * This is a redundant method and equivalent to checking
+			 * getType() != Type.UNTYPED
+			 */
+			isSubstatistic(): boolean;
+
+			/**
+			 * Checks if this is a substatistic dealing with blocks.
+			 * 
+			 * This is a redundant method and equivalent to checking
+			 * getType() == Type.BLOCK
+			 */
+			isBlock(): boolean;
+
+			/**
+			 * Description copied from interface: Keyed
+			 */
+			getKey(): org.bukkit.NamespacedKey;
 
 		}
 		namespace Statistic {
@@ -40917,38 +41234,8 @@ declare global {
 			function valueOf(name: string): org.bukkit.Statistic;
 
 		}
-		interface Statistic {
-			/**
-			 * Gets the type of this statistic.
-			 */
-			getType(): org.bukkit.Statistic.Type;
-
-			/**
-			 * Checks if this is a substatistic.
-			 * 
-			 * A substatistic exists en masse for each block, item, or entitytype, depending on
-			 * getType().
-			 * 
-			 * This is a redundant method and equivalent to checking
-			 * getType() != Type.UNTYPED
-			 */
-			isSubstatistic(): boolean;
-
-			/**
-			 * Checks if this is a substatistic dealing with blocks.
-			 * 
-			 * This is a redundant method and equivalent to checking
-			 * getType() == Type.BLOCK
-			 */
-			isBlock(): boolean;
-
-			/**
-			 * Description copied from interface: Keyed
-			 */
-			getKey(): org.bukkit.NamespacedKey;
-
-		}
 		namespace Statistic {
+			interface Type {}
 			namespace Type {
 				/**
 				 * Statistics of this type do not require a qualifier.
@@ -40979,7 +41266,31 @@ declare global {
 				function valueOf(name: string): org.bukkit.Statistic.Type;
 
 			}
-			interface Type {}
+		}
+		interface StructureType {
+			/**
+			 * Get the name of this structure. This is case-sensitive when used in
+			 * commands.
+			 */
+			getName(): string;
+
+			/**
+			 * Get the MapCursor.Type that this structure can use on maps. If
+			 * this is null, this structure will not appear on explorer maps.
+			 */
+			getMapIcon(): org.bukkit.map.MapCursor.Type;
+
+			equals(other: any): boolean;
+
+			hashCode(): number;
+
+			toString(): string;
+
+			/**
+			 * Description copied from interface: Keyed
+			 */
+			getKey(): org.bukkit.NamespacedKey;
+
 		}
 		namespace StructureType {
 			/**
@@ -41122,31 +41433,18 @@ declare global {
 			function getStructureTypes(): globalThis.java.util.Map<string, org.bukkit.StructureType>;
 
 		}
-		interface StructureType {
+		interface Tag<T = any> extends Modify<org.bukkit.Keyed, {
 			/**
-			 * Get the name of this structure. This is case-sensitive when used in
-			 * commands.
+			 * Returns whether or not this tag has an entry for the specified item.
 			 */
-			getName(): string;
-
-			/**
-			 * Get the MapCursor.Type that this structure can use on maps. If
-			 * this is null, this structure will not appear on explorer maps.
-			 */
-			getMapIcon(): org.bukkit.map.MapCursor.Type;
-
-			equals(other: any): boolean;
-
-			hashCode(): number;
-
-			toString(): string;
+			isTagged(item: T): boolean;
 
 			/**
-			 * Description copied from interface: Keyed
+			 * Gets an immutable set of all tagged items.
 			 */
-			getKey(): org.bukkit.NamespacedKey;
+			getValues(): globalThis.java.util.Set<T>;
 
-		}
+		}> {}
 		namespace Tag {
 			/**
 			 * Key for the built in block registry.
@@ -42736,23 +43034,18 @@ declare global {
 			const ENTITY_TYPES_REDIRECTABLE_PROJECTILE: org.bukkit.Tag<org.bukkit.entity.EntityType>;
 
 		}
-		type Tag<T = any> = org.bukkit.Keyed & {
-			/**
-			 * Returns whether or not this tag has an entry for the specified item.
-			 */
-			isTagged(item: T): boolean;
-
-			/**
-			 * Gets an immutable set of all tagged items.
-			 */
-			getValues(): globalThis.java.util.Set<T>;
-
-		}
 		interface Translatable {
 			/**
 			 * Get the translation key, suitable for use in a translation component.
 			 */
 			getTranslationKey(): string;
+
+		}
+		interface TreeSpecies {
+			/**
+			 * Gets the associated data value representing this species
+			 */
+			getData(): any /* byte */;
 
 		}
 		namespace TreeSpecies {
@@ -42800,13 +43093,7 @@ declare global {
 			function getByData(data: any /* byte */): org.bukkit.TreeSpecies;
 
 		}
-		interface TreeSpecies {
-			/**
-			 * Gets the associated data value representing this species
-			 */
-			getData(): any /* byte */;
-
-		}
+		interface TreeType {}
 		namespace TreeType {
 			/**
 			 * Regular tree, no branches
@@ -42937,7 +43224,6 @@ declare global {
 			function valueOf(name: string): org.bukkit.TreeType;
 
 		}
-		interface TreeType {}
 		interface UndefinedNullability {}
 		interface UnsafeValues {
 			toLegacy(material: org.bukkit.Material): org.bukkit.Material;
@@ -43017,8 +43303,6 @@ declare global {
 		}
 		interface Utility {}
 		interface Vibration {
-			new(origin: org.bukkit.Location, destination: org.bukkit.Vibration.Destination, arrivalTime: number): Vibration;
-
 			/**
 			 * Get the origin of the vibration.
 			 */
@@ -43035,31 +43319,47 @@ declare global {
 			getArrivalTime(): number;
 
 		}
+		class Vibration {
+			constructor(origin: org.bukkit.Location, destination: org.bukkit.Vibration.Destination, arrivalTime: number);
+
+		}
 		namespace Vibration {
 			interface Destination {}
 		}
 		namespace Vibration.Destination {
 			interface BlockDestination {
-				new(block: org.bukkit.Location): BlockDestination;
-
-				new(block: org.bukkit.block.Block): BlockDestination;
-
 				getLocation(): org.bukkit.Location;
 
 				getBlock(): org.bukkit.block.Block;
 
 			}
+			class BlockDestination {
+				constructor(block: org.bukkit.Location);
+
+				constructor(block: org.bukkit.block.Block);
+
+			}
 		}
 		namespace Vibration.Destination {
 			interface EntityDestination {
-				new(entity: org.bukkit.entity.Entity): EntityDestination;
-
 				getEntity(): org.bukkit.entity.Entity;
+
+			}
+			class EntityDestination {
+				constructor(entity: org.bukkit.entity.Entity);
 
 			}
 		}
 		interface Warning {}
 		namespace Warning {
+			interface WarningState {
+				/**
+				 * This method checks the provided warning should be printed for this
+				 * state
+				 */
+				printFor(warning: org.bukkit.Warning): boolean;
+
+			}
 			namespace WarningState {
 				/**
 				 * Indicates all warnings should be printed for deprecated items.
@@ -43091,15 +43391,8 @@ declare global {
 				function value(value: string): org.bukkit.Warning.WarningState;
 
 			}
-			interface WarningState {
-				/**
-				 * This method checks the provided warning should be printed for this
-				 * state
-				 */
-				printFor(warning: org.bukkit.Warning): boolean;
-
-			}
 		}
+		interface WeatherType {}
 		namespace WeatherType {
 			/**
 			 * Raining or snowing depending on biome.
@@ -43120,8 +43413,7 @@ declare global {
 			function valueOf(name: string): org.bukkit.WeatherType;
 
 		}
-		interface WeatherType {}
-		type World = org.bukkit.RegionAccessor & org.bukkit.generator.WorldInfo & org.bukkit.plugin.messaging.PluginMessageRecipient & org.bukkit.metadata.Metadatable & org.bukkit.persistence.PersistentDataHolder & org.bukkit.Keyed & {
+		interface World extends Modify<org.bukkit.RegionAccessor & org.bukkit.generator.WorldInfo & org.bukkit.plugin.messaging.PluginMessageRecipient & org.bukkit.metadata.Metadatable & org.bukkit.persistence.PersistentDataHolder & org.bukkit.Keyed, {
 			/**
 			 * Gets the Block at the given coordinates
 			 */
@@ -44876,8 +45168,15 @@ declare global {
 			 */
 			getStructures(x: number, z: number, structure: org.bukkit.generator.structure.Structure): globalThis.java.util.Collection<org.bukkit.generator.structure.GeneratedStructure>;
 
-		}
+		}> {}
 		namespace World {
+			interface Environment {
+				/**
+				 * Gets the dimension ID of this environment
+				 */
+				getId(): number;
+
+			}
 			namespace Environment {
 				/**
 				 * Represents the "normal"/"surface world" map
@@ -44911,13 +45210,6 @@ declare global {
 				 * Get an environment by ID
 				 */
 				function getEnvironment(id: number): org.bukkit.World.Environment;
-
-			}
-			interface Environment {
-				/**
-				 * Gets the dimension ID of this environment
-				 */
-				getId(): number;
 
 			}
 		}
@@ -45024,45 +45316,7 @@ declare global {
 			getMaxCenterCoordinate(): number;
 
 		}
-		namespace WorldCreator {
-			/**
-			 * Creates a new WorldCreator for the given world name
-			 */
-			function name(name: string): org.bukkit.WorldCreator;
-
-			/**
-			 * Attempts to get the ChunkGenerator with the given name.
-			 * 
-			 * If the generator is not found, null will be returned and a message will
-			 * be printed to the specified CommandSender explaining why.
-			 * 
-			 * The name must be in the "plugin:id" notation, or optionally just
-			 * "plugin", where "plugin" is the safe-name of a plugin and "id" is an
-			 * optional unique identifier for the generator you wish to request from
-			 * the plugin.
-			 */
-			function getGeneratorForName(world: string, name: string, output: org.bukkit.command.CommandSender): org.bukkit.generator.ChunkGenerator;
-
-			/**
-			 * Attempts to get the BiomeProvider with the given name.
-			 * 
-			 * If the biome provider is not found, null will be returned and a message
-			 * will be printed to the specified CommandSender explaining why.
-			 * 
-			 * The name must be in the "plugin:id" notation, or optionally just
-			 * "plugin", where "plugin" is the safe-name of a plugin and "id" is an
-			 * optional unique identifier for the biome provider you wish to request
-			 * from the plugin.
-			 */
-			function getBiomeProviderForName(world: string, name: string, output: org.bukkit.command.CommandSender): org.bukkit.generator.BiomeProvider;
-
-		}
 		interface WorldCreator {
-			/**
-			 * Creates an empty WorldCreationOptions for the given world name
-			 */
-			new(name: string): WorldCreator;
-
 			/**
 			 * Copies the options from the specified world
 			 */
@@ -45256,6 +45510,53 @@ declare global {
 			createWorld(): org.bukkit.World;
 
 		}
+		class WorldCreator {
+			/**
+			 * Creates an empty WorldCreationOptions for the given world name
+			 */
+			constructor(name: string);
+
+		}
+		namespace WorldCreator {
+			/**
+			 * Creates a new WorldCreator for the given world name
+			 */
+			function name(name: string): org.bukkit.WorldCreator;
+
+			/**
+			 * Attempts to get the ChunkGenerator with the given name.
+			 * 
+			 * If the generator is not found, null will be returned and a message will
+			 * be printed to the specified CommandSender explaining why.
+			 * 
+			 * The name must be in the "plugin:id" notation, or optionally just
+			 * "plugin", where "plugin" is the safe-name of a plugin and "id" is an
+			 * optional unique identifier for the generator you wish to request from
+			 * the plugin.
+			 */
+			function getGeneratorForName(world: string, name: string, output: org.bukkit.command.CommandSender): org.bukkit.generator.ChunkGenerator;
+
+			/**
+			 * Attempts to get the BiomeProvider with the given name.
+			 * 
+			 * If the biome provider is not found, null will be returned and a message
+			 * will be printed to the specified CommandSender explaining why.
+			 * 
+			 * The name must be in the "plugin:id" notation, or optionally just
+			 * "plugin", where "plugin" is the safe-name of a plugin and "id" is an
+			 * optional unique identifier for the biome provider you wish to request
+			 * from the plugin.
+			 */
+			function getBiomeProviderForName(world: string, name: string, output: org.bukkit.command.CommandSender): org.bukkit.generator.BiomeProvider;
+
+		}
+		interface WorldType {
+			/**
+			 * Gets the name of this WorldType
+			 */
+			getName(): string;
+
+		}
 		namespace WorldType {
 			const NORMAL: org.bukkit.WorldType;
 
@@ -45279,22 +45580,9 @@ declare global {
 			function getByName(name: string): org.bukkit.WorldType;
 
 		}
-		interface WorldType {
-			/**
-			 * Gets the name of this WorldType
-			 */
-			getName(): string;
-
-		}
 	}
 	namespace org.bukkit.event.player {
-		namespace AsyncPlayerChatEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type AsyncPlayerChatEvent = org.bukkit.event.player.PlayerEvent & {
-			new(async: boolean, who: org.bukkit.entity.Player, message: string, players: globalThis.java.util.Set<org.bukkit.entity.Player>): AsyncPlayerChatEvent;
-
+		interface AsyncPlayerChatEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets the message that the player is attempting to send. This message
 			 * will be used with getFormat().
@@ -45347,28 +45635,28 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class AsyncPlayerChatEvent {
+			constructor(async: boolean, who: org.bukkit.entity.Player, message: string, players: globalThis.java.util.Set<org.bukkit.entity.Player>);
+
+		}
+		namespace AsyncPlayerChatEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		interface AsyncPlayerChatPreviewEvent extends Modify<org.bukkit.event.player.AsyncPlayerChatEvent, {
+			getHandlers(): org.bukkit.event.HandlerList;
+
+		}> {}
+		class AsyncPlayerChatPreviewEvent {
+			constructor(async: boolean, who: org.bukkit.entity.Player, message: string, players: globalThis.java.util.Set<org.bukkit.entity.Player>);
+
 		}
 		namespace AsyncPlayerChatPreviewEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type AsyncPlayerChatPreviewEvent = org.bukkit.event.player.AsyncPlayerChatEvent & {
-			new(async: boolean, who: org.bukkit.entity.Player, message: string, players: globalThis.java.util.Set<org.bukkit.entity.Player>): AsyncPlayerChatPreviewEvent;
-
-			getHandlers(): org.bukkit.event.HandlerList;
-
-		}
-		namespace AsyncPlayerPreLoginEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type AsyncPlayerPreLoginEvent = org.bukkit.event.Event & {
-			new(name: string, ipAddress: any /* java.net.InetAddress */): AsyncPlayerPreLoginEvent;
-
-			new(name: string, ipAddress: any /* java.net.InetAddress */, uniqueId: globalThis.java.util.UUID): AsyncPlayerPreLoginEvent;
-
-			new(name: string, ipAddress: any /* java.net.InetAddress */, uniqueId: globalThis.java.util.UUID, transferred: boolean): AsyncPlayerPreLoginEvent;
-
+		interface AsyncPlayerPreLoginEvent extends Modify<org.bukkit.event.Event, {
 			/**
 			 * Gets the current result of the login, as an enum
 			 */
@@ -45437,8 +45725,21 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class AsyncPlayerPreLoginEvent {
+			constructor(name: string, ipAddress: any /* java.net.InetAddress */);
+
+			constructor(name: string, ipAddress: any /* java.net.InetAddress */, uniqueId: globalThis.java.util.UUID);
+
+			constructor(name: string, ipAddress: any /* java.net.InetAddress */, uniqueId: globalThis.java.util.UUID, transferred: boolean);
+
 		}
 		namespace AsyncPlayerPreLoginEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		namespace AsyncPlayerPreLoginEvent {
+			interface Result {}
 			namespace Result {
 				/**
 				 * The player is allowed to log in
@@ -45475,15 +45776,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.player.AsyncPlayerPreLoginEvent.Result;
 
 			}
-			interface Result {}
 		}
-		namespace PlayerAdvancementDoneEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type PlayerAdvancementDoneEvent = org.bukkit.event.player.PlayerEvent & {
-			new(who: org.bukkit.entity.Player, advancement: org.bukkit.advancement.Advancement): PlayerAdvancementDoneEvent;
-
+		interface PlayerAdvancementDoneEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Get the advancement which has been completed.
 			 */
@@ -45491,19 +45785,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerAdvancementDoneEvent {
+			constructor(who: org.bukkit.entity.Player, advancement: org.bukkit.advancement.Advancement);
+
 		}
-		namespace PlayerAnimationEvent {
+		namespace PlayerAdvancementDoneEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerAnimationEvent = org.bukkit.event.player.PlayerEvent & {
-			new(player: org.bukkit.entity.Player): PlayerAnimationEvent;
-
-			/**
-			 * Construct a new PlayerAnimation event
-			 */
-			new(player: org.bukkit.entity.Player, playerAnimationType: org.bukkit.event.player.PlayerAnimationType): PlayerAnimationEvent;
-
+		interface PlayerAnimationEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Get the type of this animation event
 			 */
@@ -45521,7 +45812,21 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerAnimationEvent {
+			constructor(player: org.bukkit.entity.Player);
+
+			/**
+			 * Construct a new PlayerAnimation event
+			 */
+			constructor(player: org.bukkit.entity.Player, playerAnimationType: org.bukkit.event.player.PlayerAnimationType);
+
 		}
+		namespace PlayerAnimationEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		interface PlayerAnimationType {}
 		namespace PlayerAnimationType {
 			const ARM_SWING: org.bukkit.event.player.PlayerAnimationType;
 
@@ -45536,16 +45841,7 @@ declare global {
 			function valueOf(name: string): org.bukkit.event.player.PlayerAnimationType;
 
 		}
-		interface PlayerAnimationType {}
-		namespace PlayerArmorStandManipulateEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type PlayerArmorStandManipulateEvent = org.bukkit.event.player.PlayerInteractEntityEvent & {
-			new(who: org.bukkit.entity.Player, clickedEntity: org.bukkit.entity.ArmorStand, playerItem: org.bukkit.inventory.ItemStack, armorStandItem: org.bukkit.inventory.ItemStack, slot: org.bukkit.inventory.EquipmentSlot, hand: org.bukkit.inventory.EquipmentSlot): PlayerArmorStandManipulateEvent;
-
-			new(who: org.bukkit.entity.Player, clickedEntity: org.bukkit.entity.ArmorStand, playerItem: org.bukkit.inventory.ItemStack, armorStandItem: org.bukkit.inventory.ItemStack, slot: org.bukkit.inventory.EquipmentSlot): PlayerArmorStandManipulateEvent;
-
+		interface PlayerArmorStandManipulateEvent extends Modify<org.bukkit.event.player.PlayerInteractEntityEvent, {
 			/**
 			 * Returns the item held by the player.
 			 * 
@@ -45592,16 +45888,18 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerArmorStandManipulateEvent {
+			constructor(who: org.bukkit.entity.Player, clickedEntity: org.bukkit.entity.ArmorStand, playerItem: org.bukkit.inventory.ItemStack, armorStandItem: org.bukkit.inventory.ItemStack, slot: org.bukkit.inventory.EquipmentSlot, hand: org.bukkit.inventory.EquipmentSlot);
+
+			constructor(who: org.bukkit.entity.Player, clickedEntity: org.bukkit.entity.ArmorStand, playerItem: org.bukkit.inventory.ItemStack, armorStandItem: org.bukkit.inventory.ItemStack, slot: org.bukkit.inventory.EquipmentSlot);
+
 		}
-		namespace PlayerBedEnterEvent {
+		namespace PlayerArmorStandManipulateEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerBedEnterEvent = org.bukkit.event.player.PlayerEvent & {
-			new(who: org.bukkit.entity.Player, bed: org.bukkit.block.Block, bedEnterResult: org.bukkit.event.player.PlayerBedEnterEvent.BedEnterResult): PlayerBedEnterEvent;
-
-			new(who: org.bukkit.entity.Player, bed: org.bukkit.block.Block): PlayerBedEnterEvent;
-
+		interface PlayerBedEnterEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * This describes the default outcome of this event.
 			 */
@@ -45657,8 +45955,19 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerBedEnterEvent {
+			constructor(who: org.bukkit.entity.Player, bed: org.bukkit.block.Block, bedEnterResult: org.bukkit.event.player.PlayerBedEnterEvent.BedEnterResult);
+
+			constructor(who: org.bukkit.entity.Player, bed: org.bukkit.block.Block);
+
 		}
 		namespace PlayerBedEnterEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		namespace PlayerBedEnterEvent {
+			interface BedEnterResult {}
 			namespace BedEnterResult {
 				/**
 				 * The player will enter the bed.
@@ -45708,15 +46017,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.player.PlayerBedEnterEvent.BedEnterResult;
 
 			}
-			interface BedEnterResult {}
 		}
-		namespace PlayerBedLeaveEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type PlayerBedLeaveEvent = org.bukkit.event.player.PlayerEvent & {
-			new(who: org.bukkit.entity.Player, bed: org.bukkit.block.Block, setBedSpawn: boolean): PlayerBedLeaveEvent;
-
+		interface PlayerBedLeaveEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Returns the bed block involved in this event.
 			 */
@@ -45758,28 +46060,32 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerBedLeaveEvent {
+			constructor(who: org.bukkit.entity.Player, bed: org.bukkit.block.Block, setBedSpawn: boolean);
+
+		}
+		namespace PlayerBedLeaveEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		interface PlayerBucketEmptyEvent extends Modify<org.bukkit.event.player.PlayerBucketEvent, {
+			getHandlers(): org.bukkit.event.HandlerList;
+
+		}> {}
+		class PlayerBucketEmptyEvent {
+			constructor(who: org.bukkit.entity.Player, blockClicked: org.bukkit.block.Block, blockFace: org.bukkit.block.BlockFace, bucket: org.bukkit.Material, itemInHand: org.bukkit.inventory.ItemStack);
+
+			constructor(who: org.bukkit.entity.Player, block: org.bukkit.block.Block, blockClicked: org.bukkit.block.Block, blockFace: org.bukkit.block.BlockFace, bucket: org.bukkit.Material, itemInHand: org.bukkit.inventory.ItemStack);
+
+			constructor(who: org.bukkit.entity.Player, block: org.bukkit.block.Block, blockClicked: org.bukkit.block.Block, blockFace: org.bukkit.block.BlockFace, bucket: org.bukkit.Material, itemInHand: org.bukkit.inventory.ItemStack, hand: org.bukkit.inventory.EquipmentSlot);
+
 		}
 		namespace PlayerBucketEmptyEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerBucketEmptyEvent = org.bukkit.event.player.PlayerBucketEvent & {
-			new(who: org.bukkit.entity.Player, blockClicked: org.bukkit.block.Block, blockFace: org.bukkit.block.BlockFace, bucket: org.bukkit.Material, itemInHand: org.bukkit.inventory.ItemStack): PlayerBucketEmptyEvent;
-
-			new(who: org.bukkit.entity.Player, block: org.bukkit.block.Block, blockClicked: org.bukkit.block.Block, blockFace: org.bukkit.block.BlockFace, bucket: org.bukkit.Material, itemInHand: org.bukkit.inventory.ItemStack): PlayerBucketEmptyEvent;
-
-			new(who: org.bukkit.entity.Player, block: org.bukkit.block.Block, blockClicked: org.bukkit.block.Block, blockFace: org.bukkit.block.BlockFace, bucket: org.bukkit.Material, itemInHand: org.bukkit.inventory.ItemStack, hand: org.bukkit.inventory.EquipmentSlot): PlayerBucketEmptyEvent;
-
-			getHandlers(): org.bukkit.event.HandlerList;
-
-		}
-		namespace PlayerBucketEntityEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type PlayerBucketEntityEvent = org.bukkit.event.player.PlayerEvent & {
-			new(player: org.bukkit.entity.Player, entity: org.bukkit.entity.Entity, originalBucket: org.bukkit.inventory.ItemStack, entityBucket: org.bukkit.inventory.ItemStack, hand: org.bukkit.inventory.EquipmentSlot): PlayerBucketEntityEvent;
-
+		interface PlayerBucketEntityEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets the Entity being put into the bucket.
 			 */
@@ -45815,14 +46121,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerBucketEntityEvent {
+			constructor(player: org.bukkit.entity.Player, entity: org.bukkit.entity.Entity, originalBucket: org.bukkit.inventory.ItemStack, entityBucket: org.bukkit.inventory.ItemStack, hand: org.bukkit.inventory.EquipmentSlot);
+
 		}
-		type PlayerBucketEvent = org.bukkit.event.player.PlayerEvent & {
-			new(who: org.bukkit.entity.Player, blockClicked: org.bukkit.block.Block, blockFace: org.bukkit.block.BlockFace, bucket: org.bukkit.Material, itemInHand: org.bukkit.inventory.ItemStack): PlayerBucketEvent;
+		namespace PlayerBucketEntityEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
 
-			new(who: org.bukkit.entity.Player, block: org.bukkit.block.Block, blockClicked: org.bukkit.block.Block, blockFace: org.bukkit.block.BlockFace, bucket: org.bukkit.Material, itemInHand: org.bukkit.inventory.ItemStack): PlayerBucketEvent;
-
-			new(who: org.bukkit.entity.Player, block: org.bukkit.block.Block, blockClicked: org.bukkit.block.Block, blockFace: org.bukkit.block.BlockFace, bucket: org.bukkit.Material, itemInHand: org.bukkit.inventory.ItemStack, hand: org.bukkit.inventory.EquipmentSlot): PlayerBucketEvent;
-
+		}
+		interface PlayerBucketEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Returns the bucket used in this event
 			 */
@@ -45868,24 +46176,32 @@ declare global {
 			 */
 			setCancelled(cancel: boolean): void;
 
+		}> {}
+		class PlayerBucketEvent {
+			constructor(who: org.bukkit.entity.Player, blockClicked: org.bukkit.block.Block, blockFace: org.bukkit.block.BlockFace, bucket: org.bukkit.Material, itemInHand: org.bukkit.inventory.ItemStack);
+
+			constructor(who: org.bukkit.entity.Player, block: org.bukkit.block.Block, blockClicked: org.bukkit.block.Block, blockFace: org.bukkit.block.BlockFace, bucket: org.bukkit.Material, itemInHand: org.bukkit.inventory.ItemStack);
+
+			constructor(who: org.bukkit.entity.Player, block: org.bukkit.block.Block, blockClicked: org.bukkit.block.Block, blockFace: org.bukkit.block.BlockFace, bucket: org.bukkit.Material, itemInHand: org.bukkit.inventory.ItemStack, hand: org.bukkit.inventory.EquipmentSlot);
+
+		}
+		interface PlayerBucketFillEvent extends Modify<org.bukkit.event.player.PlayerBucketEvent, {
+			getHandlers(): org.bukkit.event.HandlerList;
+
+		}> {}
+		class PlayerBucketFillEvent {
+			constructor(who: org.bukkit.entity.Player, blockClicked: org.bukkit.block.Block, blockFace: org.bukkit.block.BlockFace, bucket: org.bukkit.Material, itemInHand: org.bukkit.inventory.ItemStack);
+
+			constructor(who: org.bukkit.entity.Player, block: org.bukkit.block.Block, blockClicked: org.bukkit.block.Block, blockFace: org.bukkit.block.BlockFace, bucket: org.bukkit.Material, itemInHand: org.bukkit.inventory.ItemStack);
+
+			constructor(who: org.bukkit.entity.Player, block: org.bukkit.block.Block, blockClicked: org.bukkit.block.Block, blockFace: org.bukkit.block.BlockFace, bucket: org.bukkit.Material, itemInHand: org.bukkit.inventory.ItemStack, hand: org.bukkit.inventory.EquipmentSlot);
+
 		}
 		namespace PlayerBucketFillEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerBucketFillEvent = org.bukkit.event.player.PlayerBucketEvent & {
-			new(who: org.bukkit.entity.Player, blockClicked: org.bukkit.block.Block, blockFace: org.bukkit.block.BlockFace, bucket: org.bukkit.Material, itemInHand: org.bukkit.inventory.ItemStack): PlayerBucketFillEvent;
-
-			new(who: org.bukkit.entity.Player, block: org.bukkit.block.Block, blockClicked: org.bukkit.block.Block, blockFace: org.bukkit.block.BlockFace, bucket: org.bukkit.Material, itemInHand: org.bukkit.inventory.ItemStack): PlayerBucketFillEvent;
-
-			new(who: org.bukkit.entity.Player, block: org.bukkit.block.Block, blockClicked: org.bukkit.block.Block, blockFace: org.bukkit.block.BlockFace, bucket: org.bukkit.Material, itemInHand: org.bukkit.inventory.ItemStack, hand: org.bukkit.inventory.EquipmentSlot): PlayerBucketFillEvent;
-
-			getHandlers(): org.bukkit.event.HandlerList;
-
-		}
-		type PlayerBucketFishEvent = org.bukkit.event.player.PlayerBucketEntityEvent & {
-			new(player: org.bukkit.entity.Player, fish: org.bukkit.entity.Fish, waterBucket: org.bukkit.inventory.ItemStack, fishBucket: org.bukkit.inventory.ItemStack, hand: org.bukkit.inventory.EquipmentSlot): PlayerBucketFishEvent;
-
+		interface PlayerBucketFishEvent extends Modify<org.bukkit.event.player.PlayerBucketEntityEvent, {
 			/**
 			 * Gets the fish involved with this event.
 			 */
@@ -45904,14 +46220,12 @@ declare global {
 			 */
 			getFishBucket(): org.bukkit.inventory.ItemStack;
 
-		}
-		namespace PlayerChangedMainHandEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
+		}> {}
+		class PlayerBucketFishEvent {
+			constructor(player: org.bukkit.entity.Player, fish: org.bukkit.entity.Fish, waterBucket: org.bukkit.inventory.ItemStack, fishBucket: org.bukkit.inventory.ItemStack, hand: org.bukkit.inventory.EquipmentSlot);
 
 		}
-		type PlayerChangedMainHandEvent = org.bukkit.event.player.PlayerEvent & {
-			new(who: org.bukkit.entity.Player, mainHand: org.bukkit.inventory.MainHand): PlayerChangedMainHandEvent;
-
+		interface PlayerChangedMainHandEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets the new main hand of the player. The old hand is still momentarily
 			 * available via HumanEntity.getMainHand().
@@ -45920,14 +46234,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerChangedMainHandEvent {
+			constructor(who: org.bukkit.entity.Player, mainHand: org.bukkit.inventory.MainHand);
+
 		}
-		namespace PlayerChangedWorldEvent {
+		namespace PlayerChangedMainHandEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerChangedWorldEvent = org.bukkit.event.player.PlayerEvent & {
-			new(player: org.bukkit.entity.Player, from: org.bukkit.World): PlayerChangedWorldEvent;
-
+		interface PlayerChangedWorldEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets the world the player is switching from.
 			 */
@@ -45935,28 +46251,30 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerChangedWorldEvent {
+			constructor(player: org.bukkit.entity.Player, from: org.bukkit.World);
+
+		}
+		namespace PlayerChangedWorldEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		interface PlayerChannelEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
+			getChannel(): string;
+
+			getHandlers(): org.bukkit.event.HandlerList;
+
+		}> {}
+		class PlayerChannelEvent {
+			constructor(player: org.bukkit.entity.Player, channel: string);
+
 		}
 		namespace PlayerChannelEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerChannelEvent = org.bukkit.event.player.PlayerEvent & {
-			new(player: org.bukkit.entity.Player, channel: string): PlayerChannelEvent;
-
-			getChannel(): string;
-
-			getHandlers(): org.bukkit.event.HandlerList;
-
-		}
-		namespace PlayerChatEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type PlayerChatEvent = org.bukkit.event.player.PlayerEvent & {
-			new(player: org.bukkit.entity.Player, message: string): PlayerChatEvent;
-
-			new(player: org.bukkit.entity.Player, message: string, format: string, recipients: globalThis.java.util.Set<org.bukkit.entity.Player>): PlayerChatEvent;
-
+		interface PlayerChatEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -46000,14 +46318,18 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerChatEvent {
+			constructor(player: org.bukkit.entity.Player, message: string);
+
+			constructor(player: org.bukkit.entity.Player, message: string, format: string, recipients: globalThis.java.util.Set<org.bukkit.entity.Player>);
+
 		}
-		namespace PlayerChatTabCompleteEvent {
+		namespace PlayerChatEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerChatTabCompleteEvent = org.bukkit.event.player.PlayerEvent & {
-			new(who: org.bukkit.entity.Player, message: string, completions: globalThis.java.util.Collection<string>): PlayerChatTabCompleteEvent;
-
+		interface PlayerChatTabCompleteEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets the chat message being tab-completed.
 			 */
@@ -46028,16 +46350,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerChatTabCompleteEvent {
+			constructor(who: org.bukkit.entity.Player, message: string, completions: globalThis.java.util.Collection<string>);
+
 		}
-		namespace PlayerCommandPreprocessEvent {
+		namespace PlayerChatTabCompleteEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerCommandPreprocessEvent = org.bukkit.event.player.PlayerEvent & {
-			new(player: org.bukkit.entity.Player, message: string): PlayerCommandPreprocessEvent;
-
-			new(player: org.bukkit.entity.Player, message: string, recipients: globalThis.java.util.Set<org.bukkit.entity.Player>): PlayerCommandPreprocessEvent;
-
+		interface PlayerCommandPreprocessEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -46082,14 +46404,18 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerCommandPreprocessEvent {
+			constructor(player: org.bukkit.entity.Player, message: string);
+
+			constructor(player: org.bukkit.entity.Player, message: string, recipients: globalThis.java.util.Set<org.bukkit.entity.Player>);
+
 		}
-		namespace PlayerCommandSendEvent {
+		namespace PlayerCommandPreprocessEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerCommandSendEvent = org.bukkit.event.player.PlayerEvent & {
-			new(player: org.bukkit.entity.Player, commands: globalThis.java.util.Collection<string>): PlayerCommandSendEvent;
-
+		interface PlayerCommandSendEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Returns a mutable collection of all top level commands to be sent.
 			 * 
@@ -46100,14 +46426,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerCommandSendEvent {
+			constructor(player: org.bukkit.entity.Player, commands: globalThis.java.util.Collection<string>);
+
 		}
-		namespace PlayerDropItemEvent {
+		namespace PlayerCommandSendEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerDropItemEvent = org.bukkit.event.player.PlayerEvent & {
-			new(player: org.bukkit.entity.Player, drop: org.bukkit.entity.Item): PlayerDropItemEvent;
-
+		interface PlayerDropItemEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets the ItemDrop created by the player
 			 */
@@ -46125,14 +46453,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerDropItemEvent {
+			constructor(player: org.bukkit.entity.Player, drop: org.bukkit.entity.Item);
+
 		}
-		namespace PlayerEditBookEvent {
+		namespace PlayerDropItemEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerEditBookEvent = org.bukkit.event.player.PlayerEvent & {
-			new(who: org.bukkit.entity.Player, slot: number, previousBookMeta: org.bukkit.inventory.meta.BookMeta, newBookMeta: org.bukkit.inventory.meta.BookMeta, isSigning: boolean): PlayerEditBookEvent;
-
+		interface PlayerEditBookEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets the book meta currently on the book.
 			 * 
@@ -46187,14 +46517,16 @@ declare global {
 			 */
 			setCancelled(cancel: boolean): void;
 
+		}> {}
+		class PlayerEditBookEvent {
+			constructor(who: org.bukkit.entity.Player, slot: number, previousBookMeta: org.bukkit.inventory.meta.BookMeta, newBookMeta: org.bukkit.inventory.meta.BookMeta, isSigning: boolean);
+
 		}
-		namespace PlayerEggThrowEvent {
+		namespace PlayerEditBookEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerEggThrowEvent = org.bukkit.event.player.PlayerEvent & {
-			new(player: org.bukkit.entity.Player, egg: org.bukkit.entity.Egg, hatching: boolean, numHatches: any /* byte */, hatchingType: org.bukkit.entity.EntityType): PlayerEggThrowEvent;
-
+		interface PlayerEggThrowEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets the egg involved in this event.
 			 */
@@ -46242,23 +46574,27 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
-		}
-		type PlayerEvent = org.bukkit.event.Event & {
-			new(who: org.bukkit.entity.Player): PlayerEvent;
+		}> {}
+		class PlayerEggThrowEvent {
+			constructor(player: org.bukkit.entity.Player, egg: org.bukkit.entity.Egg, hatching: boolean, numHatches: any /* byte */, hatchingType: org.bukkit.entity.EntityType);
 
+		}
+		namespace PlayerEggThrowEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		interface PlayerEvent extends Modify<org.bukkit.event.Event, {
 			/**
 			 * Returns the player involved in this event
 			 */
 			getPlayer(): org.bukkit.entity.Player;
 
-		}
-		namespace PlayerExpChangeEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
+		}> {}
+		class PlayerEvent {
+			constructor(who: org.bukkit.entity.Player);
 
 		}
-		type PlayerExpChangeEvent = org.bukkit.event.player.PlayerEvent & {
-			new(player: org.bukkit.entity.Player, expAmount: number): PlayerExpChangeEvent;
-
+		interface PlayerExpChangeEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Get the amount of experience the player will receive
 			 */
@@ -46271,14 +46607,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerExpChangeEvent {
+			constructor(player: org.bukkit.entity.Player, expAmount: number);
+
 		}
-		namespace PlayerExpCooldownChangeEvent {
+		namespace PlayerExpChangeEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerExpCooldownChangeEvent = org.bukkit.event.player.PlayerEvent & {
-			new(player: org.bukkit.entity.Player, newcooldown: number, reason: org.bukkit.event.player.PlayerExpCooldownChangeEvent.ChangeReason): PlayerExpCooldownChangeEvent;
-
+		interface PlayerExpCooldownChangeEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets the reason for the change.
 			 */
@@ -46296,8 +46634,17 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerExpCooldownChangeEvent {
+			constructor(player: org.bukkit.entity.Player, newcooldown: number, reason: org.bukkit.event.player.PlayerExpCooldownChangeEvent.ChangeReason);
+
 		}
 		namespace PlayerExpCooldownChangeEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		namespace PlayerExpCooldownChangeEvent {
+			interface ChangeReason {}
 			namespace ChangeReason {
 				/**
 				 * The cooldown was set by picking up an experience orb.
@@ -46318,17 +46665,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.player.PlayerExpCooldownChangeEvent.ChangeReason;
 
 			}
-			interface ChangeReason {}
 		}
-		namespace PlayerFishEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type PlayerFishEvent = org.bukkit.event.player.PlayerEvent & {
-			new(player: org.bukkit.entity.Player, entity: org.bukkit.entity.Entity, hookEntity: org.bukkit.entity.FishHook, hand: org.bukkit.inventory.EquipmentSlot, state: org.bukkit.event.player.PlayerFishEvent.State): PlayerFishEvent;
-
-			new(player: org.bukkit.entity.Player, entity: org.bukkit.entity.Entity, hookEntity: org.bukkit.entity.FishHook, state: org.bukkit.event.player.PlayerFishEvent.State): PlayerFishEvent;
-
+		interface PlayerFishEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets the entity caught by the player.
 			 * 
@@ -46380,8 +46718,19 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerFishEvent {
+			constructor(player: org.bukkit.entity.Player, entity: org.bukkit.entity.Entity, hookEntity: org.bukkit.entity.FishHook, hand: org.bukkit.inventory.EquipmentSlot, state: org.bukkit.event.player.PlayerFishEvent.State);
+
+			constructor(player: org.bukkit.entity.Player, entity: org.bukkit.entity.Entity, hookEntity: org.bukkit.entity.FishHook, state: org.bukkit.event.player.PlayerFishEvent.State);
+
 		}
 		namespace PlayerFishEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		namespace PlayerFishEvent {
+			interface State {}
 			namespace State {
 				/**
 				 * When a player is fishing, ie casting the line out.
@@ -46433,15 +46782,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.player.PlayerFishEvent.State;
 
 			}
-			interface State {}
 		}
-		namespace PlayerGameModeChangeEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type PlayerGameModeChangeEvent = org.bukkit.event.player.PlayerEvent & {
-			new(player: org.bukkit.entity.Player, newGameMode: org.bukkit.GameMode): PlayerGameModeChangeEvent;
-
+		interface PlayerGameModeChangeEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -46459,16 +46801,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerGameModeChangeEvent {
+			constructor(player: org.bukkit.entity.Player, newGameMode: org.bukkit.GameMode);
+
 		}
-		namespace PlayerHarvestBlockEvent {
+		namespace PlayerGameModeChangeEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerHarvestBlockEvent = org.bukkit.event.player.PlayerEvent & {
-			new(player: org.bukkit.entity.Player, harvestedBlock: org.bukkit.block.Block, hand: org.bukkit.inventory.EquipmentSlot, itemsHarvested: globalThis.java.util.List<org.bukkit.inventory.ItemStack>): PlayerHarvestBlockEvent;
-
-			new(player: org.bukkit.entity.Player, harvestedBlock: org.bukkit.block.Block, itemsHarvested: globalThis.java.util.List<org.bukkit.inventory.ItemStack>): PlayerHarvestBlockEvent;
-
+		interface PlayerHarvestBlockEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets the block that is being harvested.
 			 */
@@ -46496,14 +46838,18 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerHarvestBlockEvent {
+			constructor(player: org.bukkit.entity.Player, harvestedBlock: org.bukkit.block.Block, hand: org.bukkit.inventory.EquipmentSlot, itemsHarvested: globalThis.java.util.List<org.bukkit.inventory.ItemStack>);
+
+			constructor(player: org.bukkit.entity.Player, harvestedBlock: org.bukkit.block.Block, itemsHarvested: globalThis.java.util.List<org.bukkit.inventory.ItemStack>);
+
 		}
-		namespace PlayerHideEntityEvent {
+		namespace PlayerHarvestBlockEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerHideEntityEvent = org.bukkit.event.player.PlayerEvent & {
-			new(who: org.bukkit.entity.Player, entity: org.bukkit.entity.Entity): PlayerHideEntityEvent;
-
+		interface PlayerHideEntityEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets the entity which has been hidden from the player.
 			 */
@@ -46511,30 +46857,32 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerHideEntityEvent {
+			constructor(who: org.bukkit.entity.Player, entity: org.bukkit.entity.Entity);
+
+		}
+		namespace PlayerHideEntityEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		interface PlayerInteractAtEntityEvent extends Modify<org.bukkit.event.player.PlayerInteractEntityEvent, {
+			getClickedPosition(): org.bukkit.util.Vector;
+
+			getHandlers(): org.bukkit.event.HandlerList;
+
+		}> {}
+		class PlayerInteractAtEntityEvent {
+			constructor(who: org.bukkit.entity.Player, clickedEntity: org.bukkit.entity.Entity, position: org.bukkit.util.Vector);
+
+			constructor(who: org.bukkit.entity.Player, clickedEntity: org.bukkit.entity.Entity, position: org.bukkit.util.Vector, hand: org.bukkit.inventory.EquipmentSlot);
+
 		}
 		namespace PlayerInteractAtEntityEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerInteractAtEntityEvent = org.bukkit.event.player.PlayerInteractEntityEvent & {
-			new(who: org.bukkit.entity.Player, clickedEntity: org.bukkit.entity.Entity, position: org.bukkit.util.Vector): PlayerInteractAtEntityEvent;
-
-			new(who: org.bukkit.entity.Player, clickedEntity: org.bukkit.entity.Entity, position: org.bukkit.util.Vector, hand: org.bukkit.inventory.EquipmentSlot): PlayerInteractAtEntityEvent;
-
-			getClickedPosition(): org.bukkit.util.Vector;
-
-			getHandlers(): org.bukkit.event.HandlerList;
-
-		}
-		namespace PlayerInteractEntityEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type PlayerInteractEntityEvent = org.bukkit.event.player.PlayerEvent & {
-			new(who: org.bukkit.entity.Player, clickedEntity: org.bukkit.entity.Entity): PlayerInteractEntityEvent;
-
-			new(who: org.bukkit.entity.Player, clickedEntity: org.bukkit.entity.Entity, hand: org.bukkit.inventory.EquipmentSlot): PlayerInteractEntityEvent;
-
+		interface PlayerInteractEntityEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -46557,18 +46905,18 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerInteractEntityEvent {
+			constructor(who: org.bukkit.entity.Player, clickedEntity: org.bukkit.entity.Entity);
+
+			constructor(who: org.bukkit.entity.Player, clickedEntity: org.bukkit.entity.Entity, hand: org.bukkit.inventory.EquipmentSlot);
+
 		}
-		namespace PlayerInteractEvent {
+		namespace PlayerInteractEntityEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerInteractEvent = org.bukkit.event.player.PlayerEvent & {
-			new(who: org.bukkit.entity.Player, action: org.bukkit.event.block.Action, item: org.bukkit.inventory.ItemStack, clickedBlock: org.bukkit.block.Block, clickedFace: org.bukkit.block.BlockFace): PlayerInteractEvent;
-
-			new(who: org.bukkit.entity.Player, action: org.bukkit.event.block.Action, item: org.bukkit.inventory.ItemStack, clickedBlock: org.bukkit.block.Block, clickedFace: org.bukkit.block.BlockFace, hand: org.bukkit.inventory.EquipmentSlot): PlayerInteractEvent;
-
-			new(who: org.bukkit.entity.Player, action: org.bukkit.event.block.Action, item: org.bukkit.inventory.ItemStack, clickedBlock: org.bukkit.block.Block, clickedFace: org.bukkit.block.BlockFace, hand: org.bukkit.inventory.EquipmentSlot, clickedPosition: org.bukkit.util.Vector): PlayerInteractEvent;
-
+		interface PlayerInteractEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Returns the action type
 			 */
@@ -46662,14 +47010,20 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerInteractEvent {
+			constructor(who: org.bukkit.entity.Player, action: org.bukkit.event.block.Action, item: org.bukkit.inventory.ItemStack, clickedBlock: org.bukkit.block.Block, clickedFace: org.bukkit.block.BlockFace);
+
+			constructor(who: org.bukkit.entity.Player, action: org.bukkit.event.block.Action, item: org.bukkit.inventory.ItemStack, clickedBlock: org.bukkit.block.Block, clickedFace: org.bukkit.block.BlockFace, hand: org.bukkit.inventory.EquipmentSlot);
+
+			constructor(who: org.bukkit.entity.Player, action: org.bukkit.event.block.Action, item: org.bukkit.inventory.ItemStack, clickedBlock: org.bukkit.block.Block, clickedFace: org.bukkit.block.BlockFace, hand: org.bukkit.inventory.EquipmentSlot, clickedPosition: org.bukkit.util.Vector);
+
 		}
-		namespace PlayerItemBreakEvent {
+		namespace PlayerInteractEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerItemBreakEvent = org.bukkit.event.player.PlayerEvent & {
-			new(player: org.bukkit.entity.Player, brokenItem: org.bukkit.inventory.ItemStack): PlayerItemBreakEvent;
-
+		interface PlayerItemBreakEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets the item that broke
 			 */
@@ -46677,16 +47031,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerItemBreakEvent {
+			constructor(player: org.bukkit.entity.Player, brokenItem: org.bukkit.inventory.ItemStack);
+
 		}
-		namespace PlayerItemConsumeEvent {
+		namespace PlayerItemBreakEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerItemConsumeEvent = org.bukkit.event.player.PlayerEvent & {
-			new(player: org.bukkit.entity.Player, item: org.bukkit.inventory.ItemStack, hand: org.bukkit.inventory.EquipmentSlot): PlayerItemConsumeEvent;
-
-			new(player: org.bukkit.entity.Player, item: org.bukkit.inventory.ItemStack): PlayerItemConsumeEvent;
-
+		interface PlayerItemConsumeEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets the item that is being consumed. Modifying the returned item will
 			 * have no effect, you must use setItem(org.bukkit.inventory.ItemStack) instead.
@@ -46715,14 +47069,18 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerItemConsumeEvent {
+			constructor(player: org.bukkit.entity.Player, item: org.bukkit.inventory.ItemStack, hand: org.bukkit.inventory.EquipmentSlot);
+
+			constructor(player: org.bukkit.entity.Player, item: org.bukkit.inventory.ItemStack);
+
 		}
-		namespace PlayerItemDamageEvent {
+		namespace PlayerItemConsumeEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerItemDamageEvent = org.bukkit.event.player.PlayerEvent & {
-			new(player: org.bukkit.entity.Player, what: org.bukkit.inventory.ItemStack, damage: number): PlayerItemDamageEvent;
-
+		interface PlayerItemDamageEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets the item being damaged.
 			 */
@@ -46747,14 +47105,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerItemDamageEvent {
+			constructor(player: org.bukkit.entity.Player, what: org.bukkit.inventory.ItemStack, damage: number);
+
 		}
-		namespace PlayerItemHeldEvent {
+		namespace PlayerItemDamageEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerItemHeldEvent = org.bukkit.event.player.PlayerEvent & {
-			new(player: org.bukkit.entity.Player, previous: number, current: number): PlayerItemHeldEvent;
-
+		interface PlayerItemHeldEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets the previous held slot index
 			 */
@@ -46777,16 +47137,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerItemHeldEvent {
+			constructor(player: org.bukkit.entity.Player, previous: number, current: number);
+
 		}
-		namespace PlayerItemMendEvent {
+		namespace PlayerItemHeldEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerItemMendEvent = org.bukkit.event.player.PlayerEvent & {
-			new(who: org.bukkit.entity.Player, item: org.bukkit.inventory.ItemStack, slot: org.bukkit.inventory.EquipmentSlot, experienceOrb: org.bukkit.entity.ExperienceOrb, repairAmount: number): PlayerItemMendEvent;
-
-			new(who: org.bukkit.entity.Player, item: org.bukkit.inventory.ItemStack, experienceOrb: org.bukkit.entity.ExperienceOrb, repairAmount: number): PlayerItemMendEvent;
-
+		interface PlayerItemMendEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Get the ItemStack to be repaired.
 			 * This is not necessarily the item the player is holding.
@@ -46829,14 +47189,18 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerItemMendEvent {
+			constructor(who: org.bukkit.entity.Player, item: org.bukkit.inventory.ItemStack, slot: org.bukkit.inventory.EquipmentSlot, experienceOrb: org.bukkit.entity.ExperienceOrb, repairAmount: number);
+
+			constructor(who: org.bukkit.entity.Player, item: org.bukkit.inventory.ItemStack, experienceOrb: org.bukkit.entity.ExperienceOrb, repairAmount: number);
+
 		}
-		namespace PlayerJoinEvent {
+		namespace PlayerItemMendEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerJoinEvent = org.bukkit.event.player.PlayerEvent & {
-			new(playerJoined: org.bukkit.entity.Player, joinMessage: string): PlayerJoinEvent;
-
+		interface PlayerJoinEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets the join message to send to all online players
 			 */
@@ -46849,14 +47213,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerJoinEvent {
+			constructor(playerJoined: org.bukkit.entity.Player, joinMessage: string);
+
 		}
-		namespace PlayerKickEvent {
+		namespace PlayerJoinEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerKickEvent = org.bukkit.event.player.PlayerEvent & {
-			new(playerKicked: org.bukkit.entity.Player, kickReason: string, leaveMessage: string): PlayerKickEvent;
-
+		interface PlayerKickEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets the reason why the player is getting kicked
 			 */
@@ -46889,14 +47255,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerKickEvent {
+			constructor(playerKicked: org.bukkit.entity.Player, kickReason: string, leaveMessage: string);
+
 		}
-		namespace PlayerLevelChangeEvent {
+		namespace PlayerKickEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerLevelChangeEvent = org.bukkit.event.player.PlayerEvent & {
-			new(player: org.bukkit.entity.Player, oldLevel: number, newLevel: number): PlayerLevelChangeEvent;
-
+		interface PlayerLevelChangeEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets the old level of the player
 			 */
@@ -46909,14 +47277,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerLevelChangeEvent {
+			constructor(player: org.bukkit.entity.Player, oldLevel: number, newLevel: number);
+
 		}
-		namespace PlayerLinksSendEvent {
+		namespace PlayerLevelChangeEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerLinksSendEvent = org.bukkit.event.player.PlayerEvent & {
-			new(player: org.bukkit.entity.Player, links: org.bukkit.ServerLinks): PlayerLinksSendEvent;
-
+		interface PlayerLinksSendEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets the links to be sent, for modification.
 			 */
@@ -46924,41 +47294,30 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerLinksSendEvent {
+			constructor(player: org.bukkit.entity.Player, links: org.bukkit.ServerLinks);
+
+		}
+		namespace PlayerLinksSendEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		interface PlayerLocaleChangeEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
+			getLocale(): string;
+
+			getHandlers(): org.bukkit.event.HandlerList;
+
+		}> {}
+		class PlayerLocaleChangeEvent {
+			constructor(who: org.bukkit.entity.Player, locale: string);
+
 		}
 		namespace PlayerLocaleChangeEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerLocaleChangeEvent = org.bukkit.event.player.PlayerEvent & {
-			new(who: org.bukkit.entity.Player, locale: string): PlayerLocaleChangeEvent;
-
-			getLocale(): string;
-
-			getHandlers(): org.bukkit.event.HandlerList;
-
-		}
-		namespace PlayerLoginEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type PlayerLoginEvent = org.bukkit.event.player.PlayerEvent & {
-			/**
-			 * This constructor defaults message to an empty string, and result to
-			 * ALLOWED
-			 */
-			new(player: org.bukkit.entity.Player, hostname: string, address: any /* java.net.InetAddress */, realAddress: any /* java.net.InetAddress */): PlayerLoginEvent;
-
-			/**
-			 * This constructor defaults message to an empty string, and result to
-			 * ALLOWED
-			 */
-			new(player: org.bukkit.entity.Player, hostname: string, address: any /* java.net.InetAddress */): PlayerLoginEvent;
-
-			/**
-			 * This constructor pre-configures the event with a result and message
-			 */
-			new(player: org.bukkit.entity.Player, hostname: string, address: any /* java.net.InetAddress */, result: org.bukkit.event.player.PlayerLoginEvent.Result, message: string, realAddress: any /* java.net.InetAddress */): PlayerLoginEvent;
-
+		interface PlayerLoginEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets the current result of the login, as an enum
 			 */
@@ -47011,8 +47370,32 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerLoginEvent {
+			/**
+			 * This constructor defaults message to an empty string, and result to
+			 * ALLOWED
+			 */
+			constructor(player: org.bukkit.entity.Player, hostname: string, address: any /* java.net.InetAddress */, realAddress: any /* java.net.InetAddress */);
+
+			/**
+			 * This constructor defaults message to an empty string, and result to
+			 * ALLOWED
+			 */
+			constructor(player: org.bukkit.entity.Player, hostname: string, address: any /* java.net.InetAddress */);
+
+			/**
+			 * This constructor pre-configures the event with a result and message
+			 */
+			constructor(player: org.bukkit.entity.Player, hostname: string, address: any /* java.net.InetAddress */, result: org.bukkit.event.player.PlayerLoginEvent.Result, message: string, realAddress: any /* java.net.InetAddress */);
+
 		}
 		namespace PlayerLoginEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		namespace PlayerLoginEvent {
+			interface Result {}
 			namespace Result {
 				/**
 				 * The player is allowed to log in
@@ -47049,15 +47432,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.player.PlayerLoginEvent.Result;
 
 			}
-			interface Result {}
 		}
-		namespace PlayerMoveEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type PlayerMoveEvent = org.bukkit.event.player.PlayerEvent & {
-			new(player: org.bukkit.entity.Player, from: org.bukkit.Location, to: org.bukkit.Location): PlayerMoveEvent;
-
+		interface PlayerMoveEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets the cancellation state of this event. A cancelled event will not
 			 * be executed in the server, but will still pass to other plugins
@@ -47100,23 +47476,27 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
-		}
-		type PlayerPickupArrowEvent = org.bukkit.event.player.PlayerPickupItemEvent & {
-			new(player: org.bukkit.entity.Player, item: org.bukkit.entity.Item, arrow: org.bukkit.entity.AbstractArrow): PlayerPickupArrowEvent;
+		}> {}
+		class PlayerMoveEvent {
+			constructor(player: org.bukkit.entity.Player, from: org.bukkit.Location, to: org.bukkit.Location);
 
+		}
+		namespace PlayerMoveEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		interface PlayerPickupArrowEvent extends Modify<org.bukkit.event.player.PlayerPickupItemEvent, {
 			/**
 			 * Get the arrow being picked up by the player
 			 */
 			getArrow(): org.bukkit.entity.AbstractArrow;
 
-		}
-		namespace PlayerPickupItemEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
+		}> {}
+		class PlayerPickupArrowEvent {
+			constructor(player: org.bukkit.entity.Player, item: org.bukkit.entity.Item, arrow: org.bukkit.entity.AbstractArrow);
 
 		}
-		type PlayerPickupItemEvent = org.bukkit.event.player.PlayerEvent & {
-			new(player: org.bukkit.entity.Player, item: org.bukkit.entity.Item, remaining: number): PlayerPickupItemEvent;
-
+		interface PlayerPickupItemEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets the Item picked up by the player.
 			 */
@@ -47139,18 +47519,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerPickupItemEvent {
+			constructor(player: org.bukkit.entity.Player, item: org.bukkit.entity.Item, remaining: number);
+
 		}
-		namespace PlayerPortalEvent {
+		namespace PlayerPickupItemEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerPortalEvent = org.bukkit.event.player.PlayerTeleportEvent & {
-			new(player: org.bukkit.entity.Player, from: org.bukkit.Location, to: org.bukkit.Location): PlayerPortalEvent;
-
-			new(player: org.bukkit.entity.Player, from: org.bukkit.Location, to: org.bukkit.Location, cause: org.bukkit.event.player.PlayerTeleportEvent.TeleportCause): PlayerPortalEvent;
-
-			new(player: org.bukkit.entity.Player, from: org.bukkit.Location, to: org.bukkit.Location, cause: org.bukkit.event.player.PlayerTeleportEvent.TeleportCause, getSearchRadius: number, canCreatePortal: boolean, creationRadius: number): PlayerPortalEvent;
-
+		interface PlayerPortalEvent extends Modify<org.bukkit.event.player.PlayerTeleportEvent, {
 			/**
 			 * Set the Block radius to search in for available portals.
 			 */
@@ -47195,16 +47573,20 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerPortalEvent {
+			constructor(player: org.bukkit.entity.Player, from: org.bukkit.Location, to: org.bukkit.Location);
+
+			constructor(player: org.bukkit.entity.Player, from: org.bukkit.Location, to: org.bukkit.Location, cause: org.bukkit.event.player.PlayerTeleportEvent.TeleportCause);
+
+			constructor(player: org.bukkit.entity.Player, from: org.bukkit.Location, to: org.bukkit.Location, cause: org.bukkit.event.player.PlayerTeleportEvent.TeleportCause, getSearchRadius: number, canCreatePortal: boolean, creationRadius: number);
+
 		}
-		namespace PlayerPreLoginEvent {
+		namespace PlayerPortalEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerPreLoginEvent = org.bukkit.event.Event & {
-			new(name: string, ipAddress: any /* java.net.InetAddress */): PlayerPreLoginEvent;
-
-			new(name: string, ipAddress: any /* java.net.InetAddress */, uniqueId: globalThis.java.util.UUID): PlayerPreLoginEvent;
-
+		interface PlayerPreLoginEvent extends Modify<org.bukkit.event.Event, {
 			/**
 			 * Gets the current result of the login, as an enum
 			 */
@@ -47253,8 +47635,19 @@ declare global {
 			 */
 			getUniqueId(): globalThis.java.util.UUID;
 
+		}> {}
+		class PlayerPreLoginEvent {
+			constructor(name: string, ipAddress: any /* java.net.InetAddress */);
+
+			constructor(name: string, ipAddress: any /* java.net.InetAddress */, uniqueId: globalThis.java.util.UUID);
+
 		}
 		namespace PlayerPreLoginEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		namespace PlayerPreLoginEvent {
+			interface Result {}
 			namespace Result {
 				/**
 				 * The player is allowed to log in
@@ -47291,15 +47684,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.player.PlayerPreLoginEvent.Result;
 
 			}
-			interface Result {}
 		}
-		namespace PlayerQuitEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type PlayerQuitEvent = org.bukkit.event.player.PlayerEvent & {
-			new(who: org.bukkit.entity.Player, quitMessage: string): PlayerQuitEvent;
-
+		interface PlayerQuitEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets the quit message to send to all online players
 			 */
@@ -47312,14 +47698,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerQuitEvent {
+			constructor(who: org.bukkit.entity.Player, quitMessage: string);
+
 		}
-		namespace PlayerRecipeBookClickEvent {
+		namespace PlayerQuitEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerRecipeBookClickEvent = org.bukkit.event.player.PlayerEvent & {
-			new(player: org.bukkit.entity.Player, recipe: org.bukkit.inventory.Recipe, shiftClick: boolean): PlayerRecipeBookClickEvent;
-
+		interface PlayerRecipeBookClickEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets the original recipe the player was trying to craft.
 			 * This will not reflect any changes made with setRecipe(org.bukkit.inventory.Recipe).
@@ -47358,14 +47746,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerRecipeBookClickEvent {
+			constructor(player: org.bukkit.entity.Player, recipe: org.bukkit.inventory.Recipe, shiftClick: boolean);
+
 		}
-		namespace PlayerRecipeBookSettingsChangeEvent {
+		namespace PlayerRecipeBookClickEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerRecipeBookSettingsChangeEvent = org.bukkit.event.player.PlayerEvent & {
-			new(player: org.bukkit.entity.Player, recipeBookType: org.bukkit.event.player.PlayerRecipeBookSettingsChangeEvent.RecipeBookType, open: boolean, filtering: boolean): PlayerRecipeBookSettingsChangeEvent;
-
+		interface PlayerRecipeBookSettingsChangeEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets the type of recipe book the player is changing the settings for.
 			 */
@@ -47383,8 +47773,17 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerRecipeBookSettingsChangeEvent {
+			constructor(player: org.bukkit.entity.Player, recipeBookType: org.bukkit.event.player.PlayerRecipeBookSettingsChangeEvent.RecipeBookType, open: boolean, filtering: boolean);
+
 		}
 		namespace PlayerRecipeBookSettingsChangeEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		namespace PlayerRecipeBookSettingsChangeEvent {
+			interface RecipeBookType {}
 			namespace RecipeBookType {
 				/**
 				 * Recipe book seen in crafting table and player inventory.
@@ -47415,15 +47814,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.player.PlayerRecipeBookSettingsChangeEvent.RecipeBookType;
 
 			}
-			interface RecipeBookType {}
 		}
-		namespace PlayerRecipeDiscoverEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type PlayerRecipeDiscoverEvent = org.bukkit.event.player.PlayerEvent & {
-			new(who: org.bukkit.entity.Player, recipe: org.bukkit.NamespacedKey): PlayerRecipeDiscoverEvent;
-
+		interface PlayerRecipeDiscoverEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Get the namespaced key of the discovered recipe.
 			 */
@@ -47441,18 +47833,22 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
-		}
-		type PlayerRegisterChannelEvent = org.bukkit.event.player.PlayerChannelEvent & {
-			new(player: org.bukkit.entity.Player, channel: string): PlayerRegisterChannelEvent;
+		}> {}
+		class PlayerRecipeDiscoverEvent {
+			constructor(who: org.bukkit.entity.Player, recipe: org.bukkit.NamespacedKey);
 
 		}
-		namespace PlayerResourcePackStatusEvent {
+		namespace PlayerRecipeDiscoverEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerResourcePackStatusEvent = org.bukkit.event.player.PlayerEvent & {
-			new(who: org.bukkit.entity.Player, id: globalThis.java.util.UUID, resourcePackStatus: org.bukkit.event.player.PlayerResourcePackStatusEvent.Status): PlayerResourcePackStatusEvent;
+		interface PlayerRegisterChannelEvent extends Modify<org.bukkit.event.player.PlayerChannelEvent, {
+		}> {}
+		class PlayerRegisterChannelEvent {
+			constructor(player: org.bukkit.entity.Player, channel: string);
 
+		}
+		interface PlayerResourcePackStatusEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets the unique ID of this pack.
 			 */
@@ -47465,8 +47861,17 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerResourcePackStatusEvent {
+			constructor(who: org.bukkit.entity.Player, id: globalThis.java.util.UUID, resourcePackStatus: org.bukkit.event.player.PlayerResourcePackStatusEvent.Status);
+
 		}
 		namespace PlayerResourcePackStatusEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		namespace PlayerResourcePackStatusEvent {
+			interface Status {}
 			namespace Status {
 				/**
 				 * The resource pack has been successfully downloaded and applied to the
@@ -47518,19 +47923,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.player.PlayerResourcePackStatusEvent.Status;
 
 			}
-			interface Status {}
 		}
-		namespace PlayerRespawnEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type PlayerRespawnEvent = org.bukkit.event.player.PlayerEvent & {
-			new(respawnPlayer: org.bukkit.entity.Player, respawnLocation: org.bukkit.Location, isBedSpawn: boolean): PlayerRespawnEvent;
-
-			new(respawnPlayer: org.bukkit.entity.Player, respawnLocation: org.bukkit.Location, isBedSpawn: boolean, isAnchorSpawn: boolean): PlayerRespawnEvent;
-
-			new(respawnPlayer: org.bukkit.entity.Player, respawnLocation: org.bukkit.Location, isBedSpawn: boolean, isAnchorSpawn: boolean, respawnReason: org.bukkit.event.player.PlayerRespawnEvent.RespawnReason): PlayerRespawnEvent;
-
+		interface PlayerRespawnEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets the current respawn location
 			 */
@@ -47558,8 +47952,21 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerRespawnEvent {
+			constructor(respawnPlayer: org.bukkit.entity.Player, respawnLocation: org.bukkit.Location, isBedSpawn: boolean);
+
+			constructor(respawnPlayer: org.bukkit.entity.Player, respawnLocation: org.bukkit.Location, isBedSpawn: boolean, isAnchorSpawn: boolean);
+
+			constructor(respawnPlayer: org.bukkit.entity.Player, respawnLocation: org.bukkit.Location, isBedSpawn: boolean, isAnchorSpawn: boolean, respawnReason: org.bukkit.event.player.PlayerRespawnEvent.RespawnReason);
+
 		}
 		namespace PlayerRespawnEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		namespace PlayerRespawnEvent {
+			interface RespawnReason {}
 			namespace RespawnReason {
 				/**
 				 * When the player dies and presses the respawn button.
@@ -47585,17 +47992,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.player.PlayerRespawnEvent.RespawnReason;
 
 			}
-			interface RespawnReason {}
 		}
-		namespace PlayerRiptideEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type PlayerRiptideEvent = org.bukkit.event.player.PlayerEvent & {
-			new(who: org.bukkit.entity.Player, item: org.bukkit.inventory.ItemStack, velocity: org.bukkit.util.Vector): PlayerRiptideEvent;
-
-			new(who: org.bukkit.entity.Player, item: org.bukkit.inventory.ItemStack): PlayerRiptideEvent;
-
+		interface PlayerRiptideEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets the item containing the used enchantment.
 			 */
@@ -47608,16 +48006,18 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerRiptideEvent {
+			constructor(who: org.bukkit.entity.Player, item: org.bukkit.inventory.ItemStack, velocity: org.bukkit.util.Vector);
+
+			constructor(who: org.bukkit.entity.Player, item: org.bukkit.inventory.ItemStack);
+
 		}
-		namespace PlayerShearEntityEvent {
+		namespace PlayerRiptideEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerShearEntityEvent = org.bukkit.event.player.PlayerEvent & {
-			new(who: org.bukkit.entity.Player, what: org.bukkit.entity.Entity, item: org.bukkit.inventory.ItemStack, hand: org.bukkit.inventory.EquipmentSlot): PlayerShearEntityEvent;
-
-			new(who: org.bukkit.entity.Player, what: org.bukkit.entity.Entity): PlayerShearEntityEvent;
-
+		interface PlayerShearEntityEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -47645,14 +48045,18 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerShearEntityEvent {
+			constructor(who: org.bukkit.entity.Player, what: org.bukkit.entity.Entity, item: org.bukkit.inventory.ItemStack, hand: org.bukkit.inventory.EquipmentSlot);
+
+			constructor(who: org.bukkit.entity.Player, what: org.bukkit.entity.Entity);
+
 		}
-		namespace PlayerShowEntityEvent {
+		namespace PlayerShearEntityEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerShowEntityEvent = org.bukkit.event.player.PlayerEvent & {
-			new(who: org.bukkit.entity.Player, entity: org.bukkit.entity.Entity): PlayerShowEntityEvent;
-
+		interface PlayerShowEntityEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets the entity which has been shown to the player.
 			 */
@@ -47660,14 +48064,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerShowEntityEvent {
+			constructor(who: org.bukkit.entity.Player, entity: org.bukkit.entity.Entity);
+
 		}
-		namespace PlayerSignOpenEvent {
+		namespace PlayerShowEntityEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerSignOpenEvent = org.bukkit.event.player.PlayerEvent & {
-			new(player: org.bukkit.entity.Player, sign: org.bukkit.block.Sign, side: org.bukkit.block.sign.Side, cause: org.bukkit.event.player.PlayerSignOpenEvent.Cause): PlayerSignOpenEvent;
-
+		interface PlayerSignOpenEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets the sign that was opened.
 			 */
@@ -47695,8 +48101,17 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerSignOpenEvent {
+			constructor(player: org.bukkit.entity.Player, sign: org.bukkit.block.Sign, side: org.bukkit.block.sign.Side, cause: org.bukkit.event.player.PlayerSignOpenEvent.Cause);
+
 		}
 		namespace PlayerSignOpenEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		namespace PlayerSignOpenEvent {
+			interface Cause {}
 			namespace Cause {
 				/**
 				 * Indicate the sign was opened because of an interaction.
@@ -47727,15 +48142,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.player.PlayerSignOpenEvent.Cause;
 
 			}
-			interface Cause {}
 		}
-		namespace PlayerSpawnChangeEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type PlayerSpawnChangeEvent = org.bukkit.event.player.PlayerEvent & {
-			new(player: org.bukkit.entity.Player, newSpawn: org.bukkit.Location, forced: boolean, cause: org.bukkit.event.player.PlayerSpawnChangeEvent.Cause): PlayerSpawnChangeEvent;
-
+		interface PlayerSpawnChangeEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets the cause of spawn change.
 			 */
@@ -47775,8 +48183,17 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerSpawnChangeEvent {
+			constructor(player: org.bukkit.entity.Player, newSpawn: org.bukkit.Location, forced: boolean, cause: org.bukkit.event.player.PlayerSpawnChangeEvent.Cause);
+
 		}
 		namespace PlayerSpawnChangeEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		namespace PlayerSpawnChangeEvent {
+			interface Cause {}
 			namespace Cause {
 				/**
 				 * Indicate the spawn was set by a command.
@@ -47819,19 +48236,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.player.PlayerSpawnChangeEvent.Cause;
 
 			}
-			interface Cause {}
 		}
-		namespace PlayerStatisticIncrementEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type PlayerStatisticIncrementEvent = org.bukkit.event.player.PlayerEvent & {
-			new(player: org.bukkit.entity.Player, statistic: org.bukkit.Statistic, initialValue: number, newValue: number): PlayerStatisticIncrementEvent;
-
-			new(player: org.bukkit.entity.Player, statistic: org.bukkit.Statistic, initialValue: number, newValue: number, entityType: org.bukkit.entity.EntityType): PlayerStatisticIncrementEvent;
-
-			new(player: org.bukkit.entity.Player, statistic: org.bukkit.Statistic, initialValue: number, newValue: number, material: org.bukkit.Material): PlayerStatisticIncrementEvent;
-
+		interface PlayerStatisticIncrementEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets the statistic that is being incremented.
 			 */
@@ -47871,14 +48277,20 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerStatisticIncrementEvent {
+			constructor(player: org.bukkit.entity.Player, statistic: org.bukkit.Statistic, initialValue: number, newValue: number);
+
+			constructor(player: org.bukkit.entity.Player, statistic: org.bukkit.Statistic, initialValue: number, newValue: number, entityType: org.bukkit.entity.EntityType);
+
+			constructor(player: org.bukkit.entity.Player, statistic: org.bukkit.Statistic, initialValue: number, newValue: number, material: org.bukkit.Material);
+
 		}
-		namespace PlayerSwapHandItemsEvent {
+		namespace PlayerStatisticIncrementEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerSwapHandItemsEvent = org.bukkit.event.player.PlayerEvent & {
-			new(player: org.bukkit.entity.Player, mainHandItem: org.bukkit.inventory.ItemStack, offHandItem: org.bukkit.inventory.ItemStack): PlayerSwapHandItemsEvent;
-
+		interface PlayerSwapHandItemsEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets the item switched to the main hand.
 			 */
@@ -47911,14 +48323,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerSwapHandItemsEvent {
+			constructor(player: org.bukkit.entity.Player, mainHandItem: org.bukkit.inventory.ItemStack, offHandItem: org.bukkit.inventory.ItemStack);
+
 		}
-		namespace PlayerTakeLecternBookEvent {
+		namespace PlayerSwapHandItemsEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerTakeLecternBookEvent = org.bukkit.event.player.PlayerEvent & {
-			new(who: org.bukkit.entity.Player, lectern: org.bukkit.block.Lectern): PlayerTakeLecternBookEvent;
-
+		interface PlayerTakeLecternBookEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets the lectern involved.
 			 */
@@ -47941,16 +48355,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerTakeLecternBookEvent {
+			constructor(who: org.bukkit.entity.Player, lectern: org.bukkit.block.Lectern);
+
 		}
-		namespace PlayerTeleportEvent {
+		namespace PlayerTakeLecternBookEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerTeleportEvent = org.bukkit.event.player.PlayerMoveEvent & {
-			new(player: org.bukkit.entity.Player, from: org.bukkit.Location, to: org.bukkit.Location): PlayerTeleportEvent;
-
-			new(player: org.bukkit.entity.Player, from: org.bukkit.Location, to: org.bukkit.Location, cause: org.bukkit.event.player.PlayerTeleportEvent.TeleportCause): PlayerTeleportEvent;
-
+		interface PlayerTeleportEvent extends Modify<org.bukkit.event.player.PlayerMoveEvent, {
 			/**
 			 * Gets the cause of this teleportation event
 			 */
@@ -47958,8 +48372,19 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerTeleportEvent {
+			constructor(player: org.bukkit.entity.Player, from: org.bukkit.Location, to: org.bukkit.Location);
+
+			constructor(player: org.bukkit.entity.Player, from: org.bukkit.Location, to: org.bukkit.Location, cause: org.bukkit.event.player.PlayerTeleportEvent.TeleportCause);
+
 		}
 		namespace PlayerTeleportEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		namespace PlayerTeleportEvent {
+			interface TeleportCause {}
 			namespace TeleportCause {
 				/**
 				 * Indicates the teleporation was caused by a player throwing an Ender
@@ -48033,15 +48458,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 
 			}
-			interface TeleportCause {}
 		}
-		namespace PlayerToggleFlightEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type PlayerToggleFlightEvent = org.bukkit.event.player.PlayerEvent & {
-			new(player: org.bukkit.entity.Player, isFlying: boolean): PlayerToggleFlightEvent;
-
+		interface PlayerToggleFlightEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Returns whether the player is trying to start or stop flying.
 			 */
@@ -48059,14 +48477,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerToggleFlightEvent {
+			constructor(player: org.bukkit.entity.Player, isFlying: boolean);
+
 		}
-		namespace PlayerToggleSneakEvent {
+		namespace PlayerToggleFlightEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerToggleSneakEvent = org.bukkit.event.player.PlayerEvent & {
-			new(player: org.bukkit.entity.Player, isSneaking: boolean): PlayerToggleSneakEvent;
-
+		interface PlayerToggleSneakEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Returns whether the player is now sneaking or not.
 			 */
@@ -48084,14 +48504,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerToggleSneakEvent {
+			constructor(player: org.bukkit.entity.Player, isSneaking: boolean);
+
 		}
-		namespace PlayerToggleSprintEvent {
+		namespace PlayerToggleSneakEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PlayerToggleSprintEvent = org.bukkit.event.player.PlayerEvent & {
-			new(player: org.bukkit.entity.Player, isSprinting: boolean): PlayerToggleSprintEvent;
-
+		interface PlayerToggleSprintEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Gets whether the player is now sprinting or not.
 			 */
@@ -48109,12 +48531,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerToggleSprintEvent {
+			constructor(player: org.bukkit.entity.Player, isSprinting: boolean);
+
 		}
-		type PlayerUnleashEntityEvent = org.bukkit.event.entity.EntityUnleashEvent & {
-			new(entity: org.bukkit.entity.Entity, player: org.bukkit.entity.Player, hand: org.bukkit.inventory.EquipmentSlot): PlayerUnleashEntityEvent;
+		namespace PlayerToggleSprintEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
 
-			new(entity: org.bukkit.entity.Entity, player: org.bukkit.entity.Player): PlayerUnleashEntityEvent;
-
+		}
+		interface PlayerUnleashEntityEvent extends Modify<org.bukkit.event.entity.EntityUnleashEvent, {
 			/**
 			 * Returns the player who is unleashing the entity.
 			 */
@@ -48135,18 +48561,20 @@ declare global {
 			 */
 			setCancelled(cancel: boolean): void;
 
-		}
-		type PlayerUnregisterChannelEvent = org.bukkit.event.player.PlayerChannelEvent & {
-			new(player: org.bukkit.entity.Player, channel: string): PlayerUnregisterChannelEvent;
+		}> {}
+		class PlayerUnleashEntityEvent {
+			constructor(entity: org.bukkit.entity.Entity, player: org.bukkit.entity.Player, hand: org.bukkit.inventory.EquipmentSlot);
+
+			constructor(entity: org.bukkit.entity.Entity, player: org.bukkit.entity.Player);
 
 		}
-		namespace PlayerVelocityEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
+		interface PlayerUnregisterChannelEvent extends Modify<org.bukkit.event.player.PlayerChannelEvent, {
+		}> {}
+		class PlayerUnregisterChannelEvent {
+			constructor(player: org.bukkit.entity.Player, channel: string);
 
 		}
-		type PlayerVelocityEvent = org.bukkit.event.player.PlayerEvent & {
-			new(player: org.bukkit.entity.Player, velocity: org.bukkit.util.Vector): PlayerVelocityEvent;
-
+		interface PlayerVelocityEvent extends Modify<org.bukkit.event.player.PlayerEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -48169,16 +48597,18 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PlayerVelocityEvent {
+			constructor(player: org.bukkit.entity.Player, velocity: org.bukkit.util.Vector);
+
 		}
-	}
-	namespace org.bukkit.event.world {
-		namespace AsyncStructureGenerateEvent {
+		namespace PlayerVelocityEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type AsyncStructureGenerateEvent = org.bukkit.event.world.WorldEvent & {
-			new(world: org.bukkit.World, async: boolean, cause: org.bukkit.event.world.AsyncStructureGenerateEvent.Cause, structure: org.bukkit.generator.structure.Structure, boundingBox: org.bukkit.util.BoundingBox, chunkX: number, chunkZ: number): AsyncStructureGenerateEvent;
-
+	}
+	namespace org.bukkit.event.world {
+		interface AsyncStructureGenerateEvent extends Modify<org.bukkit.event.world.WorldEvent, {
 			/**
 			 * Gets the event cause.
 			 */
@@ -48256,8 +48686,17 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class AsyncStructureGenerateEvent {
+			constructor(world: org.bukkit.World, async: boolean, cause: org.bukkit.event.world.AsyncStructureGenerateEvent.Cause, structure: org.bukkit.generator.structure.Structure, boundingBox: org.bukkit.util.BoundingBox, chunkX: number, chunkZ: number);
+
 		}
 		namespace AsyncStructureGenerateEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		namespace AsyncStructureGenerateEvent {
+			interface Cause {}
 			namespace Cause {
 				const COMMAND: org.bukkit.event.world.AsyncStructureGenerateEvent.Cause;
 
@@ -48274,15 +48713,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.world.AsyncStructureGenerateEvent.Cause;
 
 			}
-			interface Cause {}
 		}
-		namespace AsyncStructureSpawnEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type AsyncStructureSpawnEvent = org.bukkit.event.world.WorldEvent & {
-			new(world: org.bukkit.World, structure: org.bukkit.generator.structure.Structure, boundingBox: org.bukkit.util.BoundingBox, chunkX: number, chunkZ: number): AsyncStructureSpawnEvent;
-
+		interface AsyncStructureSpawnEvent extends Modify<org.bukkit.event.world.WorldEvent, {
 			/**
 			 * Get the structure reference that is generated.
 			 */
@@ -48319,21 +48751,23 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class AsyncStructureSpawnEvent {
+			constructor(world: org.bukkit.World, structure: org.bukkit.generator.structure.Structure, boundingBox: org.bukkit.util.BoundingBox, chunkX: number, chunkZ: number);
+
 		}
-		type ChunkEvent = org.bukkit.event.world.WorldEvent & {
+		namespace AsyncStructureSpawnEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		interface ChunkEvent extends Modify<org.bukkit.event.world.WorldEvent, {
 			/**
 			 * Gets the chunk being loaded/unloaded
 			 */
 			getChunk(): org.bukkit.Chunk;
 
-		}
-		namespace ChunkLoadEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type ChunkLoadEvent = org.bukkit.event.world.ChunkEvent & {
-			new(chunk: org.bukkit.Chunk, newChunk: boolean): ChunkLoadEvent;
-
+		}> {}
+		interface ChunkLoadEvent extends Modify<org.bukkit.event.world.ChunkEvent, {
 			/**
 			 * Gets if this chunk was newly created or not.
 			 * 
@@ -48344,26 +48778,28 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class ChunkLoadEvent {
+			constructor(chunk: org.bukkit.Chunk, newChunk: boolean);
+
+		}
+		namespace ChunkLoadEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		interface ChunkPopulateEvent extends Modify<org.bukkit.event.world.ChunkEvent, {
+			getHandlers(): org.bukkit.event.HandlerList;
+
+		}> {}
+		class ChunkPopulateEvent {
+			constructor(chunk: org.bukkit.Chunk);
+
 		}
 		namespace ChunkPopulateEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type ChunkPopulateEvent = org.bukkit.event.world.ChunkEvent & {
-			new(chunk: org.bukkit.Chunk): ChunkPopulateEvent;
-
-			getHandlers(): org.bukkit.event.HandlerList;
-
-		}
-		namespace ChunkUnloadEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type ChunkUnloadEvent = org.bukkit.event.world.ChunkEvent & {
-			new(chunk: org.bukkit.Chunk): ChunkUnloadEvent;
-
-			new(chunk: org.bukkit.Chunk, save: boolean): ChunkUnloadEvent;
-
+		interface ChunkUnloadEvent extends Modify<org.bukkit.event.world.ChunkEvent, {
 			/**
 			 * Return whether this chunk will be saved to disk.
 			 */
@@ -48376,14 +48812,18 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class ChunkUnloadEvent {
+			constructor(chunk: org.bukkit.Chunk);
+
+			constructor(chunk: org.bukkit.Chunk, save: boolean);
+
 		}
-		namespace EntitiesLoadEvent {
+		namespace ChunkUnloadEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type EntitiesLoadEvent = org.bukkit.event.world.ChunkEvent & {
-			new(chunk: org.bukkit.Chunk, entities: globalThis.java.util.List<org.bukkit.entity.Entity>): EntitiesLoadEvent;
-
+		interface EntitiesLoadEvent extends Modify<org.bukkit.event.world.ChunkEvent, {
 			/**
 			 * Get the entities which are being loaded.
 			 */
@@ -48391,14 +48831,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EntitiesLoadEvent {
+			constructor(chunk: org.bukkit.Chunk, entities: globalThis.java.util.List<org.bukkit.entity.Entity>);
+
 		}
-		namespace EntitiesUnloadEvent {
+		namespace EntitiesLoadEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type EntitiesUnloadEvent = org.bukkit.event.world.ChunkEvent & {
-			new(chunk: org.bukkit.Chunk, entities: globalThis.java.util.List<org.bukkit.entity.Entity>): EntitiesUnloadEvent;
-
+		interface EntitiesUnloadEvent extends Modify<org.bukkit.event.world.ChunkEvent, {
 			/**
 			 * Get the entities which are being unloaded.
 			 */
@@ -48406,14 +48848,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EntitiesUnloadEvent {
+			constructor(chunk: org.bukkit.Chunk, entities: globalThis.java.util.List<org.bukkit.entity.Entity>);
+
 		}
-		namespace GenericGameEvent {
+		namespace EntitiesUnloadEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type GenericGameEvent = org.bukkit.event.world.WorldEvent & {
-			new(event: org.bukkit.GameEvent, location: org.bukkit.Location, entity: org.bukkit.entity.Entity, radius: number, isAsync: boolean): GenericGameEvent;
-
+		interface GenericGameEvent extends Modify<org.bukkit.event.world.WorldEvent, {
 			/**
 			 * Get the underlying event.
 			 */
@@ -48451,14 +48895,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class GenericGameEvent {
+			constructor(event: org.bukkit.GameEvent, location: org.bukkit.Location, entity: org.bukkit.entity.Entity, radius: number, isAsync: boolean);
+
 		}
-		namespace LootGenerateEvent {
+		namespace GenericGameEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type LootGenerateEvent = org.bukkit.event.world.WorldEvent & {
-			new(world: org.bukkit.World, entity: org.bukkit.entity.Entity, inventoryHolder: org.bukkit.inventory.InventoryHolder, lootTable: org.bukkit.loot.LootTable, lootContext: org.bukkit.loot.LootContext, items: globalThis.java.util.List<org.bukkit.inventory.ItemStack>, plugin: boolean): LootGenerateEvent;
-
+		interface LootGenerateEvent extends Modify<org.bukkit.event.world.WorldEvent, {
 			/**
 			 * Get the entity used as context for loot generation (if applicable).
 			 * For inventories where entities are not required to generate loot, such as
@@ -48519,16 +48965,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class LootGenerateEvent {
+			constructor(world: org.bukkit.World, entity: org.bukkit.entity.Entity, inventoryHolder: org.bukkit.inventory.InventoryHolder, lootTable: org.bukkit.loot.LootTable, lootContext: org.bukkit.loot.LootContext, items: globalThis.java.util.List<org.bukkit.inventory.ItemStack>, plugin: boolean);
+
 		}
-		namespace PortalCreateEvent {
+		namespace LootGenerateEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PortalCreateEvent = org.bukkit.event.world.WorldEvent & {
-			new(blocks: globalThis.java.util.List<org.bukkit.block.BlockState>, world: org.bukkit.World, reason: org.bukkit.event.world.PortalCreateEvent.CreateReason): PortalCreateEvent;
-
-			new(blocks: globalThis.java.util.List<org.bukkit.block.BlockState>, world: org.bukkit.World, entity: org.bukkit.entity.Entity, reason: org.bukkit.event.world.PortalCreateEvent.CreateReason): PortalCreateEvent;
-
+		interface PortalCreateEvent extends Modify<org.bukkit.event.world.WorldEvent, {
 			/**
 			 * Gets an array list of all the blocks associated with the created portal
 			 */
@@ -48556,8 +49002,19 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PortalCreateEvent {
+			constructor(blocks: globalThis.java.util.List<org.bukkit.block.BlockState>, world: org.bukkit.World, reason: org.bukkit.event.world.PortalCreateEvent.CreateReason);
+
+			constructor(blocks: globalThis.java.util.List<org.bukkit.block.BlockState>, world: org.bukkit.World, entity: org.bukkit.entity.Entity, reason: org.bukkit.event.world.PortalCreateEvent.CreateReason);
+
 		}
 		namespace PortalCreateEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		namespace PortalCreateEvent {
+			interface CreateReason {}
 			namespace CreateReason {
 				/**
 				 * When the blocks inside a portal are created due to a portal frame
@@ -48586,15 +49043,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.world.PortalCreateEvent.CreateReason;
 
 			}
-			interface CreateReason {}
 		}
-		namespace SpawnChangeEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type SpawnChangeEvent = org.bukkit.event.world.WorldEvent & {
-			new(world: org.bukkit.World, previousLocation: org.bukkit.Location): SpawnChangeEvent;
-
+		interface SpawnChangeEvent extends Modify<org.bukkit.event.world.WorldEvent, {
 			/**
 			 * Gets the previous spawn location
 			 */
@@ -48602,14 +49052,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class SpawnChangeEvent {
+			constructor(world: org.bukkit.World, previousLocation: org.bukkit.Location);
+
 		}
-		namespace StructureGrowEvent {
+		namespace SpawnChangeEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type StructureGrowEvent = org.bukkit.event.world.WorldEvent & {
-			new(location: org.bukkit.Location, species: org.bukkit.TreeType, bonemeal: boolean, player: org.bukkit.entity.Player, blocks: globalThis.java.util.List<org.bukkit.block.BlockState>): StructureGrowEvent;
-
+		interface StructureGrowEvent extends Modify<org.bukkit.event.world.WorldEvent, {
 			/**
 			 * Gets the location of the structure.
 			 */
@@ -48648,14 +49100,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class StructureGrowEvent {
+			constructor(location: org.bukkit.Location, species: org.bukkit.TreeType, bonemeal: boolean, player: org.bukkit.entity.Player, blocks: globalThis.java.util.List<org.bukkit.block.BlockState>);
+
 		}
-		namespace TimeSkipEvent {
+		namespace StructureGrowEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type TimeSkipEvent = org.bukkit.event.world.WorldEvent & {
-			new(world: org.bukkit.World, skipReason: org.bukkit.event.world.TimeSkipEvent.SkipReason, skipAmount: number): TimeSkipEvent;
-
+		interface TimeSkipEvent extends Modify<org.bukkit.event.world.WorldEvent, {
 			/**
 			 * Gets the reason why the time has skipped.
 			 */
@@ -48683,8 +49137,17 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class TimeSkipEvent {
+			constructor(world: org.bukkit.World, skipReason: org.bukkit.event.world.TimeSkipEvent.SkipReason, skipAmount: number);
+
 		}
 		namespace TimeSkipEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		namespace TimeSkipEvent {
+			interface SkipReason {}
 			namespace SkipReason {
 				/**
 				 * When time is changed using the vanilla /time command.
@@ -48711,56 +49174,57 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.world.TimeSkipEvent.SkipReason;
 
 			}
-			interface SkipReason {}
 		}
-		type WorldEvent = org.bukkit.event.Event & {
-			new(world: org.bukkit.World): WorldEvent;
-
-			new(world: org.bukkit.World, isAsync: boolean): WorldEvent;
-
+		interface WorldEvent extends Modify<org.bukkit.event.Event, {
 			/**
 			 * Gets the world primarily involved with this event
 			 */
 			getWorld(): org.bukkit.World;
+
+		}> {}
+		class WorldEvent {
+			constructor(world: org.bukkit.World);
+
+			constructor(world: org.bukkit.World, isAsync: boolean);
+
+		}
+		interface WorldInitEvent extends Modify<org.bukkit.event.world.WorldEvent, {
+			getHandlers(): org.bukkit.event.HandlerList;
+
+		}> {}
+		class WorldInitEvent {
+			constructor(world: org.bukkit.World);
 
 		}
 		namespace WorldInitEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type WorldInitEvent = org.bukkit.event.world.WorldEvent & {
-			new(world: org.bukkit.World): WorldInitEvent;
-
+		interface WorldLoadEvent extends Modify<org.bukkit.event.world.WorldEvent, {
 			getHandlers(): org.bukkit.event.HandlerList;
+
+		}> {}
+		class WorldLoadEvent {
+			constructor(world: org.bukkit.World);
 
 		}
 		namespace WorldLoadEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type WorldLoadEvent = org.bukkit.event.world.WorldEvent & {
-			new(world: org.bukkit.World): WorldLoadEvent;
-
+		interface WorldSaveEvent extends Modify<org.bukkit.event.world.WorldEvent, {
 			getHandlers(): org.bukkit.event.HandlerList;
+
+		}> {}
+		class WorldSaveEvent {
+			constructor(world: org.bukkit.World);
 
 		}
 		namespace WorldSaveEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type WorldSaveEvent = org.bukkit.event.world.WorldEvent & {
-			new(world: org.bukkit.World): WorldSaveEvent;
-
-			getHandlers(): org.bukkit.event.HandlerList;
-
-		}
-		namespace WorldUnloadEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type WorldUnloadEvent = org.bukkit.event.world.WorldEvent & {
-			new(world: org.bukkit.World): WorldUnloadEvent;
-
+		interface WorldUnloadEvent extends Modify<org.bukkit.event.world.WorldEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -48773,23 +49237,25 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class WorldUnloadEvent {
+			constructor(world: org.bukkit.World);
+
+		}
+		namespace WorldUnloadEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
 		}
 	}
 	namespace org.bukkit.material {
-		type Attachable = org.bukkit.material.Directional & {
+		interface Attachable extends Modify<org.bukkit.material.Directional, {
 			/**
 			 * Gets the face that this block is attached on
 			 */
 			getAttachedFace(): org.bukkit.block.BlockFace;
 
-		}
-		type Banner = org.bukkit.material.MaterialData & {
-			new(): Banner;
-
-			new(type: org.bukkit.Material): Banner;
-
-			new(type: org.bukkit.Material, data: any /* byte */): Banner;
-
+		}> {}
+		interface Banner extends Modify<org.bukkit.material.MaterialData, {
 			isWallBanner(): boolean;
 
 			/**
@@ -48811,22 +49277,16 @@ declare global {
 
 			clone(): org.bukkit.material.Banner;
 
+		}> {}
+		class Banner {
+			constructor();
+
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type Bed = org.bukkit.material.MaterialData & {
-			/**
-			 * Default constructor for a bed.
-			 */
-			new(): Bed;
-
-			/**
-			 * Instantiate a bed facing in a particular direction.
-			 */
-			new(direction: org.bukkit.block.BlockFace): Bed;
-
-			new(type: org.bukkit.Material): Bed;
-
-			new(type: org.bukkit.Material, data: any /* byte */): Bed;
-
+		interface Bed extends Modify<org.bukkit.material.MaterialData, {
 			/**
 			 * Determine if this block represents the head of the bed
 			 */
@@ -48852,14 +49312,24 @@ declare global {
 
 			clone(): org.bukkit.material.Bed;
 
+		}> {}
+		class Bed {
+			/**
+			 * Default constructor for a bed.
+			 */
+			constructor();
+
+			/**
+			 * Instantiate a bed facing in a particular direction.
+			 */
+			constructor(direction: org.bukkit.block.BlockFace);
+
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type Button = org.bukkit.material.SimpleAttachableMaterialData & {
-			new(): Button;
-
-			new(type: org.bukkit.Material): Button;
-
-			new(type: org.bukkit.Material, data: any /* byte */): Button;
-
+		interface Button extends Modify<org.bukkit.material.SimpleAttachableMaterialData, {
 			/**
 			 * Gets the current state of this Material, indicating if it's powered or
 			 * unpowered
@@ -48885,14 +49355,16 @@ declare global {
 
 			clone(): org.bukkit.material.Button;
 
+		}> {}
+		class Button {
+			constructor();
+
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type Cake = org.bukkit.material.MaterialData & {
-			new(): Cake;
-
-			new(type: org.bukkit.Material): Cake;
-
-			new(type: org.bukkit.Material, data: any /* byte */): Cake;
-
+		interface Cake extends Modify<org.bukkit.material.MaterialData, {
 			/**
 			 * Gets the number of slices eaten from this cake
 			 */
@@ -48917,14 +49389,16 @@ declare global {
 
 			clone(): org.bukkit.material.Cake;
 
+		}> {}
+		class Cake {
+			constructor();
+
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type Cauldron = org.bukkit.material.MaterialData & {
-			new(): Cauldron;
-
-			new(type: org.bukkit.Material, data: any /* byte */): Cauldron;
-
-			new(data: any /* byte */): Cauldron;
-
+		interface Cauldron extends Modify<org.bukkit.material.MaterialData, {
 			/**
 			 * Check if the cauldron is full.
 			 */
@@ -48939,31 +49413,33 @@ declare global {
 
 			clone(): org.bukkit.material.Cauldron;
 
+		}> {}
+		class Cauldron {
+			constructor();
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
+			constructor(data: any /* byte */);
+
 		}
-		type Chest = org.bukkit.material.DirectionalContainer & {
-			new(): Chest;
+		interface Chest extends Modify<org.bukkit.material.DirectionalContainer, {
+			clone(): org.bukkit.material.Chest;
+
+		}> {}
+		class Chest {
+			constructor();
 
 			/**
 			 * Instantiate a chest facing in a particular direction.
 			 */
-			new(direction: org.bukkit.block.BlockFace): Chest;
+			constructor(direction: org.bukkit.block.BlockFace);
 
-			new(type: org.bukkit.Material): Chest;
+			constructor(type: org.bukkit.Material);
 
-			new(type: org.bukkit.Material, data: any /* byte */): Chest;
-
-			clone(): org.bukkit.material.Chest;
+			constructor(type: org.bukkit.Material, data: any /* byte */);
 
 		}
-		type Coal = org.bukkit.material.MaterialData & {
-			new(): Coal;
-
-			new(type: org.bukkit.CoalType): Coal;
-
-			new(type: org.bukkit.Material): Coal;
-
-			new(type: org.bukkit.Material, data: any /* byte */): Coal;
-
+		interface Coal extends Modify<org.bukkit.material.MaterialData, {
 			/**
 			 * Gets the current type of this coal
 			 */
@@ -48978,16 +49454,18 @@ declare global {
 
 			clone(): org.bukkit.material.Coal;
 
+		}> {}
+		class Coal {
+			constructor();
+
+			constructor(type: org.bukkit.CoalType);
+
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type CocoaPlant = org.bukkit.material.MaterialData & {
-			new(): CocoaPlant;
-
-			new(type: org.bukkit.Material, data: any /* byte */): CocoaPlant;
-
-			new(sz: org.bukkit.material.CocoaPlant.CocoaPlantSize): CocoaPlant;
-
-			new(sz: org.bukkit.material.CocoaPlant.CocoaPlantSize, dir: org.bukkit.block.BlockFace): CocoaPlant;
-
+		interface CocoaPlant extends Modify<org.bukkit.material.MaterialData, {
 			/**
 			 * Get size of plant
 			 */
@@ -49017,8 +49495,19 @@ declare global {
 
 			toString(): string;
 
+		}> {}
+		class CocoaPlant {
+			constructor();
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
+			constructor(sz: org.bukkit.material.CocoaPlant.CocoaPlantSize);
+
+			constructor(sz: org.bukkit.material.CocoaPlant.CocoaPlantSize, dir: org.bukkit.block.BlockFace);
+
 		}
 		namespace CocoaPlant {
+			interface CocoaPlantSize {}
 			namespace CocoaPlantSize {
 				const SMALL: org.bukkit.material.CocoaPlant.CocoaPlantSize;
 
@@ -49035,7 +49524,6 @@ declare global {
 				function valueOf(name: string): org.bukkit.material.CocoaPlant.CocoaPlantSize;
 
 			}
-			interface CocoaPlantSize {}
 		}
 		interface Colorable {
 			/**
@@ -49055,13 +49543,7 @@ declare global {
 			setColor(color: org.bukkit.DyeColor): void;
 
 		}
-		type Command = org.bukkit.material.MaterialData & {
-			new(): Command;
-
-			new(type: org.bukkit.Material): Command;
-
-			new(type: org.bukkit.Material, data: any /* byte */): Command;
-
+		interface Command extends Modify<org.bukkit.material.MaterialData, {
 			/**
 			 * Gets the current state of this Material, indicating if it's powered or
 			 * unpowered
@@ -49077,32 +49559,16 @@ declare global {
 
 			clone(): org.bukkit.material.Command;
 
+		}> {}
+		class Command {
+			constructor();
+
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type Comparator = org.bukkit.material.MaterialData & {
-			/**
-			 * Constructs a comparator switched off, with the default mode (normal) and facing the default direction (north).
-			 */
-			new(): Comparator;
-
-			/**
-			 * Constructs a comparator switched off, with the default mode (normal) and facing the specified direction.
-			 */
-			new(facingDirection: org.bukkit.block.BlockFace): Comparator;
-
-			/**
-			 * Constructs a comparator switched off, with the specified mode and facing the specified direction.
-			 */
-			new(facingDirection: org.bukkit.block.BlockFace, isSubtraction: boolean): Comparator;
-
-			/**
-			 * Constructs a comparator switched on or off, with the specified mode and facing the specified direction.
-			 */
-			new(facingDirection: org.bukkit.block.BlockFace, isSubtraction: boolean, state: boolean): Comparator;
-
-			new(type: org.bukkit.Material): Comparator;
-
-			new(type: org.bukkit.Material, data: any /* byte */): Comparator;
-
+		interface Comparator extends Modify<org.bukkit.material.MaterialData, {
 			/**
 			 * Sets whether the comparator is in subtraction mode.
 			 */
@@ -49137,30 +49603,34 @@ declare global {
 			 */
 			isBeingPowered(): boolean;
 
+		}> {}
+		class Comparator {
+			/**
+			 * Constructs a comparator switched off, with the default mode (normal) and facing the default direction (north).
+			 */
+			constructor();
+
+			/**
+			 * Constructs a comparator switched off, with the default mode (normal) and facing the specified direction.
+			 */
+			constructor(facingDirection: org.bukkit.block.BlockFace);
+
+			/**
+			 * Constructs a comparator switched off, with the specified mode and facing the specified direction.
+			 */
+			constructor(facingDirection: org.bukkit.block.BlockFace, isSubtraction: boolean);
+
+			/**
+			 * Constructs a comparator switched on or off, with the specified mode and facing the specified direction.
+			 */
+			constructor(facingDirection: org.bukkit.block.BlockFace, isSubtraction: boolean, state: boolean);
+
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type Crops = org.bukkit.material.MaterialData & {
-			/**
-			 * Constructs a wheat crop block in the seeded state.
-			 */
-			new(): Crops;
-
-			/**
-			 * Constructs a wheat crop block in the given growth state
-			 */
-			new(state: org.bukkit.CropState): Crops;
-
-			/**
-			 * Constructs a crop block of the given type and in the given growth state
-			 */
-			new(type: org.bukkit.Material, state: org.bukkit.CropState): Crops;
-
-			/**
-			 * Constructs a crop block of the given type and in the seeded state
-			 */
-			new(type: org.bukkit.Material): Crops;
-
-			new(type: org.bukkit.Material, data: any /* byte */): Crops;
-
+		interface Crops extends Modify<org.bukkit.material.MaterialData, {
 			/**
 			 * Gets the current growth state of this crop
 			 * For crops with only four growth states such as beetroot, only the values SEEDED, SMALL, TALL and RIPE will be
@@ -49183,52 +49653,48 @@ declare global {
 
 			clone(): org.bukkit.material.Crops;
 
+		}> {}
+		class Crops {
+			/**
+			 * Constructs a wheat crop block in the seeded state.
+			 */
+			constructor();
+
+			/**
+			 * Constructs a wheat crop block in the given growth state
+			 */
+			constructor(state: org.bukkit.CropState);
+
+			/**
+			 * Constructs a crop block of the given type and in the given growth state
+			 */
+			constructor(type: org.bukkit.Material, state: org.bukkit.CropState);
+
+			/**
+			 * Constructs a crop block of the given type and in the seeded state
+			 */
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type DetectorRail = org.bukkit.material.ExtendedRails & {
-			new(): DetectorRail;
-
-			new(type: org.bukkit.Material): DetectorRail;
-
-			new(type: org.bukkit.Material, data: any /* byte */): DetectorRail;
-
+		interface DetectorRail extends Modify<org.bukkit.material.ExtendedRails, {
 			isPressed(): boolean;
 
 			setPressed(isPressed: boolean): void;
 
 			clone(): org.bukkit.material.DetectorRail;
 
+		}> {}
+		class DetectorRail {
+			constructor();
+
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type Diode = org.bukkit.material.MaterialData & {
-			/**
-			 * Constructs a diode switched on, with a delay of 1 and facing the default
-			 * direction (north).
-			 * By default this constructor creates a diode that is switched on for
-			 * backwards compatibility with past implementations.
-			 */
-			new(): Diode;
-
-			/**
-			 * Constructs a diode switched off, with a delay of 1 and facing the
-			 * specified direction.
-			 */
-			new(facingDirection: org.bukkit.block.BlockFace): Diode;
-
-			/**
-			 * Constructs a diode switched off, with the specified delay and facing the
-			 * specified direction.
-			 */
-			new(facingDirection: org.bukkit.block.BlockFace, delay: number): Diode;
-
-			/**
-			 * Constructs a diode switched on or off, with the specified delay and
-			 * facing the specified direction.
-			 */
-			new(facingDirection: org.bukkit.block.BlockFace, delay: number, state: boolean): Diode;
-
-			new(type: org.bukkit.Material): Diode;
-
-			new(type: org.bukkit.Material, data: any /* byte */): Diode;
-
+		interface Diode extends Modify<org.bukkit.material.MaterialData, {
 			/**
 			 * Sets the delay of the repeater.
 			 */
@@ -49258,6 +49724,38 @@ declare global {
 			 */
 			isPowered(): boolean;
 
+		}> {}
+		class Diode {
+			/**
+			 * Constructs a diode switched on, with a delay of 1 and facing the default
+			 * direction (north).
+			 * By default this constructor creates a diode that is switched on for
+			 * backwards compatibility with past implementations.
+			 */
+			constructor();
+
+			/**
+			 * Constructs a diode switched off, with a delay of 1 and facing the
+			 * specified direction.
+			 */
+			constructor(facingDirection: org.bukkit.block.BlockFace);
+
+			/**
+			 * Constructs a diode switched off, with the specified delay and facing the
+			 * specified direction.
+			 */
+			constructor(facingDirection: org.bukkit.block.BlockFace, delay: number);
+
+			/**
+			 * Constructs a diode switched on or off, with the specified delay and
+			 * facing the specified direction.
+			 */
+			constructor(facingDirection: org.bukkit.block.BlockFace, delay: number, state: boolean);
+
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
 		interface Directional {
 			/**
@@ -49271,11 +49769,7 @@ declare global {
 			getFacing(): org.bukkit.block.BlockFace;
 
 		}
-		type DirectionalContainer = org.bukkit.material.MaterialData & {
-			new(type: org.bukkit.Material): DirectionalContainer;
-
-			new(type: org.bukkit.Material, data: any /* byte */): DirectionalContainer;
-
+		interface DirectionalContainer extends Modify<org.bukkit.material.MaterialData, {
 			/**
 			 * Description copied from interface: Directional
 			 */
@@ -49290,16 +49784,14 @@ declare global {
 
 			clone(): org.bukkit.material.DirectionalContainer;
 
+		}> {}
+		class DirectionalContainer {
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type Dispenser = org.bukkit.material.FurnaceAndDispenser & {
-			new(): Dispenser;
-
-			new(direction: org.bukkit.block.BlockFace): Dispenser;
-
-			new(type: org.bukkit.Material): Dispenser;
-
-			new(type: org.bukkit.Material, data: any /* byte */): Dispenser;
-
+		interface Dispenser extends Modify<org.bukkit.material.FurnaceAndDispenser, {
 			/**
 			 * Description copied from interface: Directional
 			 */
@@ -49312,54 +49804,18 @@ declare global {
 
 			clone(): org.bukkit.material.Dispenser;
 
-		}
-		namespace Door {
-			/**
-			 * Returns the item type of a wooden door for the given tree species.
-			 */
-			function getWoodDoorOfSpecies(species: org.bukkit.TreeSpecies): org.bukkit.Material;
+		}> {}
+		class Dispenser {
+			constructor();
+
+			constructor(direction: org.bukkit.block.BlockFace);
+
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
 
 		}
-		type Door = org.bukkit.material.MaterialData & {
-			new(): Door;
-
-			new(type: org.bukkit.Material): Door;
-
-			/**
-			 * Constructs the bottom half of a door of the given material type, facing the specified direction and set to closed
-			 */
-			new(type: org.bukkit.Material, face: org.bukkit.block.BlockFace): Door;
-
-			/**
-			 * Constructs the bottom half of a door of the given material type, facing the specified direction and set to open
-			 * or closed
-			 */
-			new(type: org.bukkit.Material, face: org.bukkit.block.BlockFace, isOpen: boolean): Door;
-
-			/**
-			 * Constructs the top half of door of the given material type and with the hinge on the left or right
-			 */
-			new(type: org.bukkit.Material, isHingeRight: boolean): Door;
-
-			/**
-			 * Constructs the bottom half of a wooden door of the given species, facing the specified direction and set to
-			 * closed
-			 */
-			new(species: org.bukkit.TreeSpecies, face: org.bukkit.block.BlockFace): Door;
-
-			/**
-			 * Constructs the bottom half of a wooden door of the given species, facing the specified direction and set to open
-			 * or closed
-			 */
-			new(species: org.bukkit.TreeSpecies, face: org.bukkit.block.BlockFace, isOpen: boolean): Door;
-
-			/**
-			 * Constructs the top half of a wooden door of the given species and with the hinge on the left or right
-			 */
-			new(species: org.bukkit.TreeSpecies, isHingeRight: boolean): Door;
-
-			new(type: org.bukkit.Material, data: any /* byte */): Door;
-
+		interface Door extends Modify<org.bukkit.material.MaterialData, {
 			/**
 			 * Result is undefined if isTopHalf() is true.
 			 */
@@ -49407,16 +49863,56 @@ declare global {
 
 			clone(): org.bukkit.material.Door;
 
+		}> {}
+		class Door {
+			constructor();
+
+			constructor(type: org.bukkit.Material);
+
+			/**
+			 * Constructs the bottom half of a door of the given material type, facing the specified direction and set to closed
+			 */
+			constructor(type: org.bukkit.Material, face: org.bukkit.block.BlockFace);
+
+			/**
+			 * Constructs the bottom half of a door of the given material type, facing the specified direction and set to open
+			 * or closed
+			 */
+			constructor(type: org.bukkit.Material, face: org.bukkit.block.BlockFace, isOpen: boolean);
+
+			/**
+			 * Constructs the top half of door of the given material type and with the hinge on the left or right
+			 */
+			constructor(type: org.bukkit.Material, isHingeRight: boolean);
+
+			/**
+			 * Constructs the bottom half of a wooden door of the given species, facing the specified direction and set to
+			 * closed
+			 */
+			constructor(species: org.bukkit.TreeSpecies, face: org.bukkit.block.BlockFace);
+
+			/**
+			 * Constructs the bottom half of a wooden door of the given species, facing the specified direction and set to open
+			 * or closed
+			 */
+			constructor(species: org.bukkit.TreeSpecies, face: org.bukkit.block.BlockFace, isOpen: boolean);
+
+			/**
+			 * Constructs the top half of a wooden door of the given species and with the hinge on the left or right
+			 */
+			constructor(species: org.bukkit.TreeSpecies, isHingeRight: boolean);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type Dye = org.bukkit.material.MaterialData & {
-			new(): Dye;
+		namespace Door {
+			/**
+			 * Returns the item type of a wooden door for the given tree species.
+			 */
+			function getWoodDoorOfSpecies(species: org.bukkit.TreeSpecies): org.bukkit.Material;
 
-			new(type: org.bukkit.Material): Dye;
-
-			new(type: org.bukkit.Material, data: any /* byte */): Dye;
-
-			new(color: org.bukkit.DyeColor): Dye;
-
+		}
+		interface Dye extends Modify<org.bukkit.material.MaterialData, {
 			/**
 			 * Gets the current color of this dye
 			 */
@@ -49431,27 +49927,35 @@ declare global {
 
 			clone(): org.bukkit.material.Dye;
 
+		}> {}
+		class Dye {
+			constructor();
+
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
+			constructor(color: org.bukkit.DyeColor);
+
 		}
-		type EnderChest = org.bukkit.material.DirectionalContainer & {
-			new(): EnderChest;
+		interface EnderChest extends Modify<org.bukkit.material.DirectionalContainer, {
+			clone(): org.bukkit.material.EnderChest;
+
+		}> {}
+		class EnderChest {
+			constructor();
 
 			/**
 			 * Instantiate an ender chest facing in a particular direction.
 			 */
-			new(direction: org.bukkit.block.BlockFace): EnderChest;
+			constructor(direction: org.bukkit.block.BlockFace);
 
-			new(type: org.bukkit.Material): EnderChest;
+			constructor(type: org.bukkit.Material);
 
-			new(type: org.bukkit.Material, data: any /* byte */): EnderChest;
-
-			clone(): org.bukkit.material.EnderChest;
+			constructor(type: org.bukkit.Material, data: any /* byte */);
 
 		}
-		type ExtendedRails = org.bukkit.material.Rails & {
-			new(type: org.bukkit.Material): ExtendedRails;
-
-			new(type: org.bukkit.Material, data: any /* byte */): ExtendedRails;
-
+		interface ExtendedRails extends Modify<org.bukkit.material.Rails, {
 			isCurve(): boolean;
 
 			/**
@@ -49461,17 +49965,14 @@ declare global {
 
 			clone(): org.bukkit.material.ExtendedRails;
 
+		}> {}
+		class ExtendedRails {
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type FlowerPot = org.bukkit.material.MaterialData & {
-			/**
-			 * Default constructor for a flower pot.
-			 */
-			new(): FlowerPot;
-
-			new(type: org.bukkit.Material): FlowerPot;
-
-			new(type: org.bukkit.Material, data: any /* byte */): FlowerPot;
-
+		interface FlowerPot extends Modify<org.bukkit.material.MaterialData, {
 			/**
 			 * Get the material in the flower pot
 			 */
@@ -49486,37 +49987,46 @@ declare global {
 
 			clone(): org.bukkit.material.FlowerPot;
 
+		}> {}
+		class FlowerPot {
+			/**
+			 * Default constructor for a flower pot.
+			 */
+			constructor();
+
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type Furnace = org.bukkit.material.FurnaceAndDispenser & {
-			new(): Furnace;
+		interface Furnace extends Modify<org.bukkit.material.FurnaceAndDispenser, {
+			clone(): org.bukkit.material.Furnace;
+
+		}> {}
+		class Furnace {
+			constructor();
 
 			/**
 			 * Instantiate a furnace facing in a particular direction.
 			 */
-			new(direction: org.bukkit.block.BlockFace): Furnace;
+			constructor(direction: org.bukkit.block.BlockFace);
 
-			new(type: org.bukkit.Material): Furnace;
+			constructor(type: org.bukkit.Material);
 
-			new(type: org.bukkit.Material, data: any /* byte */): Furnace;
-
-			clone(): org.bukkit.material.Furnace;
+			constructor(type: org.bukkit.Material, data: any /* byte */);
 
 		}
-		type FurnaceAndDispenser = org.bukkit.material.DirectionalContainer & {
-			new(type: org.bukkit.Material): FurnaceAndDispenser;
-
-			new(type: org.bukkit.Material, data: any /* byte */): FurnaceAndDispenser;
-
+		interface FurnaceAndDispenser extends Modify<org.bukkit.material.DirectionalContainer, {
 			clone(): org.bukkit.material.FurnaceAndDispenser;
 
+		}> {}
+		class FurnaceAndDispenser {
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type Gate = org.bukkit.material.MaterialData & {
-			new(): Gate;
-
-			new(type: org.bukkit.Material, data: any /* byte */): Gate;
-
-			new(data: any /* byte */): Gate;
-
+		interface Gate extends Modify<org.bukkit.material.MaterialData, {
 			/**
 			 * Description copied from interface: Directional
 			 */
@@ -49541,29 +50051,16 @@ declare global {
 
 			clone(): org.bukkit.material.Gate;
 
+		}> {}
+		class Gate {
+			constructor();
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
+			constructor(data: any /* byte */);
+
 		}
-		type Hopper = org.bukkit.material.MaterialData & {
-			/**
-			 * Constructs a hopper facing the default direction (down) and initially
-			 * active.
-			 */
-			new(): Hopper;
-
-			/**
-			 * Constructs a hopper facing the specified direction and initially active.
-			 */
-			new(facingDirection: org.bukkit.block.BlockFace): Hopper;
-
-			/**
-			 * Constructs a hopper facing the specified direction and either active or
-			 * not.
-			 */
-			new(facingDirection: org.bukkit.block.BlockFace, isActive: boolean): Hopper;
-
-			new(type: org.bukkit.Material): Hopper;
-
-			new(type: org.bukkit.Material, data: any /* byte */): Hopper;
-
+		interface Hopper extends Modify<org.bukkit.material.MaterialData, {
 			/**
 			 * Sets whether the hopper is active or not.
 			 */
@@ -49593,14 +50090,31 @@ declare global {
 			 */
 			isPowered(): boolean;
 
+		}> {}
+		class Hopper {
+			/**
+			 * Constructs a hopper facing the default direction (down) and initially
+			 * active.
+			 */
+			constructor();
+
+			/**
+			 * Constructs a hopper facing the specified direction and initially active.
+			 */
+			constructor(facingDirection: org.bukkit.block.BlockFace);
+
+			/**
+			 * Constructs a hopper facing the specified direction and either active or
+			 * not.
+			 */
+			constructor(facingDirection: org.bukkit.block.BlockFace, isActive: boolean);
+
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type Ladder = org.bukkit.material.SimpleAttachableMaterialData & {
-			new(): Ladder;
-
-			new(type: org.bukkit.Material): Ladder;
-
-			new(type: org.bukkit.Material, data: any /* byte */): Ladder;
-
+		interface Ladder extends Modify<org.bukkit.material.SimpleAttachableMaterialData, {
 			/**
 			 * Gets the face that this block is attached on
 			 */
@@ -49613,42 +50127,16 @@ declare global {
 
 			clone(): org.bukkit.material.Ladder;
 
+		}> {}
+		class Ladder {
+			constructor();
+
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type Leaves = org.bukkit.material.Wood & {
-			/**
-			 * Constructs a leaf block.
-			 */
-			new(): Leaves;
-
-			/**
-			 * Constructs a leaf block of the given tree species.
-			 */
-			new(species: org.bukkit.TreeSpecies): Leaves;
-
-			/**
-			 * Constructs a leaf block of the given tree species and flag for whether
-			 * this leaf block will disappear when too far from a log.
-			 */
-			new(species: org.bukkit.TreeSpecies, isDecayable: boolean): Leaves;
-
-			/**
-			 * Constructs a leaf block of the given type.
-			 */
-			new(type: org.bukkit.Material): Leaves;
-
-			/**
-			 * Constructs a leaf block of the given type and tree species.
-			 */
-			new(type: org.bukkit.Material, species: org.bukkit.TreeSpecies): Leaves;
-
-			/**
-			 * Constructs a leaf block of the given type and tree species and flag for
-			 * whether this leaf block will disappear when too far from a log.
-			 */
-			new(type: org.bukkit.Material, species: org.bukkit.TreeSpecies, isDecayable: boolean): Leaves;
-
-			new(type: org.bukkit.Material, data: any /* byte */): Leaves;
-
+		interface Leaves extends Modify<org.bukkit.material.Wood, {
 			/**
 			 * Checks if this leaf block is in the process of decaying
 			 */
@@ -49674,14 +50162,44 @@ declare global {
 
 			clone(): org.bukkit.material.Leaves;
 
+		}> {}
+		class Leaves {
+			/**
+			 * Constructs a leaf block.
+			 */
+			constructor();
+
+			/**
+			 * Constructs a leaf block of the given tree species.
+			 */
+			constructor(species: org.bukkit.TreeSpecies);
+
+			/**
+			 * Constructs a leaf block of the given tree species and flag for whether
+			 * this leaf block will disappear when too far from a log.
+			 */
+			constructor(species: org.bukkit.TreeSpecies, isDecayable: boolean);
+
+			/**
+			 * Constructs a leaf block of the given type.
+			 */
+			constructor(type: org.bukkit.Material);
+
+			/**
+			 * Constructs a leaf block of the given type and tree species.
+			 */
+			constructor(type: org.bukkit.Material, species: org.bukkit.TreeSpecies);
+
+			/**
+			 * Constructs a leaf block of the given type and tree species and flag for
+			 * whether this leaf block will disappear when too far from a log.
+			 */
+			constructor(type: org.bukkit.Material, species: org.bukkit.TreeSpecies, isDecayable: boolean);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type Lever = org.bukkit.material.SimpleAttachableMaterialData & {
-			new(): Lever;
-
-			new(type: org.bukkit.Material): Lever;
-
-			new(type: org.bukkit.Material, data: any /* byte */): Lever;
-
+		interface Lever extends Modify<org.bukkit.material.SimpleAttachableMaterialData, {
 			/**
 			 * Gets the current state of this Material, indicating if it's powered or
 			 * unpowered
@@ -49707,16 +50225,16 @@ declare global {
 
 			clone(): org.bukkit.material.Lever;
 
+		}> {}
+		class Lever {
+			constructor();
+
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type LongGrass = org.bukkit.material.MaterialData & {
-			new(): LongGrass;
-
-			new(species: org.bukkit.GrassSpecies): LongGrass;
-
-			new(type: org.bukkit.Material): LongGrass;
-
-			new(type: org.bukkit.Material, data: any /* byte */): LongGrass;
-
+		interface LongGrass extends Modify<org.bukkit.material.MaterialData, {
 			/**
 			 * Gets the current species of this grass
 			 */
@@ -49731,12 +50249,18 @@ declare global {
 
 			clone(): org.bukkit.material.LongGrass;
 
+		}> {}
+		class LongGrass {
+			constructor();
+
+			constructor(species: org.bukkit.GrassSpecies);
+
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
 		interface MaterialData {
-			new(type: org.bukkit.Material): MaterialData;
-
-			new(type: org.bukkit.Material, data: any /* byte */): MaterialData;
-
 			/**
 			 * Gets the raw data in this material
 			 */
@@ -49771,13 +50295,13 @@ declare global {
 			clone(): org.bukkit.material.MaterialData;
 
 		}
-		type MonsterEggs = org.bukkit.material.TexturedMaterial & {
-			new(): MonsterEggs;
+		class MaterialData {
+			constructor(type: org.bukkit.Material);
 
-			new(type: org.bukkit.Material): MonsterEggs;
+			constructor(type: org.bukkit.Material, data: any /* byte */);
 
-			new(type: org.bukkit.Material, data: any /* byte */): MonsterEggs;
-
+		}
+		interface MonsterEggs extends Modify<org.bukkit.material.TexturedMaterial, {
 			/**
 			 * Description copied from class: TexturedMaterial
 			 */
@@ -49785,29 +50309,16 @@ declare global {
 
 			clone(): org.bukkit.material.MonsterEggs;
 
+		}> {}
+		class MonsterEggs {
+			constructor();
+
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type Mushroom = org.bukkit.material.MaterialData & {
-			/**
-			 * Constructs a brown/red mushroom block with all sides set to pores.
-			 */
-			new(shroom: org.bukkit.Material): Mushroom;
-
-			/**
-			 * Constructs a brown/red mushroom cap block with the specified face or
-			 * faces set to cap texture.
-			 * Setting any of the four sides will also set the top to cap.
-			 * To set two side faces at once use e.g. north-west.
-			 * Specify self to set all six faces at once.
-			 */
-			new(shroom: org.bukkit.Material, capFace: org.bukkit.block.BlockFace): Mushroom;
-
-			/**
-			 * Constructs a brown/red mushroom block with the specified textures.
-			 */
-			new(shroom: org.bukkit.Material, texture: org.bukkit.material.types.MushroomBlockTexture): Mushroom;
-
-			new(shroom: org.bukkit.Material, data: any /* byte */): Mushroom;
-
+		interface Mushroom extends Modify<org.bukkit.material.MaterialData, {
 			isStem(): boolean;
 
 			/**
@@ -49843,16 +50354,31 @@ declare global {
 
 			clone(): org.bukkit.material.Mushroom;
 
+		}> {}
+		class Mushroom {
+			/**
+			 * Constructs a brown/red mushroom block with all sides set to pores.
+			 */
+			constructor(shroom: org.bukkit.Material);
+
+			/**
+			 * Constructs a brown/red mushroom cap block with the specified face or
+			 * faces set to cap texture.
+			 * Setting any of the four sides will also set the top to cap.
+			 * To set two side faces at once use e.g. north-west.
+			 * Specify self to set all six faces at once.
+			 */
+			constructor(shroom: org.bukkit.Material, capFace: org.bukkit.block.BlockFace);
+
+			/**
+			 * Constructs a brown/red mushroom block with the specified textures.
+			 */
+			constructor(shroom: org.bukkit.Material, texture: org.bukkit.material.types.MushroomBlockTexture);
+
+			constructor(shroom: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type NetherWarts = org.bukkit.material.MaterialData & {
-			new(): NetherWarts;
-
-			new(state: org.bukkit.NetherWartsState): NetherWarts;
-
-			new(type: org.bukkit.Material): NetherWarts;
-
-			new(type: org.bukkit.Material, data: any /* byte */): NetherWarts;
-
+		interface NetherWarts extends Modify<org.bukkit.material.MaterialData, {
 			/**
 			 * Gets the current growth state of this nether wart
 			 */
@@ -49867,16 +50393,18 @@ declare global {
 
 			clone(): org.bukkit.material.NetherWarts;
 
+		}> {}
+		class NetherWarts {
+			constructor();
+
+			constructor(state: org.bukkit.NetherWartsState);
+
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type Observer = org.bukkit.material.MaterialData & {
-			new(): Observer;
-
-			new(direction: org.bukkit.block.BlockFace): Observer;
-
-			new(type: org.bukkit.Material): Observer;
-
-			new(type: org.bukkit.Material, data: any /* byte */): Observer;
-
+		interface Observer extends Modify<org.bukkit.material.MaterialData, {
 			/**
 			 * Description copied from interface: Redstone
 			 */
@@ -49896,6 +50424,16 @@ declare global {
 
 			clone(): org.bukkit.material.Observer;
 
+		}> {}
+		class Observer {
+			constructor();
+
+			constructor(direction: org.bukkit.block.BlockFace);
+
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
 		interface Openable {
 			/**
@@ -49909,14 +50447,7 @@ declare global {
 			setOpen(isOpen: boolean): void;
 
 		}
-		type PistonBaseMaterial = org.bukkit.material.MaterialData & {
-			new(type: org.bukkit.Material): PistonBaseMaterial;
-
-			/**
-			 * Constructs a PistonBaseMaterial.
-			 */
-			new(type: org.bukkit.Material, data: any /* byte */): PistonBaseMaterial;
-
+		interface PistonBaseMaterial extends Modify<org.bukkit.material.MaterialData, {
 			/**
 			 * Description copied from interface: Directional
 			 */
@@ -49944,12 +50475,17 @@ declare global {
 
 			clone(): org.bukkit.material.PistonBaseMaterial;
 
+		}> {}
+		class PistonBaseMaterial {
+			constructor(type: org.bukkit.Material);
+
+			/**
+			 * Constructs a PistonBaseMaterial.
+			 */
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type PistonExtensionMaterial = org.bukkit.material.MaterialData & {
-			new(type: org.bukkit.Material): PistonExtensionMaterial;
-
-			new(type: org.bukkit.Material, data: any /* byte */): PistonExtensionMaterial;
-
+		interface PistonExtensionMaterial extends Modify<org.bukkit.material.MaterialData, {
 			/**
 			 * Description copied from interface: Directional
 			 */
@@ -49977,14 +50513,14 @@ declare global {
 
 			clone(): org.bukkit.material.PistonExtensionMaterial;
 
+		}> {}
+		class PistonExtensionMaterial {
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type PoweredRail = org.bukkit.material.ExtendedRails & {
-			new(): PoweredRail;
-
-			new(type: org.bukkit.Material): PoweredRail;
-
-			new(type: org.bukkit.Material, data: any /* byte */): PoweredRail;
-
+		interface PoweredRail extends Modify<org.bukkit.material.ExtendedRails, {
 			/**
 			 * Description copied from interface: Redstone
 			 */
@@ -49997,37 +50533,36 @@ declare global {
 
 			clone(): org.bukkit.material.PoweredRail;
 
+		}> {}
+		class PoweredRail {
+			constructor();
+
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type PressurePlate = org.bukkit.material.MaterialData & {
-			new(): PressurePlate;
-
-			new(type: org.bukkit.Material): PressurePlate;
-
-			new(type: org.bukkit.Material, data: any /* byte */): PressurePlate;
-
+		interface PressurePlate extends Modify<org.bukkit.material.MaterialData, {
 			isPressed(): boolean;
 
 			toString(): string;
 
 			clone(): org.bukkit.material.PressurePlate;
 
+		}> {}
+		class PressurePlate {
+			constructor();
+
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
 		interface PressureSensor {
 			isPressed(): boolean;
 
 		}
-		type Pumpkin = org.bukkit.material.MaterialData & {
-			new(): Pumpkin;
-
-			/**
-			 * Instantiate a pumpkin facing in a particular direction.
-			 */
-			new(direction: org.bukkit.block.BlockFace): Pumpkin;
-
-			new(type: org.bukkit.Material): Pumpkin;
-
-			new(type: org.bukkit.Material, data: any /* byte */): Pumpkin;
-
+		interface Pumpkin extends Modify<org.bukkit.material.MaterialData, {
 			isLit(): boolean;
 
 			/**
@@ -50044,14 +50579,21 @@ declare global {
 
 			clone(): org.bukkit.material.Pumpkin;
 
+		}> {}
+		class Pumpkin {
+			constructor();
+
+			/**
+			 * Instantiate a pumpkin facing in a particular direction.
+			 */
+			constructor(direction: org.bukkit.block.BlockFace);
+
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type Rails = org.bukkit.material.MaterialData & {
-			new(): Rails;
-
-			new(type: org.bukkit.Material): Rails;
-
-			new(type: org.bukkit.Material, data: any /* byte */): Rails;
-
+		interface Rails extends Modify<org.bukkit.material.MaterialData, {
 			isOnSlope(): boolean;
 
 			isCurve(): boolean;
@@ -50071,6 +50613,14 @@ declare global {
 
 			clone(): org.bukkit.material.Rails;
 
+		}> {}
+		class Rails {
+			constructor();
+
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
 		interface Redstone {
 			/**
@@ -50080,13 +50630,7 @@ declare global {
 			isPowered(): boolean;
 
 		}
-		type RedstoneTorch = org.bukkit.material.Torch & {
-			new(): RedstoneTorch;
-
-			new(type: org.bukkit.Material): RedstoneTorch;
-
-			new(type: org.bukkit.Material, data: any /* byte */): RedstoneTorch;
-
+		interface RedstoneTorch extends Modify<org.bukkit.material.Torch, {
 			/**
 			 * Gets the current state of this Material, indicating if it's powered or
 			 * unpowered
@@ -50097,14 +50641,16 @@ declare global {
 
 			clone(): org.bukkit.material.RedstoneTorch;
 
+		}> {}
+		class RedstoneTorch {
+			constructor();
+
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type RedstoneWire = org.bukkit.material.MaterialData & {
-			new(): RedstoneWire;
-
-			new(type: org.bukkit.Material): RedstoneWire;
-
-			new(type: org.bukkit.Material, data: any /* byte */): RedstoneWire;
-
+		interface RedstoneWire extends Modify<org.bukkit.material.MaterialData, {
 			/**
 			 * Gets the current state of this Material, indicating if it's powered or
 			 * unpowered
@@ -50115,16 +50661,16 @@ declare global {
 
 			clone(): org.bukkit.material.RedstoneWire;
 
+		}> {}
+		class RedstoneWire {
+			constructor();
+
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type Sandstone = org.bukkit.material.MaterialData & {
-			new(): Sandstone;
-
-			new(type: org.bukkit.SandstoneType): Sandstone;
-
-			new(type: org.bukkit.Material): Sandstone;
-
-			new(type: org.bukkit.Material, data: any /* byte */): Sandstone;
-
+		interface Sandstone extends Modify<org.bukkit.material.MaterialData, {
 			/**
 			 * Gets the current type of this sandstone
 			 */
@@ -50139,42 +50685,18 @@ declare global {
 
 			clone(): org.bukkit.material.Sandstone;
 
+		}> {}
+		class Sandstone {
+			constructor();
+
+			constructor(type: org.bukkit.SandstoneType);
+
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type Sapling = org.bukkit.material.Wood & {
-			/**
-			 * Constructs a sapling.
-			 */
-			new(): Sapling;
-
-			/**
-			 * Constructs a sapling of the given tree species.
-			 */
-			new(species: org.bukkit.TreeSpecies): Sapling;
-
-			/**
-			 * Constructs a sapling of the given tree species and if is it instant
-			 * growable
-			 */
-			new(species: org.bukkit.TreeSpecies, isInstantGrowable: boolean): Sapling;
-
-			/**
-			 * Constructs a sapling of the given type.
-			 */
-			new(type: org.bukkit.Material): Sapling;
-
-			/**
-			 * Constructs a sapling of the given type and tree species.
-			 */
-			new(type: org.bukkit.Material, species: org.bukkit.TreeSpecies): Sapling;
-
-			/**
-			 * Constructs a sapling of the given type and tree species and if is it
-			 * instant growable
-			 */
-			new(type: org.bukkit.Material, species: org.bukkit.TreeSpecies, isInstantGrowable: boolean): Sapling;
-
-			new(type: org.bukkit.Material, data: any /* byte */): Sapling;
-
+		interface Sapling extends Modify<org.bukkit.material.Wood, {
 			/**
 			 * Checks if the Sapling would grow when next ticked with bonemeal
 			 */
@@ -50189,14 +50711,44 @@ declare global {
 
 			clone(): org.bukkit.material.Sapling;
 
+		}> {}
+		class Sapling {
+			/**
+			 * Constructs a sapling.
+			 */
+			constructor();
+
+			/**
+			 * Constructs a sapling of the given tree species.
+			 */
+			constructor(species: org.bukkit.TreeSpecies);
+
+			/**
+			 * Constructs a sapling of the given tree species and if is it instant
+			 * growable
+			 */
+			constructor(species: org.bukkit.TreeSpecies, isInstantGrowable: boolean);
+
+			/**
+			 * Constructs a sapling of the given type.
+			 */
+			constructor(type: org.bukkit.Material);
+
+			/**
+			 * Constructs a sapling of the given type and tree species.
+			 */
+			constructor(type: org.bukkit.Material, species: org.bukkit.TreeSpecies);
+
+			/**
+			 * Constructs a sapling of the given type and tree species and if is it
+			 * instant growable
+			 */
+			constructor(type: org.bukkit.Material, species: org.bukkit.TreeSpecies, isInstantGrowable: boolean);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type Sign = org.bukkit.material.MaterialData & {
-			new(): Sign;
-
-			new(type: org.bukkit.Material): Sign;
-
-			new(type: org.bukkit.Material, data: any /* byte */): Sign;
-
+		interface Sign extends Modify<org.bukkit.material.MaterialData, {
 			/**
 			 * Check if this sign is attached to a wall
 			 */
@@ -50221,14 +50773,16 @@ declare global {
 
 			clone(): org.bukkit.material.Sign;
 
+		}> {}
+		class Sign {
+			constructor();
+
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type SimpleAttachableMaterialData = org.bukkit.material.MaterialData & {
-			new(type: org.bukkit.Material, direction: org.bukkit.block.BlockFace): SimpleAttachableMaterialData;
-
-			new(type: org.bukkit.Material): SimpleAttachableMaterialData;
-
-			new(type: org.bukkit.Material, data: any /* byte */): SimpleAttachableMaterialData;
-
+		interface SimpleAttachableMaterialData extends Modify<org.bukkit.material.MaterialData, {
 			/**
 			 * Description copied from interface: Directional
 			 */
@@ -50238,19 +50792,16 @@ declare global {
 
 			clone(): org.bukkit.material.SimpleAttachableMaterialData;
 
+		}> {}
+		class SimpleAttachableMaterialData {
+			constructor(type: org.bukkit.Material, direction: org.bukkit.block.BlockFace);
+
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type Skull = org.bukkit.material.MaterialData & {
-			new(): Skull;
-
-			/**
-			 * Instantiate a skull facing in a particular direction.
-			 */
-			new(direction: org.bukkit.block.BlockFace): Skull;
-
-			new(type: org.bukkit.Material): Skull;
-
-			new(type: org.bukkit.Material, data: any /* byte */): Skull;
-
+		interface Skull extends Modify<org.bukkit.material.MaterialData, {
 			/**
 			 * Description copied from interface: Directional
 			 */
@@ -50265,14 +50816,21 @@ declare global {
 
 			clone(): org.bukkit.material.Skull;
 
+		}> {}
+		class Skull {
+			constructor();
+
+			/**
+			 * Instantiate a skull facing in a particular direction.
+			 */
+			constructor(direction: org.bukkit.block.BlockFace);
+
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type SmoothBrick = org.bukkit.material.TexturedMaterial & {
-			new(): SmoothBrick;
-
-			new(type: org.bukkit.Material): SmoothBrick;
-
-			new(type: org.bukkit.Material, data: any /* byte */): SmoothBrick;
-
+		interface SmoothBrick extends Modify<org.bukkit.material.TexturedMaterial, {
 			/**
 			 * Description copied from class: TexturedMaterial
 			 */
@@ -50280,16 +50838,16 @@ declare global {
 
 			clone(): org.bukkit.material.SmoothBrick;
 
+		}> {}
+		class SmoothBrick {
+			constructor();
+
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type SpawnEgg = org.bukkit.material.MaterialData & {
-			new(): SpawnEgg;
-
-			new(type: org.bukkit.Material, data: any /* byte */): SpawnEgg;
-
-			new(data: any /* byte */): SpawnEgg;
-
-			new(type: org.bukkit.entity.EntityType): SpawnEgg;
-
+		interface SpawnEgg extends Modify<org.bukkit.material.MaterialData, {
 			/**
 			 * Get the type of entity this egg will spawn.
 			 */
@@ -50304,12 +50862,18 @@ declare global {
 
 			clone(): org.bukkit.material.SpawnEgg;
 
+		}> {}
+		class SpawnEgg {
+			constructor();
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
+			constructor(data: any /* byte */);
+
+			constructor(type: org.bukkit.entity.EntityType);
+
 		}
-		type Stairs = org.bukkit.material.MaterialData & {
-			new(type: org.bukkit.Material): Stairs;
-
-			new(type: org.bukkit.Material, data: any /* byte */): Stairs;
-
+		interface Stairs extends Modify<org.bukkit.material.MaterialData, {
 			getAscendingDirection(): org.bukkit.block.BlockFace;
 
 			getDescendingDirection(): org.bukkit.block.BlockFace;
@@ -50338,14 +50902,14 @@ declare global {
 
 			clone(): org.bukkit.material.Stairs;
 
+		}> {}
+		class Stairs {
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type Step = org.bukkit.material.TexturedMaterial & {
-			new(): Step;
-
-			new(type: org.bukkit.Material): Step;
-
-			new(type: org.bukkit.Material, data: any /* byte */): Step;
-
+		interface Step extends Modify<org.bukkit.material.TexturedMaterial, {
 			/**
 			 * Description copied from class: TexturedMaterial
 			 */
@@ -50365,12 +50929,16 @@ declare global {
 
 			toString(): string;
 
+		}> {}
+		class Step {
+			constructor();
+
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type TexturedMaterial = org.bukkit.material.MaterialData & {
-			new(m: org.bukkit.Material): TexturedMaterial;
-
-			new(type: org.bukkit.Material, data: any /* byte */): TexturedMaterial;
-
+		interface TexturedMaterial extends Modify<org.bukkit.material.MaterialData, {
 			/**
 			 * Retrieve a list of possible textures. The first element of the list
 			 * will be used as a default.
@@ -50391,14 +50959,14 @@ declare global {
 
 			clone(): org.bukkit.material.TexturedMaterial;
 
+		}> {}
+		class TexturedMaterial {
+			constructor(m: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type Torch = org.bukkit.material.SimpleAttachableMaterialData & {
-			new(): Torch;
-
-			new(type: org.bukkit.Material): Torch;
-
-			new(type: org.bukkit.Material, data: any /* byte */): Torch;
-
+		interface Torch extends Modify<org.bukkit.material.SimpleAttachableMaterialData, {
 			/**
 			 * Gets the face that this block is attached on
 			 */
@@ -50411,14 +50979,16 @@ declare global {
 
 			clone(): org.bukkit.material.Torch;
 
+		}> {}
+		class Torch {
+			constructor();
+
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type TrapDoor = org.bukkit.material.SimpleAttachableMaterialData & {
-			new(): TrapDoor;
-
-			new(type: org.bukkit.Material): TrapDoor;
-
-			new(type: org.bukkit.Material, data: any /* byte */): TrapDoor;
-
+		interface TrapDoor extends Modify<org.bukkit.material.SimpleAttachableMaterialData, {
 			/**
 			 * Description copied from interface: Openable
 			 */
@@ -50453,42 +51023,16 @@ declare global {
 
 			clone(): org.bukkit.material.TrapDoor;
 
+		}> {}
+		class TrapDoor {
+			constructor();
+
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type Tree = org.bukkit.material.Wood & {
-			/**
-			 * Constructs a tree block.
-			 */
-			new(): Tree;
-
-			/**
-			 * Constructs a tree block of the given tree species.
-			 */
-			new(species: org.bukkit.TreeSpecies): Tree;
-
-			/**
-			 * Constructs a tree block of the given tree species, and facing the given
-			 * direction.
-			 */
-			new(species: org.bukkit.TreeSpecies, dir: org.bukkit.block.BlockFace): Tree;
-
-			/**
-			 * Constructs a tree block of the given type.
-			 */
-			new(type: org.bukkit.Material): Tree;
-
-			/**
-			 * Constructs a tree block of the given type and tree species.
-			 */
-			new(type: org.bukkit.Material, species: org.bukkit.TreeSpecies): Tree;
-
-			/**
-			 * Constructs a tree block of the given type and tree species, and facing
-			 * the given direction.
-			 */
-			new(type: org.bukkit.Material, species: org.bukkit.TreeSpecies, dir: org.bukkit.block.BlockFace): Tree;
-
-			new(type: org.bukkit.Material, data: any /* byte */): Tree;
-
+		interface Tree extends Modify<org.bukkit.material.Wood, {
 			/**
 			 * Get direction of the log
 			 */
@@ -50503,12 +51047,44 @@ declare global {
 
 			clone(): org.bukkit.material.Tree;
 
+		}> {}
+		class Tree {
+			/**
+			 * Constructs a tree block.
+			 */
+			constructor();
+
+			/**
+			 * Constructs a tree block of the given tree species.
+			 */
+			constructor(species: org.bukkit.TreeSpecies);
+
+			/**
+			 * Constructs a tree block of the given tree species, and facing the given
+			 * direction.
+			 */
+			constructor(species: org.bukkit.TreeSpecies, dir: org.bukkit.block.BlockFace);
+
+			/**
+			 * Constructs a tree block of the given type.
+			 */
+			constructor(type: org.bukkit.Material);
+
+			/**
+			 * Constructs a tree block of the given type and tree species.
+			 */
+			constructor(type: org.bukkit.Material, species: org.bukkit.TreeSpecies);
+
+			/**
+			 * Constructs a tree block of the given type and tree species, and facing
+			 * the given direction.
+			 */
+			constructor(type: org.bukkit.Material, species: org.bukkit.TreeSpecies, dir: org.bukkit.block.BlockFace);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type Tripwire = org.bukkit.material.MaterialData & {
-			new(): Tripwire;
-
-			new(type: org.bukkit.Material, data: any /* byte */): Tripwire;
-
+		interface Tripwire extends Modify<org.bukkit.material.MaterialData, {
 			/**
 			 * Test if tripwire is currently activated
 			 */
@@ -50533,14 +51109,14 @@ declare global {
 
 			toString(): string;
 
+		}> {}
+		class Tripwire {
+			constructor();
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type TripwireHook = org.bukkit.material.SimpleAttachableMaterialData & {
-			new(): TripwireHook;
-
-			new(type: org.bukkit.Material, data: any /* byte */): TripwireHook;
-
-			new(dir: org.bukkit.block.BlockFace): TripwireHook;
-
+		interface TripwireHook extends Modify<org.bukkit.material.SimpleAttachableMaterialData, {
 			/**
 			 * Test if tripwire is connected
 			 */
@@ -50580,18 +51156,16 @@ declare global {
 
 			toString(): string;
 
+		}> {}
+		class TripwireHook {
+			constructor();
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
+			constructor(dir: org.bukkit.block.BlockFace);
+
 		}
-		type Vine = org.bukkit.material.MaterialData & {
-			new(): Vine;
-
-			new(type: org.bukkit.Material, data: any /* byte */): Vine;
-
-			new(data: any /* byte */): Vine;
-
-			new(...faces: org.bukkit.block.BlockFace[]): Vine;
-
-			new(faces: globalThis.java.util.EnumSet<org.bukkit.block.BlockFace>): Vine;
-
+		interface Vine extends Modify<org.bukkit.material.MaterialData, {
 			/**
 			 * Check if the vine is attached to the specified face of an adjacent
 			 * block. You can check two faces at once by passing e.g. BlockFace.NORTH_EAST.
@@ -50612,30 +51186,20 @@ declare global {
 
 			clone(): org.bukkit.material.Vine;
 
+		}> {}
+		class Vine {
+			constructor();
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
+			constructor(data: any /* byte */);
+
+			constructor(...faces: org.bukkit.block.BlockFace[]);
+
+			constructor(faces: globalThis.java.util.EnumSet<org.bukkit.block.BlockFace>);
+
 		}
-		type Wood = org.bukkit.material.MaterialData & {
-			/**
-			 * Constructs a wood block.
-			 */
-			new(): Wood;
-
-			/**
-			 * Constructs a wood block of the given tree species.
-			 */
-			new(species: org.bukkit.TreeSpecies): Wood;
-
-			/**
-			 * Constructs a wood block of the given type.
-			 */
-			new(type: org.bukkit.Material): Wood;
-
-			/**
-			 * Constructs a wood block of the given type and tree species.
-			 */
-			new(type: org.bukkit.Material, species: org.bukkit.TreeSpecies): Wood;
-
-			new(type: org.bukkit.Material, data: any /* byte */): Wood;
-
+		interface Wood extends Modify<org.bukkit.material.MaterialData, {
 			/**
 			 * Gets the current species of this wood block
 			 */
@@ -50650,26 +51214,32 @@ declare global {
 
 			clone(): org.bukkit.material.Wood;
 
+		}> {}
+		class Wood {
+			/**
+			 * Constructs a wood block.
+			 */
+			constructor();
+
+			/**
+			 * Constructs a wood block of the given tree species.
+			 */
+			constructor(species: org.bukkit.TreeSpecies);
+
+			/**
+			 * Constructs a wood block of the given type.
+			 */
+			constructor(type: org.bukkit.Material);
+
+			/**
+			 * Constructs a wood block of the given type and tree species.
+			 */
+			constructor(type: org.bukkit.Material, species: org.bukkit.TreeSpecies);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type WoodenStep = org.bukkit.material.Wood & {
-			/**
-			 * Constructs a wooden step.
-			 */
-			new(): WoodenStep;
-
-			/**
-			 * Constructs a wooden step of the given tree species.
-			 */
-			new(species: org.bukkit.TreeSpecies): WoodenStep;
-
-			/**
-			 * Constructs a wooden step of the given type and tree species, either
-			 * inverted or not.
-			 */
-			new(species: org.bukkit.TreeSpecies, inv: boolean): WoodenStep;
-
-			new(type: org.bukkit.Material, data: any /* byte */): WoodenStep;
-
+		interface WoodenStep extends Modify<org.bukkit.material.Wood, {
 			/**
 			 * Test if step is inverted
 			 */
@@ -50684,16 +51254,28 @@ declare global {
 
 			toString(): string;
 
+		}> {}
+		class WoodenStep {
+			/**
+			 * Constructs a wooden step.
+			 */
+			constructor();
+
+			/**
+			 * Constructs a wooden step of the given tree species.
+			 */
+			constructor(species: org.bukkit.TreeSpecies);
+
+			/**
+			 * Constructs a wooden step of the given type and tree species, either
+			 * inverted or not.
+			 */
+			constructor(species: org.bukkit.TreeSpecies, inv: boolean);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
-		type Wool = org.bukkit.material.MaterialData & {
-			new(): Wool;
-
-			new(color: org.bukkit.DyeColor): Wool;
-
-			new(type: org.bukkit.Material): Wool;
-
-			new(type: org.bukkit.Material, data: any /* byte */): Wool;
-
+		interface Wool extends Modify<org.bukkit.material.MaterialData, {
 			/**
 			 * Gets the current color of this dye
 			 */
@@ -50708,6 +51290,16 @@ declare global {
 
 			clone(): org.bukkit.material.Wool;
 
+		}> {}
+		class Wool {
+			constructor();
+
+			constructor(color: org.bukkit.DyeColor);
+
+			constructor(type: org.bukkit.Material);
+
+			constructor(type: org.bukkit.Material, data: any /* byte */);
+
 		}
 	}
 	namespace org.bukkit.attribute {
@@ -50717,6 +51309,18 @@ declare global {
 			 * be backed directly to the object and any changes will be visible at once.
 			 */
 			getAttribute(attribute: org.bukkit.attribute.Attribute): org.bukkit.attribute.AttributeInstance;
+
+		}
+		interface Attribute {
+			/**
+			 * Description copied from interface: Keyed
+			 */
+			getKey(): org.bukkit.NamespacedKey;
+
+			/**
+			 * Description copied from interface: Translatable
+			 */
+			getTranslationKey(): string;
 
 		}
 		namespace Attribute {
@@ -50884,18 +51488,6 @@ declare global {
 			function valueOf(name: string): org.bukkit.attribute.Attribute;
 
 		}
-		interface Attribute {
-			/**
-			 * Description copied from interface: Keyed
-			 */
-			getKey(): org.bukkit.NamespacedKey;
-
-			/**
-			 * Description copied from interface: Translatable
-			 */
-			getTranslationKey(): string;
-
-		}
 		interface AttributeInstance {
 			/**
 			 * The attribute pertaining to this instance.
@@ -50939,21 +51531,7 @@ declare global {
 			getDefaultValue(): number;
 
 		}
-		namespace AttributeModifier {
-			function deserialize(args: globalThis.java.util.Map<string, any>): org.bukkit.attribute.AttributeModifier;
-
-		}
 		interface AttributeModifier {
-			new(name: string, amount: number, operation: org.bukkit.attribute.AttributeModifier.Operation): AttributeModifier;
-
-			new(uuid: globalThis.java.util.UUID, name: string, amount: number, operation: org.bukkit.attribute.AttributeModifier.Operation): AttributeModifier;
-
-			new(uuid: globalThis.java.util.UUID, name: string, amount: number, operation: org.bukkit.attribute.AttributeModifier.Operation, slot: org.bukkit.inventory.EquipmentSlot): AttributeModifier;
-
-			new(uuid: globalThis.java.util.UUID, name: string, amount: number, operation: org.bukkit.attribute.AttributeModifier.Operation, slot: org.bukkit.inventory.EquipmentSlotGroup): AttributeModifier;
-
-			new(key: org.bukkit.NamespacedKey, amount: number, operation: org.bukkit.attribute.AttributeModifier.Operation, slot: org.bukkit.inventory.EquipmentSlotGroup): AttributeModifier;
-
 			/**
 			 * Get the unique ID for this modifier.
 			 */
@@ -51003,7 +51581,24 @@ declare global {
 			toString(): string;
 
 		}
+		class AttributeModifier {
+			constructor(name: string, amount: number, operation: org.bukkit.attribute.AttributeModifier.Operation);
+
+			constructor(uuid: globalThis.java.util.UUID, name: string, amount: number, operation: org.bukkit.attribute.AttributeModifier.Operation);
+
+			constructor(uuid: globalThis.java.util.UUID, name: string, amount: number, operation: org.bukkit.attribute.AttributeModifier.Operation, slot: org.bukkit.inventory.EquipmentSlot);
+
+			constructor(uuid: globalThis.java.util.UUID, name: string, amount: number, operation: org.bukkit.attribute.AttributeModifier.Operation, slot: org.bukkit.inventory.EquipmentSlotGroup);
+
+			constructor(key: org.bukkit.NamespacedKey, amount: number, operation: org.bukkit.attribute.AttributeModifier.Operation, slot: org.bukkit.inventory.EquipmentSlotGroup);
+
+		}
 		namespace AttributeModifier {
+			function deserialize(args: globalThis.java.util.Map<string, any>): org.bukkit.attribute.AttributeModifier;
+
+		}
+		namespace AttributeModifier {
+			interface Operation {}
 			namespace Operation {
 				/**
 				 * Adds (or subtracts) the specified amount to the base value.
@@ -51029,17 +51624,18 @@ declare global {
 				function valueOf(name: string): org.bukkit.attribute.AttributeModifier.Operation;
 
 			}
-			interface Operation {}
 		}
 	}
 	namespace org.bukkit.plugin {
 		interface AuthorNagException {
+			getMessage(): string;
+
+		}
+		class AuthorNagException {
 			/**
 			 * Constructs a new AuthorNagException based on the given Exception
 			 */
-			new(message: string): AuthorNagException;
-
-			getMessage(): string;
+			constructor(message: string);
 
 		}
 		interface EventExecutor {
@@ -51047,68 +51643,74 @@ declare global {
 
 		}
 		interface IllegalPluginAccessException {
+		}
+		class IllegalPluginAccessException {
 			/**
 			 * Creates a new instance of IllegalPluginAccessException
 			 * without detail message.
 			 */
-			new(): IllegalPluginAccessException;
+			constructor();
 
 			/**
 			 * Constructs an instance of IllegalPluginAccessException
 			 * with the specified detail message.
 			 */
-			new(msg: string): IllegalPluginAccessException;
+			constructor(msg: string);
 
 		}
 		interface InvalidDescriptionException {
+		}
+		class InvalidDescriptionException {
 			/**
 			 * Constructs a new InvalidDescriptionException based on the given
 			 * Exception
 			 */
-			new(cause: globalThis.java.lang.Throwable, message: string): InvalidDescriptionException;
+			constructor(cause: globalThis.java.lang.Throwable, message: string);
 
 			/**
 			 * Constructs a new InvalidDescriptionException based on the given
 			 * Exception
 			 */
-			new(cause: globalThis.java.lang.Throwable): InvalidDescriptionException;
+			constructor(cause: globalThis.java.lang.Throwable);
 
 			/**
 			 * Constructs a new InvalidDescriptionException with the given message
 			 */
-			new(message: string): InvalidDescriptionException;
+			constructor(message: string);
 
 			/**
 			 * Constructs a new InvalidDescriptionException
 			 */
-			new(): InvalidDescriptionException;
+			constructor();
 
 		}
 		interface InvalidPluginException {
+		}
+		class InvalidPluginException {
 			/**
 			 * Constructs a new InvalidPluginException based on the given Exception
 			 */
-			new(cause: globalThis.java.lang.Throwable): InvalidPluginException;
+			constructor(cause: globalThis.java.lang.Throwable);
 
 			/**
 			 * Constructs a new InvalidPluginException
 			 */
-			new(): InvalidPluginException;
+			constructor();
 
 			/**
 			 * Constructs a new InvalidPluginException with the specified detail
 			 * message and cause.
 			 */
-			new(message: string, cause: globalThis.java.lang.Throwable): InvalidPluginException;
+			constructor(message: string, cause: globalThis.java.lang.Throwable);
 
 			/**
 			 * Constructs a new InvalidPluginException with the specified detail
 			 * message
 			 */
-			new(message: string): InvalidPluginException;
+			constructor(message: string);
 
 		}
-		type Plugin = org.bukkit.command.TabExecutor & {
+		interface Plugin extends Modify<org.bukkit.command.TabExecutor, {
 			/**
 			 * Returns the folder that the plugin data's files are located in. The
 			 * folder may not yet exist.
@@ -51232,9 +51834,10 @@ declare global {
 			 */
 			getName(): string;
 
-		}
+		}> {}
 		interface PluginAwareness {}
 		namespace PluginAwareness {
+			interface Flags {}
 			namespace Flags {
 				/**
 				 * This specifies that all (text) resources stored in a plugin's jar
@@ -51251,11 +51854,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.plugin.PluginAwareness.Flags;
 
 			}
-			interface Flags {}
 		}
 		interface PluginBase {
-			new(): PluginBase;
-
 			hashCode(): number;
 
 			equals(obj: any): boolean;
@@ -51266,19 +51866,11 @@ declare global {
 			getName(): string;
 
 		}
+		class PluginBase {
+			constructor();
+
+		}
 		interface PluginDescriptionFile {
-			new(stream: any /* java.io.InputStream */): PluginDescriptionFile;
-
-			/**
-			 * Loads a PluginDescriptionFile from the specified reader
-			 */
-			new(reader: any /* java.io.Reader */): PluginDescriptionFile;
-
-			/**
-			 * Creates a new PluginDescriptionFile with the given detailed
-			 */
-			new(pluginName: string, pluginVersion: string, mainClass: string): PluginDescriptionFile;
-
 			/**
 			 * Gives the name of the plugin. This name is a unique identifier for
 			 * plugins.
@@ -51841,6 +52433,21 @@ declare global {
 			getRawName(): string;
 
 		}
+		class PluginDescriptionFile {
+			constructor(stream: any /* java.io.InputStream */);
+
+			/**
+			 * Loads a PluginDescriptionFile from the specified reader
+			 */
+			constructor(reader: any /* java.io.Reader */);
+
+			/**
+			 * Creates a new PluginDescriptionFile with the given detailed
+			 */
+			constructor(pluginName: string, pluginVersion: string, mainClass: string);
+
+		}
+		interface PluginLoadOrder {}
 		namespace PluginLoadOrder {
 			/**
 			 * Indicates that the plugin will be loaded at startup
@@ -51862,7 +52469,6 @@ declare global {
 			function valueOf(name: string): org.bukkit.plugin.PluginLoadOrder;
 
 		}
-		interface PluginLoadOrder {}
 		interface PluginLoader {
 			/**
 			 * Loads the plugin contained in the specified file
@@ -51897,12 +52503,14 @@ declare global {
 
 		}
 		interface PluginLogger {
+			log(logRecord: globalThis.java.util.logging.LogRecord): void;
+
+		}
+		class PluginLogger {
 			/**
 			 * Creates a new PluginLogger that extracts the name from a plugin.
 			 */
-			new(context: org.bukkit.plugin.Plugin): PluginLogger;
-
-			log(logRecord: globalThis.java.util.logging.LogRecord): void;
+			constructor(context: org.bukkit.plugin.Plugin);
 
 		}
 		interface PluginManager {
@@ -52084,8 +52692,6 @@ declare global {
 
 		}
 		interface RegisteredListener {
-			new(listener: org.bukkit.event.Listener, executor: org.bukkit.plugin.EventExecutor, priority: org.bukkit.event.EventPriority, plugin: org.bukkit.plugin.Plugin, ignoreCancelled: boolean): RegisteredListener;
-
 			/**
 			 * Gets the listener for this registration
 			 */
@@ -52112,9 +52718,11 @@ declare global {
 			isIgnoringCancelled(): boolean;
 
 		}
-		interface RegisteredServiceProvider<T = any> {
-			new(service: globalThis.java.lang.Class<T>, provider: T, priority: org.bukkit.plugin.ServicePriority, plugin: org.bukkit.plugin.Plugin): RegisteredServiceProvider;
+		class RegisteredListener {
+			constructor(listener: org.bukkit.event.Listener, executor: org.bukkit.plugin.EventExecutor, priority: org.bukkit.event.EventPriority, plugin: org.bukkit.plugin.Plugin, ignoreCancelled: boolean);
 
+		}
+		interface RegisteredServiceProvider<T = any> {
 			getService(): globalThis.java.lang.Class<T>;
 
 			getPlugin(): org.bukkit.plugin.Plugin;
@@ -52126,6 +52734,11 @@ declare global {
 			compareTo(other: org.bukkit.plugin.RegisteredServiceProvider): number;
 
 		}
+		class RegisteredServiceProvider<T = any> {
+			constructor(service: globalThis.java.lang.Class<T>, provider: T, priority: org.bukkit.plugin.ServicePriority, plugin: org.bukkit.plugin.Plugin);
+
+		}
+		interface ServicePriority {}
 		namespace ServicePriority {
 			const Lowest: org.bukkit.plugin.ServicePriority;
 
@@ -52146,7 +52759,6 @@ declare global {
 			function valueOf(name: string): org.bukkit.plugin.ServicePriority;
 
 		}
-		interface ServicePriority {}
 		interface ServicesManager {
 			/**
 			 * Register a provider of a service.
@@ -52206,8 +52818,6 @@ declare global {
 
 		}
 		interface SimplePluginManager {
-			new(instance: org.bukkit.Server, commandMap: org.bukkit.command.SimpleCommandMap): SimplePluginManager;
-
 			/**
 			 * Registers the specified plugin loader
 			 */
@@ -52362,9 +52972,11 @@ declare global {
 			useTimings(use: boolean): void;
 
 		}
-		interface SimpleServicesManager {
-			new(): SimpleServicesManager;
+		class SimplePluginManager {
+			constructor(instance: org.bukkit.Server, commandMap: org.bukkit.command.SimpleCommandMap);
 
+		}
+		interface SimpleServicesManager {
 			/**
 			 * Register a provider of a service.
 			 */
@@ -52420,9 +53032,11 @@ declare global {
 			isProvidedFor<T = any>(service: globalThis.java.lang.Class<T>): boolean;
 
 		}
-		type TimedRegisteredListener = org.bukkit.plugin.RegisteredListener & {
-			new(pluginListener: org.bukkit.event.Listener, eventExecutor: org.bukkit.plugin.EventExecutor, eventPriority: org.bukkit.event.EventPriority, registeredPlugin: org.bukkit.plugin.Plugin, listenCancelled: boolean): TimedRegisteredListener;
+		class SimpleServicesManager {
+			constructor();
 
+		}
+		interface TimedRegisteredListener extends Modify<org.bukkit.plugin.RegisteredListener, {
 			/**
 			 * Description copied from class: RegisteredListener
 			 */
@@ -52460,34 +53074,40 @@ declare global {
 			 */
 			hasMultiple(): boolean;
 
+		}> {}
+		class TimedRegisteredListener {
+			constructor(pluginListener: org.bukkit.event.Listener, eventExecutor: org.bukkit.plugin.EventExecutor, eventPriority: org.bukkit.event.EventPriority, registeredPlugin: org.bukkit.plugin.Plugin, listenCancelled: boolean);
+
 		}
 		interface UnknownDependencyException {
+		}
+		class UnknownDependencyException {
 			/**
 			 * Constructs a new UnknownDependencyException based on the given
 			 * Exception
 			 */
-			new(throwable: globalThis.java.lang.Throwable): UnknownDependencyException;
+			constructor(throwable: globalThis.java.lang.Throwable);
 
 			/**
 			 * Constructs a new UnknownDependencyException with the given message
 			 */
-			new(message: string): UnknownDependencyException;
+			constructor(message: string);
 
 			/**
 			 * Constructs a new UnknownDependencyException based on the given
 			 * Exception
 			 */
-			new(throwable: globalThis.java.lang.Throwable, message: string): UnknownDependencyException;
+			constructor(throwable: globalThis.java.lang.Throwable, message: string);
 
 			/**
 			 * Constructs a new UnknownDependencyException
 			 */
-			new(): UnknownDependencyException;
+			constructor();
 
 		}
 	}
 	namespace org.bukkit.block {
-		type Banner = org.bukkit.block.TileState & {
+		interface Banner extends Modify<org.bukkit.block.TileState, {
 			/**
 			 * Returns the base color for this banner
 			 */
@@ -52537,9 +53157,9 @@ declare global {
 			 */
 			numberOfPatterns(): number;
 
-		}
-		type Barrel = org.bukkit.block.Container & org.bukkit.loot.Lootable & org.bukkit.block.Lidded & {}
-		type Beacon = org.bukkit.block.TileState & org.bukkit.block.Lockable & org.bukkit.Nameable & {
+		}> {}
+		interface Barrel extends Modify<org.bukkit.block.Container & org.bukkit.loot.Lootable & org.bukkit.block.Lidded, {}> {}
+		interface Beacon extends Modify<org.bukkit.block.TileState & org.bukkit.block.Lockable & org.bukkit.Nameable, {
 			/**
 			 * Returns the list of players within the beacon's range of effect.
 			 * 
@@ -52576,9 +53196,9 @@ declare global {
 			 */
 			setSecondaryEffect(effect: org.bukkit.potion.PotionEffectType): void;
 
-		}
-		type Bed = org.bukkit.block.TileState & org.bukkit.material.Colorable & {}
-		type Beehive = org.bukkit.block.EntityBlockStorage<org.bukkit.entity.Bee> & {
+		}> {}
+		interface Bed extends Modify<org.bukkit.block.TileState & org.bukkit.material.Colorable, {}> {}
+		interface Beehive extends Modify<org.bukkit.block.EntityBlockStorage<org.bukkit.entity.Bee>, {
 			/**
 			 * Get the hive's flower location.
 			 */
@@ -52594,8 +53214,8 @@ declare global {
 			 */
 			isSedated(): boolean;
 
-		}
-		type Bell = org.bukkit.block.TileState & {
+		}> {}
+		interface Bell extends Modify<org.bukkit.block.TileState, {
 			/**
 			 * Ring this bell. This will call a BellRingEvent.
 			 */
@@ -52650,6 +53270,13 @@ declare global {
 			 * A bell will typically resonate for 40 ticks.
 			 */
 			getResonatingTicks(): number;
+
+		}> {}
+		interface Biome {
+			/**
+			 * Description copied from interface: Keyed
+			 */
+			getKey(): org.bukkit.NamespacedKey;
 
 		}
 		namespace Biome {
@@ -52795,15 +53422,8 @@ declare global {
 			function valueOf(name: string): org.bukkit.block.Biome;
 
 		}
-		interface Biome {
-			/**
-			 * Description copied from interface: Keyed
-			 */
-			getKey(): org.bukkit.NamespacedKey;
-
-		}
-		type BlastFurnace = org.bukkit.block.Furnace & {}
-		type Block = org.bukkit.metadata.Metadatable & org.bukkit.Translatable & {
+		interface BlastFurnace extends Modify<org.bukkit.block.Furnace, {}> {}
+		interface Block extends Modify<org.bukkit.metadata.Metadatable & org.bukkit.Translatable, {
 			/**
 			 * Gets the metadata for this block
 			 */
@@ -53135,6 +53755,36 @@ declare global {
 			 */
 			canPlace(data: org.bukkit.block.data.BlockData): boolean;
 
+		}> {}
+		interface BlockFace {
+			/**
+			 * Get the amount of X-coordinates to modify to get the represented block
+			 */
+			getModX(): number;
+
+			/**
+			 * Get the amount of Y-coordinates to modify to get the represented block
+			 */
+			getModY(): number;
+
+			/**
+			 * Get the amount of Z-coordinates to modify to get the represented block
+			 */
+			getModZ(): number;
+
+			/**
+			 * Gets the normal vector corresponding to this block face.
+			 */
+			getDirection(): org.bukkit.util.Vector;
+
+			/**
+			 * Returns true if this face is aligned with one of the unit axes in 3D
+			 * Cartesian space (ie NORTH, SOUTH, EAST, WEST, UP, DOWN).
+			 */
+			isCartesian(): boolean;
+
+			getOppositeFace(): org.bukkit.block.BlockFace;
+
 		}
 		namespace BlockFace {
 			const NORTH: org.bukkit.block.BlockFace;
@@ -53184,37 +53834,7 @@ declare global {
 			function valueOf(name: string): org.bukkit.block.BlockFace;
 
 		}
-		interface BlockFace {
-			/**
-			 * Get the amount of X-coordinates to modify to get the represented block
-			 */
-			getModX(): number;
-
-			/**
-			 * Get the amount of Y-coordinates to modify to get the represented block
-			 */
-			getModY(): number;
-
-			/**
-			 * Get the amount of Z-coordinates to modify to get the represented block
-			 */
-			getModZ(): number;
-
-			/**
-			 * Gets the normal vector corresponding to this block face.
-			 */
-			getDirection(): org.bukkit.util.Vector;
-
-			/**
-			 * Returns true if this face is aligned with one of the unit axes in 3D
-			 * Cartesian space (ie NORTH, SOUTH, EAST, WEST, UP, DOWN).
-			 */
-			isCartesian(): boolean;
-
-			getOppositeFace(): org.bukkit.block.BlockFace;
-
-		}
-		type BlockState = org.bukkit.metadata.Metadatable & {
+		interface BlockState extends Modify<org.bukkit.metadata.Metadatable, {
 			/**
 			 * Gets the block represented by this block state.
 			 */
@@ -53357,7 +53977,8 @@ declare global {
 			 */
 			isPlaced(): boolean;
 
-		}
+		}> {}
+		interface BlockSupport {}
 		namespace BlockSupport {
 			/**
 			 * The face is treated as a full block. For example, the side of a stair is
@@ -53389,7 +54010,139 @@ declare global {
 			function valueOf(name: string): org.bukkit.block.BlockSupport;
 
 		}
-		interface BlockSupport {}
+		interface BlockType extends Modify<org.bukkit.Keyed & org.bukkit.Translatable, {
+			/**
+			 * Yields this block type as a typed version of itself with a plain BlockData representing it.
+			 */
+			typed(): org.bukkit.block.BlockType.Typed<org.bukkit.block.data.BlockData>;
+
+			/**
+			 * Yields this block type as a typed version of itself with a specific BlockData representing it.
+			 */
+			typed<B = any>(blockDataType: globalThis.java.lang.Class<B>): org.bukkit.block.BlockType.Typed<B>;
+
+			/**
+			 * Returns true if this BlockType has a corresponding ItemType.
+			 */
+			hasItemType(): boolean;
+
+			/**
+			 * Returns the corresponding ItemType for the given BlockType.
+			 * 
+			 * If there is no corresponding ItemType an error will be thrown.
+			 */
+			getItemType(): org.bukkit.inventory.ItemType;
+
+			/**
+			 * Gets the BlockData class of this BlockType
+			 */
+			getBlockDataClass(): globalThis.java.lang.Class<org.bukkit.block.data.BlockData>;
+
+			/**
+			 * Creates a new BlockData instance for this block type, with all
+			 * properties initialized to unspecified defaults.
+			 */
+			createBlockData(): org.bukkit.block.data.BlockData;
+
+			/**
+			 * Creates a new BlockData instance for this block type, with all
+			 * properties initialized to unspecified defaults, except for those provided
+			 * in data.
+			 */
+			createBlockData(data: string): org.bukkit.block.data.BlockData;
+
+			/**
+			 * Check if the blockt type is solid (can be built upon)
+			 */
+			isSolid(): boolean;
+
+			/**
+			 * Check if the block type can catch fire
+			 */
+			isFlammable(): boolean;
+
+			/**
+			 * Check if the block type can burn away
+			 */
+			isBurnable(): boolean;
+
+			/**
+			 * Check if the block type is occludes light in the lighting engine.
+			 * 
+			 * Generally speaking, most full blocks will occlude light. Non-full blocks are
+			 * not occluding (e.g. anvils, chests, tall grass, stairs, etc.), nor are specific
+			 * full blocks such as barriers or spawners which block light despite their texture.
+			 * 
+			 * An occluding block will have the following effects:
+			 * 
+			 * Chests cannot be opened if an occluding block is above it.
+			 * Mobs cannot spawn inside of occluding blocks.
+			 * Only occluding blocks can be "powered" (Block.isBlockPowered()).
+			 * 
+			 * This list may be inconclusive. For a full list of the side effects of an occluding
+			 * block, see the Minecraft Wiki.
+			 */
+			isOccluding(): boolean;
+
+			hasGravity(): boolean;
+
+			/**
+			 * Checks if this block type can be interacted with.
+			 * 
+			 * Interactable block types include those with functionality when they are
+			 * interacted with by a player such as chests, furnaces, etc.
+			 * 
+			 * Some blocks such as piston heads and stairs are considered interactable
+			 * though may not perform any additional functionality.
+			 * 
+			 * Note that the interactability of some block types may be dependant on their
+			 * state as well. This method will return true if there is at least one
+			 * state in which additional interact handling is performed for the
+			 * block type.
+			 */
+			isInteractable(): boolean;
+
+			/**
+			 * Obtains the block's hardness level (also known as "strength").
+			 * 
+			 * This number is used to calculate the time required to break each block.
+			 */
+			getHardness(): number;
+
+			/**
+			 * Obtains the blast resistance value (also known as block "durability").
+			 * 
+			 * This value is used in explosions to calculate whether a block should be
+			 * broken or not.
+			 */
+			getBlastResistance(): number;
+
+			/**
+			 * Returns a value that represents how 'slippery' the block is.
+			 * 
+			 * Blocks with higher slipperiness, like ICE can be slid on
+			 * further by the player and other entities.
+			 * 
+			 * Most blocks have a default slipperiness of 0.6f.
+			 */
+			getSlipperiness(): number;
+
+			/**
+			 * Check if the block type is an air block.
+			 */
+			isAir(): boolean;
+
+			/**
+			 * Gets if the BlockType is enabled by the features in a world.
+			 */
+			isEnabledByFeature(world: org.bukkit.World): boolean;
+
+			/**
+			 * Tries to convert this BlockType into a Material
+			 */
+			asMaterial(): org.bukkit.Material;
+
+		}> {}
 		namespace BlockType {
 			const AIR: org.bukkit.block.BlockType.Typed<org.bukkit.block.data.BlockData>;
 
@@ -57566,141 +58319,8 @@ declare global {
 			const TRIAL_SPAWNER: org.bukkit.block.BlockType.Typed<org.bukkit.block.data.type.TrialSpawner>;
 
 		}
-		type BlockType = org.bukkit.Keyed & org.bukkit.Translatable & {
-			/**
-			 * Yields this block type as a typed version of itself with a plain BlockData representing it.
-			 */
-			typed(): org.bukkit.block.BlockType.Typed<org.bukkit.block.data.BlockData>;
-
-			/**
-			 * Yields this block type as a typed version of itself with a specific BlockData representing it.
-			 */
-			typed<B = any>(blockDataType: globalThis.java.lang.Class<B>): org.bukkit.block.BlockType.Typed<B>;
-
-			/**
-			 * Returns true if this BlockType has a corresponding ItemType.
-			 */
-			hasItemType(): boolean;
-
-			/**
-			 * Returns the corresponding ItemType for the given BlockType.
-			 * 
-			 * If there is no corresponding ItemType an error will be thrown.
-			 */
-			getItemType(): org.bukkit.inventory.ItemType;
-
-			/**
-			 * Gets the BlockData class of this BlockType
-			 */
-			getBlockDataClass(): globalThis.java.lang.Class<org.bukkit.block.data.BlockData>;
-
-			/**
-			 * Creates a new BlockData instance for this block type, with all
-			 * properties initialized to unspecified defaults.
-			 */
-			createBlockData(): org.bukkit.block.data.BlockData;
-
-			/**
-			 * Creates a new BlockData instance for this block type, with all
-			 * properties initialized to unspecified defaults, except for those provided
-			 * in data.
-			 */
-			createBlockData(data: string): org.bukkit.block.data.BlockData;
-
-			/**
-			 * Check if the blockt type is solid (can be built upon)
-			 */
-			isSolid(): boolean;
-
-			/**
-			 * Check if the block type can catch fire
-			 */
-			isFlammable(): boolean;
-
-			/**
-			 * Check if the block type can burn away
-			 */
-			isBurnable(): boolean;
-
-			/**
-			 * Check if the block type is occludes light in the lighting engine.
-			 * 
-			 * Generally speaking, most full blocks will occlude light. Non-full blocks are
-			 * not occluding (e.g. anvils, chests, tall grass, stairs, etc.), nor are specific
-			 * full blocks such as barriers or spawners which block light despite their texture.
-			 * 
-			 * An occluding block will have the following effects:
-			 * 
-			 * Chests cannot be opened if an occluding block is above it.
-			 * Mobs cannot spawn inside of occluding blocks.
-			 * Only occluding blocks can be "powered" (Block.isBlockPowered()).
-			 * 
-			 * This list may be inconclusive. For a full list of the side effects of an occluding
-			 * block, see the Minecraft Wiki.
-			 */
-			isOccluding(): boolean;
-
-			hasGravity(): boolean;
-
-			/**
-			 * Checks if this block type can be interacted with.
-			 * 
-			 * Interactable block types include those with functionality when they are
-			 * interacted with by a player such as chests, furnaces, etc.
-			 * 
-			 * Some blocks such as piston heads and stairs are considered interactable
-			 * though may not perform any additional functionality.
-			 * 
-			 * Note that the interactability of some block types may be dependant on their
-			 * state as well. This method will return true if there is at least one
-			 * state in which additional interact handling is performed for the
-			 * block type.
-			 */
-			isInteractable(): boolean;
-
-			/**
-			 * Obtains the block's hardness level (also known as "strength").
-			 * 
-			 * This number is used to calculate the time required to break each block.
-			 */
-			getHardness(): number;
-
-			/**
-			 * Obtains the blast resistance value (also known as block "durability").
-			 * 
-			 * This value is used in explosions to calculate whether a block should be
-			 * broken or not.
-			 */
-			getBlastResistance(): number;
-
-			/**
-			 * Returns a value that represents how 'slippery' the block is.
-			 * 
-			 * Blocks with higher slipperiness, like ICE can be slid on
-			 * further by the player and other entities.
-			 * 
-			 * Most blocks have a default slipperiness of 0.6f.
-			 */
-			getSlipperiness(): number;
-
-			/**
-			 * Check if the block type is an air block.
-			 */
-			isAir(): boolean;
-
-			/**
-			 * Gets if the BlockType is enabled by the features in a world.
-			 */
-			isEnabledByFeature(world: org.bukkit.World): boolean;
-
-			/**
-			 * Tries to convert this BlockType into a Material
-			 */
-			asMaterial(): org.bukkit.Material;
-
-		}
 		namespace BlockType {
-			type Typed<B = any> = org.bukkit.block.BlockType & {
+			interface Typed<B = any> extends Modify<org.bukkit.block.BlockType, {
 				/**
 				 * Gets the BlockData class of this BlockType
 				 */
@@ -57725,9 +58345,9 @@ declare global {
 				 */
 				createBlockData(data: string): B;
 
-			}
+			}> {}
 		}
-		type BrewingStand = org.bukkit.block.Container & {
+		interface BrewingStand extends Modify<org.bukkit.block.Container, {
 			/**
 			 * How much time is left in the brewing cycle.
 			 */
@@ -57758,8 +58378,8 @@ declare global {
 			 */
 			getSnapshotInventory(): org.bukkit.inventory.BrewerInventory;
 
-		}
-		type BrushableBlock = org.bukkit.loot.Lootable & org.bukkit.block.TileState & {
+		}> {}
+		interface BrushableBlock extends Modify<org.bukkit.loot.Lootable & org.bukkit.block.TileState, {
 			/**
 			 * Get the item which will be revealed when the sand is fully brushed away
 			 * and uncovered.
@@ -57772,9 +58392,9 @@ declare global {
 			 */
 			setItem(item: org.bukkit.inventory.ItemStack): void;
 
-		}
-		type CalibratedSculkSensor = org.bukkit.block.SculkSensor & {}
-		type Campfire = org.bukkit.block.TileState & {
+		}> {}
+		interface CalibratedSculkSensor extends Modify<org.bukkit.block.SculkSensor, {}> {}
+		interface Campfire extends Modify<org.bukkit.block.TileState, {
 			getSize(): number;
 
 			getItem(index: number): org.bukkit.inventory.ItemStack;
@@ -57805,8 +58425,8 @@ declare global {
 			 */
 			setCookTimeTotal(index: number, cookTimeTotal: number): void;
 
-		}
-		type Chest = org.bukkit.block.Container & org.bukkit.loot.Lootable & org.bukkit.block.Lidded & {
+		}> {}
+		interface Chest extends Modify<org.bukkit.block.Container & org.bukkit.loot.Lootable & org.bukkit.block.Lidded, {
 			/**
 			 * Gets the inventory of the chest block represented by this block state.
 			 * 
@@ -57821,8 +58441,8 @@ declare global {
 			 */
 			getBlockInventory(): org.bukkit.inventory.Inventory;
 
-		}
-		type ChiseledBookshelf = org.bukkit.block.TileState & org.bukkit.inventory.BlockInventoryHolder & {
+		}> {}
+		interface ChiseledBookshelf extends Modify<org.bukkit.block.TileState & org.bukkit.inventory.BlockInventoryHolder, {
 			/**
 			 * Gets the last interacted inventory slot.
 			 */
@@ -57849,8 +58469,8 @@ declare global {
 			 */
 			getSlot(position: org.bukkit.util.Vector): number;
 
-		}
-		type CommandBlock = org.bukkit.block.TileState & {
+		}> {}
+		interface CommandBlock extends Modify<org.bukkit.block.TileState, {
 			/**
 			 * Gets the command that this CommandBlock will run when powered.
 			 * This will never return null. If the CommandBlock does not have a
@@ -57879,9 +58499,9 @@ declare global {
 			 */
 			setName(name: string): void;
 
-		}
-		type Comparator = org.bukkit.block.TileState & {}
-		type Conduit = org.bukkit.block.TileState & {
+		}> {}
+		interface Comparator extends Modify<org.bukkit.block.TileState, {}> {}
+		interface Conduit extends Modify<org.bukkit.block.TileState, {
 			/**
 			 * Checks whether or not this conduit is active.
 			 * 
@@ -57955,8 +58575,8 @@ declare global {
 			 */
 			getHuntingArea(): org.bukkit.util.BoundingBox;
 
-		}
-		type Container = org.bukkit.block.TileState & org.bukkit.inventory.BlockInventoryHolder & org.bukkit.block.Lockable & org.bukkit.Nameable & {
+		}> {}
+		interface Container extends Modify<org.bukkit.block.TileState & org.bukkit.inventory.BlockInventoryHolder & org.bukkit.block.Lockable & org.bukkit.Nameable, {
 			/**
 			 * Gets the inventory of the block represented by this block state.
 			 * 
@@ -57978,8 +58598,8 @@ declare global {
 			 */
 			getSnapshotInventory(): org.bukkit.inventory.Inventory;
 
-		}
-		type Crafter = org.bukkit.block.Container & org.bukkit.loot.Lootable & {
+		}> {}
+		interface Crafter extends Modify<org.bukkit.block.Container & org.bukkit.loot.Lootable, {
 			/**
 			 * Gets the number of ticks which this block will remain in the crafting
 			 * state for.
@@ -58014,8 +58634,8 @@ declare global {
 			 */
 			setTriggered(triggered: boolean): void;
 
-		}
-		type CreatureSpawner = org.bukkit.block.TileState & {
+		}> {}
+		interface CreatureSpawner extends Modify<org.bukkit.block.TileState, {
 			/**
 			 * Get the spawner's creature type.
 			 */
@@ -58212,9 +58832,9 @@ declare global {
 			 */
 			getPotentialSpawns(): globalThis.java.util.List<org.bukkit.block.spawner.SpawnerEntry>;
 
-		}
-		type DaylightDetector = org.bukkit.block.TileState & {}
-		type DecoratedPot = org.bukkit.block.TileState & org.bukkit.inventory.BlockInventoryHolder & {
+		}> {}
+		interface DaylightDetector extends Modify<org.bukkit.block.TileState, {}> {}
+		interface DecoratedPot extends Modify<org.bukkit.block.TileState & org.bukkit.inventory.BlockInventoryHolder, {
 			/**
 			 * Set the sherd on the provided side.
 			 */
@@ -58245,8 +58865,9 @@ declare global {
 
 			getSnapshotInventory(): org.bukkit.inventory.DecoratedPotInventory;
 
-		}
+		}> {}
 		namespace DecoratedPot {
+			interface Side {}
 			namespace Side {
 				const BACK: org.bukkit.block.DecoratedPot.Side;
 
@@ -58265,9 +58886,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.block.DecoratedPot.Side;
 
 			}
-			interface Side {}
 		}
-		type Dispenser = org.bukkit.block.Container & org.bukkit.Nameable & org.bukkit.loot.Lootable & {
+		interface Dispenser extends Modify<org.bukkit.block.Container & org.bukkit.Nameable & org.bukkit.loot.Lootable, {
 			/**
 			 * Gets the BlockProjectileSource object for the dispenser.
 			 * 
@@ -58284,10 +58904,8 @@ declare global {
 			 */
 			dispense(): boolean;
 
-		}
+		}> {}
 		interface DoubleChest {
-			new(chest: org.bukkit.inventory.DoubleChestInventory): DoubleChest;
-
 			/**
 			 * Description copied from interface: InventoryHolder
 			 */
@@ -58308,7 +58926,11 @@ declare global {
 			getZ(): number;
 
 		}
-		type Dropper = org.bukkit.block.Container & org.bukkit.loot.Lootable & {
+		class DoubleChest {
+			constructor(chest: org.bukkit.inventory.DoubleChestInventory);
+
+		}
+		interface Dropper extends Modify<org.bukkit.block.Container & org.bukkit.loot.Lootable, {
 			/**
 			 * Tries to drop a randomly selected item from the dropper's inventory,
 			 * following the normal behavior of a dropper.
@@ -58329,9 +58951,9 @@ declare global {
 			 */
 			drop(): void;
 
-		}
-		type EnchantingTable = org.bukkit.block.TileState & org.bukkit.Nameable & {}
-		type EndGateway = org.bukkit.block.TileState & {
+		}> {}
+		interface EnchantingTable extends Modify<org.bukkit.block.TileState & org.bukkit.Nameable, {}> {}
+		interface EndGateway extends Modify<org.bukkit.block.TileState, {
 			/**
 			 * Gets the location that entities are teleported to when
 			 * entering the gateway portal.
@@ -58376,9 +58998,9 @@ declare global {
 			 */
 			setAge(age: number): void;
 
-		}
-		type EnderChest = org.bukkit.block.Lidded & org.bukkit.block.TileState & {}
-		type EntityBlockStorage<T = any> = org.bukkit.block.TileState & {
+		}> {}
+		interface EnderChest extends Modify<org.bukkit.block.Lidded & org.bukkit.block.TileState, {}> {}
+		interface EntityBlockStorage<T = any> extends Modify<org.bukkit.block.TileState, {
 			/**
 			 * Check if the block is completely full of entities.
 			 */
@@ -58409,8 +59031,8 @@ declare global {
 			 */
 			addEntity(entity: T): void;
 
-		}
-		type Furnace = org.bukkit.block.Container & {
+		}> {}
+		interface Furnace extends Modify<org.bukkit.block.Container, {
 			/**
 			 * Get burn time.
 			 */
@@ -58464,11 +59086,11 @@ declare global {
 			 */
 			getSnapshotInventory(): org.bukkit.inventory.FurnaceInventory;
 
-		}
-		type HangingSign = org.bukkit.block.Sign & {}
-		type Hopper = org.bukkit.block.Container & org.bukkit.loot.Lootable & {}
-		type Jigsaw = org.bukkit.block.TileState & {}
-		type Jukebox = org.bukkit.block.TileState & org.bukkit.inventory.BlockInventoryHolder & {
+		}> {}
+		interface HangingSign extends Modify<org.bukkit.block.Sign, {}> {}
+		interface Hopper extends Modify<org.bukkit.block.Container & org.bukkit.loot.Lootable, {}> {}
+		interface Jigsaw extends Modify<org.bukkit.block.TileState, {}> {}
+		interface Jukebox extends Modify<org.bukkit.block.TileState & org.bukkit.inventory.BlockInventoryHolder, {
 			/**
 			 * Gets the record inserted into the jukebox.
 			 */
@@ -58528,8 +59150,8 @@ declare global {
 
 			getSnapshotInventory(): org.bukkit.inventory.JukeboxInventory;
 
-		}
-		type Lectern = org.bukkit.block.TileState & org.bukkit.inventory.BlockInventoryHolder & {
+		}> {}
+		interface Lectern extends Modify<org.bukkit.block.TileState & org.bukkit.inventory.BlockInventoryHolder, {
 			/**
 			 * Get the current lectern page.
 			 */
@@ -58549,7 +59171,7 @@ declare global {
 
 			getSnapshotInventory(): org.bukkit.inventory.Inventory;
 
-		}
+		}> {}
 		interface Lidded {
 			/**
 			 * Sets the block's animated state to open and prevents it from being closed
@@ -58580,6 +59202,10 @@ declare global {
 			 * string) to remove key.
 			 */
 			setLock(key: string): void;
+
+		}
+		interface PistonMoveReaction {
+			getId(): number;
 
 		}
 		namespace PistonMoveReaction {
@@ -58622,11 +59248,7 @@ declare global {
 			function getById(id: number): org.bukkit.block.PistonMoveReaction;
 
 		}
-		interface PistonMoveReaction {
-			getId(): number;
-
-		}
-		type SculkCatalyst = org.bukkit.block.TileState & {
+		interface SculkCatalyst extends Modify<org.bukkit.block.TileState, {
 			/**
 			 * Causes a new sculk bloom, as if an entity just died around this catalyst.
 			 * 
@@ -58641,8 +59263,8 @@ declare global {
 			 */
 			bloom(block: org.bukkit.block.Block, charges: number): void;
 
-		}
-		type SculkSensor = org.bukkit.block.TileState & {
+		}> {}
+		interface SculkSensor extends Modify<org.bukkit.block.TileState, {
 			/**
 			 * Gets the last vibration frequency of this sensor.
 			 * Different activities detected by the sensor will produce different
@@ -58657,8 +59279,8 @@ declare global {
 			 */
 			setLastVibrationFrequency(lastVibrationFrequency: number): void;
 
-		}
-		type SculkShrieker = org.bukkit.block.TileState & {
+		}> {}
+		interface SculkShrieker extends Modify<org.bukkit.block.TileState, {
 			/**
 			 * Gets the most recent warning level of this block.
 			 * When the warning level reaches 4, the shrieker will attempt to spawn a
@@ -58678,15 +59300,15 @@ declare global {
 			 */
 			tryShriek(player: org.bukkit.entity.Player): void;
 
-		}
-		type ShulkerBox = org.bukkit.block.Container & org.bukkit.loot.Lootable & org.bukkit.block.Lidded & {
+		}> {}
+		interface ShulkerBox extends Modify<org.bukkit.block.Container & org.bukkit.loot.Lootable & org.bukkit.block.Lidded, {
 			/**
 			 * Get the DyeColor corresponding to this ShulkerBox
 			 */
 			getColor(): org.bukkit.DyeColor;
 
-		}
-		type Sign = org.bukkit.block.TileState & org.bukkit.material.Colorable & {
+		}> {}
+		interface Sign extends Modify<org.bukkit.block.TileState & org.bukkit.material.Colorable, {
 			/**
 			 * Gets the line of text at the specified index.
 			 * 
@@ -58766,8 +59388,8 @@ declare global {
 			 */
 			getAllowedEditor(): org.bukkit.entity.Player;
 
-		}
-		type Skull = org.bukkit.block.TileState & {
+		}> {}
+		interface Skull extends Modify<org.bukkit.block.TileState, {
 			/**
 			 * Checks to see if the skull has an owner
 			 */
@@ -58852,9 +59474,9 @@ declare global {
 			 */
 			setSkullType(skullType: org.bukkit.SkullType): void;
 
-		}
-		type Smoker = org.bukkit.block.Furnace & {}
-		type Structure = org.bukkit.block.TileState & {
+		}> {}
+		interface Smoker extends Modify<org.bukkit.block.Furnace, {}> {}
+		interface Structure extends Modify<org.bukkit.block.TileState, {
 			/**
 			 * The name of this structure.
 			 */
@@ -59017,9 +59639,9 @@ declare global {
 			 */
 			getMetadata(): string;
 
-		}
-		type SuspiciousSand = org.bukkit.block.BrushableBlock & {}
-		type TileState = org.bukkit.block.BlockState & org.bukkit.persistence.PersistentDataHolder & {
+		}> {}
+		interface SuspiciousSand extends Modify<org.bukkit.block.BrushableBlock, {}> {}
+		interface TileState extends Modify<org.bukkit.block.BlockState & org.bukkit.persistence.PersistentDataHolder, {
 			/**
 			 * Returns a custom tag container capable of storing tags on the object.
 			 * Note that the tags stored on this container are all stored under their
@@ -59034,11 +59656,12 @@ declare global {
 			 */
 			getPersistentDataContainer(): org.bukkit.persistence.PersistentDataContainer;
 
-		}
-		type TrialSpawner = org.bukkit.block.TileState & {}
-		type Vault = org.bukkit.block.TileState & {}
+		}> {}
+		interface TrialSpawner extends Modify<org.bukkit.block.TileState, {}> {}
+		interface Vault extends Modify<org.bukkit.block.TileState, {}> {}
 	}
 	namespace org.bukkit.boss {
+		interface BarColor {}
 		namespace BarColor {
 			const PINK: org.bukkit.boss.BarColor;
 
@@ -59063,7 +59686,7 @@ declare global {
 			function valueOf(name: string): org.bukkit.boss.BarColor;
 
 		}
-		interface BarColor {}
+		interface BarFlag {}
 		namespace BarFlag {
 			/**
 			 * Darkens the sky like during fighting a wither.
@@ -59089,7 +59712,7 @@ declare global {
 			function valueOf(name: string): org.bukkit.boss.BarFlag;
 
 		}
-		interface BarFlag {}
+		interface BarStyle {}
 		namespace BarStyle {
 			/**
 			 * Makes the boss bar solid (no segments)
@@ -59125,7 +59748,6 @@ declare global {
 			function valueOf(name: string): org.bukkit.boss.BarStyle;
 
 		}
-		interface BarStyle {}
 		interface BossBar {
 			/**
 			 * Returns the title of this boss bar
@@ -59294,6 +59916,7 @@ declare global {
 
 		}
 		namespace DragonBattle {
+			interface RespawnPhase {}
 			namespace RespawnPhase {
 				/**
 				 * The crystal beams are directed upwards into the sky.
@@ -59337,9 +59960,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.boss.DragonBattle.RespawnPhase;
 
 			}
-			interface RespawnPhase {}
 		}
-		type KeyedBossBar = org.bukkit.boss.BossBar & org.bukkit.Keyed & {}
+		interface KeyedBossBar extends Modify<org.bukkit.boss.BossBar & org.bukkit.Keyed, {}> {}
 	}
 	namespace org.bukkit.generator {
 		interface BiomeParameterPoint {
@@ -59441,8 +60063,6 @@ declare global {
 
 		}
 		interface BiomeProvider {
-			new(): BiomeProvider;
-
 			/**
 			 * Return the Biome which should be present at the provided location.
 			 * 
@@ -59491,9 +60111,11 @@ declare global {
 			getBiomes(worldInfo: org.bukkit.generator.WorldInfo): globalThis.java.util.List<org.bukkit.block.Biome>;
 
 		}
-		interface BlockPopulator {
-			new(): BlockPopulator;
+		class BiomeProvider {
+			constructor();
 
+		}
+		interface BlockPopulator {
 			/**
 			 * Populates an area of blocks at or around the given chunk.
 			 * 
@@ -59529,9 +60151,11 @@ declare global {
 			populate(worldInfo: org.bukkit.generator.WorldInfo, random: globalThis.java.util.Random, chunkX: number, chunkZ: number, limitedRegion: org.bukkit.generator.LimitedRegion): void;
 
 		}
-		interface ChunkGenerator {
-			new(): ChunkGenerator;
+		class BlockPopulator {
+			constructor();
 
+		}
+		interface ChunkGenerator {
 			/**
 			 * Shapes the Chunk noise for the given coordinates.
 			 * 
@@ -59822,6 +60446,10 @@ declare global {
 			shouldGenerateStructures(worldInfo: org.bukkit.generator.WorldInfo, random: globalThis.java.util.Random, chunkX: number, chunkZ: number): boolean;
 
 		}
+		class ChunkGenerator {
+			constructor();
+
+		}
 		namespace ChunkGenerator {
 			interface BiomeGrid {
 				/**
@@ -59938,7 +60566,7 @@ declare global {
 
 			}
 		}
-		type LimitedRegion = org.bukkit.RegionAccessor & {
+		interface LimitedRegion extends Modify<org.bukkit.RegionAccessor, {
 			/**
 			 * Gets the buffer around the central chunk which is accessible.
 			 * The returned value is in normal world coordinate scale.
@@ -59963,7 +60591,7 @@ declare global {
 			 */
 			getTileEntities(): globalThis.java.util.List<org.bukkit.block.BlockState>;
 
-		}
+		}> {}
 		interface WorldInfo {
 			/**
 			 * Gets the unique name of this world
@@ -60016,48 +60644,6 @@ declare global {
 		}
 		interface BlockIterator {
 			/**
-			 * Constructs the BlockIterator.
-			 * 
-			 * This considers all blocks as 1x1x1 in size.
-			 */
-			new(world: org.bukkit.World, start: org.bukkit.util.Vector, direction: org.bukkit.util.Vector, yOffset: number, maxDistance: number): BlockIterator;
-
-			/**
-			 * Constructs the BlockIterator.
-			 * 
-			 * This considers all blocks as 1x1x1 in size.
-			 */
-			new(loc: org.bukkit.Location, yOffset: number, maxDistance: number): BlockIterator;
-
-			/**
-			 * Constructs the BlockIterator.
-			 * 
-			 * This considers all blocks as 1x1x1 in size.
-			 */
-			new(loc: org.bukkit.Location, yOffset: number): BlockIterator;
-
-			/**
-			 * Constructs the BlockIterator.
-			 * 
-			 * This considers all blocks as 1x1x1 in size.
-			 */
-			new(loc: org.bukkit.Location): BlockIterator;
-
-			/**
-			 * Constructs the BlockIterator.
-			 * 
-			 * This considers all blocks as 1x1x1 in size.
-			 */
-			new(entity: org.bukkit.entity.LivingEntity, maxDistance: number): BlockIterator;
-
-			/**
-			 * Constructs the BlockIterator.
-			 * 
-			 * This considers all blocks as 1x1x1 in size.
-			 */
-			new(entity: org.bukkit.entity.LivingEntity): BlockIterator;
-
-			/**
 			 * Returns true if the iteration has more elements
 			 */
 			hasNext(): boolean;
@@ -60068,6 +60654,50 @@ declare global {
 			next(): org.bukkit.block.Block;
 
 			remove(): void;
+
+		}
+		class BlockIterator {
+			/**
+			 * Constructs the BlockIterator.
+			 * 
+			 * This considers all blocks as 1x1x1 in size.
+			 */
+			constructor(world: org.bukkit.World, start: org.bukkit.util.Vector, direction: org.bukkit.util.Vector, yOffset: number, maxDistance: number);
+
+			/**
+			 * Constructs the BlockIterator.
+			 * 
+			 * This considers all blocks as 1x1x1 in size.
+			 */
+			constructor(loc: org.bukkit.Location, yOffset: number, maxDistance: number);
+
+			/**
+			 * Constructs the BlockIterator.
+			 * 
+			 * This considers all blocks as 1x1x1 in size.
+			 */
+			constructor(loc: org.bukkit.Location, yOffset: number);
+
+			/**
+			 * Constructs the BlockIterator.
+			 * 
+			 * This considers all blocks as 1x1x1 in size.
+			 */
+			constructor(loc: org.bukkit.Location);
+
+			/**
+			 * Constructs the BlockIterator.
+			 * 
+			 * This considers all blocks as 1x1x1 in size.
+			 */
+			constructor(entity: org.bukkit.entity.LivingEntity, maxDistance: number);
+
+			/**
+			 * Constructs the BlockIterator.
+			 * 
+			 * This considers all blocks as 1x1x1 in size.
+			 */
+			constructor(entity: org.bukkit.entity.LivingEntity);
 
 		}
 		interface BlockTransformer {
@@ -60097,36 +60727,7 @@ declare global {
 
 			}
 		}
-		namespace BlockVector {
-			function deserialize(args: globalThis.java.util.Map<string, any>): org.bukkit.util.BlockVector;
-
-		}
-		type BlockVector = org.bukkit.util.Vector & {
-			/**
-			 * Construct the vector with all components as 0.
-			 */
-			new(): BlockVector;
-
-			/**
-			 * Construct the vector with another vector.
-			 */
-			new(vec: org.bukkit.util.Vector): BlockVector;
-
-			/**
-			 * Construct the vector with provided integer components.
-			 */
-			new(x: number, y: number, z: number): BlockVector;
-
-			/**
-			 * Construct the vector with provided double components.
-			 */
-			new(x: number, y: number, z: number): BlockVector;
-
-			/**
-			 * Construct the vector with provided float components.
-			 */
-			new(x: number, y: number, z: number): BlockVector;
-
+		interface BlockVector extends Modify<org.bukkit.util.Vector, {
 			/**
 			 * Checks if another object is equivalent.
 			 */
@@ -60142,58 +60743,39 @@ declare global {
 			 */
 			clone(): org.bukkit.util.BlockVector;
 
+		}> {}
+		class BlockVector {
+			/**
+			 * Construct the vector with all components as 0.
+			 */
+			constructor();
+
+			/**
+			 * Construct the vector with another vector.
+			 */
+			constructor(vec: org.bukkit.util.Vector);
+
+			/**
+			 * Construct the vector with provided integer components.
+			 */
+			constructor(x: number, y: number, z: number);
+
+			/**
+			 * Construct the vector with provided double components.
+			 */
+			constructor(x: number, y: number, z: number);
+
+			/**
+			 * Construct the vector with provided float components.
+			 */
+			constructor(x: number, y: number, z: number);
+
 		}
-		namespace BoundingBox {
-			/**
-			 * Creates a new bounding box using the coordinates of the given vectors as
-			 * corners.
-			 */
-			function of(corner1: org.bukkit.util.Vector, corner2: org.bukkit.util.Vector): org.bukkit.util.BoundingBox;
-
-			/**
-			 * Creates a new bounding box using the coordinates of the given locations
-			 * as corners.
-			 */
-			function of(corner1: org.bukkit.Location, corner2: org.bukkit.Location): org.bukkit.util.BoundingBox;
-
-			/**
-			 * Creates a new bounding box using the coordinates of the given blocks as
-			 * corners.
-			 * 
-			 * The bounding box will be sized to fully contain both blocks.
-			 */
-			function of(corner1: org.bukkit.block.Block, corner2: org.bukkit.block.Block): org.bukkit.util.BoundingBox;
-
-			/**
-			 * Creates a new 1x1x1 sized bounding box containing the given block.
-			 */
-			function of(block: org.bukkit.block.Block): org.bukkit.util.BoundingBox;
-
-			/**
-			 * Creates a new bounding box using the given center and extents.
-			 */
-			function of(center: org.bukkit.util.Vector, x: number, y: number, z: number): org.bukkit.util.BoundingBox;
-
-			/**
-			 * Creates a new bounding box using the given center and extents.
-			 */
-			function of(center: org.bukkit.Location, x: number, y: number, z: number): org.bukkit.util.BoundingBox;
-
-			function deserialize(args: globalThis.java.util.Map<string, any>): org.bukkit.util.BoundingBox;
+		namespace BlockVector {
+			function deserialize(args: globalThis.java.util.Map<string, any>): org.bukkit.util.BlockVector;
 
 		}
 		interface BoundingBox {
-			/**
-			 * Creates a new (degenerate) bounding box with all corner coordinates at
-			 * 0.
-			 */
-			new(): BoundingBox;
-
-			/**
-			 * Creates a new bounding box from the given corner coordinates.
-			 */
-			new(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number): BoundingBox;
-
 			/**
 			 * Resizes this bounding box.
 			 */
@@ -60484,7 +61066,65 @@ declare global {
 			serialize(): globalThis.java.util.Map<string, any>;
 
 		}
+		class BoundingBox {
+			/**
+			 * Creates a new (degenerate) bounding box with all corner coordinates at
+			 * 0.
+			 */
+			constructor();
+
+			/**
+			 * Creates a new bounding box from the given corner coordinates.
+			 */
+			constructor(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number);
+
+		}
+		namespace BoundingBox {
+			/**
+			 * Creates a new bounding box using the coordinates of the given vectors as
+			 * corners.
+			 */
+			function of(corner1: org.bukkit.util.Vector, corner2: org.bukkit.util.Vector): org.bukkit.util.BoundingBox;
+
+			/**
+			 * Creates a new bounding box using the coordinates of the given locations
+			 * as corners.
+			 */
+			function of(corner1: org.bukkit.Location, corner2: org.bukkit.Location): org.bukkit.util.BoundingBox;
+
+			/**
+			 * Creates a new bounding box using the coordinates of the given blocks as
+			 * corners.
+			 * 
+			 * The bounding box will be sized to fully contain both blocks.
+			 */
+			function of(corner1: org.bukkit.block.Block, corner2: org.bukkit.block.Block): org.bukkit.util.BoundingBox;
+
+			/**
+			 * Creates a new 1x1x1 sized bounding box containing the given block.
+			 */
+			function of(block: org.bukkit.block.Block): org.bukkit.util.BoundingBox;
+
+			/**
+			 * Creates a new bounding box using the given center and extents.
+			 */
+			function of(center: org.bukkit.util.Vector, x: number, y: number, z: number): org.bukkit.util.BoundingBox;
+
+			/**
+			 * Creates a new bounding box using the given center and extents.
+			 */
+			function of(center: org.bukkit.Location, x: number, y: number, z: number): org.bukkit.util.BoundingBox;
+
+			function deserialize(args: globalThis.java.util.Map<string, any>): org.bukkit.util.BoundingBox;
+
+		}
 		interface CachedServerIcon {}
+		interface ChatPaginator {
+		}
+		class ChatPaginator {
+			constructor();
+
+		}
 		namespace ChatPaginator {
 			const GUARANTEED_NO_WRAP_CHAT_PAGE_WIDTH: number;
 
@@ -60509,17 +61149,15 @@ declare global {
 			function paginate(unpaginatedString: string, pageNumber: number, lineLength: number, pageHeight: number): org.bukkit.util.ChatPaginator.ChatPage;
 
 		}
-		interface ChatPaginator {
-			new(): ChatPaginator;
-
-		}
 		namespace ChatPaginator {
 			interface ChatPage {
-				new(lines: string[], pageNumber: number, totalPages: number): ChatPage;
-
 				getPageNumber(): number;
 
 				getTotalPages(): number;
+
+			}
+			class ChatPage {
+				constructor(lines: string[], pageNumber: number, totalPages: number);
 
 			}
 		}
@@ -60537,20 +61175,7 @@ declare global {
 			transform(region: org.bukkit.generator.LimitedRegion, x: number, y: number, z: number, entity: org.bukkit.entity.Entity, allowedToSpawn: boolean): boolean;
 
 		}
-		namespace EulerAngle {
-			/**
-			 * A EulerAngle with every axis set to 0
-			 */
-			const ZERO: org.bukkit.util.EulerAngle;
-
-		}
 		interface EulerAngle {
-			/**
-			 * Creates a EularAngle with each axis set to the
-			 * passed angle in radians
-			 */
-			new(x: number, y: number, z: number): EulerAngle;
-
 			/**
 			 * Returns the angle on the x axis in radians
 			 */
@@ -60601,6 +61226,27 @@ declare global {
 			hashCode(): number;
 
 		}
+		class EulerAngle {
+			/**
+			 * Creates a EularAngle with each axis set to the
+			 * passed angle in radians
+			 */
+			constructor(x: number, y: number, z: number);
+
+		}
+		namespace EulerAngle {
+			/**
+			 * A EulerAngle with every axis set to 0
+			 */
+			const ZERO: org.bukkit.util.EulerAngle;
+
+		}
+		interface FileUtil {
+		}
+		class FileUtil {
+			constructor();
+
+		}
 		namespace FileUtil {
 			/**
 			 * This method copies one file to another location
@@ -60608,10 +61254,7 @@ declare global {
 			function copy(inFile: any /* java.io.File */, outFile: any /* java.io.File */): boolean;
 
 		}
-		interface FileUtil {
-			new(): FileUtil;
-
-		}
+		interface NumberConversions {}
 		namespace NumberConversions {
 			function floor(num: number): number;
 
@@ -60642,33 +61285,7 @@ declare global {
 			function checkFinite(d: number, message: string): void;
 
 		}
-		interface NumberConversions {}
 		interface RayTraceResult {
-			/**
-			 * Creates a RayTraceResult.
-			 */
-			new(hitPosition: org.bukkit.util.Vector): RayTraceResult;
-
-			/**
-			 * Creates a RayTraceResult.
-			 */
-			new(hitPosition: org.bukkit.util.Vector, hitBlockFace: org.bukkit.block.BlockFace): RayTraceResult;
-
-			/**
-			 * Creates a RayTraceResult.
-			 */
-			new(hitPosition: org.bukkit.util.Vector, hitBlock: org.bukkit.block.Block, hitBlockFace: org.bukkit.block.BlockFace): RayTraceResult;
-
-			/**
-			 * Creates a RayTraceResult.
-			 */
-			new(hitPosition: org.bukkit.util.Vector, hitEntity: org.bukkit.entity.Entity): RayTraceResult;
-
-			/**
-			 * Creates a RayTraceResult.
-			 */
-			new(hitPosition: org.bukkit.util.Vector, hitEntity: org.bukkit.entity.Entity, hitBlockFace: org.bukkit.block.BlockFace): RayTraceResult;
-
 			/**
 			 * Gets the exact position of the hit.
 			 */
@@ -60696,6 +61313,39 @@ declare global {
 			toString(): string;
 
 		}
+		class RayTraceResult {
+			/**
+			 * Creates a RayTraceResult.
+			 */
+			constructor(hitPosition: org.bukkit.util.Vector);
+
+			/**
+			 * Creates a RayTraceResult.
+			 */
+			constructor(hitPosition: org.bukkit.util.Vector, hitBlockFace: org.bukkit.block.BlockFace);
+
+			/**
+			 * Creates a RayTraceResult.
+			 */
+			constructor(hitPosition: org.bukkit.util.Vector, hitBlock: org.bukkit.block.Block, hitBlockFace: org.bukkit.block.BlockFace);
+
+			/**
+			 * Creates a RayTraceResult.
+			 */
+			constructor(hitPosition: org.bukkit.util.Vector, hitEntity: org.bukkit.entity.Entity);
+
+			/**
+			 * Creates a RayTraceResult.
+			 */
+			constructor(hitPosition: org.bukkit.util.Vector, hitEntity: org.bukkit.entity.Entity, hitBlockFace: org.bukkit.block.BlockFace);
+
+		}
+		interface StringUtil {
+		}
+		class StringUtil {
+			constructor();
+
+		}
 		namespace StringUtil {
 			/**
 			 * Copies all elements from the iterable collection of originals to the
@@ -60711,10 +61361,6 @@ declare global {
 			function startsWithIgnoreCase(string: string, prefix: string): boolean;
 
 		}
-		interface StringUtil {
-			new(): StringUtil;
-
-		}
 		interface StructureSearchResult {
 			/**
 			 * Return the structure which was found.
@@ -60728,10 +61374,6 @@ declare global {
 
 		}
 		interface Transformation {
-			new(translation: any /* org.joml.Vector3f */, leftRotation: any /* org.joml.AxisAngle4f */, scale: any /* org.joml.Vector3f */, rightRotation: any /* org.joml.AxisAngle4f */): Transformation;
-
-			new(translation: any /* org.joml.Vector3f */, leftRotation: any /* org.joml.Quaternionf */, scale: any /* org.joml.Vector3f */, rightRotation: any /* org.joml.Quaternionf */): Transformation;
-
 			/**
 			 * Gets the translation component of this transformation.
 			 */
@@ -60759,82 +61401,13 @@ declare global {
 			toString(): string;
 
 		}
-		namespace Vector {
-			/**
-			 * Get the threshold used for equals().
-			 */
-			function getEpsilon(): number;
+		class Transformation {
+			constructor(translation: any /* org.joml.Vector3f */, leftRotation: any /* org.joml.AxisAngle4f */, scale: any /* org.joml.Vector3f */, rightRotation: any /* org.joml.AxisAngle4f */);
 
-			/**
-			 * Gets the minimum components of two vectors.
-			 */
-			function getMinimum(v1: org.bukkit.util.Vector, v2: org.bukkit.util.Vector): org.bukkit.util.Vector;
-
-			/**
-			 * Gets the maximum components of two vectors.
-			 */
-			function getMaximum(v1: org.bukkit.util.Vector, v2: org.bukkit.util.Vector): org.bukkit.util.Vector;
-
-			/**
-			 * Gets a random vector with components having a random value between 0
-			 * and 1.
-			 */
-			function getRandom(): org.bukkit.util.Vector;
-
-			/**
-			 * Gets a vector with components that match the provided JOML Vector3f.
-			 */
-			function fromJOML(vector: any /* org.joml.Vector3f */): org.bukkit.util.Vector;
-
-			/**
-			 * Gets a vector with components that match the provided JOML Vector3d.
-			 */
-			function fromJOML(vector: any /* org.joml.Vector3d */): org.bukkit.util.Vector;
-
-			/**
-			 * Gets a vector with components that match the provided JOML Vector3i.
-			 */
-			function fromJOML(vector: any /* org.joml.Vector3i */): org.bukkit.util.Vector;
-
-			/**
-			 * Gets a vector with components that match the provided JOML Vector3fc.
-			 */
-			function fromJOML(vector: any /* org.joml.Vector3fc */): org.bukkit.util.Vector;
-
-			/**
-			 * Gets a vector with components that match the provided JOML Vector3dc.
-			 */
-			function fromJOML(vector: any /* org.joml.Vector3dc */): org.bukkit.util.Vector;
-
-			/**
-			 * Gets a vector with components that match the provided JOML Vector3ic.
-			 */
-			function fromJOML(vector: any /* org.joml.Vector3ic */): org.bukkit.util.Vector;
-
-			function deserialize(args: globalThis.java.util.Map<string, any>): org.bukkit.util.Vector;
+			constructor(translation: any /* org.joml.Vector3f */, leftRotation: any /* org.joml.Quaternionf */, scale: any /* org.joml.Vector3f */, rightRotation: any /* org.joml.Quaternionf */);
 
 		}
 		interface Vector {
-			/**
-			 * Construct the vector with all components as 0.
-			 */
-			new(): Vector;
-
-			/**
-			 * Construct the vector with provided integer components.
-			 */
-			new(x: number, y: number, z: number): Vector;
-
-			/**
-			 * Construct the vector with provided double components.
-			 */
-			new(x: number, y: number, z: number): Vector;
-
-			/**
-			 * Construct the vector with provided float components.
-			 */
-			new(x: number, y: number, z: number): Vector;
-
 			/**
 			 * Adds a vector to this one
 			 */
@@ -61188,6 +61761,83 @@ declare global {
 			serialize(): globalThis.java.util.Map<string, any>;
 
 		}
+		class Vector {
+			/**
+			 * Construct the vector with all components as 0.
+			 */
+			constructor();
+
+			/**
+			 * Construct the vector with provided integer components.
+			 */
+			constructor(x: number, y: number, z: number);
+
+			/**
+			 * Construct the vector with provided double components.
+			 */
+			constructor(x: number, y: number, z: number);
+
+			/**
+			 * Construct the vector with provided float components.
+			 */
+			constructor(x: number, y: number, z: number);
+
+		}
+		namespace Vector {
+			/**
+			 * Get the threshold used for equals().
+			 */
+			function getEpsilon(): number;
+
+			/**
+			 * Gets the minimum components of two vectors.
+			 */
+			function getMinimum(v1: org.bukkit.util.Vector, v2: org.bukkit.util.Vector): org.bukkit.util.Vector;
+
+			/**
+			 * Gets the maximum components of two vectors.
+			 */
+			function getMaximum(v1: org.bukkit.util.Vector, v2: org.bukkit.util.Vector): org.bukkit.util.Vector;
+
+			/**
+			 * Gets a random vector with components having a random value between 0
+			 * and 1.
+			 */
+			function getRandom(): org.bukkit.util.Vector;
+
+			/**
+			 * Gets a vector with components that match the provided JOML Vector3f.
+			 */
+			function fromJOML(vector: any /* org.joml.Vector3f */): org.bukkit.util.Vector;
+
+			/**
+			 * Gets a vector with components that match the provided JOML Vector3d.
+			 */
+			function fromJOML(vector: any /* org.joml.Vector3d */): org.bukkit.util.Vector;
+
+			/**
+			 * Gets a vector with components that match the provided JOML Vector3i.
+			 */
+			function fromJOML(vector: any /* org.joml.Vector3i */): org.bukkit.util.Vector;
+
+			/**
+			 * Gets a vector with components that match the provided JOML Vector3fc.
+			 */
+			function fromJOML(vector: any /* org.joml.Vector3fc */): org.bukkit.util.Vector;
+
+			/**
+			 * Gets a vector with components that match the provided JOML Vector3dc.
+			 */
+			function fromJOML(vector: any /* org.joml.Vector3dc */): org.bukkit.util.Vector;
+
+			/**
+			 * Gets a vector with components that match the provided JOML Vector3ic.
+			 */
+			function fromJOML(vector: any /* org.joml.Vector3ic */): org.bukkit.util.Vector;
+
+			function deserialize(args: globalThis.java.util.Map<string, any>): org.bukkit.util.Vector;
+
+		}
 		interface VoxelShape {
 			/**
 			 * Converts this shape into a collection of BoundingBox equivalent
@@ -61204,19 +61854,13 @@ declare global {
 		}
 	}
 	namespace org.bukkit.command {
-		type BlockCommandSender = org.bukkit.command.CommandSender & {
+		interface BlockCommandSender extends Modify<org.bukkit.command.CommandSender, {
 			/**
 			 * Returns the block this command sender belongs to
 			 */
 			getBlock(): org.bukkit.block.Block;
 
-		}
-		namespace Command {
-			function broadcastCommandMessage(source: org.bukkit.command.CommandSender, message: string): void;
-
-			function broadcastCommandMessage(source: org.bukkit.command.CommandSender, message: string, sendToSource: boolean): void;
-
-		}
+		}> {}
 		interface Command {
 			timings: any /* org.spigotmc.CustomTimingsHandler */;
 
@@ -61359,20 +62003,28 @@ declare global {
 			toString(): string;
 
 		}
+		namespace Command {
+			function broadcastCommandMessage(source: org.bukkit.command.CommandSender, message: string): void;
+
+			function broadcastCommandMessage(source: org.bukkit.command.CommandSender, message: string, sendToSource: boolean): void;
+
+		}
 		interface CommandException {
+		}
+		class CommandException {
 			/**
 			 * Creates a new instance of CommandException without detail
 			 * message.
 			 */
-			new(): CommandException;
+			constructor();
 
 			/**
 			 * Constructs an instance of CommandException with the
 			 * specified detail message.
 			 */
-			new(msg: string): CommandException;
+			constructor(msg: string);
 
-			new(msg: string, cause: globalThis.java.lang.Throwable): CommandException;
+			constructor(msg: string, cause: globalThis.java.lang.Throwable);
 
 		}
 		interface CommandExecutor {
@@ -61457,7 +62109,7 @@ declare global {
 			tabComplete(sender: org.bukkit.command.CommandSender, cmdLine: string, location: org.bukkit.Location): globalThis.java.util.List<string>;
 
 		}
-		type CommandSender = org.bukkit.permissions.Permissible & {
+		interface CommandSender extends Modify<org.bukkit.permissions.Permissible, {
 			/**
 			 * Sends this sender a message
 			 */
@@ -61488,27 +62140,31 @@ declare global {
 			 */
 			getName(): string;
 
-		}
-		type ConsoleCommandSender = org.bukkit.command.CommandSender & org.bukkit.conversations.Conversable & {}
-		type FormattedCommandAlias = org.bukkit.command.Command & {
-			new(alias: string, formatStrings: string[]): FormattedCommandAlias;
-
+		}> {}
+		interface ConsoleCommandSender extends Modify<org.bukkit.command.CommandSender & org.bukkit.conversations.Conversable, {}> {}
+		interface FormattedCommandAlias extends Modify<org.bukkit.command.Command, {
 			/**
 			 * Description copied from class: Command
 			 */
 			execute(sender: org.bukkit.command.CommandSender, commandLabel: string, args: string[]): boolean;
 
-		}
-		type MultipleCommandAlias = org.bukkit.command.Command & {
-			new(name: string, commands: org.bukkit.command.Command[]): MultipleCommandAlias;
+		}> {}
+		class FormattedCommandAlias {
+			constructor(alias: string, formatStrings: string[]);
 
+		}
+		interface MultipleCommandAlias extends Modify<org.bukkit.command.Command, {
 			/**
 			 * Description copied from class: Command
 			 */
 			execute(sender: org.bukkit.command.CommandSender, commandLabel: string, args: string[]): boolean;
 
+		}> {}
+		class MultipleCommandAlias {
+			constructor(name: string, commands: org.bukkit.command.Command[]);
+
 		}
-		type PluginCommand = org.bukkit.command.Command & {
+		interface PluginCommand extends Modify<org.bukkit.command.Command, {
 			/**
 			 * Executes the command, returning its success
 			 */
@@ -61559,13 +62215,15 @@ declare global {
 
 			toString(): string;
 
+		}> {}
+		interface PluginCommandYamlParser {
+		}
+		class PluginCommandYamlParser {
+			constructor();
+
 		}
 		namespace PluginCommandYamlParser {
 			function parse(plugin: org.bukkit.plugin.Plugin): globalThis.java.util.List<org.bukkit.command.Command>;
-
-		}
-		interface PluginCommandYamlParser {
-			new(): PluginCommandYamlParser;
 
 		}
 		interface PluginIdentifiableCommand {
@@ -61575,7 +62233,7 @@ declare global {
 			getPlugin(): org.bukkit.plugin.Plugin;
 
 		}
-		type ProxiedCommandSender = org.bukkit.command.CommandSender & {
+		interface ProxiedCommandSender extends Modify<org.bukkit.command.CommandSender, {
 			/**
 			 * Returns the CommandSender which triggered this proxied command
 			 */
@@ -61586,17 +62244,15 @@ declare global {
 			 */
 			getCallee(): org.bukkit.command.CommandSender;
 
-		}
-		type RemoteConsoleCommandSender = org.bukkit.command.CommandSender & {
+		}> {}
+		interface RemoteConsoleCommandSender extends Modify<org.bukkit.command.CommandSender, {
 			/**
 			 * Gets the socket address of this remote sender.
 			 */
 			getAddress(): any /* java.net.SocketAddress */;
 
-		}
+		}> {}
 		interface SimpleCommandMap {
-			new(server: org.bukkit.Server): SimpleCommandMap;
-
 			setFallbackCommands(): void;
 
 			/**
@@ -61670,6 +62326,10 @@ declare global {
 			registerServerAliases(): void;
 
 		}
+		class SimpleCommandMap {
+			constructor(server: org.bukkit.Server);
+
+		}
 		interface TabCompleter {
 			/**
 			 * Requests a list of possible completions for a command argument.
@@ -61677,16 +62337,16 @@ declare global {
 			onTabComplete(sender: org.bukkit.command.CommandSender, command: org.bukkit.command.Command, label: string, args: string[]): globalThis.java.util.List<string>;
 
 		}
-		type TabExecutor = org.bukkit.command.TabCompleter & org.bukkit.command.CommandExecutor & {}
+		interface TabExecutor extends Modify<org.bukkit.command.TabCompleter & org.bukkit.command.CommandExecutor, {}> {}
 	}
 	namespace org.bukkit.projectiles {
-		type BlockProjectileSource = org.bukkit.projectiles.ProjectileSource & {
+		interface BlockProjectileSource extends Modify<org.bukkit.projectiles.ProjectileSource, {
 			/**
 			 * Gets the block this projectile source belongs to.
 			 */
 			getBlock(): org.bukkit.block.Block;
 
-		}
+		}> {}
 		interface ProjectileSource {
 			/**
 			 * Launches a Projectile from the ProjectileSource.
@@ -61702,13 +62362,13 @@ declare global {
 		}
 	}
 	namespace org.bukkit.persistence {
-		type ListPersistentDataType<P = any, C = any> = org.bukkit.persistence.PersistentDataType<globalThis.java.util.List, globalThis.java.util.List> & {
+		interface ListPersistentDataType<P = any, C = any> extends Modify<org.bukkit.persistence.PersistentDataType<globalThis.java.util.List, globalThis.java.util.List>, {
 			/**
 			 * Provides the persistent data type of the elements found in the list.
 			 */
 			elementType(): org.bukkit.persistence.PersistentDataType<P, C>;
 
-		}
+		}> {}
 		interface ListPersistentDataTypeProvider {
 			/**
 			 * Provides a shared ListPersistentDataType that is capable of
@@ -61897,6 +62557,29 @@ declare global {
 			getPersistentDataContainer(): org.bukkit.persistence.PersistentDataContainer;
 
 		}
+		interface PersistentDataType<P = any, C = any> {
+			/**
+			 * Returns the primitive data type of this tag.
+			 */
+			getPrimitiveType(): globalThis.java.lang.Class<P>;
+
+			/**
+			 * Returns the complex object type the primitive value resembles.
+			 */
+			getComplexType(): globalThis.java.lang.Class<C>;
+
+			/**
+			 * Returns the primitive data that resembles the complex object passed to
+			 * this method.
+			 */
+			toPrimitive(complex: C, context: org.bukkit.persistence.PersistentDataAdapterContext): P;
+
+			/**
+			 * Creates a complex object based of the passed primitive value
+			 */
+			fromPrimitive(primitive: P, context: org.bukkit.persistence.PersistentDataAdapterContext): C;
+
+		}
 		namespace PersistentDataType {
 			const BYTE: org.bukkit.persistence.PersistentDataType<number, number>;
 
@@ -61943,33 +62626,8 @@ declare global {
 			const LIST: org.bukkit.persistence.ListPersistentDataTypeProvider;
 
 		}
-		interface PersistentDataType<P = any, C = any> {
-			/**
-			 * Returns the primitive data type of this tag.
-			 */
-			getPrimitiveType(): globalThis.java.lang.Class<P>;
-
-			/**
-			 * Returns the complex object type the primitive value resembles.
-			 */
-			getComplexType(): globalThis.java.lang.Class<C>;
-
-			/**
-			 * Returns the primitive data that resembles the complex object passed to
-			 * this method.
-			 */
-			toPrimitive(complex: C, context: org.bukkit.persistence.PersistentDataAdapterContext): P;
-
-			/**
-			 * Creates a complex object based of the passed primitive value
-			 */
-			fromPrimitive(primitive: P, context: org.bukkit.persistence.PersistentDataAdapterContext): C;
-
-		}
 		namespace PersistentDataType {
 			interface BooleanPersistentDataType {
-				new(): BooleanPersistentDataType;
-
 				/**
 				 * Description copied from interface: PersistentDataType
 				 */
@@ -61989,6 +62647,10 @@ declare global {
 				 * Description copied from interface: PersistentDataType
 				 */
 				fromPrimitive(primitive: number, context: org.bukkit.persistence.PersistentDataAdapterContext): boolean;
+
+			}
+			class BooleanPersistentDataType {
+				constructor();
 
 			}
 		}
@@ -62018,8 +62680,10 @@ declare global {
 		}
 	}
 	namespace org.bukkit.conversations {
-		type BooleanPrompt = org.bukkit.conversations.ValidatingPrompt & {
-			new(): BooleanPrompt;
+		interface BooleanPrompt extends Modify<org.bukkit.conversations.ValidatingPrompt, {
+		}> {}
+		class BooleanPrompt {
+			constructor();
 
 		}
 		interface Conversable {
@@ -62062,16 +62726,6 @@ declare global {
 
 		}
 		interface Conversation {
-			/**
-			 * Initializes a new Conversation.
-			 */
-			new(plugin: org.bukkit.plugin.Plugin, forWhom: org.bukkit.conversations.Conversable, firstPrompt: org.bukkit.conversations.Prompt): Conversation;
-
-			/**
-			 * Initializes a new Conversation.
-			 */
-			new(plugin: org.bukkit.plugin.Plugin, forWhom: org.bukkit.conversations.Conversable, firstPrompt: org.bukkit.conversations.Prompt, initialSessionData: globalThis.java.util.Map<any, any>): Conversation;
-
 			/**
 			 * Gets the entity for whom this conversation is mediating.
 			 */
@@ -62160,7 +62814,20 @@ declare global {
 			outputNextPrompt(): void;
 
 		}
+		class Conversation {
+			/**
+			 * Initializes a new Conversation.
+			 */
+			constructor(plugin: org.bukkit.plugin.Plugin, forWhom: org.bukkit.conversations.Conversable, firstPrompt: org.bukkit.conversations.Prompt);
+
+			/**
+			 * Initializes a new Conversation.
+			 */
+			constructor(plugin: org.bukkit.plugin.Plugin, forWhom: org.bukkit.conversations.Conversable, firstPrompt: org.bukkit.conversations.Prompt, initialSessionData: globalThis.java.util.Map<any, any>);
+
+		}
 		namespace Conversation {
+			interface ConversationState {}
 			namespace ConversationState {
 				const UNSTARTED: org.bukkit.conversations.Conversation.ConversationState;
 
@@ -62177,13 +62844,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.conversations.Conversation.ConversationState;
 
 			}
-			interface ConversationState {}
 		}
 		interface ConversationAbandonedEvent {
-			new(conversation: org.bukkit.conversations.Conversation): ConversationAbandonedEvent;
-
-			new(conversation: org.bukkit.conversations.Conversation, canceller: org.bukkit.conversations.ConversationCanceller): ConversationAbandonedEvent;
-
 			/**
 			 * Gets the object that caused the conversation to be abandoned.
 			 */
@@ -62199,6 +62861,12 @@ declare global {
 			 * prompt chain or prematurely via a ConversationCanceller.
 			 */
 			gracefulExit(): boolean;
+
+		}
+		class ConversationAbandonedEvent {
+			constructor(conversation: org.bukkit.conversations.Conversation);
+
+			constructor(conversation: org.bukkit.conversations.Conversation, canceller: org.bukkit.conversations.ConversationCanceller);
 
 		}
 		interface ConversationAbandonedListener {
@@ -62229,8 +62897,6 @@ declare global {
 
 		}
 		interface ConversationContext {
-			new(plugin: org.bukkit.plugin.Plugin, forWhom: org.bukkit.conversations.Conversable, initialSessionData: globalThis.java.util.Map<any, any>): ConversationContext;
-
 			/**
 			 * Gets the plugin that owns this conversation.
 			 */
@@ -62262,12 +62928,11 @@ declare global {
 			setSessionData(key: any, value: any): void;
 
 		}
-		interface ConversationFactory {
-			/**
-			 * Constructs a ConversationFactory.
-			 */
-			new(plugin: org.bukkit.plugin.Plugin): ConversationFactory;
+		class ConversationContext {
+			constructor(plugin: org.bukkit.plugin.Plugin, forWhom: org.bukkit.conversations.Conversable, initialSessionData: globalThis.java.util.Map<any, any>);
 
+		}
+		interface ConversationFactory {
 			/**
 			 * Sets the modality of all Conversations created by this factory.
 			 * If a conversation is modal, all messages directed to the player are
@@ -62343,6 +63008,13 @@ declare global {
 			buildConversation(forWhom: org.bukkit.conversations.Conversable): org.bukkit.conversations.Conversation;
 
 		}
+		class ConversationFactory {
+			/**
+			 * Constructs a ConversationFactory.
+			 */
+			constructor(plugin: org.bukkit.plugin.Plugin);
+
+		}
 		interface ConversationPrefix {
 			/**
 			 * Gets the prefix to use before each message to the player.
@@ -62352,11 +63024,6 @@ declare global {
 		}
 		interface ExactMatchConversationCanceller {
 			/**
-			 * Builds an ExactMatchConversationCanceller.
-			 */
-			new(escapeSequence: string): ExactMatchConversationCanceller;
-
-			/**
 			 * Description copied from interface: ConversationCanceller
 			 */
 			setConversation(conversation: org.bukkit.conversations.Conversation): void;
@@ -62372,22 +63039,26 @@ declare global {
 			clone(): org.bukkit.conversations.ConversationCanceller;
 
 		}
-		type FixedSetPrompt = org.bukkit.conversations.ValidatingPrompt & {
+		class ExactMatchConversationCanceller {
+			/**
+			 * Builds an ExactMatchConversationCanceller.
+			 */
+			constructor(escapeSequence: string);
+
+		}
+		interface FixedSetPrompt extends Modify<org.bukkit.conversations.ValidatingPrompt, {
+		}> {}
+		class FixedSetPrompt {
 			/**
 			 * Creates a FixedSetPrompt from a set of strings.
 			 * 
 			 * foo = new FixedSetPrompt("bar", "cheese", "panda");
 			 */
-			new(...fixedSet: string[]): FixedSetPrompt;
+			constructor(...fixedSet: string[]);
 
 		}
 		interface InactivityConversationCanceller {
 			/**
-			 * Creates an InactivityConversationCanceller.
-			 */
-			new(plugin: org.bukkit.plugin.Plugin, timeoutSeconds: number): InactivityConversationCanceller;
-
-			/**
 			 * Description copied from interface: ConversationCanceller
 			 */
 			setConversation(conversation: org.bukkit.conversations.Conversation): void;
@@ -62401,11 +63072,16 @@ declare global {
 			 * Description copied from interface: ConversationCanceller
 			 */
 			clone(): org.bukkit.conversations.ConversationCanceller;
+
+		}
+		class InactivityConversationCanceller {
+			/**
+			 * Creates an InactivityConversationCanceller.
+			 */
+			constructor(plugin: org.bukkit.plugin.Plugin, timeoutSeconds: number);
 
 		}
 		interface ManuallyAbandonedConversationCanceller {
-			new(): ManuallyAbandonedConversationCanceller;
-
 			/**
 			 * Description copied from interface: ConversationCanceller
 			 */
@@ -62422,9 +63098,11 @@ declare global {
 			clone(): org.bukkit.conversations.ConversationCanceller;
 
 		}
-		interface MessagePrompt {
-			new(): MessagePrompt;
+		class ManuallyAbandonedConversationCanceller {
+			constructor();
 
+		}
+		interface MessagePrompt {
 			/**
 			 * Message prompts never wait for user input before continuing.
 			 */
@@ -62437,39 +63115,44 @@ declare global {
 			acceptInput(context: org.bukkit.conversations.ConversationContext, input: string): org.bukkit.conversations.Prompt;
 
 		}
-		interface NullConversationPrefix {
-			new(): NullConversationPrefix;
+		class MessagePrompt {
+			constructor();
 
+		}
+		interface NullConversationPrefix {
 			/**
 			 * Prepends each conversation message with an empty string.
 			 */
 			getPrefix(context: org.bukkit.conversations.ConversationContext): string;
 
 		}
-		type NumericPrompt = org.bukkit.conversations.ValidatingPrompt & {
-			new(): NumericPrompt;
+		class NullConversationPrefix {
+			constructor();
 
 		}
-		type PlayerNamePrompt = org.bukkit.conversations.ValidatingPrompt & {
-			new(plugin: org.bukkit.plugin.Plugin): PlayerNamePrompt;
+		interface NumericPrompt extends Modify<org.bukkit.conversations.ValidatingPrompt, {
+		}> {}
+		class NumericPrompt {
+			constructor();
+
+		}
+		interface PlayerNamePrompt extends Modify<org.bukkit.conversations.ValidatingPrompt, {
+		}> {}
+		class PlayerNamePrompt {
+			constructor(plugin: org.bukkit.plugin.Plugin);
 
 		}
 		interface PluginNameConversationPrefix {
-			new(plugin: org.bukkit.plugin.Plugin): PluginNameConversationPrefix;
-
-			new(plugin: org.bukkit.plugin.Plugin, separator: string, prefixColor: org.bukkit.ChatColor): PluginNameConversationPrefix;
-
 			/**
 			 * Prepends each conversation message with the plugin name.
 			 */
 			getPrefix(context: org.bukkit.conversations.ConversationContext): string;
 
 		}
-		namespace Prompt {
-			/**
-			 * A convenience constant for indicating the end of a conversation.
-			 */
-			const END_OF_CONVERSATION: org.bukkit.conversations.Prompt;
+		class PluginNameConversationPrefix {
+			constructor(plugin: org.bukkit.plugin.Plugin);
+
+			constructor(plugin: org.bukkit.plugin.Plugin, separator: string, prefixColor: org.bukkit.ChatColor);
 
 		}
 		interface Prompt {
@@ -62492,24 +63175,33 @@ declare global {
 			acceptInput(context: org.bukkit.conversations.ConversationContext, input: string): org.bukkit.conversations.Prompt;
 
 		}
-		type RegexPrompt = org.bukkit.conversations.ValidatingPrompt & {
-			new(regex: string): RegexPrompt;
+		namespace Prompt {
+			/**
+			 * A convenience constant for indicating the end of a conversation.
+			 */
+			const END_OF_CONVERSATION: org.bukkit.conversations.Prompt;
 
-			new(pattern: globalThis.java.util.regex.Pattern): RegexPrompt;
+		}
+		interface RegexPrompt extends Modify<org.bukkit.conversations.ValidatingPrompt, {
+		}> {}
+		class RegexPrompt {
+			constructor(regex: string);
+
+			constructor(pattern: globalThis.java.util.regex.Pattern);
 
 		}
 		interface StringPrompt {
-			new(): StringPrompt;
-
 			/**
 			 * Ensures that the prompt waits for the user to provide input.
 			 */
 			blocksForInput(context: org.bukkit.conversations.ConversationContext): boolean;
 
 		}
-		interface ValidatingPrompt {
-			new(): ValidatingPrompt;
+		class StringPrompt {
+			constructor();
 
+		}
+		interface ValidatingPrompt {
 			/**
 			 * Accepts and processes input from the user and validates it. If
 			 * validation fails, this prompt is returned for re-execution, otherwise
@@ -62523,15 +63215,13 @@ declare global {
 			blocksForInput(context: org.bukkit.conversations.ConversationContext): boolean;
 
 		}
-	}
-	namespace org.bukkit.event.inventory {
-		namespace BrewEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
+		class ValidatingPrompt {
+			constructor();
 
 		}
-		type BrewEvent = org.bukkit.event.block.BlockEvent & {
-			new(brewer: org.bukkit.block.Block, contents: org.bukkit.inventory.BrewerInventory, results: globalThis.java.util.List<org.bukkit.inventory.ItemStack>, fuelLevel: number): BrewEvent;
-
+	}
+	namespace org.bukkit.event.inventory {
+		interface BrewEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Gets the contents of the Brewing Stand.
 			 * Note: The brewer inventory still holds the items found prior to
@@ -62565,14 +63255,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class BrewEvent {
+			constructor(brewer: org.bukkit.block.Block, contents: org.bukkit.inventory.BrewerInventory, results: globalThis.java.util.List<org.bukkit.inventory.ItemStack>, fuelLevel: number);
+
 		}
-		namespace BrewingStandFuelEvent {
+		namespace BrewEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type BrewingStandFuelEvent = org.bukkit.event.block.BlockEvent & {
-			new(brewingStand: org.bukkit.block.Block, fuel: org.bukkit.inventory.ItemStack, fuelPower: number): BrewingStandFuelEvent;
-
+		interface BrewingStandFuelEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Gets the ItemStack of the fuel before the amount was subtracted.
 			 */
@@ -62611,6 +63303,49 @@ declare global {
 			setCancelled(cancel: boolean): void;
 
 			getHandlers(): org.bukkit.event.HandlerList;
+
+		}> {}
+		class BrewingStandFuelEvent {
+			constructor(brewingStand: org.bukkit.block.Block, fuel: org.bukkit.inventory.ItemStack, fuelPower: number);
+
+		}
+		namespace BrewingStandFuelEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		interface ClickType {
+			/**
+			 * Gets whether this ClickType represents the pressing of a key on a
+			 * keyboard.
+			 */
+			isKeyboardClick(): boolean;
+
+			/**
+			 * Gets whether this ClickType represents the pressing of a mouse button
+			 */
+			isMouseClick(): boolean;
+
+			/**
+			 * Gets whether this ClickType represents an action that can only be
+			 * performed by a Player in creative mode.
+			 */
+			isCreativeAction(): boolean;
+
+			/**
+			 * Gets whether this ClickType represents a right click.
+			 */
+			isRightClick(): boolean;
+
+			/**
+			 * Gets whether this ClickType represents a left click.
+			 */
+			isLeftClick(): boolean;
+
+			/**
+			 * Gets whether this ClickType indicates that the shift key was pressed
+			 * down when the click was made.
+			 */
+			isShiftClick(): boolean;
 
 		}
 		namespace ClickType {
@@ -62698,46 +63433,7 @@ declare global {
 			function valueOf(name: string): org.bukkit.event.inventory.ClickType;
 
 		}
-		interface ClickType {
-			/**
-			 * Gets whether this ClickType represents the pressing of a key on a
-			 * keyboard.
-			 */
-			isKeyboardClick(): boolean;
-
-			/**
-			 * Gets whether this ClickType represents the pressing of a mouse button
-			 */
-			isMouseClick(): boolean;
-
-			/**
-			 * Gets whether this ClickType represents an action that can only be
-			 * performed by a Player in creative mode.
-			 */
-			isCreativeAction(): boolean;
-
-			/**
-			 * Gets whether this ClickType represents a right click.
-			 */
-			isRightClick(): boolean;
-
-			/**
-			 * Gets whether this ClickType represents a left click.
-			 */
-			isLeftClick(): boolean;
-
-			/**
-			 * Gets whether this ClickType indicates that the shift key was pressed
-			 * down when the click was made.
-			 */
-			isShiftClick(): boolean;
-
-		}
-		type CraftItemEvent = org.bukkit.event.inventory.InventoryClickEvent & {
-			new(recipe: org.bukkit.inventory.Recipe, what: org.bukkit.inventory.InventoryView, type: org.bukkit.event.inventory.InventoryType.SlotType, slot: number, click: org.bukkit.event.inventory.ClickType, action: org.bukkit.event.inventory.InventoryAction): CraftItemEvent;
-
-			new(recipe: org.bukkit.inventory.Recipe, what: org.bukkit.inventory.InventoryView, type: org.bukkit.event.inventory.InventoryType.SlotType, slot: number, click: org.bukkit.event.inventory.ClickType, action: org.bukkit.event.inventory.InventoryAction, key: number): CraftItemEvent;
-
+		interface CraftItemEvent extends Modify<org.bukkit.event.inventory.InventoryClickEvent, {
 			getRecipe(): org.bukkit.inventory.Recipe;
 
 			/**
@@ -62745,7 +63441,14 @@ declare global {
 			 */
 			getInventory(): org.bukkit.inventory.CraftingInventory;
 
+		}> {}
+		class CraftItemEvent {
+			constructor(recipe: org.bukkit.inventory.Recipe, what: org.bukkit.inventory.InventoryView, type: org.bukkit.event.inventory.InventoryType.SlotType, slot: number, click: org.bukkit.event.inventory.ClickType, action: org.bukkit.event.inventory.InventoryAction);
+
+			constructor(recipe: org.bukkit.inventory.Recipe, what: org.bukkit.inventory.InventoryView, type: org.bukkit.event.inventory.InventoryType.SlotType, slot: number, click: org.bukkit.event.inventory.ClickType, action: org.bukkit.event.inventory.InventoryAction, key: number);
+
 		}
+		interface DragType {}
 		namespace DragType {
 			/**
 			 * One item from the cursor is placed in each selected slot.
@@ -62767,14 +63470,7 @@ declare global {
 			function valueOf(name: string): org.bukkit.event.inventory.DragType;
 
 		}
-		interface DragType {}
-		namespace FurnaceBurnEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type FurnaceBurnEvent = org.bukkit.event.block.BlockEvent & {
-			new(furnace: org.bukkit.block.Block, fuel: org.bukkit.inventory.ItemStack, burnTime: number): FurnaceBurnEvent;
-
+		interface FurnaceBurnEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Gets the fuel ItemStack for this event
 			 */
@@ -62812,10 +63508,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
-		}
-		type FurnaceExtractEvent = org.bukkit.event.block.BlockExpEvent & {
-			new(player: org.bukkit.entity.Player, block: org.bukkit.block.Block, itemType: org.bukkit.Material, itemAmount: number, exp: number): FurnaceExtractEvent;
+		}> {}
+		class FurnaceBurnEvent {
+			constructor(furnace: org.bukkit.block.Block, fuel: org.bukkit.inventory.ItemStack, burnTime: number);
 
+		}
+		namespace FurnaceBurnEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		interface FurnaceExtractEvent extends Modify<org.bukkit.event.block.BlockExpEvent, {
 			/**
 			 * Get the player that triggered the event
 			 */
@@ -62831,18 +63533,18 @@ declare global {
 			 */
 			getItemAmount(): number;
 
-		}
-		type FurnaceSmeltEvent = org.bukkit.event.block.BlockCookEvent & {
-			new(furnace: org.bukkit.block.Block, source: org.bukkit.inventory.ItemStack, result: org.bukkit.inventory.ItemStack): FurnaceSmeltEvent;
+		}> {}
+		class FurnaceExtractEvent {
+			constructor(player: org.bukkit.entity.Player, block: org.bukkit.block.Block, itemType: org.bukkit.Material, itemAmount: number, exp: number);
 
 		}
-		namespace FurnaceStartSmeltEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
+		interface FurnaceSmeltEvent extends Modify<org.bukkit.event.block.BlockCookEvent, {
+		}> {}
+		class FurnaceSmeltEvent {
+			constructor(furnace: org.bukkit.block.Block, source: org.bukkit.inventory.ItemStack, result: org.bukkit.inventory.ItemStack);
 
 		}
-		type FurnaceStartSmeltEvent = org.bukkit.event.block.InventoryBlockStartEvent & {
-			new(furnace: org.bukkit.block.Block, source: org.bukkit.inventory.ItemStack, recipe: org.bukkit.inventory.CookingRecipe): FurnaceStartSmeltEvent;
-
+		interface FurnaceStartSmeltEvent extends Modify<org.bukkit.event.block.InventoryBlockStartEvent, {
 			/**
 			 * Gets the FurnaceRecipe associated with this event
 			 */
@@ -62860,14 +63562,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class FurnaceStartSmeltEvent {
+			constructor(furnace: org.bukkit.block.Block, source: org.bukkit.inventory.ItemStack, recipe: org.bukkit.inventory.CookingRecipe);
+
 		}
-		namespace HopperInventorySearchEvent {
+		namespace FurnaceStartSmeltEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type HopperInventorySearchEvent = org.bukkit.event.block.BlockEvent & {
-			new(inventory: org.bukkit.inventory.Inventory, containerType: org.bukkit.event.inventory.HopperInventorySearchEvent.ContainerType, hopper: org.bukkit.block.Block, searchBlock: org.bukkit.block.Block): HopperInventorySearchEvent;
-
+		interface HopperInventorySearchEvent extends Modify<org.bukkit.event.block.BlockEvent, {
 			/**
 			 * Set the Inventory that the Hopper will use for its
 			 * source/attached Container.
@@ -62892,8 +63596,17 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class HopperInventorySearchEvent {
+			constructor(inventory: org.bukkit.inventory.Inventory, containerType: org.bukkit.event.inventory.HopperInventorySearchEvent.ContainerType, hopper: org.bukkit.block.Block, searchBlock: org.bukkit.block.Block);
+
 		}
 		namespace HopperInventorySearchEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		namespace HopperInventorySearchEvent {
+			interface ContainerType {}
 			namespace ContainerType {
 				/**
 				 * The source container the hopper is looking for.
@@ -62916,8 +63629,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.inventory.HopperInventorySearchEvent.ContainerType;
 
 			}
-			interface ContainerType {}
 		}
+		interface InventoryAction {}
 		namespace InventoryAction {
 			/**
 			 * Nothing will happen from the click.
@@ -63031,16 +63744,7 @@ declare global {
 			function valueOf(name: string): org.bukkit.event.inventory.InventoryAction;
 
 		}
-		interface InventoryAction {}
-		namespace InventoryClickEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type InventoryClickEvent = org.bukkit.event.inventory.InventoryInteractEvent & {
-			new(view: org.bukkit.inventory.InventoryView, type: org.bukkit.event.inventory.InventoryType.SlotType, slot: number, click: org.bukkit.event.inventory.ClickType, action: org.bukkit.event.inventory.InventoryAction): InventoryClickEvent;
-
-			new(view: org.bukkit.inventory.InventoryView, type: org.bukkit.event.inventory.InventoryType.SlotType, slot: number, click: org.bukkit.event.inventory.ClickType, action: org.bukkit.event.inventory.InventoryAction, key: number): InventoryClickEvent;
-
+		interface InventoryClickEvent extends Modify<org.bukkit.event.inventory.InventoryInteractEvent, {
 			/**
 			 * Gets the type of slot that was clicked.
 			 */
@@ -63125,14 +63829,18 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class InventoryClickEvent {
+			constructor(view: org.bukkit.inventory.InventoryView, type: org.bukkit.event.inventory.InventoryType.SlotType, slot: number, click: org.bukkit.event.inventory.ClickType, action: org.bukkit.event.inventory.InventoryAction);
+
+			constructor(view: org.bukkit.inventory.InventoryView, type: org.bukkit.event.inventory.InventoryType.SlotType, slot: number, click: org.bukkit.event.inventory.ClickType, action: org.bukkit.event.inventory.InventoryAction, key: number);
+
 		}
-		namespace InventoryCloseEvent {
+		namespace InventoryClickEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type InventoryCloseEvent = org.bukkit.event.inventory.InventoryEvent & {
-			new(transaction: org.bukkit.inventory.InventoryView): InventoryCloseEvent;
-
+		interface InventoryCloseEvent extends Modify<org.bukkit.event.inventory.InventoryEvent, {
 			/**
 			 * Returns the player involved in this event
 			 */
@@ -63140,10 +63848,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
-		}
-		type InventoryCreativeEvent = org.bukkit.event.inventory.InventoryClickEvent & {
-			new(what: org.bukkit.inventory.InventoryView, type: org.bukkit.event.inventory.InventoryType.SlotType, slot: number, newItem: org.bukkit.inventory.ItemStack): InventoryCreativeEvent;
+		}> {}
+		class InventoryCloseEvent {
+			constructor(transaction: org.bukkit.inventory.InventoryView);
 
+		}
+		namespace InventoryCloseEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		interface InventoryCreativeEvent extends Modify<org.bukkit.event.inventory.InventoryClickEvent, {
 			/**
 			 * Description copied from class: InventoryClickEvent
 			 */
@@ -63154,14 +63868,12 @@ declare global {
 			 */
 			setCursor(item: org.bukkit.inventory.ItemStack): void;
 
-		}
-		namespace InventoryDragEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
+		}> {}
+		class InventoryCreativeEvent {
+			constructor(what: org.bukkit.inventory.InventoryView, type: org.bukkit.event.inventory.InventoryType.SlotType, slot: number, newItem: org.bukkit.inventory.ItemStack);
 
 		}
-		type InventoryDragEvent = org.bukkit.event.inventory.InventoryInteractEvent & {
-			new(what: org.bukkit.inventory.InventoryView, newCursor: org.bukkit.inventory.ItemStack, oldCursor: org.bukkit.inventory.ItemStack, right: boolean, slots: globalThis.java.util.Map<number, org.bukkit.inventory.ItemStack>): InventoryDragEvent;
-
+		interface InventoryDragEvent extends Modify<org.bukkit.event.inventory.InventoryInteractEvent, {
 			/**
 			 * Gets all items to be added to the inventory in this drag.
 			 */
@@ -63209,14 +63921,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class InventoryDragEvent {
+			constructor(what: org.bukkit.inventory.InventoryView, newCursor: org.bukkit.inventory.ItemStack, oldCursor: org.bukkit.inventory.ItemStack, right: boolean, slots: globalThis.java.util.Map<number, org.bukkit.inventory.ItemStack>);
+
 		}
-		namespace InventoryEvent {
+		namespace InventoryDragEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type InventoryEvent = org.bukkit.event.Event & {
-			new(transaction: org.bukkit.inventory.InventoryView): InventoryEvent;
-
+		interface InventoryEvent extends Modify<org.bukkit.event.Event, {
 			/**
 			 * Gets the primary Inventory involved in this transaction
 			 */
@@ -63235,10 +63949,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
-		}
-		type InventoryInteractEvent = org.bukkit.event.inventory.InventoryEvent & {
-			new(transaction: org.bukkit.inventory.InventoryView): InventoryInteractEvent;
+		}> {}
+		class InventoryEvent {
+			constructor(transaction: org.bukkit.inventory.InventoryView);
 
+		}
+		namespace InventoryEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		interface InventoryInteractEvent extends Modify<org.bukkit.event.inventory.InventoryEvent, {
 			/**
 			 * Gets the player who performed the click.
 			 */
@@ -63278,14 +63998,12 @@ declare global {
 			 */
 			setCancelled(toCancel: boolean): void;
 
-		}
-		namespace InventoryMoveItemEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
+		}> {}
+		class InventoryInteractEvent {
+			constructor(transaction: org.bukkit.inventory.InventoryView);
 
 		}
-		type InventoryMoveItemEvent = org.bukkit.event.Event & {
-			new(sourceInventory: org.bukkit.inventory.Inventory, itemStack: org.bukkit.inventory.ItemStack, destinationInventory: org.bukkit.inventory.Inventory, didSourceInitiate: boolean): InventoryMoveItemEvent;
-
+		interface InventoryMoveItemEvent extends Modify<org.bukkit.event.Event, {
 			/**
 			 * Gets the Inventory that the ItemStack is being taken from
 			 */
@@ -63327,14 +64045,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class InventoryMoveItemEvent {
+			constructor(sourceInventory: org.bukkit.inventory.Inventory, itemStack: org.bukkit.inventory.ItemStack, destinationInventory: org.bukkit.inventory.Inventory, didSourceInitiate: boolean);
+
 		}
-		namespace InventoryOpenEvent {
+		namespace InventoryMoveItemEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type InventoryOpenEvent = org.bukkit.event.inventory.InventoryEvent & {
-			new(transaction: org.bukkit.inventory.InventoryView): InventoryOpenEvent;
-
+		interface InventoryOpenEvent extends Modify<org.bukkit.event.inventory.InventoryEvent, {
 			/**
 			 * Returns the player involved in this event
 			 */
@@ -63360,14 +64080,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class InventoryOpenEvent {
+			constructor(transaction: org.bukkit.inventory.InventoryView);
+
 		}
-		namespace InventoryPickupItemEvent {
+		namespace InventoryOpenEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type InventoryPickupItemEvent = org.bukkit.event.Event & {
-			new(inventory: org.bukkit.inventory.Inventory, item: org.bukkit.entity.Item): InventoryPickupItemEvent;
-
+		interface InventoryPickupItemEvent extends Modify<org.bukkit.event.Event, {
 			/**
 			 * Gets the Inventory that picked up the item
 			 */
@@ -63389,6 +64111,26 @@ declare global {
 			setCancelled(cancel: boolean): void;
 
 			getHandlers(): org.bukkit.event.HandlerList;
+
+		}> {}
+		class InventoryPickupItemEvent {
+			constructor(inventory: org.bukkit.inventory.Inventory, item: org.bukkit.entity.Item);
+
+		}
+		namespace InventoryPickupItemEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		interface InventoryType {
+			getDefaultSize(): number;
+
+			getDefaultTitle(): string;
+
+			/**
+			 * Denotes that this InventoryType can be created via the normal
+			 * Bukkit.createInventory(org.bukkit.inventory.InventoryHolder, org.bukkit.event.inventory.InventoryType) methods.
+			 */
+			isCreatable(): boolean;
 
 		}
 		namespace InventoryType {
@@ -63560,19 +64302,8 @@ declare global {
 			function valueOf(name: string): org.bukkit.event.inventory.InventoryType;
 
 		}
-		interface InventoryType {
-			getDefaultSize(): number;
-
-			getDefaultTitle(): string;
-
-			/**
-			 * Denotes that this InventoryType can be created via the normal
-			 * Bukkit.createInventory(org.bukkit.inventory.InventoryHolder, org.bukkit.event.inventory.InventoryType) methods.
-			 */
-			isCreatable(): boolean;
-
-		}
 		namespace InventoryType {
+			interface SlotType {}
 			namespace SlotType {
 				/**
 				 * A result slot in a furnace or crafting inventory.
@@ -63620,15 +64351,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.inventory.InventoryType.SlotType;
 
 			}
-			interface SlotType {}
 		}
-		namespace PrepareAnvilEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type PrepareAnvilEvent = org.bukkit.event.inventory.PrepareInventoryResultEvent & {
-			new(inventory: org.bukkit.inventory.InventoryView, result: org.bukkit.inventory.ItemStack): PrepareAnvilEvent;
-
+		interface PrepareAnvilEvent extends Modify<org.bukkit.event.inventory.PrepareInventoryResultEvent, {
 			/**
 			 * Description copied from class: InventoryEvent
 			 */
@@ -63636,14 +64360,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PrepareAnvilEvent {
+			constructor(inventory: org.bukkit.inventory.InventoryView, result: org.bukkit.inventory.ItemStack);
+
 		}
-		namespace PrepareGrindstoneEvent {
+		namespace PrepareAnvilEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PrepareGrindstoneEvent = org.bukkit.event.inventory.PrepareInventoryResultEvent & {
-			new(inventory: org.bukkit.inventory.InventoryView, result: org.bukkit.inventory.ItemStack): PrepareGrindstoneEvent;
-
+		interface PrepareGrindstoneEvent extends Modify<org.bukkit.event.inventory.PrepareInventoryResultEvent, {
 			/**
 			 * Description copied from class: InventoryEvent
 			 */
@@ -63651,14 +64377,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PrepareGrindstoneEvent {
+			constructor(inventory: org.bukkit.inventory.InventoryView, result: org.bukkit.inventory.ItemStack);
+
 		}
-		namespace PrepareInventoryResultEvent {
+		namespace PrepareGrindstoneEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PrepareInventoryResultEvent = org.bukkit.event.inventory.InventoryEvent & {
-			new(inventory: org.bukkit.inventory.InventoryView, result: org.bukkit.inventory.ItemStack): PrepareInventoryResultEvent;
-
+		interface PrepareInventoryResultEvent extends Modify<org.bukkit.event.inventory.InventoryEvent, {
 			/**
 			 * Get result item, may be null.
 			 */
@@ -63671,14 +64399,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PrepareInventoryResultEvent {
+			constructor(inventory: org.bukkit.inventory.InventoryView, result: org.bukkit.inventory.ItemStack);
+
 		}
-		namespace PrepareItemCraftEvent {
+		namespace PrepareInventoryResultEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PrepareItemCraftEvent = org.bukkit.event.inventory.InventoryEvent & {
-			new(what: org.bukkit.inventory.CraftingInventory, view: org.bukkit.inventory.InventoryView, isRepair: boolean): PrepareItemCraftEvent;
-
+		interface PrepareItemCraftEvent extends Modify<org.bukkit.event.inventory.InventoryEvent, {
 			/**
 			 * Get the recipe that has been formed. If this event was triggered by a
 			 * tool repair, this will be a temporary shapeless recipe representing the
@@ -63699,14 +64429,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PrepareItemCraftEvent {
+			constructor(what: org.bukkit.inventory.CraftingInventory, view: org.bukkit.inventory.InventoryView, isRepair: boolean);
+
 		}
-		namespace PrepareSmithingEvent {
+		namespace PrepareItemCraftEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PrepareSmithingEvent = org.bukkit.event.inventory.PrepareInventoryResultEvent & {
-			new(inventory: org.bukkit.inventory.InventoryView, result: org.bukkit.inventory.ItemStack): PrepareSmithingEvent;
-
+		interface PrepareSmithingEvent extends Modify<org.bukkit.event.inventory.PrepareInventoryResultEvent, {
 			/**
 			 * Description copied from class: InventoryEvent
 			 */
@@ -63714,25 +64446,29 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PrepareSmithingEvent {
+			constructor(inventory: org.bukkit.inventory.InventoryView, result: org.bukkit.inventory.ItemStack);
+
 		}
-		type SmithItemEvent = org.bukkit.event.inventory.InventoryClickEvent & {
-			new(view: org.bukkit.inventory.InventoryView, type: org.bukkit.event.inventory.InventoryType.SlotType, slot: number, click: org.bukkit.event.inventory.ClickType, action: org.bukkit.event.inventory.InventoryAction): SmithItemEvent;
+		namespace PrepareSmithingEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
 
-			new(view: org.bukkit.inventory.InventoryView, type: org.bukkit.event.inventory.InventoryType.SlotType, slot: number, click: org.bukkit.event.inventory.ClickType, action: org.bukkit.event.inventory.InventoryAction, key: number): SmithItemEvent;
-
+		}
+		interface SmithItemEvent extends Modify<org.bukkit.event.inventory.InventoryClickEvent, {
 			/**
 			 * Description copied from class: InventoryEvent
 			 */
 			getInventory(): org.bukkit.inventory.SmithingInventory;
 
-		}
-		namespace TradeSelectEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
+		}> {}
+		class SmithItemEvent {
+			constructor(view: org.bukkit.inventory.InventoryView, type: org.bukkit.event.inventory.InventoryType.SlotType, slot: number, click: org.bukkit.event.inventory.ClickType, action: org.bukkit.event.inventory.InventoryAction);
+
+			constructor(view: org.bukkit.inventory.InventoryView, type: org.bukkit.event.inventory.InventoryType.SlotType, slot: number, click: org.bukkit.event.inventory.ClickType, action: org.bukkit.event.inventory.InventoryAction, key: number);
 
 		}
-		type TradeSelectEvent = org.bukkit.event.inventory.InventoryInteractEvent & {
-			new(transaction: org.bukkit.inventory.InventoryView, newIndex: number): TradeSelectEvent;
-
+		interface TradeSelectEvent extends Modify<org.bukkit.event.inventory.InventoryInteractEvent, {
 			/**
 			 * Used to get the index of the trade the player clicked on.
 			 */
@@ -63750,18 +64486,18 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class TradeSelectEvent {
+			constructor(transaction: org.bukkit.inventory.InventoryView, newIndex: number);
+
 		}
-	}
-	namespace org.bukkit.event.server {
-		namespace BroadcastMessageEvent {
+		namespace TradeSelectEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type BroadcastMessageEvent = org.bukkit.event.server.ServerEvent & {
-			new(message: string, recipients: globalThis.java.util.Set<org.bukkit.command.CommandSender>): BroadcastMessageEvent;
-
-			new(isAsync: boolean, message: string, recipients: globalThis.java.util.Set<org.bukkit.command.CommandSender>): BroadcastMessageEvent;
-
+	}
+	namespace org.bukkit.event.server {
+		interface BroadcastMessageEvent extends Modify<org.bukkit.event.server.ServerEvent, {
 			/**
 			 * Get the message to broadcast.
 			 */
@@ -63796,14 +64532,18 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class BroadcastMessageEvent {
+			constructor(message: string, recipients: globalThis.java.util.Set<org.bukkit.command.CommandSender>);
+
+			constructor(isAsync: boolean, message: string, recipients: globalThis.java.util.Set<org.bukkit.command.CommandSender>);
+
 		}
-		namespace MapInitializeEvent {
+		namespace BroadcastMessageEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type MapInitializeEvent = org.bukkit.event.server.ServerEvent & {
-			new(mapView: org.bukkit.map.MapView): MapInitializeEvent;
-
+		interface MapInitializeEvent extends Modify<org.bukkit.event.server.ServerEvent, {
 			/**
 			 * Gets the map initialized in this event.
 			 */
@@ -63811,53 +64551,63 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class MapInitializeEvent {
+			constructor(mapView: org.bukkit.map.MapView);
+
+		}
+		namespace MapInitializeEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		interface PluginDisableEvent extends Modify<org.bukkit.event.server.PluginEvent, {
+			getHandlers(): org.bukkit.event.HandlerList;
+
+		}> {}
+		class PluginDisableEvent {
+			constructor(plugin: org.bukkit.plugin.Plugin);
+
 		}
 		namespace PluginDisableEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PluginDisableEvent = org.bukkit.event.server.PluginEvent & {
-			new(plugin: org.bukkit.plugin.Plugin): PluginDisableEvent;
-
+		interface PluginEnableEvent extends Modify<org.bukkit.event.server.PluginEvent, {
 			getHandlers(): org.bukkit.event.HandlerList;
+
+		}> {}
+		class PluginEnableEvent {
+			constructor(plugin: org.bukkit.plugin.Plugin);
 
 		}
 		namespace PluginEnableEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PluginEnableEvent = org.bukkit.event.server.PluginEvent & {
-			new(plugin: org.bukkit.plugin.Plugin): PluginEnableEvent;
-
-			getHandlers(): org.bukkit.event.HandlerList;
-
-		}
-		type PluginEvent = org.bukkit.event.server.ServerEvent & {
-			new(plugin: org.bukkit.plugin.Plugin): PluginEvent;
-
+		interface PluginEvent extends Modify<org.bukkit.event.server.ServerEvent, {
 			/**
 			 * Gets the plugin involved in this event
 			 */
 			getPlugin(): org.bukkit.plugin.Plugin;
+
+		}> {}
+		class PluginEvent {
+			constructor(plugin: org.bukkit.plugin.Plugin);
+
+		}
+		interface RemoteServerCommandEvent extends Modify<org.bukkit.event.server.ServerCommandEvent, {
+			getHandlers(): org.bukkit.event.HandlerList;
+
+		}> {}
+		class RemoteServerCommandEvent {
+			constructor(sender: org.bukkit.command.CommandSender, command: string);
 
 		}
 		namespace RemoteServerCommandEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type RemoteServerCommandEvent = org.bukkit.event.server.ServerCommandEvent & {
-			new(sender: org.bukkit.command.CommandSender, command: string): RemoteServerCommandEvent;
-
-			getHandlers(): org.bukkit.event.HandlerList;
-
-		}
-		namespace ServerCommandEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type ServerCommandEvent = org.bukkit.event.server.ServerEvent & {
-			new(sender: org.bukkit.command.CommandSender, command: string): ServerCommandEvent;
-
+		interface ServerCommandEvent extends Modify<org.bukkit.event.server.ServerEvent, {
 			/**
 			 * Gets the command that the user is attempting to execute from the
 			 * console
@@ -63886,20 +64636,24 @@ declare global {
 			 */
 			setCancelled(cancel: boolean): void;
 
-		}
-		type ServerEvent = org.bukkit.event.Event & {
-			new(): ServerEvent;
-
-			new(isAsync: boolean): ServerEvent;
+		}> {}
+		class ServerCommandEvent {
+			constructor(sender: org.bukkit.command.CommandSender, command: string);
 
 		}
-		namespace ServerListPingEvent {
+		namespace ServerCommandEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type ServerListPingEvent = org.bukkit.event.server.ServerEvent & {
-			new(hostname: string, address: any /* java.net.InetAddress */, motd: string, numPlayers: number, maxPlayers: number): ServerListPingEvent;
+		interface ServerEvent extends Modify<org.bukkit.event.Event, {
+		}> {}
+		class ServerEvent {
+			constructor();
 
+			constructor(isAsync: boolean);
+
+		}
+		interface ServerListPingEvent extends Modify<org.bukkit.event.server.ServerEvent, {
 			/**
 			 * Gets the hostname that the player used to connect to the server, or
 			 * blank if unknown
@@ -63962,17 +64716,16 @@ declare global {
 			 */
 			iterator(): globalThis.java.util.Iterator<org.bukkit.entity.Player>;
 
+		}> {}
+		class ServerListPingEvent {
+			constructor(hostname: string, address: any /* java.net.InetAddress */, motd: string, numPlayers: number, maxPlayers: number);
+
 		}
-		namespace ServerLoadEvent {
+		namespace ServerListPingEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type ServerLoadEvent = org.bukkit.event.server.ServerEvent & {
-			/**
-			 * Creates a ServerLoadEvent with a given loading type.
-			 */
-			new(type: org.bukkit.event.server.ServerLoadEvent.LoadType): ServerLoadEvent;
-
+		interface ServerLoadEvent extends Modify<org.bukkit.event.server.ServerEvent, {
 			/**
 			 * Gets the context in which the server was loaded.
 			 */
@@ -63980,8 +64733,20 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class ServerLoadEvent {
+			/**
+			 * Creates a ServerLoadEvent with a given loading type.
+			 */
+			constructor(type: org.bukkit.event.server.ServerLoadEvent.LoadType);
+
 		}
 		namespace ServerLoadEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		namespace ServerLoadEvent {
+			interface LoadType {}
 			namespace LoadType {
 				const STARTUP: org.bukkit.event.server.ServerLoadEvent.LoadType;
 
@@ -63996,41 +64761,40 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.server.ServerLoadEvent.LoadType;
 
 			}
-			interface LoadType {}
 		}
-		type ServiceEvent = org.bukkit.event.server.ServerEvent & {
-			new(provider: org.bukkit.plugin.RegisteredServiceProvider): ServiceEvent;
-
+		interface ServiceEvent extends Modify<org.bukkit.event.server.ServerEvent, {
 			getProvider(): org.bukkit.plugin.RegisteredServiceProvider;
+
+		}> {}
+		class ServiceEvent {
+			constructor(provider: org.bukkit.plugin.RegisteredServiceProvider);
+
+		}
+		interface ServiceRegisterEvent extends Modify<org.bukkit.event.server.ServiceEvent, {
+			getHandlers(): org.bukkit.event.HandlerList;
+
+		}> {}
+		class ServiceRegisterEvent {
+			constructor(registeredProvider: org.bukkit.plugin.RegisteredServiceProvider);
 
 		}
 		namespace ServiceRegisterEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type ServiceRegisterEvent = org.bukkit.event.server.ServiceEvent & {
-			new(registeredProvider: org.bukkit.plugin.RegisteredServiceProvider): ServiceRegisterEvent;
-
+		interface ServiceUnregisterEvent extends Modify<org.bukkit.event.server.ServiceEvent, {
 			getHandlers(): org.bukkit.event.HandlerList;
+
+		}> {}
+		class ServiceUnregisterEvent {
+			constructor(serviceProvider: org.bukkit.plugin.RegisteredServiceProvider);
 
 		}
 		namespace ServiceUnregisterEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type ServiceUnregisterEvent = org.bukkit.event.server.ServiceEvent & {
-			new(serviceProvider: org.bukkit.plugin.RegisteredServiceProvider): ServiceUnregisterEvent;
-
-			getHandlers(): org.bukkit.event.HandlerList;
-
-		}
-		namespace TabCompleteEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type TabCompleteEvent = org.bukkit.event.Event & {
-			new(sender: org.bukkit.command.CommandSender, buffer: string, completions: globalThis.java.util.List<string>): TabCompleteEvent;
-
+		interface TabCompleteEvent extends Modify<org.bukkit.event.Event, {
 			/**
 			 * Get the sender completing this command.
 			 */
@@ -64064,19 +64828,28 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class TabCompleteEvent {
+			constructor(sender: org.bukkit.command.CommandSender, buffer: string, completions: globalThis.java.util.List<string>);
+
+		}
+		namespace TabCompleteEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
 		}
 	}
 	namespace org.bukkit.util.permissions {
+		interface BroadcastPermissions {}
 		namespace BroadcastPermissions {
 			function registerPermissions(parent: org.bukkit.permissions.Permission): org.bukkit.permissions.Permission;
 
 		}
-		interface BroadcastPermissions {}
+		interface CommandPermissions {}
 		namespace CommandPermissions {
 			function registerPermissions(parent: org.bukkit.permissions.Permission): org.bukkit.permissions.Permission;
 
 		}
-		interface CommandPermissions {}
+		interface DefaultPermissions {}
 		namespace DefaultPermissions {
 			function registerPermission(perm: org.bukkit.permissions.Permission): org.bukkit.permissions.Permission;
 
@@ -64099,9 +64872,15 @@ declare global {
 			function registerCorePermissions(): void;
 
 		}
-		interface DefaultPermissions {}
 	}
 	namespace org.bukkit.damage {
+		interface DamageEffect {
+			/**
+			 * Get the Sound played for this DamageEffect.
+			 */
+			getSound(): org.bukkit.Sound;
+
+		}
 		namespace DamageEffect {
 			/**
 			 * The default damage effect.
@@ -64134,13 +64913,7 @@ declare global {
 			const FREEZING: org.bukkit.damage.DamageEffect;
 
 		}
-		interface DamageEffect {
-			/**
-			 * Get the Sound played for this DamageEffect.
-			 */
-			getSound(): org.bukkit.Sound;
-
-		}
+		interface DamageScaling {}
 		namespace DamageScaling {
 			/**
 			 * Damage is not scaled.
@@ -64166,14 +64939,6 @@ declare global {
 			 * not permitted.)
 			 */
 			function valueOf(name: string): org.bukkit.damage.DamageScaling;
-
-		}
-		interface DamageScaling {}
-		namespace DamageSource {
-			/**
-			 * Create a new DamageSource.Builder.
-			 */
-			function builder(damageType: org.bukkit.damage.DamageType): org.bukkit.damage.DamageSource.Builder;
 
 		}
 		interface DamageSource {
@@ -64240,6 +65005,13 @@ declare global {
 
 		}
 		namespace DamageSource {
+			/**
+			 * Create a new DamageSource.Builder.
+			 */
+			function builder(damageType: org.bukkit.damage.DamageType): org.bukkit.damage.DamageSource.Builder;
+
+		}
+		namespace DamageSource {
 			interface Builder {
 				/**
 				 * Set the Entity that caused the damage.
@@ -64264,6 +65036,39 @@ declare global {
 
 			}
 		}
+		interface DamageType extends Modify<org.bukkit.Keyed & org.bukkit.Translatable, {
+			/**
+			 * Get the translation key, suitable for use in a translation component.
+			 * 
+			 * The returned key is that of the death message sent when this damage type
+			 * is responsible for the death of an entity.
+			 * 
+			 * Note This translation key is only used if
+			 * getDeathMessageType() is DeathMessageType.DEFAULT
+			 */
+			getTranslationKey(): string;
+
+			/**
+			 * Get the DamageScaling for this damage type.
+			 */
+			getDamageScaling(): org.bukkit.damage.DamageScaling;
+
+			/**
+			 * Get the DamageEffect for this damage type.
+			 */
+			getDamageEffect(): org.bukkit.damage.DamageEffect;
+
+			/**
+			 * Get the DeathMessageType for this damage type.
+			 */
+			getDeathMessageType(): org.bukkit.damage.DeathMessageType;
+
+			/**
+			 * Get the amount of hunger exhaustion caused by this damage type.
+			 */
+			getExhaustion(): number;
+
+		}> {}
 		namespace DamageType {
 			const IN_FIRE: org.bukkit.damage.DamageType;
 
@@ -64358,39 +65163,7 @@ declare global {
 			const GENERIC_KILL: org.bukkit.damage.DamageType;
 
 		}
-		type DamageType = org.bukkit.Keyed & org.bukkit.Translatable & {
-			/**
-			 * Get the translation key, suitable for use in a translation component.
-			 * 
-			 * The returned key is that of the death message sent when this damage type
-			 * is responsible for the death of an entity.
-			 * 
-			 * Note This translation key is only used if
-			 * getDeathMessageType() is DeathMessageType.DEFAULT
-			 */
-			getTranslationKey(): string;
-
-			/**
-			 * Get the DamageScaling for this damage type.
-			 */
-			getDamageScaling(): org.bukkit.damage.DamageScaling;
-
-			/**
-			 * Get the DamageEffect for this damage type.
-			 */
-			getDamageEffect(): org.bukkit.damage.DamageEffect;
-
-			/**
-			 * Get the DeathMessageType for this damage type.
-			 */
-			getDeathMessageType(): org.bukkit.damage.DeathMessageType;
-
-			/**
-			 * Get the amount of hunger exhaustion caused by this damage type.
-			 */
-			getExhaustion(): number;
-
-		}
+		interface DeathMessageType {}
 		namespace DeathMessageType {
 			/**
 			 * No special death message logic is applied.
@@ -64419,13 +65192,8 @@ declare global {
 			function valueOf(name: string): org.bukkit.damage.DeathMessageType;
 
 		}
-		interface DeathMessageType {}
 	}
 	namespace org.bukkit.loot {
-		namespace LootContext {
-			const DEFAULT_LOOT_MODIFIER: number;
-
-		}
 		interface LootContext {
 			/**
 			 * The Location to store where the loot will be generated.
@@ -64462,13 +65230,11 @@ declare global {
 
 		}
 		namespace LootContext {
-			interface Builder {
-				/**
-				 * Creates a new LootContext.Builder instance to facilitate easy
-				 * creation of LootContexts.
-				 */
-				new(location: org.bukkit.Location): Builder;
+			const DEFAULT_LOOT_MODIFIER: number;
 
+		}
+		namespace LootContext {
+			interface Builder {
 				/**
 				 * Set how much luck to have when generating loot.
 				 */
@@ -64501,8 +65267,16 @@ declare global {
 				build(): org.bukkit.loot.LootContext;
 
 			}
+			class Builder {
+				/**
+				 * Creates a new LootContext.Builder instance to facilitate easy
+				 * creation of LootContexts.
+				 */
+				constructor(location: org.bukkit.Location);
+
+			}
 		}
-		type LootTable = org.bukkit.Keyed & {
+		interface LootTable extends Modify<org.bukkit.Keyed, {
 			/**
 			 * Returns a mutable list of loot generated by this LootTable.
 			 */
@@ -64512,6 +65286,19 @@ declare global {
 			 * Attempt to fill an inventory with this LootTable's loot.
 			 */
 			fillInventory(inventory: org.bukkit.inventory.Inventory, random: globalThis.java.util.Random, context: org.bukkit.loot.LootContext): void;
+
+		}> {}
+		interface LootTables {
+			/**
+			 * Description copied from interface: Keyed
+			 */
+			getKey(): org.bukkit.NamespacedKey;
+
+			/**
+			 * Get the LootTable corresponding to this constant. This is
+			 * equivalent to calling Bukkit.getLootTable(this.getKey());.
+			 */
+			getLootTable(): org.bukkit.loot.LootTable;
 
 		}
 		namespace LootTables {
@@ -64900,19 +65687,6 @@ declare global {
 			function valueOf(name: string): org.bukkit.loot.LootTables;
 
 		}
-		interface LootTables {
-			/**
-			 * Description copied from interface: Keyed
-			 */
-			getKey(): org.bukkit.NamespacedKey;
-
-			/**
-			 * Get the LootTable corresponding to this constant. This is
-			 * equivalent to calling Bukkit.getLootTable(this.getKey());.
-			 */
-			getLootTable(): org.bukkit.loot.LootTable;
-
-		}
 		interface Lootable {
 			/**
 			 * Set the loot table for a container or entity.
@@ -64945,10 +65719,8 @@ declare global {
 		}
 	}
 	namespace org.bukkit.command.defaults {
-		type BukkitCommand = org.bukkit.command.Command & {}
-		type HelpCommand = org.bukkit.command.defaults.BukkitCommand & {
-			new(): HelpCommand;
-
+		interface BukkitCommand extends Modify<org.bukkit.command.Command, {}> {}
+		interface HelpCommand extends Modify<org.bukkit.command.defaults.BukkitCommand, {
 			/**
 			 * Description copied from class: Command
 			 */
@@ -64958,11 +65730,13 @@ declare global {
 			 * Description copied from class: Command
 			 */
 			tabComplete(sender: org.bukkit.command.CommandSender, alias: string, args: string[]): globalThis.java.util.List<string>;
+
+		}> {}
+		class HelpCommand {
+			constructor();
 
 		}
-		type PluginsCommand = org.bukkit.command.defaults.BukkitCommand & {
-			new(name: string): PluginsCommand;
-
+		interface PluginsCommand extends Modify<org.bukkit.command.defaults.BukkitCommand, {
 			/**
 			 * Description copied from class: Command
 			 */
@@ -64972,11 +65746,13 @@ declare global {
 			 * Description copied from class: Command
 			 */
 			tabComplete(sender: org.bukkit.command.CommandSender, alias: string, args: string[]): globalThis.java.util.List<string>;
+
+		}> {}
+		class PluginsCommand {
+			constructor(name: string);
 
 		}
-		type ReloadCommand = org.bukkit.command.defaults.BukkitCommand & {
-			new(name: string): ReloadCommand;
-
+		interface ReloadCommand extends Modify<org.bukkit.command.defaults.BukkitCommand, {
 			/**
 			 * Description copied from class: Command
 			 */
@@ -64986,15 +65762,33 @@ declare global {
 			 * Description copied from class: Command
 			 */
 			tabComplete(sender: org.bukkit.command.CommandSender, alias: string, args: string[]): globalThis.java.util.List<string>;
+
+		}> {}
+		class ReloadCommand {
+			constructor(name: string);
+
+		}
+		interface TimingsCommand extends Modify<org.bukkit.command.defaults.BukkitCommand, {
+			/**
+			 * Description copied from class: Command
+			 */
+			execute(sender: org.bukkit.command.CommandSender, currentAlias: string, args: string[]): boolean;
+
+			/**
+			 * Description copied from class: Command
+			 */
+			tabComplete(sender: org.bukkit.command.CommandSender, alias: string, args: string[]): globalThis.java.util.List<string>;
+
+		}> {}
+		class TimingsCommand {
+			constructor(name: string);
 
 		}
 		namespace TimingsCommand {
 			const timingStart: number;
 
 		}
-		type TimingsCommand = org.bukkit.command.defaults.BukkitCommand & {
-			new(name: string): TimingsCommand;
-
+		interface VersionCommand extends Modify<org.bukkit.command.defaults.BukkitCommand, {
 			/**
 			 * Description copied from class: Command
 			 */
@@ -65005,42 +65799,34 @@ declare global {
 			 */
 			tabComplete(sender: org.bukkit.command.CommandSender, alias: string, args: string[]): globalThis.java.util.List<string>;
 
-		}
-		type VersionCommand = org.bukkit.command.defaults.BukkitCommand & {
-			new(name: string): VersionCommand;
-
-			/**
-			 * Description copied from class: Command
-			 */
-			execute(sender: org.bukkit.command.CommandSender, currentAlias: string, args: string[]): boolean;
-
-			/**
-			 * Description copied from class: Command
-			 */
-			tabComplete(sender: org.bukkit.command.CommandSender, alias: string, args: string[]): globalThis.java.util.List<string>;
+		}> {}
+		class VersionCommand {
+			constructor(name: string);
 
 		}
 	}
 	namespace org.bukkit.util.io {
 		interface BukkitObjectInputStream {
+		}
+		class BukkitObjectInputStream {
 			/**
 			 * Object input stream decoration constructor.
 			 */
-			new(_in: any /* java.io.InputStream */): BukkitObjectInputStream;
+			constructor(_in: any /* java.io.InputStream */);
 
 		}
 		interface BukkitObjectOutputStream {
+		}
+		class BukkitObjectOutputStream {
 			/**
 			 * Object output stream decoration constructor.
 			 */
-			new(out: any /* java.io.OutputStream */): BukkitObjectOutputStream;
+			constructor(out: any /* java.io.OutputStream */);
 
 		}
 	}
 	namespace org.bukkit.scheduler {
 		interface BukkitRunnable {
-			new(): BukkitRunnable;
-
 			/**
 			 * Returns true if this task has been cancelled.
 			 */
@@ -65097,6 +65883,10 @@ declare global {
 			 * Gets the task id for this runnable.
 			 */
 			getTaskId(): number;
+
+		}
+		class BukkitRunnable {
+			constructor();
 
 		}
 		interface BukkitScheduler {
@@ -65357,12 +66147,7 @@ declare global {
 		}
 	}
 	namespace org.bukkit.metadata {
-		type FixedMetadataValue = org.bukkit.metadata.LazyMetadataValue & {
-			/**
-			 * Initializes a FixedMetadataValue with an Object
-			 */
-			new(owningPlugin: org.bukkit.plugin.Plugin, value: any): FixedMetadataValue;
-
+		interface FixedMetadataValue extends Modify<org.bukkit.metadata.LazyMetadataValue, {
 			/**
 			 * Description copied from interface: MetadataValue
 			 */
@@ -65373,31 +66158,41 @@ declare global {
 			 */
 			value(): any;
 
+		}> {}
+		class FixedMetadataValue {
+			/**
+			 * Initializes a FixedMetadataValue with an Object
+			 */
+			constructor(owningPlugin: org.bukkit.plugin.Plugin, value: any);
+
 		}
-		type LazyMetadataValue = org.bukkit.metadata.MetadataValueAdapter & {
+		interface LazyMetadataValue extends Modify<org.bukkit.metadata.MetadataValueAdapter, {
+			/**
+			 * Description copied from interface: MetadataValue
+			 */
+			value(): any;
+
+			/**
+			 * Description copied from interface: MetadataValue
+			 */
+			invalidate(): void;
+
+		}> {}
+		class LazyMetadataValue {
 			/**
 			 * Initialized a LazyMetadataValue object with the default
 			 * CACHE_AFTER_FIRST_EVAL cache strategy.
 			 */
-			new(owningPlugin: org.bukkit.plugin.Plugin, lazyValue: globalThis.java.util.concurrent.Callable<any>): LazyMetadataValue;
+			constructor(owningPlugin: org.bukkit.plugin.Plugin, lazyValue: globalThis.java.util.concurrent.Callable<any>);
 
 			/**
 			 * Initializes a LazyMetadataValue object with a specific cache strategy.
 			 */
-			new(owningPlugin: org.bukkit.plugin.Plugin, cacheStrategy: org.bukkit.metadata.LazyMetadataValue.CacheStrategy, lazyValue: globalThis.java.util.concurrent.Callable<any>): LazyMetadataValue;
-
-			/**
-			 * Description copied from interface: MetadataValue
-			 */
-			value(): any;
-
-			/**
-			 * Description copied from interface: MetadataValue
-			 */
-			invalidate(): void;
+			constructor(owningPlugin: org.bukkit.plugin.Plugin, cacheStrategy: org.bukkit.metadata.LazyMetadataValue.CacheStrategy, lazyValue: globalThis.java.util.concurrent.Callable<any>);
 
 		}
 		namespace LazyMetadataValue {
+			interface CacheStrategy {}
 			namespace CacheStrategy {
 				/**
 				 * Once the metadata value has been evaluated, do not re-evaluate the
@@ -65425,7 +66220,6 @@ declare global {
 				function valueOf(name: string): org.bukkit.metadata.LazyMetadataValue.CacheStrategy;
 
 			}
-			interface CacheStrategy {}
 		}
 		interface MetadataConversionException {}
 		interface MetadataEvaluationException {}
@@ -65460,8 +66254,6 @@ declare global {
 
 		}
 		interface MetadataStoreBase<T = any> {
-			new(): MetadataStoreBase;
-
 			/**
 			 * Adds a metadata value to an object. Each metadata value is owned by a
 			 * specific Plugin. If a plugin has already added a metadata value
@@ -65500,6 +66292,10 @@ declare global {
 			 * be recalculated the next time it is accessed.
 			 */
 			invalidateAll(owningPlugin: org.bukkit.plugin.Plugin): void;
+
+		}
+		class MetadataStoreBase<T = any> {
+			constructor();
 
 		}
 		interface MetadataValue {
@@ -65650,18 +66446,6 @@ declare global {
 		}
 		interface Event {
 			/**
-			 * The default constructor is defined for cleaner code. This constructor
-			 * assumes the event is synchronous.
-			 */
-			new(): Event;
-
-			/**
-			 * This constructor is used to explicitly declare an event as synchronous
-			 * or asynchronous.
-			 */
-			new(isAsync: boolean): Event;
-
-			/**
 			 * Convenience method for providing a user-friendly identifier. By
 			 * default, it is the event's class's simple name.
 			 */
@@ -65691,7 +66475,22 @@ declare global {
 			isAsynchronous(): boolean;
 
 		}
+		class Event {
+			/**
+			 * The default constructor is defined for cleaner code. This constructor
+			 * assumes the event is synchronous.
+			 */
+			constructor();
+
+			/**
+			 * This constructor is used to explicitly declare an event as synchronous
+			 * or asynchronous.
+			 */
+			constructor(isAsync: boolean);
+
+		}
 		namespace Event {
+			interface Result {}
 			namespace Result {
 				/**
 				 * Deny the event. Depending on the event, the action indicated by the
@@ -65722,36 +66521,41 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.Event.Result;
 
 			}
-			interface Result {}
 		}
 		interface EventException {
-			/**
-			 * Constructs a new EventException based on the given Exception
-			 */
-			new(throwable: globalThis.java.lang.Throwable): EventException;
-
-			/**
-			 * Constructs a new EventException
-			 */
-			new(): EventException;
-
-			/**
-			 * Constructs a new EventException with the given message
-			 */
-			new(cause: globalThis.java.lang.Throwable, message: string): EventException;
-
-			/**
-			 * Constructs a new EventException with the given message
-			 */
-			new(message: string): EventException;
-
 			/**
 			 * If applicable, returns the Exception that triggered this Exception
 			 */
 			getCause(): globalThis.java.lang.Throwable;
 
 		}
+		class EventException {
+			/**
+			 * Constructs a new EventException based on the given Exception
+			 */
+			constructor(throwable: globalThis.java.lang.Throwable);
+
+			/**
+			 * Constructs a new EventException
+			 */
+			constructor();
+
+			/**
+			 * Constructs a new EventException with the given message
+			 */
+			constructor(cause: globalThis.java.lang.Throwable, message: string);
+
+			/**
+			 * Constructs a new EventException with the given message
+			 */
+			constructor(message: string);
+
+		}
 		interface EventHandler {}
+		interface EventPriority {
+			getSlot(): number;
+
+		}
 		namespace EventPriority {
 			/**
 			 * Event call is of very low importance and should be run first, to allow
@@ -65797,8 +66601,45 @@ declare global {
 			function valueOf(name: string): org.bukkit.event.EventPriority;
 
 		}
-		interface EventPriority {
-			getSlot(): number;
+		interface HandlerList {
+			/**
+			 * Register a new listener in this handler list
+			 */
+			register(listener: org.bukkit.plugin.RegisteredListener): void;
+
+			/**
+			 * Register a collection of new listeners in this handler list
+			 */
+			registerAll(listeners: globalThis.java.util.Collection<org.bukkit.plugin.RegisteredListener>): void;
+
+			/**
+			 * Remove a listener from a specific order slot
+			 */
+			unregister(listener: org.bukkit.plugin.RegisteredListener): void;
+
+			/**
+			 * Remove a specific plugin's listeners from this handler
+			 */
+			unregister(plugin: org.bukkit.plugin.Plugin): void;
+
+			/**
+			 * Remove a specific listener from this handler
+			 */
+			unregister(listener: org.bukkit.event.Listener): void;
+
+			/**
+			 * Bake HashMap and ArrayLists to 2d array - does nothing if not necessary
+			 */
+			bake(): void;
+
+		}
+		class HandlerList {
+			/**
+			 * Create a new handler list and initialize using EventPriority.
+			 * 
+			 * The HandlerList is then added to meta-list for use in bakeAll()
+			 */
+			constructor();
 
 		}
 		namespace HandlerList {
@@ -65836,57 +66677,10 @@ declare global {
 			function getHandlerLists(): globalThis.java.util.ArrayList<org.bukkit.event.HandlerList>;
 
 		}
-		interface HandlerList {
-			/**
-			 * Create a new handler list and initialize using EventPriority.
-			 * 
-			 * The HandlerList is then added to meta-list for use in bakeAll()
-			 */
-			new(): HandlerList;
-
-			/**
-			 * Register a new listener in this handler list
-			 */
-			register(listener: org.bukkit.plugin.RegisteredListener): void;
-
-			/**
-			 * Register a collection of new listeners in this handler list
-			 */
-			registerAll(listeners: globalThis.java.util.Collection<org.bukkit.plugin.RegisteredListener>): void;
-
-			/**
-			 * Remove a listener from a specific order slot
-			 */
-			unregister(listener: org.bukkit.plugin.RegisteredListener): void;
-
-			/**
-			 * Remove a specific plugin's listeners from this handler
-			 */
-			unregister(plugin: org.bukkit.plugin.Plugin): void;
-
-			/**
-			 * Remove a specific listener from this handler
-			 */
-			unregister(listener: org.bukkit.event.Listener): void;
-
-			/**
-			 * Bake HashMap and ArrayLists to 2d array - does nothing if not necessary
-			 */
-			bake(): void;
-
-		}
 		interface Listener {}
 	}
 	namespace org.bukkit.event.weather {
-		namespace LightningStrikeEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type LightningStrikeEvent = org.bukkit.event.weather.WeatherEvent & {
-			new(world: org.bukkit.World, bolt: org.bukkit.entity.LightningStrike): LightningStrikeEvent;
-
-			new(world: org.bukkit.World, bolt: org.bukkit.entity.LightningStrike, cause: org.bukkit.event.weather.LightningStrikeEvent.Cause): LightningStrikeEvent;
-
+		interface LightningStrikeEvent extends Modify<org.bukkit.event.weather.WeatherEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -65909,8 +66703,19 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class LightningStrikeEvent {
+			constructor(world: org.bukkit.World, bolt: org.bukkit.entity.LightningStrike);
+
+			constructor(world: org.bukkit.World, bolt: org.bukkit.entity.LightningStrike, cause: org.bukkit.event.weather.LightningStrikeEvent.Cause);
+
 		}
 		namespace LightningStrikeEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		namespace LightningStrikeEvent {
+			interface Cause {}
 			namespace Cause {
 				/**
 				 * Triggered by the /summon command.
@@ -65961,15 +66766,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.weather.LightningStrikeEvent.Cause;
 
 			}
-			interface Cause {}
 		}
-		namespace ThunderChangeEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type ThunderChangeEvent = org.bukkit.event.weather.WeatherEvent & {
-			new(world: org.bukkit.World, to: boolean): ThunderChangeEvent;
-
+		interface ThunderChangeEvent extends Modify<org.bukkit.event.weather.WeatherEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -65987,14 +66785,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class ThunderChangeEvent {
+			constructor(world: org.bukkit.World, to: boolean);
+
 		}
-		namespace WeatherChangeEvent {
+		namespace ThunderChangeEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type WeatherChangeEvent = org.bukkit.event.weather.WeatherEvent & {
-			new(world: org.bukkit.World, to: boolean): WeatherChangeEvent;
-
+		interface WeatherChangeEvent extends Modify<org.bukkit.event.weather.WeatherEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -66012,50 +66812,54 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
-		}
-		type WeatherEvent = org.bukkit.event.Event & {
-			new(where: org.bukkit.World): WeatherEvent;
+		}> {}
+		class WeatherChangeEvent {
+			constructor(world: org.bukkit.World, to: boolean);
 
+		}
+		namespace WeatherChangeEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		interface WeatherEvent extends Modify<org.bukkit.event.Event, {
 			/**
 			 * Returns the World where this event is occurring
 			 */
 			getWorld(): org.bukkit.World;
 
+		}> {}
+		class WeatherEvent {
+			constructor(where: org.bukkit.World);
+
 		}
 	}
 	namespace org.bukkit.plugin.messaging {
 		interface ChannelNameTooLongException {
-			new(): ChannelNameTooLongException;
+		}
+		class ChannelNameTooLongException {
+			constructor();
 
-			new(channel: string): ChannelNameTooLongException;
+			constructor(channel: string);
 
 		}
 		interface ChannelNotRegisteredException {
-			new(): ChannelNotRegisteredException;
+		}
+		class ChannelNotRegisteredException {
+			constructor();
 
-			new(channel: string): ChannelNotRegisteredException;
+			constructor(channel: string);
 
 		}
 		interface MessageTooLargeException {
-			new(): MessageTooLargeException;
-
-			new(message: any /* byte */[]): MessageTooLargeException;
-
-			new(length: number): MessageTooLargeException;
-
-			new(msg: string): MessageTooLargeException;
-
 		}
-		namespace Messenger {
-			/**
-			 * Represents the largest size that an individual Plugin Message may be.
-			 */
-			const MAX_MESSAGE_SIZE: number;
+		class MessageTooLargeException {
+			constructor();
 
-			/**
-			 * Represents the largest size that a Plugin Channel may be.
-			 */
-			const MAX_CHANNEL_SIZE: number;
+			constructor(message: any /* byte */[]);
+
+			constructor(length: number);
+
+			constructor(msg: string);
 
 		}
 		interface Messenger {
@@ -66178,6 +66982,19 @@ declare global {
 			dispatchIncomingMessage(source: org.bukkit.entity.Player, channel: string, message: any /* byte */[]): void;
 
 		}
+		namespace Messenger {
+			/**
+			 * Represents the largest size that an individual Plugin Message may be.
+			 */
+			const MAX_MESSAGE_SIZE: number;
+
+			/**
+			 * Represents the largest size that a Plugin Channel may be.
+			 */
+			const MAX_CHANNEL_SIZE: number;
+
+		}
+		interface PluginChannelDirection {}
 		namespace PluginChannelDirection {
 			/**
 			 * The plugin channel is being sent to the server from a client.
@@ -66198,7 +67015,6 @@ declare global {
 			function valueOf(name: string): org.bukkit.plugin.messaging.PluginChannelDirection;
 
 		}
-		interface PluginChannelDirection {}
 		interface PluginMessageListener {
 			/**
 			 * A method that will be thrown when a PluginMessageSource sends a plugin
@@ -66208,8 +67024,6 @@ declare global {
 
 		}
 		interface PluginMessageListenerRegistration {
-			new(messenger: org.bukkit.plugin.messaging.Messenger, plugin: org.bukkit.plugin.Plugin, channel: string, listener: org.bukkit.plugin.messaging.PluginMessageListener): PluginMessageListenerRegistration;
-
 			/**
 			 * Gets the plugin channel that this registration is about.
 			 */
@@ -66235,6 +67049,10 @@ declare global {
 			hashCode(): number;
 
 		}
+		class PluginMessageListenerRegistration {
+			constructor(messenger: org.bukkit.plugin.messaging.Messenger, plugin: org.bukkit.plugin.Plugin, channel: string, listener: org.bukkit.plugin.messaging.PluginMessageListener);
+
+		}
 		interface PluginMessageRecipient {
 			/**
 			 * Sends this recipient a Plugin Message on the specified outgoing
@@ -66254,32 +67072,14 @@ declare global {
 
 		}
 		interface ReservedChannelException {
-			new(): ReservedChannelException;
-
-			new(name: string): ReservedChannelException;
-
 		}
-		namespace StandardMessenger {
-			/**
-			 * Validates a Plugin Channel name.
-			 */
-			function validateChannel(channel: string): void;
+		class ReservedChannelException {
+			constructor();
 
-			/**
-			 * Validates and corrects a Plugin Channel name. Method is not reentrant / idempotent.
-			 */
-			function validateAndCorrectChannel(channel: string): string;
-
-			/**
-			 * Validates the input of a Plugin Message, ensuring the arguments are all
-			 * valid.
-			 */
-			function validatePluginMessage(messenger: org.bukkit.plugin.messaging.Messenger, source: org.bukkit.plugin.Plugin, channel: string, message: any /* byte */[]): void;
+			constructor(name: string);
 
 		}
 		interface StandardMessenger {
-			new(): StandardMessenger;
-
 			/**
 			 * Description copied from interface: Messenger
 			 */
@@ -66376,6 +67176,28 @@ declare global {
 			dispatchIncomingMessage(source: org.bukkit.entity.Player, channel: string, message: any /* byte */[]): void;
 
 		}
+		class StandardMessenger {
+			constructor();
+
+		}
+		namespace StandardMessenger {
+			/**
+			 * Validates a Plugin Channel name.
+			 */
+			function validateChannel(channel: string): void;
+
+			/**
+			 * Validates and corrects a Plugin Channel name. Method is not reentrant / idempotent.
+			 */
+			function validateAndCorrectChannel(channel: string): string;
+
+			/**
+			 * Validates the input of a Plugin Message, ensuring the arguments are all
+			 * valid.
+			 */
+			function validatePluginMessage(messenger: org.bukkit.plugin.messaging.Messenger, source: org.bukkit.plugin.Plugin, channel: string, message: any /* byte */[]): void;
+
+		}
 	}
 	namespace org.bukkit.map {
 		interface MapCanvas {
@@ -66452,26 +67274,6 @@ declare global {
 		}
 		interface MapCursor {
 			/**
-			 * Initialize the map cursor.
-			 */
-			new(x: any /* byte */, y: any /* byte */, direction: any /* byte */, type: any /* byte */, visible: boolean): MapCursor;
-
-			/**
-			 * Initialize the map cursor.
-			 */
-			new(x: any /* byte */, y: any /* byte */, direction: any /* byte */, type: org.bukkit.map.MapCursor.Type, visible: boolean): MapCursor;
-
-			/**
-			 * Initialize the map cursor.
-			 */
-			new(x: any /* byte */, y: any /* byte */, direction: any /* byte */, type: any /* byte */, visible: boolean, caption: string): MapCursor;
-
-			/**
-			 * Initialize the map cursor.
-			 */
-			new(x: any /* byte */, y: any /* byte */, direction: any /* byte */, type: org.bukkit.map.MapCursor.Type, visible: boolean, caption: string): MapCursor;
-
-			/**
 			 * Get the X position of this cursor.
 			 */
 			getX(): any /* byte */;
@@ -66542,7 +67344,41 @@ declare global {
 			setCaption(caption: string): void;
 
 		}
+		class MapCursor {
+			/**
+			 * Initialize the map cursor.
+			 */
+			constructor(x: any /* byte */, y: any /* byte */, direction: any /* byte */, type: any /* byte */, visible: boolean);
+
+			/**
+			 * Initialize the map cursor.
+			 */
+			constructor(x: any /* byte */, y: any /* byte */, direction: any /* byte */, type: org.bukkit.map.MapCursor.Type, visible: boolean);
+
+			/**
+			 * Initialize the map cursor.
+			 */
+			constructor(x: any /* byte */, y: any /* byte */, direction: any /* byte */, type: any /* byte */, visible: boolean, caption: string);
+
+			/**
+			 * Initialize the map cursor.
+			 */
+			constructor(x: any /* byte */, y: any /* byte */, direction: any /* byte */, type: org.bukkit.map.MapCursor.Type, visible: boolean, caption: string);
+
+		}
 		namespace MapCursor {
+			interface Type {
+				/**
+				 * Description copied from interface: Keyed
+				 */
+				getKey(): org.bukkit.NamespacedKey;
+
+				/**
+				 * Gets the internal value of the cursor.
+				 */
+				getValue(): any /* byte */;
+
+			}
 			namespace Type {
 				const PLAYER: org.bukkit.map.MapCursor.Type;
 
@@ -66628,22 +67464,8 @@ declare global {
 				function byValue(value: any /* byte */): org.bukkit.map.MapCursor.Type;
 
 			}
-			interface Type {
-				/**
-				 * Description copied from interface: Keyed
-				 */
-				getKey(): org.bukkit.NamespacedKey;
-
-				/**
-				 * Gets the internal value of the cursor.
-				 */
-				getValue(): any /* byte */;
-
-			}
 		}
 		interface MapCursorCollection {
-			new(): MapCursorCollection;
-
 			/**
 			 * Get the amount of cursors in this collection.
 			 */
@@ -66685,9 +67507,11 @@ declare global {
 			addCursor(x: number, y: number, direction: any /* byte */, type: any /* byte */, visible: boolean, caption: string): org.bukkit.map.MapCursor;
 
 		}
-		interface MapFont {
-			new(): MapFont;
+		class MapCursorCollection {
+			constructor();
 
+		}
+		interface MapFont {
 			/**
 			 * Set the sprite for a given character.
 			 */
@@ -66715,10 +67539,12 @@ declare global {
 			isValid(text: string): boolean;
 
 		}
+		class MapFont {
+			constructor();
+
+		}
 		namespace MapFont {
 			interface CharacterSprite {
-				new(width: number, height: number, data: boolean[]): CharacterSprite;
-
 				/**
 				 * Get the value of a pixel of the character.
 				 */
@@ -66735,7 +67561,12 @@ declare global {
 				getHeight(): number;
 
 			}
+			class CharacterSprite {
+				constructor(width: number, height: number, data: boolean[]);
+
+			}
 		}
+		interface MapPalette {}
 		namespace MapPalette {
 			const TRANSPARENT: any /* byte */;
 
@@ -66793,7 +67624,6 @@ declare global {
 			function setMapColorCache(mapColorCache: org.bukkit.map.MapPalette.MapColorCache): void;
 
 		}
-		interface MapPalette {}
 		namespace MapPalette {
 			interface MapColorCache {
 				/**
@@ -66813,16 +67643,6 @@ declare global {
 		}
 		interface MapRenderer {
 			/**
-			 * Initialize the map renderer base to be non-contextual. See isContextual().
-			 */
-			new(): MapRenderer;
-
-			/**
-			 * Initialize the map renderer base with the given contextual status.
-			 */
-			new(contextual: boolean): MapRenderer;
-
-			/**
 			 * Get whether the renderer is contextual, i.e. has different canvases for
 			 * different players.
 			 */
@@ -66837,6 +67657,18 @@ declare global {
 			 * Render to the given map.
 			 */
 			render(map: org.bukkit.map.MapView, canvas: org.bukkit.map.MapCanvas, player: org.bukkit.entity.Player): void;
+
+		}
+		class MapRenderer {
+			/**
+			 * Initialize the map renderer base to be non-contextual. See isContextual().
+			 */
+			constructor();
+
+			/**
+			 * Initialize the map renderer base with the given contextual status.
+			 */
+			constructor(contextual: boolean);
 
 		}
 		interface MapView {
@@ -66947,6 +67779,13 @@ declare global {
 
 		}
 		namespace MapView {
+			interface Scale {
+				/**
+				 * Get the raw value of this scale level.
+				 */
+				getValue(): any /* byte */;
+
+			}
 			namespace Scale {
 				const CLOSEST: org.bukkit.map.MapView.Scale;
 
@@ -66972,13 +67811,15 @@ declare global {
 				function valueOf(value: any /* byte */): org.bukkit.map.MapView.Scale;
 
 			}
-			interface Scale {
-				/**
-				 * Get the raw value of this scale level.
-				 */
-				getValue(): any /* byte */;
+		}
+		interface MinecraftFont extends Modify<org.bukkit.map.MapFont, {
+		}> {}
+		class MinecraftFont {
+			/**
+			 * Initialize a new MinecraftFont.
+			 */
+			constructor();
 
-			}
 		}
 		namespace MinecraftFont {
 			/**
@@ -66987,16 +67828,9 @@ declare global {
 			const Font: org.bukkit.map.MinecraftFont;
 
 		}
-		type MinecraftFont = org.bukkit.map.MapFont & {
-			/**
-			 * Initialize a new MinecraftFont.
-			 */
-			new(): MinecraftFont;
-
-		}
 	}
 	namespace org.bukkit.entity.minecart {
-		type CommandMinecart = org.bukkit.entity.Minecart & {
+		interface CommandMinecart extends Modify<org.bukkit.entity.Minecart, {
 			/**
 			 * Gets the command that this CommandMinecart will run when activated.
 			 * This will never return null. If the CommandMinecart does not have a
@@ -67018,8 +67852,8 @@ declare global {
 			 */
 			setName(name: string): void;
 
-		}
-		type ExplosiveMinecart = org.bukkit.entity.Minecart & {
+		}> {}
+		interface ExplosiveMinecart extends Modify<org.bukkit.entity.Minecart, {
 			/**
 			 * Set the fuse ticks of this minecart.
 			 * If the fuse ticks are set to a non-zero value, this will ignite the
@@ -67054,8 +67888,8 @@ declare global {
 			 */
 			explode(power: number): void;
 
-		}
-		type HopperMinecart = org.bukkit.entity.Minecart & org.bukkit.inventory.InventoryHolder & org.bukkit.loot.Lootable & {
+		}> {}
+		interface HopperMinecart extends Modify<org.bukkit.entity.Minecart & org.bukkit.inventory.InventoryHolder & org.bukkit.loot.Lootable, {
 			/**
 			 * Checks whether or not this Minecart will pick up
 			 * items into its inventory.
@@ -67067,8 +67901,8 @@ declare global {
 			 */
 			setEnabled(enabled: boolean): void;
 
-		}
-		type PoweredMinecart = org.bukkit.entity.Minecart & {
+		}> {}
+		interface PoweredMinecart extends Modify<org.bukkit.entity.Minecart, {
 			/**
 			 * Get the number of ticks until the minecart runs out of fuel.
 			 */
@@ -67079,13 +67913,13 @@ declare global {
 			 */
 			setFuel(fuel: number): void;
 
-		}
-		type RideableMinecart = org.bukkit.entity.Minecart & {}
-		type SpawnerMinecart = org.bukkit.entity.Minecart & {}
-		type StorageMinecart = org.bukkit.entity.Minecart & org.bukkit.inventory.InventoryHolder & org.bukkit.loot.Lootable & {}
+		}> {}
+		interface RideableMinecart extends Modify<org.bukkit.entity.Minecart, {}> {}
+		interface SpawnerMinecart extends Modify<org.bukkit.entity.Minecart, {}> {}
+		interface StorageMinecart extends Modify<org.bukkit.entity.Minecart & org.bukkit.inventory.InventoryHolder & org.bukkit.loot.Lootable, {}> {}
 	}
 	namespace org.bukkit.packs {
-		type DataPack = org.bukkit.Keyed & {
+		interface DataPack extends Modify<org.bukkit.Keyed, {
 			/**
 			 * Gets the title of the data pack.
 			 */
@@ -67150,8 +67984,9 @@ declare global {
 			 */
 			getSource(): org.bukkit.packs.DataPack.Source;
 
-		}
+		}> {}
 		namespace DataPack {
+			interface Compatibility {}
 			namespace Compatibility {
 				/**
 				 * It's newer than the server pack version.
@@ -67177,9 +68012,9 @@ declare global {
 				function valueOf(name: string): org.bukkit.packs.DataPack.Compatibility;
 
 			}
-			interface Compatibility {}
 		}
 		namespace DataPack {
+			interface Source {}
 			namespace Source {
 				const DEFAULT: org.bukkit.packs.DataPack.Source;
 
@@ -67200,7 +68035,6 @@ declare global {
 				function valueOf(name: string): org.bukkit.packs.DataPack.Source;
 
 			}
-			interface Source {}
 		}
 		interface DataPackManager {
 			/**
@@ -67273,7 +68107,7 @@ declare global {
 		}
 	}
 	namespace org.bukkit.configuration {
-		type Configuration = org.bukkit.configuration.ConfigurationSection & {
+		interface Configuration extends Modify<org.bukkit.configuration.ConfigurationSection, {
 			/**
 			 * Sets the default value of the given path as provided.
 			 * 
@@ -67332,7 +68166,7 @@ declare global {
 			 */
 			options(): org.bukkit.configuration.ConfigurationOptions;
 
-		}
+		}> {}
 		interface ConfigurationOptions {
 			/**
 			 * Returns the Configuration that this object is responsible for.
@@ -68110,42 +68944,34 @@ declare global {
 
 		}
 		interface InvalidConfigurationException {
+		}
+		class InvalidConfigurationException {
 			/**
 			 * Creates a new instance of InvalidConfigurationException without a
 			 * message or cause.
 			 */
-			new(): InvalidConfigurationException;
+			constructor();
 
 			/**
 			 * Constructs an instance of InvalidConfigurationException with the
 			 * specified message.
 			 */
-			new(msg: string): InvalidConfigurationException;
+			constructor(msg: string);
 
 			/**
 			 * Constructs an instance of InvalidConfigurationException with the
 			 * specified cause.
 			 */
-			new(cause: globalThis.java.lang.Throwable): InvalidConfigurationException;
+			constructor(cause: globalThis.java.lang.Throwable);
 
 			/**
 			 * Constructs an instance of InvalidConfigurationException with the
 			 * specified message and cause.
 			 */
-			new(msg: string, cause: globalThis.java.lang.Throwable): InvalidConfigurationException;
+			constructor(msg: string, cause: globalThis.java.lang.Throwable);
 
 		}
-		type MemoryConfiguration = org.bukkit.configuration.MemorySection & {
-			/**
-			 * Creates an empty MemoryConfiguration with no default values.
-			 */
-			new(): MemoryConfiguration;
-
-			/**
-			 * Creates an empty MemoryConfiguration using the specified Configuration as a source for all default values.
-			 */
-			new(defaults: org.bukkit.configuration.Configuration): MemoryConfiguration;
-
+		interface MemoryConfiguration extends Modify<org.bukkit.configuration.MemorySection, {
 			/**
 			 * Description copied from interface: ConfigurationSection
 			 */
@@ -68181,8 +69007,20 @@ declare global {
 			 */
 			options(): org.bukkit.configuration.MemoryConfigurationOptions;
 
+		}> {}
+		class MemoryConfiguration {
+			/**
+			 * Creates an empty MemoryConfiguration with no default values.
+			 */
+			constructor();
+
+			/**
+			 * Creates an empty MemoryConfiguration using the specified Configuration as a source for all default values.
+			 */
+			constructor(defaults: org.bukkit.configuration.Configuration);
+
 		}
-		type MemoryConfigurationOptions = org.bukkit.configuration.ConfigurationOptions & {
+		interface MemoryConfigurationOptions extends Modify<org.bukkit.configuration.ConfigurationOptions, {
 			/**
 			 * Description copied from class: ConfigurationOptions
 			 */
@@ -68198,27 +69036,7 @@ declare global {
 			 */
 			pathSeparator(value: any /* char */): org.bukkit.configuration.MemoryConfigurationOptions;
 
-		}
-		namespace MemorySection {
-			/**
-			 * Creates a full path to the given ConfigurationSection from its
-			 * root Configuration.
-			 * 
-			 * You may use this method for any given ConfigurationSection, not
-			 * only MemorySection.
-			 */
-			function createPath(section: org.bukkit.configuration.ConfigurationSection, key: string): string;
-
-			/**
-			 * Creates a relative path to the given ConfigurationSection from
-			 * the given relative section.
-			 * 
-			 * You may use this method for any given ConfigurationSection, not
-			 * only MemorySection.
-			 */
-			function createPath(section: org.bukkit.configuration.ConfigurationSection, key: string, relativeTo: org.bukkit.configuration.ConfigurationSection): string;
-
-		}
+		}> {}
 		interface MemorySection {
 			/**
 			 * Description copied from interface: ConfigurationSection
@@ -68568,6 +69386,26 @@ declare global {
 			toString(): string;
 
 		}
+		namespace MemorySection {
+			/**
+			 * Creates a full path to the given ConfigurationSection from its
+			 * root Configuration.
+			 * 
+			 * You may use this method for any given ConfigurationSection, not
+			 * only MemorySection.
+			 */
+			function createPath(section: org.bukkit.configuration.ConfigurationSection, key: string): string;
+
+			/**
+			 * Creates a relative path to the given ConfigurationSection from
+			 * the given relative section.
+			 * 
+			 * You may use this method for any given ConfigurationSection, not
+			 * only MemorySection.
+			 */
+			function createPath(section: org.bukkit.configuration.ConfigurationSection, key: string, relativeTo: org.bukkit.configuration.ConfigurationSection): string;
+
+		}
 	}
 	namespace org.bukkit.configuration.serialization {
 		interface ConfigurationSerializable {
@@ -68578,6 +69416,10 @@ declare global {
 			 * the ConfigurationSerializable interface javadocs.
 			 */
 			serialize(): globalThis.java.util.Map<string, any>;
+
+		}
+		interface ConfigurationSerialization {
+			deserialize(args: globalThis.java.util.Map<string>): org.bukkit.configuration.serialization.ConfigurationSerializable;
 
 		}
 		namespace ConfigurationSerialization {
@@ -68643,14 +69485,11 @@ declare global {
 			function getAlias(clazz: globalThis.java.lang.Class<org.bukkit.configuration.serialization.ConfigurationSerializable>): string;
 
 		}
-		interface ConfigurationSerialization {
-			deserialize(args: globalThis.java.util.Map<string>): org.bukkit.configuration.serialization.ConfigurationSerializable;
-
-		}
 		interface DelegateDeserialization {}
 		interface SerializableAs {}
 	}
 	namespace org.bukkit.inventory.recipe {
+		interface CookingBookCategory {}
 		namespace CookingBookCategory {
 			const FOOD: org.bukkit.inventory.recipe.CookingBookCategory;
 
@@ -68667,7 +69506,7 @@ declare global {
 			function valueOf(name: string): org.bukkit.inventory.recipe.CookingBookCategory;
 
 		}
-		interface CookingBookCategory {}
+		interface CraftingBookCategory {}
 		namespace CraftingBookCategory {
 			const BUILDING: org.bukkit.inventory.recipe.CraftingBookCategory;
 
@@ -68686,9 +69525,26 @@ declare global {
 			function valueOf(name: string): org.bukkit.inventory.recipe.CraftingBookCategory;
 
 		}
-		interface CraftingBookCategory {}
 	}
 	namespace org.bukkit.scoreboard {
+		interface Criteria {
+			/**
+			 * Get the name of this criteria (its unique id).
+			 */
+			getName(): string;
+
+			/**
+			 * Get whether or not this criteria is read only. If read only, scoreboards with this criteria
+			 * cannot have their scores changed.
+			 */
+			isReadOnly(): boolean;
+
+			/**
+			 * Get the RenderType used by default for this criteria.
+			 */
+			getDefaultRenderType(): org.bukkit.scoreboard.RenderType;
+
+		}
 		namespace Criteria {
 			/**
 			 * The dummy criteria. Not changed by the server.
@@ -68959,24 +69815,7 @@ declare global {
 			function create(name: string): org.bukkit.scoreboard.Criteria;
 
 		}
-		interface Criteria {
-			/**
-			 * Get the name of this criteria (its unique id).
-			 */
-			getName(): string;
-
-			/**
-			 * Get whether or not this criteria is read only. If read only, scoreboards with this criteria
-			 * cannot have their scores changed.
-			 */
-			isReadOnly(): boolean;
-
-			/**
-			 * Get the RenderType used by default for this criteria.
-			 */
-			getDefaultRenderType(): org.bukkit.scoreboard.RenderType;
-
-		}
+		interface Criterias {}
 		namespace Criterias {
 			const HEALTH: string;
 
@@ -68987,7 +69826,7 @@ declare global {
 			const DEATHS: string;
 
 		}
-		interface Criterias {}
+		interface DisplaySlot {}
 		namespace DisplaySlot {
 			const BELOW_NAME: org.bukkit.scoreboard.DisplaySlot;
 
@@ -69036,7 +69875,7 @@ declare global {
 			function valueOf(name: string): org.bukkit.scoreboard.DisplaySlot;
 
 		}
-		interface DisplaySlot {}
+		interface NameTagVisibility {}
 		namespace NameTagVisibility {
 			/**
 			 * Always show the player's nametag.
@@ -69067,7 +69906,6 @@ declare global {
 			function valueOf(name: string): org.bukkit.scoreboard.NameTagVisibility;
 
 		}
-		interface NameTagVisibility {}
 		interface Objective {
 			/**
 			 * Gets the name of this Objective
@@ -69141,6 +69979,7 @@ declare global {
 			getScore(entry: string): org.bukkit.scoreboard.Score;
 
 		}
+		interface RenderType {}
 		namespace RenderType {
 			/**
 			 * Display integer value.
@@ -69161,7 +70000,6 @@ declare global {
 			function valueOf(name: string): org.bukkit.scoreboard.RenderType;
 
 		}
-		interface RenderType {}
 		interface Score {
 			/**
 			 * Gets the OfflinePlayer being tracked by this Score
@@ -69482,6 +70320,7 @@ declare global {
 
 		}
 		namespace Team {
+			interface Option {}
 			namespace Option {
 				/**
 				 * How to display the name tags of players on this team.
@@ -69507,9 +70346,9 @@ declare global {
 				function valueOf(name: string): org.bukkit.scoreboard.Team.Option;
 
 			}
-			interface Option {}
 		}
 		namespace Team {
+			interface OptionStatus {}
 			namespace OptionStatus {
 				/**
 				 * Apply this option to everyone.
@@ -69540,7 +70379,6 @@ declare global {
 				function valueOf(name: string): org.bukkit.scoreboard.Team.OptionStatus;
 
 			}
-			interface OptionStatus {}
 		}
 	}
 	namespace org.bukkit.inventory.meta.tags {
@@ -69598,6 +70436,29 @@ declare global {
 			newTagContainer(): org.bukkit.inventory.meta.tags.CustomItemTagContainer;
 
 		}
+		interface ItemTagType<T = any, Z = any> {
+			/**
+			 * Returns the primitive data type of this tag.
+			 */
+			getPrimitiveType(): globalThis.java.lang.Class<T>;
+
+			/**
+			 * Returns the complex object type the primitive value resembles.
+			 */
+			getComplexType(): globalThis.java.lang.Class<Z>;
+
+			/**
+			 * Returns the primitive data that resembles the complex object passed to
+			 * this method.
+			 */
+			toPrimitive(complex: Z, context: org.bukkit.inventory.meta.tags.ItemTagAdapterContext): T;
+
+			/**
+			 * Creates a complex object based of the passed primitive value
+			 */
+			fromPrimitive(primitive: T, context: org.bukkit.inventory.meta.tags.ItemTagAdapterContext): Z;
+
+		}
 		namespace ItemTagType {
 			const BYTE: org.bukkit.inventory.meta.tags.ItemTagType<number, number>;
 
@@ -69620,29 +70481,6 @@ declare global {
 			const LONG_ARRAY: org.bukkit.inventory.meta.tags.ItemTagType;
 
 			const TAG_CONTAINER: org.bukkit.inventory.meta.tags.ItemTagType<org.bukkit.inventory.meta.tags.CustomItemTagContainer, org.bukkit.inventory.meta.tags.CustomItemTagContainer>;
-
-		}
-		interface ItemTagType<T = any, Z = any> {
-			/**
-			 * Returns the primitive data type of this tag.
-			 */
-			getPrimitiveType(): globalThis.java.lang.Class<T>;
-
-			/**
-			 * Returns the complex object type the primitive value resembles.
-			 */
-			getComplexType(): globalThis.java.lang.Class<Z>;
-
-			/**
-			 * Returns the primitive data that resembles the complex object passed to
-			 * this method.
-			 */
-			toPrimitive(complex: Z, context: org.bukkit.inventory.meta.tags.ItemTagAdapterContext): T;
-
-			/**
-			 * Creates a complex object based of the passed primitive value
-			 */
-			fromPrimitive(primitive: T, context: org.bukkit.inventory.meta.tags.ItemTagAdapterContext): Z;
 
 		}
 		namespace ItemTagType {
@@ -69671,13 +70509,7 @@ declare global {
 		}
 	}
 	namespace org.bukkit.event.enchantment {
-		namespace EnchantItemEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type EnchantItemEvent = org.bukkit.event.inventory.InventoryEvent & {
-			new(enchanter: org.bukkit.entity.Player, view: org.bukkit.inventory.InventoryView, table: org.bukkit.block.Block, item: org.bukkit.inventory.ItemStack, level: number, enchants: globalThis.java.util.Map<org.bukkit.enchantments.Enchantment, number>, enchantmentHint: org.bukkit.enchantments.Enchantment, levelHint: number, i: number): EnchantItemEvent;
-
+		interface EnchantItemEvent extends Modify<org.bukkit.event.inventory.InventoryEvent, {
 			/**
 			 * Gets the player enchanting the item
 			 */
@@ -69741,14 +70573,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class EnchantItemEvent {
+			constructor(enchanter: org.bukkit.entity.Player, view: org.bukkit.inventory.InventoryView, table: org.bukkit.block.Block, item: org.bukkit.inventory.ItemStack, level: number, enchants: globalThis.java.util.Map<org.bukkit.enchantments.Enchantment, number>, enchantmentHint: org.bukkit.enchantments.Enchantment, levelHint: number, i: number);
+
 		}
-		namespace PrepareItemEnchantEvent {
+		namespace EnchantItemEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type PrepareItemEnchantEvent = org.bukkit.event.inventory.InventoryEvent & {
-			new(enchanter: org.bukkit.entity.Player, view: org.bukkit.inventory.InventoryView, table: org.bukkit.block.Block, item: org.bukkit.inventory.ItemStack, offers: org.bukkit.enchantments.EnchantmentOffer[], bonus: number): PrepareItemEnchantEvent;
-
+		interface PrepareItemEnchantEvent extends Modify<org.bukkit.event.inventory.InventoryEvent, {
 			/**
 			 * Gets the player enchanting the item
 			 */
@@ -69781,9 +70615,71 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class PrepareItemEnchantEvent {
+			constructor(enchanter: org.bukkit.entity.Player, view: org.bukkit.inventory.InventoryView, table: org.bukkit.block.Block, item: org.bukkit.inventory.ItemStack, offers: org.bukkit.enchantments.EnchantmentOffer[], bonus: number);
+
+		}
+		namespace PrepareItemEnchantEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
 		}
 	}
 	namespace org.bukkit.enchantments {
+		interface Enchantment {
+			/**
+			 * Gets the unique name of this enchantment
+			 */
+			getName(): string;
+
+			/**
+			 * Gets the maximum level that this Enchantment may become.
+			 */
+			getMaxLevel(): number;
+
+			/**
+			 * Gets the level that this Enchantment should start at
+			 */
+			getStartLevel(): number;
+
+			/**
+			 * Gets the type of ItemStack that may fit this Enchantment.
+			 */
+			getItemTarget(): org.bukkit.enchantments.EnchantmentTarget;
+
+			/**
+			 * Checks if this enchantment is a treasure enchantment.
+			 * 
+			 * Treasure enchantments can only be received via looting, trading, or
+			 * fishing.
+			 */
+			isTreasure(): boolean;
+
+			/**
+			 * Checks if this enchantment is a cursed enchantment
+			 * 
+			 * Cursed enchantments are found the same way treasure enchantments are
+			 */
+			isCursed(): boolean;
+
+			/**
+			 * Check if this enchantment conflicts with another enchantment.
+			 */
+			conflictsWith(other: org.bukkit.enchantments.Enchantment): boolean;
+
+			/**
+			 * Checks if this Enchantment may be applied to the given ItemStack.
+			 * 
+			 * This does not check if it conflicts with any enchantments already
+			 * applied to the item.
+			 */
+			canEnchantItem(item: org.bukkit.inventory.ItemStack): boolean;
+
+		}
+		class Enchantment {
+			constructor();
+
+		}
 		namespace Enchantment {
 			/**
 			 * Provides protection against environmental damage
@@ -70008,61 +70904,7 @@ declare global {
 			function getByName(name: string): org.bukkit.enchantments.Enchantment;
 
 		}
-		interface Enchantment {
-			new(): Enchantment;
-
-			/**
-			 * Gets the unique name of this enchantment
-			 */
-			getName(): string;
-
-			/**
-			 * Gets the maximum level that this Enchantment may become.
-			 */
-			getMaxLevel(): number;
-
-			/**
-			 * Gets the level that this Enchantment should start at
-			 */
-			getStartLevel(): number;
-
-			/**
-			 * Gets the type of ItemStack that may fit this Enchantment.
-			 */
-			getItemTarget(): org.bukkit.enchantments.EnchantmentTarget;
-
-			/**
-			 * Checks if this enchantment is a treasure enchantment.
-			 * 
-			 * Treasure enchantments can only be received via looting, trading, or
-			 * fishing.
-			 */
-			isTreasure(): boolean;
-
-			/**
-			 * Checks if this enchantment is a cursed enchantment
-			 * 
-			 * Cursed enchantments are found the same way treasure enchantments are
-			 */
-			isCursed(): boolean;
-
-			/**
-			 * Check if this enchantment conflicts with another enchantment.
-			 */
-			conflictsWith(other: org.bukkit.enchantments.Enchantment): boolean;
-
-			/**
-			 * Checks if this Enchantment may be applied to the given ItemStack.
-			 * 
-			 * This does not check if it conflicts with any enchantments already
-			 * applied to the item.
-			 */
-			canEnchantItem(item: org.bukkit.inventory.ItemStack): boolean;
-
-		}
 		interface EnchantmentOffer {
-			new(enchantment: org.bukkit.enchantments.Enchantment, enchantmentLevel: number, cost: number): EnchantmentOffer;
-
 			/**
 			 * Get the type of the enchantment.
 			 */
@@ -70094,6 +70936,22 @@ declare global {
 			 * hand side of the enchantment offer.
 			 */
 			setCost(cost: number): void;
+
+		}
+		class EnchantmentOffer {
+			constructor(enchantment: org.bukkit.enchantments.Enchantment, enchantmentLevel: number, cost: number);
+
+		}
+		interface EnchantmentTarget {
+			/**
+			 * Check whether this target includes the specified item.
+			 */
+			includes(item: org.bukkit.Material): boolean;
+
+			/**
+			 * Check whether this target includes the specified item.
+			 */
+			includes(item: org.bukkit.inventory.ItemStack): boolean;
 
 		}
 		namespace EnchantmentTarget {
@@ -70181,37 +71039,16 @@ declare global {
 			function valueOf(name: string): org.bukkit.enchantments.EnchantmentTarget;
 
 		}
-		interface EnchantmentTarget {
-			/**
-			 * Check whether this target includes the specified item.
-			 */
-			includes(item: org.bukkit.Material): boolean;
-
-			/**
-			 * Check whether this target includes the specified item.
-			 */
-			includes(item: org.bukkit.inventory.ItemStack): boolean;
-
-		}
-		type EnchantmentWrapper = org.bukkit.enchantments.Enchantment & {
+		interface EnchantmentWrapper extends Modify<org.bukkit.enchantments.Enchantment, {
 			/**
 			 * Gets the enchantment bound to this wrapper
 			 */
 			getEnchantment(): org.bukkit.enchantments.Enchantment;
 
-		}
+		}> {}
 	}
 	namespace org.bukkit.block.spawner {
-		namespace SpawnRule {
-			function deserialize(args: globalThis.java.util.Map<string, any>): org.bukkit.block.spawner.SpawnRule;
-
-		}
 		interface SpawnRule {
-			/**
-			 * Constructs a new SpawnRule.
-			 */
-			new(minBlockLight: number, maxBlockLight: number, minSkyLight: number, maxSkyLight: number): SpawnRule;
-
 			/**
 			 * Gets the minimum (inclusive) block light required for spawning to
 			 * succeed.
@@ -70268,11 +71105,18 @@ declare global {
 			serialize(): globalThis.java.util.Map<string, any>;
 
 		}
+		class SpawnRule {
+			/**
+			 * Constructs a new SpawnRule.
+			 */
+			constructor(minBlockLight: number, maxBlockLight: number, minSkyLight: number, maxSkyLight: number);
+
+		}
+		namespace SpawnRule {
+			function deserialize(args: globalThis.java.util.Map<string, any>): org.bukkit.block.spawner.SpawnRule;
+
+		}
 		interface SpawnerEntry {
-			new(snapshot: org.bukkit.entity.EntitySnapshot, spawnWeight: number, spawnRule: org.bukkit.block.spawner.SpawnRule): SpawnerEntry;
-
-			new(snapshot: org.bukkit.entity.EntitySnapshot, spawnWeight: number, spawnRule: org.bukkit.block.spawner.SpawnRule, equipment: org.bukkit.block.spawner.SpawnerEntry.Equipment): SpawnerEntry;
-
 			/**
 			 * Gets the EntitySnapshot for this SpawnerEntry.
 			 */
@@ -70318,10 +71162,14 @@ declare global {
 			setEquipment(equipment: org.bukkit.block.spawner.SpawnerEntry.Equipment): void;
 
 		}
+		class SpawnerEntry {
+			constructor(snapshot: org.bukkit.entity.EntitySnapshot, spawnWeight: number, spawnRule: org.bukkit.block.spawner.SpawnRule);
+
+			constructor(snapshot: org.bukkit.entity.EntitySnapshot, spawnWeight: number, spawnRule: org.bukkit.block.spawner.SpawnRule, equipment: org.bukkit.block.spawner.SpawnerEntry.Equipment);
+
+		}
 		namespace SpawnerEntry {
 			interface Equipment {
-				new(equipmentLootTable: org.bukkit.loot.LootTable, dropChances: globalThis.java.util.Map<org.bukkit.inventory.EquipmentSlot, number>): Equipment;
-
 				/**
 				 * Set the loot table for the entity.
 				 * 
@@ -70346,20 +71194,14 @@ declare global {
 				getDropChances(): globalThis.java.util.Map<org.bukkit.inventory.EquipmentSlot, number>;
 
 			}
+			class Equipment {
+				constructor(equipmentLootTable: org.bukkit.loot.LootTable, dropChances: globalThis.java.util.Map<org.bukkit.inventory.EquipmentSlot, number>);
+
+			}
 		}
 	}
 	namespace org.bukkit.configuration.file {
-		type FileConfiguration = org.bukkit.configuration.MemoryConfiguration & {
-			/**
-			 * Creates an empty FileConfiguration with no default values.
-			 */
-			new(): FileConfiguration;
-
-			/**
-			 * Creates an empty FileConfiguration using the specified Configuration as a source for all default values.
-			 */
-			new(defaults: org.bukkit.configuration.Configuration): FileConfiguration;
-
+		interface FileConfiguration extends Modify<org.bukkit.configuration.MemoryConfiguration, {
 			/**
 			 * Saves this FileConfiguration to the specified location.
 			 * 
@@ -70439,8 +71281,20 @@ declare global {
 			 */
 			options(): org.bukkit.configuration.file.FileConfigurationOptions;
 
+		}> {}
+		class FileConfiguration {
+			/**
+			 * Creates an empty FileConfiguration with no default values.
+			 */
+			constructor();
+
+			/**
+			 * Creates an empty FileConfiguration using the specified Configuration as a source for all default values.
+			 */
+			constructor(defaults: org.bukkit.configuration.Configuration);
+
 		}
-		type FileConfigurationOptions = org.bukkit.configuration.MemoryConfigurationOptions & {
+		interface FileConfigurationOptions extends Modify<org.bukkit.configuration.MemoryConfigurationOptions, {
 			/**
 			 * Description copied from class: ConfigurationOptions
 			 */
@@ -70538,6 +71392,27 @@ declare global {
 
 			copyHeader(value: boolean): org.bukkit.configuration.file.FileConfigurationOptions;
 
+		}> {}
+		interface YamlConfiguration extends Modify<org.bukkit.configuration.file.FileConfiguration, {
+			/**
+			 * Description copied from class: FileConfiguration
+			 */
+			saveToString(): string;
+
+			/**
+			 * Description copied from class: FileConfiguration
+			 */
+			loadFromString(contents: string): void;
+
+			/**
+			 * Description copied from interface: Configuration
+			 */
+			options(): org.bukkit.configuration.file.YamlConfigurationOptions;
+
+		}> {}
+		class YamlConfiguration {
+			constructor();
+
 		}
 		namespace YamlConfiguration {
 			/**
@@ -70561,26 +71436,7 @@ declare global {
 			function loadConfiguration(reader: any /* java.io.Reader */): org.bukkit.configuration.file.YamlConfiguration;
 
 		}
-		type YamlConfiguration = org.bukkit.configuration.file.FileConfiguration & {
-			new(): YamlConfiguration;
-
-			/**
-			 * Description copied from class: FileConfiguration
-			 */
-			saveToString(): string;
-
-			/**
-			 * Description copied from class: FileConfiguration
-			 */
-			loadFromString(contents: string): void;
-
-			/**
-			 * Description copied from interface: Configuration
-			 */
-			options(): org.bukkit.configuration.file.YamlConfigurationOptions;
-
-		}
-		type YamlConfigurationOptions = org.bukkit.configuration.file.FileConfigurationOptions & {
+		interface YamlConfigurationOptions extends Modify<org.bukkit.configuration.file.FileConfigurationOptions, {
 			/**
 			 * Description copied from class: ConfigurationOptions
 			 */
@@ -70639,22 +71495,20 @@ declare global {
 			 */
 			width(value: number): org.bukkit.configuration.file.YamlConfigurationOptions;
 
-		}
+		}> {}
 		interface YamlConstructor {
-			new(): YamlConstructor;
-
-			new(loaderOptions: any /* org.yaml.snakeyaml.LoaderOptions */): YamlConstructor;
-
 			flattenMapping(node: any /* org.yaml.snakeyaml.nodes.MappingNode */): void;
 
 			construct(node: any /* org.yaml.snakeyaml.nodes.Node */): any;
 
 		}
+		class YamlConstructor {
+			constructor();
+
+			constructor(loaderOptions: any /* org.yaml.snakeyaml.LoaderOptions */);
+
+		}
 		interface YamlRepresenter {
-			new(): YamlRepresenter;
-
-			new(options: any /* org.yaml.snakeyaml.DumperOptions */): YamlRepresenter;
-
 			addClassTag(arg0: globalThis.java.lang.Class<any>, arg1: any /* org.yaml.snakeyaml.nodes.Tag */): any /* org.yaml.snakeyaml.nodes.Tag */;
 
 			getTimeZone(): globalThis.java.util.TimeZone;
@@ -70662,9 +71516,15 @@ declare global {
 			setTimeZone(arg0: globalThis.java.util.TimeZone): void;
 
 		}
+		class YamlRepresenter {
+			constructor();
+
+			constructor(options: any /* org.yaml.snakeyaml.DumperOptions */);
+
+		}
 	}
 	namespace org.bukkit.inventory.meta.components {
-		type FoodComponent = org.bukkit.configuration.serialization.ConfigurationSerializable & {
+		interface FoodComponent extends Modify<org.bukkit.configuration.serialization.ConfigurationSerializable, {
 			/**
 			 * Gets the food restored by this item when eaten.
 			 */
@@ -70730,9 +71590,9 @@ declare global {
 			 */
 			addEffect(effect: org.bukkit.potion.PotionEffect, probability: number): org.bukkit.inventory.meta.components.FoodComponent.FoodEffect;
 
-		}
+		}> {}
 		namespace FoodComponent {
-			type FoodEffect = org.bukkit.configuration.serialization.ConfigurationSerializable & {
+			interface FoodEffect extends Modify<org.bukkit.configuration.serialization.ConfigurationSerializable, {
 				/**
 				 * Gets the effect which may be applied.
 				 */
@@ -70753,9 +71613,9 @@ declare global {
 				 */
 				setProbability(probability: number): void;
 
-			}
+			}> {}
 		}
-		type JukeboxPlayableComponent = org.bukkit.configuration.serialization.ConfigurationSerializable & {
+		interface JukeboxPlayableComponent extends Modify<org.bukkit.configuration.serialization.ConfigurationSerializable, {
 			/**
 			 * Gets the song assigned to this component.
 			 */
@@ -70786,8 +71646,8 @@ declare global {
 			 */
 			setShowInTooltip(show: boolean): void;
 
-		}
-		type ToolComponent = org.bukkit.configuration.serialization.ConfigurationSerializable & {
+		}> {}
+		interface ToolComponent extends Modify<org.bukkit.configuration.serialization.ConfigurationSerializable, {
 			/**
 			 * Get the default mining speed of this tool. This value is used by the tool
 			 * if no rule explicitly overrides it. 1.0 is standard mining speed.
@@ -70846,9 +71706,9 @@ declare global {
 			 */
 			removeRule(rule: org.bukkit.inventory.meta.components.ToolComponent.ToolRule): boolean;
 
-		}
+		}> {}
 		namespace ToolComponent {
-			type ToolRule = org.bukkit.configuration.serialization.ConfigurationSerializable & {
+			interface ToolRule extends Modify<org.bukkit.configuration.serialization.ConfigurationSerializable, {
 				/**
 				 * Get a collection of the block types to which this tool rule applies.
 				 */
@@ -70896,11 +71756,11 @@ declare global {
 				 */
 				setCorrectForDrops(correct: boolean): void;
 
-			}
+			}> {}
 		}
 	}
 	namespace org.bukkit.generator.structure {
-		type GeneratedStructure = org.bukkit.persistence.PersistentDataHolder & {
+		interface GeneratedStructure extends Modify<org.bukkit.persistence.PersistentDataHolder, {
 			/**
 			 * Gets the bounding box of this placed structure.
 			 */
@@ -70915,6 +71775,17 @@ declare global {
 			 * Gets all the StructurePiece that make up this PlacedStructure.
 			 */
 			getPieces(): globalThis.java.util.Collection<org.bukkit.generator.structure.StructurePiece>;
+
+		}> {}
+		interface Structure {
+			/**
+			 * Returns the type of the structure.
+			 */
+			getStructureType(): org.bukkit.generator.structure.StructureType;
+
+		}
+		class Structure {
+			constructor();
 
 		}
 		namespace Structure {
@@ -70987,20 +71858,17 @@ declare global {
 			const TRIAL_CHAMBERS: org.bukkit.generator.structure.Structure;
 
 		}
-		interface Structure {
-			new(): Structure;
-
-			/**
-			 * Returns the type of the structure.
-			 */
-			getStructureType(): org.bukkit.generator.structure.StructureType;
-
-		}
 		interface StructurePiece {
 			/**
 			 * Gets the bounding box of this structure piece.
 			 */
 			getBoundingBox(): org.bukkit.util.BoundingBox;
+
+		}
+		interface StructureType {
+		}
+		class StructureType {
+			constructor();
 
 		}
 		namespace StructureType {
@@ -71037,19 +71905,17 @@ declare global {
 			const WOODLAND_MANSION: org.bukkit.generator.structure.StructureType;
 
 		}
-		interface StructureType {
-			new(): StructureType;
-
-		}
 	}
 	namespace org.bukkit.help {
-		type GenericCommandHelpTopic = org.bukkit.help.HelpTopic & {
-			new(command: org.bukkit.command.Command): GenericCommandHelpTopic;
-
+		interface GenericCommandHelpTopic extends Modify<org.bukkit.help.HelpTopic, {
 			/**
 			 * Description copied from class: HelpTopic
 			 */
 			canSee(sender: org.bukkit.command.CommandSender): boolean;
+
+		}> {}
+		class GenericCommandHelpTopic {
+			constructor(command: org.bukkit.command.Command);
 
 		}
 		interface HelpMap {
@@ -71095,8 +71961,6 @@ declare global {
 
 		}
 		interface HelpTopic {
-			new(): HelpTopic;
-
 			/**
 			 * Determines if a Player is allowed to see this help topic.
 			 * 
@@ -71144,14 +72008,18 @@ declare global {
 			amendTopic(amendedShortText: string, amendedFullText: string): void;
 
 		}
-		namespace HelpTopicComparator {
-			function topicNameComparatorInstance(): org.bukkit.help.HelpTopicComparator.TopicNameComparator;
-
-			function helpTopicComparatorInstance(): org.bukkit.help.HelpTopicComparator;
+		class HelpTopic {
+			constructor();
 
 		}
 		interface HelpTopicComparator {
 			compare(lhs: org.bukkit.help.HelpTopic, rhs: org.bukkit.help.HelpTopic): number;
+
+		}
+		namespace HelpTopicComparator {
+			function topicNameComparatorInstance(): org.bukkit.help.HelpTopicComparator.TopicNameComparator;
+
+			function helpTopicComparatorInstance(): org.bukkit.help.HelpTopicComparator;
 
 		}
 		namespace HelpTopicComparator {
@@ -71168,11 +72036,7 @@ declare global {
 			createTopic(command: TCommand): org.bukkit.help.HelpTopic;
 
 		}
-		type IndexHelpTopic = org.bukkit.help.HelpTopic & {
-			new(name: string, shortText: string, permission: string, topics: globalThis.java.util.Collection<org.bukkit.help.HelpTopic>): IndexHelpTopic;
-
-			new(name: string, shortText: string, permission: string, topics: globalThis.java.util.Collection<org.bukkit.help.HelpTopic>, preamble: string): IndexHelpTopic;
-
+		interface IndexHelpTopic extends Modify<org.bukkit.help.HelpTopic, {
 			/**
 			 * Description copied from class: HelpTopic
 			 */
@@ -71188,28 +72052,30 @@ declare global {
 			 */
 			getFullText(sender: org.bukkit.command.CommandSender): string;
 
+		}> {}
+		class IndexHelpTopic {
+			constructor(name: string, shortText: string, permission: string, topics: globalThis.java.util.Collection<org.bukkit.help.HelpTopic>);
+
+			constructor(name: string, shortText: string, permission: string, topics: globalThis.java.util.Collection<org.bukkit.help.HelpTopic>, preamble: string);
+
 		}
 	}
 	namespace org.bukkit.event.hanging {
-		type HangingBreakByEntityEvent = org.bukkit.event.hanging.HangingBreakEvent & {
-			new(hanging: org.bukkit.entity.Hanging, remover: org.bukkit.entity.Entity): HangingBreakByEntityEvent;
-
-			new(hanging: org.bukkit.entity.Hanging, remover: org.bukkit.entity.Entity, cause: org.bukkit.event.hanging.HangingBreakEvent.RemoveCause): HangingBreakByEntityEvent;
-
+		interface HangingBreakByEntityEvent extends Modify<org.bukkit.event.hanging.HangingBreakEvent, {
 			/**
 			 * Gets the entity that removed the hanging entity.
 			 * May be null, for example when broken by an explosion.
 			 */
 			getRemover(): org.bukkit.entity.Entity;
 
-		}
-		namespace HangingBreakEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
+		}> {}
+		class HangingBreakByEntityEvent {
+			constructor(hanging: org.bukkit.entity.Hanging, remover: org.bukkit.entity.Entity);
+
+			constructor(hanging: org.bukkit.entity.Hanging, remover: org.bukkit.entity.Entity, cause: org.bukkit.event.hanging.HangingBreakEvent.RemoveCause);
 
 		}
-		type HangingBreakEvent = org.bukkit.event.hanging.HangingEvent & {
-			new(hanging: org.bukkit.entity.Hanging, cause: org.bukkit.event.hanging.HangingBreakEvent.RemoveCause): HangingBreakEvent;
-
+		interface HangingBreakEvent extends Modify<org.bukkit.event.hanging.HangingEvent, {
 			/**
 			 * Gets the cause for the hanging entity's removal
 			 */
@@ -71227,8 +72093,17 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class HangingBreakEvent {
+			constructor(hanging: org.bukkit.entity.Hanging, cause: org.bukkit.event.hanging.HangingBreakEvent.RemoveCause);
+
 		}
 		namespace HangingBreakEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		namespace HangingBreakEvent {
+			interface RemoveCause {}
 			namespace RemoveCause {
 				/**
 				 * Removed by an entity
@@ -71264,24 +72139,15 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.hanging.HangingBreakEvent.RemoveCause;
 
 			}
-			interface RemoveCause {}
 		}
-		type HangingEvent = org.bukkit.event.Event & {
+		interface HangingEvent extends Modify<org.bukkit.event.Event, {
 			/**
 			 * Gets the hanging entity involved in this event.
 			 */
 			getEntity(): org.bukkit.entity.Hanging;
 
-		}
-		namespace HangingPlaceEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type HangingPlaceEvent = org.bukkit.event.hanging.HangingEvent & {
-			new(hanging: org.bukkit.entity.Hanging, player: org.bukkit.entity.Player, block: org.bukkit.block.Block, blockFace: org.bukkit.block.BlockFace, hand: org.bukkit.inventory.EquipmentSlot): HangingPlaceEvent;
-
-			new(hanging: org.bukkit.entity.Hanging, player: org.bukkit.entity.Player, block: org.bukkit.block.Block, blockFace: org.bukkit.block.BlockFace, hand: org.bukkit.inventory.EquipmentSlot, itemStack: org.bukkit.inventory.ItemStack): HangingPlaceEvent;
-
+		}> {}
+		interface HangingPlaceEvent extends Modify<org.bukkit.event.hanging.HangingEvent, {
 			/**
 			 * Returns the player placing the hanging entity
 			 */
@@ -71320,6 +72186,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class HangingPlaceEvent {
+			constructor(hanging: org.bukkit.entity.Hanging, player: org.bukkit.entity.Player, block: org.bukkit.block.Block, blockFace: org.bukkit.block.BlockFace, hand: org.bukkit.inventory.EquipmentSlot);
+
+			constructor(hanging: org.bukkit.entity.Hanging, player: org.bukkit.entity.Player, block: org.bukkit.block.Block, blockFace: org.bukkit.block.BlockFace, hand: org.bukkit.inventory.EquipmentSlot, itemStack: org.bukkit.inventory.ItemStack);
+
+		}
+		namespace HangingPlaceEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
 		}
 	}
 	namespace org.bukkit.potion {
@@ -71345,14 +72221,6 @@ declare global {
 		}
 		interface PotionData {
 			/**
-			 * Instantiates a final PotionData object to contain information about a
-			 * Potion
-			 */
-			new(type: org.bukkit.potion.PotionType, extended: boolean, upgraded: boolean): PotionData;
-
-			new(type: org.bukkit.potion.PotionType): PotionData;
-
-			/**
 			 * Gets the type of the potion, Type matches up with each kind of craftable
 			 * potion
 			 */
@@ -71375,39 +72243,17 @@ declare global {
 			equals(obj: any): boolean;
 
 		}
-		namespace PotionEffect {
+		class PotionData {
 			/**
-			 * A constant denoting infinite potion duration.
+			 * Instantiates a final PotionData object to contain information about a
+			 * Potion
 			 */
-			const INFINITE_DURATION: number;
+			constructor(type: org.bukkit.potion.PotionType, extended: boolean, upgraded: boolean);
+
+			constructor(type: org.bukkit.potion.PotionType);
 
 		}
 		interface PotionEffect {
-			/**
-			 * Creates a potion effect.
-			 */
-			new(type: org.bukkit.potion.PotionEffectType, duration: number, amplifier: number, ambient: boolean, particles: boolean, icon: boolean): PotionEffect;
-
-			/**
-			 * Creates a potion effect with no defined color.
-			 */
-			new(type: org.bukkit.potion.PotionEffectType, duration: number, amplifier: number, ambient: boolean, particles: boolean): PotionEffect;
-
-			/**
-			 * Creates a potion effect. Assumes that particles are visible
-			 */
-			new(type: org.bukkit.potion.PotionEffectType, duration: number, amplifier: number, ambient: boolean): PotionEffect;
-
-			/**
-			 * Creates a potion effect. Assumes ambient is true.
-			 */
-			new(type: org.bukkit.potion.PotionEffectType, duration: number, amplifier: number): PotionEffect;
-
-			/**
-			 * Constructor for deserialization.
-			 */
-			new(map: globalThis.java.util.Map<string, any>): PotionEffect;
-
 			/**
 			 * Description copied from interface: ConfigurationSerializable
 			 */
@@ -71470,6 +72316,82 @@ declare global {
 			hashCode(): number;
 
 			toString(): string;
+
+		}
+		class PotionEffect {
+			/**
+			 * Creates a potion effect.
+			 */
+			constructor(type: org.bukkit.potion.PotionEffectType, duration: number, amplifier: number, ambient: boolean, particles: boolean, icon: boolean);
+
+			/**
+			 * Creates a potion effect with no defined color.
+			 */
+			constructor(type: org.bukkit.potion.PotionEffectType, duration: number, amplifier: number, ambient: boolean, particles: boolean);
+
+			/**
+			 * Creates a potion effect. Assumes that particles are visible
+			 */
+			constructor(type: org.bukkit.potion.PotionEffectType, duration: number, amplifier: number, ambient: boolean);
+
+			/**
+			 * Creates a potion effect. Assumes ambient is true.
+			 */
+			constructor(type: org.bukkit.potion.PotionEffectType, duration: number, amplifier: number);
+
+			/**
+			 * Constructor for deserialization.
+			 */
+			constructor(map: globalThis.java.util.Map<string, any>);
+
+		}
+		namespace PotionEffect {
+			/**
+			 * A constant denoting infinite potion duration.
+			 */
+			const INFINITE_DURATION: number;
+
+		}
+		interface PotionEffectType {
+			/**
+			 * Creates a PotionEffect from this PotionEffectType, applying duration
+			 * modifiers and checks.
+			 */
+			createEffect(duration: number, amplifier: number): org.bukkit.potion.PotionEffect;
+
+			/**
+			 * Returns whether the effect of this type happens once, immediately.
+			 */
+			isInstant(): boolean;
+
+			/**
+			 * Returns the category of this effect type.
+			 */
+			getCategory(): org.bukkit.potion.PotionEffectTypeCategory;
+
+			/**
+			 * Returns the color of this effect type.
+			 */
+			getColor(): org.bukkit.Color;
+
+			/**
+			 * Returns the duration modifier applied to effects of this type.
+			 */
+			getDurationModifier(): number;
+
+			/**
+			 * Returns the unique ID of this type.
+			 */
+			getId(): number;
+
+			/**
+			 * Returns the name of this effect type.
+			 */
+			getName(): string;
+
+		}
+		class PotionEffectType {
+			constructor();
 
 		}
 		namespace PotionEffectType {
@@ -71689,46 +72611,7 @@ declare global {
 			function getByName(name: string): org.bukkit.potion.PotionEffectType;
 
 		}
-		interface PotionEffectType {
-			new(): PotionEffectType;
-
-			/**
-			 * Creates a PotionEffect from this PotionEffectType, applying duration
-			 * modifiers and checks.
-			 */
-			createEffect(duration: number, amplifier: number): org.bukkit.potion.PotionEffect;
-
-			/**
-			 * Returns whether the effect of this type happens once, immediately.
-			 */
-			isInstant(): boolean;
-
-			/**
-			 * Returns the category of this effect type.
-			 */
-			getCategory(): org.bukkit.potion.PotionEffectTypeCategory;
-
-			/**
-			 * Returns the color of this effect type.
-			 */
-			getColor(): org.bukkit.Color;
-
-			/**
-			 * Returns the duration modifier applied to effects of this type.
-			 */
-			getDurationModifier(): number;
-
-			/**
-			 * Returns the unique ID of this type.
-			 */
-			getId(): number;
-
-			/**
-			 * Returns the name of this effect type.
-			 */
-			getName(): string;
-
-		}
+		interface PotionEffectTypeCategory {}
 		namespace PotionEffectTypeCategory {
 			/**
 			 * Beneficial effects that positively impact an entity, such as Regeneration,
@@ -71757,12 +72640,39 @@ declare global {
 			function valueOf(name: string): org.bukkit.potion.PotionEffectTypeCategory;
 
 		}
-		interface PotionEffectTypeCategory {}
-		type PotionEffectTypeWrapper = org.bukkit.potion.PotionEffectType & {
+		interface PotionEffectTypeWrapper extends Modify<org.bukkit.potion.PotionEffectType, {
 			/**
 			 * Get the potion type bound to this wrapper.
 			 */
 			getType(): org.bukkit.potion.PotionEffectType;
+
+		}> {}
+		interface PotionType {
+			getEffectType(): org.bukkit.potion.PotionEffectType;
+
+			getPotionEffects(): globalThis.java.util.List<org.bukkit.potion.PotionEffect>;
+
+			isInstant(): boolean;
+
+			/**
+			 * Checks if the potion type has an upgraded state.
+			 * This refers to whether or not the potion type can be Tier 2,
+			 * such as Potion of Fire Resistance II.
+			 */
+			isUpgradeable(): boolean;
+
+			/**
+			 * Checks if the potion type has an extended state.
+			 * This refers to the extended duration potions
+			 */
+			isExtendable(): boolean;
+
+			getMaxLevel(): number;
+
+			/**
+			 * Description copied from interface: Keyed
+			 */
+			getKey(): org.bukkit.NamespacedKey;
 
 		}
 		namespace PotionType {
@@ -71869,34 +72779,6 @@ declare global {
 			function getByEffect(effectType: org.bukkit.potion.PotionEffectType): org.bukkit.potion.PotionType;
 
 		}
-		interface PotionType {
-			getEffectType(): org.bukkit.potion.PotionEffectType;
-
-			getPotionEffects(): globalThis.java.util.List<org.bukkit.potion.PotionEffect>;
-
-			isInstant(): boolean;
-
-			/**
-			 * Checks if the potion type has an upgraded state.
-			 * This refers to whether or not the potion type can be Tier 2,
-			 * such as Potion of Fire Resistance II.
-			 */
-			isUpgradeable(): boolean;
-
-			/**
-			 * Checks if the potion type has an extended state.
-			 * This refers to the extended duration potions
-			 */
-			isExtendable(): boolean;
-
-			getMaxLevel(): number;
-
-			/**
-			 * Description copied from interface: Keyed
-			 */
-			getKey(): org.bukkit.NamespacedKey;
-
-		}
 		namespace PotionType {
 			interface InternalPotionData {
 				getEffectType(): org.bukkit.potion.PotionEffectType;
@@ -71915,38 +72797,18 @@ declare global {
 		}
 	}
 	namespace org.bukkit.ban {
-		type IpBanList = org.bukkit.BanList<any /* java.net.InetAddress */> & {}
-		type ProfileBanList = org.bukkit.BanList<org.bukkit.profile.PlayerProfile> & {
+		interface IpBanList extends Modify<org.bukkit.BanList<any /* java.net.InetAddress */>, {}> {}
+		interface ProfileBanList extends Modify<org.bukkit.BanList<org.bukkit.profile.PlayerProfile>, {
 			/**
 			 * Adds a ban to this list. If a previous ban exists, this will
 			 * update the previous entry.
 			 */
 			addBan(target: org.bukkit.profile.PlayerProfile, reason: string, expires: globalThis.java.util.Date, source: string): org.bukkit.BanEntry<org.bukkit.profile.PlayerProfile>;
 
-		}
+		}> {}
 	}
 	namespace org.bukkit.plugin.java {
-		namespace JavaPlugin {
-			/**
-			 * This method provides fast access to the plugin that has provided the given plugin class, which is
-			 * usually the plugin that implemented it.
-			 * 
-			 * An exception to this would be if plugin's jar that contained the class
-			 * does not extend the class, where the intended plugin would have
-			 * resided in a different jar / classloader.
-			 */
-			function getPlugin<T = any>(clazz: globalThis.java.lang.Class<T>): T;
-
-			/**
-			 * This method provides fast access to the plugin that has provided the
-			 * given class.
-			 */
-			function getProvidingPlugin(clazz: globalThis.java.lang.Class): org.bukkit.plugin.java.JavaPlugin;
-
-		}
-		type JavaPlugin = org.bukkit.plugin.PluginBase & {
-			new(): JavaPlugin;
-
+		interface JavaPlugin extends Modify<org.bukkit.plugin.PluginBase, {
 			/**
 			 * Returns the folder that the plugin data's files are located in. The
 			 * folder may not yet exist.
@@ -72065,17 +72927,30 @@ declare global {
 
 			toString(): string;
 
+		}> {}
+		class JavaPlugin {
+			constructor();
+
 		}
-		namespace JavaPluginLoader {
-			const pluginParentTimer: any /* org.spigotmc.CustomTimingsHandler */;
+		namespace JavaPlugin {
+			/**
+			 * This method provides fast access to the plugin that has provided the given plugin class, which is
+			 * usually the plugin that implemented it.
+			 * 
+			 * An exception to this would be if plugin's jar that contained the class
+			 * does not extend the class, where the intended plugin would have
+			 * resided in a different jar / classloader.
+			 */
+			function getPlugin<T = any>(clazz: globalThis.java.lang.Class<T>): T;
+
+			/**
+			 * This method provides fast access to the plugin that has provided the
+			 * given class.
+			 */
+			function getProvidingPlugin(clazz: globalThis.java.lang.Class): org.bukkit.plugin.java.JavaPlugin;
 
 		}
 		interface JavaPluginLoader {
-			/**
-			 * This class was not meant to be constructed explicitly
-			 */
-			new(instance: org.bukkit.Server): JavaPluginLoader;
-
 			/**
 			 * Description copied from interface: PluginLoader
 			 */
@@ -72102,8 +72977,31 @@ declare global {
 			disablePlugin(plugin: org.bukkit.plugin.Plugin): void;
 
 		}
+		class JavaPluginLoader {
+			/**
+			 * This class was not meant to be constructed explicitly
+			 */
+			constructor(instance: org.bukkit.Server);
+
+		}
+		namespace JavaPluginLoader {
+			const pluginParentTimer: any /* org.spigotmc.CustomTimingsHandler */;
+
+		}
 	}
 	namespace org.bukkit.entity.memory {
+		interface MemoryKey<T = any> {
+			/**
+			 * Description copied from interface: Keyed
+			 */
+			getKey(): org.bukkit.NamespacedKey;
+
+			/**
+			 * Gets the class of values associated with this memory.
+			 */
+			getMemoryClass(): globalThis.java.lang.Class<T>;
+
+		}
 		namespace MemoryKey {
 			const HOME: org.bukkit.entity.memory.MemoryKey<org.bukkit.Location>;
 
@@ -72164,20 +73062,9 @@ declare global {
 			function values(): globalThis.java.util.Set<org.bukkit.entity.memory.MemoryKey>;
 
 		}
-		interface MemoryKey<T = any> {
-			/**
-			 * Description copied from interface: Keyed
-			 */
-			getKey(): org.bukkit.NamespacedKey;
-
-			/**
-			 * Gets the class of values associated with this memory.
-			 */
-			getMemoryClass(): globalThis.java.lang.Class<T>;
-
-		}
 	}
 	namespace org.bukkit.block.structure {
+		interface Mirror {}
 		namespace Mirror {
 			/**
 			 * No mirroring.
@@ -72209,7 +73096,7 @@ declare global {
 			function valueOf(name: string): org.bukkit.block.structure.Mirror;
 
 		}
-		interface Mirror {}
+		interface StructureRotation {}
 		namespace StructureRotation {
 			/**
 			 * No rotation.
@@ -72242,7 +73129,7 @@ declare global {
 			function valueOf(name: string): org.bukkit.block.structure.StructureRotation;
 
 		}
-		interface StructureRotation {}
+		interface UsageMode {}
 		namespace UsageMode {
 			/**
 			 * The mode used when saving a structure.
@@ -72278,9 +73165,20 @@ declare global {
 			function valueOf(name: string): org.bukkit.block.structure.UsageMode;
 
 		}
-		interface UsageMode {}
 	}
 	namespace org.bukkit.material.types {
+		interface MushroomBlockTexture {
+			/**
+			 * Gets the associated data value representing this mushroom block face.
+			 */
+			getData(): any /* byte */;
+
+			/**
+			 * Gets the face that has cap texture.
+			 */
+			getCapFace(): org.bukkit.block.BlockFace;
+
+		}
 		namespace MushroomBlockTexture {
 			/**
 			 * Pores on all faces.
@@ -72367,30 +73265,9 @@ declare global {
 			function getCapByFace(face: org.bukkit.block.BlockFace): org.bukkit.material.types.MushroomBlockTexture;
 
 		}
-		interface MushroomBlockTexture {
-			/**
-			 * Gets the associated data value representing this mushroom block face.
-			 */
-			getData(): any /* byte */;
-
-			/**
-			 * Gets the face that has cap texture.
-			 */
-			getCapFace(): org.bukkit.block.BlockFace;
-
-		}
 	}
 	namespace org.bukkit.util.noise {
-		namespace NoiseGenerator {
-			/**
-			 * Speedy floor, faster than (int)Math.floor(x)
-			 */
-			function floor(x: number): number;
-
-		}
 		interface NoiseGenerator {
-			new(): NoiseGenerator;
-
 			/**
 			 * Computes and returns the 1D noise for the given coordinate in 1D space
 			 */
@@ -72441,6 +73318,17 @@ declare global {
 			 * octaves and parameters
 			 */
 			noise(x: number, y: number, z: number, octaves: number, frequency: number, amplitude: number, normalized: boolean): number;
+
+		}
+		class NoiseGenerator {
+			constructor();
+
+		}
+		namespace NoiseGenerator {
+			/**
+			 * Speedy floor, faster than (int)Math.floor(x)
+			 */
+			function floor(x: number): number;
 
 		}
 		interface OctaveGenerator {
@@ -72519,6 +73407,30 @@ declare global {
 			noise(x: number, y: number, z: number, frequency: number, amplitude: number, normalized: boolean): number;
 
 		}
+		interface PerlinNoiseGenerator extends Modify<org.bukkit.util.noise.NoiseGenerator, {
+			/**
+			 * Description copied from class: NoiseGenerator
+			 */
+			noise(x: number, y: number, z: number): number;
+
+		}> {}
+		class PerlinNoiseGenerator {
+			/**
+			 * Creates a seeded perlin noise generator for the given world
+			 */
+			constructor(world: org.bukkit.World);
+
+			/**
+			 * Creates a seeded perlin noise generator for the given seed
+			 */
+			constructor(seed: number);
+
+			/**
+			 * Creates a seeded perlin noise generator with the given Random
+			 */
+			constructor(rand: globalThis.java.util.Random);
+
+		}
 		namespace PerlinNoiseGenerator {
 			/**
 			 * Computes and returns the 1D unseeded perlin noise for the given
@@ -72562,43 +73474,58 @@ declare global {
 			function getNoise(x: number, y: number, z: number, octaves: number, frequency: number, amplitude: number): number;
 
 		}
-		type PerlinNoiseGenerator = org.bukkit.util.noise.NoiseGenerator & {
-			/**
-			 * Creates a seeded perlin noise generator for the given world
-			 */
-			new(world: org.bukkit.World): PerlinNoiseGenerator;
-
-			/**
-			 * Creates a seeded perlin noise generator for the given seed
-			 */
-			new(seed: number): PerlinNoiseGenerator;
-
-			/**
-			 * Creates a seeded perlin noise generator with the given Random
-			 */
-			new(rand: globalThis.java.util.Random): PerlinNoiseGenerator;
-
-			/**
-			 * Description copied from class: NoiseGenerator
-			 */
-			noise(x: number, y: number, z: number): number;
-
-		}
-		type PerlinOctaveGenerator = org.bukkit.util.noise.OctaveGenerator & {
+		interface PerlinOctaveGenerator extends Modify<org.bukkit.util.noise.OctaveGenerator, {
+		}> {}
+		class PerlinOctaveGenerator {
 			/**
 			 * Creates a perlin octave generator for the given world
 			 */
-			new(world: org.bukkit.World, octaves: number): PerlinOctaveGenerator;
+			constructor(world: org.bukkit.World, octaves: number);
 
 			/**
 			 * Creates a perlin octave generator for the given world
 			 */
-			new(seed: number, octaves: number): PerlinOctaveGenerator;
+			constructor(seed: number, octaves: number);
 
 			/**
 			 * Creates a perlin octave generator for the given Random
 			 */
-			new(rand: globalThis.java.util.Random, octaves: number): PerlinOctaveGenerator;
+			constructor(rand: globalThis.java.util.Random, octaves: number);
+
+		}
+		interface SimplexNoiseGenerator extends Modify<org.bukkit.util.noise.PerlinNoiseGenerator, {
+			/**
+			 * Description copied from class: NoiseGenerator
+			 */
+			noise(xin: number, yin: number, zin: number): number;
+
+			/**
+			 * Description copied from class: NoiseGenerator
+			 */
+			noise(xin: number, yin: number): number;
+
+			/**
+			 * Computes and returns the 4D simplex noise for the given coordinates in
+			 * 4D space
+			 */
+			noise(x: number, y: number, z: number, w: number): number;
+
+		}> {}
+		class SimplexNoiseGenerator {
+			/**
+			 * Creates a seeded simplex noise generator for the given world
+			 */
+			constructor(world: org.bukkit.World);
+
+			/**
+			 * Creates a seeded simplex noise generator for the given seed
+			 */
+			constructor(seed: number);
+
+			/**
+			 * Creates a seeded simplex noise generator with the given Random
+			 */
+			constructor(rand: globalThis.java.util.Random);
 
 		}
 		namespace SimplexNoiseGenerator {
@@ -72632,55 +73559,7 @@ declare global {
 			function getInstance(): org.bukkit.util.noise.SimplexNoiseGenerator;
 
 		}
-		type SimplexNoiseGenerator = org.bukkit.util.noise.PerlinNoiseGenerator & {
-			/**
-			 * Creates a seeded simplex noise generator for the given world
-			 */
-			new(world: org.bukkit.World): SimplexNoiseGenerator;
-
-			/**
-			 * Creates a seeded simplex noise generator for the given seed
-			 */
-			new(seed: number): SimplexNoiseGenerator;
-
-			/**
-			 * Creates a seeded simplex noise generator with the given Random
-			 */
-			new(rand: globalThis.java.util.Random): SimplexNoiseGenerator;
-
-			/**
-			 * Description copied from class: NoiseGenerator
-			 */
-			noise(xin: number, yin: number, zin: number): number;
-
-			/**
-			 * Description copied from class: NoiseGenerator
-			 */
-			noise(xin: number, yin: number): number;
-
-			/**
-			 * Computes and returns the 4D simplex noise for the given coordinates in
-			 * 4D space
-			 */
-			noise(x: number, y: number, z: number, w: number): number;
-
-		}
-		type SimplexOctaveGenerator = org.bukkit.util.noise.OctaveGenerator & {
-			/**
-			 * Creates a simplex octave generator for the given world
-			 */
-			new(world: org.bukkit.World, octaves: number): SimplexOctaveGenerator;
-
-			/**
-			 * Creates a simplex octave generator for the given world
-			 */
-			new(seed: number, octaves: number): SimplexOctaveGenerator;
-
-			/**
-			 * Creates a simplex octave generator for the given Random
-			 */
-			new(rand: globalThis.java.util.Random, octaves: number): SimplexOctaveGenerator;
-
+		interface SimplexOctaveGenerator extends Modify<org.bukkit.util.noise.OctaveGenerator, {
 			/**
 			 * Description copied from class: OctaveGenerator
 			 */
@@ -72708,6 +73587,23 @@ declare global {
 			 */
 			noise(x: number, y: number, z: number, w: number, frequency: number, amplitude: number, normalized: boolean): number;
 
+		}> {}
+		class SimplexOctaveGenerator {
+			/**
+			 * Creates a simplex octave generator for the given world
+			 */
+			constructor(world: org.bukkit.World, octaves: number);
+
+			/**
+			 * Creates a simplex octave generator for the given world
+			 */
+			constructor(seed: number, octaves: number);
+
+			/**
+			 * Creates a simplex octave generator for the given Random
+			 */
+			constructor(rand: globalThis.java.util.Random, octaves: number);
+
 		}
 	}
 	namespace org.bukkit.structure {
@@ -72726,7 +73622,7 @@ declare global {
 			getBlockCount(): number;
 
 		}
-		type Structure = org.bukkit.persistence.PersistentDataHolder & {
+		interface Structure extends Modify<org.bukkit.persistence.PersistentDataHolder, {
 			/**
 			 * Gets the current size of the structure.
 			 * 
@@ -72802,7 +73698,7 @@ declare global {
 			 */
 			fill(origin: org.bukkit.Location, size: org.bukkit.util.BlockVector, includeEntities: boolean): void;
 
-		}
+		}> {}
 		interface StructureManager {
 			/**
 			 * Gets the currently registered structures.
@@ -72925,17 +73821,6 @@ declare global {
 	namespace org.bukkit.block.banner {
 		interface Pattern {
 			/**
-			 * Creates a new pattern from the specified color and
-			 * pattern type
-			 */
-			new(color: org.bukkit.DyeColor, pattern: org.bukkit.block.banner.PatternType): Pattern;
-
-			/**
-			 * Constructor for deserialization.
-			 */
-			new(map: globalThis.java.util.Map<string, any>): Pattern;
-
-			/**
 			 * Description copied from interface: ConfigurationSerializable
 			 */
 			serialize(): globalThis.java.util.Map<string, any>;
@@ -72953,6 +73838,32 @@ declare global {
 			hashCode(): number;
 
 			equals(obj: any): boolean;
+
+		}
+		class Pattern {
+			/**
+			 * Creates a new pattern from the specified color and
+			 * pattern type
+			 */
+			constructor(color: org.bukkit.DyeColor, pattern: org.bukkit.block.banner.PatternType);
+
+			/**
+			 * Constructor for deserialization.
+			 */
+			constructor(map: globalThis.java.util.Map<string, any>);
+
+		}
+		interface PatternType {
+			/**
+			 * Description copied from interface: Keyed
+			 */
+			getKey(): org.bukkit.NamespacedKey;
+
+			/**
+			 * Returns the identifier used to represent
+			 * this pattern type
+			 */
+			getIdentifier(): string;
 
 		}
 		namespace PatternType {
@@ -73057,22 +73968,9 @@ declare global {
 			function getByIdentifier(identifier: string): org.bukkit.block.banner.PatternType;
 
 		}
-		interface PatternType {
-			/**
-			 * Description copied from interface: Keyed
-			 */
-			getKey(): org.bukkit.NamespacedKey;
-
-			/**
-			 * Returns the identifier used to represent
-			 * this pattern type
-			 */
-			getIdentifier(): string;
-
-		}
 	}
 	namespace org.bukkit.permissions {
-		type Permissible = org.bukkit.permissions.ServerOperator & {
+		interface Permissible extends Modify<org.bukkit.permissions.ServerOperator, {
 			/**
 			 * Checks if this object contains an override for the specified
 			 * permission, by fully qualified name
@@ -73142,10 +74040,8 @@ declare global {
 			 */
 			getEffectivePermissions(): globalThis.java.util.Set<org.bukkit.permissions.PermissionAttachmentInfo>;
 
-		}
+		}> {}
 		interface PermissibleBase {
-			new(opable: org.bukkit.permissions.ServerOperator): PermissibleBase;
-
 			/**
 			 * Description copied from interface: ServerOperator
 			 */
@@ -73214,73 +74110,11 @@ declare global {
 			getEffectivePermissions(): globalThis.java.util.Set<org.bukkit.permissions.PermissionAttachmentInfo>;
 
 		}
-		namespace Permission {
-			const DEFAULT_PERMISSION: org.bukkit.permissions.PermissionDefault;
-
-			/**
-			 * Loads a list of Permissions from a map of data, usually used from
-			 * retrieval from a yaml file.
-			 * 
-			 * The data may contain a list of name:data, where the data contains the
-			 * following keys:
-			 * 
-			 * default: Boolean true or false. If not specified, false.
-			 * children: Map<String, Boolean> of child permissions. If not
-			 * specified, empty list.
-			 * description: Short string containing a very small description of
-			 * this description. If not specified, empty string.
-			 * 
-			 */
-			function loadPermissions(data: globalThis.java.util.Map, error: string, def: org.bukkit.permissions.PermissionDefault): globalThis.java.util.List<org.bukkit.permissions.Permission>;
-
-			/**
-			 * Loads a Permission from a map of data, usually used from retrieval from
-			 * a yaml file.
-			 * 
-			 * The data may contain the following keys:
-			 * 
-			 * default: Boolean true or false. If not specified, false.
-			 * children: Map<String, Boolean> of child permissions. If not
-			 * specified, empty list.
-			 * description: Short string containing a very small description of
-			 * this description. If not specified, empty string.
-			 * 
-			 */
-			function loadPermission(name: string, data: globalThis.java.util.Map<string, any>): org.bukkit.permissions.Permission;
-
-			/**
-			 * Loads a Permission from a map of data, usually used from retrieval from
-			 * a yaml file.
-			 * 
-			 * The data may contain the following keys:
-			 * 
-			 * default: Boolean true or false. If not specified, false.
-			 * children: Map<String, Boolean> of child permissions. If not
-			 * specified, empty list.
-			 * description: Short string containing a very small description of
-			 * this description. If not specified, empty string.
-			 * 
-			 */
-			function loadPermission(name: string, data: globalThis.java.util.Map, def: org.bukkit.permissions.PermissionDefault, output: globalThis.java.util.List<org.bukkit.permissions.Permission>): org.bukkit.permissions.Permission;
+		class PermissibleBase {
+			constructor(opable: org.bukkit.permissions.ServerOperator);
 
 		}
 		interface Permission {
-			new(name: string): Permission;
-
-			new(name: string, description: string): Permission;
-
-			new(name: string, defaultValue: org.bukkit.permissions.PermissionDefault): Permission;
-
-			new(name: string, description: string, defaultValue: org.bukkit.permissions.PermissionDefault): Permission;
-
-			new(name: string, children: globalThis.java.util.Map<string, boolean>): Permission;
-
-			new(name: string, description: string, children: globalThis.java.util.Map<string, boolean>): Permission;
-
-			new(name: string, defaultValue: org.bukkit.permissions.PermissionDefault, children: globalThis.java.util.Map<string, boolean>): Permission;
-
-			new(name: string, description: string, defaultValue: org.bukkit.permissions.PermissionDefault, children: globalThis.java.util.Map<string, boolean>): Permission;
-
 			/**
 			 * Returns the unique fully qualified name of this Permission
 			 */
@@ -73350,9 +74184,75 @@ declare global {
 			addParent(perm: org.bukkit.permissions.Permission, value: boolean): void;
 
 		}
-		interface PermissionAttachment {
-			new(plugin: org.bukkit.plugin.Plugin, permissible: org.bukkit.permissions.Permissible): PermissionAttachment;
+		class Permission {
+			constructor(name: string);
 
+			constructor(name: string, description: string);
+
+			constructor(name: string, defaultValue: org.bukkit.permissions.PermissionDefault);
+
+			constructor(name: string, description: string, defaultValue: org.bukkit.permissions.PermissionDefault);
+
+			constructor(name: string, children: globalThis.java.util.Map<string, boolean>);
+
+			constructor(name: string, description: string, children: globalThis.java.util.Map<string, boolean>);
+
+			constructor(name: string, defaultValue: org.bukkit.permissions.PermissionDefault, children: globalThis.java.util.Map<string, boolean>);
+
+			constructor(name: string, description: string, defaultValue: org.bukkit.permissions.PermissionDefault, children: globalThis.java.util.Map<string, boolean>);
+
+		}
+		namespace Permission {
+			const DEFAULT_PERMISSION: org.bukkit.permissions.PermissionDefault;
+
+			/**
+			 * Loads a list of Permissions from a map of data, usually used from
+			 * retrieval from a yaml file.
+			 * 
+			 * The data may contain a list of name:data, where the data contains the
+			 * following keys:
+			 * 
+			 * default: Boolean true or false. If not specified, false.
+			 * children: Map<String, Boolean> of child permissions. If not
+			 * specified, empty list.
+			 * description: Short string containing a very small description of
+			 * this description. If not specified, empty string.
+			 * 
+			 */
+			function loadPermissions(data: globalThis.java.util.Map, error: string, def: org.bukkit.permissions.PermissionDefault): globalThis.java.util.List<org.bukkit.permissions.Permission>;
+
+			/**
+			 * Loads a Permission from a map of data, usually used from retrieval from
+			 * a yaml file.
+			 * 
+			 * The data may contain the following keys:
+			 * 
+			 * default: Boolean true or false. If not specified, false.
+			 * children: Map<String, Boolean> of child permissions. If not
+			 * specified, empty list.
+			 * description: Short string containing a very small description of
+			 * this description. If not specified, empty string.
+			 * 
+			 */
+			function loadPermission(name: string, data: globalThis.java.util.Map<string, any>): org.bukkit.permissions.Permission;
+
+			/**
+			 * Loads a Permission from a map of data, usually used from retrieval from
+			 * a yaml file.
+			 * 
+			 * The data may contain the following keys:
+			 * 
+			 * default: Boolean true or false. If not specified, false.
+			 * children: Map<String, Boolean> of child permissions. If not
+			 * specified, empty list.
+			 * description: Short string containing a very small description of
+			 * this description. If not specified, empty string.
+			 * 
+			 */
+			function loadPermission(name: string, data: globalThis.java.util.Map, def: org.bukkit.permissions.PermissionDefault, output: globalThis.java.util.List<org.bukkit.permissions.Permission>): org.bukkit.permissions.Permission;
+
+		}
+		interface PermissionAttachment {
 			/**
 			 * Gets the plugin responsible for this attachment
 			 */
@@ -73416,9 +74316,11 @@ declare global {
 			remove(): boolean;
 
 		}
-		interface PermissionAttachmentInfo {
-			new(permissible: org.bukkit.permissions.Permissible, permission: string, attachment: org.bukkit.permissions.PermissionAttachment, value: boolean): PermissionAttachmentInfo;
+		class PermissionAttachment {
+			constructor(plugin: org.bukkit.plugin.Plugin, permissible: org.bukkit.permissions.Permissible);
 
+		}
+		interface PermissionAttachmentInfo {
 			/**
 			 * Gets the permissible this is attached to
 			 */
@@ -73439,6 +74341,20 @@ declare global {
 			 * Gets the value of this permission
 			 */
 			getValue(): boolean;
+
+		}
+		class PermissionAttachmentInfo {
+			constructor(permissible: org.bukkit.permissions.Permissible, permission: string, attachment: org.bukkit.permissions.PermissionAttachment, value: boolean);
+
+		}
+		interface PermissionDefault {
+			/**
+			 * Calculates the value of this PermissionDefault for the given operator
+			 * value
+			 */
+			getValue(op: boolean): boolean;
+
+			toString(): string;
 
 		}
 		namespace PermissionDefault {
@@ -73464,16 +74380,6 @@ declare global {
 			function getByName(name: string): org.bukkit.permissions.PermissionDefault;
 
 		}
-		interface PermissionDefault {
-			/**
-			 * Calculates the value of this PermissionDefault for the given operator
-			 * value
-			 */
-			getValue(op: boolean): boolean;
-
-			toString(): string;
-
-		}
 		interface PermissionRemovedExecutor {
 			/**
 			 * Called when a PermissionAttachment is removed from a Permissible
@@ -73495,7 +74401,7 @@ declare global {
 		}
 	}
 	namespace org.bukkit.profile {
-		type PlayerProfile = org.bukkit.configuration.serialization.ConfigurationSerializable & {
+		interface PlayerProfile extends Modify<org.bukkit.configuration.serialization.ConfigurationSerializable, {
 			/**
 			 * Gets the player's unique id.
 			 */
@@ -73555,7 +74461,7 @@ declare global {
 
 			clone(): org.bukkit.profile.PlayerProfile;
 
-		}
+		}> {}
 		interface PlayerTextures {
 			/**
 			 * Checks if the profile stores no textures.
@@ -73627,6 +74533,7 @@ declare global {
 
 		}
 		namespace PlayerTextures {
+			interface SkinModel {}
 			namespace SkinModel {
 				/**
 				 * The classic Minecraft skin model.
@@ -73647,24 +74554,17 @@ declare global {
 				function valueOf(name: string): org.bukkit.profile.PlayerTextures.SkinModel;
 
 			}
-			interface SkinModel {}
 		}
 	}
 	namespace org.bukkit.event.raid {
-		type RaidEvent = org.bukkit.event.world.WorldEvent & {
+		interface RaidEvent extends Modify<org.bukkit.event.world.WorldEvent, {
 			/**
 			 * Returns the raid involved with this event.
 			 */
 			getRaid(): org.bukkit.Raid;
 
-		}
-		namespace RaidFinishEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type RaidFinishEvent = org.bukkit.event.raid.RaidEvent & {
-			new(raid: org.bukkit.Raid, world: org.bukkit.World, winners: globalThis.java.util.List<org.bukkit.entity.Player>): RaidFinishEvent;
-
+		}> {}
+		interface RaidFinishEvent extends Modify<org.bukkit.event.raid.RaidEvent, {
 			/**
 			 * Returns an immutable list contains all winners.
 			 * 
@@ -73675,14 +74575,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class RaidFinishEvent {
+			constructor(raid: org.bukkit.Raid, world: org.bukkit.World, winners: globalThis.java.util.List<org.bukkit.entity.Player>);
+
 		}
-		namespace RaidSpawnWaveEvent {
+		namespace RaidFinishEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type RaidSpawnWaveEvent = org.bukkit.event.raid.RaidEvent & {
-			new(raid: org.bukkit.Raid, world: org.bukkit.World, leader: org.bukkit.entity.Raider, raiders: globalThis.java.util.List<org.bukkit.entity.Raider>): RaidSpawnWaveEvent;
-
+		interface RaidSpawnWaveEvent extends Modify<org.bukkit.event.raid.RaidEvent, {
 			/**
 			 * Returns the patrol leader.
 			 */
@@ -73695,14 +74597,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class RaidSpawnWaveEvent {
+			constructor(raid: org.bukkit.Raid, world: org.bukkit.World, leader: org.bukkit.entity.Raider, raiders: globalThis.java.util.List<org.bukkit.entity.Raider>);
+
 		}
-		namespace RaidStopEvent {
+		namespace RaidSpawnWaveEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type RaidStopEvent = org.bukkit.event.raid.RaidEvent & {
-			new(raid: org.bukkit.Raid, world: org.bukkit.World, reason: org.bukkit.event.raid.RaidStopEvent.Reason): RaidStopEvent;
-
+		interface RaidStopEvent extends Modify<org.bukkit.event.raid.RaidEvent, {
 			/**
 			 * Returns the stop reason.
 			 */
@@ -73710,8 +74614,17 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class RaidStopEvent {
+			constructor(raid: org.bukkit.Raid, world: org.bukkit.World, reason: org.bukkit.event.raid.RaidStopEvent.Reason);
+
 		}
 		namespace RaidStopEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		namespace RaidStopEvent {
+			interface Reason {}
 			namespace Reason {
 				/**
 				 * Because the difficulty has been changed to peaceful.
@@ -73747,15 +74660,8 @@ declare global {
 				function valueOf(name: string): org.bukkit.event.raid.RaidStopEvent.Reason;
 
 			}
-			interface Reason {}
 		}
-		namespace RaidTriggerEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type RaidTriggerEvent = org.bukkit.event.raid.RaidEvent & {
-			new(raid: org.bukkit.Raid, world: org.bukkit.World, player: org.bukkit.entity.Player): RaidTriggerEvent;
-
+		interface RaidTriggerEvent extends Modify<org.bukkit.event.raid.RaidEvent, {
 			/**
 			 * Returns the player who triggered the raid.
 			 */
@@ -73773,9 +74679,18 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class RaidTriggerEvent {
+			constructor(raid: org.bukkit.Raid, world: org.bukkit.World, player: org.bukkit.entity.Player);
+
+		}
+		namespace RaidTriggerEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
 		}
 	}
 	namespace org.bukkit.block.sign {
+		interface Side {}
 		namespace Side {
 			const FRONT: org.bukkit.block.sign.Side;
 
@@ -73790,8 +74705,7 @@ declare global {
 			function valueOf(name: string): org.bukkit.block.sign.Side;
 
 		}
-		interface Side {}
-		type SignSide = org.bukkit.material.Colorable & {
+		interface SignSide extends Modify<org.bukkit.material.Colorable, {
 			/**
 			 * Gets the line of text at the specified index on this side of the sign.
 			 * 
@@ -73817,16 +74731,10 @@ declare global {
 			 */
 			setGlowingText(glowing: boolean): void;
 
-		}
+		}> {}
 	}
 	namespace org.bukkit.event.vehicle {
-		namespace VehicleBlockCollisionEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
-
-		}
-		type VehicleBlockCollisionEvent = org.bukkit.event.vehicle.VehicleCollisionEvent & {
-			new(vehicle: org.bukkit.entity.Vehicle, block: org.bukkit.block.Block): VehicleBlockCollisionEvent;
-
+		interface VehicleBlockCollisionEvent extends Modify<org.bukkit.event.vehicle.VehicleCollisionEvent, {
 			/**
 			 * Gets the block the vehicle collided with
 			 */
@@ -73834,18 +74742,22 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
-		}
-		type VehicleCollisionEvent = org.bukkit.event.vehicle.VehicleEvent & {
-			new(vehicle: org.bukkit.entity.Vehicle): VehicleCollisionEvent;
+		}> {}
+		class VehicleBlockCollisionEvent {
+			constructor(vehicle: org.bukkit.entity.Vehicle, block: org.bukkit.block.Block);
 
 		}
-		namespace VehicleCreateEvent {
+		namespace VehicleBlockCollisionEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type VehicleCreateEvent = org.bukkit.event.vehicle.VehicleEvent & {
-			new(vehicle: org.bukkit.entity.Vehicle): VehicleCreateEvent;
+		interface VehicleCollisionEvent extends Modify<org.bukkit.event.vehicle.VehicleEvent, {
+		}> {}
+		class VehicleCollisionEvent {
+			constructor(vehicle: org.bukkit.entity.Vehicle);
 
+		}
+		interface VehicleCreateEvent extends Modify<org.bukkit.event.vehicle.VehicleEvent, {
 			/**
 			 * Description copied from interface: Cancellable
 			 */
@@ -73858,14 +74770,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class VehicleCreateEvent {
+			constructor(vehicle: org.bukkit.entity.Vehicle);
+
 		}
-		namespace VehicleDamageEvent {
+		namespace VehicleCreateEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type VehicleDamageEvent = org.bukkit.event.vehicle.VehicleEvent & {
-			new(vehicle: org.bukkit.entity.Vehicle, attacker: org.bukkit.entity.Entity, damage: number): VehicleDamageEvent;
-
+		interface VehicleDamageEvent extends Modify<org.bukkit.event.vehicle.VehicleEvent, {
 			/**
 			 * Gets the Entity that is attacking the vehicle
 			 */
@@ -73893,14 +74807,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class VehicleDamageEvent {
+			constructor(vehicle: org.bukkit.entity.Vehicle, attacker: org.bukkit.entity.Entity, damage: number);
+
 		}
-		namespace VehicleDestroyEvent {
+		namespace VehicleDamageEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type VehicleDestroyEvent = org.bukkit.event.vehicle.VehicleEvent & {
-			new(vehicle: org.bukkit.entity.Vehicle, attacker: org.bukkit.entity.Entity): VehicleDestroyEvent;
-
+		interface VehicleDestroyEvent extends Modify<org.bukkit.event.vehicle.VehicleEvent, {
 			/**
 			 * Gets the Entity that has destroyed the vehicle, potentially null
 			 */
@@ -73918,14 +74834,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class VehicleDestroyEvent {
+			constructor(vehicle: org.bukkit.entity.Vehicle, attacker: org.bukkit.entity.Entity);
+
 		}
-		namespace VehicleEnterEvent {
+		namespace VehicleDestroyEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type VehicleEnterEvent = org.bukkit.event.vehicle.VehicleEvent & {
-			new(vehicle: org.bukkit.entity.Vehicle, entered: org.bukkit.entity.Entity): VehicleEnterEvent;
-
+		interface VehicleEnterEvent extends Modify<org.bukkit.event.vehicle.VehicleEvent, {
 			/**
 			 * Gets the Entity that entered the vehicle.
 			 */
@@ -73943,14 +74861,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class VehicleEnterEvent {
+			constructor(vehicle: org.bukkit.entity.Vehicle, entered: org.bukkit.entity.Entity);
+
 		}
-		namespace VehicleEntityCollisionEvent {
+		namespace VehicleEnterEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type VehicleEntityCollisionEvent = org.bukkit.event.vehicle.VehicleCollisionEvent & {
-			new(vehicle: org.bukkit.entity.Vehicle, entity: org.bukkit.entity.Entity): VehicleEntityCollisionEvent;
-
+		interface VehicleEntityCollisionEvent extends Modify<org.bukkit.event.vehicle.VehicleCollisionEvent, {
 			getEntity(): org.bukkit.entity.Entity;
 
 			/**
@@ -73973,23 +74893,27 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
-		}
-		type VehicleEvent = org.bukkit.event.Event & {
-			new(vehicle: org.bukkit.entity.Vehicle): VehicleEvent;
+		}> {}
+		class VehicleEntityCollisionEvent {
+			constructor(vehicle: org.bukkit.entity.Vehicle, entity: org.bukkit.entity.Entity);
 
+		}
+		namespace VehicleEntityCollisionEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
+
+		}
+		interface VehicleEvent extends Modify<org.bukkit.event.Event, {
 			/**
 			 * Get the vehicle.
 			 */
 			getVehicle(): org.bukkit.entity.Vehicle;
 
-		}
-		namespace VehicleExitEvent {
-			function getHandlerList(): org.bukkit.event.HandlerList;
+		}> {}
+		class VehicleEvent {
+			constructor(vehicle: org.bukkit.entity.Vehicle);
 
 		}
-		type VehicleExitEvent = org.bukkit.event.vehicle.VehicleEvent & {
-			new(vehicle: org.bukkit.entity.Vehicle, exited: org.bukkit.entity.LivingEntity): VehicleExitEvent;
-
+		interface VehicleExitEvent extends Modify<org.bukkit.event.vehicle.VehicleEvent, {
 			/**
 			 * Get the living entity that exited the vehicle.
 			 */
@@ -74007,14 +74931,16 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class VehicleExitEvent {
+			constructor(vehicle: org.bukkit.entity.Vehicle, exited: org.bukkit.entity.LivingEntity);
+
 		}
-		namespace VehicleMoveEvent {
+		namespace VehicleExitEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type VehicleMoveEvent = org.bukkit.event.vehicle.VehicleEvent & {
-			new(vehicle: org.bukkit.entity.Vehicle, from: org.bukkit.Location, to: org.bukkit.Location): VehicleMoveEvent;
-
+		interface VehicleMoveEvent extends Modify<org.bukkit.event.vehicle.VehicleEvent, {
 			/**
 			 * Get the previous position.
 			 */
@@ -74027,15 +74953,25 @@ declare global {
 
 			getHandlers(): org.bukkit.event.HandlerList;
 
+		}> {}
+		class VehicleMoveEvent {
+			constructor(vehicle: org.bukkit.entity.Vehicle, from: org.bukkit.Location, to: org.bukkit.Location);
+
 		}
-		namespace VehicleUpdateEvent {
+		namespace VehicleMoveEvent {
 			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
-		type VehicleUpdateEvent = org.bukkit.event.vehicle.VehicleEvent & {
-			new(vehicle: org.bukkit.entity.Vehicle): VehicleUpdateEvent;
-
+		interface VehicleUpdateEvent extends Modify<org.bukkit.event.vehicle.VehicleEvent, {
 			getHandlers(): org.bukkit.event.HandlerList;
+
+		}> {}
+		class VehicleUpdateEvent {
+			constructor(vehicle: org.bukkit.entity.Vehicle);
+
+		}
+		namespace VehicleUpdateEvent {
+			function getHandlerList(): org.bukkit.event.HandlerList;
 
 		}
 	}
