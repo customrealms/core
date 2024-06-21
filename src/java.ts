@@ -74,6 +74,8 @@ declare global {
 
             interface Set<T = any> extends Collection<T> {}
 
+            interface EnumSet<T = any> extends Set<T> {}
+
             namespace UUID {
                 function fromString(name: string): java.util.UUID;
                 function randomUUID(): java.util.UUID;
@@ -109,6 +111,10 @@ declare global {
 
             namespace stream {
                 interface Stream<T = any> {}
+            }
+
+            namespace regex {
+                interface Pattern {}
             }
         }
     }
