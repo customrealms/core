@@ -1,4 +1,4 @@
-import { ServerCommands, ServerEvents } from "../../dist";
+import { Bukkit, ServerCommands, ServerEvents } from "../../dist";
 
 console.log('Plugin started!');
 
@@ -6,14 +6,12 @@ console.log('Plugin started!');
 let i = 0;
 setInterval(() => {
     i++;
-    org.bukkit.Bukkit.broadcastMessage('Hello #' + i);
+    Bukkit.broadcastMessage('Hello #' + i);
 }, 5000);
 
-ServerEvents.register<org.bukkit.event.player.PlayerChatEvent>('org.bukkit.event.player.PlayerChatEvent', event => {
-
+ServerEvents.register(org.bukkit.event.player.PlayerChatEvent, event => {
     console.log('Chat event!');
     event.getPlayer().sendTitle('NICE CHAT', 'yep', 20, 20, 20);
-
 });
 
 ServerCommands.register('/hello {name}...', (player, call) => {
