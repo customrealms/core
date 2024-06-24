@@ -13,6 +13,15 @@ declare global {
                 forEach(callback: (value: T) => void): void;
                 iterator(): java.util.Iterator<T>;
             }
+
+            interface Enum<T = any> {
+                compareTo(other: T): number;
+                equals(other: any): boolean;
+                getDeclaringClass(): java.lang.Class<T>;
+                name(): string;
+                ordinal(): number;
+                toString(): string;
+            }
         }
         namespace util {
             interface Collection<T = any> extends java.lang.Iterable<T> {
