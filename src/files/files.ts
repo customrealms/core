@@ -44,10 +44,9 @@ export const Files = {
 	 * Lists the contents of a directory.
 	 * @param dirname the name of the directory to read
 	 */
-	readdir: (dirname: string): string[] => {
+	readdir: (dirname: string): string[] | null => {
 		const file = new java.io.File(dirname);
-		if (!file.exists() || !file.isDirectory())
-			throw new Error(`Not a directory: ${dirname}`);
+		if (!file.exists() || !file.isDirectory()) return null;
 		return arrayFromJava(file.list() ?? []);
 	},
 
