@@ -1,6 +1,21 @@
-export {};
+/**
+ * Converts a Java array to a JavaScript array.
+ * @param array the Java array to convert
+ * @returns the converted JavaScript array
+ */
+export function arrayFromJava<T>(array: JavaArray<T>): T[] {
+    const result: T[] = [];
+    for (let i = 0; i < array.length; i++) {
+        result.push((array as any)[i]);
+    }
+    return result;
+}
 
 declare global {
+    interface JavaArray<T> {
+        length: number;
+    }
+
     namespace java {
         namespace lang {
             interface Class<T = any> {}
@@ -206,9 +221,9 @@ declare global {
                 isHidden(): boolean;
                 lastModified(): number;
                 length(): number;
-                list(): string[] | null;
-                listFiles(): File[] | null;
-                static listRoots(): File[];
+                list(): JavaArray<string> | null;
+                listFiles(): JavaArray<File> | null;
+                static listRoots(): JavaArray<File>;
                 mkdir(): boolean;
                 mkdirs(): boolean;
                 renameTo(dest: File): boolean;
