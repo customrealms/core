@@ -12,3 +12,4 @@ export const Bukkit = org.bukkit.Bukkit;
 export * from './command/CommandCall';
 export * from './command/ServerCommands';
 export * from './events/ServerEvents';
+export * from './files/files';
