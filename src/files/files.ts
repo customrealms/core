@@ -44,7 +44,7 @@ export const Files = {
 	 * Lists the contents of a directory.
 	 * @param dirname the name of the directory to read
 	 */
-	readDir: (dirname: string): string[] => {
+	readdir: (dirname: string): string[] => {
 		const file = new java.io.File(dirname);
 		if (!file.exists() || !file.isDirectory())
 			throw new Error(`Not a directory: ${dirname}`);
