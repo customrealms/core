@@ -51,8 +51,6 @@ declare global {
                 hasNextShort(radix: number): boolean;
                 next(): string;
                 next(pattern: string): string;
-                nextBigInteger(): BigInteger;
-                nextBigInteger(radix: number): BigInteger;
                 nextBoolean(): boolean;
                 nextDouble(): number;
                 nextFloat(): number;
