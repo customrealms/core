@@ -14,8 +14,9 @@
 		"allowSyntheticDefaultImports": true,
 		"importHelpers": true,
 		"target": "ES5",
-		"typeRoots": ["node_modules/@types"],
-		"lib": ["es2018", "dom"]
+		"lib": ["es2018", "dom"],
+		"types": []
 	},
-	"files": ["src/index.ts"]
+	"include": ["src/**/*.ts"],
+	"exclude": ["src/**/*.test.ts"]
 }

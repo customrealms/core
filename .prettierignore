@@ -4,5 +4,6 @@ docs
 dist
 examples
 .eslintrc.js
+jest.config.js
 src/bukkit.ts
 src/java.ts

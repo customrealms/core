@@ -43,12 +43,11 @@ declare global {
 	 * @param handler the handler function to be called
 	 */
 	function __commands_register(
-		handler: (player: org.bukkit.entity.Player, message: string) => boolean
-	): number;
-
-	/**
-	 * Unregisters a command handler, so it will stop receiving command events
-	 * @param handle the handle numbe of the previously-registered command handler
-	 */
-	function __commands_unregister(handle: number): void;
+		name: string,
+		handler: (
+			sender: org.bukkit.command.CommandSender,
+			label: string,
+			args: JavaArray<string>
+		) => boolean
+	): boolean;
 }

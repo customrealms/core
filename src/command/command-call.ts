@@ -1,26 +1,37 @@
 export class CommandCall {
 	public constructor(
-		private player: org.bukkit.entity.Player,
-		private placeholders: { [key: string]: string },
-		private pattern: string
+		private sender: org.bukkit.command.CommandSender,
+		private label: string,
+		private placeholders: { [key: string]: string }
 	) {}
+
+	/**
+	 * Gets the label used to call the command
+	 * @returns the label of the command
+	 */
+	public getLabel(): string {
+		return this.label;
+	}
+
+	/**
+	 * Gets the sender instance for the command call
+	 * @return the sender of the command
+	 */
+	public getSender(): org.bukkit.command.CommandSender {
+		// Return the sender instance
+		return this.sender;
+	}
 
 	/**
 	 * Gets the player instance for the command call
 	 * @return the player calling the command
 	 */
 	public getPlayer(): org.bukkit.entity.Player | undefined {
-		// Return the player instance
-		return this.player;
-	}
-
-	/**
-	 * Gets the pattern for the command call
-	 * @return the pattern string
-	 */
-	public getPattern(): string | undefined {
-		// Return the pattern
-		return this.pattern;
+		//@ts-ignore
+		if (this.sender instanceof org.bukkit.entity.Player) {
+			return this.sender as org.bukkit.entity.Player;
+		}
+		return undefined;
 	}
 
 	/**
