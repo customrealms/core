@@ -36,7 +36,8 @@ jobs:
             packageJson.version = '${{ steps.get_release.outputs.tag_name }}'.replace(/^v/, '');
             fs.writeFileSync('package.json', JSON.stringify(packageJson, null, 2));
 
-      - run: npm install
+      - name: Install dependencies
+        run: npm ci
 
       - uses: JS-DevTools/npm-publish@v1
         with:
