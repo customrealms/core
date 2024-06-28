@@ -1,80 +1,84 @@
-import { CommandCall } from './CommandCall';
-import { CommandRunner } from './CommandRunner';
-
-export interface CommandHandle {
-	release(): void;
-}
+import { arrayFromJava } from '../java';
+import { CommandCall } from './command-call';
+import { CommandPattern, parseCommandPattern } from './pattern';
 
 /**
  * The type for command functions
  */
 export type CommandFn = (
-	player: org.bukkit.entity.Player,
+	sender: org.bukkit.command.CommandSender,
 	call: CommandCall
 ) => void | Promise<void>;
 
+type CommandRunner = (
+	sender: org.bukkit.command.CommandSender,
+	label: string,
+	args: string[]
+) => boolean;
+
 export class ServerCommands {
 	/**
-	 * The count of handlers
+	 * Map of command name to handlers.
 	 */
-	private static root_handle: number | null = null;
+	private static handlers: { [key: string]: CommandRunner[] } = {};
 
 	/**
-	 * The array of registered command runners
+	 * Registers a command handler.
+	 * @param pattern the command pattern to register
+	 * @param handler the handler for the command
+	 * @returns true if the command was registered, false if it was not
 	 */
-	private static command_runners: CommandRunner[] = [];
+	public static register(pattern: string, handler: CommandFn): boolean {
+		// Parse the pattern
+		const parsedPattern = parseCommandPattern(pattern);
 
-	public static register(pattern: string, handler: CommandFn): CommandHandle;
-	public static register(
-		patterns: string[],
-		handler: CommandFn
-	): CommandHandle;
+		// Get or create the handler array for this command name
+		const runners = this.createExecutor(parsedPattern.name);
+		if (!runners) return false;
 
-	public static register(
-		p: string | string[],
-		handler: CommandFn
-	): CommandHandle {
-		// If there are no handlers
-		if (this.root_handle === null) {
-			this.root_register();
-		}
-
-		// Normalize the patterns to an array
-		const patterns = Array.isArray(p) ? p : [p];
-
-		// Register the command runner
-		const runner = new CommandRunner(patterns, handler);
-		this.command_runners.push(runner);
-
-		// Return a handle to remove the
-		return {
-			release: () => {
-				// Remove the runner from the array
-				const index = this.command_runners.indexOf(runner);
-				if (index > -1) this.command_runners.splice(index, 1);
-
-				// If there are no more runners
-				if (this.command_runners.length === 0 && this.root_handle) {
-					__commands_unregister(this.root_handle);
-					this.root_handle = null;
-				}
-			},
-		};
+		// Add the command runner to the array
+		runners.push(createRunner(parsedPattern, handler));
+		return true;
 	}
 
-	/**
-	 * Registers the root event handler
-	 */
-	private static root_register(): void {
-		// Register the root handler
-		this.root_handle = __commands_register((player, message) => {
-			// Attempt to run the command
-			for (const command of this.command_runners) {
-				if (command.attemptExecute(player, message)) return true;
-			}
+	private static createExecutor(name: string): CommandRunner[] | null {
+		if (name in this.handlers) return this.handlers[name];
 
-			// The command wasn't handled
+		const runners: CommandRunner[] = [];
+		this.handlers[name] = runners;
+
+		// Create the executor for this command name
+		const ok = __commands_register(name, (sender, label, args) => {
+			const argsArray = arrayFromJava(args);
+			if (!runners) return false;
+			for (const runner of runners) {
+				if (runner(sender, label, argsArray)) {
+					return true;
+				}
+			}
 			return false;
 		});
+		if (!ok) {
+			console.error(
+				`Failed to register command: ${name}. Make sure it's in your plugin.yml.`
+			);
+			return null;
+		}
+		return runners;
 	}
+}
+
+function createRunner(
+	pattern: CommandPattern,
+	handler: CommandFn
+): CommandRunner {
+	return (sender, label, args) => {
+		// Attempt to match the arguments to fill the placeholders
+		const placeholders = pattern.match(args);
+		if (!placeholders) return false;
+
+		// Execute the command
+		handler(sender, new CommandCall(sender, label, placeholders));
+		return true;
+	};
 }

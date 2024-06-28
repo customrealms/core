@@ -15,10 +15,13 @@ jobs:
       - name: Install dependencies
         run: |
           npm install -g typescript
-          npm install
+          npm ci
 
       - name: Test to see if the project compiles
         run: npm run build:check
 
       - name: Check code formatting with ESLint
         run: npm run lint:check
+
+      - name: Unit tests
+        run: npm run test
