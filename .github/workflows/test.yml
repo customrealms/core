@@ -15,7 +15,7 @@ jobs:
       - name: Install dependencies
         run: |
           npm install -g typescript
-          npm install
+          npm ci
 
       - name: Test to see if the project compiles
         run: npm run build:check
