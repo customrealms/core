@@ -1,3 +1,4 @@
+import { describe, expect, test } from '@jest/globals';
 import { Placeholder, PlaceholderType, parsePlaceholder } from './placeholder';
 
 describe('parse command placeholder', () => {
