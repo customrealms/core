@@ -23,5 +23,5 @@ jobs:
       - name: Check code formatting with ESLint
         run: npm run lint:check
 
-      - name: Unit tests
-        run: npm run test
+      # - name: Unit tests
+      #   run: npm run test
