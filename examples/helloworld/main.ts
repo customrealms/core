@@ -14,10 +14,10 @@ ServerEvents.register(org.bukkit.event.player.PlayerChatEvent, event => {
     event.getPlayer().sendTitle('NICE CHAT', 'yep', 20, 20, 20);
 });
 
-ServerCommands.register('/hello {name}...', (player, call) => {
+ServerCommands.register('/hello {name}...', (sender, call) => {
 
     const name = call.getPlaceholder('name')!;
 
-    player.sendTitle('You said:', name, 20, 20, 20);
+    call.getPlayer()?.sendTitle('You said:', name, 20, 20, 20);
 
 });

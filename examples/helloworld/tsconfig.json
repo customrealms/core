@@ -6,7 +6,7 @@
 		"sourceMap": false,
 		"declaration": false,
 		"module": "esnext",
-		"moduleResolution": "node",
+		"moduleResolution": "bundler",
 		"emitDecoratorMetadata": true,
 		"resolveJsonModule": true,
 		"experimentalDecorators": true,
@@ -14,10 +14,8 @@
 		"allowSyntheticDefaultImports": true,
 		"importHelpers": true,
 		"target": "ES6",
-		"typeRoots": [
-			"../../node_modules/@types"
-		],
-		"lib": ["es2018", "dom"]
+		"lib": ["es2018"],
+		"types": ["@customrealms/runtime-types"]
 	},
 	"files": ["main.ts"]
 }
