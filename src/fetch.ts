@@ -1,3 +1,5 @@
+import { normalizeJavaError } from './util/error';
+
 export interface RequestInit {
 	method?: string;
 	headers?: HeadersInit;
@@ -113,6 +115,12 @@ const sharedHttpClient = HttpClient.newBuilder()
 	.followRedirects(HttpClient.Redirect.NORMAL)
 	.build();
 
+/**
+ * Fetches a URL and returns a promise that resolves with the response.
+ * @param input the URL to fetch
+ * @param init the request init options
+ * @returns a promise that resolves with the response
+ */
 export function fetch(
 	input: string,
 	init: RequestInit = {}
@@ -190,22 +198,6 @@ export function fetch(
 			reject(error);
 		}
 	});
-}
-
-function normalizeJavaError(error: unknown): Error {
-	if (error instanceof Error) return error;
-
-	try {
-		const cause = (error as any)?.getCause?.();
-		const message =
-			cause?.getMessage?.() ??
-			(error as any)?.getMessage?.() ??
-			String(error);
-
-		return new Error(String(message));
-	} catch {
-		return new Error(String(error));
-	}
 }
 
 function statusText(status: number): string {
