@@ -27,7 +27,7 @@
 		"dist"
 	],
 	"devDependencies": {
-		"@customrealms/runtime-types": "^1.0.3",
+		"@customrealms/runtime-types": "^1.0.4",
 		"@types/jest": "^29.5.12",
 		"@typescript-eslint/eslint-plugin": "^5.4.0",
 		"@typescript-eslint/parser": "^5.4.0",

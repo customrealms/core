@@ -1,5 +1,3 @@
-import { arrayFromJava } from '../java';
-
 export interface FileStat {
 	/**
 	 * The size of the file in bytes.
@@ -21,9 +19,14 @@ export const Files = {
 	 * @param filename the name of the file to check
 	 * @returns true if the file exists, false otherwise
 	 */
-	exists: (filename: string): boolean => {
-		const file = new java.io.File(filename);
-		return file.exists();
+	exists: (filename: string): Promise<boolean> => {
+		return new Promise((resolve, reject) => {
+			__fs.exists(
+				filename,
+				__main_thread(resolve),
+				__main_thread(reject)
+			);
+		});
 	},
 
 	/**
@@ -31,7 +34,7 @@ export const Files = {
 	 * @param filename the name of the file to stat
 	 * @returns the stats of the file, or null if the file doesn't exist
 	 */
-	stat: (filename: string): FileStat | null => {
+	stat: async (filename: string): Promise<FileStat | null> => {
 		const file = new java.io.File(filename);
 		if (!file.exists()) return null;
 		return {
@@ -44,10 +47,14 @@ export const Files = {
 	 * Lists the contents of a directory.
 	 * @param dirname the name of the directory to read
 	 */
-	readdir: (dirname: string): string[] | null => {
-		const file = new java.io.File(dirname);
-		if (!file.exists() || !file.isDirectory()) return null;
-		return arrayFromJava(file.list() ?? []);
+	readdir: (dirname: string): Promise<string[] | null> => {
+		return new Promise((resolve, reject) => {
+			__fs.readdir(
+				dirname,
+				__main_thread(resolve),
+				__main_thread(reject)
+			);
+		});
 	},
 
 	/**
@@ -65,23 +72,29 @@ export const Files = {
 	 * @param dirname the name of the directory to create
 	 * @param recursive whether or not to create parent directories if they don't exist
 	 */
-	mkdir: (dirname: string, recursive = false): void => {
-		const file = new java.io.File(dirname);
-		if (recursive) {
-			file.mkdirs();
-		} else {
-			file.mkdir();
-		}
+	mkdir: (dirname: string, recursive = false): Promise<void> => {
+		return new Promise((resolve, reject) => {
+			__fs.mkdir(
+				dirname,
+				recursive,
+				__main_thread(resolve),
+				__main_thread(reject)
+			);
+		});
 	},
 
 	/**
 	 * Removes a file or directory. Directories must be empty to be removed.
 	 * @param filename the name of the file or directory to remove
 	 */
-	remove: (filename: string): void => {
-		const file = new java.io.File(filename);
-		if (!file.exists()) return;
-		file.delete();
+	remove: (filename: string): Promise<void> => {
+		return new Promise((resolve, reject) => {
+			__fs.remove(
+				filename,
+				__main_thread(resolve),
+				__main_thread(reject)
+			);
+		});
 	},
 
 	/**
@@ -89,11 +102,10 @@ export const Files = {
 	 * @param filename the name of the file to read
 	 * @returns the contents of the file as a string, or null if the file doesn't exist
 	 */
-	readString: (filename: string): string | null => {
-		const file = new java.io.File(filename);
-		if (!file.exists() || !file.isFile()) return null;
-		const scanner = new java.util.Scanner(file).useDelimiter('\\Z');
-		return scanner.next();
+	readString: (filename: string): Promise<string | null> => {
+		return new Promise((resolve, reject) => {
+			__fs.read(filename, __main_thread(resolve), __main_thread(reject));
+		});
 	},
 
 	/**
@@ -101,10 +113,14 @@ export const Files = {
 	 * @param filename the name of the file to write
 	 * @param content the content to write to the file
 	 */
-	writeString: (filename: string, content: string): void => {
-		const file = new java.io.File(filename);
-		const writer = new java.io.FileWriter(file);
-		writer.write(content);
-		writer.close();
+	writeString: (filename: string, content: string): Promise<void> => {
+		return new Promise((resolve, reject) => {
+			__fs.write(
+				filename,
+				content,
+				__main_thread(resolve),
+				__main_thread(reject)
+			);
+		});
 	},
 };
