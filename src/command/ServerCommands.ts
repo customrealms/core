@@ -1,4 +1,4 @@
-import { arrayFromJava } from '../java';
+import { arrayFromJava } from '../util/java';
 import { CommandCall } from './command-call';
 import { CommandPattern, parseCommandPattern } from './pattern';
 
