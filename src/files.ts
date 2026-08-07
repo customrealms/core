@@ -21,11 +21,7 @@ export const Files = {
 	 */
 	exists: (filename: string): Promise<boolean> => {
 		return new Promise((resolve, reject) => {
-			__fs.exists(
-				filename,
-				__main_thread(resolve),
-				__main_thread(reject)
-			);
+			__fs.exists(filename, resolve, reject);
 		});
 	},
 
@@ -49,11 +45,7 @@ export const Files = {
 	 */
 	readdir: (dirname: string): Promise<string[] | null> => {
 		return new Promise((resolve, reject) => {
-			__fs.readdir(
-				dirname,
-				__main_thread(resolve),
-				__main_thread(reject)
-			);
+			__fs.readdir(dirname, resolve, reject);
 		});
 	},
 
@@ -74,12 +66,7 @@ export const Files = {
 	 */
 	mkdir: (dirname: string, recursive = false): Promise<void> => {
 		return new Promise((resolve, reject) => {
-			__fs.mkdir(
-				dirname,
-				recursive,
-				__main_thread(resolve),
-				__main_thread(reject)
-			);
+			__fs.mkdir(dirname, recursive, resolve, reject);
 		});
 	},
 
@@ -89,11 +76,7 @@ export const Files = {
 	 */
 	remove: (filename: string): Promise<void> => {
 		return new Promise((resolve, reject) => {
-			__fs.remove(
-				filename,
-				__main_thread(resolve),
-				__main_thread(reject)
-			);
+			__fs.remove(filename, resolve, reject);
 		});
 	},
 
@@ -104,7 +87,7 @@ export const Files = {
 	 */
 	readString: (filename: string): Promise<string | null> => {
 		return new Promise((resolve, reject) => {
-			__fs.read(filename, __main_thread(resolve), __main_thread(reject));
+			__fs.read(filename, resolve, reject);
 		});
 	},
 
@@ -115,12 +98,7 @@ export const Files = {
 	 */
 	writeString: (filename: string, content: string): Promise<void> => {
 		return new Promise((resolve, reject) => {
-			__fs.write(
-				filename,
-				content,
-				__main_thread(resolve),
-				__main_thread(reject)
-			);
+			__fs.write(filename, content, resolve, reject);
 		});
 	},
 };
