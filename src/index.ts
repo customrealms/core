@@ -7,6 +7,8 @@ export * from './command/command-call';
 export * from './command/ServerCommands';
 export * from './events/ServerEvents';
 export * from './menus';
+export * from './iterators';
+export * from './region';
 export * from './files';
 export * from './fetch';
 export * from './sleep';
