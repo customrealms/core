@@ -20,9 +20,7 @@ export const Files = {
 	 * @returns true if the file exists, false otherwise
 	 */
 	exists: (filename: string): Promise<boolean> => {
-		return new Promise((resolve, reject) => {
-			__fs.exists(filename, resolve, reject);
-		});
+		return __fs.exists(filename);
 	},
 
 	/**
@@ -44,9 +42,7 @@ export const Files = {
 	 * @param dirname the name of the directory to read
 	 */
 	readdir: (dirname: string): Promise<string[] | null> => {
-		return new Promise((resolve, reject) => {
-			__fs.readdir(dirname, resolve, reject);
-		});
+		return __fs.readdir(dirname);
 	},
 
 	/**
@@ -63,11 +59,10 @@ export const Files = {
 	 * Creates a directory.
 	 * @param dirname the name of the directory to create
 	 * @param recursive whether or not to create parent directories if they don't exist
+	 * @returns true if the directory was created, false otherwise
 	 */
-	mkdir: (dirname: string, recursive = false): Promise<void> => {
-		return new Promise((resolve, reject) => {
-			__fs.mkdir(dirname, recursive, resolve, reject);
-		});
+	mkdir: (dirname: string, recursive = false): Promise<boolean> => {
+		return __fs.mkdir(dirname, recursive);
 	},
 
 	/**
@@ -75,9 +70,7 @@ export const Files = {
 	 * @param filename the name of the file or directory to remove
 	 */
 	remove: (filename: string): Promise<void> => {
-		return new Promise((resolve, reject) => {
-			__fs.remove(filename, resolve, reject);
-		});
+		return __fs.remove(filename);
 	},
 
 	/**
@@ -86,9 +79,7 @@ export const Files = {
 	 * @returns the contents of the file as a string, or null if the file doesn't exist
 	 */
 	readString: (filename: string): Promise<string | null> => {
-		return new Promise((resolve, reject) => {
-			__fs.read(filename, resolve, reject);
-		});
+		return __fs.read(filename);
 	},
 
 	/**
@@ -97,8 +88,6 @@ export const Files = {
 	 * @param content the content to write to the file
 	 */
 	writeString: (filename: string, content: string): Promise<void> => {
-		return new Promise((resolve, reject) => {
-			__fs.write(filename, content, resolve, reject);
-		});
+		return __fs.write(filename, content);
 	},
 };
