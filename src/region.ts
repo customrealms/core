@@ -307,3 +307,20 @@ export class Region extends BlockIterator {
 		});
 	}
 }
+
+export class Shapes {
+	public static sphere(
+		center: org.bukkit.Location,
+		radius: number
+	): BlockIterator {
+		return Region.between(
+			center.clone().add(radius, radius, radius),
+			center.clone().subtract(radius, radius, radius)
+		).filter((block) => {
+			const dx = block.getX() + 0.5 - center.getX();
+			const dy = block.getY() + 0.5 - center.getY();
+			const dz = block.getZ() + 0.5 - center.getZ();
+			return dx * dx + dy * dy + dz * dz <= radius * radius;
+		});
+	}
+}
