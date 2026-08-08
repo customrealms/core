@@ -42,14 +42,39 @@ export class ServerEvents {
 		event_class: EventClass<T>,
 		matcher?: (event: T) => boolean,
 		timeout?: number
+	): Promise<T>;
+	/**
+	 * Waits for one of several server events and resolves with the first matching event.
+	 * @param event_classes the classes for event types to wait for
+	 * @param matcher the matcher function to determine if an event should be resolved
+	 * @param timeout the timeout in milliseconds
+	 * @returns a promise that resolves with the first matching event
+	 */
+	public static waitFor<T extends org.bukkit.event.Event>(
+		event_classes: Array<EventClass<T>>,
+		matcher?: (event: T) => boolean,
+		timeout?: number
+	): Promise<T>;
+	public static waitFor<T extends org.bukkit.event.Event>(
+		event_class_or_classes: EventClass<T> | Array<EventClass<T>>,
+		matcher?: (event: T) => boolean,
+		timeout?: number
 	): Promise<T> {
 		if (!matcher) matcher = () => true;
 
 		return new Promise((resolve, reject) => {
 			try {
+				const eventClasses = Array.isArray(event_class_or_classes)
+					? event_class_or_classes
+					: [event_class_or_classes];
+				if (eventClasses.length === 0) {
+					reject(new Error('event_classes must not be empty'));
+					return;
+				}
+
 				// Set a timeout for the promise
 				let timeoutID: number | undefined;
-				let handle: EventHandle | null = null;
+				const handles: EventHandle[] = [];
 
 				// Cleanup function
 				const cleanup = () => {
@@ -57,10 +82,10 @@ export class ServerEvents {
 						clearTimeout(timeoutID);
 						timeoutID = undefined;
 					}
-					if (handle !== null) {
+					for (const handle of handles) {
 						handle.release();
-						handle = null;
 					}
+					handles.length = 0;
 				};
 
 				if (timeout) {
@@ -70,18 +95,23 @@ export class ServerEvents {
 					}, timeout);
 				}
 
-				// Register the handler
-				handle = this.register(event_class, (event) => {
-					try {
-						if (matcher(event)) {
+				// Register handlers
+				for (const eventClass of eventClasses) {
+					const handle = this.register(eventClass, (event) => {
+						try {
+							if (matcher(event)) {
+								cleanup();
+								resolve(event);
+							}
+						} catch (err) {
 							cleanup();
-							resolve(event);
+							reject(err);
 						}
-					} catch (err) {
-						cleanup();
-						reject(err);
+					});
+					if (handle !== null) {
+						handles.push(handle);
 					}
-				});
+				}
 			} catch (err) {
 				reject(err);
 			}

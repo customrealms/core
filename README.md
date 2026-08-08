@@ -36,6 +36,32 @@ ServerCommands.register('/strike', (player) => {
 });
 ```
 
+### Example #3 - Menus
+
+```ts
+import { Menus } from '@customrealms/core';
+
+const result = await Menus.create<string>('Difficulty')
+	.button(11, easyItem, 'easy')
+	.button(13, normalItem, 'normal')
+	.button(15, hardItem, 'hard')
+	.open(player);
+
+switch (result) {
+	case 'easy':
+		player.sendMessage('Easy mode selected.');
+		break;
+	case 'normal':
+		player.sendMessage('Normal mode selected.');
+		break;
+	case 'hard':
+		player.sendMessage('Hard mode selected.');
+		break;
+	case null:
+		player.sendMessage('Maybe next time.');
+}
+```
+
 ## How it works
 
 By default, without this library, the CustomRealms JavaScript runtime has access to all of the Java and Bukkit classes and functions.
